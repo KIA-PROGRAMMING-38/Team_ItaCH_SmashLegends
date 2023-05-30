@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: d140a5b9cdc9a3249b360d2edfe68234
+timeCreated: 1684772691
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  externalObjects: {}
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Exo 2
+  - Garuda
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 2fb1ce77653c9bb448afdfb6ced7a533, type: 3}
+  - {fileID: 12800000, guid: 7156024903051384491b97a2c329e3e8, type: 3}
+  - {fileID: 12800000, guid: 3f179a0ae218f2f42bf8907d0ed12a8d, type: 3}
+  customCharacters:
+  fontRenderingMode: 0
+  output:
+    hasEmptyFontData: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData:
+  assetBundleName:
+  assetBundleVariant:

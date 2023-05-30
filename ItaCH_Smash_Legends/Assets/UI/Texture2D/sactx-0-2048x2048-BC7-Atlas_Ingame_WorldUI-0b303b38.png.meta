@@ -1,0 +1,5943 @@
+fileFormatVersion: 2
+guid: cca4648691fc91a4b8b3ca16ac9fbfe0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: T_UI_WorldUI_Status_IconWantedScoreKing
+  - first:
+      213: 21300002
+    second: T_UI_WorldUI_Twoway_CaptureSign_MainCamp
+  - first:
+      213: 21300004
+    second: T_UI_WorldUI_Base_ArcOutline
+  - first:
+      213: 21300006
+    second: T_UI_WorldUI_Twoway_Gauge
+  - first:
+      213: 21300008
+    second: T_UI_WorldUI_Indicator_Tiny_Ravi
+  - first:
+      213: 21300010
+    second: T_UI_WorldUI_Indicator_Tiny_Alice
+  - first:
+      213: 21300012
+    second: T_UI_WorldUI_Status_GiantGrow_Tail
+  - first:
+      213: 21300014
+    second: T_UI_WorldUI_Indicator_Tiny_Robin
+  - first:
+      213: 21300016
+    second: T_UI_WorldUI_Indicator_Tiny_Nui
+  - first:
+      213: 21300018
+    second: T_UI_WorldUI_Indicator_Tiny_Maya
+  - first:
+      213: 21300020
+    second: T_UI_WorldUI_Tutorial_TargetLine
+  - first:
+      213: 21300022
+    second: T_UI_WorldUI_Status_WantedWarningGlow
+  - first:
+      213: 21300024
+    second: T_UI_WorldUI_Indicator_Tiny_Octavia
+  - first:
+      213: 21300026
+    second: T_UI_WorldUI_Status_GiantIconGlow
+  - first:
+      213: 21300028
+    second: T_UI_WorldUI_Tutorial_TargetLineGlow
+  - first:
+      213: 21300030
+    second: T_UI_WorldUI_Status_CatStackGauge
+  - first:
+      213: 21300032
+    second: T_UI_WorldUI_Indicator_Tiny_Dummy
+  - first:
+      213: 21300034
+    second: T_UI_WorldUI_Base_SharpFX
+  - first:
+      213: 21300036
+    second: T_UI_WorldUI_Twoway_CaptureSign_Gate
+  - first:
+      213: 21300038
+    second: T_UI_WorldUI_ItemInteract_CircleLineFX
+  - first:
+      213: 21300040
+    second: T_UI_WorldUI_Base_SquareLine
+  - first:
+      213: 21300042
+    second: T_UI_WorldUI_Status_HPGaugeOutline
+  - first:
+      213: 21300044
+    second: T_UI_WorldUI_Status_Enchant_Shield30
+  - first:
+      213: 21300046
+    second: T_UI_WorldUI_Status_CatStackGauge_Glow
+  - first:
+      213: 21300048
+    second: T_UI_WorldUI_Indicator_Tiny_Red
+  - first:
+      213: 21300050
+    second: T_UI_WorldUI_Status_GiantIconPanel01
+  - first:
+      213: 21300052
+    second: T_UI_WorldUI_Indicator_Tiny_Parfait
+  - first:
+      213: 21300054
+    second: T_UI_WorldUI_Status_Enchant_Steady
+  - first:
+      213: 21300056
+    second: T_UI_WorldUI_Status_GiantGrow_CircleGlow02
+  - first:
+      213: 21300058
+    second: T_UI_WorldUI_Base_RectSmallPadded
+  - first:
+      213: 21300060
+    second: T_UI_WorldUI_Base_SquareBracket
+  - first:
+      213: 21300062
+    second: T_UI_WorldUI_ItemInteract_Arrow
+  - first:
+      213: 21300064
+    second: T_UI_WorldUI_Indicator_Tiny_Snow
+  - first:
+      213: 21300066
+    second: T_UI_WorldUI_ItemInteract_CircleLine_2
+  - first:
+      213: 21300068
+    second: T_UI_WorldUI_Tutorial_TriangleLine
+  - first:
+      213: 21300070
+    second: T_UI_WorldUI_Status_GiantGrow_Arrow
+  - first:
+      213: 21300072
+    second: T_UI_WorldUI_Status_IconFruitBig
+  - first:
+      213: 21300074
+    second: T_UI_WorldUI_Indicator_IconNo1White
+  - first:
+      213: 21300076
+    second: T_UI_WorldUI_Indicator_Tiny_Flare
+  - first:
+      213: 21300078
+    second: T_UI_WorldUI_Status_GiantGrow_Back
+  - first:
+      213: 21300080
+    second: T_UI_WorldUI_Twoway_GateArea_Bg
+  - first:
+      213: 21300082
+    second: T_UI_WorldUI_Status_ChargeGlow
+  - first:
+      213: 21300084
+    second: T_UI_WorldUI_Status_Enchant_Steady30
+  - first:
+      213: 21300086
+    second: T_UI_WorldUI_ItemInfo_Position
+  - first:
+      213: 21300088
+    second: T_UI_WorldUI_Base_CircleLineGlow01
+  - first:
+      213: 21300090
+    second: T_UI_WorldUI_Status_TipGlow_Green
+  - first:
+      213: 21300092
+    second: T_UI_WorldUI_Indicator_Tiny_Hook
+  - first:
+      213: 21300094
+    second: T_UI_WorldUI_Base_CircleLine_Thicker
+  - first:
+      213: 21300096
+    second: T_UI_WorldUI_Indicator_Tiny_Peter
+  - first:
+      213: 21300098
+    second: T_UI_WorldUI_Tutorial_TargetLineGlow2
+  - first:
+      213: 21300100
+    second: T_UI_WorldUI_Indicator_Tiny_Molly
+  - first:
+      213: 21300102
+    second: T_UI_WorldUI_Status_Enchant_Shield
+  - first:
+      213: 21300104
+    second: T_UI_WorldUI_Status_GiantGrow_CircleLine03
+  - first:
+      213: 21300106
+    second: T_UI_WorldUI_Tutorial_TargetLineThin
+  - first:
+      213: 21300108
+    second: T_UI_WorldUI_Twoway_Arrow
+  - first:
+      213: 21300110
+    second: T_UI_WorldUI_Base_CircleBasic
+  - first:
+      213: 21300112
+    second: T_UI_WorldUI_Status_VexBrokenHeart
+  - first:
+      213: 21300114
+    second: T_UI_WorldUI_Tutorial_TargetCrossPart
+  - first:
+      213: 21300116
+    second: T_UI_WorldUI_Twoway_CaptureSign_MainCampDeco
+  - first:
+      213: 21300118
+    second: T_UI_WorldUI_Indicator_Tiny_DonQuixote
+  - first:
+      213: 21300120
+    second: T_UI_WorldUI_Indicator_IconConductMachine_Grey
+  - first:
+      213: 21300122
+    second: T_UI_WorldUI_Base_SquareLineThinPadded
+  - first:
+      213: 21300124
+    second: T_UI_WorldUI_ItemInfo_CircleGauge
+  - first:
+      213: 21300126
+    second: T_UI_WorldUI_Status_IconPowerDonut
+  - first:
+      213: 21300128
+    second: T_UI_WorldUI_Indicator_Tiny_Wolfgang
+  - first:
+      213: 21300130
+    second: T_UI_WorldUI_Status_Enchant_BotGlow
+  - first:
+      213: 21300132
+    second: T_UI_WorldUI_Status_ProgressGlow_Ally
+  - first:
+      213: 21300134
+    second: T_UI_WorldUI_Status_IconPowerOrb
+  - first:
+      213: 21300136
+    second: T_UI_WorldUI_Status_IconWantedScoreBig
+  - first:
+      213: 21300138
+    second: T_UI_WorldUI_ItemInfo_IconBomb
+  - first:
+      213: 21300140
+    second: T_UI_WorldUI_Indicator_Tiny_YongYong
+  - first:
+      213: 21300142
+    second: T_UI_WorldUI_Tutorial_DangerGlow
+  - first:
+      213: 21300144
+    second: T_UI_WorldUI_Indicator_Tiny_Rapunzel
+  - first:
+      213: 21300146
+    second: T_UI_WorldUI_Status_TipGlow_Blue
+  - first:
+      213: 21300148
+    second: T_UI_WorldUI_Status_TipGlow_LightCyan
+  - first:
+      213: 21300150
+    second: T_UI_WorldUI_Indicator_Tiny_JackO
+  - first:
+      213: 21300152
+    second: T_UI_WorldUI_Indicator_IconCapturePoint_Red
+  - first:
+      213: 21300154
+    second: T_UI_WorldUI_Status_IconWantedTargetLight
+  - first:
+      213: 21300156
+    second: T_UI_WorldUI_Status_Enchant_BGLine
+  - first:
+      213: 21300158
+    second: T_UI_WorldUI_Indicator_CrownPanelGlow_Blue
+  - first:
+      213: 21300160
+    second: T_UI_WorldUI_Status_GumiStackGauge
+  - first:
+      213: 21300162
+    second: T_UI_WorldUI_Indicator_Tiny_Cindy
+  - first:
+      213: 21300164
+    second: T_UI_WorldUI_Status_TipGlow_Red
+  - first:
+      213: 21300166
+    second: T_UI_WorldUI_Base_GlowImage
+  - first:
+      213: 21300168
+    second: T_UI_WorldUI_Indicator_IconWreckIt
+  - first:
+      213: 21300170
+    second: T_UI_WorldUI_Status_IconFruitGold
+  - first:
+      213: 21300172
+    second: T_UI_WorldUI_Status_IconWantedScore
+  - first:
+      213: 21300174
+    second: T_UI_WorldUI_Indicator_Tiny_Vex
+  - first:
+      213: 21300176
+    second: T_UI_WorldUI_Status_ProgressGlow_Enemy
+  - first:
+      213: 21300178
+    second: T_UI_WorldUI_Base_Round
+  - first:
+      213: 21300180
+    second: T_UI_WorldUI_Base_Square
+  - first:
+      213: 21300182
+    second: T_UI_WorldUI_Indicator_IconCrownWhite
+  - first:
+      213: 21300184
+    second: T_UI_WorldUI_Status_Enchant_BG30
+  - first:
+      213: 21300186
+    second: T_UI_WorldUI_Tutorial_Triangle
+  - first:
+      213: 21300188
+    second: T_UI_WorldUI_Status_HealingPlus
+  - first:
+      213: 21300190
+    second: T_UI_WorldUI_Status_GiantGrow_CircleLine02
+  - first:
+      213: 21300192
+    second: T_UI_WorldUI_Status_SkillLastingGlow
+  - first:
+      213: 21300194
+    second: T_UI_WorldUI_Status_WantedTargetGlow
+  - first:
+      213: 21300196
+    second: T_UI_WorldUI_Indicator_IconCapturePoint_Blue
+  - first:
+      213: 21300198
+    second: T_UI_WorldUI_Twoway_CaptureArea_Move
+  - first:
+      213: 21300200
+    second: T_UI_WorldUI_Twoway_MainCampArea_Bg
+  - first:
+      213: 21300202
+    second: T_UI_WorldUI_Base_GlowImageHalf
+  - first:
+      213: 21300204
+    second: T_UI_WorldUI_Indicator_Tiny_Victor
+  - first:
+      213: 21300206
+    second: T_UI_WorldUI_Base_SquareGrad
+  - first:
+      213: 21300208
+    second: T_UI_WorldUI_ItemInfo_IconCharge
+  - first:
+      213: 21300210
+    second: T_UI_WorldUI_Tutorial_TriangleLineGlow
+  - first:
+      213: 21300212
+    second: T_UI_WorldUI_Indicator_IconConductMachine_Red
+  - first:
+      213: 21300214
+    second: T_UI_WorldUI_Indicator_Capturepoint_Arrow
+  - first:
+      213: 21300216
+    second: T_UI_WorldUI_Indicator_Tiny_Swan
+  - first:
+      213: 21300218
+    second: T_UI_WorldUI_Tutorial_ExclamationMarkGlow
+  - first:
+      213: 21300220
+    second: T_UI_WorldUI_Base_SquarePadded
+  - first:
+      213: 21300222
+    second: T_UI_WorldUI_Base_CircleLine_Stroke
+  - first:
+      213: 21300224
+    second: T_UI_WorldUI_Status_TipGlow_Yellow
+  - first:
+      213: 21300226
+    second: T_UI_WorldUI_Status_GiantGrow_ArrowGlow
+  - first:
+      213: 21300228
+    second: T_UI_WorldUI_Indicator_IconConductMachine_Blue
+  - first:
+      213: 21300230
+    second: T_UI_WorldUI_Indicator_Tiny_Ali
+  - first:
+      213: 21300232
+    second: T_UI_WorldUI_Base_ArcBig
+  - first:
+      213: 21300234
+    second: T_UI_WorldUI_Status_GiantLevelArrow
+  - first:
+      213: 21300236
+    second: T_UI_WorldUI_Status_GiantIconPanel02
+  - first:
+      213: 21300238
+    second: T_UI_WorldUI_Base_CircleLineGlow02
+  - first:
+      213: 21300240
+    second: T_UI_WorldUI_Indicator_Tiny_Loren
+  - first:
+      213: 21300242
+    second: T_UI_WorldUI_Indicator_Arrow2
+  - first:
+      213: 21300244
+    second: T_UI_WorldUI_Indicator_CrownPanelGlow_Red
+  - first:
+      213: 21300246
+    second: T_UI_WorldUI_Indicator_DisplayBG
+  - first:
+      213: 21300248
+    second: T_UI_WorldUI_ItemInfo_IconMagnetBomb
+  - first:
+      213: 21300250
+    second: T_UI_WorldUI_Indicator_Tiny_MasterCat
+  - first:
+      213: 21300252
+    second: T_UI_WorldUI_Status_GiantGrow_CircleGlow01
+  - first:
+      213: 21300254
+    second: T_UI_WorldUI_Indicator_IconNo2
+  - first:
+      213: 21300256
+    second: T_UI_WorldUI_Status_IconWantedRetire
+  - first:
+      213: 21300258
+    second: T_UI_WorldUI_Status_IconWantedTarget
+  - first:
+      213: 21300260
+    second: T_UI_WorldUI_Tutorial_TriangleLineThin
+  - first:
+      213: 21300262
+    second: T_UI_WorldUI_ItemInteract_CircleLine_3
+  - first:
+      213: 21300264
+    second: T_UI_WorldUI_ItemInteract_CircleLine
+  - first:
+      213: 21300266
+    second: T_UI_WorldUI_Base_SquareLineGlow
+  - first:
+      213: 21300268
+    second: T_UI_WorldUI_Indicator_Tiny_Zeppetta
+  - first:
+      213: 21300270
+    second: T_UI_WorldUI_Base_CircleLine
+  - first:
+      213: 21300272
+    second: T_UI_WorldUI_Indicator_Arrow2Glow
+  - first:
+      213: 21300274
+    second: T_UI_WorldUI_Status_GumiStackGauge_Glow
+  - first:
+      213: 21300276
+    second: T_UI_WorldUI_Tutorial_TargetCrossPartGlow
+  - first:
+      213: 21300278
+    second: T_UI_WorldUI_Indicator_AliDagger
+  - first:
+      213: 21300280
+    second: T_UI_WorldUI_ItemInfo_IconBringCapturePoint
+  - first:
+      213: 21300282
+    second: T_UI_WorldUI_Indicator_Tiny_Goldie
+  - first:
+      213: 21300284
+    second: T_UI_WorldUI_Status_GiantGrow_BackGlow
+  - first:
+      213: 21300286
+    second: T_UI_WorldUI_ItemInfo_CircleLine
+  - first:
+      213: 21300288
+    second: T_UI_WorldUI_Indicator_Tiny_WitchQueen
+  - first:
+      213: 21300290
+    second: T_UI_WorldUI_Status_Enchant_BG
+  - first:
+      213: 21300292
+    second: T_UI_WorldUI_ItemInfo_IconRandom
+  - first:
+      213: 21300294
+    second: T_UI_WorldUI_Indicator_CrownPanel
+  - first:
+      213: 21300296
+    second: T_UI_WorldUI_Indicator_Tiny_Brick
+  - first:
+      213: 21300298
+    second: T_UI_WorldUI_Indicator_IconPickIt
+  - first:
+      213: 21300300
+    second: T_UI_WorldUI_Status_Enchant_StreakThunder30
+  - first:
+      213: 21300302
+    second: T_UI_WorldUI_Status_IconFruit
+  - first:
+      213: 21300304
+    second: T_UI_WorldUI_Indicator_IconCapturePoint_Grey
+  - first:
+      213: 21300306
+    second: T_UI_WorldUI_Base_RoundDeco
+  - first:
+      213: 21300308
+    second: T_UI_WorldUI_Indicator_Tiny_Gumi
+  - first:
+      213: 21300310
+    second: T_UI_WorldUI_Base_RectBigPadded
+  - first:
+      213: 21300312
+    second: T_UI_WorldUI_Indicator_Tiny_Ducky
+  - first:
+      213: 21300314
+    second: T_UI_WorldUI_Twoway_MoveArea_Bg
+  - first:
+      213: 21300316
+    second: T_UI_WorldUI_Indicator_Tiny_Wukong
+  - first:
+      213: 21300318
+    second: T_UI_WorldUI_Indicator_Tiny_Kaiser
+  - first:
+      213: 21300320
+    second: T_UI_WorldUI_Twoway_CaptureArea_Arrive
+  - first:
+      213: 21300322
+    second: T_UI_WorldUI_Status_IconFruitKing
+  - first:
+      213: 21300324
+    second: T_UI_WorldUI_ItemInfo_IconHeal
+  - first:
+      213: 21300326
+    second: T_UI_WorldUI_Indicator_Arrow
+  - first:
+      213: 21300328
+    second: T_UI_WorldUI_Base_ArcSmall
+  - first:
+      213: 21300330
+    second: T_UI_WorldUI_Base_CircleLine_Thick01
+  - first:
+      213: 21300332
+    second: T_UI_WorldUI_Indicator_Tiny_Frog
+  - first:
+      213: 21300334
+    second: T_UI_WorldUI_Status_Enchant_StreakThunder
+  - first:
+      213: 21300336
+    second: T_UI_WorldUI_Indicator_Tiny_Rambert
+  - first:
+      213: 21300338
+    second: T_UI_WorldUI_Twoway_MovementArrow
+  - first:
+      213: 21300340
+    second: T_UI_WorldUI_Indicator_IconNo1
+  - first:
+      213: 21300342
+    second: T_UI_WorldUI_Indicator_Tiny_Kurenai
+  - first:
+      213: 21300344
+    second: T_UI_WorldUI_Status_GiantGrow_CircleGlow03
+  - first:
+      213: 21300346
+    second: T_UI_WorldUI_Base_Floor
+  - first:
+      213: 21300348
+    second: T_UI_WorldUI_Indicator_IconCrown
+  - first:
+      213: 21300350
+    second: T_UI_WorldUI_Base_RoundLine
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 25
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 0
+  flipbookColumns: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_IconWantedScoreKing
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 1307
+        width: 80
+        height: 77
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -40, y: -38.5}
+        - {x: -40, y: 38.5}
+        - {x: 40, y: 38.5}
+        - {x: 40, y: -38.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c87cd7431889437f8b6efafe1f67a5cb
+      internalID: 21300000
+      vertices:
+      - {x: 0, y: 77}
+      - {x: 80, y: 77}
+      - {x: 0, y: 0}
+      - {x: 80, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Twoway_CaptureSign_MainCamp
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 662
+        width: 152
+        height: 152
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -76, y: -76}
+        - {x: -76, y: 76}
+        - {x: 76, y: 76}
+        - {x: 76, y: -76}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2444682eba6c4c36b94fc884693819c7
+      internalID: 21300002
+      vertices:
+      - {x: 0, y: 152}
+      - {x: 152, y: 152}
+      - {x: 0, y: 0}
+      - {x: 152, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_ArcOutline
+      rect:
+        serializedVersion: 2
+        x: 1474
+        y: 1151
+        width: 90
+        height: 22
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -45, y: -11}
+        - {x: -45, y: 11}
+        - {x: 45, y: 11}
+        - {x: 45, y: -11}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4532e63473648ffa7c893622becf310
+      internalID: 21300004
+      vertices:
+      - {x: 0, y: 22}
+      - {x: 90, y: 22}
+      - {x: 0, y: 0}
+      - {x: 90, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Twoway_Gauge
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 0
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -150, y: -150}
+        - {x: -150, y: 150}
+        - {x: 150, y: 150}
+        - {x: 150, y: -150}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70e83ed5be834c2d9e94dd78cfdf864f
+      internalID: 21300006
+      vertices:
+      - {x: 0, y: 300}
+      - {x: 300, y: 300}
+      - {x: 0, y: 0}
+      - {x: 300, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Ravi
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 1084
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31cd7bf79f08428e98ff035d8d45a8b8
+      internalID: 21300008
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Alice
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 1164
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dd01782483647c6b0775127caaa3164
+      internalID: 21300010
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_GiantGrow_Tail
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 1411
+        width: 22
+        height: 83
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 8, y: 0, z: 8, w: 0}
+      outline:
+      - - {x: -11, y: -41.5}
+        - {x: -11, y: 41.5}
+        - {x: 11, y: 41.5}
+        - {x: 11, y: -41.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94beece68e484460af9e04b20559bf62
+      internalID: 21300012
+      vertices:
+      - {x: 0, y: 83}
+      - {x: 22, y: 83}
+      - {x: 0, y: 0}
+      - {x: 22, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Robin
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1152
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 705c5cc010824c18bab4ebe07b2755c3
+      internalID: 21300014
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Nui
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1278
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c979c9044acb42a899f97d780f41ed96
+      internalID: 21300016
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Maya
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1382
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2af0e40e980244208d28ef030e9a9af2
+      internalID: 21300018
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Tutorial_TargetLine
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 868
+        width: 104
+        height: 104
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52, y: -52}
+        - {x: -52, y: 52}
+        - {x: 52, y: 52}
+        - {x: 52, y: -52}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df48144a449c42a8bc61570200afeefc
+      internalID: 21300020
+      vertices:
+      - {x: 0, y: 104}
+      - {x: 104, y: 104}
+      - {x: 0, y: 0}
+      - {x: 104, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_WantedWarningGlow
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 1076
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a4426b55c6e40769d7a21286aba4082
+      internalID: 21300022
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Octavia
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 976
+        width: 101
+        height: 101
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50.5, y: -50.5}
+        - {x: -50.5, y: 50.5}
+        - {x: 50.5, y: 50.5}
+        - {x: 50.5, y: -50.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e59ea7f13a445b58abe28e5a490a490
+      internalID: 21300024
+      vertices:
+      - {x: 0, y: 101}
+      - {x: 101, y: 101}
+      - {x: 0, y: 0}
+      - {x: 101, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_GiantIconGlow
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1064
+        width: 142
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -71, y: -48}
+        - {x: -71, y: 48}
+        - {x: 71, y: 48}
+        - {x: 71, y: -48}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cae30185ffc467f964af29bddfd66ee
+      internalID: 21300026
+      vertices:
+      - {x: 0, y: 96}
+      - {x: 142, y: 96}
+      - {x: 0, y: 0}
+      - {x: 142, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Tutorial_TargetLineGlow
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 1044
+        width: 104
+        height: 104
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52, y: -52}
+        - {x: -52, y: 52}
+        - {x: 52, y: 52}
+        - {x: 52, y: -52}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3a808c772c74bca9b6883ebefcf6fa1
+      internalID: 21300028
+      vertices:
+      - {x: 0, y: 104}
+      - {x: 104, y: 104}
+      - {x: 0, y: 0}
+      - {x: 104, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_CatStackGauge
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 498
+        width: 160
+        height: 160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -80, y: -80}
+        - {x: -80, y: 80}
+        - {x: 80, y: 80}
+        - {x: 80, y: -80}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfd7a5de491a4d72b9d16ef528e16591
+      internalID: 21300030
+      vertices:
+      - {x: 0, y: 160}
+      - {x: 160, y: 160}
+      - {x: 0, y: 0}
+      - {x: 160, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Dummy
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 1268
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bc428be48f64ba1bcf75fae3495de22
+      internalID: 21300032
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_SharpFX
+      rect:
+        serializedVersion: 2
+        x: 1493
+        y: 927
+        width: 39
+        height: 174
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19.5, y: -87}
+        - {x: -19.5, y: 87}
+        - {x: 19.5, y: 87}
+        - {x: 19.5, y: -87}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33090758a37f46229a24296dfc9e06d3
+      internalID: 21300034
+      vertices:
+      - {x: 0, y: 174}
+      - {x: 39, y: 174}
+      - {x: 0, y: 0}
+      - {x: 39, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Twoway_CaptureSign_Gate
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1164
+        width: 110
+        height: 110
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -55, y: -55}
+        - {x: -55, y: 55}
+        - {x: 55, y: 55}
+        - {x: 55, y: -55}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1626eef439744031b0b3a24462e19c1e
+      internalID: 21300036
+      vertices:
+      - {x: 0, y: 110}
+      - {x: 110, y: 110}
+      - {x: 0, y: 0}
+      - {x: 110, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_ItemInteract_CircleLineFX
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 254
+        width: 240
+        height: 240
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -120.00001, y: -120.00001}
+        - {x: -120.00001, y: 120.00001}
+        - {x: 120.00001, y: 120.00001}
+        - {x: 120.00001, y: -120.00001}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d828ddd0c31841f1a0ba9f8c3e06ef89
+      internalID: 21300038
+      vertices:
+      - {x: -0.0000076293945, y: 240}
+      - {x: 240, y: 240}
+      - {x: -0.0000076293945, y: -0.0000076293945}
+      - {x: 240, y: -0.0000076293945}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_SquareLine
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 1555
+        width: 28
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 7, y: 7, z: 7, w: 7}
+      outline:
+      - - {x: -14, y: -14}
+        - {x: -14, y: 14}
+        - {x: 14, y: 14}
+        - {x: 14, y: -14}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6d79f5732fe4fce89a48758acf554aa
+      internalID: 21300040
+      vertices:
+      - {x: 0, y: 28}
+      - {x: 28, y: 28}
+      - {x: 0, y: 0}
+      - {x: 28, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_HPGaugeOutline
+      rect:
+        serializedVersion: 2
+        x: 1954
+        y: 286
+        width: 28
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 7, y: 7, z: 7, w: 11}
+      outline:
+      - - {x: -14, y: -16}
+        - {x: -14, y: 16}
+        - {x: 14, y: 16}
+        - {x: 14, y: -16}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94111a4359e24bc6a9f54fb4d63635e2
+      internalID: 21300042
+      vertices:
+      - {x: 0, y: 32}
+      - {x: 28, y: 32}
+      - {x: 0, y: 0}
+      - {x: 28, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_Enchant_Shield30
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 408
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -75, y: -75}
+        - {x: -75, y: 75}
+        - {x: 75, y: 75}
+        - {x: 75, y: -75}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2918dc44ffc4df1932bd0d3a5694f04
+      internalID: 21300044
+      vertices:
+      - {x: 0, y: 150}
+      - {x: 150, y: 150}
+      - {x: 0, y: 0}
+      - {x: 150, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_CatStackGauge_Glow
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 244
+        width: 160
+        height: 160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -80, y: -80}
+        - {x: -80, y: 80}
+        - {x: 80, y: 80}
+        - {x: 80, y: -80}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2792544565d4d378dd05b612b39e514
+      internalID: 21300046
+      vertices:
+      - {x: 0, y: 160}
+      - {x: 160, y: 160}
+      - {x: 0, y: 0}
+      - {x: 160, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Red
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 1136
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fc762d9d00f4bcb8e24a31d1b4c5cc7
+      internalID: 21300048
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_GiantIconPanel01
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 1044
+        width: 27
+        height: 22
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13.500001, y: -11}
+        - {x: -13.500001, y: 11}
+        - {x: 13.500001, y: 11}
+        - {x: 13.500001, y: -11}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fc4a1887a9d4218802152940d6c0f7b
+      internalID: 21300050
+      vertices:
+      - {x: -0.0000009536743, y: 22}
+      - {x: 27, y: 22}
+      - {x: -0.0000009536743, y: 0}
+      - {x: 27, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Parfait
+      rect:
+        serializedVersion: 2
+        x: 822
+        y: 972
+        width: 101
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50.5, y: -50}
+        - {x: -50.5, y: 50}
+        - {x: 50.5, y: 50}
+        - {x: 50.5, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8257380b80b431e819f3ea6d8617aa5
+      internalID: 21300052
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 101, y: 100}
+      - {x: 0, y: 0}
+      - {x: 101, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_Enchant_Steady
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 562
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -75, y: -75}
+        - {x: -75, y: 75}
+        - {x: 75, y: 75}
+        - {x: 75, y: -75}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f94aa79f047e4bbcabfb2d21e0613570
+      internalID: 21300054
+      vertices:
+      - {x: 0, y: 150}
+      - {x: 150, y: 150}
+      - {x: 0, y: 0}
+      - {x: 150, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_GiantGrow_CircleGlow02
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 1571
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32, y: -32}
+        - {x: -32, y: 32}
+        - {x: 32, y: 32}
+        - {x: 32, y: -32}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caa0bc0f0ba542f7844847b6740342d5
+      internalID: 21300056
+      vertices:
+      - {x: 0, y: 64}
+      - {x: 64, y: 64}
+      - {x: 0, y: 0}
+      - {x: 64, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_RectSmallPadded
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 1555
+        width: 12
+        height: 12
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 3, y: 3, z: 3, w: 3}
+      outline:
+      - - {x: -6, y: -6}
+        - {x: -6, y: 6}
+        - {x: 6, y: 6}
+        - {x: 6, y: -6}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47a8060ad2a94cb79d154f2c070b3a60
+      internalID: 21300058
+      vertices:
+      - {x: 0, y: 12}
+      - {x: 12, y: 12}
+      - {x: 0, y: 0}
+      - {x: 12, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_SquareBracket
+      rect:
+        serializedVersion: 2
+        x: 1256
+        y: 448
+        width: 30
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 29, z: 29, w: 0}
+      outline:
+      - - {x: -15.000001, y: -15.000001}
+        - {x: -15.000001, y: 15.000001}
+        - {x: 15.000001, y: 15.000001}
+        - {x: 15.000001, y: -15.000001}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e131b7962a154b289a04c4fead401439
+      internalID: 21300060
+      vertices:
+      - {x: -0.0000009536743, y: 30}
+      - {x: 30, y: 30}
+      - {x: -0.0000009536743, y: -0.0000009536743}
+      - {x: 30, y: -0.0000009536743}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_ItemInteract_Arrow
+      rect:
+        serializedVersion: 2
+        x: 1123
+        y: 1343
+        width: 40
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: -20}
+        - {x: -20, y: 20}
+        - {x: 20, y: 20}
+        - {x: 20, y: -20}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e843aa9eab764cf086d148ec99644fc3
+      internalID: 21300062
+      vertices:
+      - {x: 0, y: 40}
+      - {x: 40, y: 40}
+      - {x: 0, y: 0}
+      - {x: 40, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Snow
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 995
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21432a86ce12445c84c86894830e3aac
+      internalID: 21300064
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_ItemInteract_CircleLine_2
+      rect:
+        serializedVersion: 2
+        x: 1124
+        y: 0
+        width: 240
+        height: 240
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -120.00001, y: -120.00001}
+        - {x: -120.00001, y: 120.00001}
+        - {x: 120.00001, y: 120.00001}
+        - {x: 120.00001, y: -120.00001}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80ff1d3916014578a8348736e1a3a149
+      internalID: 21300066
+      vertices:
+      - {x: -0.0000076293945, y: 240}
+      - {x: 240, y: 240}
+      - {x: -0.0000076293945, y: -0.0000076293945}
+      - {x: 240, y: -0.0000076293945}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Tutorial_TriangleLine
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 1268
+        width: 78
+        height: 71
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -39, y: -35.5}
+        - {x: -39, y: 35.5}
+        - {x: 39, y: 35.5}
+        - {x: 39, y: -35.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43842893dbc74a0f9c1c560ad9e63832
+      internalID: 21300068
+      vertices:
+      - {x: 0, y: 71}
+      - {x: 78, y: 71}
+      - {x: 0, y: 0}
+      - {x: 78, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_GiantGrow_Arrow
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 1421
+        width: 30
+        height: 18
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15.000001, y: -9}
+        - {x: -15.000001, y: 9}
+        - {x: 15.000001, y: 9}
+        - {x: 15.000001, y: -9}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed9dc6d909bc4ed4abb8904f818c6711
+      internalID: 21300070
+      vertices:
+      - {x: -0.0000009536743, y: 18}
+      - {x: 30, y: 18}
+      - {x: -0.0000009536743, y: 0}
+      - {x: 30, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_IconFruitBig
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1411
+        width: 55
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.5, y: -33}
+        - {x: -27.5, y: 33}
+        - {x: 27.5, y: 33}
+        - {x: 27.5, y: -33}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f511d5cd10cd419ba0911d61ad775a44
+      internalID: 21300072
+      vertices:
+      - {x: 0, y: 66}
+      - {x: 55, y: 66}
+      - {x: 0, y: 0}
+      - {x: 55, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_IconNo1White
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 1188
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 197fbc902c3f4407ae0994b2619a7176
+      internalID: 21300074
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Flare
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 1256
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cb617363df4496898b24496bf4a396f
+      internalID: 21300076
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_GiantGrow_Back
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 919
+        width: 14
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 4, z: 4, w: 0}
+      outline:
+      - - {x: -7, y: -8}
+        - {x: -7, y: 8}
+        - {x: 7, y: 8}
+        - {x: 7, y: -8}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6844d22f37d84e9a98b6e450bcb35458
+      internalID: 21300078
+      vertices:
+      - {x: 0, y: 16}
+      - {x: 14, y: 16}
+      - {x: 0, y: 0}
+      - {x: 14, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Twoway_GateArea_Bg
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 0
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -150, y: -150}
+        - {x: -150, y: 150}
+        - {x: 150, y: 150}
+        - {x: 150, y: -150}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 317c500da27b4d6f8b2a8db9aa69a2e0
+      internalID: 21300080
+      vertices:
+      - {x: 0, y: 300}
+      - {x: 300, y: 300}
+      - {x: 0, y: 0}
+      - {x: 300, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_ChargeGlow
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 1396
+        width: 76
+        height: 92
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -38, y: -46}
+        - {x: -38, y: 46}
+        - {x: 38, y: 46}
+        - {x: 38, y: -46}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b90a022002cb49d098fe7bfec7aa5ba7
+      internalID: 21300082
+      vertices:
+      - {x: 0, y: 92}
+      - {x: 76, y: 92}
+      - {x: 0, y: 0}
+      - {x: 76, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_Enchant_Steady30
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 562
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -75, y: -75}
+        - {x: -75, y: 75}
+        - {x: 75, y: 75}
+        - {x: 75, y: -75}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de306555b03a4d76878aa08d2ae4a099
+      internalID: 21300084
+      vertices:
+      - {x: 0, y: 150}
+      - {x: 150, y: 150}
+      - {x: 0, y: 0}
+      - {x: 150, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_ItemInfo_Position
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 1636
+        width: 40
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: -25}
+        - {x: -20, y: 25}
+        - {x: 20, y: 25}
+        - {x: 20, y: -25}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7298d79c257c4552a9dd15d5689de103
+      internalID: 21300086
+      vertices:
+      - {x: 0, y: 50}
+      - {x: 40, y: 50}
+      - {x: 0, y: 0}
+      - {x: 40, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_CircleLineGlow01
+      rect:
+        serializedVersion: 2
+        x: 1492
+        y: 244
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -75, y: -75}
+        - {x: -75, y: 75}
+        - {x: 75, y: 75}
+        - {x: 75, y: -75}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f15e0ac69ad24164862e8199f38d712e
+      internalID: 21300088
+      vertices:
+      - {x: 0, y: 150}
+      - {x: 150, y: 150}
+      - {x: 0, y: 0}
+      - {x: 150, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_TipGlow_Green
+      rect:
+        serializedVersion: 2
+        x: 1949
+        y: 467
+        width: 41
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20.5, y: -25}
+        - {x: -20.5, y: 25}
+        - {x: 20.5, y: 25}
+        - {x: 20.5, y: -25}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d82a8c0b61a341cdaf8153dadaf75219
+      internalID: 21300090
+      vertices:
+      - {x: 0, y: 50}
+      - {x: 41, y: 50}
+      - {x: 0, y: 0}
+      - {x: 41, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Hook
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 1372
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9f766d573f84cf2a47631777e9a44d8
+      internalID: 21300092
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_CircleLine_Thicker
+      rect:
+        serializedVersion: 2
+        x: 1736
+        y: 0
+        width: 155
+        height: 155
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77.5, y: -77.5}
+        - {x: -77.5, y: 77.5}
+        - {x: 77.5, y: 77.5}
+        - {x: 77.5, y: -77.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bfddfd58dd54ecb8fba126892637ee5
+      internalID: 21300094
+      vertices:
+      - {x: 0, y: 155}
+      - {x: 155, y: 155}
+      - {x: 0, y: 0}
+      - {x: 155, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Peter
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 1256
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 298dc35215ba42d2a8dbffd289456e78
+      internalID: 21300096
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Tutorial_TargetLineGlow2
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 976
+        width: 104
+        height: 104
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52, y: -52}
+        - {x: -52, y: 52}
+        - {x: 52, y: 52}
+        - {x: 52, y: -52}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7404ecb2e024308a1b984fb706cdbf0
+      internalID: 21300098
+      vertices:
+      - {x: 0, y: 104}
+      - {x: 104, y: 104}
+      - {x: 0, y: 0}
+      - {x: 104, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Molly
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 1084
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7e78045c13a40958422b6e6f93ed51f
+      internalID: 21300100
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_Enchant_Shield
+      rect:
+        serializedVersion: 2
+        x: 1025
+        y: 662
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -75, y: -75}
+        - {x: -75, y: 75}
+        - {x: 75, y: 75}
+        - {x: 75, y: -75}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a69661f5727342f386f45f0becee620f
+      internalID: 21300102
+      vertices:
+      - {x: 0, y: 150}
+      - {x: 150, y: 150}
+      - {x: 0, y: 0}
+      - {x: 150, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_GiantGrow_CircleLine03
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 927
+        width: 82
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41, y: -41}
+        - {x: -41, y: 41}
+        - {x: 41, y: 41}
+        - {x: 41, y: -41}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1798d06ff0524a6284ceb0e63415fa81
+      internalID: 21300104
+      vertices:
+      - {x: 0, y: 82}
+      - {x: 82, y: 82}
+      - {x: 0, y: 0}
+      - {x: 82, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Tutorial_TargetLineThin
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 912
+        width: 110
+        height: 110
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -55, y: -55}
+        - {x: -55, y: 55}
+        - {x: 55, y: 55}
+        - {x: 55, y: -55}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa45912ac54b446e912840c56b18c699
+      internalID: 21300106
+      vertices:
+      - {x: 0, y: 110}
+      - {x: 110, y: 110}
+      - {x: 0, y: 0}
+      - {x: 110, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Twoway_Arrow
+      rect:
+        serializedVersion: 2
+        x: 1025
+        y: 816
+        width: 83
+        height: 175
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41.5, y: -87.5}
+        - {x: -41.5, y: 87.5}
+        - {x: 41.5, y: 87.5}
+        - {x: 41.5, y: -87.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdc8eb14a8be43fe9e148c9db3de4a9a
+      internalID: 21300108
+      vertices:
+      - {x: 0, y: 175}
+      - {x: 83, y: 175}
+      - {x: 0, y: 0}
+      - {x: 83, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_CircleBasic
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 0
+        width: 250
+        height: 250
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -125, y: -125}
+        - {x: -125, y: 125}
+        - {x: 125, y: 125}
+        - {x: 125, y: -125}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50a307a57a964a35aa85c3b4d9d87769
+      internalID: 21300110
+      vertices:
+      - {x: 0, y: 250}
+      - {x: 250, y: 250}
+      - {x: 0, y: 0}
+      - {x: 250, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_VexBrokenHeart
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1013
+        width: 80
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -40, y: -40}
+        - {x: -40, y: 40}
+        - {x: 40, y: 40}
+        - {x: 40, y: -40}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afd5efa6967d42fdac2eed9e46f82897
+      internalID: 21300112
+      vertices:
+      - {x: 0, y: 80}
+      - {x: 80, y: 80}
+      - {x: 0, y: 0}
+      - {x: 80, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Tutorial_TargetCrossPart
+      rect:
+        serializedVersion: 2
+        x: 1492
+        y: 398
+        width: 22
+        height: 7
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 8, y: 0, z: 8, w: 0}
+      outline:
+      - - {x: -11, y: -3.5}
+        - {x: -11, y: 3.5}
+        - {x: 11, y: 3.5}
+        - {x: 11, y: -3.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f9678eb53c44fecb822918df9001774
+      internalID: 21300114
+      vertices:
+      - {x: 0, y: 7}
+      - {x: 22, y: 7}
+      - {x: 0, y: 0}
+      - {x: 22, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Twoway_CaptureSign_MainCampDeco
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 608
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -128, y: -128}
+        - {x: -128, y: 128}
+        - {x: 128, y: 128}
+        - {x: 128, y: -128}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81637b43b9294b85b86ab9ee92f4ea95
+      internalID: 21300116
+      vertices:
+      - {x: 0, y: 256}
+      - {x: 256, y: 256}
+      - {x: 0, y: 0}
+      - {x: 256, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_DonQuixote
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 1372
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5200a65dd37440a819f0f33bc0e79ad
+      internalID: 21300118
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_IconConductMachine_Grey
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 1099
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aec08f357b8d4ebe8aeaecb1102a13c2
+      internalID: 21300120
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_SquareLineThinPadded
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 973
+        width: 22
+        height: 22
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 4, z: 4, w: 4}
+      outline:
+      - - {x: -11, y: -11}
+        - {x: -11, y: 11}
+        - {x: 11, y: 11}
+        - {x: 11, y: -11}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2656e9d98b4a4afab1dd18210db028d4
+      internalID: 21300122
+      vertices:
+      - {x: 0, y: 22}
+      - {x: 22, y: 22}
+      - {x: 0, y: 0}
+      - {x: 22, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_ItemInfo_CircleGauge
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1045
+        width: 106
+        height: 106
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52.999996, y: -52.999996}
+        - {x: -52.999996, y: 52.999996}
+        - {x: 52.999996, y: 52.999996}
+        - {x: 52.999996, y: -52.999996}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e10359c562a14d80b56df765215d0f2d
+      internalID: 21300124
+      vertices:
+      - {x: 0.0000038146973, y: 106}
+      - {x: 106, y: 106}
+      - {x: 0.0000038146973, y: 0.0000038146973}
+      - {x: 106, y: 0.0000038146973}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_IconPowerDonut
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1892
+        width: 55
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.5, y: -28}
+        - {x: -27.5, y: 28}
+        - {x: 27.5, y: 28}
+        - {x: 27.5, y: -28}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef8b1518343048089dd5112f67d370ca
+      internalID: 21300126
+      vertices:
+      - {x: 0, y: 56}
+      - {x: 55, y: 56}
+      - {x: 0, y: 0}
+      - {x: 55, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Wolfgang
+      rect:
+        serializedVersion: 2
+        x: 972
+        y: 1099
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fe6e7f0938748619ddae9010c8e4728
+      internalID: 21300128
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_Enchant_BotGlow
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 1396
+        width: 112
+        height: 85
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -56, y: -42.5}
+        - {x: -56, y: 42.5}
+        - {x: 56, y: 42.5}
+        - {x: 56, y: -42.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30e07498a58f4219b139c22a8daf3ef5
+      internalID: 21300130
+      vertices:
+      - {x: 0, y: 85}
+      - {x: 112, y: 85}
+      - {x: 0, y: 0}
+      - {x: 112, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_ProgressGlow_Ally
+      rect:
+        serializedVersion: 2
+        x: 1895
+        y: 154
+        width: 64
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32, y: -64}
+        - {x: -32, y: 64}
+        - {x: 32, y: 64}
+        - {x: 32, y: -64}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9361e63a3c645dd9be3a146939087e5
+      internalID: 21300132
+      vertices:
+      - {x: 0, y: 128}
+      - {x: 64, y: 128}
+      - {x: 0, y: 0}
+      - {x: 64, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_IconPowerOrb
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 1481
+        width: 55
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.5, y: -28}
+        - {x: -27.5, y: 28}
+        - {x: 27.5, y: 28}
+        - {x: 27.5, y: -28}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3a2f454b6ba406f8baa61eaf2d2f257
+      internalID: 21300134
+      vertices:
+      - {x: 0, y: 56}
+      - {x: 55, y: 56}
+      - {x: 0, y: 0}
+      - {x: 55, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_IconWantedScoreBig
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 448
+        width: 60
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.000002, y: -33}
+        - {x: -30.000002, y: 33}
+        - {x: 30.000002, y: 33}
+        - {x: 30.000002, y: -33}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41d21aad287c47c7bc5de6fdd4f64654
+      internalID: 21300136
+      vertices:
+      - {x: -0.0000019073486, y: 66}
+      - {x: 60, y: 66}
+      - {x: -0.0000019073486, y: 0}
+      - {x: 60, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_ItemInfo_IconBomb
+      rect:
+        serializedVersion: 2
+        x: 1388
+        y: 1071
+        width: 82
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41, y: -41}
+        - {x: -41, y: 41}
+        - {x: 41, y: 41}
+        - {x: 41, y: -41}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20434fe712094ef99a5d99f4452da448
+      internalID: 21300138
+      vertices:
+      - {x: 0, y: 82}
+      - {x: 82, y: 82}
+      - {x: 0, y: 0}
+      - {x: 82, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_YongYong
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 1476
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10c6f6fe17b14753ab04fc60dbe23d5b
+      internalID: 21300140
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Tutorial_DangerGlow
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 1788
+        width: 102
+        height: 38
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -51, y: -19}
+        - {x: -51, y: 19}
+        - {x: 51, y: 19}
+        - {x: 51, y: -19}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73b6290f2f6b41b987906ec3a61f73e1
+      internalID: 21300142
+      vertices:
+      - {x: 0, y: 38}
+      - {x: 102, y: 38}
+      - {x: 0, y: 0}
+      - {x: 102, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Rapunzel
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 1292
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3c4c47992f049b69c68d71e0ae50cea
+      internalID: 21300144
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_TipGlow_Blue
+      rect:
+        serializedVersion: 2
+        x: 1030
+        y: 1341
+        width: 41
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20.5, y: -25}
+        - {x: -20.5, y: 25}
+        - {x: 20.5, y: 25}
+        - {x: 20.5, y: -25}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6225e1f303c44f4295e28065bd36c1a9
+      internalID: 21300146
+      vertices:
+      - {x: 0, y: 50}
+      - {x: 41, y: 50}
+      - {x: 0, y: 0}
+      - {x: 41, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_TipGlow_LightCyan
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1904
+        width: 41
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20.5, y: -25}
+        - {x: -20.5, y: 25}
+        - {x: 20.5, y: 25}
+        - {x: 20.5, y: -25}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4af646fe2a1d4baf8835064741ed2e58
+      internalID: 21300148
+      vertices:
+      - {x: 0, y: 50}
+      - {x: 41, y: 50}
+      - {x: 0, y: 0}
+      - {x: 41, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_JackO
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 868
+        width: 101
+        height: 101
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50.5, y: -50.5}
+        - {x: -50.5, y: 50.5}
+        - {x: 50.5, y: 50.5}
+        - {x: 50.5, y: -50.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3556fba0ee384c429dacca5b38cfe67d
+      internalID: 21300150
+      vertices:
+      - {x: 0, y: 101}
+      - {x: 101, y: 101}
+      - {x: 0, y: 0}
+      - {x: 101, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_IconCapturePoint_Red
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 1292
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de842241f76543d0a964ed534ee0fa96
+      internalID: 21300152
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_IconWantedTargetLight
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 1343
+        width: 44
+        height: 44
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22, y: -22}
+        - {x: -22, y: 22}
+        - {x: 22, y: 22}
+        - {x: 22, y: -22}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55227a809f0244ccadb6c3d338fd32b8
+      internalID: 21300154
+      vertices:
+      - {x: 0, y: 44}
+      - {x: 44, y: 44}
+      - {x: 0, y: 0}
+      - {x: 44, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_Enchant_BGLine
+      rect:
+        serializedVersion: 2
+        x: 1808
+        y: 467
+        width: 137
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -68.5, y: -75}
+        - {x: -68.5, y: 75}
+        - {x: 68.5, y: 75}
+        - {x: 68.5, y: -75}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc613ed5b54b45239d5e0abfa7baad87
+      internalID: 21300156
+      vertices:
+      - {x: 0, y: 150}
+      - {x: 137, y: 150}
+      - {x: 0, y: 0}
+      - {x: 137, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_CrownPanelGlow_Blue
+      rect:
+        serializedVersion: 2
+        x: 1736
+        y: 159
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -75, y: -75}
+        - {x: -75, y: 75}
+        - {x: 75, y: 75}
+        - {x: 75, y: -75}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59e4f830f20e4b868fcd48157d10432b
+      internalID: 21300158
+      vertices:
+      - {x: 0, y: 150}
+      - {x: 150, y: 150}
+      - {x: 0, y: 0}
+      - {x: 150, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_GumiStackGauge
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1486
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f1cea820178452195b40b111e45305b
+      internalID: 21300160
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Cindy
+      rect:
+        serializedVersion: 2
+        x: 1217
+        y: 870
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8dfbdef16b94feeb7d318aae2c93794
+      internalID: 21300162
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_TipGlow_Red
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1097
+        width: 41
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20.5, y: -25}
+        - {x: -20.5, y: 25}
+        - {x: 20.5, y: 25}
+        - {x: 20.5, y: -25}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8c2c0ef75bc4960894311c7860e0414
+      internalID: 21300164
+      vertices:
+      - {x: 0, y: 50}
+      - {x: 41, y: 50}
+      - {x: 0, y: 0}
+      - {x: 41, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_GlowImage
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 0
+        width: 240
+        height: 240
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -120.00001, y: -120.00001}
+        - {x: -120.00001, y: 120.00001}
+        - {x: 120.00001, y: 120.00001}
+        - {x: 120.00001, y: -120.00001}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6dd26965a9c4c16885365dcc44b274b
+      internalID: 21300166
+      vertices:
+      - {x: -0.0000076293945, y: 240}
+      - {x: 240, y: 240}
+      - {x: -0.0000076293945, y: -0.0000076293945}
+      - {x: 240, y: -0.0000076293945}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_IconWreckIt
+      rect:
+        serializedVersion: 2
+        x: 1681
+        y: 884
+        width: 58
+        height: 59
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29, y: -29.499998}
+        - {x: -29, y: 29.499998}
+        - {x: 29, y: 29.499998}
+        - {x: 29, y: -29.499998}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfceb11eabe44d52a8a9d4078384ebd8
+      internalID: 21300168
+      vertices:
+      - {x: 0, y: 59}
+      - {x: 58, y: 59}
+      - {x: 0, y: 0.0000019073486}
+      - {x: 58, y: 0.0000019073486}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_IconFruitGold
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 1571
+        width: 55
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.5, y: -33}
+        - {x: -27.5, y: 33}
+        - {x: 27.5, y: 33}
+        - {x: 27.5, y: -33}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 268a30eb70e741f0a490abec7ff3b928
+      internalID: 21300170
+      vertices:
+      - {x: 0, y: 66}
+      - {x: 55, y: 66}
+      - {x: 0, y: 0}
+      - {x: 55, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_IconWantedScore
+      rect:
+        serializedVersion: 2
+        x: 1253
+        y: 1182
+        width: 54
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.000002, y: -27.000002}
+        - {x: -27.000002, y: 27.000002}
+        - {x: 27.000002, y: 27.000002}
+        - {x: 27.000002, y: -27.000002}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc06c5da6d3c4266824f5c9c2ca32867
+      internalID: 21300172
+      vertices:
+      - {x: -0.0000019073486, y: 54}
+      - {x: 54, y: 54}
+      - {x: -0.0000019073486, y: -0.0000019073486}
+      - {x: 54, y: -0.0000019073486}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Vex
+      rect:
+        serializedVersion: 2
+        x: 1321
+        y: 870
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bb76e2175ac42b0988cc005fa7a6a80
+      internalID: 21300174
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_ProgressGlow_Enemy
+      rect:
+        serializedVersion: 2
+        x: 1425
+        y: 927
+        width: 64
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32, y: -64}
+        - {x: -32, y: 64}
+        - {x: 32, y: 64}
+        - {x: 32, y: -64}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceb0f374d96248fe851f17fd44925694
+      internalID: 21300176
+      vertices:
+      - {x: 0, y: 128}
+      - {x: 64, y: 128}
+      - {x: 0, y: 0}
+      - {x: 64, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_Round
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 1498
+        width: 30
+        height: 14
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 7, y: 0, z: 7, w: 0}
+      outline:
+      - - {x: -15.000001, y: -7}
+        - {x: -15.000001, y: 7}
+        - {x: 15.000001, y: 7}
+        - {x: 15.000001, y: -7}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 257bfb900ad9496b95780b9e095d9742
+      internalID: 21300178
+      vertices:
+      - {x: -0.0000009536743, y: 14}
+      - {x: 30, y: 14}
+      - {x: -0.0000009536743, y: 0}
+      - {x: 30, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_Square
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 1443
+        width: 20
+        height: 20
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 2, z: 2, w: 2}
+      outline:
+      - - {x: -10, y: -10}
+        - {x: -10, y: 10}
+        - {x: 10, y: 10}
+        - {x: 10, y: -10}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7db16cfbf3bb4c3388efbf881f765286
+      internalID: 21300180
+      vertices:
+      - {x: 0, y: 20}
+      - {x: 20, y: 20}
+      - {x: 0, y: 0}
+      - {x: 20, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_IconCrownWhite
+      rect:
+        serializedVersion: 2
+        x: 1474
+        y: 1105
+        width: 56
+        height: 42
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: -21}
+        - {x: -28, y: 21}
+        - {x: 28, y: 21}
+        - {x: 28, y: -21}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 030a6dec8df84e5098640d736548ee6a
+      internalID: 21300182
+      vertices:
+      - {x: 0, y: 42}
+      - {x: 56, y: 42}
+      - {x: 0, y: 0}
+      - {x: 56, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_Enchant_BG30
+      rect:
+        serializedVersion: 2
+        x: 1646
+        y: 313
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -75, y: -75}
+        - {x: -75, y: 75}
+        - {x: 75, y: 75}
+        - {x: 75, y: -75}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd5e40a47b804711876e534d84772250
+      internalID: 21300184
+      vertices:
+      - {x: 0, y: 150}
+      - {x: 150, y: 150}
+      - {x: 0, y: 0}
+      - {x: 150, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Tutorial_Triangle
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 1492
+        width: 78
+        height: 71
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -39, y: -35.5}
+        - {x: -39, y: 35.5}
+        - {x: 39, y: 35.5}
+        - {x: 39, y: -35.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 729d3fe92a36417f9198f8a1bb451a99
+      internalID: 21300186
+      vertices:
+      - {x: 0, y: 71}
+      - {x: 78, y: 71}
+      - {x: 0, y: 0}
+      - {x: 78, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_HealingPlus
+      rect:
+        serializedVersion: 2
+        x: 1191
+        y: 1244
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -25, y: -25}
+        - {x: -25, y: 25}
+        - {x: 25, y: 25}
+        - {x: 25, y: -25}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3706f4fd2af441ce83a64ff15606b274
+      internalID: 21300188
+      vertices:
+      - {x: 0, y: 50}
+      - {x: 50, y: 50}
+      - {x: 0, y: 0}
+      - {x: 50, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_GiantGrow_CircleLine02
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 1567
+        width: 40
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: -20}
+        - {x: -20, y: 20}
+        - {x: 20, y: 20}
+        - {x: 20, y: -20}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9d58ee4bff640c089dfadabb72448ed
+      internalID: 21300190
+      vertices:
+      - {x: 0, y: 40}
+      - {x: 40, y: 40}
+      - {x: 0, y: 0}
+      - {x: 40, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_SkillLastingGlow
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1798
+        width: 76
+        height: 102
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -38, y: -51}
+        - {x: -38, y: 51}
+        - {x: 38, y: 51}
+        - {x: 38, y: -51}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 451ba3c6273a414d8b8e0050f501e300
+      internalID: 21300192
+      vertices:
+      - {x: 0, y: 102}
+      - {x: 76, y: 102}
+      - {x: 0, y: 0}
+      - {x: 76, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_WantedTargetGlow
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 1188
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd180ee41cf94599a552abfd29f2dcf0
+      internalID: 21300194
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_IconCapturePoint_Blue
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 1580
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbb898a271f542f5af0a4d5f25c41619
+      internalID: 21300196
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Twoway_CaptureArea_Move
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 615
+        width: 301
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -150.5, y: -150}
+        - {x: -150.5, y: 150}
+        - {x: 150.5, y: 150}
+        - {x: 150.5, y: -150}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4c864fa91384e32b5ebefa2d20a8948
+      internalID: 21300198
+      vertices:
+      - {x: 0, y: 300}
+      - {x: 301, y: 300}
+      - {x: 0, y: 0}
+      - {x: 301, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Twoway_MainCampArea_Bg
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 304
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -150, y: -150}
+        - {x: -150, y: 150}
+        - {x: 150, y: 150}
+        - {x: 150, y: -150}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b85b4518dae435286429163bd2e1b1f
+      internalID: 21300200
+      vertices:
+      - {x: 0, y: 300}
+      - {x: 300, y: 300}
+      - {x: 0, y: 0}
+      - {x: 300, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_GlowImageHalf
+      rect:
+        serializedVersion: 2
+        x: 1612
+        y: 0
+        width: 120
+        height: 240
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -60.000004, y: -120.00001}
+        - {x: -60.000004, y: 120.00001}
+        - {x: 60.000004, y: 120.00001}
+        - {x: 60.000004, y: -120.00001}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 966122301a4c4b23aad4f29b9309b4d6
+      internalID: 21300202
+      vertices:
+      - {x: -0.0000038146973, y: 240}
+      - {x: 120, y: 240}
+      - {x: -0.0000038146973, y: -0.0000076293945}
+      - {x: 120, y: -0.0000076293945}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Victor
+      rect:
+        serializedVersion: 2
+        x: 1217
+        y: 974
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45581c02dfd742c293eeed5e7d5ee41c
+      internalID: 21300204
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_SquareGrad
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 1346
+        width: 40
+        height: 20
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 14, y: 1, z: 13, w: 1}
+      outline:
+      - - {x: -20, y: -10}
+        - {x: -20, y: 10}
+        - {x: 20, y: 10}
+        - {x: 20, y: -10}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5f58437d6354192bb926689aa4b569c
+      internalID: 21300206
+      vertices:
+      - {x: 0, y: 20}
+      - {x: 40, y: 20}
+      - {x: 0, y: 0}
+      - {x: 40, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_ItemInfo_IconCharge
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 1464
+        width: 82
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41, y: -41}
+        - {x: -41, y: 41}
+        - {x: 41, y: 41}
+        - {x: 41, y: -41}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b276724bcc344e683b09c3d75176b96
+      internalID: 21300208
+      vertices:
+      - {x: 0, y: 82}
+      - {x: 82, y: 82}
+      - {x: 0, y: 0}
+      - {x: 82, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Tutorial_TriangleLineGlow
+      rect:
+        serializedVersion: 2
+        x: 1321
+        y: 974
+        width: 100
+        height: 93
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -46.5}
+        - {x: -50, y: 46.5}
+        - {x: 50, y: 46.5}
+        - {x: 50, y: -46.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5670ea9bf7041b588895523f2c7a2fc
+      internalID: 21300210
+      vertices:
+      - {x: 0, y: 93}
+      - {x: 100, y: 93}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_IconConductMachine_Red
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 1188
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b13e9fa0927e4ba59d2bce57f271dc91
+      internalID: 21300212
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Capturepoint_Arrow
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 1636
+        width: 78
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -39, y: -30.5}
+        - {x: -39, y: 30.5}
+        - {x: 39, y: 30.5}
+        - {x: 39, y: -30.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e98d409356442d497015aef413efea9
+      internalID: 21300214
+      vertices:
+      - {x: 0, y: 61}
+      - {x: 78, y: 61}
+      - {x: 0, y: 0}
+      - {x: 78, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Swan
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 1203
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1aa0eb3417b4cb7a7f394bd6ec23e5d
+      internalID: 21300216
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Tutorial_ExclamationMarkGlow
+      rect:
+        serializedVersion: 2
+        x: 1942
+        y: 621
+        width: 33
+        height: 59
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16.5, y: -29.499998}
+        - {x: -16.5, y: 29.499998}
+        - {x: 16.5, y: 29.499998}
+        - {x: 16.5, y: -29.499998}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1087f14ada654b46a336e20c0abebacb
+      internalID: 21300218
+      vertices:
+      - {x: 0, y: 59}
+      - {x: 33, y: 59}
+      - {x: 0, y: 0.0000019073486}
+      - {x: 33, y: 0.0000019073486}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_SquarePadded
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 1639
+        width: 22
+        height: 22
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 6, y: 6, z: 6, w: 6}
+      outline:
+      - - {x: -11, y: -11}
+        - {x: -11, y: 11}
+        - {x: 11, y: 11}
+        - {x: 11, y: -11}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d9b11988ecd45a0a44347dc40f2b93c
+      internalID: 21300220
+      vertices:
+      - {x: 0, y: 22}
+      - {x: 22, y: 22}
+      - {x: 0, y: 0}
+      - {x: 22, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_CircleLine_Stroke
+      rect:
+        serializedVersion: 2
+        x: 1487
+        y: 775
+        width: 148
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -74, y: -74}
+        - {x: -74, y: 74}
+        - {x: 74, y: 74}
+        - {x: 74, y: -74}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61fbd9abd98e4146a9295c2b8359b6cc
+      internalID: 21300222
+      vertices:
+      - {x: 0, y: 148}
+      - {x: 148, y: 148}
+      - {x: 0, y: 0}
+      - {x: 148, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_TipGlow_Yellow
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 1830
+        width: 41
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20.5, y: -25}
+        - {x: -20.5, y: 25}
+        - {x: 20.5, y: 25}
+        - {x: 20.5, y: -25}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32749f102140431eaa8e921fa088924b
+      internalID: 21300224
+      vertices:
+      - {x: 0, y: 50}
+      - {x: 41, y: 50}
+      - {x: 0, y: 0}
+      - {x: 41, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_GiantGrow_ArrowGlow
+      rect:
+        serializedVersion: 2
+        x: 1030
+        y: 1295
+        width: 52
+        height: 42
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26, y: -21}
+        - {x: -26, y: 21}
+        - {x: 26, y: 21}
+        - {x: 26, y: -21}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77a7a367930548c0bad0f6a81ef43bfc
+      internalID: 21300226
+      vertices:
+      - {x: 0, y: 42}
+      - {x: 52, y: 42}
+      - {x: 0, y: 0}
+      - {x: 52, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_IconConductMachine_Blue
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 1476
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8abdba215d4442989cca3948021ee5d5
+      internalID: 21300228
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Ali
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 870
+        width: 101
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50.5, y: -50}
+        - {x: -50.5, y: 50}
+        - {x: 50.5, y: 50}
+        - {x: 50.5, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab716eb1b9d641b38bda72b95aba142f
+      internalID: 21300230
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 101, y: 100}
+      - {x: 0, y: 0}
+      - {x: 101, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_ArcBig
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 1244
+        width: 94
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -47, y: -13}
+        - {x: -47, y: 13}
+        - {x: 47, y: 13}
+        - {x: 47, y: -13}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3221dd2da4e34144b9d37e993cfdc70a
+      internalID: 21300232
+      vertices:
+      - {x: 0, y: 26}
+      - {x: 94, y: 26}
+      - {x: 0, y: 0}
+      - {x: 94, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_GiantLevelArrow
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 1395
+        width: 40
+        height: 18
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: -9}
+        - {x: -20, y: 9}
+        - {x: 20, y: 9}
+        - {x: 20, y: -9}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81740b92319043409a734ed9b457adb8
+      internalID: 21300234
+      vertices:
+      - {x: 0, y: 18}
+      - {x: 40, y: 18}
+      - {x: 0, y: 0}
+      - {x: 40, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_GiantIconPanel02
+      rect:
+        serializedVersion: 2
+        x: 1681
+        y: 947
+        width: 44
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22, y: -12}
+        - {x: -22, y: 12}
+        - {x: 22, y: 12}
+        - {x: 22, y: -12}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2c81133e7ef476d88159f68188041fb
+      internalID: 21300236
+      vertices:
+      - {x: 0, y: 24}
+      - {x: 44, y: 24}
+      - {x: 0, y: 0}
+      - {x: 44, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_CircleLineGlow02
+      rect:
+        serializedVersion: 2
+        x: 1013
+        y: 1203
+        width: 88
+        height: 88
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -44, y: -44}
+        - {x: -44, y: 44}
+        - {x: 44, y: 44}
+        - {x: 44, y: -44}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e7a51dfc6384685bcd5c6d1ff820a7c
+      internalID: 21300238
+      vertices:
+      - {x: 0, y: 88}
+      - {x: 88, y: 88}
+      - {x: 0, y: 0}
+      - {x: 88, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Loren
+      rect:
+        serializedVersion: 2
+        x: 1076
+        y: 1078
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3f68ea37d3549148856e3f2a2a62697
+      internalID: 21300240
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Arrow2
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 1292
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5950c97a0ea4fd18d37376f7c5fdbbb
+      internalID: 21300242
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_CrownPanelGlow_Red
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 467
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -75, y: -75}
+        - {x: -75, y: 75}
+        - {x: 75, y: 75}
+        - {x: 75, y: -75}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42862af7ae664bd38cbbe2c2f29acd40
+      internalID: 21300244
+      vertices:
+      - {x: 0, y: 150}
+      - {x: 150, y: 150}
+      - {x: 0, y: 0}
+      - {x: 150, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_DisplayBG
+      rect:
+        serializedVersion: 2
+        x: 1179
+        y: 716
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -75, y: -75}
+        - {x: -75, y: 75}
+        - {x: 75, y: 75}
+        - {x: 75, y: -75}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e6f3c225b034575b17fb6ea1c1e50d5
+      internalID: 21300246
+      vertices:
+      - {x: 0, y: 150}
+      - {x: 150, y: 150}
+      - {x: 0, y: 0}
+      - {x: 150, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_ItemInfo_IconMagnetBomb
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1500
+        width: 82
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41, y: -41}
+        - {x: -41, y: 41}
+        - {x: 41, y: 41}
+        - {x: 41, y: -41}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b06cb5cb3db4cb5a13d49252c7cc61a
+      internalID: 21300248
+      vertices:
+      - {x: 0, y: 82}
+      - {x: 82, y: 82}
+      - {x: 0, y: 0}
+      - {x: 82, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_MasterCat
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1590
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7e13892da564cfcad6d366438c8ac0d
+      internalID: 21300250
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_GiantGrow_CircleGlow01
+      rect:
+        serializedVersion: 2
+        x: 1191
+        y: 1182
+        width: 58
+        height: 58
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29, y: -29}
+        - {x: -29, y: 29}
+        - {x: 29, y: 29}
+        - {x: 29, y: -29}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc25437b72704398ad8f36ae596b36b1
+      internalID: 21300252
+      vertices:
+      - {x: 0, y: 58}
+      - {x: 58, y: 58}
+      - {x: 0, y: 0}
+      - {x: 58, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_IconNo2
+      rect:
+        serializedVersion: 2
+        x: 1180
+        y: 1078
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9cecbf7bdb34a1a9be4c1d6d005ca7e
+      internalID: 21300254
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_IconWantedRetire
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 1639
+        width: 46
+        height: 43
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23, y: -21.5}
+        - {x: -23, y: 21.5}
+        - {x: 23, y: 21.5}
+        - {x: 23, y: -21.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 009cd3c6d8634e16bb7ac3f1ac91ffe2
+      internalID: 21300256
+      vertices:
+      - {x: 0, y: 43}
+      - {x: 46, y: 43}
+      - {x: 0, y: 0}
+      - {x: 46, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_IconWantedTarget
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 1298
+        width: 48
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: -25}
+        - {x: -24, y: 25}
+        - {x: 24, y: 25}
+        - {x: 24, y: -25}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22bef16bbe9f4a278a56fc5f09e616c6
+      internalID: 21300258
+      vertices:
+      - {x: 0, y: 50}
+      - {x: 48, y: 50}
+      - {x: 0, y: 0}
+      - {x: 48, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Tutorial_TriangleLineThin
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 919
+        width: 132
+        height: 122
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -66, y: -61}
+        - {x: -66, y: 61}
+        - {x: 66, y: 61}
+        - {x: 66, y: -61}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a63cf45de584ebab63a55f0f0d5e863
+      internalID: 21300260
+      vertices:
+      - {x: 0, y: 122}
+      - {x: 132, y: 122}
+      - {x: 0, y: 0}
+      - {x: 132, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_ItemInteract_CircleLine_3
+      rect:
+        serializedVersion: 2
+        x: 1124
+        y: 244
+        width: 200
+        height: 200
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -100, y: -100}
+        - {x: -100, y: 100}
+        - {x: 100, y: 100}
+        - {x: 100, y: -100}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abed1e1ae36445c9b2463374d33a1931
+      internalID: 21300262
+      vertices:
+      - {x: 0, y: 200}
+      - {x: 200, y: 200}
+      - {x: 0, y: 0}
+      - {x: 200, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_ItemInteract_CircleLine
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 498
+        width: 154
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77, y: -77}
+        - {x: -77, y: 77}
+        - {x: 77, y: 77}
+        - {x: 77, y: -77}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6acf054388b4632a687e31c9b163f75
+      internalID: 21300264
+      vertices:
+      - {x: 0, y: 154}
+      - {x: 154, y: 154}
+      - {x: 0, y: 0}
+      - {x: 154, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_SquareLineGlow
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 1701
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 9, y: 9, z: 9, w: 9}
+      outline:
+      - - {x: -16, y: -16}
+        - {x: -16, y: 16}
+        - {x: 16, y: 16}
+        - {x: 16, y: -16}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2be2d9919dee4a0b86609d7ba5d21467
+      internalID: 21300266
+      vertices:
+      - {x: 0, y: 32}
+      - {x: 32, y: 32}
+      - {x: 0, y: 0}
+      - {x: 32, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Zeppetta
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 974
+        width: 101
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50.5, y: -50}
+        - {x: -50.5, y: 50}
+        - {x: 50.5, y: 50}
+        - {x: 50.5, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 117bcf2f49b34dedb5b0f2cf36b3fabc
+      internalID: 21300268
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 101, y: 100}
+      - {x: 0, y: 0}
+      - {x: 101, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_CircleLine
+      rect:
+        serializedVersion: 2
+        x: 1796
+        y: 621
+        width: 142
+        height: 142
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -71, y: -71}
+        - {x: -71, y: 71}
+        - {x: 71, y: 71}
+        - {x: 71, y: -71}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a10c8a8ca37424c8e72e5d975b129d7
+      internalID: 21300270
+      vertices:
+      - {x: 0, y: 142}
+      - {x: 142, y: 142}
+      - {x: 0, y: 0}
+      - {x: 142, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Arrow2Glow
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 313
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -75, y: -75}
+        - {x: -75, y: 75}
+        - {x: 75, y: 75}
+        - {x: 75, y: -75}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d50dab1b1e44454813f0214223fd664
+      internalID: 21300272
+      vertices:
+      - {x: 0, y: 150}
+      - {x: 150, y: 150}
+      - {x: 0, y: 0}
+      - {x: 150, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_GumiStackGauge_Glow
+      rect:
+        serializedVersion: 2
+        x: 1333
+        y: 716
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -75, y: -75}
+        - {x: -75, y: 75}
+        - {x: 75, y: 75}
+        - {x: 75, y: -75}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 073e3a18314046a592f8e7b4898d9221
+      internalID: 21300274
+      vertices:
+      - {x: 0, y: 150}
+      - {x: 150, y: 150}
+      - {x: 0, y: 0}
+      - {x: 150, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Tutorial_TargetCrossPartGlow
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 1555
+        width: 42
+        height: 29
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 19, y: 0, z: 19, w: 0}
+      outline:
+      - - {x: -21, y: -14.5}
+        - {x: -21, y: 14.5}
+        - {x: 21, y: 14.5}
+        - {x: 21, y: -14.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3369b1b61eb84bb3b699adb613800f4c
+      internalID: 21300276
+      vertices:
+      - {x: 0, y: 29}
+      - {x: 42, y: 29}
+      - {x: 0, y: 0}
+      - {x: 42, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_AliDagger
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 621
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -75, y: -75}
+        - {x: -75, y: 75}
+        - {x: 75, y: 75}
+        - {x: 75, y: -75}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a43b00705e5a495b8356717da3aaf5d7
+      internalID: 21300278
+      vertices:
+      - {x: 0, y: 150}
+      - {x: 150, y: 150}
+      - {x: 0, y: 0}
+      - {x: 150, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_ItemInfo_IconBringCapturePoint
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 1550
+        width: 82
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41, y: -41}
+        - {x: -41, y: 41}
+        - {x: 41, y: 41}
+        - {x: 41, y: -41}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aba1271fb504c0c9bc5fc49debe9050
+      internalID: 21300280
+      vertices:
+      - {x: 0, y: 82}
+      - {x: 82, y: 82}
+      - {x: 0, y: 0}
+      - {x: 82, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Goldie
+      rect:
+        serializedVersion: 2
+        x: 1639
+        y: 780
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee7c8e1c1d1e451b9aaf36a1bc7c056a
+      internalID: 21300282
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_GiantGrow_BackGlow
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 1411
+        width: 38
+        height: 44
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 17, y: 20, z: 17, w: 20}
+      outline:
+      - - {x: -19, y: -22}
+        - {x: -19, y: 22}
+        - {x: 19, y: 22}
+        - {x: 19, y: -22}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71969c33e4a0466ab789fbe1b7ae2459
+      internalID: 21300284
+      vertices:
+      - {x: 0, y: 44}
+      - {x: 38, y: 44}
+      - {x: 0, y: 0}
+      - {x: 38, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_ItemInfo_CircleLine
+      rect:
+        serializedVersion: 2
+        x: 1654
+        y: 621
+        width: 138
+        height: 155
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -69, y: -77.5}
+        - {x: -69, y: 77.5}
+        - {x: 69, y: 77.5}
+        - {x: 69, y: -77.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6de527e5367244008ef622ba9625b402
+      internalID: 21300286
+      vertices:
+      - {x: 0, y: 155}
+      - {x: 138, y: 155}
+      - {x: 0, y: 0}
+      - {x: 138, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_WitchQueen
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 1307
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 899712f65b9d4a60b0ae0d2ed93051dd
+      internalID: 21300288
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_Enchant_BG
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 818
+        width: 137
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -68.5, y: -75}
+        - {x: -68.5, y: 75}
+        - {x: 68.5, y: 75}
+        - {x: 68.5, y: -75}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6e3601a1fc349128b8170a45f89905c
+      internalID: 21300290
+      vertices:
+      - {x: 0, y: 150}
+      - {x: 137, y: 150}
+      - {x: 0, y: 0}
+      - {x: 137, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_ItemInfo_IconRandom
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 1485
+        width: 82
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41, y: -41}
+        - {x: -41, y: 41}
+        - {x: 41, y: 41}
+        - {x: 41, y: -41}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fec5c928118c48ba93363b3454b4f14f
+      internalID: 21300292
+      vertices:
+      - {x: 0, y: 82}
+      - {x: 82, y: 82}
+      - {x: 0, y: 0}
+      - {x: 82, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_CrownPanel
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 912
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64, y: -64}
+        - {x: -64, y: 64}
+        - {x: 64, y: 64}
+        - {x: 64, y: -64}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7412bb7d615242b399d212822c96680d
+      internalID: 21300294
+      vertices:
+      - {x: 0, y: 128}
+      - {x: 128, y: 128}
+      - {x: 0, y: 0}
+      - {x: 128, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Brick
+      rect:
+        serializedVersion: 2
+        x: 1284
+        y: 1078
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3a202a4b9054dcfb2dd88d18ac57924
+      internalID: 21300296
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_IconPickIt
+      rect:
+        serializedVersion: 2
+        x: 1622
+        y: 997
+        width: 65
+        height: 53
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32.5, y: -26.499998}
+        - {x: -32.5, y: 26.499998}
+        - {x: 32.5, y: 26.499998}
+        - {x: 32.5, y: -26.499998}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a4fe1c27391405e8164571436808214
+      internalID: 21300298
+      vertices:
+      - {x: 0, y: 53}
+      - {x: 65, y: 53}
+      - {x: 0, y: 0.0000019073486}
+      - {x: 65, y: 0.0000019073486}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_Enchant_StreakThunder30
+      rect:
+        serializedVersion: 2
+        x: 1654
+        y: 467
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -75, y: -75}
+        - {x: -75, y: 75}
+        - {x: 75, y: 75}
+        - {x: 75, y: -75}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dac1a7af1dc64fa987138f844e37ba92
+      internalID: 21300300
+      vertices:
+      - {x: 0, y: 150}
+      - {x: 150, y: 150}
+      - {x: 0, y: 0}
+      - {x: 150, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_IconFruit
+      rect:
+        serializedVersion: 2
+        x: 1388
+        y: 1157
+        width: 55
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.5, y: -33}
+        - {x: -27.5, y: 33}
+        - {x: 27.5, y: 33}
+        - {x: 27.5, y: -33}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a328514e15c4e29a8c8645f74f909d2
+      internalID: 21300302
+      vertices:
+      - {x: 0, y: 66}
+      - {x: 55, y: 66}
+      - {x: 0, y: 0}
+      - {x: 55, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_IconCapturePoint_Grey
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 1360
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79284c61602044fd95e629d548f3d468
+      internalID: 21300304
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_RoundDeco
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 1587
+        width: 30
+        height: 14
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 7, y: 0, z: 7, w: 0}
+      outline:
+      - - {x: -15.000001, y: -7}
+        - {x: -15.000001, y: 7}
+        - {x: 15.000001, y: 7}
+        - {x: 15.000001, y: -7}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bbd519546634403aac74908990cade1
+      internalID: 21300306
+      vertices:
+      - {x: -0.0000009536743, y: 14}
+      - {x: 30, y: 14}
+      - {x: -0.0000009536743, y: 0}
+      - {x: 30, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Gumi
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 1396
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27d85d18de4e45d986bcdb849296bfac
+      internalID: 21300308
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_RectBigPadded
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 1485
+        width: 66
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 16, y: 16, z: 16, w: 16}
+      outline:
+      - - {x: -33, y: -33}
+        - {x: -33, y: 33}
+        - {x: 33, y: 33}
+        - {x: 33, y: -33}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a42b50a8b9de4e05ac9b86f476550d1e
+      internalID: 21300310
+      vertices:
+      - {x: 0, y: 66}
+      - {x: 66, y: 66}
+      - {x: 0, y: 0}
+      - {x: 66, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Ducky
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 1203
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e7ac4a4b0c7403db223bd6b6ac9ffb9
+      internalID: 21300312
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Twoway_MoveArea_Bg
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 608
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -150, y: -150}
+        - {x: -150, y: 150}
+        - {x: 150, y: 150}
+        - {x: 150, y: -150}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 370becf7efd8442b92c471c71c8a8111
+      internalID: 21300314
+      vertices:
+      - {x: 0, y: 300}
+      - {x: 300, y: 300}
+      - {x: 0, y: 0}
+      - {x: 300, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Wukong
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1694
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c828bcb73c544e3cbcdaa96d83328a34
+      internalID: 21300316
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Kaiser
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 1580
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e5e2d8ef018410fb8575fb75a67615a
+      internalID: 21300318
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Twoway_CaptureArea_Arrive
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 304
+        width: 300
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -150, y: -150}
+        - {x: -150, y: 150}
+        - {x: 150, y: 150}
+        - {x: 150, y: -150}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e14fb5ab153b4749b3c35380e40b556f
+      internalID: 21300320
+      vertices:
+      - {x: 0, y: 300}
+      - {x: 300, y: 300}
+      - {x: 0, y: 0}
+      - {x: 300, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_IconFruitKing
+      rect:
+        serializedVersion: 2
+        x: 1622
+        y: 927
+        width: 55
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.5, y: -33}
+        - {x: -27.5, y: 33}
+        - {x: 27.5, y: 33}
+        - {x: 27.5, y: -33}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cefed583d874a23b7fd3cc6f9036145
+      internalID: 21300322
+      vertices:
+      - {x: 0, y: 66}
+      - {x: 55, y: 66}
+      - {x: 0, y: 0}
+      - {x: 55, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_ItemInfo_IconHeal
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 1182
+        width: 82
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41, y: -41}
+        - {x: -41, y: 41}
+        - {x: 41, y: 41}
+        - {x: 41, y: -41}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 618aca87557d4348b07586e74740134a
+      internalID: 21300324
+      vertices:
+      - {x: 0, y: 82}
+      - {x: 82, y: 82}
+      - {x: 0, y: 0}
+      - {x: 82, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Arrow
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 1411
+        width: 64
+        height: 70
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32, y: -35}
+        - {x: -32, y: 35}
+        - {x: 32, y: 35}
+        - {x: 32, y: -35}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c443c61aff846c9aab5aff898564d58
+      internalID: 21300326
+      vertices:
+      - {x: 0, y: 70}
+      - {x: 64, y: 70}
+      - {x: 0, y: 0}
+      - {x: 64, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_ArcSmall
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 1395
+        width: 90
+        height: 22
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -45, y: -11}
+        - {x: -45, y: 11}
+        - {x: 45, y: 11}
+        - {x: 45, y: -11}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0c714e5ac754633ac53c36c87cc22b0
+      internalID: 21300328
+      vertices:
+      - {x: 0, y: 22}
+      - {x: 90, y: 22}
+      - {x: 0, y: 0}
+      - {x: 90, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_CircleLine_Thick01
+      rect:
+        serializedVersion: 2
+        x: 1796
+        y: 767
+        width: 142
+        height: 142
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -71, y: -71}
+        - {x: -71, y: 71}
+        - {x: 71, y: 71}
+        - {x: 71, y: -71}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 251b31aa1ee34bc1b699049723fb3a72
+      internalID: 21300330
+      vertices:
+      - {x: 0, y: 142}
+      - {x: 142, y: 142}
+      - {x: 0, y: 0}
+      - {x: 142, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Frog
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 1684
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81f93a326229460a9547a50ae5f3b197
+      internalID: 21300332
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_Enchant_StreakThunder
+      rect:
+        serializedVersion: 2
+        x: 1895
+        y: 0
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -75, y: -75}
+        - {x: -75, y: 75}
+        - {x: 75, y: 75}
+        - {x: 75, y: -75}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e63c51bb1ec3403a96f0dd3fb2c94fd6
+      internalID: 21300334
+      vertices:
+      - {x: 0, y: 150}
+      - {x: 150, y: 150}
+      - {x: 0, y: 0}
+      - {x: 150, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Rambert
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 1788
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbfe452ffa0c4e38a1904ea614c19e0b
+      internalID: 21300336
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Twoway_MovementArrow
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 258
+        height: 611
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -129, y: -305.5}
+        - {x: -129, y: 305.5}
+        - {x: 129, y: 305.5}
+        - {x: 129, y: -305.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10f3ce614c1f42bea96b974f3a3131fb
+      internalID: 21300338
+      vertices:
+      - {x: 0, y: 611}
+      - {x: 258, y: 611}
+      - {x: 0, y: 0}
+      - {x: 258, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_IconNo1
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 1307
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1242292548f74488bc5962be908d99d1
+      internalID: 21300340
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_Tiny_Kurenai
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 1684
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a6e30b0235547aba41886e8f67591c0
+      internalID: 21300342
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Status_GiantGrow_CircleGlow03
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 1026
+        width: 106
+        height: 106
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52.999996, y: -52.999996}
+        - {x: -52.999996, y: 52.999996}
+        - {x: 52.999996, y: 52.999996}
+        - {x: 52.999996, y: -52.999996}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e394070e49eb45a88802bee8a24fe647
+      internalID: 21300344
+      vertices:
+      - {x: 0.0000038146973, y: 106}
+      - {x: 106, y: 106}
+      - {x: 0.0000038146973, y: 0.0000038146973}
+      - {x: 106, y: 0.0000038146973}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_Floor
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 919
+        width: 141
+        height: 141
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -70.5, y: -70.5}
+        - {x: -70.5, y: 70.5}
+        - {x: 70.5, y: 70.5}
+        - {x: 70.5, y: -70.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 218f7a313bed4d659a023d10ffc8e991
+      internalID: 21300346
+      vertices:
+      - {x: 0, y: 141}
+      - {x: 141, y: 141}
+      - {x: 0, y: 0}
+      - {x: 141, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Indicator_IconCrown
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 1274
+        width: 56
+        height: 42
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: -21}
+        - {x: -28, y: 21}
+        - {x: 28, y: 21}
+        - {x: 28, y: -21}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aef25d8b9d964cd18f21ff72bf0b32c4
+      internalID: 21300348
+      vertices:
+      - {x: 0, y: 42}
+      - {x: 56, y: 42}
+      - {x: 0, y: 0}
+      - {x: 56, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_WorldUI_Base_RoundLine
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 1320
+        width: 40
+        height: 22
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 11, y: 0, z: 11, w: 0}
+      outline:
+      - - {x: -20, y: -11}
+        - {x: -20, y: 11}
+        - {x: 20, y: 11}
+        - {x: 20, y: -11}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 147cbb9b00bb49d9859ffeb7a6f0ce86
+      internalID: 21300350
+      vertices:
+      - {x: 0, y: 22}
+      - {x: 40, y: 22}
+      - {x: 0, y: 0}
+      - {x: 40, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      T_UI_WorldUI_Base_ArcBig: 21300232
+      T_UI_WorldUI_Base_ArcOutline: 21300004
+      T_UI_WorldUI_Base_ArcSmall: 21300328
+      T_UI_WorldUI_Base_CircleBasic: 21300110
+      T_UI_WorldUI_Base_CircleLine: 21300270
+      T_UI_WorldUI_Base_CircleLineGlow01: 21300088
+      T_UI_WorldUI_Base_CircleLineGlow02: 21300238
+      T_UI_WorldUI_Base_CircleLine_Stroke: 21300222
+      T_UI_WorldUI_Base_CircleLine_Thick01: 21300330
+      T_UI_WorldUI_Base_CircleLine_Thicker: 21300094
+      T_UI_WorldUI_Base_Floor: 21300346
+      T_UI_WorldUI_Base_GlowImage: 21300166
+      T_UI_WorldUI_Base_GlowImageHalf: 21300202
+      T_UI_WorldUI_Base_RectBigPadded: 21300310
+      T_UI_WorldUI_Base_RectSmallPadded: 21300058
+      T_UI_WorldUI_Base_Round: 21300178
+      T_UI_WorldUI_Base_RoundDeco: 21300306
+      T_UI_WorldUI_Base_RoundLine: 21300350
+      T_UI_WorldUI_Base_SharpFX: 21300034
+      T_UI_WorldUI_Base_Square: 21300180
+      T_UI_WorldUI_Base_SquareBracket: 21300060
+      T_UI_WorldUI_Base_SquareGrad: 21300206
+      T_UI_WorldUI_Base_SquareLine: 21300040
+      T_UI_WorldUI_Base_SquareLineGlow: 21300266
+      T_UI_WorldUI_Base_SquareLineThinPadded: 21300122
+      T_UI_WorldUI_Base_SquarePadded: 21300220
+      T_UI_WorldUI_Indicator_AliDagger: 21300278
+      T_UI_WorldUI_Indicator_Arrow: 21300326
+      T_UI_WorldUI_Indicator_Arrow2: 21300242
+      T_UI_WorldUI_Indicator_Arrow2Glow: 21300272
+      T_UI_WorldUI_Indicator_Capturepoint_Arrow: 21300214
+      T_UI_WorldUI_Indicator_CrownPanel: 21300294
+      T_UI_WorldUI_Indicator_CrownPanelGlow_Blue: 21300158
+      T_UI_WorldUI_Indicator_CrownPanelGlow_Red: 21300244
+      T_UI_WorldUI_Indicator_DisplayBG: 21300246
+      T_UI_WorldUI_Indicator_IconCapturePoint_Blue: 21300196
+      T_UI_WorldUI_Indicator_IconCapturePoint_Grey: 21300304
+      T_UI_WorldUI_Indicator_IconCapturePoint_Red: 21300152
+      T_UI_WorldUI_Indicator_IconConductMachine_Blue: 21300228
+      T_UI_WorldUI_Indicator_IconConductMachine_Grey: 21300120
+      T_UI_WorldUI_Indicator_IconConductMachine_Red: 21300212
+      T_UI_WorldUI_Indicator_IconCrown: 21300348
+      T_UI_WorldUI_Indicator_IconCrownWhite: 21300182
+      T_UI_WorldUI_Indicator_IconNo1: 21300340
+      T_UI_WorldUI_Indicator_IconNo1White: 21300074
+      T_UI_WorldUI_Indicator_IconNo2: 21300254
+      T_UI_WorldUI_Indicator_IconPickIt: 21300298
+      T_UI_WorldUI_Indicator_IconWreckIt: 21300168
+      T_UI_WorldUI_Indicator_Tiny_Ali: 21300230
+      T_UI_WorldUI_Indicator_Tiny_Alice: 21300010
+      T_UI_WorldUI_Indicator_Tiny_Brick: 21300296
+      T_UI_WorldUI_Indicator_Tiny_Cindy: 21300162
+      T_UI_WorldUI_Indicator_Tiny_DonQuixote: 21300118
+      T_UI_WorldUI_Indicator_Tiny_Ducky: 21300312
+      T_UI_WorldUI_Indicator_Tiny_Dummy: 21300032
+      T_UI_WorldUI_Indicator_Tiny_Flare: 21300076
+      T_UI_WorldUI_Indicator_Tiny_Frog: 21300332
+      T_UI_WorldUI_Indicator_Tiny_Goldie: 21300282
+      T_UI_WorldUI_Indicator_Tiny_Gumi: 21300308
+      T_UI_WorldUI_Indicator_Tiny_Hook: 21300092
+      T_UI_WorldUI_Indicator_Tiny_JackO: 21300150
+      T_UI_WorldUI_Indicator_Tiny_Kaiser: 21300318
+      T_UI_WorldUI_Indicator_Tiny_Kurenai: 21300342
+      T_UI_WorldUI_Indicator_Tiny_Loren: 21300240
+      T_UI_WorldUI_Indicator_Tiny_MasterCat: 21300250
+      T_UI_WorldUI_Indicator_Tiny_Maya: 21300018
+      T_UI_WorldUI_Indicator_Tiny_Molly: 21300100
+      T_UI_WorldUI_Indicator_Tiny_Nui: 21300016
+      T_UI_WorldUI_Indicator_Tiny_Octavia: 21300024
+      T_UI_WorldUI_Indicator_Tiny_Parfait: 21300052
+      T_UI_WorldUI_Indicator_Tiny_Peter: 21300096
+      T_UI_WorldUI_Indicator_Tiny_Rambert: 21300336
+      T_UI_WorldUI_Indicator_Tiny_Rapunzel: 21300144
+      T_UI_WorldUI_Indicator_Tiny_Ravi: 21300008
+      T_UI_WorldUI_Indicator_Tiny_Red: 21300048
+      T_UI_WorldUI_Indicator_Tiny_Robin: 21300014
+      T_UI_WorldUI_Indicator_Tiny_Snow: 21300064
+      T_UI_WorldUI_Indicator_Tiny_Swan: 21300216
+      T_UI_WorldUI_Indicator_Tiny_Vex: 21300174
+      T_UI_WorldUI_Indicator_Tiny_Victor: 21300204
+      T_UI_WorldUI_Indicator_Tiny_WitchQueen: 21300288
+      T_UI_WorldUI_Indicator_Tiny_Wolfgang: 21300128
+      T_UI_WorldUI_Indicator_Tiny_Wukong: 21300316
+      T_UI_WorldUI_Indicator_Tiny_YongYong: 21300140
+      T_UI_WorldUI_Indicator_Tiny_Zeppetta: 21300268
+      T_UI_WorldUI_ItemInfo_CircleGauge: 21300124
+      T_UI_WorldUI_ItemInfo_CircleLine: 21300286
+      T_UI_WorldUI_ItemInfo_IconBomb: 21300138
+      T_UI_WorldUI_ItemInfo_IconBringCapturePoint: 21300280
+      T_UI_WorldUI_ItemInfo_IconCharge: 21300208
+      T_UI_WorldUI_ItemInfo_IconHeal: 21300324
+      T_UI_WorldUI_ItemInfo_IconMagnetBomb: 21300248
+      T_UI_WorldUI_ItemInfo_IconRandom: 21300292
+      T_UI_WorldUI_ItemInfo_Position: 21300086
+      T_UI_WorldUI_ItemInteract_Arrow: 21300062
+      T_UI_WorldUI_ItemInteract_CircleLine: 21300264
+      T_UI_WorldUI_ItemInteract_CircleLineFX: 21300038
+      T_UI_WorldUI_ItemInteract_CircleLine_2: 21300066
+      T_UI_WorldUI_ItemInteract_CircleLine_3: 21300262
+      T_UI_WorldUI_Status_CatStackGauge: 21300030
+      T_UI_WorldUI_Status_CatStackGauge_Glow: 21300046
+      T_UI_WorldUI_Status_ChargeGlow: 21300082
+      T_UI_WorldUI_Status_Enchant_BG: 21300290
+      T_UI_WorldUI_Status_Enchant_BG30: 21300184
+      T_UI_WorldUI_Status_Enchant_BGLine: 21300156
+      T_UI_WorldUI_Status_Enchant_BotGlow: 21300130
+      T_UI_WorldUI_Status_Enchant_Shield: 21300102
+      T_UI_WorldUI_Status_Enchant_Shield30: 21300044
+      T_UI_WorldUI_Status_Enchant_Steady: 21300054
+      T_UI_WorldUI_Status_Enchant_Steady30: 21300084
+      T_UI_WorldUI_Status_Enchant_StreakThunder: 21300334
+      T_UI_WorldUI_Status_Enchant_StreakThunder30: 21300300
+      T_UI_WorldUI_Status_GiantGrow_Arrow: 21300070
+      T_UI_WorldUI_Status_GiantGrow_ArrowGlow: 21300226
+      T_UI_WorldUI_Status_GiantGrow_Back: 21300078
+      T_UI_WorldUI_Status_GiantGrow_BackGlow: 21300284
+      T_UI_WorldUI_Status_GiantGrow_CircleGlow01: 21300252
+      T_UI_WorldUI_Status_GiantGrow_CircleGlow02: 21300056
+      T_UI_WorldUI_Status_GiantGrow_CircleGlow03: 21300344
+      T_UI_WorldUI_Status_GiantGrow_CircleLine02: 21300190
+      T_UI_WorldUI_Status_GiantGrow_CircleLine03: 21300104
+      T_UI_WorldUI_Status_GiantGrow_Tail: 21300012
+      T_UI_WorldUI_Status_GiantIconGlow: 21300026
+      T_UI_WorldUI_Status_GiantIconPanel01: 21300050
+      T_UI_WorldUI_Status_GiantIconPanel02: 21300236
+      T_UI_WorldUI_Status_GiantLevelArrow: 21300234
+      T_UI_WorldUI_Status_GumiStackGauge: 21300160
+      T_UI_WorldUI_Status_GumiStackGauge_Glow: 21300274
+      T_UI_WorldUI_Status_HPGaugeOutline: 21300042
+      T_UI_WorldUI_Status_HealingPlus: 21300188
+      T_UI_WorldUI_Status_IconFruit: 21300302
+      T_UI_WorldUI_Status_IconFruitBig: 21300072
+      T_UI_WorldUI_Status_IconFruitGold: 21300170
+      T_UI_WorldUI_Status_IconFruitKing: 21300322
+      T_UI_WorldUI_Status_IconPowerDonut: 21300126
+      T_UI_WorldUI_Status_IconPowerOrb: 21300134
+      T_UI_WorldUI_Status_IconWantedRetire: 21300256
+      T_UI_WorldUI_Status_IconWantedScore: 21300172
+      T_UI_WorldUI_Status_IconWantedScoreBig: 21300136
+      T_UI_WorldUI_Status_IconWantedScoreKing: 21300000
+      T_UI_WorldUI_Status_IconWantedTarget: 21300258
+      T_UI_WorldUI_Status_IconWantedTargetLight: 21300154
+      T_UI_WorldUI_Status_ProgressGlow_Ally: 21300132
+      T_UI_WorldUI_Status_ProgressGlow_Enemy: 21300176
+      T_UI_WorldUI_Status_SkillLastingGlow: 21300192
+      T_UI_WorldUI_Status_TipGlow_Blue: 21300146
+      T_UI_WorldUI_Status_TipGlow_Green: 21300090
+      T_UI_WorldUI_Status_TipGlow_LightCyan: 21300148
+      T_UI_WorldUI_Status_TipGlow_Red: 21300164
+      T_UI_WorldUI_Status_TipGlow_Yellow: 21300224
+      T_UI_WorldUI_Status_VexBrokenHeart: 21300112
+      T_UI_WorldUI_Status_WantedTargetGlow: 21300194
+      T_UI_WorldUI_Status_WantedWarningGlow: 21300022
+      T_UI_WorldUI_Tutorial_DangerGlow: 21300142
+      T_UI_WorldUI_Tutorial_ExclamationMarkGlow: 21300218
+      T_UI_WorldUI_Tutorial_TargetCrossPart: 21300114
+      T_UI_WorldUI_Tutorial_TargetCrossPartGlow: 21300276
+      T_UI_WorldUI_Tutorial_TargetLine: 21300020
+      T_UI_WorldUI_Tutorial_TargetLineGlow: 21300028
+      T_UI_WorldUI_Tutorial_TargetLineGlow2: 21300098
+      T_UI_WorldUI_Tutorial_TargetLineThin: 21300106
+      T_UI_WorldUI_Tutorial_Triangle: 21300186
+      T_UI_WorldUI_Tutorial_TriangleLine: 21300068
+      T_UI_WorldUI_Tutorial_TriangleLineGlow: 21300210
+      T_UI_WorldUI_Tutorial_TriangleLineThin: 21300260
+      T_UI_WorldUI_Twoway_Arrow: 21300108
+      T_UI_WorldUI_Twoway_CaptureArea_Arrive: 21300320
+      T_UI_WorldUI_Twoway_CaptureArea_Move: 21300198
+      T_UI_WorldUI_Twoway_CaptureSign_Gate: 21300036
+      T_UI_WorldUI_Twoway_CaptureSign_MainCamp: 21300002
+      T_UI_WorldUI_Twoway_CaptureSign_MainCampDeco: 21300116
+      T_UI_WorldUI_Twoway_GateArea_Bg: 21300080
+      T_UI_WorldUI_Twoway_Gauge: 21300006
+      T_UI_WorldUI_Twoway_MainCampArea_Bg: 21300200
+      T_UI_WorldUI_Twoway_MoveArea_Bg: 21300314
+      T_UI_WorldUI_Twoway_MovementArrow: 21300338
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
