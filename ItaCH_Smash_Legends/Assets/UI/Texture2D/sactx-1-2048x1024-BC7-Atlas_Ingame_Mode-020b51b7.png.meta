@@ -1,0 +1,4986 @@
+fileFormatVersion: 2
+guid: 991ce1e4547d980448de16f2fd4ea00b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: T_UI_Mode_Profile_FrameBotPlus
+  - first:
+      213: 21300002
+    second: T_UI_Mode_Harvest_IconNo1
+  - first:
+      213: 21300004
+    second: T_UI_Mode_Base_SquareLineOpened
+  - first:
+      213: 21300006
+    second: T_UI_Mode_Base_IconX
+  - first:
+      213: 21300008
+    second: T_UI_Mode_HarvestWar_ScorePanelBase
+  - first:
+      213: 21300010
+    second: T_UI_Mode_TeamDeath_Wing_Blue
+  - first:
+      213: 21300012
+    second: T_UI_Mode_HarvestWar_LeadingPanelTip_BlueScore
+  - first:
+      213: 21300014
+    second: T_UI_Mode_TwoWay_CircleInnerGlow
+  - first:
+      213: 21300016
+    second: T_UI_Mode_TwoWay_GatherArrow
+  - first:
+      213: 21300018
+    second: T_UI_Mode_TwoWay_Symbol_Occupation
+  - first:
+      213: 21300020
+    second: T_UI_Mode_TeamDeath_BaseHalf
+  - first:
+      213: 21300022
+    second: T_UI_Mode_TeamDeath_BaseGlow_Neutral
+  - first:
+      213: 21300024
+    second: T_UI_Mode_Wanted_Turtle
+  - first:
+      213: 21300026
+    second: T_UI_Mode_Score_BodySub_B
+  - first:
+      213: 21300028
+    second: T_UI_Mode_HarvestWar_IconKingSprout
+  - first:
+      213: 21300030
+    second: T_UI_Mode_TwoWay_GatherGrad
+  - first:
+      213: 21300032
+    second: T_UI_Mode_Wanted_TimerBase_InnerShadow
+  - first:
+      213: 21300034
+    second: T_UI_Mode_Base_RectLineGlowStrong
+  - first:
+      213: 21300036
+    second: T_UI_Mode_TwoWay_Glow
+  - first:
+      213: 21300038
+    second: T_UI_Mode_BattleRoyale_FireInfoGlow
+  - first:
+      213: 21300040
+    second: T_UI_Mode_Duel_HPTipGlow_Red
+  - first:
+      213: 21300042
+    second: T_UI_Mode_HarvestWar_ScorePanelShadow
+  - first:
+      213: 21300044
+    second: T_UI_Mode_TwoWay_GatherGlow
+  - first:
+      213: 21300046
+    second: T_UI_Mode_Base_Infinite
+  - first:
+      213: 21300048
+    second: T_UI_Mode_Base_CircleLine_Thinner
+  - first:
+      213: 21300050
+    second: T_UI_Mode_Duel_BaseGlow
+  - first:
+      213: 21300052
+    second: T_UI_Mode_Base_GradationLine
+  - first:
+      213: 21300054
+    second: T_UI_Mode_Profile_PlayerGlow
+  - first:
+      213: 21300056
+    second: T_UI_Mode_Base_TipShadow
+  - first:
+      213: 21300058
+    second: T_UI_Mode_CrownGuard_IconCrown
+  - first:
+      213: 21300060
+    second: T_UI_Mode_BattleRoyale_BaseGlow
+  - first:
+      213: 21300062
+    second: T_UI_Mode_Profile_PlayerShadow
+  - first:
+      213: 21300064
+    second: T_UI_Mode_HarvestWar_TimerPanel_Shadow
+  - first:
+      213: 21300066
+    second: T_UI_Mode_Wanted_TimerBase_OuterGlow
+  - first:
+      213: 21300068
+    second: T_UI_Mode_Wanted_ProfileAddonGlow
+  - first:
+      213: 21300070
+    second: T_UI_Mode_Score_BodySubShadow_A
+  - first:
+      213: 21300072
+    second: T_UI_Mode_Base_IconXGlow
+  - first:
+      213: 21300074
+    second: T_UI_Mode_CapturePoint_Wing_Red
+  - first:
+      213: 21300076
+    second: T_UI_Mode_BattleRoyale_LastSwordIcon
+  - first:
+      213: 21300078
+    second: T_UI_Mode_Base_Rect
+  - first:
+      213: 21300080
+    second: T_UI_Mode_HarvestWar_TimerPanel_Body
+  - first:
+      213: 21300082
+    second: T_UI_Mode_CapturePoint_Wing_GradationLine
+  - first:
+      213: 21300084
+    second: T_UI_Mode_Base_RectGlow
+  - first:
+      213: 21300086
+    second: T_UI_Mode_Ready_IconUnderdog_Fist
+  - first:
+      213: 21300088
+    second: T_UI_Mode_Wanted_ScoreIcon
+  - first:
+      213: 21300090
+    second: T_UI_Mode_TeamDeath_Wing_White
+  - first:
+      213: 21300092
+    second: T_UI_Mode_Score_RectBotDeco
+  - first:
+      213: 21300094
+    second: T_UI_Mode_Base_RectHalfPadded
+  - first:
+      213: 21300096
+    second: T_UI_Mode_Score_Body_A
+  - first:
+      213: 21300098
+    second: T_UI_Mode_CrownGuard_IconCrownWhite
+  - first:
+      213: 21300100
+    second: T_UI_Mode_TwoWay_Arrow
+  - first:
+      213: 21300102
+    second: T_UI_Mode_Base_SkullOutline
+  - first:
+      213: 21300104
+    second: T_UI_Mode_Base_RectPadded
+  - first:
+      213: 21300106
+    second: T_UI_Mode_TeamDeath_WingDeco
+  - first:
+      213: 21300108
+    second: T_UI_Mode_CapturePoint_ScoringGauge_Blue
+  - first:
+      213: 21300110
+    second: T_UI_Mode_BattleRoyale_BaseDeco
+  - first:
+      213: 21300112
+    second: T_UI_Mode_TeamDeath_BaseGlow
+  - first:
+      213: 21300114
+    second: T_UI_Mode_HarvestWar_ScorePanel_ScoringGlow
+  - first:
+      213: 21300116
+    second: T_UI_Mode_Duel_HPTipGlow_Blue
+  - first:
+      213: 21300118
+    second: T_UI_Mode_Base_RectLineGlowFade
+  - first:
+      213: 21300120
+    second: T_UI_Mode_Base_SquarePadded
+  - first:
+      213: 21300122
+    second: T_UI_Mode_Base_CircleLine_Thick
+  - first:
+      213: 21300124
+    second: T_UI_Mode_BattleRoyale_BaseShadow
+  - first:
+      213: 21300126
+    second: T_UI_Mode_HarvestWar_AppearNoticeFX
+  - first:
+      213: 21300128
+    second: T_UI_Mode_Base_SquareLineThickPadded
+  - first:
+      213: 21300130
+    second: T_UI_Mode_Profile_AddonPanel
+  - first:
+      213: 21300132
+    second: T_UI_Mode_Duel_Base
+  - first:
+      213: 21300134
+    second: T_UI_Mode_Base_Triangle
+  - first:
+      213: 21300136
+    second: T_UI_Mode_HarvestWar_ScorePanelInnerGlow
+  - first:
+      213: 21300138
+    second: T_UI_Mode_Wanted_TimerBase
+  - first:
+      213: 21300140
+    second: T_UI_Mode_Score_RectLine
+  - first:
+      213: 21300142
+    second: T_UI_Mode_Base_RectLineGlow
+  - first:
+      213: 21300144
+    second: T_UI_Mode_Score_Body_B
+  - first:
+      213: 21300146
+    second: T_UI_Mode_BattleRoyale_LastSwordWhite
+  - first:
+      213: 21300148
+    second: T_UI_Mode_TwoWay_ArcSliderGlow02
+  - first:
+      213: 21300150
+    second: T_UI_Mode_TeamDeath_BaseWingGlow
+  - first:
+      213: 21300152
+    second: T_UI_Mode_CapturePoint_Wing_Blue
+  - first:
+      213: 21300154
+    second: T_UI_Mode_CapturePoint_IconCompete
+  - first:
+      213: 21300156
+    second: T_UI_Mode_HarvestWar_TimerPanel_LeadingTip
+  - first:
+      213: 21300158
+    second: T_UI_Mode_TwoWay_Eye
+  - first:
+      213: 21300160
+    second: T_UI_Mode_Profile_RespawnSpinner
+  - first:
+      213: 21300162
+    second: T_UI_Mode_CapturePoint_ScoringX
+  - first:
+      213: 21300164
+    second: T_UI_Mode_Profile_HPGuageOutline
+  - first:
+      213: 21300166
+    second: T_UI_Mode_HarvestWar_ScorePanelOuterTip
+  - first:
+      213: 21300168
+    second: T_UI_Mode_Profile_FrameBot
+  - first:
+      213: 21300170
+    second: T_UI_Mode_Wanted_TargetIcon
+  - first:
+      213: 21300172
+    second: T_UI_Mode_TwoWay_GatherLighting
+  - first:
+      213: 21300174
+    second: T_UI_Mode_Base_SharpFX
+  - first:
+      213: 21300176
+    second: T_UI_Mode_HarvestWar_LeadingPanelTip_RedScore
+  - first:
+      213: 21300178
+    second: T_UI_Mode_HarvestWar_ScorePanelTip_RedScore
+  - first:
+      213: 21300180
+    second: T_UI_Mode_BattleRoyale_FireInfoIconBG
+  - first:
+      213: 21300182
+    second: T_UI_Mode_Duel_ArrowDeco
+  - first:
+      213: 21300184
+    second: T_UI_Mode_TeamDeath_BaseDeco
+  - first:
+      213: 21300186
+    second: T_UI_Mode_Profile_PlayerDeco
+  - first:
+      213: 21300188
+    second: T_UI_Mode_Harvest_IconNo1White
+  - first:
+      213: 21300190
+    second: T_UI_Mode_BattleRoyale_ExitButtonBG
+  - first:
+      213: 21300192
+    second: T_UI_Mode_Score_RectOuterGlow
+  - first:
+      213: 21300194
+    second: T_UI_Mode_Base_TeamMember
+  - first:
+      213: 21300196
+    second: T_UI_Mode_Base_RectLinePadded
+  - first:
+      213: 21300198
+    second: T_UI_Mode_BattleRoyale_IconFire
+  - first:
+      213: 21300200
+    second: T_UI_Mode_Duel_NamePanel
+  - first:
+      213: 21300202
+    second: T_UI_Mode_CapturePoint_Wing_White
+  - first:
+      213: 21300204
+    second: T_UI_Mode_Score_BodySubShadow_B
+  - first:
+      213: 21300206
+    second: T_UI_Mode_Wanted_TimerBaseFrame
+  - first:
+      213: 21300208
+    second: T_UI_Mode_HarvestWar_ScorePanelTip
+  - first:
+      213: 21300210
+    second: T_UI_Mode_Harvest_ProfileAddonGradient
+  - first:
+      213: 21300212
+    second: T_UI_Mode_Base_TriangleLineThin
+  - first:
+      213: 21300214
+    second: T_UI_Mode_Base_SquareLineNormPadded
+  - first:
+      213: 21300216
+    second: T_UI_Mode_BattleRoyale_FireInfoBG
+  - first:
+      213: 21300218
+    second: T_UI_Mode_Base_CircleGlow
+  - first:
+      213: 21300220
+    second: T_UI_Mode_Base_Grad_RtoL
+  - first:
+      213: 21300222
+    second: T_UI_Mode_HarvestWar_ScorePanelTip_BlueScore
+  - first:
+      213: 21300224
+    second: T_UI_Mode_TwoWay_MainCamp_Deco
+  - first:
+      213: 21300226
+    second: T_UI_Mode_BattleRoyale_BaseInterShadow
+  - first:
+      213: 21300228
+    second: T_UI_Mode_Base_RoundedRect
+  - first:
+      213: 21300230
+    second: T_UI_Mode_BattleRoyale_FireInfoBGEndTip
+  - first:
+      213: 21300232
+    second: T_UI_Mode_Base_CircleLineGlow
+  - first:
+      213: 21300234
+    second: T_UI_Mode_TwoWay_Shield_Fragment_3
+  - first:
+      213: 21300236
+    second: T_UI_Mode_Profile_PanelGlow
+  - first:
+      213: 21300238
+    second: T_UI_Mode_Harvest_IconNo2
+  - first:
+      213: 21300240
+    second: T_UI_Mode_Base_SquareLinePadded
+  - first:
+      213: 21300242
+    second: T_UI_Mode_TeamDeath_Base
+  - first:
+      213: 21300244
+    second: T_UI_Mode_TwoWay_Shield_Fragment_4
+  - first:
+      213: 21300246
+    second: T_UI_Mode_Base_Skull
+  - first:
+      213: 21300248
+    second: T_UI_Mode_HarvestWar_TimerPanel_BottomFrame
+  - first:
+      213: 21300250
+    second: T_UI_Mode_Base_RectInnerShadow
+  - first:
+      213: 21300252
+    second: T_UI_Mode_Wanted_RetireIcon
+  - first:
+      213: 21300254
+    second: T_UI_Mode_HarvestWar_TimerPanel_White
+  - first:
+      213: 21300256
+    second: T_UI_Mode_CapturePoint_BaseWing_GradationLine
+  - first:
+      213: 21300258
+    second: T_UI_Mode_Profile_PanelFX
+  - first:
+      213: 21300260
+    second: T_UI_Mode_Base_Gauge
+  - first:
+      213: 21300262
+    second: T_UI_Mode_TwoWay_Shield_Fragment_5
+  - first:
+      213: 21300264
+    second: T_UI_Mode_HarvestWar_TimerPanel_LeadingGlow
+  - first:
+      213: 21300266
+    second: T_UI_Mode_TwoWay_Symbol_Defence
+  - first:
+      213: 21300268
+    second: T_UI_Mode_HarvestWar_ScorePanelLeading
+  - first:
+      213: 21300270
+    second: T_UI_Mode_BattleRoyale_ExitButtonOutline
+  - first:
+      213: 21300272
+    second: T_UI_Mode_BattleRoyale_IconFireGlow
+  - first:
+      213: 21300274
+    second: T_UI_Mode_Harvest_ProfileAddonGradientOutline
+  - first:
+      213: 21300276
+    second: T_UI_Mode_HarvestWar_ScorePanelDeco
+  - first:
+      213: 21300278
+    second: T_UI_Mode_CapturePoint_ScoringGauge_Red
+  - first:
+      213: 21300280
+    second: T_UI_Mode_Score_RectInnerGlow
+  - first:
+      213: 21300282
+    second: T_UI_Mode_TwoWay_DotArrowBG
+  - first:
+      213: 21300284
+    second: T_UI_Mode_TeamDeath_Wing_Red
+  - first:
+      213: 21300286
+    second: T_UI_Mode_Score_BodySub_A
+  - first:
+      213: 21300288
+    second: T_UI_Mode_BattleRoyale_NamePanel
+  - first:
+      213: 21300290
+    second: T_UI_Mode_BattleRoyale_Base
+  - first:
+      213: 21300292
+    second: T_UI_Mode_TeamDeath_BaseWing
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 25
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 0
+  flipbookColumns: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_FrameBotPlus
+      rect:
+        serializedVersion: 2
+        x: 1252
+        y: 130
+        width: 22
+        height: 12
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 3, z: 6, w: 3}
+      outline:
+      - - {x: -11, y: -6}
+        - {x: -11, y: 6}
+        - {x: 11, y: 6}
+        - {x: 11, y: -6}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a424915f941448a8e76b0b324c141c5
+      internalID: 21300000
+      vertices:
+      - {x: 0, y: 12}
+      - {x: 22, y: 12}
+      - {x: 0, y: 0}
+      - {x: 22, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Harvest_IconNo1
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 0
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29dd7f5b93f24008abeb5d373978f2ba
+      internalID: 21300002
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_SquareLineOpened
+      rect:
+        serializedVersion: 2
+        x: 1424
+        y: 0
+        width: 30
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 9, y: 7, z: 7, w: 7}
+      outline:
+      - - {x: -15.000001, y: -15.000001}
+        - {x: -15.000001, y: 15.000001}
+        - {x: 15.000001, y: 15.000001}
+        - {x: 15.000001, y: -15.000001}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27477db62ee54d94bc691f0732d58df7
+      internalID: 21300004
+      vertices:
+      - {x: -0.0000009536743, y: 30}
+      - {x: 30, y: 30}
+      - {x: -0.0000009536743, y: -0.0000009536743}
+      - {x: 30, y: -0.0000009536743}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_IconX
+      rect:
+        serializedVersion: 2
+        x: 1141
+        y: 82
+        width: 46
+        height: 44
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23, y: -22}
+        - {x: -23, y: 22}
+        - {x: 23, y: 22}
+        - {x: 23, y: -22}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db85201585f340a79dedc85cd1654aa7
+      internalID: 21300006
+      vertices:
+      - {x: 0, y: 44}
+      - {x: 46, y: 44}
+      - {x: 0, y: 0}
+      - {x: 46, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_ScorePanelBase
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 412
+        width: 192
+        height: 78
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 47, y: 0, z: 46, w: 0}
+      outline:
+      - - {x: -96, y: -39}
+        - {x: -96, y: 39}
+        - {x: 96, y: 39}
+        - {x: 96, y: -39}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffbd7f1bfe074463b469047597b28c8c
+      internalID: 21300008
+      vertices:
+      - {x: 0, y: 78}
+      - {x: 192, y: 78}
+      - {x: 0, y: 0}
+      - {x: 192, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TeamDeath_Wing_Blue
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 204
+        width: 73
+        height: 58
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36.5, y: -29}
+        - {x: -36.5, y: 29}
+        - {x: 36.5, y: 29}
+        - {x: 36.5, y: -29}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f07ccad6d4d74b0bb5c72591162f5d10
+      internalID: 21300010
+      vertices:
+      - {x: 0, y: 58}
+      - {x: 73, y: 58}
+      - {x: 0, y: 0}
+      - {x: 73, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_LeadingPanelTip_BlueScore
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 494
+        width: 112
+        height: 131
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -56, y: -65.5}
+        - {x: -56, y: 65.5}
+        - {x: 56, y: 65.5}
+        - {x: 56, y: -65.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7428fbb091846059b78a5916dd8ca37
+      internalID: 21300012
+      vertices:
+      - {x: 0, y: 131}
+      - {x: 112, y: 131}
+      - {x: 0, y: 0}
+      - {x: 112, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_CircleInnerGlow
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 280
+        width: 112
+        height: 112
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -56, y: -56}
+        - {x: -56, y: 56}
+        - {x: 56, y: 56}
+        - {x: 56, y: -56}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22b78e999c2947f7a919e17fb3ef9d53
+      internalID: 21300014
+      vertices:
+      - {x: 0, y: 112}
+      - {x: 112, y: 112}
+      - {x: 0, y: 0}
+      - {x: 112, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_GatherArrow
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 494
+        width: 26
+        height: 21
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13, y: -10.5}
+        - {x: -13, y: 10.5}
+        - {x: 13, y: 10.5}
+        - {x: 13, y: -10.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba0b45f754d544d29f9d4d5c5662f400
+      internalID: 21300016
+      vertices:
+      - {x: 0, y: 21}
+      - {x: 26, y: 21}
+      - {x: 0, y: 0}
+      - {x: 26, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_Symbol_Occupation
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 124
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d6170f807644b7bb73433f9ce144af1
+      internalID: 21300018
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TeamDeath_BaseHalf
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 724
+        width: 104
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 0, z: 10, w: 0}
+      outline:
+      - - {x: -52, y: -17.5}
+        - {x: -52, y: 17.5}
+        - {x: 52, y: 17.5}
+        - {x: 52, y: -17.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33314d39325345788908763d57036f37
+      internalID: 21300020
+      vertices:
+      - {x: 0, y: 35}
+      - {x: 104, y: 35}
+      - {x: 0, y: 0}
+      - {x: 104, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TeamDeath_BaseGlow_Neutral
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 414
+        width: 104
+        height: 70
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 26, y: 0, z: 26, w: 0}
+      outline:
+      - - {x: -52, y: -35}
+        - {x: -52, y: 35}
+        - {x: 52, y: 35}
+        - {x: 52, y: -35}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae787f5098cf49d8a5987da8e61be81f
+      internalID: 21300022
+      vertices:
+      - {x: 0, y: 70}
+      - {x: 104, y: 70}
+      - {x: 0, y: 0}
+      - {x: 104, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Wanted_Turtle
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 666
+        width: 127
+        height: 107
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -63.5, y: -53.500004}
+        - {x: -63.5, y: 53.500004}
+        - {x: 63.5, y: 53.500004}
+        - {x: 63.5, y: -53.500004}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d73f5527299b4db3a4453f6fe6bfae90
+      internalID: 21300024
+      vertices:
+      - {x: 0, y: 107}
+      - {x: 127, y: 107}
+      - {x: 0, y: -0.0000038146973}
+      - {x: 127, y: -0.0000038146973}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Score_BodySub_B
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 0
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 14, y: 14, z: 14, w: 14}
+      outline:
+      - - {x: -25, y: -25}
+        - {x: -25, y: 25}
+        - {x: 25, y: 25}
+        - {x: 25, y: -25}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c2e848408c1482a86b61b49fb2b3ab8
+      internalID: 21300026
+      vertices:
+      - {x: 0, y: 50}
+      - {x: 50, y: 50}
+      - {x: 0, y: 0}
+      - {x: 50, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_IconKingSprout
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 588
+        width: 70
+        height: 95
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35, y: -47.5}
+        - {x: -35, y: 47.5}
+        - {x: 35, y: 47.5}
+        - {x: 35, y: -47.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5fa356ae94c4c688e90620f82cdb71d
+      internalID: 21300028
+      vertices:
+      - {x: 0, y: 95}
+      - {x: 70, y: 95}
+      - {x: 0, y: 0}
+      - {x: 70, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_GatherGrad
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 846
+        width: 68
+        height: 84
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34, y: -42}
+        - {x: -34, y: 42}
+        - {x: 34, y: 42}
+        - {x: 34, y: -42}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd75be792a9e46668e2e2ca76d3a7265
+      internalID: 21300030
+      vertices:
+      - {x: 0, y: 84}
+      - {x: 68, y: 84}
+      - {x: 0, y: 0}
+      - {x: 68, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Wanted_TimerBase_InnerShadow
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 777
+        width: 62
+        height: 62
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 12, y: 12, z: 12, w: 12}
+      outline:
+      - - {x: -31, y: -31}
+        - {x: -31, y: 31}
+        - {x: 31, y: 31}
+        - {x: 31, y: -31}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d927aefe76f941c9b22dbcddb70530e4
+      internalID: 21300032
+      vertices:
+      - {x: 0, y: 62}
+      - {x: 62, y: 62}
+      - {x: 0, y: 0}
+      - {x: 62, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_RectLineGlowStrong
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 908
+        width: 56
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 20, y: 20, z: 20, w: 20}
+      outline:
+      - - {x: -28, y: -28}
+        - {x: -28, y: 28}
+        - {x: 28, y: 28}
+        - {x: 28, y: -28}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1437a0e9a42f4b26923f4f75b79efe96
+      internalID: 21300034
+      vertices:
+      - {x: 0, y: 56}
+      - {x: 56, y: 56}
+      - {x: 0, y: 0}
+      - {x: 56, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_Glow
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 174
+        width: 38
+        height: 38
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: -19}
+        - {x: -19, y: 19}
+        - {x: 19, y: 19}
+        - {x: 19, y: -19}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94d2038ec5804b5a9e0c936c7965b429
+      internalID: 21300036
+      vertices:
+      - {x: 0, y: 38}
+      - {x: 38, y: 38}
+      - {x: 0, y: 0}
+      - {x: 38, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_BattleRoyale_FireInfoGlow
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 908
+        width: 76
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 35, y: 0, z: 35, w: 0}
+      outline:
+      - - {x: -38, y: -23}
+        - {x: -38, y: 23}
+        - {x: 38, y: 23}
+        - {x: 38, y: -23}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b0164cd740e460fbf540942ebe66e5a
+      internalID: 21300038
+      vertices:
+      - {x: 0, y: 46}
+      - {x: 76, y: 46}
+      - {x: 0, y: 0}
+      - {x: 76, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Duel_HPTipGlow_Red
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 330
+        width: 41
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20.5, y: -25}
+        - {x: -20.5, y: 25}
+        - {x: 20.5, y: 25}
+        - {x: 20.5, y: -25}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4126bf868fd4973bbf8a5be8df8806f
+      internalID: 21300040
+      vertices:
+      - {x: 0, y: 50}
+      - {x: 41, y: 50}
+      - {x: 0, y: 0}
+      - {x: 41, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_ScorePanelShadow
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 849
+        width: 156
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 48, y: 0, z: 44, w: 0}
+      outline:
+      - - {x: -78, y: -41}
+        - {x: -78, y: 41}
+        - {x: 78, y: 41}
+        - {x: 78, y: -41}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fcd232756504690ad317a777e0c3ce6
+      internalID: 21300042
+      vertices:
+      - {x: 0, y: 82}
+      - {x: 156, y: 82}
+      - {x: 0, y: 0}
+      - {x: 156, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_GatherGlow
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 110
+        width: 122
+        height: 95
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: -47.5}
+        - {x: -61, y: 47.5}
+        - {x: 61, y: 47.5}
+        - {x: 61, y: -47.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0817079d16b14df9a1aeb42d66e05359
+      internalID: 21300044
+      vertices:
+      - {x: 0, y: 95}
+      - {x: 122, y: 95}
+      - {x: 0, y: 0}
+      - {x: 122, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_Infinite
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 687
+        width: 100
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -24}
+        - {x: -50, y: 24}
+        - {x: 50, y: 24}
+        - {x: 50, y: -24}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0e64e8aa287469082fdabee72749353
+      internalID: 21300046
+      vertices:
+      - {x: 0, y: 48}
+      - {x: 100, y: 48}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_CircleLine_Thinner
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 386
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f62ad6532b60459b805dd889a60401c8
+      internalID: 21300048
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Duel_BaseGlow
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 753
+        width: 148
+        height: 92
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 50, y: 0, z: 50, w: 0}
+      outline:
+      - - {x: -74, y: -46}
+        - {x: -74, y: 46}
+        - {x: 74, y: 46}
+        - {x: 74, y: -46}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7071dfa15114ad297387ccc95ddf416
+      internalID: 21300050
+      vertices:
+      - {x: 0, y: 92}
+      - {x: 148, y: 92}
+      - {x: 0, y: 0}
+      - {x: 148, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_GradationLine
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1011
+        width: 800
+        height: 4
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 350, y: 1, z: 350, w: 1}
+      outline:
+      - - {x: -400, y: -2}
+        - {x: -400, y: 2}
+        - {x: 400, y: 2}
+        - {x: 400, y: -2}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 986a8f5d57404321abe1c9ed8868d842
+      internalID: 21300052
+      vertices:
+      - {x: 0, y: 4}
+      - {x: 800, y: 4}
+      - {x: 0, y: 0}
+      - {x: 800, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_PlayerGlow
+      rect:
+        serializedVersion: 2
+        x: 1348
+        y: 0
+        width: 34
+        height: 34
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 16, y: 14, z: 14, w: 11}
+      outline:
+      - - {x: -17, y: -17}
+        - {x: -17, y: 17}
+        - {x: 17, y: 17}
+        - {x: 17, y: -17}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a4fac7486e7441d80f7b930705d1ba3
+      internalID: 21300054
+      vertices:
+      - {x: 0, y: 34}
+      - {x: 34, y: 34}
+      - {x: 0, y: 0}
+      - {x: 34, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_TipShadow
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 110
+        width: 22
+        height: 42
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 2, z: 2, w: 2}
+      outline:
+      - - {x: -11, y: -21}
+        - {x: -11, y: 21}
+        - {x: 11, y: 21}
+        - {x: 11, y: -21}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4cc729fe0e249ccaf306dd15365b1f8
+      internalID: 21300056
+      vertices:
+      - {x: 0, y: 42}
+      - {x: 22, y: 42}
+      - {x: 0, y: 0}
+      - {x: 22, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_CrownGuard_IconCrown
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 0
+        width: 56
+        height: 42
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: -21}
+        - {x: -28, y: 21}
+        - {x: 28, y: 21}
+        - {x: 28, y: -21}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e424082e8a15414c966078377bf180d2
+      internalID: 21300058
+      vertices:
+      - {x: 0, y: 42}
+      - {x: 56, y: 42}
+      - {x: 0, y: 0}
+      - {x: 56, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_BattleRoyale_BaseGlow
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 855
+        width: 118
+        height: 104
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 50, y: 0, z: 50, w: 0}
+      outline:
+      - - {x: -58.999996, y: -52}
+        - {x: -58.999996, y: 52}
+        - {x: 58.999996, y: 52}
+        - {x: 58.999996, y: -52}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 596dd09f49a547aaa01b6560451bdca9
+      internalID: 21300060
+      vertices:
+      - {x: 0.0000038146973, y: 104}
+      - {x: 118, y: 104}
+      - {x: 0.0000038146973, y: 0}
+      - {x: 118, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_PlayerShadow
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 695
+        width: 94
+        height: 94
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 40, y: 40, z: 40, w: 40}
+      outline:
+      - - {x: -47, y: -47}
+        - {x: -47, y: 47}
+        - {x: 47, y: 47}
+        - {x: 47, y: -47}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fde5c2b1156f4293a53ba210b3e51eeb
+      internalID: 21300062
+      vertices:
+      - {x: 0, y: 94}
+      - {x: 94, y: 94}
+      - {x: 0, y: 0}
+      - {x: 94, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_TimerPanel_Shadow
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 280
+        width: 180
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 40, y: 0, z: 40, w: 0}
+      outline:
+      - - {x: -90, y: -41}
+        - {x: -90, y: 41}
+        - {x: 90, y: 41}
+        - {x: 90, y: -41}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40353d8ecd944fecbcba8279e84473dd
+      internalID: 21300064
+      vertices:
+      - {x: 0, y: 82}
+      - {x: 180, y: 82}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Wanted_TimerBase_OuterGlow
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 490
+        width: 94
+        height: 94
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 30, y: 30, z: 30, w: 30}
+      outline:
+      - - {x: -47, y: -47}
+        - {x: -47, y: 47}
+        - {x: 47, y: 47}
+        - {x: 47, y: -47}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 548a31c8535d4c2fb0a2254886cfe311
+      internalID: 21300066
+      vertices:
+      - {x: 0, y: 94}
+      - {x: 94, y: 94}
+      - {x: 0, y: 0}
+      - {x: 94, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Wanted_ProfileAddonGlow
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 181
+        width: 34
+        height: 22
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 16, y: 10, z: 0, w: 2}
+      outline:
+      - - {x: -17, y: -11}
+        - {x: -17, y: 11}
+        - {x: 17, y: 11}
+        - {x: 17, y: -11}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76aaa04718d44b0abdbe73597a68ecab
+      internalID: 21300068
+      vertices:
+      - {x: 0, y: 22}
+      - {x: 34, y: 22}
+      - {x: 0, y: 0}
+      - {x: 34, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Score_BodySubShadow_A
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 787
+        width: 66
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 24, y: 24, z: 24, w: 24}
+      outline:
+      - - {x: -33, y: -33}
+        - {x: -33, y: 33}
+        - {x: 33, y: 33}
+        - {x: 33, y: -33}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48ada8a78078411f83db90237652180d
+      internalID: 21300070
+      vertices:
+      - {x: 0, y: 66}
+      - {x: 66, y: 66}
+      - {x: 0, y: 0}
+      - {x: 66, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_IconXGlow
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 0
+        width: 34
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: -16}
+        - {x: -17, y: 16}
+        - {x: 17, y: 16}
+        - {x: 17, y: -16}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d63526ea7ca4323ba8d7b3ea86ea5b1
+      internalID: 21300072
+      vertices:
+      - {x: 0, y: 32}
+      - {x: 34, y: 32}
+      - {x: 0, y: 0}
+      - {x: 34, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_CapturePoint_Wing_Red
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 0
+        width: 120
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -60.000004, y: -39.5}
+        - {x: -60.000004, y: 39.5}
+        - {x: 60.000004, y: 39.5}
+        - {x: 60.000004, y: -39.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02dab80b06aa4b4591ae9c066eeedff2
+      internalID: 21300074
+      vertices:
+      - {x: -0.0000038146973, y: 79}
+      - {x: 120, y: 79}
+      - {x: -0.0000038146973, y: 0}
+      - {x: 120, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_BattleRoyale_LastSwordIcon
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 540
+        width: 40
+        height: 95
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: -47.5}
+        - {x: -20, y: 47.5}
+        - {x: 20, y: 47.5}
+        - {x: 20, y: -47.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16f5be4f35a8465da3aa7e8e9c2197cc
+      internalID: 21300076
+      vertices:
+      - {x: 0, y: 95}
+      - {x: 40, y: 95}
+      - {x: 0, y: 0}
+      - {x: 40, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_Rect
+      rect:
+        serializedVersion: 2
+        x: 1326
+        y: 44
+        width: 10
+        height: 10
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: -5}
+        - {x: -5, y: 5}
+        - {x: 5, y: 5}
+        - {x: 5, y: -5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ea2c56a2c624406a6addb018ce71d5c
+      internalID: 21300078
+      vertices:
+      - {x: 0, y: 10}
+      - {x: 10, y: 10}
+      - {x: 0, y: 0}
+      - {x: 10, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_TimerPanel_Body
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 366
+        width: 180
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 30, y: 0, z: 30, w: 0}
+      outline:
+      - - {x: -90, y: -41}
+        - {x: -90, y: 41}
+        - {x: 90, y: 41}
+        - {x: 90, y: -41}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9cf540f77154cdbb896dbb6825c7a6e
+      internalID: 21300080
+      vertices:
+      - {x: 0, y: 82}
+      - {x: 180, y: 82}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_CapturePoint_Wing_GradationLine
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 209
+        width: 128
+        height: 87
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64, y: -43.5}
+        - {x: -64, y: 43.5}
+        - {x: 64, y: 43.5}
+        - {x: 64, y: -43.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da1f1bb11324486f8243a322aa875152
+      internalID: 21300082
+      vertices:
+      - {x: 0, y: 87}
+      - {x: 128, y: 87}
+      - {x: 0, y: 0}
+      - {x: 128, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_RectGlow
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 883
+        width: 92
+        height: 92
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 30, y: 30, z: 30, w: 30}
+      outline:
+      - - {x: -46, y: -46}
+        - {x: -46, y: 46}
+        - {x: 46, y: 46}
+        - {x: 46, y: -46}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2584d6e2dbdb4f11a63577958d6a725f
+      internalID: 21300084
+      vertices:
+      - {x: 0, y: 92}
+      - {x: 92, y: 92}
+      - {x: 0, y: 0}
+      - {x: 92, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Ready_IconUnderdog_Fist
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 0
+        width: 95
+        height: 120
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -47.5, y: -60.000004}
+        - {x: -47.5, y: 60.000004}
+        - {x: 47.5, y: 60.000004}
+        - {x: 47.5, y: -60.000004}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c4dc6383eb34c0bbf335b31b1279f7f
+      internalID: 21300086
+      vertices:
+      - {x: 0, y: 120}
+      - {x: 95, y: 120}
+      - {x: 0, y: -0.0000038146973}
+      - {x: 95, y: -0.0000038146973}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Wanted_ScoreIcon
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 908
+        width: 54
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.000002, y: -27.000002}
+        - {x: -27.000002, y: 27.000002}
+        - {x: 27.000002, y: 27.000002}
+        - {x: 27.000002, y: -27.000002}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 605179348b9d4793b352fbfe22c3e252
+      internalID: 21300088
+      vertices:
+      - {x: -0.0000019073486, y: 54}
+      - {x: 54, y: 54}
+      - {x: -0.0000019073486, y: -0.0000019073486}
+      - {x: 54, y: -0.0000019073486}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TeamDeath_Wing_White
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 478
+        width: 73
+        height: 58
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36.5, y: -29}
+        - {x: -36.5, y: 29}
+        - {x: 36.5, y: 29}
+        - {x: 36.5, y: -29}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 176db62d1ef44805a5251adf06d18573
+      internalID: 21300090
+      vertices:
+      - {x: 0, y: 58}
+      - {x: 73, y: 58}
+      - {x: 0, y: 0}
+      - {x: 73, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Score_RectBotDeco
+      rect:
+        serializedVersion: 2
+        x: 1027
+        y: 0
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 13, y: 1, z: 12, w: 1}
+      outline:
+      - - {x: -25, y: -25}
+        - {x: -25, y: 25}
+        - {x: 25, y: 25}
+        - {x: 25, y: -25}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0de54eb73932424a9495332eeae9d929
+      internalID: 21300092
+      vertices:
+      - {x: 0, y: 50}
+      - {x: 50, y: 50}
+      - {x: 0, y: 0}
+      - {x: 50, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_RectHalfPadded
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 209
+        width: 40
+        height: 20
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 8, y: 8, z: 8, w: 3}
+      outline:
+      - - {x: -20, y: -10}
+        - {x: -20, y: 10}
+        - {x: 20, y: 10}
+        - {x: 20, y: -10}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c855066eab94d51bc9e9b4dd10fc656
+      internalID: 21300094
+      vertices:
+      - {x: 0, y: 20}
+      - {x: 40, y: 20}
+      - {x: 0, y: 0}
+      - {x: 40, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Score_Body_A
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 54
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 15, y: 12, z: 14, w: 11}
+      outline:
+      - - {x: -25, y: -25}
+        - {x: -25, y: 25}
+        - {x: 25, y: 25}
+        - {x: 25, y: -25}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f4c9caca3e5412180db33922fa1fb71
+      internalID: 21300096
+      vertices:
+      - {x: 0, y: 50}
+      - {x: 50, y: 50}
+      - {x: 0, y: 0}
+      - {x: 50, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_CrownGuard_IconCrownWhite
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 54
+        width: 56
+        height: 42
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: -21}
+        - {x: -28, y: 21}
+        - {x: 28, y: 21}
+        - {x: 28, y: -21}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e4904451c6b4503a577bc7f7d96bd2e
+      internalID: 21300098
+      vertices:
+      - {x: 0, y: 42}
+      - {x: 56, y: 42}
+      - {x: 0, y: 0}
+      - {x: 56, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_Arrow
+      rect:
+        serializedVersion: 2
+        x: 1304
+        y: 44
+        width: 18
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9, y: -20}
+        - {x: -9, y: 20}
+        - {x: 9, y: 20}
+        - {x: 9, y: -20}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59f0040aa1084041bcd068dcd53aef75
+      internalID: 21300100
+      vertices:
+      - {x: 0, y: 40}
+      - {x: 18, y: 40}
+      - {x: 0, y: 0}
+      - {x: 18, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_SkullOutline
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 162
+        width: 44
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22, y: -23}
+        - {x: -22, y: 23}
+        - {x: 22, y: 23}
+        - {x: 22, y: -23}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c05d509df02c4b8c9b8531dee66fc76e
+      internalID: 21300102
+      vertices:
+      - {x: 0, y: 46}
+      - {x: 44, y: 46}
+      - {x: 0, y: 0}
+      - {x: 44, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_RectPadded
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 130
+        width: 40
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 8, y: 8, z: 8, w: 8}
+      outline:
+      - - {x: -20, y: -20}
+        - {x: -20, y: 20}
+        - {x: 20, y: 20}
+        - {x: 20, y: -20}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e17f7acad7745b5a59f270b3d912e52
+      internalID: 21300104
+      vertices:
+      - {x: 0, y: 40}
+      - {x: 40, y: 40}
+      - {x: 0, y: 0}
+      - {x: 40, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TeamDeath_WingDeco
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 130
+        width: 25
+        height: 53
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12.5, y: -26.499998}
+        - {x: -12.5, y: 26.499998}
+        - {x: 12.5, y: 26.499998}
+        - {x: 12.5, y: -26.499998}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e416faf9347400b852edbe45c2f9b19
+      internalID: 21300106
+      vertices:
+      - {x: 0, y: 53}
+      - {x: 25, y: 53}
+      - {x: 0, y: 0.0000019073486}
+      - {x: 25, y: 0.0000019073486}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_CapturePoint_ScoringGauge_Blue
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 0
+        width: 131
+        height: 131
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -65.5, y: -65.5}
+        - {x: -65.5, y: 65.5}
+        - {x: 65.5, y: 65.5}
+        - {x: 65.5, y: -65.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 457a61932bdb42e8b1a527b2556af30a
+      internalID: 21300108
+      vertices:
+      - {x: 0, y: 131}
+      - {x: 131, y: 131}
+      - {x: 0, y: 0}
+      - {x: 131, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_BattleRoyale_BaseDeco
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 934
+        width: 114
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 30, y: 0, z: 30, w: 0}
+      outline:
+      - - {x: -57, y: -18}
+        - {x: -57, y: 18}
+        - {x: 57, y: 18}
+        - {x: 57, y: -18}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c8289ad246646fd80805a5331652ca9
+      internalID: 21300110
+      vertices:
+      - {x: 0, y: 36}
+      - {x: 114, y: 36}
+      - {x: 0, y: 0}
+      - {x: 114, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TeamDeath_BaseGlow
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 594
+        width: 104
+        height: 70
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 26, y: 0, z: 26, w: 0}
+      outline:
+      - - {x: -52, y: -35}
+        - {x: -52, y: 35}
+        - {x: 52, y: 35}
+        - {x: 52, y: -35}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9bb06f9fb684ae1b68d9eabee6cc741
+      internalID: 21300112
+      vertices:
+      - {x: 0, y: 70}
+      - {x: 104, y: 70}
+      - {x: 0, y: 0}
+      - {x: 104, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_ScorePanel_ScoringGlow
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 300
+        width: 133
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 102, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -66.5, y: -41}
+        - {x: -66.5, y: 41}
+        - {x: 66.5, y: 41}
+        - {x: 66.5, y: -41}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9a8b9bd3c4b482b86e67692b347dc7b
+      internalID: 21300114
+      vertices:
+      - {x: 0, y: 82}
+      - {x: 133, y: 82}
+      - {x: 0, y: 0}
+      - {x: 133, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Duel_HPTipGlow_Blue
+      rect:
+        serializedVersion: 2
+        x: 1259
+        y: 0
+        width: 41
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20.5, y: -25}
+        - {x: -20.5, y: 25}
+        - {x: 20.5, y: 25}
+        - {x: 20.5, y: -25}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7a832b2814b4475be98702bc0dd241b
+      internalID: 21300116
+      vertices:
+      - {x: 0, y: 50}
+      - {x: 41, y: 50}
+      - {x: 0, y: 0}
+      - {x: 41, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_RectLineGlowFade
+      rect:
+        serializedVersion: 2
+        x: 1037
+        y: 246
+        width: 30
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 10, z: 10, w: 10}
+      outline:
+      - - {x: -15.000001, y: -15.000001}
+        - {x: -15.000001, y: 15.000001}
+        - {x: 15.000001, y: 15.000001}
+        - {x: 15.000001, y: -15.000001}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5683486ea674e1f9f30d4d3b381ed4b
+      internalID: 21300118
+      vertices:
+      - {x: -0.0000009536743, y: 30}
+      - {x: 30, y: 30}
+      - {x: -0.0000009536743, y: -0.0000009536743}
+      - {x: 30, y: -0.0000009536743}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_SquarePadded
+      rect:
+        serializedVersion: 2
+        x: 1037
+        y: 316
+        width: 22
+        height: 22
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 6, y: 6, z: 6, w: 6}
+      outline:
+      - - {x: -11, y: -11}
+        - {x: -11, y: 11}
+        - {x: 11, y: 11}
+        - {x: 11, y: -11}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fcd0985ed284662a192cc19bee88ced
+      internalID: 21300120
+      vertices:
+      - {x: 0, y: 22}
+      - {x: 22, y: 22}
+      - {x: 0, y: 0}
+      - {x: 22, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_CircleLine_Thick
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 647
+        width: 45
+        height: 45
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22.5, y: -22.5}
+        - {x: -22.5, y: 22.5}
+        - {x: 22.5, y: 22.5}
+        - {x: 22.5, y: -22.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aecc0ccb369d4850a593ad476177b8c7
+      internalID: 21300122
+      vertices:
+      - {x: 0, y: 45}
+      - {x: 45, y: 45}
+      - {x: 0, y: 0}
+      - {x: 45, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_BattleRoyale_BaseShadow
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 0
+        width: 114
+        height: 106
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 50, y: 0, z: 50, w: 0}
+      outline:
+      - - {x: -57, y: -52.999996}
+        - {x: -57, y: 52.999996}
+        - {x: 57, y: 52.999996}
+        - {x: 57, y: -52.999996}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c969f79c80ed4b35a03a3713eb77ae2a
+      internalID: 21300124
+      vertices:
+      - {x: 0, y: 106}
+      - {x: 114, y: 106}
+      - {x: 0, y: 0.0000038146973}
+      - {x: 114, y: 0.0000038146973}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_AppearNoticeFX
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 136
+        height: 136
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -68, y: -68}
+        - {x: -68, y: 68}
+        - {x: 68, y: 68}
+        - {x: 68, y: -68}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 774060bb39094308b96b1022c1908b34
+      internalID: 21300126
+      vertices:
+      - {x: 0, y: 136}
+      - {x: 136, y: 136}
+      - {x: 0, y: 0}
+      - {x: 136, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_SquareLineThickPadded
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 783
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 18, y: 18, z: 18, w: 18}
+      outline:
+      - - {x: -35, y: -35}
+        - {x: -35, y: 35}
+        - {x: 35, y: 35}
+        - {x: 35, y: -35}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d46f650effb04017ac3770af87c0366f
+      internalID: 21300128
+      vertices:
+      - {x: 0, y: 70}
+      - {x: 70, y: 70}
+      - {x: 0, y: 0}
+      - {x: 70, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_AddonPanel
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 212
+        width: 54
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 30, y: 0, z: 9, w: 0}
+      outline:
+      - - {x: -27.000002, y: -15.000001}
+        - {x: -27.000002, y: 15.000001}
+        - {x: 27.000002, y: 15.000001}
+        - {x: 27.000002, y: -15.000001}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cc37168bf344f31a7587f2a7b324a2d
+      internalID: 21300130
+      vertices:
+      - {x: -0.0000019073486, y: 30}
+      - {x: 54, y: 30}
+      - {x: -0.0000019073486, y: -0.0000009536743}
+      - {x: 54, y: -0.0000009536743}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Duel_Base
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 805
+        width: 130
+        height: 74
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 33, y: 0, z: 33, w: 0}
+      outline:
+      - - {x: -65, y: -37}
+        - {x: -65, y: 37}
+        - {x: 65, y: 37}
+        - {x: 65, y: -37}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e6420da3e50450f9d5e9001da317545
+      internalID: 21300132
+      vertices:
+      - {x: 0, y: 74}
+      - {x: 130, y: 74}
+      - {x: 0, y: 0}
+      - {x: 130, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_Triangle
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 204
+        width: 78
+        height: 71
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -39, y: -35.5}
+        - {x: -39, y: 35.5}
+        - {x: 39, y: 35.5}
+        - {x: 39, y: -35.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4340a7f6262c4de88e93c465d75f4123
+      internalID: 21300134
+      vertices:
+      - {x: 0, y: 71}
+      - {x: 78, y: 71}
+      - {x: 0, y: 0}
+      - {x: 78, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_ScorePanelInnerGlow
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 855
+        width: 156
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 50, y: 0, z: 50, w: 0}
+      outline:
+      - - {x: -78, y: -41}
+        - {x: -78, y: 41}
+        - {x: 78, y: 41}
+        - {x: 78, y: -41}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f5a55ec30a649b8b9befd4ea0a473d9
+      internalID: 21300136
+      vertices:
+      - {x: 0, y: 82}
+      - {x: 156, y: 82}
+      - {x: 0, y: 0}
+      - {x: 156, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Wanted_TimerBase
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 658
+        width: 62
+        height: 62
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 12, y: 12, z: 12, w: 12}
+      outline:
+      - - {x: -31, y: -31}
+        - {x: -31, y: 31}
+        - {x: 31, y: 31}
+        - {x: 31, y: -31}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ed2305b50df4294bfc7c45aae6c89fa
+      internalID: 21300138
+      vertices:
+      - {x: 0, y: 62}
+      - {x: 62, y: 62}
+      - {x: 0, y: 0}
+      - {x: 62, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Score_RectLine
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 0
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 8, y: 8, z: 8, w: 8}
+      outline:
+      - - {x: -25, y: -25}
+        - {x: -25, y: 25}
+        - {x: 25, y: 25}
+        - {x: 25, y: -25}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c4882aa17964a8180c08c37e775a0f2
+      internalID: 21300140
+      vertices:
+      - {x: 0, y: 50}
+      - {x: 50, y: 50}
+      - {x: 0, y: 0}
+      - {x: 50, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_RectLineGlow
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 396
+        width: 30
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 10, z: 10, w: 10}
+      outline:
+      - - {x: -15.000001, y: -15.000001}
+        - {x: -15.000001, y: 15.000001}
+        - {x: 15.000001, y: 15.000001}
+        - {x: 15.000001, y: -15.000001}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb0c5bceed2e4fde828e8125059bc85e
+      internalID: 21300142
+      vertices:
+      - {x: -0.0000009536743, y: 30}
+      - {x: 30, y: 30}
+      - {x: -0.0000009536743, y: -0.0000009536743}
+      - {x: 30, y: -0.0000009536743}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Score_Body_B
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 108
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 14, y: 12, z: 15, w: 11}
+      outline:
+      - - {x: -25, y: -25}
+        - {x: -25, y: 25}
+        - {x: 25, y: 25}
+        - {x: 25, y: -25}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bcba262bcba4e20bf99b6169e4a55ee
+      internalID: 21300144
+      vertices:
+      - {x: 0, y: 50}
+      - {x: 50, y: 50}
+      - {x: 0, y: 0}
+      - {x: 50, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_BattleRoyale_LastSwordWhite
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 787
+        width: 40
+        height: 95
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: -47.5}
+        - {x: -20, y: 47.5}
+        - {x: 20, y: 47.5}
+        - {x: 20, y: -47.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecf59956f733488196960b3bb2d0a972
+      internalID: 21300146
+      vertices:
+      - {x: 0, y: 95}
+      - {x: 40, y: 95}
+      - {x: 0, y: 0}
+      - {x: 40, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_ArcSliderGlow02
+      rect:
+        serializedVersion: 2
+        x: 1141
+        y: 54
+        width: 37
+        height: 10
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 16, y: 0, z: 17, w: 0}
+      outline:
+      - - {x: -18.5, y: -5}
+        - {x: -18.5, y: 5}
+        - {x: 18.5, y: 5}
+        - {x: 18.5, y: -5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0227be16c2744585913a81f2602df578
+      internalID: 21300148
+      vertices:
+      - {x: 0, y: 10}
+      - {x: 37, y: 10}
+      - {x: 0, y: 0}
+      - {x: 37, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TeamDeath_BaseWingGlow
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 403
+        width: 61
+        height: 71
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.5, y: -35.5}
+        - {x: -30.5, y: 35.5}
+        - {x: 30.5, y: 35.5}
+        - {x: 30.5, y: -35.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e6ba34f1dc24dd5a8a94f031a2ca381
+      internalID: 21300150
+      vertices:
+      - {x: 0, y: 71}
+      - {x: 61, y: 71}
+      - {x: 0, y: 0}
+      - {x: 61, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_CapturePoint_Wing_Blue
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 331
+        width: 120
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -60.000004, y: -39.5}
+        - {x: -60.000004, y: 39.5}
+        - {x: 60.000004, y: 39.5}
+        - {x: 60.000004, y: -39.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86be99aa94fa4f77bab2f0d513e5e574
+      internalID: 21300152
+      vertices:
+      - {x: -0.0000038146973, y: 79}
+      - {x: 120, y: 79}
+      - {x: -0.0000038146973, y: 0}
+      - {x: 120, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_CapturePoint_IconCompete
+      rect:
+        serializedVersion: 2
+        x: 1027
+        y: 54
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -25, y: -25}
+        - {x: -25, y: 25}
+        - {x: 25, y: 25}
+        - {x: 25, y: -25}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf1e1906e73f4b1490a316ce69975e47
+      internalID: 21300154
+      vertices:
+      - {x: 0, y: 50}
+      - {x: 50, y: 50}
+      - {x: 0, y: 0}
+      - {x: 50, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_TimerPanel_LeadingTip
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 763
+        width: 39
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19.5, y: -41}
+        - {x: -19.5, y: 41}
+        - {x: 19.5, y: 41}
+        - {x: 19.5, y: -41}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95090b5fdc2d41ccad976d62370e8bb9
+      internalID: 21300156
+      vertices:
+      - {x: 0, y: 82}
+      - {x: 39, y: 82}
+      - {x: 0, y: 0}
+      - {x: 39, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_Eye
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 279
+        width: 8
+        height: 15
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4, y: -7.5000005}
+        - {x: -4, y: 7.5000005}
+        - {x: 4, y: 7.5000005}
+        - {x: 4, y: -7.5000005}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7db3c857e7b4a91a9363aaf67c34b1a
+      internalID: 21300158
+      vertices:
+      - {x: 0, y: 15}
+      - {x: 8, y: 15}
+      - {x: 0, y: -0.00000047683716}
+      - {x: 8, y: -0.00000047683716}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_RespawnSpinner
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 228
+        width: 99
+        height: 99
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -49.5, y: -49.5}
+        - {x: -49.5, y: 49.5}
+        - {x: 49.5, y: 49.5}
+        - {x: 49.5, y: -49.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d693ae1854384bf498f0695cf3a3d37f
+      internalID: 21300160
+      vertices:
+      - {x: 0, y: 99}
+      - {x: 99, y: 99}
+      - {x: 0, y: 0}
+      - {x: 99, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_CapturePoint_ScoringX
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 0
+        width: 48
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: -25}
+        - {x: -24, y: 25}
+        - {x: 24, y: 25}
+        - {x: 24, y: -25}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 251bfe87d7ac474cb73fd629d7727cf0
+      internalID: 21300162
+      vertices:
+      - {x: 0, y: 50}
+      - {x: 48, y: 50}
+      - {x: 0, y: 0}
+      - {x: 48, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_HPGuageOutline
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 384
+        width: 84
+        height: 20
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 59, y: 6, z: 5, w: 11}
+      outline:
+      - - {x: -42, y: -10}
+        - {x: -42, y: 10}
+        - {x: 42, y: 10}
+        - {x: 42, y: -10}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f090116f77c4a79a9526aec99e26fb7
+      internalID: 21300164
+      vertices:
+      - {x: 0, y: 20}
+      - {x: 84, y: 20}
+      - {x: 0, y: 0}
+      - {x: 84, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_ScorePanelOuterTip
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 244
+        width: 64
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32, y: -41}
+        - {x: -32, y: 41}
+        - {x: 32, y: 41}
+        - {x: 32, y: -41}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bebf19ab09e47aca18dc62434e95fa7
+      internalID: 21300166
+      vertices:
+      - {x: 0, y: 82}
+      - {x: 64, y: 82}
+      - {x: 0, y: 0}
+      - {x: 64, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_FrameBot
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 396
+        width: 22
+        height: 10
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 12, y: 5, z: 6, w: 2}
+      outline:
+      - - {x: -11, y: -5}
+        - {x: -11, y: 5}
+        - {x: 11, y: 5}
+        - {x: 11, y: -5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fc4d275b75c4181ac8d2559b8414570
+      internalID: 21300168
+      vertices:
+      - {x: 0, y: 10}
+      - {x: 22, y: 10}
+      - {x: 0, y: 0}
+      - {x: 22, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Wanted_TargetIcon
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 162
+        width: 48
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: -25}
+        - {x: -24, y: 25}
+        - {x: 24, y: 25}
+        - {x: 24, y: -25}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34741fe31ff8482c90ec31c9326140fa
+      internalID: 21300170
+      vertices:
+      - {x: 0, y: 50}
+      - {x: 48, y: 50}
+      - {x: 0, y: 0}
+      - {x: 48, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_GatherLighting
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 540
+        width: 34
+        height: 103
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: -51.5}
+        - {x: -17, y: 51.5}
+        - {x: 17, y: 51.5}
+        - {x: 17, y: -51.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbfe1105f82e47ac8592d2be4b4a2d2f
+      internalID: 21300172
+      vertices:
+      - {x: 0, y: 103}
+      - {x: 34, y: 103}
+      - {x: 0, y: 0}
+      - {x: 34, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_SharpFX
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 668
+        width: 39
+        height: 174
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19.5, y: -87}
+        - {x: -19.5, y: 87}
+        - {x: 19.5, y: 87}
+        - {x: 19.5, y: -87}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b76f05d797a0460988aa084202751a30
+      internalID: 21300174
+      vertices:
+      - {x: 0, y: 174}
+      - {x: 39, y: 174}
+      - {x: 0, y: 0}
+      - {x: 39, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_LeadingPanelTip_RedScore
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 452
+        width: 112
+        height: 131
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -56, y: -65.5}
+        - {x: -56, y: 65.5}
+        - {x: 56, y: 65.5}
+        - {x: 56, y: -65.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5964b31c85a146fd8038663d2e36cad4
+      internalID: 21300176
+      vertices:
+      - {x: 0, y: 131}
+      - {x: 112, y: 131}
+      - {x: 0, y: 0}
+      - {x: 112, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_ScorePanelTip_RedScore
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 587
+        width: 99
+        height: 130
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -49.5, y: -65}
+        - {x: -49.5, y: 65}
+        - {x: 49.5, y: 65}
+        - {x: 49.5, y: -65}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cd5448c9bd9434389bf8fa91cad2278
+      internalID: 21300178
+      vertices:
+      - {x: 0, y: 130}
+      - {x: 99, y: 130}
+      - {x: 0, y: 0}
+      - {x: 99, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_BattleRoyale_FireInfoIconBG
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 416
+        width: 50
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 24, y: 0, z: 15, w: 0}
+      outline:
+      - - {x: -25, y: -16}
+        - {x: -25, y: 16}
+        - {x: 25, y: 16}
+        - {x: 25, y: -16}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16911b3db9b14d82a3d1538dde16b830
+      internalID: 21300180
+      vertices:
+      - {x: 0, y: 32}
+      - {x: 50, y: 32}
+      - {x: 0, y: 0}
+      - {x: 50, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Duel_ArrowDeco
+      rect:
+        serializedVersion: 2
+        x: 939
+        y: 702
+        width: 35
+        height: 74
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.5, y: -37}
+        - {x: -17.5, y: 37}
+        - {x: 17.5, y: 37}
+        - {x: 17.5, y: -37}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08ec8273c1204d97a1f665775be1c6ed
+      internalID: 21300182
+      vertices:
+      - {x: 0, y: 74}
+      - {x: 35, y: 74}
+      - {x: 0, y: 0}
+      - {x: 35, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TeamDeath_BaseDeco
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 260
+        width: 14
+        height: 70
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7, y: -35}
+        - {x: -7, y: 35}
+        - {x: 7, y: 35}
+        - {x: 7, y: -35}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7f809c8357a4b86a033bb550fbc7541
+      internalID: 21300184
+      vertices:
+      - {x: 0, y: 70}
+      - {x: 14, y: 70}
+      - {x: 0, y: 0}
+      - {x: 14, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_PlayerDeco
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 886
+        width: 197
+        height: 18
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -98.5, y: -9}
+        - {x: -98.5, y: 9}
+        - {x: 98.5, y: 9}
+        - {x: 98.5, y: -9}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5c79605bd5d4eb8a0a177c0ad804d9f
+      internalID: 21300186
+      vertices:
+      - {x: 0, y: 18}
+      - {x: 197, y: 18}
+      - {x: 0, y: 0}
+      - {x: 197, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Harvest_IconNo1White
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 487
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae51e14d07f54b26947706af2e04999e
+      internalID: 21300188
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_BattleRoyale_ExitButtonBG
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 130
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 10, z: 10, w: 10}
+      outline:
+      - - {x: -16, y: -16}
+        - {x: -16, y: 16}
+        - {x: 16, y: 16}
+        - {x: 16, y: -16}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e117e13c8fa440ebe927c27061e6c74
+      internalID: 21300190
+      vertices:
+      - {x: 0, y: 32}
+      - {x: 32, y: 32}
+      - {x: 0, y: 0}
+      - {x: 32, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Score_RectOuterGlow
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 647
+        width: 56
+        height: 51
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 12, y: 12, z: 12, w: 12}
+      outline:
+      - - {x: -28, y: -25.5}
+        - {x: -28, y: 25.5}
+        - {x: 28, y: 25.5}
+        - {x: 28, y: -25.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40de8c4d159d475cb91efa64c4a3742e
+      internalID: 21300192
+      vertices:
+      - {x: 0, y: 51}
+      - {x: 56, y: 51}
+      - {x: 0, y: 0}
+      - {x: 56, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_TeamMember
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 919
+        width: 56
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: -33}
+        - {x: -28, y: 33}
+        - {x: 28, y: 33}
+        - {x: 28, y: -33}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98b3cd2c27964201aefafb2018d776d3
+      internalID: 21300194
+      vertices:
+      - {x: 0, y: 66}
+      - {x: 56, y: 66}
+      - {x: 0, y: 0}
+      - {x: 56, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_RectLinePadded
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 416
+        width: 40
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 10, z: 10, w: 10}
+      outline:
+      - - {x: -20, y: -20}
+        - {x: -20, y: 20}
+        - {x: 20, y: 20}
+        - {x: 20, y: -20}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ead4e375fbe41b59facbef6b2b0ad47
+      internalID: 21300196
+      vertices:
+      - {x: 0, y: 40}
+      - {x: 40, y: 40}
+      - {x: 0, y: 0}
+      - {x: 40, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_BattleRoyale_IconFire
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 331
+        width: 40
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: -20}
+        - {x: -20, y: 20}
+        - {x: 20, y: 20}
+        - {x: 20, y: -20}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd5153faac1e4c05861e16aa6e42fa35
+      internalID: 21300198
+      vertices:
+      - {x: 0, y: 40}
+      - {x: 40, y: 40}
+      - {x: 0, y: 0}
+      - {x: 40, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Duel_NamePanel
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 140
+        width: 302
+        height: 60
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 140, y: 0, z: 140, w: 0}
+      outline:
+      - - {x: -151, y: -30.000002}
+        - {x: -151, y: 30.000002}
+        - {x: 151, y: 30.000002}
+        - {x: 151, y: -30.000002}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9f6a29cb29f4f31992d68be5eac8c64
+      internalID: 21300200
+      vertices:
+      - {x: 0, y: 60}
+      - {x: 302, y: 60}
+      - {x: 0, y: -0.0000019073486}
+      - {x: 302, y: -0.0000019073486}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_CapturePoint_Wing_White
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 228
+        width: 120
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -60.000004, y: -39.5}
+        - {x: -60.000004, y: 39.5}
+        - {x: 60.000004, y: 39.5}
+        - {x: 60.000004, y: -39.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c152431be70c4e7cb6ca55be973201c9
+      internalID: 21300202
+      vertices:
+      - {x: -0.0000038146973, y: 79}
+      - {x: 120, y: 79}
+      - {x: -0.0000038146973, y: 0}
+      - {x: 120, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Score_BodySubShadow_B
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 588
+        width: 66
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 24, y: 24, z: 24, w: 24}
+      outline:
+      - - {x: -33, y: -33}
+        - {x: -33, y: 33}
+        - {x: 33, y: 33}
+        - {x: 33, y: -33}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcfe04ab4deb46a890882a517a22a246
+      internalID: 21300204
+      vertices:
+      - {x: 0, y: 66}
+      - {x: 66, y: 66}
+      - {x: 0, y: 0}
+      - {x: 66, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Wanted_TimerBaseFrame
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 331
+        width: 68
+        height: 68
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 14, y: 14, z: 14, w: 14}
+      outline:
+      - - {x: -34, y: -34}
+        - {x: -34, y: 34}
+        - {x: 34, y: 34}
+        - {x: 34, y: -34}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4a1597878dd41c2843bc3792f0c7112
+      internalID: 21300206
+      vertices:
+      - {x: 0, y: 68}
+      - {x: 68, y: 68}
+      - {x: 0, y: 0}
+      - {x: 68, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_ScorePanelTip
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 330
+        width: 52
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26, y: -41}
+        - {x: -26, y: 41}
+        - {x: 26, y: 41}
+        - {x: 26, y: -41}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e24cc7dc90d43b8a0d8fb7b291f1a15
+      internalID: 21300208
+      vertices:
+      - {x: 0, y: 82}
+      - {x: 52, y: 82}
+      - {x: 0, y: 0}
+      - {x: 52, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Harvest_ProfileAddonGradient
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 157
+        width: 40
+        height: 170
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 4, z: 4, w: 4}
+      outline:
+      - - {x: -20, y: -85}
+        - {x: -20, y: 85}
+        - {x: 20, y: 85}
+        - {x: 20, y: -85}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dc1df4ec4444c63b614dc2fa32ddf37
+      internalID: 21300210
+      vertices:
+      - {x: 0, y: 170}
+      - {x: 40, y: 170}
+      - {x: 0, y: 0}
+      - {x: 40, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_TriangleLineThin
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 204
+        width: 132
+        height: 122
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -66, y: -61}
+        - {x: -66, y: 61}
+        - {x: 66, y: 61}
+        - {x: 66, y: -61}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7c092f1378d46e58ae3cf7811451743
+      internalID: 21300212
+      vertices:
+      - {x: 0, y: 122}
+      - {x: 132, y: 122}
+      - {x: 0, y: 0}
+      - {x: 132, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_SquareLineNormPadded
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 216
+        width: 40
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 10, z: 10, w: 10}
+      outline:
+      - - {x: -20, y: -20}
+        - {x: -20, y: 20}
+        - {x: 20, y: 20}
+        - {x: 20, y: -20}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a52fb21b58b4834a1246ba89e973545
+      internalID: 21300214
+      vertices:
+      - {x: 0, y: 40}
+      - {x: 40, y: 40}
+      - {x: 0, y: 0}
+      - {x: 40, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_BattleRoyale_FireInfoBG
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 46
+        width: 68
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 24, y: 0, z: 24, w: 0}
+      outline:
+      - - {x: -34, y: -16}
+        - {x: -34, y: 16}
+        - {x: 34, y: 16}
+        - {x: 34, y: -16}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c40a0ce2e91b4f8b854466c02ffb5937
+      internalID: 21300216
+      vertices:
+      - {x: 0, y: 32}
+      - {x: 68, y: 32}
+      - {x: 0, y: 0}
+      - {x: 68, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_CircleGlow
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 629
+        width: 120
+        height: 120
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -60.000004, y: -60.000004}
+        - {x: -60.000004, y: 60.000004}
+        - {x: 60.000004, y: 60.000004}
+        - {x: 60.000004, y: -60.000004}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97198a9ef3844036afc09b4f1394f8b7
+      internalID: 21300218
+      vertices:
+      - {x: -0.0000038146973, y: 120}
+      - {x: 120, y: 120}
+      - {x: -0.0000038146973, y: -0.0000038146973}
+      - {x: 120, y: -0.0000038146973}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_Grad_RtoL
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 941
+        width: 200
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 1, z: 2, w: 1}
+      outline:
+      - - {x: -100, y: -20}
+        - {x: -100, y: 20}
+        - {x: 100, y: 20}
+        - {x: 100, y: -20}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aecd4c8de7b4c0abc633ab970764b82
+      internalID: 21300220
+      vertices:
+      - {x: 0, y: 40}
+      - {x: 200, y: 40}
+      - {x: 0, y: 0}
+      - {x: 200, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_ScorePanelTip_BlueScore
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 721
+        width: 99
+        height: 130
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -49.5, y: -65}
+        - {x: -49.5, y: 65}
+        - {x: 49.5, y: 65}
+        - {x: 49.5, y: -65}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 352b24b3fb8543b29a61f9fbe945e2a7
+      internalID: 21300222
+      vertices:
+      - {x: 0, y: 130}
+      - {x: 99, y: 130}
+      - {x: 0, y: 0}
+      - {x: 99, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_MainCamp_Deco
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 966
+        width: 50
+        height: 52
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -25, y: -26}
+        - {x: -25, y: 26}
+        - {x: 25, y: 26}
+        - {x: 25, y: -26}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9051bf79f22c4a57aa0d370324600e69
+      internalID: 21300224
+      vertices:
+      - {x: 0, y: 52}
+      - {x: 50, y: 52}
+      - {x: 0, y: 0}
+      - {x: 50, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_BattleRoyale_BaseInterShadow
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 233
+        width: 48
+        height: 8
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 0, z: 10, w: 0}
+      outline:
+      - - {x: -24, y: -4}
+        - {x: -24, y: 4}
+        - {x: 24, y: 4}
+        - {x: 24, y: -4}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6ffbf7d638a431392d2e2cded2ba8d5
+      internalID: 21300226
+      vertices:
+      - {x: 0, y: 8}
+      - {x: 48, y: 8}
+      - {x: 0, y: 0}
+      - {x: 48, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_RoundedRect
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 164
+        width: 15
+        height: 15
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 7, y: 7, z: 7, w: 7}
+      outline:
+      - - {x: -7.5000005, y: -7.5000005}
+        - {x: -7.5000005, y: 7.5000005}
+        - {x: 7.5000005, y: 7.5000005}
+        - {x: 7.5000005, y: -7.5000005}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e51c343bbf0d466bb4a1d8e0a97ca8e0
+      internalID: 21300228
+      vertices:
+      - {x: -0.00000047683716, y: 15}
+      - {x: 15, y: 15}
+      - {x: -0.00000047683716, y: -0.00000047683716}
+      - {x: 15, y: -0.00000047683716}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_BattleRoyale_FireInfoBGEndTip
+      rect:
+        serializedVersion: 2
+        x: 1037
+        y: 280
+        width: 17
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8.5, y: -16}
+        - {x: -8.5, y: 16}
+        - {x: 8.5, y: 16}
+        - {x: 8.5, y: -16}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4968a30873bd41e4ab91e25bf33a604c
+      internalID: 21300230
+      vertices:
+      - {x: 0, y: 32}
+      - {x: 17, y: 32}
+      - {x: 0, y: 0}
+      - {x: 17, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_CircleLineGlow
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 587
+        width: 110
+        height: 110
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -55, y: -55}
+        - {x: -55, y: 55}
+        - {x: 55, y: 55}
+        - {x: 55, y: -55}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eeb6adb691247fa85c5764fc5b0f0f6
+      internalID: 21300232
+      vertices:
+      - {x: 0, y: 110}
+      - {x: 110, y: 110}
+      - {x: 0, y: 0}
+      - {x: 110, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_Shield_Fragment_3
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 396
+        width: 118
+        height: 87
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -58.999996, y: -43.5}
+        - {x: -58.999996, y: 43.5}
+        - {x: 58.999996, y: 43.5}
+        - {x: 58.999996, y: -43.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a259e94251764820a860e8692321d4d0
+      internalID: 21300234
+      vertices:
+      - {x: 0.0000038146973, y: 87}
+      - {x: 118, y: 87}
+      - {x: 0.0000038146973, y: 0}
+      - {x: 118, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_PanelGlow
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 701
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 44, y: 46, z: 44, w: 46}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3d1db7097894e8b883e85db2855785a
+      internalID: 21300236
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Harvest_IconNo2
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 591
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 124724e146514bcdb59cb19eabf6c960
+      internalID: 21300238
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_SquareLinePadded
+      rect:
+        serializedVersion: 2
+        x: 1458
+        y: 0
+        width: 30
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 6, y: 6, z: 6, w: 6}
+      outline:
+      - - {x: -15.000001, y: -15.000001}
+        - {x: -15.000001, y: 15.000001}
+        - {x: 15.000001, y: 15.000001}
+        - {x: 15.000001, y: -15.000001}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f008b5ac80d34884b1426c718dbbf3a6
+      internalID: 21300240
+      vertices:
+      - {x: -0.0000009536743, y: 30}
+      - {x: 30, y: 30}
+      - {x: -0.0000009536743, y: -0.0000009536743}
+      - {x: 30, y: -0.0000009536743}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TeamDeath_Base
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 83
+        width: 104
+        height: 70
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 26, y: 0, z: 26, w: 0}
+      outline:
+      - - {x: -52, y: -35}
+        - {x: -52, y: 35}
+        - {x: 52, y: 35}
+        - {x: 52, y: -35}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18924a609e1440ca9b0661befe614fd4
+      internalID: 21300242
+      vertices:
+      - {x: 0, y: 70}
+      - {x: 104, y: 70}
+      - {x: 0, y: 0}
+      - {x: 104, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_Shield_Fragment_4
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 135
+        width: 108
+        height: 141
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -54.000004, y: -70.5}
+        - {x: -54.000004, y: 70.5}
+        - {x: 54.000004, y: 70.5}
+        - {x: 54.000004, y: -70.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8545089e9d434382b8c0a19ee7674f8f
+      internalID: 21300244
+      vertices:
+      - {x: -0.0000038146973, y: 141}
+      - {x: 108, y: 141}
+      - {x: -0.0000038146973, y: 0}
+      - {x: 108, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_Skull
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 696
+        width: 44
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22, y: -23}
+        - {x: -22, y: 23}
+        - {x: 22, y: 23}
+        - {x: 22, y: -23}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7579da95798c40c6be03c385663e37f7
+      internalID: 21300246
+      vertices:
+      - {x: 0, y: 46}
+      - {x: 44, y: 46}
+      - {x: 0, y: 0}
+      - {x: 44, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_TimerPanel_BottomFrame
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 739
+        width: 100
+        height: 44
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 30, y: 0, z: 30, w: 0}
+      outline:
+      - - {x: -50, y: -22}
+        - {x: -50, y: 22}
+        - {x: 50, y: 22}
+        - {x: 50, y: -22}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da1c0ad7f82841699918894017b337fc
+      internalID: 21300248
+      vertices:
+      - {x: 0, y: 44}
+      - {x: 100, y: 44}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_RectInnerShadow
+      rect:
+        serializedVersion: 2
+        x: 1304
+        y: 0
+        width: 40
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 15, y: 15, z: 15, w: 15}
+      outline:
+      - - {x: -20, y: -20}
+        - {x: -20, y: 20}
+        - {x: 20, y: 20}
+        - {x: 20, y: -20}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc2a5e0970af4886a8c7c2d1b14d2197
+      internalID: 21300250
+      vertices:
+      - {x: 0, y: 40}
+      - {x: 40, y: 40}
+      - {x: 0, y: 0}
+      - {x: 40, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Wanted_RetireIcon
+      rect:
+        serializedVersion: 2
+        x: 1191
+        y: 82
+        width: 46
+        height: 43
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23, y: -21.5}
+        - {x: -23, y: 21.5}
+        - {x: 23, y: 21.5}
+        - {x: 23, y: -21.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16f13b6e5e0443178d557d0fe047b319
+      internalID: 21300252
+      vertices:
+      - {x: 0, y: 43}
+      - {x: 46, y: 43}
+      - {x: 0, y: 0}
+      - {x: 46, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_TimerPanel_White
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 488
+        width: 80
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 32, y: 0, z: 32, w: 0}
+      outline:
+      - - {x: -40, y: -41}
+        - {x: -40, y: 41}
+        - {x: 40, y: 41}
+        - {x: 40, y: -41}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab0e130d94c04d9e952232709a0be161
+      internalID: 21300254
+      vertices:
+      - {x: 0, y: 82}
+      - {x: 80, y: 82}
+      - {x: 0, y: 0}
+      - {x: 80, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_CapturePoint_BaseWing_GradationLine
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 157
+        width: 72
+        height: 83
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36, y: -41.5}
+        - {x: -36, y: 41.5}
+        - {x: 36, y: 41.5}
+        - {x: 36, y: -41.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c1be21521ab4d4ca51ee6149cb86509
+      internalID: 21300256
+      vertices:
+      - {x: 0, y: 83}
+      - {x: 72, y: 83}
+      - {x: 0, y: 0}
+      - {x: 72, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_PanelFX
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 124
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 46, y: 46, z: 46, w: 46}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67a6bfbac8f44e8b92253464c4059d68
+      internalID: 21300258
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_Gauge
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 908
+        width: 55
+        height: 55
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 14, y: 3, z: 14, w: 7}
+      outline:
+      - - {x: -27.5, y: -27.5}
+        - {x: -27.5, y: 27.5}
+        - {x: 27.5, y: 27.5}
+        - {x: 27.5, y: -27.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ed303754df547a7a7c197afba0c3f77
+      internalID: 21300260
+      vertices:
+      - {x: 0, y: 55}
+      - {x: 55, y: 55}
+      - {x: 0, y: 0}
+      - {x: 55, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_Shield_Fragment_5
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 538
+        width: 114
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -57, y: -62}
+        - {x: -57, y: 62}
+        - {x: 57, y: 62}
+        - {x: 57, y: -62}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 711c85b10bea4ceb893d019759f0060a
+      internalID: 21300262
+      vertices:
+      - {x: 0, y: 124}
+      - {x: 114, y: 124}
+      - {x: 0, y: 0}
+      - {x: 114, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_TimerPanel_LeadingGlow
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 452
+        width: 180
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 40, y: 0, z: 40, w: 0}
+      outline:
+      - - {x: -90, y: -41}
+        - {x: -90, y: 41}
+        - {x: 90, y: 41}
+        - {x: 90, y: -41}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bbb6899ed4c45558bd472aa8871717c
+      internalID: 21300264
+      vertices:
+      - {x: 0, y: 82}
+      - {x: 180, y: 82}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_Symbol_Defence
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 490
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b285212392e14502a5bdfb97a54d2aab
+      internalID: 21300266
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_ScorePanelLeading
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 330
+        width: 200
+        height: 78
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 47, y: 0, z: 58, w: 0}
+      outline:
+      - - {x: -100, y: -39}
+        - {x: -100, y: 39}
+        - {x: 100, y: 39}
+        - {x: 100, y: -39}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3ea207aac3b4c0d8bc9896c3dedcf70
+      internalID: 21300268
+      vertices:
+      - {x: 0, y: 78}
+      - {x: 200, y: 78}
+      - {x: 0, y: 0}
+      - {x: 200, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_BattleRoyale_ExitButtonOutline
+      rect:
+        serializedVersion: 2
+        x: 1241
+        y: 82
+        width: 44
+        height: 44
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 14, y: 14, z: 14, w: 14}
+      outline:
+      - - {x: -22, y: -22}
+        - {x: -22, y: 22}
+        - {x: 22, y: 22}
+        - {x: 22, y: -22}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2690e498b7ec40cea8c30db41f1059ef
+      internalID: 21300270
+      vertices:
+      - {x: 0, y: 44}
+      - {x: 44, y: 44}
+      - {x: 0, y: 0}
+      - {x: 44, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_BattleRoyale_IconFireGlow
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 130
+        width: 43
+        height: 47
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.5, y: -23.5}
+        - {x: -21.5, y: 23.5}
+        - {x: 21.5, y: 23.5}
+        - {x: 21.5, y: -23.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 804fd33407f148fbb1e18bee00c3b5d1
+      internalID: 21300272
+      vertices:
+      - {x: 0, y: 47}
+      - {x: 43, y: 47}
+      - {x: 0, y: 0}
+      - {x: 43, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Harvest_ProfileAddonGradientOutline
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 164
+        width: 30
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 8, y: 7, z: 7, w: 8}
+      outline:
+      - - {x: -15.000001, y: -15.000001}
+        - {x: -15.000001, y: 15.000001}
+        - {x: 15.000001, y: 15.000001}
+        - {x: 15.000001, y: -15.000001}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa472475e56845f19f5a4f41dde3682e
+      internalID: 21300274
+      vertices:
+      - {x: -0.0000009536743, y: 30}
+      - {x: 30, y: 30}
+      - {x: -0.0000009536743, y: -0.0000009536743}
+      - {x: 30, y: -0.0000009536743}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_ScorePanelDeco
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 963
+        width: 140
+        height: 20
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 4, z: 130, w: 4}
+      outline:
+      - - {x: -70, y: -10}
+        - {x: -70, y: 10}
+        - {x: 70, y: 10}
+        - {x: 70, y: -10}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6db9c5735eab45819f55a8cb28126054
+      internalID: 21300276
+      vertices:
+      - {x: 0, y: 20}
+      - {x: 140, y: 20}
+      - {x: 0, y: 0}
+      - {x: 140, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_CapturePoint_ScoringGauge_Red
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 0
+        width: 131
+        height: 131
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -65.5, y: -65.5}
+        - {x: -65.5, y: 65.5}
+        - {x: 65.5, y: 65.5}
+        - {x: 65.5, y: -65.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f664ab5adc524ed8bcde6a0bab71ff18
+      internalID: 21300278
+      vertices:
+      - {x: 0, y: 131}
+      - {x: 131, y: 131}
+      - {x: 0, y: 0}
+      - {x: 131, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Score_RectInnerGlow
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 110
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 18, y: 18, z: 18, w: 18}
+      outline:
+      - - {x: -25, y: -25}
+        - {x: -25, y: 25}
+        - {x: 25, y: 25}
+        - {x: 25, y: -25}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c50eb7ece7d04308bbd9eb56e9ce98b6
+      internalID: 21300280
+      vertices:
+      - {x: 0, y: 50}
+      - {x: 50, y: 50}
+      - {x: 0, y: 0}
+      - {x: 50, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_DotArrowBG
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 687
+        width: 68
+        height: 92
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34, y: -46}
+        - {x: -34, y: 46}
+        - {x: 34, y: 46}
+        - {x: 34, y: -46}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89e0750eaa004c7f83307e6ea32e9609
+      internalID: 21300282
+      vertices:
+      - {x: 0, y: 92}
+      - {x: 68, y: 92}
+      - {x: 0, y: 0}
+      - {x: 68, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TeamDeath_Wing_Red
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 857
+        width: 73
+        height: 58
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36.5, y: -29}
+        - {x: -36.5, y: 29}
+        - {x: 36.5, y: 29}
+        - {x: 36.5, y: -29}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c504aa7fa57244668b47ec0f58c12e47
+      internalID: 21300284
+      vertices:
+      - {x: 0, y: 58}
+      - {x: 73, y: 58}
+      - {x: 0, y: 0}
+      - {x: 73, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Score_BodySub_A
+      rect:
+        serializedVersion: 2
+        x: 1042
+        y: 108
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 14, y: 14, z: 14, w: 14}
+      outline:
+      - - {x: -25, y: -25}
+        - {x: -25, y: 25}
+        - {x: 25, y: 25}
+        - {x: 25, y: -25}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7ef79bc2aaa4869a95e8a7b2c8c6fc1
+      internalID: 21300286
+      vertices:
+      - {x: 0, y: 50}
+      - {x: 50, y: 50}
+      - {x: 0, y: 0}
+      - {x: 50, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_BattleRoyale_NamePanel
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 985
+        width: 258
+        height: 22
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 6, z: 10, w: 6}
+      outline:
+      - - {x: -129, y: -11}
+        - {x: -129, y: 11}
+        - {x: 129, y: 11}
+        - {x: 129, y: -11}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34b8bf6fed594da6975a02df9ce0b221
+      internalID: 21300288
+      vertices:
+      - {x: 0, y: 22}
+      - {x: 258, y: 22}
+      - {x: 0, y: 0}
+      - {x: 258, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_BattleRoyale_Base
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 0
+        width: 114
+        height: 106
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 50, y: 0, z: 50, w: 0}
+      outline:
+      - - {x: -57, y: -52.999996}
+        - {x: -57, y: 52.999996}
+        - {x: 57, y: 52.999996}
+        - {x: 57, y: -52.999996}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5850e3a6fb1f4b9e978c28430f1ff58b
+      internalID: 21300290
+      vertices:
+      - {x: 0, y: 106}
+      - {x: 114, y: 106}
+      - {x: 0, y: 0.0000038146973}
+      - {x: 114, y: 0.0000038146973}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TeamDeath_BaseWing
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 763
+        width: 56
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: -30.5}
+        - {x: -28, y: 30.5}
+        - {x: 28, y: 30.5}
+        - {x: 28, y: -30.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5006fc480e114f5db7a58f6403cfbe8d
+      internalID: 21300292
+      vertices:
+      - {x: 0, y: 61}
+      - {x: 56, y: 61}
+      - {x: 0, y: 0}
+      - {x: 56, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      T_UI_Mode_Base_CircleGlow: 21300218
+      T_UI_Mode_Base_CircleLineGlow: 21300232
+      T_UI_Mode_Base_CircleLine_Thick: 21300122
+      T_UI_Mode_Base_CircleLine_Thinner: 21300048
+      T_UI_Mode_Base_Gauge: 21300260
+      T_UI_Mode_Base_Grad_RtoL: 21300220
+      T_UI_Mode_Base_GradationLine: 21300052
+      T_UI_Mode_Base_IconX: 21300006
+      T_UI_Mode_Base_IconXGlow: 21300072
+      T_UI_Mode_Base_Infinite: 21300046
+      T_UI_Mode_Base_Rect: 21300078
+      T_UI_Mode_Base_RectGlow: 21300084
+      T_UI_Mode_Base_RectHalfPadded: 21300094
+      T_UI_Mode_Base_RectInnerShadow: 21300250
+      T_UI_Mode_Base_RectLineGlow: 21300142
+      T_UI_Mode_Base_RectLineGlowFade: 21300118
+      T_UI_Mode_Base_RectLineGlowStrong: 21300034
+      T_UI_Mode_Base_RectLinePadded: 21300196
+      T_UI_Mode_Base_RectPadded: 21300104
+      T_UI_Mode_Base_RoundedRect: 21300228
+      T_UI_Mode_Base_SharpFX: 21300174
+      T_UI_Mode_Base_Skull: 21300246
+      T_UI_Mode_Base_SkullOutline: 21300102
+      T_UI_Mode_Base_SquareLineNormPadded: 21300214
+      T_UI_Mode_Base_SquareLineOpened: 21300004
+      T_UI_Mode_Base_SquareLinePadded: 21300240
+      T_UI_Mode_Base_SquareLineThickPadded: 21300128
+      T_UI_Mode_Base_SquarePadded: 21300120
+      T_UI_Mode_Base_TeamMember: 21300194
+      T_UI_Mode_Base_TipShadow: 21300056
+      T_UI_Mode_Base_Triangle: 21300134
+      T_UI_Mode_Base_TriangleLineThin: 21300212
+      T_UI_Mode_BattleRoyale_Base: 21300290
+      T_UI_Mode_BattleRoyale_BaseDeco: 21300110
+      T_UI_Mode_BattleRoyale_BaseGlow: 21300060
+      T_UI_Mode_BattleRoyale_BaseInterShadow: 21300226
+      T_UI_Mode_BattleRoyale_BaseShadow: 21300124
+      T_UI_Mode_BattleRoyale_ExitButtonBG: 21300190
+      T_UI_Mode_BattleRoyale_ExitButtonOutline: 21300270
+      T_UI_Mode_BattleRoyale_FireInfoBG: 21300216
+      T_UI_Mode_BattleRoyale_FireInfoBGEndTip: 21300230
+      T_UI_Mode_BattleRoyale_FireInfoGlow: 21300038
+      T_UI_Mode_BattleRoyale_FireInfoIconBG: 21300180
+      T_UI_Mode_BattleRoyale_IconFire: 21300198
+      T_UI_Mode_BattleRoyale_IconFireGlow: 21300272
+      T_UI_Mode_BattleRoyale_LastSwordIcon: 21300076
+      T_UI_Mode_BattleRoyale_LastSwordWhite: 21300146
+      T_UI_Mode_BattleRoyale_NamePanel: 21300288
+      T_UI_Mode_CapturePoint_BaseWing_GradationLine: 21300256
+      T_UI_Mode_CapturePoint_IconCompete: 21300154
+      T_UI_Mode_CapturePoint_ScoringGauge_Blue: 21300108
+      T_UI_Mode_CapturePoint_ScoringGauge_Red: 21300278
+      T_UI_Mode_CapturePoint_ScoringX: 21300162
+      T_UI_Mode_CapturePoint_Wing_Blue: 21300152
+      T_UI_Mode_CapturePoint_Wing_GradationLine: 21300082
+      T_UI_Mode_CapturePoint_Wing_Red: 21300074
+      T_UI_Mode_CapturePoint_Wing_White: 21300202
+      T_UI_Mode_CrownGuard_IconCrown: 21300058
+      T_UI_Mode_CrownGuard_IconCrownWhite: 21300098
+      T_UI_Mode_Duel_ArrowDeco: 21300182
+      T_UI_Mode_Duel_Base: 21300132
+      T_UI_Mode_Duel_BaseGlow: 21300050
+      T_UI_Mode_Duel_HPTipGlow_Blue: 21300116
+      T_UI_Mode_Duel_HPTipGlow_Red: 21300040
+      T_UI_Mode_Duel_NamePanel: 21300200
+      T_UI_Mode_HarvestWar_AppearNoticeFX: 21300126
+      T_UI_Mode_HarvestWar_IconKingSprout: 21300028
+      T_UI_Mode_HarvestWar_LeadingPanelTip_BlueScore: 21300012
+      T_UI_Mode_HarvestWar_LeadingPanelTip_RedScore: 21300176
+      T_UI_Mode_HarvestWar_ScorePanelBase: 21300008
+      T_UI_Mode_HarvestWar_ScorePanelDeco: 21300276
+      T_UI_Mode_HarvestWar_ScorePanelInnerGlow: 21300136
+      T_UI_Mode_HarvestWar_ScorePanelLeading: 21300268
+      T_UI_Mode_HarvestWar_ScorePanelOuterTip: 21300166
+      T_UI_Mode_HarvestWar_ScorePanelShadow: 21300042
+      T_UI_Mode_HarvestWar_ScorePanelTip: 21300208
+      T_UI_Mode_HarvestWar_ScorePanelTip_BlueScore: 21300222
+      T_UI_Mode_HarvestWar_ScorePanelTip_RedScore: 21300178
+      T_UI_Mode_HarvestWar_ScorePanel_ScoringGlow: 21300114
+      T_UI_Mode_HarvestWar_TimerPanel_Body: 21300080
+      T_UI_Mode_HarvestWar_TimerPanel_BottomFrame: 21300248
+      T_UI_Mode_HarvestWar_TimerPanel_LeadingGlow: 21300264
+      T_UI_Mode_HarvestWar_TimerPanel_LeadingTip: 21300156
+      T_UI_Mode_HarvestWar_TimerPanel_Shadow: 21300064
+      T_UI_Mode_HarvestWar_TimerPanel_White: 21300254
+      T_UI_Mode_Harvest_IconNo1: 21300002
+      T_UI_Mode_Harvest_IconNo1White: 21300188
+      T_UI_Mode_Harvest_IconNo2: 21300238
+      T_UI_Mode_Harvest_ProfileAddonGradient: 21300210
+      T_UI_Mode_Harvest_ProfileAddonGradientOutline: 21300274
+      T_UI_Mode_Profile_AddonPanel: 21300130
+      T_UI_Mode_Profile_FrameBot: 21300168
+      T_UI_Mode_Profile_FrameBotPlus: 21300000
+      T_UI_Mode_Profile_HPGuageOutline: 21300164
+      T_UI_Mode_Profile_PanelFX: 21300258
+      T_UI_Mode_Profile_PanelGlow: 21300236
+      T_UI_Mode_Profile_PlayerDeco: 21300186
+      T_UI_Mode_Profile_PlayerGlow: 21300054
+      T_UI_Mode_Profile_PlayerShadow: 21300062
+      T_UI_Mode_Profile_RespawnSpinner: 21300160
+      T_UI_Mode_Ready_IconUnderdog_Fist: 21300086
+      T_UI_Mode_Score_BodySubShadow_A: 21300070
+      T_UI_Mode_Score_BodySubShadow_B: 21300204
+      T_UI_Mode_Score_BodySub_A: 21300286
+      T_UI_Mode_Score_BodySub_B: 21300026
+      T_UI_Mode_Score_Body_A: 21300096
+      T_UI_Mode_Score_Body_B: 21300144
+      T_UI_Mode_Score_RectBotDeco: 21300092
+      T_UI_Mode_Score_RectInnerGlow: 21300280
+      T_UI_Mode_Score_RectLine: 21300140
+      T_UI_Mode_Score_RectOuterGlow: 21300192
+      T_UI_Mode_TeamDeath_Base: 21300242
+      T_UI_Mode_TeamDeath_BaseDeco: 21300184
+      T_UI_Mode_TeamDeath_BaseGlow: 21300112
+      T_UI_Mode_TeamDeath_BaseGlow_Neutral: 21300022
+      T_UI_Mode_TeamDeath_BaseHalf: 21300020
+      T_UI_Mode_TeamDeath_BaseWing: 21300292
+      T_UI_Mode_TeamDeath_BaseWingGlow: 21300150
+      T_UI_Mode_TeamDeath_WingDeco: 21300106
+      T_UI_Mode_TeamDeath_Wing_Blue: 21300010
+      T_UI_Mode_TeamDeath_Wing_Red: 21300284
+      T_UI_Mode_TeamDeath_Wing_White: 21300090
+      T_UI_Mode_TwoWay_ArcSliderGlow02: 21300148
+      T_UI_Mode_TwoWay_Arrow: 21300100
+      T_UI_Mode_TwoWay_CircleInnerGlow: 21300014
+      T_UI_Mode_TwoWay_DotArrowBG: 21300282
+      T_UI_Mode_TwoWay_Eye: 21300158
+      T_UI_Mode_TwoWay_GatherArrow: 21300016
+      T_UI_Mode_TwoWay_GatherGlow: 21300044
+      T_UI_Mode_TwoWay_GatherGrad: 21300030
+      T_UI_Mode_TwoWay_GatherLighting: 21300172
+      T_UI_Mode_TwoWay_Glow: 21300036
+      T_UI_Mode_TwoWay_MainCamp_Deco: 21300224
+      T_UI_Mode_TwoWay_Shield_Fragment_3: 21300234
+      T_UI_Mode_TwoWay_Shield_Fragment_4: 21300244
+      T_UI_Mode_TwoWay_Shield_Fragment_5: 21300262
+      T_UI_Mode_TwoWay_Symbol_Defence: 21300266
+      T_UI_Mode_TwoWay_Symbol_Occupation: 21300018
+      T_UI_Mode_Wanted_ProfileAddonGlow: 21300068
+      T_UI_Mode_Wanted_RetireIcon: 21300252
+      T_UI_Mode_Wanted_ScoreIcon: 21300088
+      T_UI_Mode_Wanted_TargetIcon: 21300170
+      T_UI_Mode_Wanted_TimerBase: 21300138
+      T_UI_Mode_Wanted_TimerBaseFrame: 21300206
+      T_UI_Mode_Wanted_TimerBase_InnerShadow: 21300032
+      T_UI_Mode_Wanted_TimerBase_OuterGlow: 21300066
+      T_UI_Mode_Wanted_Turtle: 21300024
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
