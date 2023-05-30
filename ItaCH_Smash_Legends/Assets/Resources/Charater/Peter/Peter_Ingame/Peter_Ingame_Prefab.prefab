@@ -652,7 +652,7 @@ GameObject:
   - component: {fileID: 1801810034622763240}
   - component: {fileID: 1801810034622763241}
   m_Layer: 0
-  m_Name: Peter_Test_Move
+  m_Name: Peter_Ingame_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
