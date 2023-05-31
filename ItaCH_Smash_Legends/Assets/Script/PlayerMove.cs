@@ -6,8 +6,13 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float _currentMoveSpeed;
 
     private Vector3 _moveDirection;
+    private Animator _anim;
 
-    void Update()
+    private void Start()
+    {
+        _anim = GetComponent<Animator>();
+    }
+    private void Update()
     {
         MoveAndRotate();
     }
@@ -19,6 +24,11 @@ public class PlayerMove : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(_moveDirection);
             transform.Translate(Vector3.forward * (_currentMoveSpeed * Time.deltaTime));
+            _anim.Play(AnimationHash.Run);
+        }
+        else
+        {
+            _anim.Play(AnimationHash.Idle);
         }
     }
 
