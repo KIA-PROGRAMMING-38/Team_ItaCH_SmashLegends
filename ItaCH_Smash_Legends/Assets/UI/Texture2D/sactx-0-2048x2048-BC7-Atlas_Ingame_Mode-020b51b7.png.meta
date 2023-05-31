@@ -1,0 +1,2808 @@
+fileFormatVersion: 2
+guid: 7bab719cd45e9dd41a7f26b4f296bbc5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: T_UI_Mode_Profile_Face_Alice
+  - first:
+      213: 21300002
+    second: T_UI_Mode_Ready_IconDominionWar
+  - first:
+      213: 21300004
+    second: T_UI_Mode_Ready_IconDominion
+  - first:
+      213: 21300006
+    second: T_UI_Mode_Profile_Face_Loren
+  - first:
+      213: 21300008
+    second: T_UI_Mode_TwoWay_ConvoyLineBg
+  - first:
+      213: 21300010
+    second: T_UI_Mode_Profile_Face_MasterCat
+  - first:
+      213: 21300012
+    second: T_UI_Mode_Profile_Face_Octavia
+  - first:
+      213: 21300014
+    second: T_UI_Mode_Profile_Face_Victor
+  - first:
+      213: 21300016
+    second: T_UI_Mode_TwoWay_DD_Helmet_Off
+  - first:
+      213: 21300018
+    second: T_UI_Mode_Base_Blur
+  - first:
+      213: 21300020
+    second: T_UI_Mode_Profile_Face_Snow
+  - first:
+      213: 21300022
+    second: T_UI_Mode_TwoWay_Shield_Fragment_2
+  - first:
+      213: 21300024
+    second: T_UI_Mode_Profile_Face_Zeppetta
+  - first:
+      213: 21300026
+    second: T_UI_Mode_Profile_Face_Peter
+  - first:
+      213: 21300028
+    second: T_UI_Mode_Profile_Face_Ducky
+  - first:
+      213: 21300030
+    second: T_UI_Mode_Ready_IconArcadeSurvival
+  - first:
+      213: 21300032
+    second: T_UI_Mode_TwoWay_Shield_Fragment_1
+  - first:
+      213: 21300034
+    second: T_UI_Mode_Ready_IconBattleRoyale
+  - first:
+      213: 21300036
+    second: T_UI_Mode_Ready_TextSmash
+  - first:
+      213: 21300038
+    second: T_UI_Mode_TwoWay_DD_Helmet_On
+  - first:
+      213: 21300040
+    second: T_UI_Mode_Ready_IconTeamDeathDuo
+  - first:
+      213: 21300042
+    second: T_UI_Mode_Base_ProfilePanel
+  - first:
+      213: 21300044
+    second: T_UI_Mode_Profile_Face_Flare
+  - first:
+      213: 21300046
+    second: T_UI_Mode_Ready_IconTwoWay
+  - first:
+      213: 21300048
+    second: T_UI_Mode_Ready_IconOneWay
+  - first:
+      213: 21300050
+    second: T_UI_Mode_Ready_IconCrownGuard
+  - first:
+      213: 21300052
+    second: T_UI_Mode_Base_GradationBack
+  - first:
+      213: 21300054
+    second: T_UI_Mode_CapturePoint_CaptureGaugeFull
+  - first:
+      213: 21300056
+    second: T_UI_Mode_CapturePoint_PhaseBack
+  - first:
+      213: 21300058
+    second: T_UI_Mode_Profile_Face_Nui
+  - first:
+      213: 21300060
+    second: T_UI_Mode_Profile_Face_Rapunzel
+  - first:
+      213: 21300062
+    second: T_UI_Mode_TwoWay_DestroyedGate_DD
+  - first:
+      213: 21300064
+    second: T_UI_Mode_Base_GlowHalfImage
+  - first:
+      213: 21300066
+    second: T_UI_Mode_Profile_Face_Ravi
+  - first:
+      213: 21300068
+    second: T_UI_Mode_TwoWay_ConvoyLineBgGlow
+  - first:
+      213: 21300070
+    second: T_UI_Mode_Profile_Face_Brick
+  - first:
+      213: 21300072
+    second: T_UI_Mode_Profile_Face_YongYong
+  - first:
+      213: 21300074
+    second: T_UI_Mode_Profile_Face_Gumi
+  - first:
+      213: 21300076
+    second: T_UI_Mode_TwoWay_Flag_Mark
+  - first:
+      213: 21300078
+    second: T_UI_Mode_Profile_Face_Parfait
+  - first:
+      213: 21300080
+    second: T_UI_Mode_HarvestWar_TimerPanel_Glow
+  - first:
+      213: 21300082
+    second: T_UI_Mode_HarvestWar_ScorePanelGlow
+  - first:
+      213: 21300084
+    second: T_UI_Mode_Profile_Face_Goldie
+  - first:
+      213: 21300086
+    second: T_UI_Mode_Profile_Face_Cindy
+  - first:
+      213: 21300088
+    second: T_UI_Mode_Base_GlowImage
+  - first:
+      213: 21300090
+    second: T_UI_Mode_Profile_Panel
+  - first:
+      213: 21300092
+    second: T_UI_Mode_Ready_IconTeamDeathGiant
+  - first:
+      213: 21300094
+    second: T_UI_Mode_Ready_IconHarvest
+  - first:
+      213: 21300096
+    second: T_UI_Mode_HarvestWar_ScorePanelAllGlow
+  - first:
+      213: 21300098
+    second: T_UI_Mode_Profile_Face_DonQuixote
+  - first:
+      213: 21300100
+    second: T_UI_Mode_CapturePoint_BaseGlow
+  - first:
+      213: 21300102
+    second: T_UI_Mode_Profile_Face_Maya
+  - first:
+      213: 21300104
+    second: T_UI_Mode_Base_CircleLineGlow_Thin
+  - first:
+      213: 21300106
+    second: T_UI_Mode_CapturePoint_CaptureGauge
+  - first:
+      213: 21300108
+    second: T_UI_Mode_Profile_Face_Kurenai
+  - first:
+      213: 21300110
+    second: T_UI_Mode_Profile_Face_Red
+  - first:
+      213: 21300112
+    second: T_UI_Mode_Base_ToastBack
+  - first:
+      213: 21300114
+    second: T_UI_Mode_Profile_Face_Frog
+  - first:
+      213: 21300116
+    second: T_UI_Mode_Profile_Face_Robin
+  - first:
+      213: 21300118
+    second: T_UI_Mode_Profile_Face_Ali
+  - first:
+      213: 21300120
+    second: T_UI_Mode_Profile_Face_WitchQueen
+  - first:
+      213: 21300122
+    second: T_UI_Mode_Profile_Face_Wukong
+  - first:
+      213: 21300124
+    second: T_UI_Mode_Ready_IconTeamDeathTiny
+  - first:
+      213: 21300126
+    second: T_UI_Mode_Ready_IconDuel
+  - first:
+      213: 21300128
+    second: T_UI_Mode_Ready_IconTeamDeath
+  - first:
+      213: 21300130
+    second: T_UI_Mode_Base_CircleLine_Thinest
+  - first:
+      213: 21300132
+    second: T_UI_Mode_Profile_Face_Rambert
+  - first:
+      213: 21300134
+    second: T_UI_Mode_TwoWay_OO_Helmet_Off
+  - first:
+      213: 21300136
+    second: T_UI_Mode_TwoWay_DestroyedGate_OO
+  - first:
+      213: 21300138
+    second: T_UI_Mode_Ready_IconHarvestWar
+  - first:
+      213: 21300140
+    second: T_UI_Mode_Profile_Face_Swan
+  - first:
+      213: 21300142
+    second: T_UI_Mode_TwoWay_OO_Helmet_On
+  - first:
+      213: 21300144
+    second: T_UI_Mode_Profile_Face_Molly
+  - first:
+      213: 21300146
+    second: T_UI_Mode_Ready_IconArenaLab
+  - first:
+      213: 21300148
+    second: T_UI_Mode_Base_CircleBasic
+  - first:
+      213: 21300150
+    second: T_UI_Mode_Profile_Face_Hook
+  - first:
+      213: 21300152
+    second: T_UI_Mode_Profile_Face_Wolfgang
+  - first:
+      213: 21300154
+    second: T_UI_Mode_CapturePoint_Base
+  - first:
+      213: 21300156
+    second: T_UI_Mode_TwoWay_Flag
+  - first:
+      213: 21300158
+    second: T_UI_Mode_Profile_Face_JackO
+  - first:
+      213: 21300160
+    second: T_UI_Mode_Profile_Face_Kaiser
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 25
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 0
+  flipbookColumns: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Alice
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 475
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 068b9f7f304143c3a5b1a9335905a82e
+      internalID: 21300000
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Ready_IconDominionWar
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 1555
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3e93f2f012c4c688cd40fb33164a7f9
+      internalID: 21300002
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Ready_IconDominion
+      rect:
+        serializedVersion: 2
+        x: 1498
+        y: 1147
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bca4d458e084762853d4f962ba8eeba
+      internalID: 21300004
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Loren
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 465
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1425ef91fa844c4b95a335286c91e3c
+      internalID: 21300006
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_ConvoyLineBg
+      rect:
+        serializedVersion: 2
+        x: 1365
+        y: 1640
+        width: 166
+        height: 138
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 81, y: 0, z: 81, w: 0}
+      outline:
+      - - {x: -83, y: -69}
+        - {x: -83, y: 69}
+        - {x: 83, y: 69}
+        - {x: 83, y: -69}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 419db2e09efd42cea6a6a3ca2ff38d57
+      internalID: 21300008
+      vertices:
+      - {x: 0, y: 138}
+      - {x: 166, y: 138}
+      - {x: 0, y: 0}
+      - {x: 166, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_MasterCat
+      rect:
+        serializedVersion: 2
+        x: 1243
+        y: 0
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63c9b960a53e42c4985dc31242adc6a7
+      internalID: 21300010
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Octavia
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 0
+        width: 215
+        height: 197
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.50001, y: -98.5}
+        - {x: -107.50001, y: 98.5}
+        - {x: 107.50001, y: 98.5}
+        - {x: 107.50001, y: -98.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c8492e11f734567a8f6140a19a01d5f
+      internalID: 21300012
+      vertices:
+      - {x: -0.0000076293945, y: 197}
+      - {x: 215, y: 197}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 215, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Victor
+      rect:
+        serializedVersion: 2
+        x: 1461
+        y: 0
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eee6360f188f4f7e8cfdea57da92e42b
+      internalID: 21300014
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_DD_Helmet_Off
+      rect:
+        serializedVersion: 2
+        x: 1119
+        y: 1714
+        width: 153
+        height: 142
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -76.5, y: -71}
+        - {x: -76.5, y: 71}
+        - {x: 76.5, y: 71}
+        - {x: 76.5, y: -71}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cbf98d2a54745469def407479a68ef5
+      internalID: 21300016
+      vertices:
+      - {x: 0, y: 142}
+      - {x: 153, y: 142}
+      - {x: 0, y: 0}
+      - {x: 153, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_Blur
+      rect:
+        serializedVersion: 2
+        x: 954
+        y: 1723
+        width: 161
+        height: 160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 13, y: 12, z: 14, w: 10}
+      outline:
+      - - {x: -80.5, y: -80}
+        - {x: -80.5, y: 80}
+        - {x: 80.5, y: 80}
+        - {x: 80.5, y: -80}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7383bce91de4149975c7a85f882afc5
+      internalID: 21300018
+      vertices:
+      - {x: 0, y: 160}
+      - {x: 161, y: 160}
+      - {x: 0, y: 0}
+      - {x: 161, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Snow
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 200
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee95b9d86c4248829c33e07286cd74bd
+      internalID: 21300020
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_Shield_Fragment_2
+      rect:
+        serializedVersion: 2
+        x: 1834
+        y: 1898
+        width: 143
+        height: 134
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -71.5, y: -67}
+        - {x: -71.5, y: 67}
+        - {x: 71.5, y: 67}
+        - {x: 71.5, y: -67}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e48e145e79bc422f9adb0f960546dd03
+      internalID: 21300022
+      vertices:
+      - {x: 0, y: 134}
+      - {x: 143, y: 134}
+      - {x: 0, y: 0}
+      - {x: 143, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Zeppetta
+      rect:
+        serializedVersion: 2
+        x: 902
+        y: 201
+        width: 215
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.50001, y: -98}
+        - {x: -107.50001, y: 98}
+        - {x: 107.50001, y: 98}
+        - {x: 107.50001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a690e46f48aa423e808fb1666a09eb39
+      internalID: 21300024
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 215, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 215, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Peter
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 400
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d938cc750d884c819d3043b9e4fb8418
+      internalID: 21300026
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Ducky
+      rect:
+        serializedVersion: 2
+        x: 1339
+        y: 200
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 482584b85fee4522bac81ac7a9a24aa5
+      internalID: 21300028
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Ready_IconArcadeSurvival
+      rect:
+        serializedVersion: 2
+        x: 1294
+        y: 1335
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36da5312d7d24eff9a0f21b24181beaa
+      internalID: 21300030
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_Shield_Fragment_1
+      rect:
+        serializedVersion: 2
+        x: 1866
+        y: 955
+        width: 153
+        height: 198
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -76.5, y: -99}
+        - {x: -76.5, y: 99}
+        - {x: 76.5, y: 99}
+        - {x: 76.5, y: -99}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5691c8a265c4434aa0546ceedfa3d304
+      internalID: 21300032
+      vertices:
+      - {x: 0, y: 198}
+      - {x: 153, y: 198}
+      - {x: 0, y: 0}
+      - {x: 153, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Ready_IconBattleRoyale
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 1355
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7b06500e9a04da9a2aab754588a9cc3
+      internalID: 21300034
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Ready_TextSmash
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 801
+        height: 217
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -400.5, y: -108.5}
+        - {x: -400.5, y: 108.5}
+        - {x: 400.5, y: 108.5}
+        - {x: 400.5, y: -108.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f6f209004264a38bdaa24f986c03a77
+      internalID: 21300036
+      vertices:
+      - {x: 0, y: 217}
+      - {x: 801, y: 217}
+      - {x: 0, y: 0}
+      - {x: 801, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_DD_Helmet_On
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 665
+        width: 153
+        height: 142
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -76.5, y: -71}
+        - {x: -76.5, y: 71}
+        - {x: 76.5, y: 71}
+        - {x: 76.5, y: -71}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63056ceba6054fafbb9956c30dd7650f
+      internalID: 21300038
+      vertices:
+      - {x: 0, y: 142}
+      - {x: 153, y: 142}
+      - {x: 0, y: 0}
+      - {x: 153, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Ready_IconTeamDeathDuo
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 1355
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bb59d0b02b746e9a502e87fcd20b254
+      internalID: 21300040
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_ProfilePanel
+      rect:
+        serializedVersion: 2
+        x: 1834
+        y: 1754
+        width: 140
+        height: 140
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -70, y: -70}
+        - {x: -70, y: 70}
+        - {x: 70, y: 70}
+        - {x: 70, y: -70}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09e4c8daedf642298dc6950e6cf7f161
+      internalID: 21300042
+      vertices:
+      - {x: 0, y: 140}
+      - {x: 140, y: 140}
+      - {x: 0, y: 0}
+      - {x: 140, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Flare
+      rect:
+        serializedVersion: 2
+        x: 1557
+        y: 200
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6e6fdc9d5af482d961cacfa92bfc7eb
+      internalID: 21300044
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Ready_IconTwoWay
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1755
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ab157fc80f24920b525f0633285690f
+      internalID: 21300046
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Ready_IconOneWay
+      rect:
+        serializedVersion: 2
+        x: 1682
+        y: 1147
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39308f77cf704325941d52fb1e2225ea
+      internalID: 21300048
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Ready_IconCrownGuard
+      rect:
+        serializedVersion: 2
+        x: 1496
+        y: 1331
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aceefab75864bc5af196dc84383cc87
+      internalID: 21300050
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_GradationBack
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 921
+        width: 1920
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 700, y: 6, z: 700, w: 6}
+      outline:
+      - - {x: -960.00006, y: -15.000001}
+        - {x: -960.00006, y: 15.000001}
+        - {x: 960.00006, y: 15.000001}
+        - {x: 960.00006, y: -15.000001}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4cfa47a19a84897a5c03c18c7480b79
+      internalID: 21300052
+      vertices:
+      - {x: -0.000061035156, y: 30}
+      - {x: 1920, y: 30}
+      - {x: -0.000061035156, y: -0.0000009536743}
+      - {x: 1920, y: -0.0000009536743}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_CapturePoint_CaptureGaugeFull
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 1739
+        width: 155
+        height: 155
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77.5, y: -77.5}
+        - {x: -77.5, y: 77.5}
+        - {x: 77.5, y: 77.5}
+        - {x: 77.5, y: -77.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 134c088dc04f42a192e74e931b5f3840
+      internalID: 21300054
+      vertices:
+      - {x: 0, y: 155}
+      - {x: 155, y: 155}
+      - {x: 0, y: 0}
+      - {x: 155, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_CapturePoint_PhaseBack
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 1547
+        width: 163
+        height: 163
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -81.5, y: -81.5}
+        - {x: -81.5, y: 81.5}
+        - {x: 81.5, y: 81.5}
+        - {x: 81.5, y: -81.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d490e2189d6044b8927e7670b65a861f
+      internalID: 21300056
+      vertices:
+      - {x: 0, y: 163}
+      - {x: 163, y: 163}
+      - {x: 0, y: 0}
+      - {x: 163, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Nui
+      rect:
+        serializedVersion: 2
+        x: 1339
+        y: 400
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 293891e88fae4a2aab2f726640fc7493
+      internalID: 21300058
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Rapunzel
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 675
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fa9847ecd204f9d99c4731416daab50
+      internalID: 21300060
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_DestroyedGate_DD
+      rect:
+        serializedVersion: 2
+        x: 1090
+        y: 955
+        width: 200
+        height: 200
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -100, y: -100}
+        - {x: -100, y: 100}
+        - {x: 100, y: 100}
+        - {x: 100, y: -100}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f8e20837c634ae1a7a92ee4a7538721
+      internalID: 21300062
+      vertices:
+      - {x: 0, y: 200}
+      - {x: 200, y: 200}
+      - {x: 0, y: 0}
+      - {x: 200, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_GlowHalfImage
+      rect:
+        serializedVersion: 2
+        x: 1478
+        y: 1515
+        width: 240
+        height: 121
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -120.00001, y: -60.5}
+        - {x: -120.00001, y: 60.5}
+        - {x: 120.00001, y: 60.5}
+        - {x: 120.00001, y: -60.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f0c1c94ed48408db39c78670e603430
+      internalID: 21300064
+      vertices:
+      - {x: -0.0000076293945, y: 121}
+      - {x: 240, y: 121}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 240, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Ravi
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 600
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 810cd2a5ac344f49a9988f96c4a8243b
+      internalID: 21300066
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_ConvoyLineBgGlow
+      rect:
+        serializedVersion: 2
+        x: 1294
+        y: 1159
+        width: 198
+        height: 172
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 90, y: 0, z: 90, w: 0}
+      outline:
+      - - {x: -99, y: -86}
+        - {x: -99, y: 86}
+        - {x: 99, y: 86}
+        - {x: 99, y: -86}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f81044c944c412db0cdd27af94e6025
+      internalID: 21300068
+      vertices:
+      - {x: 0, y: 172}
+      - {x: 198, y: 172}
+      - {x: 0, y: 0}
+      - {x: 198, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Brick
+      rect:
+        serializedVersion: 2
+        x: 1557
+        y: 400
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fa7a74ee25143008e094fcd83f31b8d
+      internalID: 21300070
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_YongYong
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 215
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.50001, y: -98}
+        - {x: -107.50001, y: 98}
+        - {x: 107.50001, y: 98}
+        - {x: 107.50001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed737aa55d3148cbb504119c88f339ac
+      internalID: 21300072
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 215, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 215, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Gumi
+      rect:
+        serializedVersion: 2
+        x: 1679
+        y: 0
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17d330c056264f62b01de9834a737173
+      internalID: 21300074
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_Flag_Mark
+      rect:
+        serializedVersion: 2
+        x: 1535
+        y: 1640
+        width: 138
+        height: 165
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -69, y: -82.5}
+        - {x: -69, y: 82.5}
+        - {x: 69, y: 82.5}
+        - {x: 69, y: -82.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b17405edc92b4bee821fd2293d37084c
+      internalID: 21300076
+      vertices:
+      - {x: 0, y: 165}
+      - {x: 138, y: 165}
+      - {x: 0, y: 0}
+      - {x: 138, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Parfait
+      rect:
+        serializedVersion: 2
+        x: 1775
+        y: 200
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41045c8a05fd4846aa38e9f82d7ac27c
+      internalID: 21300078
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_TimerPanel_Glow
+      rect:
+        serializedVersion: 2
+        x: 1677
+        y: 1640
+        width: 206
+        height: 110
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 60, y: 0, z: 60, w: 0}
+      outline:
+      - - {x: -103, y: -55}
+        - {x: -103, y: 55}
+        - {x: 103, y: 55}
+        - {x: 103, y: -55}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66546ff0e82f4caabe485ae5d9339acc
+      internalID: 21300080
+      vertices:
+      - {x: 0, y: 110}
+      - {x: 206, y: 110}
+      - {x: 0, y: 0}
+      - {x: 206, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_ScorePanelGlow
+      rect:
+        serializedVersion: 2
+        x: 1433
+        y: 1809
+        width: 180
+        height: 108
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 80, y: 0, z: 80, w: 0}
+      outline:
+      - - {x: -90, y: -54.000004}
+        - {x: -90, y: 54.000004}
+        - {x: 90, y: 54.000004}
+        - {x: 90, y: -54.000004}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c570bc4c3db24c7e94048f47a587751c
+      internalID: 21300082
+      vertices:
+      - {x: 0, y: 108}
+      - {x: 180, y: 108}
+      - {x: 0, y: -0.0000038146973}
+      - {x: 180, y: -0.0000038146973}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Goldie
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 600
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59b8e5976c2d422dbbc32ec0f43eb338
+      internalID: 21300084
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Cindy
+      rect:
+        serializedVersion: 2
+        x: 1481
+        y: 600
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a89748a5e881424684a8601c41357ec2
+      internalID: 21300086
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_GlowImage
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 221
+        width: 240
+        height: 240
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -120.00001, y: -120.00001}
+        - {x: -120.00001, y: 120.00001}
+        - {x: 120.00001, y: 120.00001}
+        - {x: 120.00001, y: -120.00001}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2567bde0d30540c78fa48a262541b929
+      internalID: 21300088
+      vertices:
+      - {x: -0.0000076293945, y: 240}
+      - {x: 240, y: 240}
+      - {x: -0.0000076293945, y: -0.0000076293945}
+      - {x: 240, y: -0.0000076293945}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Panel
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 1739
+        width: 140
+        height: 140
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 64, y: 64, z: 64, w: 64}
+      outline:
+      - - {x: -70, y: -70}
+        - {x: -70, y: 70}
+        - {x: 70, y: 70}
+        - {x: 70, y: -70}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8d8bc8a7a104e128a0bf9a0998673fc
+      internalID: 21300090
+      vertices:
+      - {x: 0, y: 140}
+      - {x: 140, y: 140}
+      - {x: 0, y: 0}
+      - {x: 140, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Ready_IconTeamDeathGiant
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 1539
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57d0b3f747c244ffb5d43b84bdcc173b
+      internalID: 21300092
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Ready_IconHarvest
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 1539
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b802f2cc486e4c47b0e2ab282919759d
+      internalID: 21300094
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_HarvestWar_ScorePanelAllGlow
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 1900
+        width: 180
+        height: 108
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 50, y: 0, z: 50, w: 0}
+      outline:
+      - - {x: -90, y: -54.000004}
+        - {x: -90, y: 54.000004}
+        - {x: 90, y: 54.000004}
+        - {x: 90, y: -54.000004}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25116ecad4fb403dae7d4ae5a745ab07
+      internalID: 21300096
+      vertices:
+      - {x: 0, y: 108}
+      - {x: 180, y: 108}
+      - {x: 0, y: -0.0000038146973}
+      - {x: 180, y: -0.0000038146973}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_DonQuixote
+      rect:
+        serializedVersion: 2
+        x: 1775
+        y: 400
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7afeb60bf41e4d1191adc8fb713a46a6
+      internalID: 21300098
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_CapturePoint_BaseGlow
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 483
+        width: 319
+        height: 218
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -159.5, y: -109}
+        - {x: -159.5, y: 109}
+        - {x: 159.5, y: 109}
+        - {x: 159.5, y: -109}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5c4288ae5c8460d9e865bdf1369b976
+      internalID: 21300100
+      vertices:
+      - {x: 0, y: 218}
+      - {x: 319, y: 218}
+      - {x: 0, y: 0}
+      - {x: 319, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Maya
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 955
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a274f7edce0a4140951407e22ab6e6fa
+      internalID: 21300102
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_CircleLineGlow_Thin
+      rect:
+        serializedVersion: 2
+        x: 1498
+        y: 955
+        width: 188
+        height: 188
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -94, y: -94}
+        - {x: -94, y: 94}
+        - {x: 94, y: 94}
+        - {x: 94, y: -94}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01ab72549cbc4267916530d830f412e2
+      internalID: 21300104
+      vertices:
+      - {x: 0, y: 188}
+      - {x: 188, y: 188}
+      - {x: 0, y: 0}
+      - {x: 188, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_CapturePoint_CaptureGauge
+      rect:
+        serializedVersion: 2
+        x: 1206
+        y: 1519
+        width: 155
+        height: 155
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77.5, y: -77.5}
+        - {x: -77.5, y: 77.5}
+        - {x: 77.5, y: 77.5}
+        - {x: 77.5, y: -77.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f2f184612ee453ba7cb98b143fe9f6b
+      internalID: 21300106
+      vertices:
+      - {x: 0, y: 155}
+      - {x: 155, y: 155}
+      - {x: 0, y: 0}
+      - {x: 155, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Kurenai
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 955
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c981e825b90842749defdc7e44cf1bb7
+      internalID: 21300108
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Red
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1155
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8230f0314654bc09b907afa91776d8b
+      internalID: 21300110
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_ToastBack
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 221
+        width: 400
+        height: 258
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -200, y: -129}
+        - {x: -200, y: 129}
+        - {x: 200, y: 129}
+        - {x: 200, y: -129}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d100d52d107f43b5ba75db9e1d7f6de6
+      internalID: 21300112
+      vertices:
+      - {x: 0, y: 258}
+      - {x: 400, y: 258}
+      - {x: 0, y: 0}
+      - {x: 400, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Frog
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 955
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 249d28737d994b18b58e5de877c62cca
+      internalID: 21300114
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Robin
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 955
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d13b64848c504b9ea9443d0baad3393a
+      internalID: 21300116
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Ali
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1355
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5aa7083077084cccb828d5d255a1733b
+      internalID: 21300118
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_WitchQueen
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 1155
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 068337abe557469bb012ee70ef5f11e7
+      internalID: 21300120
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Wukong
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1555
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52a3c8111aa84d1bb1e710a8a32e08f2
+      internalID: 21300122
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Ready_IconTeamDeathTiny
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 1363
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2c38de090e44e30a887a45d031f1ea9
+      internalID: 21300124
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Ready_IconDuel
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 1331
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8109275fe9664db4b3094eb18673f716
+      internalID: 21300126
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Ready_IconTeamDeath
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 1555
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a78dd332e8344819b14f11e354e75d00
+      internalID: 21300128
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_CircleLine_Thinest
+      rect:
+        serializedVersion: 2
+        x: 1294
+        y: 955
+        width: 200
+        height: 200
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -100, y: -100}
+        - {x: -100, y: 100}
+        - {x: 100, y: 100}
+        - {x: 100, y: -100}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b01fa9b77b144fba967e9cf2393d27f
+      internalID: 21300130
+      vertices:
+      - {x: 0, y: 200}
+      - {x: 200, y: 200}
+      - {x: 0, y: 0}
+      - {x: 200, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Rambert
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 1155
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d492cd88ba34089afe53ad14de433a1
+      internalID: 21300132
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_OO_Helmet_Off
+      rect:
+        serializedVersion: 2
+        x: 1276
+        y: 1782
+        width: 153
+        height: 142
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -76.5, y: -71}
+        - {x: -76.5, y: 71}
+        - {x: 76.5, y: 71}
+        - {x: 76.5, y: -71}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b1a6e2627ab4dfb9fa7d03674b31229
+      internalID: 21300134
+      vertices:
+      - {x: 0, y: 142}
+      - {x: 153, y: 142}
+      - {x: 0, y: 0}
+      - {x: 153, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_DestroyedGate_OO
+      rect:
+        serializedVersion: 2
+        x: 1090
+        y: 1159
+        width: 200
+        height: 200
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -100, y: -100}
+        - {x: -100, y: 100}
+        - {x: 100, y: 100}
+        - {x: 100, y: -100}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 915030b1154046d09c821237ec9477c3
+      internalID: 21300136
+      vertices:
+      - {x: 0, y: 200}
+      - {x: 200, y: 200}
+      - {x: 0, y: 0}
+      - {x: 200, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Ready_IconHarvestWar
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 1723
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 715aad2e9a9143968b837aa08067e555
+      internalID: 21300138
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Swan
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 955
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1a9a7007da144ceba4a0f667b23100c
+      internalID: 21300140
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_OO_Helmet_On
+      rect:
+        serializedVersion: 2
+        x: 1677
+        y: 1754
+        width: 153
+        height: 142
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -76.5, y: -71}
+        - {x: -76.5, y: 71}
+        - {x: 76.5, y: 71}
+        - {x: 76.5, y: -71}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53d74ad30e2042d9a4ad2acefa7d7876
+      internalID: 21300142
+      vertices:
+      - {x: 0, y: 142}
+      - {x: 153, y: 142}
+      - {x: 0, y: 0}
+      - {x: 153, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Molly
+      rect:
+        serializedVersion: 2
+        x: 1699
+        y: 600
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 929603f9528840c483fa99763a23301d
+      internalID: 21300144
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Ready_IconArenaLab
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 1723
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21289f61ff3c40348622fbf5f6dc660f
+      internalID: 21300146
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Base_CircleBasic
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 221
+        width: 250
+        height: 250
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -125, y: -125}
+        - {x: -125, y: 125}
+        - {x: 125, y: 125}
+        - {x: 125, y: -125}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33ada0cc0f2342419630c565c8dc0534
+      internalID: 21300148
+      vertices:
+      - {x: 0, y: 250}
+      - {x: 250, y: 250}
+      - {x: 0, y: 0}
+      - {x: 250, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Hook
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 1155
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 155c4eb26f144eefa1bc25c8fa101279
+      internalID: 21300150
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Wolfgang
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 1355
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9405aaf238a745c488e7d74699eb2e2f
+      internalID: 21300152
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_CapturePoint_Base
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 705
+        width: 291
+        height: 212
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -145.5, y: -105.99999}
+        - {x: -145.5, y: 105.99999}
+        - {x: 145.5, y: 105.99999}
+        - {x: 145.5, y: -105.99999}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93417632968d43948ebf205b2a3863be
+      internalID: 21300154
+      vertices:
+      - {x: 0, y: 212}
+      - {x: 291, y: 212}
+      - {x: 0, y: 0.0000076293945}
+      - {x: 291, y: 0.0000076293945}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_TwoWay_Flag
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 483
+        width: 282
+        height: 293
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -141, y: -146.5}
+        - {x: -141, y: 146.5}
+        - {x: 141, y: 146.5}
+        - {x: 141, y: -146.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 833622e2e1d44cd9a7f024aad5f9f61e
+      internalID: 21300156
+      vertices:
+      - {x: 0, y: 293}
+      - {x: 282, y: 293}
+      - {x: 0, y: 0}
+      - {x: 282, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_JackO
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 1155
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54c69c3ad19646b3b3b83b97bc24e1f9
+      internalID: 21300158
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_Mode_Profile_Face_Kaiser
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 1355
+        width: 214
+        height: 196
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107.00001, y: -98}
+        - {x: -107.00001, y: 98}
+        - {x: 107.00001, y: 98}
+        - {x: 107.00001, y: -98}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29f49c0e3a2c41ae8d0f9d758e628339
+      internalID: 21300160
+      vertices:
+      - {x: -0.0000076293945, y: 196}
+      - {x: 214, y: 196}
+      - {x: -0.0000076293945, y: 0}
+      - {x: 214, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      T_UI_Mode_Base_Blur: 21300018
+      T_UI_Mode_Base_CircleBasic: 21300148
+      T_UI_Mode_Base_CircleLineGlow_Thin: 21300104
+      T_UI_Mode_Base_CircleLine_Thinest: 21300130
+      T_UI_Mode_Base_GlowHalfImage: 21300064
+      T_UI_Mode_Base_GlowImage: 21300088
+      T_UI_Mode_Base_GradationBack: 21300052
+      T_UI_Mode_Base_ProfilePanel: 21300042
+      T_UI_Mode_Base_ToastBack: 21300112
+      T_UI_Mode_CapturePoint_Base: 21300154
+      T_UI_Mode_CapturePoint_BaseGlow: 21300100
+      T_UI_Mode_CapturePoint_CaptureGauge: 21300106
+      T_UI_Mode_CapturePoint_CaptureGaugeFull: 21300054
+      T_UI_Mode_CapturePoint_PhaseBack: 21300056
+      T_UI_Mode_HarvestWar_ScorePanelAllGlow: 21300096
+      T_UI_Mode_HarvestWar_ScorePanelGlow: 21300082
+      T_UI_Mode_HarvestWar_TimerPanel_Glow: 21300080
+      T_UI_Mode_Profile_Face_Ali: 21300118
+      T_UI_Mode_Profile_Face_Alice: 21300000
+      T_UI_Mode_Profile_Face_Brick: 21300070
+      T_UI_Mode_Profile_Face_Cindy: 21300086
+      T_UI_Mode_Profile_Face_DonQuixote: 21300098
+      T_UI_Mode_Profile_Face_Ducky: 21300028
+      T_UI_Mode_Profile_Face_Flare: 21300044
+      T_UI_Mode_Profile_Face_Frog: 21300114
+      T_UI_Mode_Profile_Face_Goldie: 21300084
+      T_UI_Mode_Profile_Face_Gumi: 21300074
+      T_UI_Mode_Profile_Face_Hook: 21300150
+      T_UI_Mode_Profile_Face_JackO: 21300158
+      T_UI_Mode_Profile_Face_Kaiser: 21300160
+      T_UI_Mode_Profile_Face_Kurenai: 21300108
+      T_UI_Mode_Profile_Face_Loren: 21300006
+      T_UI_Mode_Profile_Face_MasterCat: 21300010
+      T_UI_Mode_Profile_Face_Maya: 21300102
+      T_UI_Mode_Profile_Face_Molly: 21300144
+      T_UI_Mode_Profile_Face_Nui: 21300058
+      T_UI_Mode_Profile_Face_Octavia: 21300012
+      T_UI_Mode_Profile_Face_Parfait: 21300078
+      T_UI_Mode_Profile_Face_Peter: 21300026
+      T_UI_Mode_Profile_Face_Rambert: 21300132
+      T_UI_Mode_Profile_Face_Rapunzel: 21300060
+      T_UI_Mode_Profile_Face_Ravi: 21300066
+      T_UI_Mode_Profile_Face_Red: 21300110
+      T_UI_Mode_Profile_Face_Robin: 21300116
+      T_UI_Mode_Profile_Face_Snow: 21300020
+      T_UI_Mode_Profile_Face_Swan: 21300140
+      T_UI_Mode_Profile_Face_Victor: 21300014
+      T_UI_Mode_Profile_Face_WitchQueen: 21300120
+      T_UI_Mode_Profile_Face_Wolfgang: 21300152
+      T_UI_Mode_Profile_Face_Wukong: 21300122
+      T_UI_Mode_Profile_Face_YongYong: 21300072
+      T_UI_Mode_Profile_Face_Zeppetta: 21300024
+      T_UI_Mode_Profile_Panel: 21300090
+      T_UI_Mode_Ready_IconArcadeSurvival: 21300030
+      T_UI_Mode_Ready_IconArenaLab: 21300146
+      T_UI_Mode_Ready_IconBattleRoyale: 21300034
+      T_UI_Mode_Ready_IconCrownGuard: 21300050
+      T_UI_Mode_Ready_IconDominion: 21300004
+      T_UI_Mode_Ready_IconDominionWar: 21300002
+      T_UI_Mode_Ready_IconDuel: 21300126
+      T_UI_Mode_Ready_IconHarvest: 21300094
+      T_UI_Mode_Ready_IconHarvestWar: 21300138
+      T_UI_Mode_Ready_IconOneWay: 21300048
+      T_UI_Mode_Ready_IconTeamDeath: 21300128
+      T_UI_Mode_Ready_IconTeamDeathDuo: 21300040
+      T_UI_Mode_Ready_IconTeamDeathGiant: 21300092
+      T_UI_Mode_Ready_IconTeamDeathTiny: 21300124
+      T_UI_Mode_Ready_IconTwoWay: 21300046
+      T_UI_Mode_Ready_TextSmash: 21300036
+      T_UI_Mode_TwoWay_ConvoyLineBg: 21300008
+      T_UI_Mode_TwoWay_ConvoyLineBgGlow: 21300068
+      T_UI_Mode_TwoWay_DD_Helmet_Off: 21300016
+      T_UI_Mode_TwoWay_DD_Helmet_On: 21300038
+      T_UI_Mode_TwoWay_DestroyedGate_DD: 21300062
+      T_UI_Mode_TwoWay_DestroyedGate_OO: 21300136
+      T_UI_Mode_TwoWay_Flag: 21300156
+      T_UI_Mode_TwoWay_Flag_Mark: 21300076
+      T_UI_Mode_TwoWay_OO_Helmet_Off: 21300134
+      T_UI_Mode_TwoWay_OO_Helmet_On: 21300142
+      T_UI_Mode_TwoWay_Shield_Fragment_1: 21300032
+      T_UI_Mode_TwoWay_Shield_Fragment_2: 21300022
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
