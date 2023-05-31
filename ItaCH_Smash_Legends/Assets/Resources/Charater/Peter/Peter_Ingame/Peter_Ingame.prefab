@@ -651,6 +651,7 @@ GameObject:
   - component: {fileID: 1801810034622763243}
   - component: {fileID: 1801810034622763240}
   - component: {fileID: 1801810034622763241}
+  - component: {fileID: 7373659997955688944}
   m_Layer: 0
   m_Name: Peter_Ingame
   m_TagString: Untagged
@@ -752,6 +753,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentMoveSpeed: 5.4
+--- !u!114 &7373659997955688944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801810034622763246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b983d441d0cfad4aae56e661fcfe34f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _jumpAcceleration: 14.28
+  _maxFallingSpeed: 23
+  _gravitationalAcceleration: 36
 --- !u!1 &1839266365119039902
 GameObject:
   m_ObjectHideFlags: 0
