@@ -1,0 +1,630 @@
+fileFormatVersion: 2
+guid: 1b89456916e198b4f9a689accfae9ce4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: T_UI_ControllerPC_Base_MappedKey_ArrowDown
+  - first:
+      213: 21300002
+    second: T_UI_ControllerPC_Base_KeyPanelBG
+  - first:
+      213: 21300004
+    second: T_UI_ControllerPC_Base_KeyPanelOutline_Thin
+  - first:
+      213: 21300006
+    second: T_UI_ControllerPC_Base_Square
+  - first:
+      213: 21300008
+    second: T_UI_ControllerPC_Base_KeyPanelOutline
+  - first:
+      213: 21300010
+    second: T_UI_ControllerPC_Base_CircleLine_UltraThick
+  - first:
+      213: 21300012
+    second: T_UI_ControllerPC_Base_KeyPanelBGGlow
+  - first:
+      213: 21300014
+    second: T_UI_ControllerPC_Base_MappedKey_ArrowLeft
+  - first:
+      213: 21300016
+    second: T_UI_ControllerPC_Base_CircleLine_Thin
+  - first:
+      213: 21300018
+    second: T_UI_ControllerPC_Base_MappedKey_ArrowUp
+  - first:
+      213: 21300020
+    second: T_UI_ControllerPC_Icon_EmojiOn
+  - first:
+      213: 21300022
+    second: T_UI_ControllerPC_Base_CircleLine_UltraThin
+  - first:
+      213: 21300024
+    second: T_UI_ControllerPC_Base_MappedKey_ArrowRight
+  - first:
+      213: 21300026
+    second: T_UI_ControllerPC_Icon_EmojiOff
+  - first:
+      213: 21300028
+    second: T_UI_ControllerPC_Base_CircleLine_SGauge
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 25
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 0
+  flipbookColumns: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: T_UI_ControllerPC_Base_MappedKey_ArrowDown
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 146
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: -16}
+        - {x: -16, y: 16}
+        - {x: 16, y: 16}
+        - {x: 16, y: -16}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edea46b1a24d42ed8e317fcb451d8ff2
+      internalID: 21300000
+      vertices:
+      - {x: 0, y: 32}
+      - {x: 32, y: 32}
+      - {x: 0, y: 0}
+      - {x: 32, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_ControllerPC_Base_KeyPanelBG
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 182
+        width: 30
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 12, y: 12, z: 12, w: 12}
+      outline:
+      - - {x: -15.000001, y: -15.000001}
+        - {x: -15.000001, y: 15.000001}
+        - {x: 15.000001, y: 15.000001}
+        - {x: 15.000001, y: -15.000001}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd3643025acd42ab90a0be3fc202e02c
+      internalID: 21300002
+      vertices:
+      - {x: -0.0000009536743, y: 30}
+      - {x: 30, y: 30}
+      - {x: -0.0000009536743, y: -0.0000009536743}
+      - {x: 30, y: -0.0000009536743}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_ControllerPC_Base_KeyPanelOutline_Thin
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 146
+        width: 30
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 10, z: 10, w: 10}
+      outline:
+      - - {x: -15.000001, y: -15.000001}
+        - {x: -15.000001, y: 15.000001}
+        - {x: 15.000001, y: 15.000001}
+        - {x: 15.000001, y: -15.000001}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ad2035308b3429aa6d7d7b75fb46fd2
+      internalID: 21300004
+      vertices:
+      - {x: -0.0000009536743, y: 30}
+      - {x: 30, y: 30}
+      - {x: -0.0000009536743, y: -0.0000009536743}
+      - {x: 30, y: -0.0000009536743}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_ControllerPC_Base_Square
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 201
+        width: 20
+        height: 20
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 5, z: 5, w: 5}
+      outline:
+      - - {x: -10, y: -10}
+        - {x: -10, y: 10}
+        - {x: 10, y: 10}
+        - {x: 10, y: -10}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50485eaf5f834855b29772c35691e3c7
+      internalID: 21300006
+      vertices:
+      - {x: 0, y: 20}
+      - {x: 20, y: 20}
+      - {x: 0, y: 0}
+      - {x: 20, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_ControllerPC_Base_KeyPanelOutline
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 201
+        width: 30
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 12, y: 12, z: 12, w: 12}
+      outline:
+      - - {x: -15.000001, y: -15.000001}
+        - {x: -15.000001, y: 15.000001}
+        - {x: 15.000001, y: 15.000001}
+        - {x: 15.000001, y: -15.000001}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1978b9e893e94987be240fade8a432ac
+      internalID: 21300008
+      vertices:
+      - {x: -0.0000009536743, y: 30}
+      - {x: 30, y: 30}
+      - {x: -0.0000009536743, y: -0.0000009536743}
+      - {x: 30, y: -0.0000009536743}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_ControllerPC_Base_CircleLine_UltraThick
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 0
+        width: 125
+        height: 125
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -62.5, y: -62.5}
+        - {x: -62.5, y: 62.5}
+        - {x: 62.5, y: 62.5}
+        - {x: 62.5, y: -62.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09d378f5dc6840b1af54fae2694eec95
+      internalID: 21300010
+      vertices:
+      - {x: 0, y: 125}
+      - {x: 125, y: 125}
+      - {x: 0, y: 0}
+      - {x: 125, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_ControllerPC_Base_KeyPanelBGGlow
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 146
+        width: 66
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 30, y: 30, z: 30, w: 30}
+      outline:
+      - - {x: -33, y: -33}
+        - {x: -33, y: 33}
+        - {x: 33, y: 33}
+        - {x: 33, y: -33}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7da1aeb3805a4b478711f91d2cc782ab
+      internalID: 21300012
+      vertices:
+      - {x: 0, y: 66}
+      - {x: 66, y: 66}
+      - {x: 0, y: 0}
+      - {x: 66, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_ControllerPC_Base_MappedKey_ArrowLeft
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 129
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: -16}
+        - {x: -16, y: 16}
+        - {x: 16, y: 16}
+        - {x: 16, y: -16}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9845142667244918931300b4605a912e
+      internalID: 21300014
+      vertices:
+      - {x: 0, y: 32}
+      - {x: 32, y: 32}
+      - {x: 0, y: 0}
+      - {x: 32, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_ControllerPC_Base_CircleLine_Thin
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 129
+        width: 122
+        height: 122
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61, y: -61}
+        - {x: -61, y: 61}
+        - {x: 61, y: 61}
+        - {x: 61, y: -61}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 892fa6598b434b9ea1696f0ceb2f0eec
+      internalID: 21300016
+      vertices:
+      - {x: 0, y: 122}
+      - {x: 122, y: 122}
+      - {x: 0, y: 0}
+      - {x: 122, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_ControllerPC_Base_MappedKey_ArrowUp
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 165
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: -16}
+        - {x: -16, y: 16}
+        - {x: 16, y: 16}
+        - {x: 16, y: -16}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28d8aac8779e428a81ddcaee68426c40
+      internalID: 21300018
+      vertices:
+      - {x: 0, y: 32}
+      - {x: 32, y: 32}
+      - {x: 0, y: 0}
+      - {x: 32, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_ControllerPC_Icon_EmojiOn
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 131
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5823ff911bfb403d95ee53402520f10b
+      internalID: 21300020
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_ControllerPC_Base_CircleLine_UltraThin
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 0
+        width: 127
+        height: 127
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -63.5, y: -63.5}
+        - {x: -63.5, y: 63.5}
+        - {x: 63.5, y: 63.5}
+        - {x: 63.5, y: -63.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f8666d1ac304a33ad7b5a1b456631de
+      internalID: 21300022
+      vertices:
+      - {x: 0, y: 127}
+      - {x: 127, y: 127}
+      - {x: 0, y: 0}
+      - {x: 127, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_ControllerPC_Base_MappedKey_ArrowRight
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 216
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: -16}
+        - {x: -16, y: 16}
+        - {x: 16, y: 16}
+        - {x: 16, y: -16}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 814ff6e008d641bbba791923a96463a0
+      internalID: 21300024
+      vertices:
+      - {x: 0, y: 32}
+      - {x: 32, y: 32}
+      - {x: 0, y: 0}
+      - {x: 32, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_ControllerPC_Icon_EmojiOff
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 0
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14912c3043404bc889305bbbf9b96bd9
+      internalID: 21300026
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_ControllerPC_Base_CircleLine_SGauge
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 142
+        height: 142
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -71, y: -71}
+        - {x: -71, y: 71}
+        - {x: 71, y: 71}
+        - {x: 71, y: -71}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ab58c9d72ed449a9894af5a2b305232
+      internalID: 21300028
+      vertices:
+      - {x: 0, y: 142}
+      - {x: 142, y: 142}
+      - {x: 0, y: 0}
+      - {x: 142, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      T_UI_ControllerPC_Base_CircleLine_SGauge: 21300028
+      T_UI_ControllerPC_Base_CircleLine_Thin: 21300016
+      T_UI_ControllerPC_Base_CircleLine_UltraThick: 21300010
+      T_UI_ControllerPC_Base_CircleLine_UltraThin: 21300022
+      T_UI_ControllerPC_Base_KeyPanelBG: 21300002
+      T_UI_ControllerPC_Base_KeyPanelBGGlow: 21300012
+      T_UI_ControllerPC_Base_KeyPanelOutline: 21300008
+      T_UI_ControllerPC_Base_KeyPanelOutline_Thin: 21300004
+      T_UI_ControllerPC_Base_MappedKey_ArrowDown: 21300000
+      T_UI_ControllerPC_Base_MappedKey_ArrowLeft: 21300014
+      T_UI_ControllerPC_Base_MappedKey_ArrowRight: 21300024
+      T_UI_ControllerPC_Base_MappedKey_ArrowUp: 21300018
+      T_UI_ControllerPC_Base_Square: 21300006
+      T_UI_ControllerPC_Icon_EmojiOff: 21300026
+      T_UI_ControllerPC_Icon_EmojiOn: 21300020
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
