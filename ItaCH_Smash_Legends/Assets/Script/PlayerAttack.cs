@@ -29,6 +29,7 @@ public class PlayerAttack : MonoBehaviour
     }
     void Update()
     {
+        // 추후 맞는캐릭터 피격 애니메이션 재생동안 안맞게끔 수정.
         Weapon.enabled = true;
         _isHit = true;
     }
@@ -45,7 +46,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    // 맞는애 피격 애니메이션 재생동안 안맞게끔 수정.
+   
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

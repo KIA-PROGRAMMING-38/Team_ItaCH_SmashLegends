@@ -3,8 +3,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    private PlayerAttack _attack;
-    private PlayerJump _jump;
+    private PlayerAttack _playerAttack;
+    private PlayerJump _playerJump;
+    private PlayerMove _playerMove;
     private Animator _animator;
 
     public bool IsCombo { get; private set; }
@@ -12,25 +13,21 @@ public class PlayerInput : MonoBehaviour
 
     private void Awake()
     {
-        _attack = GetComponent<PlayerAttack>();
-        _jump = GetComponent<PlayerJump>();
+        _playerMove = GetComponent<PlayerMove>();
+        _playerAttack = GetComponent<PlayerAttack>();
+        _playerJump = GetComponent<PlayerJump>();
         _animator = GetComponent<Animator>();
-        
+        IsCombo = false;
     }
-    // 인풋시스템 이벤트 
+
     private void OnDefaultAttack()
     {
-        // 스테이트 콤보 시작 전환
         IsCombo = true;
-        // 어택에 따른 소폭 전진
-        _attack.AttackOnDefaultDash();
 
-        // 조건에 따라 애니메이션 진입 점 설정
-        if(_attack.CurrentPossibleComboCount == _attack.COMBO_FINISH_COUNT)
+        if (_playerAttack.CurrentPossibleComboCount == _playerAttack.COMBO_FINISH_COUNT)
         {
-            
         }
-        else if(_attack.CurrentPossibleComboCount == _attack.COMBO_SECOND_COUNT)
+        else if (_playerAttack.CurrentPossibleComboCount == _playerAttack.COMBO_SECOND_COUNT)
         {
 
         }
@@ -39,12 +36,14 @@ public class PlayerInput : MonoBehaviour
 
         }
     }
-
-    // 이벤트 호출
     private void OnJump()
     {
-        _jump.JumpInput();
+        _playerJump.JumpInput();
     }
 
-   
+    private void OnMove(InputValue value)
+    {
+        _playerMove.MoveHellper(value);
+    }
+
 }
