@@ -21,6 +21,10 @@ public class PlayerMove : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(moveDirection);
             transform.Translate(Vector3.forward * (_currentMoveSpeed * Time.deltaTime));
         }
+        else
+        {
+            _animator.Play(AnimationHash.Idle);
+        }
     }
 
     public void MoveHellper(InputValue value)
