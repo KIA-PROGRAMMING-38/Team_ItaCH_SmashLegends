@@ -13,7 +13,6 @@ public class PlayerJump : MonoBehaviour
     private static readonly Vector3 JUMP_DIRECTION = Vector3.up;
 
     private bool _isJump = false;
-    private bool _isFall = false;
 
     private void Awake()
     {
@@ -34,28 +33,12 @@ public class PlayerJump : MonoBehaviour
         FixedMaxFallSpeed();
     }
 
-    void Update()
-    {
-        JumpUp();
-    }
-
-
     private void OnCollisionEnter(Collision collision)
     {
-        // 2단 점프를 막기 위한 코드
-        // 땅으로 사용할 오브젝트에 Ground 태그 붙여줄 것
-        if (collision.gameObject.CompareTag("Ground") && _isFall)
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            PlayJumpLanding();
+            _isJump = true;
         }
-    }
-
-    private void PlayJumpLanding()
-    {
-        // "JumpLanding" 애니메이션 재생
-
-        _isJump = false;
-        _isFall = false;
     }
 
     private void FixedMaxFallSpeed()
@@ -72,25 +55,13 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
-    private void JumpUp()
+
+    public void JumpInput()
     {
-        if (_rigidbody.velocity.y < 0f && _isFall == false && _isJump)
+        if (_isJump)
         {
-            _isFall = true;
-
-            // "JumpDown" 애니메이션 재생
-        }
-    }
-
-    private void OnJump()
-    {
-        if (_isJump == false)
-        {
-            _isJump = true;
-
             _rigidbody.AddForce(JUMP_DIRECTION * MAX_JUMP_POWER, ForceMode.Impulse);
-
-            // "JumpUp" 애니메이션 재생
+            _isJump = false;
         }
     }
 }

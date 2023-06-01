@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour
 {
     private PlayerAttack _attack;
+    private PlayerJump _jump;
     private Animator _animator;
 
     public bool IsCombo { get; private set; }
@@ -12,6 +13,7 @@ public class PlayerInput : MonoBehaviour
     private void Awake()
     {
         _attack = GetComponent<PlayerAttack>();
+        _jump = GetComponent<PlayerJump>();
         _animator = GetComponent<Animator>();
         
     }
@@ -32,13 +34,16 @@ public class PlayerInput : MonoBehaviour
         {
 
         }
-        //1타
         else
         {
 
         }
+    }
 
-
+    // 이벤트 호출
+    private void OnJump()
+    {
+        _jump.JumpInput();
     }
 
    
