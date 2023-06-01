@@ -29,12 +29,8 @@ public class PlayerAttack : MonoBehaviour
     }
     void Update()
     {
-        // 넉백 1회만 가능하게.
         Weapon.enabled = true;
         _isHit = true;
-
-        // 조건
-
     }
 
     public void AttackOnDefaultDash()
@@ -49,10 +45,9 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-
+    // 맞는애 피격 애니메이션 재생동안 안맞게끔 수정.
     private void OnTriggerEnter(Collider other)
     {
-        // 플레이어와 무기가 충돌했을때 넉백 처리
         if (other.CompareTag("Player"))
         {
             //연속 엔터 방지
@@ -61,7 +56,6 @@ public class PlayerAttack : MonoBehaviour
             Rigidbody rigidbody = other.GetComponent<Rigidbody>();
             if (_isHit)
             {
-                // 스매쉬, 콤보 공격 설정
                 if (CurrentPossibleComboCount == COMBO_FINISH_COUNT)
                 {
                     rigidbody.AddForce(_knockbackDirection * _heavyKnockbackPower, ForceMode.Impulse);
@@ -70,6 +64,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     rigidbody.AddForce(_knockbackDirection * _lightKnockbackPower, ForceMode.Impulse);
                 }
+
                 // 연속 엔터 방지x
                 _isHit = false;
             }
