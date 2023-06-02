@@ -1,10 +1,10 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
     private Rigidbody _rigidbody;
-
     public Collider Weapon;
 
     public readonly int MAX_POSSIBLE_ATTACK_COUNT = 3;
@@ -45,8 +45,7 @@ public class PlayerAttack : MonoBehaviour
             _rigidbody.AddForce(transform.forward * _defaultDashPower, ForceMode.Impulse);
         }
     }
-
-   
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
