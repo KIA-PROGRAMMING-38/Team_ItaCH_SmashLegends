@@ -13,13 +13,18 @@ public class PlayerAttack : MonoBehaviour
 
     public int CurrentPossibleComboCount;
 
-    private float _defaultDashPower = 1.7f;
-    private float _smashDashPower = 3.4f;
+    private float _defaultDashPower = 1f;
+    private float _smashDashPower = 2f;
 
     private float _lightKnockbackPower = 5f;
     private float _heavyKnockbackPower = 20f;
     private bool _isHit;
     private Vector3 _knockbackDirection;
+
+    internal bool isAttack;
+    internal bool isFirstAttack;
+    internal bool isSecondAttack;
+    internal bool isFinishAttack;
 
     private void Awake()
     {

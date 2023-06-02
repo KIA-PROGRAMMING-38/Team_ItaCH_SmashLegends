@@ -23,7 +23,7 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            _animator.Play(AnimationHash.Idle);
+            _animator.SetBool(AnimationHash.Run, false);
         }
     }
 
@@ -33,8 +33,7 @@ public class PlayerMove : MonoBehaviour
         if (input != null)
         {
             moveDirection = new Vector3(input.x, 0, input.y);
-            _animator.Play(AnimationHash.Run);
-
+            _animator.SetBool(AnimationHash.Run, true);
         }
     }
 }
