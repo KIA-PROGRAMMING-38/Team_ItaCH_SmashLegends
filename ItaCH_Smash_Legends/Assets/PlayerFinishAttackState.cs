@@ -12,7 +12,6 @@ public class PlayerFinishAttackState : StateMachineBehaviour
         _playerAttack.AttackOnDefaultDash();
         _playerInput = animator.GetComponent<PlayerInput>();
         _playerAttack.isFinishAttack = false;
-        _playerAttack.CurrentPossibleComboCount = _playerAttack.MAX_POSSIBLE_ATTACK_COUNT;
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -22,7 +21,8 @@ public class PlayerFinishAttackState : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        _playerAttack.CurrentPossibleComboCount = _playerAttack.MAX_POSSIBLE_ATTACK_COUNT;
+        animator.ResetTrigger(AnimationHash.FinishAttack);
     }
 
 

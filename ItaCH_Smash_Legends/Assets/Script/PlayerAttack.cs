@@ -21,6 +21,7 @@ public class PlayerAttack : MonoBehaviour
     private bool _isHit;
     private Vector3 _knockbackDirection;
 
+    internal bool isAttack;
     internal bool isFirstAttack;
     internal bool isSecondAttack;
     internal bool isFinishAttack;
