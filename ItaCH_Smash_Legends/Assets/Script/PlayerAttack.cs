@@ -21,6 +21,10 @@ public class PlayerAttack : MonoBehaviour
     private bool _isHit;
     private Vector3 _knockbackDirection;
 
+    internal bool isFirstAttack;
+    internal bool isSecondAttack;
+    internal bool isFinishAttack;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();

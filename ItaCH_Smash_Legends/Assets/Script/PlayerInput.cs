@@ -8,9 +8,6 @@ public class PlayerInput : MonoBehaviour
     private PlayerAttack _playerAttack;
     private Animator _animator;
 
-    internal bool isFirstAttack;
-    internal bool isSecondAttack;
-
     private void Awake()
     {
         _playerMove = GetComponent<PlayerMove>();
@@ -27,9 +24,14 @@ public class PlayerInput : MonoBehaviour
             _animator.SetBool(AnimationHash.FirstAttack, true);
         }
 
-        if(_playerAttack.CurrentPossibleComboCount == _playerAttack.COMBO_SECOND_COUNT && isFirstAttack)
+        if(_playerAttack.CurrentPossibleComboCount == _playerAttack.COMBO_SECOND_COUNT && _playerAttack.isFirstAttack)
         {
-            isSecondAttack = true;
+            _playerAttack.isSecondAttack = true;
+        }
+
+        if(_playerAttack.CurrentPossibleComboCount == _playerAttack.COMBO_FINISH_COUNT)
+        {
+            _playerAttack.isFinishAttack = true;
         }
     }
 
