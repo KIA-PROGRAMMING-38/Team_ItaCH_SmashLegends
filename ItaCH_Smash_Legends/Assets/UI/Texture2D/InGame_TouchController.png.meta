@@ -1,0 +1,2049 @@
+fileFormatVersion: 2
+guid: c749c7303d1496a4a8cbf83bbc03d9e1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: T_UI_TouchController_Controlpad_CircleShadow
+  - first:
+      213: 21300002
+    second: T_UI_TouchController_Joypad_StickGlow
+  - first:
+      213: 21300004
+    second: T_UI_TouchController_Controlpad_CircleGlowJ
+  - first:
+      213: 21300006
+    second: T_UI_TouchController_Emoji_Normal
+  - first:
+      213: 21300008
+    second: T_UI_TouchController_Controlpad_CircleLineThickest
+  - first:
+      213: 21300010
+    second: T_UI_TouchController_Joypad_StickDirection
+  - first:
+      213: 21300012
+    second: T_UI_TouchController_Controlpad_CircleLineJ
+  - first:
+      213: 21300014
+    second: T_UI_TouchController_Emoji_OffActivated
+  - first:
+      213: 21300016
+    second: T_UI_TouchController_Controlpad_SGauge_Charging
+  - first:
+      213: 21300018
+    second: T_UI_TouchController_Controlpad_CircleLineThick
+  - first:
+      213: 21300020
+    second: T_UI_TouchController_Controlpad_CircleLineB
+  - first:
+      213: 21300022
+    second: T_UI_TouchController_Joypad_StickCenter
+  - first:
+      213: 21300024
+    second: T_UI_TouchController_Controlpad_CircleLineS
+  - first:
+      213: 21300026
+    second: T_UI_TouchController_Controlpad_CircleGlowS
+  - first:
+      213: 21300028
+    second: T_UI_TouchController_Controlpad_CircleLinecharge_Thin
+  - first:
+      213: 21300030
+    second: T_UI_TouchController_Joypad_StickLine
+  - first:
+      213: 21300032
+    second: T_UI_TouchController_Controlpad_SGauge
+  - first:
+      213: 21300034
+    second: T_UI_TouchController_Emoji_Activated
+  - first:
+      213: 21300036
+    second: T_UI_TouchController_Controlpad_CircleLineDeco
+  - first:
+      213: 21300038
+    second: T_UI_TouchController_Emoji_Off
+  - first:
+      213: 21300040
+    second: T_UI_TouchController_Base_SquarePadded
+  - first:
+      213: 21300042
+    second: T_UI_TouchController_Controlpad_CircleLineSmall
+  - first:
+      213: 21300044
+    second: T_UI_TouchController_Controlpad_CircleLinecharge
+  - first:
+      213: 21300046
+    second: T_UI_TouchController_Controlpad_CircleLineThicker
+  - first:
+      213: 21300048
+    second: T_UI_TouchController_Icon_Zeppetta_S
+  - first:
+      213: 21300050
+    second: T_UI_TouchController_Icon_Kurenai_B
+  - first:
+      213: 21300052
+    second: T_UI_TouchController_Icon_Goldie_S
+  - first:
+      213: 21300054
+    second: T_UI_TouchController_Icon_Hook_A
+  - first:
+      213: 21300056
+    second: T_UI_TouchController_Icon_Rambert_A
+  - first:
+      213: 21300058
+    second: T_UI_TouchController_Icon_JackO_S
+  - first:
+      213: 21300060
+    second: T_UI_TouchController_Icon_Molly_A
+  - first:
+      213: 21300062
+    second: T_UI_TouchController_Icon_Peter_S
+  - first:
+      213: 21300064
+    second: T_UI_TouchController_Icon_Kaiser_A
+  - first:
+      213: 21300066
+    second: T_UI_TouchController_Icon_Jump
+  - first:
+      213: 21300068
+    second: T_UI_TouchController_Controlpad_CircleGlowSmall
+  - first:
+      213: 21300070
+    second: T_UI_TouchController_Icon_Victor_B
+  - first:
+      213: 21300072
+    second: T_UI_TouchController_Icon_Robin_S
+  - first:
+      213: 21300074
+    second: T_UI_TouchController_Emoji_Btnback
+  - first:
+      213: 21300076
+    second: T_UI_TouchController_Icon_Cindy_B
+  - first:
+      213: 21300078
+    second: T_UI_TouchController_Joypad_DirectionArrow
+  - first:
+      213: 21300080
+    second: T_UI_TouchController_Base_RectBigPadded
+  - first:
+      213: 21300082
+    second: T_UI_TouchController_Icon_Octavia_B
+  - first:
+      213: 21300084
+    second: T_UI_TouchController_Icon_JackO_B
+  - first:
+      213: 21300086
+    second: T_UI_TouchController_Controlpad_BGauge
+  - first:
+      213: 21300088
+    second: T_UI_TouchController_Icon_Brick_B
+  - first:
+      213: 21300090
+    second: T_UI_TouchController_Icon_Parfait_S_Shift
+  - first:
+      213: 21300092
+    second: T_UI_TouchController_Icon_Loren_A
+  - first:
+      213: 21300094
+    second: T_UI_TouchController_Base_Arrow
+  - first:
+      213: 21300096
+    second: T_UI_TouchController_Icon_Wolfgang_S
+  - first:
+      213: 21300098
+    second: T_UI_TouchController_Icon_Ducky_B
+  - first:
+      213: 21300100
+    second: T_UI_TouchController_Icon_Victor_S
+  - first:
+      213: 21300102
+    second: T_UI_TouchController_Icon_Nui_A
+  - first:
+      213: 21300104
+    second: T_UI_TouchController_Controlpad_CircleGlowB
+  - first:
+      213: 21300106
+    second: T_UI_TouchController_Icon_Flare_S
+  - first:
+      213: 21300108
+    second: T_UI_TouchController_Icon_Loren_B
+  - first:
+      213: 21300110
+    second: T_UI_TouchController_Icon_DonQuixote_A
+  - first:
+      213: 21300112
+    second: T_UI_TouchController_Controlpad_BGauge_Charging
+  - first:
+      213: 21300114
+    second: T_UI_TouchController_Icon_Goldie_B
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 25
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 0
+  flipbookColumns: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: T_UI_TouchController_Controlpad_CircleShadow
+      rect:
+        serializedVersion: 2
+        x: 1236
+        y: 632
+        width: 143
+        height: 143
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -71.5, y: -71.5}
+        - {x: -71.5, y: 71.5}
+        - {x: 71.5, y: 71.5}
+        - {x: 71.5, y: -71.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b70e7638fe34c9baab1f67e831510ee
+      internalID: 21300000
+      vertices:
+      - {x: 0, y: 143}
+      - {x: 143, y: 143}
+      - {x: 0, y: 0}
+      - {x: 143, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Joypad_StickGlow
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 578
+        width: 66
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: -33}
+        - {x: -33, y: 33}
+        - {x: 33, y: 33}
+        - {x: 33, y: -33}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64d992e2cf854e3c8e4d18daaa856a19
+      internalID: 21300002
+      vertices:
+      - {x: 0, y: 66}
+      - {x: 66, y: 66}
+      - {x: 0, y: 0}
+      - {x: 66, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Controlpad_CircleGlowJ
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 0
+        width: 154
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77, y: -77}
+        - {x: -77, y: 77}
+        - {x: 77, y: 77}
+        - {x: 77, y: -77}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4f3c2de2bcd423ea985d2d129165c00
+      internalID: 21300004
+      vertices:
+      - {x: 0, y: 154}
+      - {x: 154, y: 154}
+      - {x: 0, y: 0}
+      - {x: 154, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Emoji_Normal
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 474
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d27f5bde9a4e43deb5d0439e5a6a0d1a
+      internalID: 21300006
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Controlpad_CircleLineThickest
+      rect:
+        serializedVersion: 2
+        x: 1262
+        y: 0
+        width: 154
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77, y: -77}
+        - {x: -77, y: 77}
+        - {x: 77, y: 77}
+        - {x: 77, y: -77}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9992abf1471d46fc8468470c299b2b55
+      internalID: 21300008
+      vertices:
+      - {x: 0, y: 154}
+      - {x: 154, y: 154}
+      - {x: 0, y: 0}
+      - {x: 154, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Joypad_StickDirection
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 920
+        width: 66
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: -33}
+        - {x: -33, y: 33}
+        - {x: 33, y: 33}
+        - {x: 33, y: -33}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f1a458e055d46a5a7aa3dd00c6b7445
+      internalID: 21300010
+      vertices:
+      - {x: 0, y: 66}
+      - {x: 66, y: 66}
+      - {x: 0, y: 0}
+      - {x: 66, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Controlpad_CircleLineJ
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 184
+        width: 154
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77, y: -77}
+        - {x: -77, y: 77}
+        - {x: 77, y: 77}
+        - {x: 77, y: -77}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da2d34c2f5d0444ba1e3448b447084a4
+      internalID: 21300012
+      vertices:
+      - {x: 0, y: 154}
+      - {x: 154, y: 154}
+      - {x: 0, y: 0}
+      - {x: 154, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Emoji_OffActivated
+      rect:
+        serializedVersion: 2
+        x: 1710
+        y: 158
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf5beca32ac14d26b4c2e13f1d132373
+      internalID: 21300014
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Controlpad_SGauge_Charging
+      rect:
+        serializedVersion: 2
+        x: 1078
+        y: 184
+        width: 154
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77, y: -77}
+        - {x: -77, y: 77}
+        - {x: 77, y: 77}
+        - {x: 77, y: -77}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 648f10d5a2e94814a032300aaf336123
+      internalID: 21300016
+      vertices:
+      - {x: 0, y: 154}
+      - {x: 154, y: 154}
+      - {x: 0, y: 0}
+      - {x: 154, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Controlpad_CircleLineThick
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 342
+        width: 154
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77, y: -77}
+        - {x: -77, y: 77}
+        - {x: 77, y: 77}
+        - {x: 77, y: -77}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4fbcd96e74c444a8521a532ac157d58
+      internalID: 21300018
+      vertices:
+      - {x: 0, y: 154}
+      - {x: 154, y: 154}
+      - {x: 0, y: 0}
+      - {x: 154, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Controlpad_CircleLineB
+      rect:
+        serializedVersion: 2
+        x: 1236
+        y: 158
+        width: 154
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77, y: -77}
+        - {x: -77, y: 77}
+        - {x: 77, y: 77}
+        - {x: 77, y: -77}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13964f5b0c0b43ab9015d0bdffd5588f
+      internalID: 21300020
+      vertices:
+      - {x: 0, y: 154}
+      - {x: 154, y: 154}
+      - {x: 0, y: 0}
+      - {x: 154, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Joypad_StickCenter
+      rect:
+        serializedVersion: 2
+        x: 1710
+        y: 262
+        width: 38
+        height: 38
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: -19}
+        - {x: -19, y: 19}
+        - {x: 19, y: 19}
+        - {x: 19, y: -19}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2a8124e0e04472f946f8e5804743af8
+      internalID: 21300022
+      vertices:
+      - {x: 0, y: 38}
+      - {x: 38, y: 38}
+      - {x: 0, y: 0}
+      - {x: 38, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Controlpad_CircleLineS
+      rect:
+        serializedVersion: 2
+        x: 1078
+        y: 342
+        width: 154
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77, y: -77}
+        - {x: -77, y: 77}
+        - {x: 77, y: 77}
+        - {x: 77, y: -77}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 310d65719e6741e9929f6d316c05d4f3
+      internalID: 21300024
+      vertices:
+      - {x: 0, y: 154}
+      - {x: 154, y: 154}
+      - {x: 0, y: 0}
+      - {x: 154, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Controlpad_CircleGlowS
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 500
+        width: 154
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77, y: -77}
+        - {x: -77, y: 77}
+        - {x: 77, y: 77}
+        - {x: 77, y: -77}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f46e787d47ef4fa2a01b148848965030
+      internalID: 21300026
+      vertices:
+      - {x: 0, y: 154}
+      - {x: 154, y: 154}
+      - {x: 0, y: 0}
+      - {x: 154, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Controlpad_CircleLinecharge_Thin
+      rect:
+        serializedVersion: 2
+        x: 1420
+        y: 0
+        width: 154
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77, y: -77}
+        - {x: -77, y: 77}
+        - {x: 77, y: 77}
+        - {x: 77, y: -77}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25ee1699dd994fd68955dc948373af96
+      internalID: 21300028
+      vertices:
+      - {x: 0, y: 154}
+      - {x: 154, y: 154}
+      - {x: 0, y: 0}
+      - {x: 154, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Joypad_StickLine
+      rect:
+        serializedVersion: 2
+        x: 1464
+        y: 578
+        width: 66
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: -33}
+        - {x: -33, y: 33}
+        - {x: 33, y: 33}
+        - {x: 33, y: -33}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fef0df2830d45f1a3a7b12abb1f994e
+      internalID: 21300030
+      vertices:
+      - {x: 0, y: 66}
+      - {x: 66, y: 66}
+      - {x: 0, y: 0}
+      - {x: 66, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Controlpad_SGauge
+      rect:
+        serializedVersion: 2
+        x: 1236
+        y: 316
+        width: 154
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77, y: -77}
+        - {x: -77, y: 77}
+        - {x: 77, y: 77}
+        - {x: 77, y: -77}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b759f4601b9b4608a0e82d93c9bbc868
+      internalID: 21300032
+      vertices:
+      - {x: 0, y: 154}
+      - {x: 154, y: 154}
+      - {x: 0, y: 0}
+      - {x: 154, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Emoji_Activated
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 816
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3d6e7d9a72c48f0b3837d1218995fc4
+      internalID: 21300034
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Controlpad_CircleLineDeco
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 158
+        width: 154
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77, y: -77}
+        - {x: -77, y: 77}
+        - {x: 77, y: 77}
+        - {x: 77, y: -77}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 007f3c9aacb94ae193acf911357defd3
+      internalID: 21300036
+      vertices:
+      - {x: 0, y: 154}
+      - {x: 154, y: 154}
+      - {x: 0, y: 0}
+      - {x: 154, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Emoji_Off
+      rect:
+        serializedVersion: 2
+        x: 1078
+        y: 658
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: -50}
+        - {x: -50, y: 50}
+        - {x: 50, y: 50}
+        - {x: 50, y: -50}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d01a4c38e8744cf1a8ecc4b95b64990d
+      internalID: 21300038
+      vertices:
+      - {x: 0, y: 100}
+      - {x: 100, y: 100}
+      - {x: 0, y: 0}
+      - {x: 100, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Base_SquarePadded
+      rect:
+        serializedVersion: 2
+        x: 1383
+        y: 648
+        width: 22
+        height: 22
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 4, z: 4, w: 4}
+      outline:
+      - - {x: -11, y: -11}
+        - {x: -11, y: 11}
+        - {x: 11, y: 11}
+        - {x: 11, y: -11}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1567c996bb284bc782d7cf62f59b731a
+      internalID: 21300040
+      vertices:
+      - {x: 0, y: 22}
+      - {x: 22, y: 22}
+      - {x: 0, y: 0}
+      - {x: 22, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Controlpad_CircleLineSmall
+      rect:
+        serializedVersion: 2
+        x: 1578
+        y: 0
+        width: 154
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77, y: -77}
+        - {x: -77, y: 77}
+        - {x: 77, y: 77}
+        - {x: 77, y: -77}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c83c246493f4f57b033d7d4e6f51fcc
+      internalID: 21300042
+      vertices:
+      - {x: 0, y: 154}
+      - {x: 154, y: 154}
+      - {x: 0, y: 0}
+      - {x: 154, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Controlpad_CircleLinecharge
+      rect:
+        serializedVersion: 2
+        x: 1236
+        y: 474
+        width: 154
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77, y: -77}
+        - {x: -77, y: 77}
+        - {x: 77, y: 77}
+        - {x: 77, y: -77}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c63fee2a9a3445b39d1a50c0e9690721
+      internalID: 21300044
+      vertices:
+      - {x: 0, y: 154}
+      - {x: 154, y: 154}
+      - {x: 0, y: 0}
+      - {x: 154, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Controlpad_CircleLineThicker
+      rect:
+        serializedVersion: 2
+        x: 1078
+        y: 500
+        width: 154
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77, y: -77}
+        - {x: -77, y: 77}
+        - {x: 77, y: 77}
+        - {x: 77, y: -77}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1d0ed14108a4af6ac29741b8f2bb32d
+      internalID: 21300046
+      vertices:
+      - {x: 0, y: 154}
+      - {x: 154, y: 154}
+      - {x: 0, y: 0}
+      - {x: 154, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Zeppetta_S
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5cd49ae5b55474fb76bd7e7594c8141
+      internalID: 21300048
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Kurenai_B
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 0
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebeed7e3ac6844a1bca1fab2525cbc39
+      internalID: 21300050
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Goldie_S
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 184
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca986958c92d4c91a782817b1650cb36
+      internalID: 21300052
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Hook_A
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 184
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f34445eb481c43d18aa9ae77a0e4d696
+      internalID: 21300054
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Rambert_A
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 0
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 588d13b4f4d249fd8a22a0fd42ecfaa6
+      internalID: 21300056
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_JackO_S
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 0
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c024c41c24414d87b555baa27204c5e5
+      internalID: 21300058
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Molly_A
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 184
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 214107dc2e52481587cd2194a5b07681
+      internalID: 21300060
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Peter_S
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 0
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c8c0060c5354479988691c44bb69a6c
+      internalID: 21300062
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Kaiser_A
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 184
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a52154ee0679451e88737eddc8f77eff
+      internalID: 21300064
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Jump
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 184
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e6e7ebc19234a118dbc9ff036614f5b
+      internalID: 21300066
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Controlpad_CircleGlowSmall
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 658
+        width: 154
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77, y: -77}
+        - {x: -77, y: 77}
+        - {x: 77, y: 77}
+        - {x: 77, y: -77}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a75d583e9c244cabeceb6969af04d14
+      internalID: 21300068
+      vertices:
+      - {x: 0, y: 154}
+      - {x: 154, y: 154}
+      - {x: 0, y: 0}
+      - {x: 154, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Victor_B
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 368
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa8e6c4143da46d587b4b79969368d3a
+      internalID: 21300070
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Robin_S
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 552
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7ab345d5f304e16a86430af21ea7751
+      internalID: 21300072
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Emoji_Btnback
+      rect:
+        serializedVersion: 2
+        x: 1894
+        y: 0
+        width: 106
+        height: 98
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 20, y: 20, z: 20, w: 20}
+      outline:
+      - - {x: -52.999996, y: -49}
+        - {x: -52.999996, y: 49}
+        - {x: 52.999996, y: 49}
+        - {x: 52.999996, y: -49}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c38c760a77140cb962a86f606c02792
+      internalID: 21300074
+      vertices:
+      - {x: 0.0000038146973, y: 98}
+      - {x: 106, y: 98}
+      - {x: 0.0000038146973, y: 0}
+      - {x: 106, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Cindy_B
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 736
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7da9c795e5134426bf10aa00489488e9
+      internalID: 21300076
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Joypad_DirectionArrow
+      rect:
+        serializedVersion: 2
+        x: 1552
+        y: 316
+        width: 224
+        height: 101
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -112, y: -50.5}
+        - {x: -112, y: 50.5}
+        - {x: 112, y: 50.5}
+        - {x: 112, y: -50.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44bfa7b23be34570ab30ea07ea6d115a
+      internalID: 21300078
+      vertices:
+      - {x: 0, y: 101}
+      - {x: 224, y: 101}
+      - {x: 0, y: 0}
+      - {x: 224, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Base_RectBigPadded
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 762
+        width: 66
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 16, y: 16, z: 16, w: 16}
+      outline:
+      - - {x: -33, y: -33}
+        - {x: -33, y: 33}
+        - {x: 33, y: 33}
+        - {x: 33, y: -33}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 337d06e9e3184e5486ae3a678cadd543
+      internalID: 21300080
+      vertices:
+      - {x: 0, y: 66}
+      - {x: 66, y: 66}
+      - {x: 0, y: 0}
+      - {x: 66, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Octavia_B
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 368
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 403049fa69e5413fa78fdd2b9aaeac4c
+      internalID: 21300082
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_JackO_B
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 368
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1802d6f1d644e89b579457323689c37
+      internalID: 21300084
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Controlpad_BGauge
+      rect:
+        serializedVersion: 2
+        x: 1552
+        y: 158
+        width: 154
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77, y: -77}
+        - {x: -77, y: 77}
+        - {x: 77, y: 77}
+        - {x: 77, y: -77}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69c013ec1dce47778dad9baf38c5b6d5
+      internalID: 21300086
+      vertices:
+      - {x: 0, y: 154}
+      - {x: 154, y: 154}
+      - {x: 0, y: 0}
+      - {x: 154, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Brick_B
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 368
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09b2221f56a94b45ac928ae36d9ae461
+      internalID: 21300088
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Parfait_S_Shift
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 552
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 855cd736947e403a990e2870bdc19f0a
+      internalID: 21300090
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Loren_A
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 552
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a75b0adac80445bbd5262f4b27fdba5
+      internalID: 21300092
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Base_Arrow
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 816
+        width: 64
+        height: 70
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32, y: -35}
+        - {x: -32, y: 35}
+        - {x: 32, y: 35}
+        - {x: 32, y: -35}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71021d142cb94ae682590048e80e13ef
+      internalID: 21300094
+      vertices:
+      - {x: 0, y: 70}
+      - {x: 64, y: 70}
+      - {x: 0, y: 0}
+      - {x: 64, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Wolfgang_S
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 736
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d54371c52d741bda46e6d748f442fa5
+      internalID: 21300096
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Ducky_B
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 552
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97ebdd2f651b4f91ab81fd1cb989942a
+      internalID: 21300098
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Victor_S
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 736
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6b4312ea26244e79336b03b0a593582
+      internalID: 21300100
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Nui_A
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 368
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dc4a7555a574741ab5de0b709068ae1
+      internalID: 21300102
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Controlpad_CircleGlowB
+      rect:
+        serializedVersion: 2
+        x: 1736
+        y: 0
+        width: 154
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77, y: -77}
+        - {x: -77, y: 77}
+        - {x: 77, y: 77}
+        - {x: 77, y: -77}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 747583dbaa094b1c8f02a8f1fd40d3a1
+      internalID: 21300104
+      vertices:
+      - {x: 0, y: 154}
+      - {x: 154, y: 154}
+      - {x: 0, y: 0}
+      - {x: 154, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Flare_S
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 736
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62dc0bf63667436eafcdc8061a442f72
+      internalID: 21300106
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Loren_B
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 552
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26c732c3e0444b6d9e93e818824168c0
+      internalID: 21300108
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_DonQuixote_A
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 736
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e01e138309fc494f9ec28bb84b6b8140
+      internalID: 21300110
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Controlpad_BGauge_Charging
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 316
+        width: 154
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77, y: -77}
+        - {x: -77, y: 77}
+        - {x: 77, y: 77}
+        - {x: 77, y: -77}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c21210c0f2214241a14e6b18988aeadd
+      internalID: 21300112
+      vertices:
+      - {x: 0, y: 154}
+      - {x: 154, y: 154}
+      - {x: 0, y: 0}
+      - {x: 154, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_UI_TouchController_Icon_Goldie_B
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 0
+        width: 180
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -90}
+        - {x: -90, y: 90}
+        - {x: 90, y: 90}
+        - {x: 90, y: -90}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 398e214506614ca9ba443358754b9bcb
+      internalID: 21300114
+      vertices:
+      - {x: 0, y: 180}
+      - {x: 180, y: 180}
+      - {x: 0, y: 0}
+      - {x: 180, y: 0}
+      indices: 000000000100000002000000020000000100000003000000
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      T_UI_TouchController_Base_Arrow: 21300094
+      T_UI_TouchController_Base_RectBigPadded: 21300080
+      T_UI_TouchController_Base_SquarePadded: 21300040
+      T_UI_TouchController_Controlpad_BGauge: 21300086
+      T_UI_TouchController_Controlpad_BGauge_Charging: 21300112
+      T_UI_TouchController_Controlpad_CircleGlowB: 21300104
+      T_UI_TouchController_Controlpad_CircleGlowJ: 21300004
+      T_UI_TouchController_Controlpad_CircleGlowS: 21300026
+      T_UI_TouchController_Controlpad_CircleGlowSmall: 21300068
+      T_UI_TouchController_Controlpad_CircleLineB: 21300020
+      T_UI_TouchController_Controlpad_CircleLineDeco: 21300036
+      T_UI_TouchController_Controlpad_CircleLineJ: 21300012
+      T_UI_TouchController_Controlpad_CircleLineS: 21300024
+      T_UI_TouchController_Controlpad_CircleLineSmall: 21300042
+      T_UI_TouchController_Controlpad_CircleLineThick: 21300018
+      T_UI_TouchController_Controlpad_CircleLineThicker: 21300046
+      T_UI_TouchController_Controlpad_CircleLineThickest: 21300008
+      T_UI_TouchController_Controlpad_CircleLinecharge: 21300044
+      T_UI_TouchController_Controlpad_CircleLinecharge_Thin: 21300028
+      T_UI_TouchController_Controlpad_CircleShadow: 21300000
+      T_UI_TouchController_Controlpad_SGauge: 21300032
+      T_UI_TouchController_Controlpad_SGauge_Charging: 21300016
+      T_UI_TouchController_Emoji_Activated: 21300034
+      T_UI_TouchController_Emoji_Btnback: 21300074
+      T_UI_TouchController_Emoji_Normal: 21300006
+      T_UI_TouchController_Emoji_Off: 21300038
+      T_UI_TouchController_Emoji_OffActivated: 21300014
+      T_UI_TouchController_Icon_Brick_B: 21300088
+      T_UI_TouchController_Icon_Cindy_B: 21300076
+      T_UI_TouchController_Icon_DonQuixote_A: 21300110
+      T_UI_TouchController_Icon_Ducky_B: 21300098
+      T_UI_TouchController_Icon_Flare_S: 21300106
+      T_UI_TouchController_Icon_Goldie_B: 21300114
+      T_UI_TouchController_Icon_Goldie_S: 21300052
+      T_UI_TouchController_Icon_Hook_A: 21300054
+      T_UI_TouchController_Icon_JackO_B: 21300084
+      T_UI_TouchController_Icon_JackO_S: 21300058
+      T_UI_TouchController_Icon_Jump: 21300066
+      T_UI_TouchController_Icon_Kaiser_A: 21300064
+      T_UI_TouchController_Icon_Kurenai_B: 21300050
+      T_UI_TouchController_Icon_Loren_A: 21300092
+      T_UI_TouchController_Icon_Loren_B: 21300108
+      T_UI_TouchController_Icon_Molly_A: 21300060
+      T_UI_TouchController_Icon_Nui_A: 21300102
+      T_UI_TouchController_Icon_Octavia_B: 21300082
+      T_UI_TouchController_Icon_Parfait_S_Shift: 21300090
+      T_UI_TouchController_Icon_Peter_S: 21300062
+      T_UI_TouchController_Icon_Rambert_A: 21300056
+      T_UI_TouchController_Icon_Robin_S: 21300072
+      T_UI_TouchController_Icon_Victor_B: 21300070
+      T_UI_TouchController_Icon_Victor_S: 21300100
+      T_UI_TouchController_Icon_Wolfgang_S: 21300096
+      T_UI_TouchController_Icon_Zeppetta_S: 21300048
+      T_UI_TouchController_Joypad_DirectionArrow: 21300078
+      T_UI_TouchController_Joypad_StickCenter: 21300022
+      T_UI_TouchController_Joypad_StickDirection: 21300010
+      T_UI_TouchController_Joypad_StickGlow: 21300002
+      T_UI_TouchController_Joypad_StickLine: 21300030
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
