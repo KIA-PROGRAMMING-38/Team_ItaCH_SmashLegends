@@ -5,29 +5,35 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private float _currentMoveSpeed;
 
-    private Vector3 _moveDirection;
+    internal Vector3 moveDirection;
+    private Animator _animator;
 
-    void Update()
+    private void Start()
     {
-        MoveAndRotate();
+        _animator = GetComponent<Animator>();
     }
 
     // 이동방향을 바라보도록 이동방향으로 캐릭터 회전
-    private void MoveAndRotate()
+    public void MoveAndRotate()
     {
-        if (_moveDirection != Vector3.zero)
+        if (moveDirection != Vector3.zero)
         {
-            transform.rotation = Quaternion.LookRotation(_moveDirection);
+            transform.rotation = Quaternion.LookRotation(moveDirection);
             transform.Translate(Vector3.forward * (_currentMoveSpeed * Time.deltaTime));
+        }
+        else
+        {
+            _animator.SetBool(AnimationHash.Run, false);
         }
     }
 
-    private void OnMove(InputValue value)
+    public void MoveHellper(InputValue value)
     {
         Vector2 input = value.Get<Vector2>();
         if (input != null)
         {
-            _moveDirection = new Vector3(input.x, 0, input.y);
+            moveDirection = new Vector3(input.x, 0, input.y);
+            _animator.SetBool(AnimationHash.Run, true);
         }
     }
 }
