@@ -6,8 +6,8 @@ public class PlayerInput : MonoBehaviour
     private PlayerAttack _playerAttack;
     private PlayerJump _playerJump;
     private PlayerMove _playerMove;
+    private PlayerStatus _playerStatus;
     private Animator _animator;
-
     public bool IsCombo { get; private set; }
     public bool IsSmash { get; private set; }
 
@@ -16,6 +16,8 @@ public class PlayerInput : MonoBehaviour
         _playerMove = GetComponent<PlayerMove>();
         _playerAttack = GetComponent<PlayerAttack>();
         _playerJump = GetComponent<PlayerJump>();
+        _playerStatus = GetComponent<PlayerStatus>();
+
         _animator = GetComponent<Animator>();
         IsCombo = false;
     }
@@ -23,18 +25,7 @@ public class PlayerInput : MonoBehaviour
     private void OnDefaultAttack()
     {
         IsCombo = true;
-
-        if (_playerAttack.CurrentPossibleComboCount == _playerAttack.COMBO_FINISH_COUNT)
-        {
-        }
-        else if (_playerAttack.CurrentPossibleComboCount == _playerAttack.COMBO_SECOND_COUNT)
-        {
-
-        }
-        else
-        {
-
-        }
+       
     }
     private void OnJump()
     {
@@ -43,7 +34,10 @@ public class PlayerInput : MonoBehaviour
 
     private void OnMove(InputValue value)
     {
-        _playerMove.MoveHellper(value);
+        if (_playerStatus.IsHang == false)
+        {
+            _playerMove.MoveHellper(value);
+        }
     }
 
 }
