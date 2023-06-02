@@ -12,6 +12,7 @@ public class PlayerSecondAttackState : StateMachineBehaviour
         _playerAttack.AttackOnDefaultDash();
         _playerInput = animator.GetComponent<PlayerInput>();
         --_playerAttack.CurrentPossibleComboCount;
+        _playerAttack.isFirstAttack = false;
         _playerAttack.isSecondAttack = false;
     }
 
@@ -20,16 +21,13 @@ public class PlayerSecondAttackState : StateMachineBehaviour
         if(_playerAttack.isFinishAttack && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.7f)
         {
             animator.SetBool(AnimationHash.SecondAttack, false);
-            animator.SetBool(AnimationHash.FinishAttack, true);
+            animator.SetTrigger(AnimationHash.FinishAttack);
         }
         else if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f)
         {
             animator.SetBool(AnimationHash.SecondAttack, false);
             _playerAttack.CurrentPossibleComboCount = _playerAttack.MAX_POSSIBLE_ATTACK_COUNT;
         }
-       
-
-        
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

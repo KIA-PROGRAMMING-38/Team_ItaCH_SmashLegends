@@ -23,7 +23,6 @@ public class PlayerFirstAttackState : StateMachineBehaviour
         {
             animator.SetBool(AnimationHash.FirstAttack, false);
             animator.SetBool(AnimationHash.SecondAttack, true);
-            _playerAttack.isFirstAttack = false;
         }
         else if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
         {
