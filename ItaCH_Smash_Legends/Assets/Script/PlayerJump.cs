@@ -3,7 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerJump : MonoBehaviour
 {
-    private Rigidbody _rigidbody;
+    internal Rigidbody _rigidbody;
+    private Animator _animator;
 
     [SerializeField] private float _jumpAcceleration; // 점프 가속도
     [SerializeField] private float _maxFallingSpeed; // 최대 낙하 속도
@@ -12,11 +13,12 @@ public class PlayerJump : MonoBehaviour
     public static readonly float MAX_JUMP_POWER = 1f;
     private static readonly Vector3 JUMP_DIRECTION = Vector3.up;
 
-    private bool _isJump = false;
+    private bool _isJump = true;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
 
         // 중력 현재 피터 기준으로 설정. 중력은 아래로 적용되어야 하니 음수값이 적용되어야 하므로 - 붙여놓음
         Physics.gravity = new Vector3(0f, -_gravitationalAcceleration, 0f);
@@ -35,8 +37,9 @@ public class PlayerJump : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") && !_isJump)
         {
+            _animator.SetBool(AnimationHash.JumpDown, false);
             _isJump = true;
         }
     }
@@ -60,8 +63,8 @@ public class PlayerJump : MonoBehaviour
     {
         if (_isJump)
         {
-            _rigidbody.AddForce(JUMP_DIRECTION * MAX_JUMP_POWER, ForceMode.Impulse);
             _isJump = false;
+            _rigidbody.AddForce(JUMP_DIRECTION * MAX_JUMP_POWER, ForceMode.Impulse);
         }
     }
 }
