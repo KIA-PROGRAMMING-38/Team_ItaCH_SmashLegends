@@ -13,7 +13,7 @@ public class PlayerJump : MonoBehaviour
     public static readonly float MAX_JUMP_POWER = 1f;
     private static readonly Vector3 JUMP_DIRECTION = Vector3.up;
 
-    private bool _isJump = true;
+    internal bool isJump = true;
 
     private void Awake()
     {
@@ -37,10 +37,10 @@ public class PlayerJump : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground") && !_isJump)
+        if (collision.gameObject.CompareTag("Ground") && !isJump)
         {
             _animator.SetBool(AnimationHash.JumpDown, false);
-            _isJump = true;
+            isJump = true;
         }
     }
 
@@ -61,9 +61,9 @@ public class PlayerJump : MonoBehaviour
 
     public void JumpInput()
     {
-        if (_isJump)
+        if (isJump)
         {
-            _isJump = false;
+            isJump = false;
             _rigidbody.AddForce(JUMP_DIRECTION * MAX_JUMP_POWER, ForceMode.Impulse);
         }
     }
