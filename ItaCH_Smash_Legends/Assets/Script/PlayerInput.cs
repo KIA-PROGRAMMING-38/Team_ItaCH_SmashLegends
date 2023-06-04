@@ -24,7 +24,15 @@ public class PlayerInput : MonoBehaviour
 
     private void OnDefaultAttack()
     {
-        if(_playerAttack.CurrentPossibleComboCount == _playerAttack.MAX_POSSIBLE_ATTACK_COUNT)
+        if (_playerJump.isJump == false)
+        {
+            _animator.SetBool(AnimationHash.Jump, false);
+            //_animator.SetTrigger(AnimationHash.JumpAttack);
+            _animator.Play(AnimationHash.JumpAttack);
+            return;
+        }
+
+        if (_playerAttack.CurrentPossibleComboCount == _playerAttack.MAX_POSSIBLE_ATTACK_COUNT)
         {
             _animator.SetBool(AnimationHash.FirstAttack, true);
             _playerAttack.isAttack = true;
