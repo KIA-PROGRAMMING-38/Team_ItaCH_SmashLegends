@@ -43,6 +43,7 @@ public class PlayerInput : MonoBehaviour
     private void OnJump()
     {
         _playerJump.JumpInput();
+        _animator.SetBool(AnimationHash.Jump, true);
     }
 
     private void OnMove(InputValue value)
