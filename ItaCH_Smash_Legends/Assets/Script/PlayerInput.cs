@@ -1,3 +1,4 @@
+using System.Diagnostics.Tracing;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,8 +12,10 @@ public class PlayerInput : MonoBehaviour
     public bool IsCombo { get; private set; }
     public bool IsSmash { get; private set; }
 
+
     private void Awake()
     {
+
         _playerMove = GetComponent<PlayerMove>();
         _playerAttack = GetComponent<PlayerAttack>();
         _playerJump = GetComponent<PlayerJump>();
@@ -50,9 +53,19 @@ public class PlayerInput : MonoBehaviour
             _playerAttack.isFinishAttack = true;
         }
     }
+
+    private void OnSmashAttack()
+    {
+        if (_playerStatus.CurrentState == PlayerStatus.State.Run || 
+            _playerStatus.CurrentState == PlayerStatus.State.Idle)
+        {
+            _animator.Play(AnimationHash.HeavyAttack);
+            _playerStatus.CurrentState = PlayerStatus.State.HeavyAttack;
+       
+        }
+    }
     private void OnJump()
     {
-
         if (_playerStatus.IsJump)
         {
             _playerJump.JumpInput();

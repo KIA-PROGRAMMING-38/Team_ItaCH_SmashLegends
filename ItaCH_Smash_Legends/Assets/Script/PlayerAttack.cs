@@ -29,7 +29,6 @@ public class PlayerAttack : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _knockbackDirection = transform.forward + transform.up;
         CurrentPossibleComboCount = MAX_POSSIBLE_ATTACK_COUNT;
     }
     void Update()
@@ -51,16 +50,18 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-   
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            _knockbackDirection = transform.forward + transform.up;
+
             //연속 엔터 방지
             Weapon.enabled = false;
+            _isHit = false;
 
             Rigidbody rigidbody = other.GetComponent<Rigidbody>();
-            if (_isHit)
+            if (_isHit == false)
             {
                 if (CurrentPossibleComboCount == COMBO_FINISH_COUNT)
                 {
@@ -71,8 +72,6 @@ public class PlayerAttack : MonoBehaviour
                     rigidbody.AddForce(_knockbackDirection * _lightKnockbackPower, ForceMode.Impulse);
                 }
 
-                // 연속 엔터 방지x
-                _isHit = false;
             }
         }
     }
