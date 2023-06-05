@@ -45,7 +45,7 @@ public class PlayerJump : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground") && !isJump)
+        if (collision.gameObject.CompareTag("Ground") && _playerStatus.IsJump == false)
         {
 
             _playerStatus.IsJump = true;

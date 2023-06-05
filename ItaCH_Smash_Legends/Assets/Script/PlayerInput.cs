@@ -25,7 +25,7 @@ public class PlayerInput : MonoBehaviour
     private void OnDefaultAttack()
     {
 
-        if (_playerJump.isJump == false)
+        if (_playerStatus.IsJump == false)
         {
             _animator.SetBool(AnimationHash.Jump, false);
             //_animator.SetTrigger(AnimationHash.JumpAttack);
@@ -64,7 +64,7 @@ public class PlayerInput : MonoBehaviour
             _playerJump.JumpInput();
             _playerStatus.IsHang = false;
 
-            // ���� ��� �ִϸ��̼�� ��ȯ.
+            // 점프 애니메이션 변경으로 바꿀것 
             _animator.Play(AnimationHash.Idle);
         }
 

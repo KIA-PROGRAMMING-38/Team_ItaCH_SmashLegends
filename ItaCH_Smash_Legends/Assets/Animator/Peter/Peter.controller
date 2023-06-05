@@ -390,22 +390,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-
-
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Jump
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: JumpDown
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -910,8 +907,7 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours:
-  - {fileID: 8297445682608493693}
+  m_StateMachineBehaviours: []
   m_Position: {x: 750, y: 0, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1047,7 +1043,7 @@ AnimatorStateMachine:
     m_Position: {x: 0, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102769361909510199}
-    m_Position: {x: 750, y: 0, z: 0}
+    m_Position: {x: 520, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102644330027166960}
     m_Position: {x: 1000, y: 0, z: 0}
@@ -1056,7 +1052,7 @@ AnimatorStateMachine:
     m_Position: {x: -260, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102283928147242736}
-    m_Position: {x: 520, y: 130, z: 0}
+    m_Position: {x: 500, y: 130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102856202777807481}
     m_Position: {x: -260, y: 130, z: 0}
@@ -1107,7 +1103,7 @@ AnimatorStateMachine:
   m_AnyStatePosition: {x: 0, y: -250, z: 0}
   m_EntryPosition: {x: 250, y: -250, z: 0}
   m_ExitPosition: {x: 500, y: -250, z: 0}
-  m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
+  m_ParentStateMachinePosition: {x: 770, y: 0, z: 0}
   m_DefaultState: {fileID: 1102221282869002602}
 --- !u!114 &1690208707181218498
 MonoBehaviour:
@@ -1468,7 +1464,6 @@ AnimatorStateTransition:
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!114 &8440363597383282719
-
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
