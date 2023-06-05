@@ -670,6 +670,7 @@ GameObject:
   - component: {fileID: 1920447622}
   - component: {fileID: 2336473580034023653}
   - component: {fileID: 4244485959330656335}
+  - component: {fileID: 7395388436582826229}
   m_Layer: 0
   m_Name: Peter_Ingame
   m_TagString: Untagged
@@ -712,7 +713,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &1801810034622763243
 BoxCollider:
@@ -843,8 +844,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e1aa1200d6202499c5a484f89086b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 0}
+  Weapon: {fileID: 6094568727215147994}
   CurrentPossibleComboCount: 0
+--- !u!114 &7395388436582826229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801810034622763246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6a6a489115bd744ab756c59d36d238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1839266365119039902
 GameObject:
   m_ObjectHideFlags: 0

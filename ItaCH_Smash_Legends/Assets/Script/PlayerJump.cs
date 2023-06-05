@@ -3,30 +3,38 @@ using UnityEngine.InputSystem;
 
 public class PlayerJump : MonoBehaviour
 {
+
+    private PlayerStatus _playerStatus;
+   
+
     internal Rigidbody _rigidbody;
     private Animator _animator;
 
-    [SerializeField] private float _jumpAcceleration; // Á¡ÇÁ °¡¼Óµµ
-    [SerializeField] private float _maxFallingSpeed; // ÃÖ´ë ³«ÇÏ ¼Óµµ
-    [SerializeField] private float _gravitationalAcceleration; // Áß·Â °¡¼Óµµ
+
+    [SerializeField] private float _jumpAcceleration; // ì í”„ ê°€ì†ë„
+    [SerializeField] private float _maxFallingSpeed; // ìµœëŒ€ ë‚™í•˜ ì†ë„
+    [SerializeField] private float _gravitationalAcceleration; // ì¤‘ë ¥ ê°€ì†ë„
 
     public static readonly float MAX_JUMP_POWER = 1f;
     private static readonly Vector3 JUMP_DIRECTION = Vector3.up;
 
-    internal bool isJump = true;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _playerStatus = GetComponent<PlayerStatus>();
         _animator = GetComponent<Animator>();
 
-        // Áß·Â ÇöÀç ÇÇÅÍ ±âÁØÀ¸·Î ¼³Á¤. Áß·ÂÀº ¾Æ·¡·Î Àû¿ëµÇ¾î¾ß ÇÏ´Ï À½¼ö°ªÀÌ Àû¿ëµÇ¾î¾ß ÇÏ¹Ç·Î - ºÙ¿©³õÀ½
+  
+
+  
+        // ì¤‘ë ¥ í˜„ì¬ í”¼í„° ê¸°ì¤€ìœ¼ë¡œ ì„¤ì •. ì¤‘ë ¥ì€ ì•„ë˜ë¡œ ì ìš©ë˜ì–´ì•¼ í•˜ë‹ˆ ìŒìˆ˜ê°’ì´ ì ìš©ë˜ì–´ì•¼ í•˜ë¯€ë¡œ - ë¶™ì—¬ë†“ìŒ
         Physics.gravity = new Vector3(0f, -_gravitationalAcceleration, 0f);
     }
 
     void Start()
     {
-        // ÇÃ·¹ÀÌ¾îÀÇ mass ¼³Á¤
+        // í”Œë ˆì´ì–´ì˜ mass ì„¤ì •
         _rigidbody.mass = MAX_JUMP_POWER / _jumpAcceleration;
     }
 
@@ -39,8 +47,11 @@ public class PlayerJump : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground") && !isJump)
         {
+
+            _playerStatus.IsJump = true;
             _animator.SetBool(AnimationHash.JumpDown, false);
-            isJump = true;
+          
+
         }
     }
 
@@ -61,10 +72,12 @@ public class PlayerJump : MonoBehaviour
 
     public void JumpInput()
     {
-        if (isJump)
+
+        if (_playerStatus.IsJump)
         {
-            isJump = false;
+           _playerStatus.IsJump = false;
             _rigidbody.AddForce(JUMP_DIRECTION * MAX_JUMP_POWER, ForceMode.Impulse);
         }
+
     }
 }
