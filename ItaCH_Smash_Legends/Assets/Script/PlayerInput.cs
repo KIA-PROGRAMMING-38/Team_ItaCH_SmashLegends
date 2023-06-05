@@ -24,6 +24,16 @@ public class PlayerInput : MonoBehaviour
 
     private void OnDefaultAttack()
     {
+
+        if (_playerJump.isJump == false)
+        {
+            _animator.SetBool(AnimationHash.Jump, false);
+            //_animator.SetTrigger(AnimationHash.JumpAttack);
+            _animator.Play(AnimationHash.JumpAttack);
+            return;
+        }
+
+
         if (_playerAttack.CurrentPossibleComboCount == _playerAttack.MAX_POSSIBLE_ATTACK_COUNT)
         {
             _animator.SetBool(AnimationHash.FirstAttack, true);
@@ -42,10 +52,11 @@ public class PlayerInput : MonoBehaviour
     }
     private void OnJump()
     {
+
         if (_playerStatus.IsJump)
         {
             _playerJump.JumpInput();
-            _playerStatus.IsJump = false;
+            _animator.SetBool(AnimationHash.Jump, true);
         }
 
         if(_playerStatus.IsHang)
@@ -53,9 +64,10 @@ public class PlayerInput : MonoBehaviour
             _playerJump.JumpInput();
             _playerStatus.IsHang = false;
 
-            // ÃßÈÄ Á¡ÇÁ ¾Ö´Ï¸ÞÀÌ¼ÇÀ» º¯È¯.
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ï¿½ ï¿½ï¿½È¯.
             _animator.Play(AnimationHash.Idle);
         }
+
     }
 
     private void OnMove(InputValue value)
