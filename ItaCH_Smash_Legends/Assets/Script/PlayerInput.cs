@@ -25,13 +25,13 @@ public class PlayerInput : MonoBehaviour
     private void OnDefaultAttack()
     {
 
-        if (_playerStatus.IsJump == false)
+        /*if (_playerStatus.IsJump == false)
         {
             _animator.SetBool(AnimationHash.Jump, false);
             //_animator.SetTrigger(AnimationHash.JumpAttack);
             _animator.Play(AnimationHash.JumpAttack);
             return;
-        }
+        }*/
 
 
         if (_playerAttack.CurrentPossibleComboCount == _playerAttack.MAX_POSSIBLE_ATTACK_COUNT)
