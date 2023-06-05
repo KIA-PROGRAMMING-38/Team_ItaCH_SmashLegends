@@ -24,7 +24,7 @@ public class PlayerInput : MonoBehaviour
 
     private void OnDefaultAttack()
     {
-        if(_playerAttack.CurrentPossibleComboCount == _playerAttack.MAX_POSSIBLE_ATTACK_COUNT)
+        if (_playerAttack.CurrentPossibleComboCount == _playerAttack.MAX_POSSIBLE_ATTACK_COUNT)
         {
             _animator.SetBool(AnimationHash.FirstAttack, true);
             _playerAttack.isAttack = true;
@@ -35,14 +35,27 @@ public class PlayerInput : MonoBehaviour
             _playerAttack.isSecondAttack = true;
         }
 
-        if(_playerAttack.isSecondAttack && _playerAttack.CurrentPossibleComboCount == _playerAttack.COMBO_FINISH_COUNT)
+        if (_playerAttack.isSecondAttack && _playerAttack.CurrentPossibleComboCount == _playerAttack.COMBO_FINISH_COUNT)
         {
             _playerAttack.isFinishAttack = true;
         }
     }
     private void OnJump()
     {
-        _playerJump.JumpInput();
+        if (_playerStatus.IsJump)
+        {
+            _playerJump.JumpInput();
+            _playerStatus.IsJump = false;
+        }
+
+        if(_playerStatus.IsHang)
+        {
+            _playerJump.JumpInput();
+            _playerStatus.IsHang = false;
+
+            // 추후 점프 애니메이션을 변환.
+            _animator.Play(AnimationHash.Idle);
+        }
     }
 
     private void OnMove(InputValue value)

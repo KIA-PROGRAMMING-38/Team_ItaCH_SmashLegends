@@ -8,17 +8,23 @@ public class PlayerHangController : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private Animator _animator;
+    private float _hangPositionY = 0.5f;
+
+    public IEnumerator WaitFallingCoroutine;
+
+    private WaitForSeconds _waitForFallingSecond = new WaitForSeconds(3);
 
     private void Awake()
     {
         _playerStatus = GetComponent<PlayerStatus>();
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
+        WaitFallingCoroutine = OnFalling();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("HangZone"))
+        if (other.CompareTag("HangZone") && _playerStatus.IsHang == false)
         {
             OnConstraints();
             _playerStatus.IsHang = true;
@@ -31,10 +37,9 @@ public class PlayerHangController : MonoBehaviour
 
     private Vector3 SetHangPosition(Collider other)
     {
-        float[] hangPosition = new float[3];
+        float[] hangPosition = new float[2];
         hangPosition[0] = other.transform.position.x;
-        hangPosition[1] = other.transform.position.y;
-        hangPosition[2] = other.transform.position.z;
+        hangPosition[1] = other.transform.position.z;
 
         for (int i = 0; i < hangPosition.Length; ++i)
         {
@@ -51,11 +56,11 @@ public class PlayerHangController : MonoBehaviour
 
         if (hangPosition[0] != 0)
         {
-            setPosition = new Vector3(hangPosition[0], hangPosition[1], transform.position.z);
+            setPosition = new Vector3(hangPosition[0], _hangPositionY, transform.position.z);
         }
-        if (hangPosition[2] != 0)
+        if (hangPosition[1] != 0)
         {
-            setPosition = new Vector3(transform.position.x, hangPosition[1], hangPosition[2]);
+            setPosition = new Vector3(transform.position.x, _hangPositionY, hangPosition[1]);
         }
 
         return setPosition;
@@ -73,4 +78,18 @@ public class PlayerHangController : MonoBehaviour
         _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
+    public IEnumerator OnFalling()
+    {
+        while (true)
+        {
+            yield return _waitForFallingSecond;
+            Debug.Log("¶³¾îÁø´Ù");
+
+
+            break;
+        }
+
+
+
+    }
 }

@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerJump : MonoBehaviour
 {
+    private PlayerStatus _playerStatus;
     private Rigidbody _rigidbody;
 
     [SerializeField] private float _jumpAcceleration; // 점프 가속도
@@ -12,12 +13,10 @@ public class PlayerJump : MonoBehaviour
     public static readonly float MAX_JUMP_POWER = 1f;
     private static readonly Vector3 JUMP_DIRECTION = Vector3.up;
 
-    private bool _isJump = false;
-
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-
+        _playerStatus = GetComponent<PlayerStatus>();
         // 중력 현재 피터 기준으로 설정. 중력은 아래로 적용되어야 하니 음수값이 적용되어야 하므로 - 붙여놓음
         Physics.gravity = new Vector3(0f, -_gravitationalAcceleration, 0f);
     }
@@ -37,7 +36,7 @@ public class PlayerJump : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            _isJump = true;
+            _playerStatus.IsJump = true;
         }
     }
 
@@ -58,10 +57,6 @@ public class PlayerJump : MonoBehaviour
 
     public void JumpInput()
     {
-        if (_isJump)
-        {
-            _rigidbody.AddForce(JUMP_DIRECTION * MAX_JUMP_POWER, ForceMode.Impulse);
-            _isJump = false;
-        }
+        _rigidbody.AddForce(JUMP_DIRECTION * MAX_JUMP_POWER, ForceMode.Impulse);
     }
 }
