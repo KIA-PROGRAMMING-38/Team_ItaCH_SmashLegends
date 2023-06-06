@@ -27,8 +27,6 @@ public class PlayerInput : MonoBehaviour
 
         if (_playerStatus.IsJump == false)
         {
-            _animator.SetBool(AnimationHash.Jump, false);
-            //_animator.SetTrigger(AnimationHash.JumpAttack);
             _animator.Play(AnimationHash.JumpAttack);
             return;
         }
@@ -36,7 +34,7 @@ public class PlayerInput : MonoBehaviour
 
         if (_playerAttack.CurrentPossibleComboCount == _playerAttack.MAX_POSSIBLE_ATTACK_COUNT)
         {
-            _animator.SetBool(AnimationHash.FirstAttack, true);
+            _animator.Play(AnimationHash.FirstAttack);
             _playerAttack.isAttack = true;
         }
 
@@ -56,7 +54,7 @@ public class PlayerInput : MonoBehaviour
         if (_playerStatus.IsJump)
         {
             _playerJump.JumpInput();
-            _animator.SetBool(AnimationHash.Jump, true);
+            _animator.Play(AnimationHash.Jump);
         }
 
         if(_playerStatus.IsHang)
@@ -64,8 +62,7 @@ public class PlayerInput : MonoBehaviour
             _playerJump.JumpInput();
             _playerStatus.IsHang = false;
 
-            // 점프 애니메이션 변경으로 바꿀것 
-            _animator.Play(AnimationHash.Idle);
+            _animator.Play(AnimationHash.HangJumpUp);
         }
 
     }
@@ -75,6 +72,7 @@ public class PlayerInput : MonoBehaviour
         if (_playerStatus.IsHang == false)
         {
             _playerMove.MoveHellper(value);
+            _playerStatus.CurrentState = PlayerStatus.State.Run;
         }
     }
 

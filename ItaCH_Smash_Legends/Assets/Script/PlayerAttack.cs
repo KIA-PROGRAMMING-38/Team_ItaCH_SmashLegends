@@ -41,26 +41,21 @@ public class PlayerAttack : MonoBehaviour
 
     public void AttackOnDefaultDash()
     {
-        if (CurrentPossibleComboCount == COMBO_FINISH_COUNT)
-        {
-            _rigidbody.AddForce(transform.forward * _smashDashPower, ForceMode.Impulse);
-        }
-        else
-        {
-            _rigidbody.AddForce(transform.forward * _defaultDashPower, ForceMode.Impulse);
-        }
+        _rigidbody.AddForce(transform.forward * _defaultDashPower, ForceMode.Impulse);
     }
 
-   
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            _knockbackDirection = transform.forward + transform.up;
+     
             //연속 엔터 방지
             Weapon.enabled = false;
+            _isHit = false;
 
             Rigidbody rigidbody = other.GetComponent<Rigidbody>();
-            if (_isHit)
+            if (_isHit == false)
             {
                 if (CurrentPossibleComboCount == COMBO_FINISH_COUNT)
                 {
@@ -71,8 +66,6 @@ public class PlayerAttack : MonoBehaviour
                     rigidbody.AddForce(_knockbackDirection * _lightKnockbackPower, ForceMode.Impulse);
                 }
 
-                // 연속 엔터 방지x
-                _isHit = false;
             }
         }
     }
