@@ -15,7 +15,6 @@ public class PlayerInput : MonoBehaviour
 
     private void Awake()
     {
-
         _playerMove = GetComponent<PlayerMove>();
         _playerAttack = GetComponent<PlayerAttack>();
         _playerJump = GetComponent<PlayerJump>();
@@ -61,12 +60,14 @@ public class PlayerInput : MonoBehaviour
             _playerStatus.CurrentState = PlayerStatus.State.HeavyAttack;
        
         }
+
     }
     private void OnJump()
     {
         if (_playerStatus.IsJump)
         {
             _playerJump.JumpInput();
+            _playerStatus.IsJump = false;
             _animator.Play(AnimationHash.Jump);
         }
 
@@ -74,8 +75,8 @@ public class PlayerInput : MonoBehaviour
         {
             _playerJump.JumpInput();
             _playerStatus.IsHang = false;
-
             _animator.Play(AnimationHash.HangJumpUp);
+
         }
 
     }
