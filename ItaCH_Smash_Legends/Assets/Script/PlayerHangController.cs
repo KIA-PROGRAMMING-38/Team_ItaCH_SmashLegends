@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
+using System;
+using System.Threading;
 
 public class PlayerHangController : MonoBehaviour
 {
@@ -8,33 +11,41 @@ public class PlayerHangController : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private Animator _animator;
-    private float _hangPositionY = 0.5f;
+    private Collider _collider;
+    private float _hangPositionY = 0f;
 
-    public IEnumerator WaitFallingCoroutine;
-
-    private WaitForSeconds _waitForFallingSecond = new WaitForSeconds(3);
+    private float _fallingWaitTime = 3f;
+    public CancellationTokenSource TaskCancel;
 
     private void Awake()
     {
+        _collider= GetComponent<Collider>();
         _playerStatus = GetComponent<PlayerStatus>();
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
-        WaitFallingCoroutine = OnFalling();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("HangZone") && _playerStatus.IsHang == false)
         {
-            OnConstraints();
             _playerStatus.IsHang = true;
             _animator.Play(AnimationHash.Hang);
 
-            transform.forward = (other.transform.position.normalized * -1);
+            transform.forward = SetHangRotation(other.transform.position);
             transform.position = SetHangPosition(other);
         }
     }
 
+    private Vector3 SetHangRotation(Vector3 other)
+    {
+        other = other.normalized * - 1;
+        other.x = Mathf.Round(other.x);
+        other.y = Mathf.Round(other.y);
+        other.z = Mathf.Round(other.z);
+
+        return other;
+    }
     private Vector3 SetHangPosition(Collider other)
     {
         float[] hangPosition = new float[2];
@@ -78,17 +89,12 @@ public class PlayerHangController : MonoBehaviour
         _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
-    public IEnumerator OnFalling()
+    public async UniTaskVoid OnFalling()
     {
-        while (true)
-        {
-            yield return _waitForFallingSecond;
-            Debug.Log("¶³¾îÁø´Ù");
-
-
-            break;
-        }
-
+        TaskCancel = new();
+        await UniTask.Delay(TimeSpan.FromSeconds(_fallingWaitTime), cancellationToken: TaskCancel.Token);
+        _collider.isTrigger = true;
+        _animator.Play(AnimationHash.HangFalling);
 
 
     }

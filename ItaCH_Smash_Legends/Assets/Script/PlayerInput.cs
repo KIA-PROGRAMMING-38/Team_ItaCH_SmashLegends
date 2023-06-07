@@ -15,7 +15,6 @@ public class PlayerInput : MonoBehaviour
 
     private void Awake()
     {
-
         _playerMove = GetComponent<PlayerMove>();
         _playerAttack = GetComponent<PlayerAttack>();
         _playerJump = GetComponent<PlayerJump>();
@@ -63,12 +62,14 @@ public class PlayerInput : MonoBehaviour
             _playerStatus.CurrentState = PlayerStatus.State.HeavyAttack;
        
         }
+
     }
     private void OnJump()
     {
         if (_playerStatus.IsJump)
         {
             _playerJump.JumpInput();
+            _playerStatus.IsJump = false;
             _animator.SetBool(AnimationHash.Jump, true);
         }
 
@@ -77,7 +78,6 @@ public class PlayerInput : MonoBehaviour
             _playerJump.JumpInput();
             _playerStatus.IsHang = false;
 
-            // 점프 애니메이션 변경으로 바꿀것 
             _animator.Play(AnimationHash.Idle);
         }
 
