@@ -8,9 +8,10 @@ public class PlayerMove : MonoBehaviour
     private PlayerStatus _playerStatus;
     internal Vector3 moveDirection;
     private Animator _animator;
-
+    private PlayerStatus _playerStatue;
     private void Start()
     {
+        _playerStatue = GetComponent<PlayerStatus>();
         _animator = GetComponent<Animator>();
         _playerStatus = GetComponent<PlayerStatus>();
     }

@@ -535,7 +535,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -3982431638684233439}
   m_Position: {x: 250, y: 250, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

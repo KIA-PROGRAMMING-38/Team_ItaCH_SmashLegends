@@ -29,12 +29,11 @@ public class PlayerAttack : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _knockbackDirection = transform.forward + transform.up;
         CurrentPossibleComboCount = MAX_POSSIBLE_ATTACK_COUNT;
     }
     void Update()
     {
-        // ÃßÈÄ ¸Â´ÂÄ³¸¯ÅÍ ÇÇ°İ ¾Ö´Ï¸ŞÀÌ¼Ç Àç»ıµ¿¾È ¾È¸Â°Ô²û ¼öÁ¤.
+        // ì¶”í›„ ë§ëŠ”ìºë¦­í„° í”¼ê²© ì• ë‹ˆë©”ì´ì…˜ ì¬ìƒë™ì•ˆ ì•ˆë§ê²Œë” ìˆ˜ì •.
         Weapon.enabled = true;
         _isHit = true;
     }
@@ -49,8 +48,8 @@ public class PlayerAttack : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _knockbackDirection = transform.forward + transform.up;
-     
-            //¿¬¼Ó ¿£ÅÍ ¹æÁö
+
+            //ì—°ì† ì—”í„° ë°©ì§€
             Weapon.enabled = false;
             _isHit = false;
 
