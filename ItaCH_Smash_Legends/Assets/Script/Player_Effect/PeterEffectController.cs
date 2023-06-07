@@ -32,4 +32,5 @@ public class PeterEffectController : MonoBehaviour
     public void EnableFirstAttackEffect() => _effects[0].SetActive(true);
     public void EnableSecondAttackFirstEffect() => _effects[1].SetActive(true);
     public void EnableSecondAttackSecondEffect() => _effects[2].SetActive(true);
+    public void EnableFinalAttack() => _effects[3].SetActive(true);
 }
