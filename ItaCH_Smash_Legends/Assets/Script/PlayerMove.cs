@@ -5,6 +5,7 @@ public class PlayerMove : MonoBehaviour
 {
     private float _currentMoveSpeed = 5.4f;
 
+    private PlayerStatus _playerStatus;
     internal Vector3 moveDirection;
     private Animator _animator;
     private PlayerStatus _playerStatue;
@@ -12,6 +13,7 @@ public class PlayerMove : MonoBehaviour
     {
         _playerStatue = GetComponent<PlayerStatus>();
         _animator = GetComponent<Animator>();
+        _playerStatus = GetComponent<PlayerStatus>();
     }
 
     // 이동방향을 바라보도록 이동방향으로 캐릭터 회전
@@ -25,6 +27,7 @@ public class PlayerMove : MonoBehaviour
         else
         {
             _animator.SetBool(AnimationHash.Run, false);
+            _playerStatus.CurrentState = PlayerStatus.State.Idle;
         }
     }
 
@@ -34,7 +37,11 @@ public class PlayerMove : MonoBehaviour
         if (input != null)
         {
             moveDirection = new Vector3(input.x, 0, input.y);
-            _animator.SetBool(AnimationHash.Run, true);
+
+            if (_playerStatus.CurrentState == PlayerStatus.State.Idle)
+            {
+                _animator.SetBool(AnimationHash.Run, true);
+            }
         }
     }
 }

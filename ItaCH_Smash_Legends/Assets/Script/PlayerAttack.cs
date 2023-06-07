@@ -33,21 +33,14 @@ public class PlayerAttack : MonoBehaviour
     }
     void Update()
     {
-        // ÃßÈÄ ¸Â´ÂÄ³¸¯ÅÍ ÇÇ°İ ¾Ö´Ï¸ŞÀÌ¼Ç Àç»ıµ¿¾È ¾È¸Â°Ô²û ¼öÁ¤.
+        // ì¶”í›„ ë§ëŠ”ìºë¦­í„° í”¼ê²© ì• ë‹ˆë©”ì´ì…˜ ì¬ìƒë™ì•ˆ ì•ˆë§ê²Œë” ìˆ˜ì •.
         Weapon.enabled = true;
         _isHit = true;
     }
 
     public void AttackOnDefaultDash()
     {
-        if (CurrentPossibleComboCount == COMBO_FINISH_COUNT)
-        {
-            _rigidbody.AddForce(transform.forward * _smashDashPower, ForceMode.Impulse);
-        }
-        else
-        {
-            _rigidbody.AddForce(transform.forward * _defaultDashPower, ForceMode.Impulse);
-        }
+        _rigidbody.AddForce(transform.forward * _defaultDashPower, ForceMode.Impulse);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -56,7 +49,7 @@ public class PlayerAttack : MonoBehaviour
         {
             _knockbackDirection = transform.forward + transform.up;
 
-            //¿¬¼Ó ¿£ÅÍ ¹æÁö
+            //ì—°ì† ì—”í„° ë°©ì§€
             Weapon.enabled = false;
             _isHit = false;
 
