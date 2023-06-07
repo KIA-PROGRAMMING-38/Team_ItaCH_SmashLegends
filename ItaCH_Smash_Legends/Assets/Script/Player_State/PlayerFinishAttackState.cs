@@ -5,12 +5,12 @@ using UnityEngine;
 public class PlayerFinishAttackState : StateMachineBehaviour
 {
     private PlayerAttack _playerAttack;
-    private PlayerInput _playerInput;
+    private PlayerStatus _playerStatus;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _playerAttack = animator.GetComponent<PlayerAttack>();
         _playerAttack.AttackOnDefaultDash();
-        _playerInput = animator.GetComponent<PlayerInput>();
+        _playerStatus = animator.GetComponent<PlayerStatus>();
         --_playerAttack.CurrentPossibleComboCount;
         _playerAttack.isSecondAttack = false;
         _playerAttack.isFinishAttack = false;
@@ -24,8 +24,14 @@ public class PlayerFinishAttackState : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _playerAttack.CurrentPossibleComboCount = _playerAttack.MAX_POSSIBLE_ATTACK_COUNT;
-        animator.ResetTrigger(AnimationHash.FinishAttack);
+        if (_playerStatus.CurrentState == PlayerStatus.State.Run)
+        {
+            animator.SetBool(AnimationHash.Run, true);
+        }
+        else
+        {
+            animator.Play(AnimationHash.Idle);
+        }
+        Debug.Log(_playerStatus.CurrentState);
     }
-
-
 }
