@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class PeterEffectController : EffectController
 {
-    public override void EnableFirstAttackEffect() => _effects[0].SetActive(true);
-    public override void EnableSecondAttackFirstEffect() => _effects[1].SetActive(true);
-    public override void EnableSecondAttackSecondEffect() => _effects[2].SetActive(true);
-    public override void EnableFinishAttackEffect() => _effects[3].SetActive(true);
-    public override void EnableSmashAttackEffect() => _effects[4].SetActive(true);
+    private enum EffectName
+    {
+        FirstAttackEffect,
+        SecondAttackFirstEffect,
+        SecondAttackSecondEffect,
+        FinalAttackEffect,
+        SmashAttackEffect
+    }
+    public override void EnableFirstAttackEffect() => _effects[(int)EffectName.FirstAttackEffect].SetActive(true);
+    public override void EnableSecondAttackFirstEffect() => _effects[(int)EffectName.SecondAttackFirstEffect].SetActive(true);
+    public override void EnableSecondAttackSecondEffect() => _effects[(int)EffectName.SecondAttackSecondEffect].SetActive(true);
+    public override void EnableFinishAttackEffect() => _effects[(int)EffectName.FinalAttackEffect].SetActive(true);
+    public override void EnableSmashAttackEffect() => _effects[(int)EffectName.SmashAttackEffect].SetActive(true);
 }

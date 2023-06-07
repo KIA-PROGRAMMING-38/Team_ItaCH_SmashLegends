@@ -7,6 +7,7 @@ public abstract class EffectController : MonoBehaviour
     [SerializeField] private GameObject[] _effectPrefabs;
     protected GameObject[] _effects;
     private float _scaleOffset;
+
     private void Start()
     {
         _scaleOffset = 1 / transform.localScale.x;
