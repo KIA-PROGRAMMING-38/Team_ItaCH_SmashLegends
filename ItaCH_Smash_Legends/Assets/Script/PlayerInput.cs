@@ -40,12 +40,12 @@ public class PlayerInput : MonoBehaviour
 
         if (_playerAttack.isFirstAttack && _playerAttack.CurrentPossibleComboCount == _playerAttack.COMBO_SECOND_COUNT)
         {
-            _playerAttack.isSecondAttack = true;
+            _playerAttack.isSecondAttack = true;                     
         }
 
         if(_playerAttack.isSecondAttack && _playerAttack.CurrentPossibleComboCount == _playerAttack.COMBO_FINISH_COUNT)
         {
-            _playerAttack.isFinishAttack = true;
+            _playerAttack.isFinishAttack = true;         
         }
     }
     private void OnJump()
