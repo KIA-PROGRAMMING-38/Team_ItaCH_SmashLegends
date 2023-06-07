@@ -12,7 +12,7 @@ public class PeterEffectController : MonoBehaviour
         _scaleOffset = 1 / transform.localScale.x;
         // 이펙트를 모아서 관리하기 위해 중간 단계의 오브젝트 생성
         GameObject EffectController = Instantiate(new GameObject(), transform);
-        EffectController.name = "EffectController";
+        EffectController.name = "Effect Controller";
         _effects = new GameObject[_effectPrefabs.Length];
         for(int i = 0; i < _effectPrefabs.Length; ++i)
         {
@@ -32,5 +32,6 @@ public class PeterEffectController : MonoBehaviour
     public void EnableFirstAttackEffect() => _effects[0].SetActive(true);
     public void EnableSecondAttackFirstEffect() => _effects[1].SetActive(true);
     public void EnableSecondAttackSecondEffect() => _effects[2].SetActive(true);
-    public void EnableFinalAttack() => _effects[3].SetActive(true);
+    public void EnableFinishAttackEffect() => _effects[3].SetActive(true);
+    public void EnableSmashAttackEffect() => _effects[4].SetActive(true);
 }
