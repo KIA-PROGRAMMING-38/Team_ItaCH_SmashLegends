@@ -17,6 +17,7 @@ public class LegendUI : MonoBehaviour
     private Transform _characterTransform;
     private CharacterStatus _characterStatus;
     private RectTransform[] _healthPointBlocks;
+    private Image _healthPointSeperatorMask;
 
     // 비율 계산을 위해 float으로 설정
     private const float StandardHealthPoint = 3000;
@@ -63,6 +64,9 @@ public class LegendUI : MonoBehaviour
             {
                 _healthPointBlocks[i] = _healthPointSeperator.GetChild(i).GetComponent<RectTransform>();
             }
+
+            _healthPointSeperatorMask = _healthPointSeperator.GetComponentInParent<Image>();
+            Debug.Assert(_healthPointSeperatorMask != null);
         }
         
         Vector3 healthPointBlockScale = new Vector3(StandardHealthPoint / maxHealthPoint, 1, 1);
@@ -73,10 +77,12 @@ public class LegendUI : MonoBehaviour
         }
     }
 
-    public void SetHealthPoint(int healthPoint, float healthPointRatio)
+    public void SetHealthPoint(int healthPoint, int healthPointPercent)
     {
         _healthPointText.text = healthPoint.ToString();
+        float healthPointRatio = healthPointPercent * 0.01f;
         _healthPointBarFilling.fillAmount = healthPointRatio;
+        _healthPointSeperatorMask.fillAmount = healthPointRatio;
     }
 
     public void DisableLegendUI() => gameObject.SetActive(false);

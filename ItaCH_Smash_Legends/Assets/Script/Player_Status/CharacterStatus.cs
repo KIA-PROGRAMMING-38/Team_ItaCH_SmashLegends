@@ -10,7 +10,7 @@ public class CharacterStatus : CharacterDefaultStatus
     private int _currentHealthPointRatio;
     private const int DEAD_TRIGGER_HP = 0;
 
-    public event Action<int, float> OnPlayerHealthPointChange;
+    public event Action<int, int> OnPlayerHealthPointChange;
     public event Action OnPlayerDie;
 
     private void Awake()
@@ -20,7 +20,7 @@ public class CharacterStatus : CharacterDefaultStatus
     public void InitHP()
     {
         _currentHealthPoint = base.MaxHealthPoint;
-        _currentHealthPointRatio = 1;
+        _currentHealthPointRatio = 100;
     }
     public void GetDamage(int damage) // 피격 판정 시 호출
     {
