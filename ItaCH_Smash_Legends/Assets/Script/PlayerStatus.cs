@@ -16,7 +16,6 @@ public class PlayerStatus : MonoBehaviour
     public bool IsJump { get; set; }
     public bool IsHang { get; set; }
 
-
     private void Awake()
     {
         CurrentState = State.Idle;
