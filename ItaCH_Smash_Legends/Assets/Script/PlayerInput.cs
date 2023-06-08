@@ -8,6 +8,7 @@ public class PlayerInput : MonoBehaviour
     private PlayerJump _playerJump;
     private PlayerMove _playerMove;
     private PlayerStatus _playerStatus;
+    private PlayerHit _playerHit;
     private Animator _animator;
 
 
@@ -17,6 +18,7 @@ public class PlayerInput : MonoBehaviour
         _playerAttack = GetComponent<PlayerAttack>();
         _playerJump = GetComponent<PlayerJump>();
         _playerStatus = GetComponent<PlayerStatus>();
+        _playerHit= GetComponent<PlayerHit>();
         _animator = GetComponent<Animator>();
     }
 
@@ -32,16 +34,17 @@ public class PlayerInput : MonoBehaviour
         if (IsPossibleFirstAttack())
         {
             _animator.Play(AnimationHash.FirstAttack);
+            _playerHit.AttackRangeOn();
         }
 
         if (_playerAttack.isFirstAttack && _playerAttack.CurrentPossibleComboCount == _playerAttack.COMBO_SECOND_COUNT)
         {
-            _playerAttack.isSecondAttack = true;                     
+            _playerAttack.isSecondAttack = true;
         }
 
         if (_playerAttack.isSecondAttack && _playerAttack.CurrentPossibleComboCount == _playerAttack.COMBO_FINISH_COUNT)
         {
-            _playerAttack.isFinishAttack = true;         
+            _playerAttack.isFinishAttack = true;
         }
     }
     private bool IsPossibleFirstAttack()

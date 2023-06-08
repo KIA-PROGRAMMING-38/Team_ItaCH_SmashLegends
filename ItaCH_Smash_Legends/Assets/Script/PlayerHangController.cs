@@ -83,7 +83,7 @@ public class PlayerHangController : MonoBehaviour
     {
         _rigidbody.constraints = RigidbodyConstraints.FreezeAll;
     }
-    // 스테이트 머신 -> 행 스테이트 에서 탈출할때 사용
+    
     public void OffConstraints()
     {
         _rigidbody.constraints = RigidbodyConstraints.None;

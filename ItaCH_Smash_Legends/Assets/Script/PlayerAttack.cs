@@ -1,5 +1,6 @@
-using System;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
+using Cysharp.Threading.Tasks.CompilerServices;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -15,31 +16,15 @@ public class PlayerAttack : MonoBehaviour
 
     private PlayerMove _playerMove;
     private Rigidbody _rigidbody;
-    public Collider Weapon;
+    public Collider attackRange;
 
-    private Vector3 _knockbackDirection;
-
-    private bool _isHit;
-    
     private float _defaultDashPower = 1f;
-    private float _lightKnockbackPower = 5f;
-    private float _heavyKnockbackPower = 20f;
-
-
-
 
     private void Awake()
     {
         _playerMove = GetComponent<PlayerMove>();
         _rigidbody = GetComponent<Rigidbody>();
         CurrentPossibleComboCount = MAX_POSSIBLE_ATTACK_COUNT;
-    }
-    void Update()
-    {
-        // 추후 맞는캐릭터 피격 애니메이션 재생동안 안맞게끔 수정.
-        Weapon.enabled = true;
-        _isHit = true;
-
     }
 
     public void AttackOnDefaultDash()
@@ -53,29 +38,5 @@ public class PlayerAttack : MonoBehaviour
             transform.forward = _playerMove.moveDirection;
         }
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            _knockbackDirection = transform.forward + transform.up;
-
-            //연속 엔터 방지
-            Weapon.enabled = false;
-            _isHit = false;
-
-            Rigidbody rigidbody = other.GetComponent<Rigidbody>();
-            if (_isHit == false)
-            {
-                if (CurrentPossibleComboCount == COMBO_FINISH_COUNT)
-                {
-                    rigidbody.AddForce(_knockbackDirection * _heavyKnockbackPower, ForceMode.Impulse);
-                }
-                else
-                {
-                    rigidbody.AddForce(_knockbackDirection * _lightKnockbackPower, ForceMode.Impulse);
-                }
-
-            }
-        }
-    }
+   
 }
