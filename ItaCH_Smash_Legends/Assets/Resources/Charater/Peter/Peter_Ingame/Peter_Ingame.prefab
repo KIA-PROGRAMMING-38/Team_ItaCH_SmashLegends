@@ -668,6 +668,7 @@ GameObject:
   - component: {fileID: 2336473580034023653}
   - component: {fileID: 4244485959330656335}
   - component: {fileID: 6193904240655421861}
+  - component: {fileID: 7294130691389650921}
   m_Layer: 0
   m_Name: Peter_Ingame
   m_TagString: Untagged
@@ -765,7 +766,7 @@ Animator:
   m_GameObject: {fileID: 1801810034622763246}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c2c18b96a4d76c44089d9c96c3874d37, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4c984531bdb050e4e9c9ea7d31d4a108, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -813,8 +814,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e1aa1200d6202499c5a484f89086b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 0}
   CurrentPossibleComboCount: 0
+  Weapon: {fileID: 0}
 --- !u!114 &6193904240655421861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,6 +826,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d265c83dd40b374d84e7fde11677fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7294130691389650921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801810034622763246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1743fee1b24df45bafdd0ff5cada83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1839266365119039902
