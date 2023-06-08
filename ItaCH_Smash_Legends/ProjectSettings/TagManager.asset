@@ -44,3 +44,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: LegendUI
+    uniqueID: 2037405431
+    locked: 0
