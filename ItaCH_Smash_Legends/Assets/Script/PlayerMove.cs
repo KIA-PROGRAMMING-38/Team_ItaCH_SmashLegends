@@ -3,20 +3,20 @@ using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
 {
-    private float _currentMoveSpeed = 5.4f;
 
     private PlayerStatus _playerStatus;
-    internal Vector3 moveDirection;
     private Animator _animator;
-    private PlayerStatus _playerStatue;
+
+    internal Vector3 moveDirection;
+    
+    internal float _currentMoveSpeed = 5.4f;
+
     private void Start()
     {
-        _playerStatue = GetComponent<PlayerStatus>();
-        _animator = GetComponent<Animator>();
         _playerStatus = GetComponent<PlayerStatus>();
+        _animator = GetComponent<Animator>();
     }
 
-    // 이동방향을 바라보도록 이동방향으로 캐릭터 회전
     public void MoveAndRotate()
     {
         if (moveDirection != Vector3.zero)
@@ -27,21 +27,22 @@ public class PlayerMove : MonoBehaviour
         else
         {
             _animator.SetBool(AnimationHash.Run, false);
-            _playerStatus.CurrentState = PlayerStatus.State.Idle;
         }
     }
 
     public void MoveHellper(InputValue value)
     {
         Vector2 input = value.Get<Vector2>();
+
         if (input != null)
         {
             moveDirection = new Vector3(input.x, 0, input.y);
-
-            if (_playerStatus.CurrentState == PlayerStatus.State.Idle)
+            if (_playerStatus.CurrentState == PlayerStatus.State.Idle
+                || _playerStatus.CurrentState == PlayerStatus.State.Run)
             {
                 _animator.SetBool(AnimationHash.Run, true);
             }
+
         }
     }
 }

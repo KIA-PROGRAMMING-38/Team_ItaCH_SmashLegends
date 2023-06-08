@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -14,16 +15,11 @@ public class PlayerHangState : StateMachineBehaviour
     {
         _playerHangController = animator.GetComponent<PlayerHangController>();
         _playerStatus = animator.GetComponent<PlayerStatus>();
-        _playerStatus.IsJump = false;
 
+        _playerStatus.CurrentState = PlayerStatus.State.Hang;
+
+        animator.SetBool(AnimationHash.Run, false);
         _playerHangController.OnFalling().Forget();
-
-
-    }
-
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

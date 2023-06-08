@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
+using UnityEngine.EventSystems;
 
 public class PlayerSecondAttackState : StateMachineBehaviour
 {
@@ -10,18 +12,18 @@ public class PlayerSecondAttackState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _playerAttack = animator.GetComponent<PlayerAttack>();
-        _playerAttack.AttackOnDefaultDash();
         _playerStatus = animator.GetComponent<PlayerStatus>();
+        _playerAttack.AttackOnDefaultDash();
 
         --_playerAttack.CurrentPossibleComboCount;
         _playerAttack.isFirstAttack = false;
-        
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(_playerAttack.isFinishAttack && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.7f)
+        if (_playerAttack.isFinishAttack && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.7f)
         {
+            _playerAttack.AttackRotate();
             animator.Play(AnimationHash.FinishAttack);
         }
         else if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f)
@@ -31,16 +33,4 @@ public class PlayerSecondAttackState : StateMachineBehaviour
         }
     }
 
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        if (_playerStatus.CurrentState == PlayerStatus.State.Run)
-        {
-            animator.SetBool(AnimationHash.Run, true);
-        }
-        else
-        {
-            animator.Play(AnimationHash.Idle);
-        }
-        Debug.Log(_playerStatus.CurrentState);
-    }
 }

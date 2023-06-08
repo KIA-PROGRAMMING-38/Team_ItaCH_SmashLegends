@@ -9,8 +9,6 @@ public class PlayerInput : MonoBehaviour
     private PlayerMove _playerMove;
     private PlayerStatus _playerStatus;
     private Animator _animator;
-    public bool IsCombo { get; private set; }
-    public bool IsSmash { get; private set; }
 
 
     private void Awake()
@@ -19,25 +17,21 @@ public class PlayerInput : MonoBehaviour
         _playerAttack = GetComponent<PlayerAttack>();
         _playerJump = GetComponent<PlayerJump>();
         _playerStatus = GetComponent<PlayerStatus>();
-
         _animator = GetComponent<Animator>();
-        IsCombo = false;
     }
 
     private void OnDefaultAttack()
     {
 
-        /*if (_playerStatus.IsJump == false)
+        if (_playerStatus.IsJump == false)
         {
-            _animator.Play(AnimationHash.JumpAttack);
+            _animator.SetTrigger(AnimationHash.JumpAttack);
             return;
-        }*/
-
-
-        if (_playerAttack.CurrentPossibleComboCount == _playerAttack.MAX_POSSIBLE_ATTACK_COUNT)
+        }
+        
+        if (IsPossibleFirstAttack())
         {
             _animator.Play(AnimationHash.FirstAttack);
-            _playerAttack.isAttack = true;
         }
 
         if (_playerAttack.isFirstAttack && _playerAttack.CurrentPossibleComboCount == _playerAttack.COMBO_SECOND_COUNT)
@@ -50,32 +44,44 @@ public class PlayerInput : MonoBehaviour
             _playerAttack.isFinishAttack = true;         
         }
     }
-
+    private bool IsPossibleFirstAttack()
+    {
+        if (_playerAttack.CurrentPossibleComboCount == _playerAttack.MAX_POSSIBLE_ATTACK_COUNT &&
+         _playerStatus.CurrentState == PlayerStatus.State.Run ||
+         _playerStatus.CurrentState == PlayerStatus.State.Idle)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     private void OnSmashAttack()
     {
-        if (_playerStatus.CurrentState == PlayerStatus.State.Run || 
+        if (_playerStatus.CurrentState == PlayerStatus.State.Run ||
             _playerStatus.CurrentState == PlayerStatus.State.Idle)
         {
             _animator.Play(AnimationHash.HeavyAttack);
             _playerStatus.CurrentState = PlayerStatus.State.HeavyAttack;
-       
+
         }
 
     }
     private void OnJump()
     {
-        if (_playerStatus.IsJump)
+        if (_playerStatus.IsJump && _playerStatus.CurrentState == PlayerStatus.State.Run
+            || _playerStatus.CurrentState == PlayerStatus.State.Idle)
         {
             _playerJump.JumpInput();
-            _playerStatus.IsJump = false;
             _animator.Play(AnimationHash.Jump);
         }
 
-        if(_playerStatus.IsHang)
+        if (_playerStatus.IsHang)
         {
             _playerJump.JumpInput();
+            _animator.Play(AnimationHash.Jump);
             _playerStatus.IsHang = false;
-            _animator.Play(AnimationHash.HangJumpUp);
 
         }
 
@@ -86,7 +92,6 @@ public class PlayerInput : MonoBehaviour
         if (_playerStatus.IsHang == false)
         {
             _playerMove.MoveHellper(value);
-            _playerStatus.CurrentState = PlayerStatus.State.Run;
         }
     }
 
