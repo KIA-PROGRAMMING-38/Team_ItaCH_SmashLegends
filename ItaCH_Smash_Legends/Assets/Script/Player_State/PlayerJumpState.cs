@@ -6,26 +6,26 @@ using UnityEngine;
 public class PlayerJumpState : StateMachineBehaviour
 {
     private PlayerJump _playerJump;
-    private PlayerMove _playerMove;
+    private PlayerStatus _playerStatus;
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _playerJump = animator.GetComponent<PlayerJump>();
-        _playerMove = animator.GetComponent<PlayerMove>();
+        _playerStatus =animator.GetComponent<PlayerStatus>();
+        
+        _playerStatus.IsJump = false;
+        _playerStatus.CurrentState = PlayerStatus.State.Jump;
+
+        animator.SetBool(AnimationHash.Run, false);
+
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _playerMove.MoveAndRotate();
-        if(_playerJump._rigidbody.velocity.y <= 0f)
+        _playerJump.JumpMoveAndRotate();
+        if (_playerJump._rigidbody.velocity.y <= 0f)
         {
             animator.SetBool(AnimationHash.JumpDown, true);
         }
     }
-
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-
-    }
-
-
 }

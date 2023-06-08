@@ -12,34 +12,35 @@ public class PlayerHangController : MonoBehaviour
     private Rigidbody _rigidbody;
     private Animator _animator;
     private Collider _collider;
-    private float _hangPositionY = 0f;
-
-    private float _fallingWaitTime = 3f;
+    
     public CancellationTokenSource TaskCancel;
+    
+    private float _hangPositionY = 0f;
+    private float _fallingWaitTime = 3f;
 
     private void Awake()
     {
-        _collider= GetComponent<Collider>();
+        _collider = GetComponent<Collider>();
         _playerStatus = GetComponent<PlayerStatus>();
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("HangZone") && _playerStatus.IsHang == false)
         {
-            _playerStatus.IsHang = true;
-            _animator.Play(AnimationHash.Hang);
-
             transform.forward = SetHangRotation(other.transform.position);
             transform.position = SetHangPosition(other);
+            OnConstraints();
+
+            _animator.Play(AnimationHash.Hang);
+            _playerStatus.IsHang = true;
         }
     }
 
     private Vector3 SetHangRotation(Vector3 other)
     {
-        other = other.normalized * - 1;
+        other = other.normalized * -1;
         other.x = Mathf.Round(other.x);
         other.y = Mathf.Round(other.y);
         other.z = Mathf.Round(other.z);

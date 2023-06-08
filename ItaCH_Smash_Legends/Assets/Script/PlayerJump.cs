@@ -1,15 +1,15 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerJump : MonoBehaviour
 {
 
     private PlayerStatus _playerStatus;
-
+    private PlayerMove _playerMove;
 
     internal Rigidbody _rigidbody;
     private Animator _animator;
-
 
     private float _jumpAcceleration = 14.28f; // 점프 가속도
     private float _maxFallingSpeed = 23f; // 최대 낙하 속도
@@ -23,10 +23,8 @@ public class PlayerJump : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _playerStatus = GetComponent<PlayerStatus>();
+        _playerMove = GetComponent<PlayerMove>();
         _animator = GetComponent<Animator>();
-
-
-
 
         // 중력 현재 피터 기준으로 설정. 중력은 아래로 적용되어야 하니 음수값이 적용되어야 하므로 - 붙여놓음
         Physics.gravity = new Vector3(0f, -_gravitationalAcceleration, 0f);
@@ -47,10 +45,18 @@ public class PlayerJump : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground") && _playerStatus.IsJump == false)
         {
-
             _playerStatus.IsJump = true;
             _animator.SetBool(AnimationHash.JumpDown, false);
 
+        }
+    }
+
+    public void JumpMoveAndRotate()
+    {
+        if (_playerMove.moveDirection != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(_playerMove.moveDirection);
+            transform.Translate(Vector3.forward * (_playerMove._currentMoveSpeed * Time.deltaTime));
 
         }
     }
@@ -72,6 +78,6 @@ public class PlayerJump : MonoBehaviour
 
     public void JumpInput()
     {
-            _rigidbody.AddForce(JUMP_DIRECTION * MAX_JUMP_POWER, ForceMode.Impulse);
+        _rigidbody.AddForce(JUMP_DIRECTION * MAX_JUMP_POWER, ForceMode.Impulse);
     }
 }
