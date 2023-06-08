@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 public class CharacterStatus : CharacterDefaultStatus
 {
@@ -9,13 +10,17 @@ public class CharacterStatus : CharacterDefaultStatus
     private int _currentHealthPointRatio;
     private const int DEAD_TRIGGER_HP = 0;
 
+    public event Action<int, float> OnPlayerHealthPointChange;
+    public event Action OnPlayerDie;
+
     private void Awake()
     {
         InitHP();
     }
     public void InitHP()
     {
-        _currentHealthPoint = base.MaxHealthPoint;        
+        _currentHealthPoint = base.MaxHealthPoint;
+        _currentHealthPointRatio = 1;
     }
     public void GetDamage(int damage) // 피격 판정 시 호출
     {
@@ -25,6 +30,8 @@ public class CharacterStatus : CharacterDefaultStatus
         if (_currentHealthPoint == DEAD_TRIGGER_HP)
         {            
             this.gameObject.SetActive(false);
+            OnPlayerDie.Invoke();
         }
+        OnPlayerHealthPointChange.Invoke(_currentHealthPoint, _currentHealthPointRatio);
     }
 }

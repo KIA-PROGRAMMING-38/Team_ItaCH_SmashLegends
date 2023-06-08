@@ -1,38 +1,83 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class LegendUI : MonoBehaviour
 {
     [SerializeField] private float _heightOffset;
-    private Transform _playerTransform;
-    private CharacterStatus _playerStatus;
-    private float _healthPointBarFillAmount;
-    private float _healthPointBarScale;
-    private string _healthAmountText;
+    [SerializeField] private TextMeshProUGUI _healthPointText;
+    [SerializeField] private Image _healthPointBarFilling;
+    [SerializeField] private Transform _healthPointSeperator;
 
+    private Transform _characterTransform;
+    private CharacterStatus _characterStatus;
+    private RectTransform[] _healthPointBlocks;
+
+    // 비율 계산을 위해 float으로 설정
+    private const float StandardHealthPoint = 3000;
     void Update()
     {
-        transform.position = new Vector3(_playerTransform.position.x, 
-            _playerTransform.position.y + _heightOffset,
-            _playerTransform.position.z);
+        transform.position = new Vector3(_characterTransform.position.x, 
+            _characterTransform.position.y + _heightOffset,
+            _characterTransform.position.z);
+        // 테스트 코드. 이후에는 이동, 공격, 피격 다운, 점프 등 이동이 있을 때에만 연산 예정.
     }
 
-    public void SetTransform(Transform playerTransform)
+    private void OnDestroy()
     {
-        _playerTransform = playerTransform;
-        CharacterStatus characterStatus = playerTransform.GetComponent<CharacterStatus>();
+        _characterStatus.OnPlayerHealthPointChange -= SetHealthPoint;
+        _characterStatus.OnPlayerDie -= DisableLegendUI;
+    }
+    public void InitLegendUISettings(Transform characterTransform)
+    {
+        _characterTransform = characterTransform;
+
+        CharacterStatus characterStatus = characterTransform.GetComponent<CharacterStatus>();
         if (characterStatus == null)
         {
-            characterStatus = playerTransform.AddComponent<CharacterStatus>();
+            characterStatus = characterTransform.AddComponent<CharacterStatus>();
         }
-        _playerStatus = characterStatus;
-    }
-    public void SetHealthPointBar(int HealthPoint)
-    {
-        
+
+        _characterStatus = characterStatus;
+        _characterStatus.OnPlayerHealthPointChange -= SetHealthPoint;
+        _characterStatus.OnPlayerHealthPointChange += SetHealthPoint;
+        _characterStatus.OnPlayerDie -= DisableLegendUI;
+        _characterStatus.OnPlayerDie += DisableLegendUI;
+
+        SetHealthPointBar(_characterStatus.MaxHealthPoint);
+        SetHealthPoint(_characterStatus.HealthPoint, _characterStatus.HealthPointRatio);
     }
 
+    public void SetHealthPointBar(int maxHealthPoint)
+    {
+        if(_healthPointBlocks == null)
+        {
+            _healthPointBlocks = new RectTransform[_healthPointSeperator.childCount];
+
+            for(int i = 0; i < _healthPointBlocks.Length; ++i)
+            {
+                _healthPointBlocks[i] = _healthPointSeperator.GetChild(i).GetComponent<RectTransform>();
+            }
+        }
+        
+        Vector3 healthPointBlockScale = new Vector3(StandardHealthPoint / maxHealthPoint, 1, 1);
+
+        foreach (RectTransform rectTransform in _healthPointBlocks)
+        {
+            rectTransform.localScale = healthPointBlockScale;
+        }
+    }
+
+    public void SetHealthPoint(int healthPoint, float healthPointRatio)
+    {
+        _healthPointText.text = healthPoint.ToString();
+        _healthPointBarFilling.fillAmount = healthPointRatio;
+    }
+
+    public void DisableLegendUI() => gameObject.SetActive(false);
 }

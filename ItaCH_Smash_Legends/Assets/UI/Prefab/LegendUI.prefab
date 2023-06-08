@@ -1171,7 +1171,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &4638945906941721817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1202,6 +1202,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _heightOffset: 2.5
+  _healthPointText: {fileID: 4638945906326984404}
+  _healthPointBarFilling: {fileID: 4638945905928080402}
+  _healthPointSeperator: {fileID: 4638945905734021664}
 --- !u!1 &4638945906946531545
 GameObject:
   m_ObjectHideFlags: 0

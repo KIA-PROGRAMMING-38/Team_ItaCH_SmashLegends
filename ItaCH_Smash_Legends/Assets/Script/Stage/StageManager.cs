@@ -78,7 +78,7 @@ public class StageManager : MonoBehaviour
     public void SetLegendUI(GameObject player)
     {
         GameObject legendUI = Instantiate(_legendUIPrefab);
-        legendUI.GetComponent<LegendUI>().SetTransform(player.transform);
+        legendUI.GetComponent<LegendUI>().InitLegendUISettings(player.transform);
         _legendUI.Add(legendUI);
     }
 }
