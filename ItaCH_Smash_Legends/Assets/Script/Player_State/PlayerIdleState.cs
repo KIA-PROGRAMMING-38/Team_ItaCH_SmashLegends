@@ -13,8 +13,10 @@ public class PlayerIdleState : StateMachineBehaviour
         _playerStatus = animator.GetComponent<PlayerStatus>();
 
         _playerStatus.CurrentState = PlayerStatus.State.Idle;
+        animator.ResetTrigger(AnimationHash.RollUpBack);
+        animator.ResetTrigger(AnimationHash.RollUpFront);
 
-        if(_playerMove.moveDirection != Vector3.zero)
+        if (_playerMove.moveDirection != Vector3.zero)
         {
             animator.SetBool(AnimationHash.Run, true);
         }
