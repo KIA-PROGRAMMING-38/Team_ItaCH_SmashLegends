@@ -789,7 +789,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: PC
-  m_DefaultActionMap: PlayerActions
+  m_DefaultActionMap: FirtstPlayerActions
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!95 &-3319399887971439385
@@ -918,6 +918,7 @@ MonoBehaviour:
   - {fileID: 8989311816723465904, guid: 414345a25fe944e4b826588d0dd3f376, type: 3}
   - {fileID: 621744453388112885, guid: b8d0db7afdfd38b409078f5c5636b802, type: 3}
   - {fileID: 2756794743097765565, guid: 505113dbdc2dcb942b46b29b98d9b6f4, type: 3}
+  - {fileID: 8602941021925442327, guid: e991ad3b429d442438cba1e4d66ea9b9, type: 3}
 --- !u!114 &1207978726
 MonoBehaviour:
   m_ObjectHideFlags: 0

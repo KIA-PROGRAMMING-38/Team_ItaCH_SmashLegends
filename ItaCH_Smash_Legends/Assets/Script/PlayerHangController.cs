@@ -15,7 +15,7 @@ public class PlayerHangController : MonoBehaviour
     
     public CancellationTokenSource TaskCancel;
     
-    private float _hangPositionY = 0f;
+    private float _hangPositionY = 2.5f;
     private float _fallingWaitTime = 3f;
 
     private void Awake()
