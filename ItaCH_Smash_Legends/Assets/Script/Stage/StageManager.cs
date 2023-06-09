@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using System;
+using System.Text;
 using UnityEngine.InputSystem;
 
 public class StageManager : MonoBehaviour
@@ -9,6 +11,7 @@ public class StageManager : MonoBehaviour
     private GameMode _currentGameMode;
     private GameModeType _selectedGameMode;
     private GameObject[] _playerCharacterInstances;
+    public GameObject[] Players { get => _playerCharacterInstances; }
     private GameObject[] _teamBlueCharacter;
     private GameObject[] _teamRedCharacter;
     private const int INDEX_OFFSET_FOR_ZERO = 1;
@@ -20,11 +23,13 @@ public class StageManager : MonoBehaviour
     private int _winningScore;
 
 
-    // 테스트를 위해 인스펙터 창을 사용. 추후 리소스 폴더에서 로드하는 것으로 변경;
-    [SerializeField] private GameObject _legendUIPrefab;
-    [SerializeField] private GameObject[] _modeUIPrefab;
+    private GameObject _legendUIPrefab;
+    private GameObject[] _modeUIPrefab;
+
     private List<GameObject> _legendUI;
     private GameObject _modeUI;
+
+    public event Action<int, TeamType> OnTeamScoreChanged;
     private void Awake()
     {
         _selectedGameMode = DEFAULT_GAME_MODE;
@@ -136,6 +141,17 @@ public class StageManager : MonoBehaviour
 
     public void SetModeUI(GameModeType gameModeType)
     {
+        _modeUIPrefab = new GameObject[Enum.GetValues(typeof(GameModeType)).Length];
+        StringBuilder stringBuilder = new StringBuilder();
+        string ModeUIFolderPath = "UI/ModeUI/ModeUI_";
+        for (int i = 0; i < _modeUIPrefab.Length; ++i)
+        {
+            stringBuilder.Clear();
+            stringBuilder.Append(ModeUIFolderPath);
+            stringBuilder.Append($"{i:00}");
+            _modeUIPrefab[i] = Resources.Load<GameObject>(stringBuilder.ToString());
+        }
+
         switch (gameModeType)
         {
             case GameModeType.None:
@@ -148,7 +164,7 @@ public class StageManager : MonoBehaviour
                     SetLegendUI(_playerCharacterInstances[i]);
                 }
                 _modeUI = Instantiate(_modeUIPrefab[(int)GameModeType.Duel]);
-                _modeUI.GetComponent<ModeUI>().InitModeUISettings(_playerCharacterInstances);
+                _modeUI.GetComponent<ModeUI>().InitModeUISettings(this);
                 //추후 스테이지에 존재하는 레전드를 하나로 관리하는 배열 생성하여 foreach로 생성.
                 break;
             case GameModeType.TeamMatch:
@@ -159,21 +175,23 @@ public class StageManager : MonoBehaviour
     }
     public void SetLegendUI(GameObject player)
     {
+        _legendUIPrefab = Resources.Load<GameObject>("UI/LegendUI");
         GameObject legendUI = Instantiate(_legendUIPrefab);
         legendUI.GetComponent<LegendUI>().InitLegendUISettings(player.transform);
         _legendUI.Add(legendUI);
-
     }
     private void UpdateTeamScore(CharacterStatus character)
     {
         if (character.TeamType == TeamType.Blue)
         {
             ++_teamRedScore;
+            OnTeamScoreChanged.Invoke(_teamRedScore, TeamType.Red);
         }
         else
         {
             ++_teamBlueScore;
-        }
+            OnTeamScoreChanged.Invoke(_teamBlueScore, TeamType.Blue);
+        }        
         if (_teamBlueScore == _winningScore || _teamRedScore == _winningScore)
         {
             EndGameMode();
