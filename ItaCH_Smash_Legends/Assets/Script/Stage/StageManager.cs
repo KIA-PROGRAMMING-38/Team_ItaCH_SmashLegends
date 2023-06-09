@@ -10,6 +10,7 @@ public class StageManager : MonoBehaviour
     private GameMode _currentGameMode;
     private GameModeType _selectedGameMode;
     private GameObject[] _playerCharacterInstances;
+    public GameObject[] Players { get => _playerCharacterInstances; }
     private GameObject[] _teamBlueCharacter;
     private GameObject[] _teamRedCharacter;
     private const int INDEX_OFFSET_FOR_ZERO = 1;
@@ -25,6 +26,8 @@ public class StageManager : MonoBehaviour
 
     private List<GameObject> _legendUI;
     private GameObject _modeUI;
+
+    public event Action<int, TeamType> OnTeamScoreChanged;
     private void Awake()
     {
         GetGameMode(DEFAULT_GAME_MODE);
@@ -137,7 +140,7 @@ public class StageManager : MonoBehaviour
                     SetLegendUI(_playerCharacterInstances[i]);
                 }
                 _modeUI = Instantiate(_modeUIPrefab[(int)GameModeType.Duel]);
-                _modeUI.GetComponent<ModeUI>().InitModeUISettings(_playerCharacterInstances);
+                _modeUI.GetComponent<ModeUI>().InitModeUISettings(this);
                 //추후 스테이지에 존재하는 레전드를 하나로 관리하는 배열 생성하여 foreach로 생성.
                 break;
             case GameModeType.TeamMatch:
@@ -158,10 +161,12 @@ public class StageManager : MonoBehaviour
         if (character.TeamType == TeamType.Blue)
         {
             ++_teamRedScore;
+            OnTeamScoreChanged.Invoke(_teamRedScore, TeamType.Red);
         }
         else
         {
             ++_teamBlueScore;
+            OnTeamScoreChanged.Invoke(_teamBlueScore, TeamType.Blue);
         }        
     }
 }
