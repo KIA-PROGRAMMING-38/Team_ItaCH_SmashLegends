@@ -5,18 +5,22 @@ using UnityEngine;
 
 public class GameMode
 {
-    private GameModeType _currentGameModeType;
-    private GameObject _currentMap;
-    private int _totalPlayer;
-    private int _winningScore;
-    private float _maxGameTime;
-    private Transform[] _spawnPoints;
     public GameModeType GameModeType { get => _currentGameModeType; set => _currentGameModeType = value; }
     public GameObject Map { get => _currentMap; private set => _currentMap = value; }
     public int TotalPlayer { get => _totalPlayer; private set => _totalPlayer = value; }
+    public int TeamSize { get => _teamSize; private set => _teamSize = value; }
     public float MaxGameTime { get => _maxGameTime; private set => _maxGameTime = value; }
     public int WinningScore { get => _winningScore; private set => _winningScore = value; }
     public Transform[] SpawnPoints { get => _spawnPoints; private set => _spawnPoints = value; }
+    
+    private GameModeType _currentGameModeType;
+    private GameObject _currentMap;
+    private int _totalPlayer;
+    private int _teamSize;
+    private int _winningScore;
+    private float _maxGameTime;
+    private Transform[] _spawnPoints;
+
     public void InitGameMode(GameModeType gameModeType)
     {
         GetGameModeData(gameModeType);
@@ -25,7 +29,9 @@ public class GameMode
     private void GetGameModeData(GameModeType gameModeType)
     {
         // 추후 데이터 분리 필요
+        _currentGameModeType = gameModeType;
         _totalPlayer = 2;
+        _teamSize = 1;
         _maxGameTime = 120f;
         _winningScore = 3;
         // 현재 Duel Mode 값 직접 지정

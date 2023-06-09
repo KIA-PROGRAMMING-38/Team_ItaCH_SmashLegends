@@ -85,5 +85,5 @@ public class LegendUI : MonoBehaviour
         _healthPointSeperatorMask.fillAmount = healthPointRatio;
     }
 
-    public void DisableLegendUI() => gameObject.SetActive(false);
+    public void DisableLegendUI(CharacterStatus character) => gameObject.SetActive(false);
 }
