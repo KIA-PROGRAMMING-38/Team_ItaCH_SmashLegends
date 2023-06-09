@@ -1,30 +1,37 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerJump : MonoBehaviour
 {
-    private Rigidbody _rigidbody;
 
-    [SerializeField] private float _jumpAcceleration; // ¡°«¡ ∞°º”µµ
-    [SerializeField] private float _maxFallingSpeed; // √÷¥Î ≥´«œ º”µµ
-    [SerializeField] private float _gravitationalAcceleration; // ¡ﬂ∑¬ ∞°º”µµ
+    private PlayerStatus _playerStatus;
+    private PlayerMove _playerMove;
+
+    internal Rigidbody _rigidbody;
+    private Animator _animator;
+
+    private float _jumpAcceleration = 14.28f; 
+    private float _maxFallingSpeed = 23f; 
+    private float _gravitationalAcceleration = 36f; 
 
     public static readonly float MAX_JUMP_POWER = 1f;
     private static readonly Vector3 JUMP_DIRECTION = Vector3.up;
 
-    private bool _isJump = false;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _playerStatus = GetComponent<PlayerStatus>();
+        _playerMove = GetComponent<PlayerMove>();
+        _animator = GetComponent<Animator>();
 
-        // ¡ﬂ∑¬ «ˆ¿Á ««≈Õ ±‚¡ÿ¿∏∑Œ º≥¡§. ¡ﬂ∑¬¿∫ æ∆∑°∑Œ ¿˚øÎµ«æÓæﬂ «œ¥œ ¿Ωºˆ∞™¿Ã ¿˚øÎµ«æÓæﬂ «œπ«∑Œ - ∫Ÿø©≥ı¿Ω
         Physics.gravity = new Vector3(0f, -_gravitationalAcceleration, 0f);
     }
 
     void Start()
     {
-        // «√∑π¿ÃæÓ¿« mass º≥¡§
+        // ÌîåÎ†àÏù¥Ïñ¥Ïùò mass ÏÑ§Ï†ï
         _rigidbody.mass = MAX_JUMP_POWER / _jumpAcceleration;
     }
 
@@ -35,9 +42,21 @@ public class PlayerJump : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") && _playerStatus.IsJump == false)
         {
-            _isJump = true;
+            _playerStatus.IsJump = true;
+            _animator.SetBool(AnimationHash.JumpDown, false);
+
+        }
+    }
+
+    public void JumpMoveAndRotate()
+    {
+        if (_playerMove.moveDirection != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(_playerMove.moveDirection);
+            transform.Translate(Vector3.forward * (_playerMove._currentMoveSpeed * Time.deltaTime));
+
         }
     }
 
@@ -58,10 +77,6 @@ public class PlayerJump : MonoBehaviour
 
     public void JumpInput()
     {
-        if (_isJump)
-        {
-            _rigidbody.AddForce(JUMP_DIRECTION * MAX_JUMP_POWER, ForceMode.Impulse);
-            _isJump = false;
-        }
+        _rigidbody.AddForce(JUMP_DIRECTION * MAX_JUMP_POWER, ForceMode.Impulse);
     }
 }

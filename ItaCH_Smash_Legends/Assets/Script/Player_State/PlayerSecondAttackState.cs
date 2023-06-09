@@ -1,39 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
+using UnityEngine.EventSystems;
 
 public class PlayerSecondAttackState : StateMachineBehaviour
 {
     private PlayerAttack _playerAttack;
-    private PlayerInput _playerInput;
+    private PlayerStatus _playerStatus;
+    private PlayerHit _playerHit;
+    
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _playerAttack = animator.GetComponent<PlayerAttack>();
+        _playerStatus = animator.GetComponent<PlayerStatus>();
+        _playerHit = animator.GetComponent<PlayerHit>();
+
         _playerAttack.AttackOnDefaultDash();
-        _playerInput = animator.GetComponent<PlayerInput>();
+        _playerHit.AttackRangeOn();
+
         --_playerAttack.CurrentPossibleComboCount;
         _playerAttack.isFirstAttack = false;
-        _playerAttack.isSecondAttack = true;
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(_playerAttack.isFinishAttack && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.7f)
+        if (_playerAttack.isFinishAttack && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.7f)
         {
-            animator.SetBool(AnimationHash.SecondAttack, false);
-            animator.SetTrigger(AnimationHash.FinishAttack);
+            _playerAttack.AttackRotate();
+            animator.Play(AnimationHash.FinishAttack);
         }
-        else if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f)
+        else if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f)
         {
-            animator.SetBool(AnimationHash.SecondAttack, false);
             _playerAttack.CurrentPossibleComboCount = _playerAttack.MAX_POSSIBLE_ATTACK_COUNT;
+            _playerAttack.isSecondAttack = false;
+            _playerHit.AttackRangeOff();
         }
     }
-
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-
-    }
-
 
 }

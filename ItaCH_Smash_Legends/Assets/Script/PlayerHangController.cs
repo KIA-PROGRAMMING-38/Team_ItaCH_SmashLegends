@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
+using System;
+using System.Threading;
 
 public class PlayerHangController : MonoBehaviour
 {
@@ -8,33 +11,47 @@ public class PlayerHangController : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private Animator _animator;
+    private Collider _collider;
+    
+    public CancellationTokenSource TaskCancel;
+    
+    private float _hangPositionY = 0f;
+    private float _fallingWaitTime = 3f;
 
     private void Awake()
     {
+        _collider = GetComponent<Collider>();
         _playerStatus = GetComponent<PlayerStatus>();
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
     }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("HangZone"))
+        if (other.CompareTag("HangZone") && _playerStatus.IsHang == false)
         {
-            OnConstraints();
-            _playerStatus.IsHang = true;
-            _animator.Play(AnimationHash.Hang);
-
-            transform.forward = (other.transform.position.normalized * -1);
+            transform.forward = SetHangRotation(other.transform.position);
             transform.position = SetHangPosition(other);
+            OnConstraints();
+
+            _animator.Play(AnimationHash.Hang);
+            _playerStatus.IsHang = true;
         }
     }
 
+    private Vector3 SetHangRotation(Vector3 other)
+    {
+        other = other.normalized * -1;
+        other.x = Mathf.Round(other.x);
+        other.y = Mathf.Round(other.y);
+        other.z = Mathf.Round(other.z);
+
+        return other;
+    }
     private Vector3 SetHangPosition(Collider other)
     {
-        float[] hangPosition = new float[3];
+        float[] hangPosition = new float[2];
         hangPosition[0] = other.transform.position.x;
-        hangPosition[1] = other.transform.position.y;
-        hangPosition[2] = other.transform.position.z;
+        hangPosition[1] = other.transform.position.z;
 
         for (int i = 0; i < hangPosition.Length; ++i)
         {
@@ -51,11 +68,11 @@ public class PlayerHangController : MonoBehaviour
 
         if (hangPosition[0] != 0)
         {
-            setPosition = new Vector3(hangPosition[0], hangPosition[1], transform.position.z);
+            setPosition = new Vector3(hangPosition[0], _hangPositionY, transform.position.z);
         }
-        if (hangPosition[2] != 0)
+        if (hangPosition[1] != 0)
         {
-            setPosition = new Vector3(transform.position.x, hangPosition[1], hangPosition[2]);
+            setPosition = new Vector3(transform.position.x, _hangPositionY, hangPosition[1]);
         }
 
         return setPosition;
@@ -66,11 +83,20 @@ public class PlayerHangController : MonoBehaviour
     {
         _rigidbody.constraints = RigidbodyConstraints.FreezeAll;
     }
-    // 스테이트 머신 -> 행 스테이트 에서 탈출할때 사용
+    
     public void OffConstraints()
     {
         _rigidbody.constraints = RigidbodyConstraints.None;
         _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
+    public async UniTaskVoid OnFalling()
+    {
+        TaskCancel = new();
+        await UniTask.Delay(TimeSpan.FromSeconds(_fallingWaitTime), cancellationToken: TaskCancel.Token);
+        _collider.isTrigger = true;
+        _animator.Play(AnimationHash.HangFalling);
+
+
+    }
 }
