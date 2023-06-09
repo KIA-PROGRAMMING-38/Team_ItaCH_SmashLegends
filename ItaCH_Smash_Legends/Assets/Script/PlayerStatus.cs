@@ -15,6 +15,7 @@ public class PlayerStatus : MonoBehaviour
     public bool IsAttack { get; set; }
     public bool IsJump { get; set; }
     public bool IsHang { get; set; }
+    public bool IsRollUp { get; set; }
 
     private void Awake()
     {

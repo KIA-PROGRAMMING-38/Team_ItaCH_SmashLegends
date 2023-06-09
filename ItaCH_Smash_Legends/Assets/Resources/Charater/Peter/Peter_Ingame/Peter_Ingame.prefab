@@ -718,6 +718,7 @@ GameObject:
   - component: {fileID: 2199906820578227427}
   - component: {fileID: 1207978725}
   - component: {fileID: 1207978726}
+  - component: {fileID: 7294130691389650921}
   m_Layer: 0
   m_Name: Peter_Ingame
   m_TagString: Untagged
