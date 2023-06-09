@@ -73,7 +73,7 @@ public class PlayerInput : MonoBehaviour
         {
             _animator.Play(AnimationHash.HeavyAttack);
             _playerStatus.CurrentState = PlayerStatus.State.HeavyAttack;
-            _playerHit.AttackRangeOn();
+
         }
     }
 

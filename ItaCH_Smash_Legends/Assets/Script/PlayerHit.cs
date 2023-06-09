@@ -2,7 +2,9 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerHit : MonoBehaviour
 {
@@ -12,7 +14,7 @@ public class PlayerHit : MonoBehaviour
 
     private Vector3 _knockbackDirection;
 
-    public GameObject secondPlayer;
+    public GameObject _secondPlayer;
     private PlayerAttack _playerAttack;
     private CharacterStatus _characterStatus;
     private PlayerStatus _playerStatus;
@@ -28,42 +30,31 @@ public class PlayerHit : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && (_playerStatus.CurrentState == PlayerStatus.State.ComboAttack 
-            || _playerStatus.CurrentState == PlayerStatus.State.HeavyAttack))
+        if (other.CompareTag("Player") && _playerStatus.CurrentState == PlayerStatus.State.ComboAttack)
         {
             Vector3 hitPoint = other.transform.position - transform.position;
             other.transform.rotation = Quaternion.LookRotation(-hitPoint);
-            Debug.Log(other.name);
             Hit().Forget();
         }
     }
     private async UniTaskVoid Hit()
     {
         _knockbackDirection = transform.forward + transform.up;
-        Rigidbody rigidbody = secondPlayer.GetComponent<Rigidbody>();
-        Animator animator = secondPlayer.GetComponent<Animator>();
+        Rigidbody rigidbody = _secondPlayer.GetComponent<Rigidbody>();
+        Animator animator = _secondPlayer.GetComponent<Animator>();
         if (!invincible)
         {
             // 공격력 아직 미정
             //_characterStatus.GetDamage();
             if (EndComboAttack())
             {
-                animator.Play(AnimationHash.HitUp);
-                rigidbody.AddForce((_knockbackDirection * 1.1f) * _heavyKnockbackPower, ForceMode.Impulse);
+                rigidbody.AddForce(_knockbackDirection * _heavyKnockbackPower, ForceMode.Impulse);
             }
-
-            else if(_playerStatus.CurrentState == PlayerStatus.State.HeavyAttack)
-            {
-                animator.Play(AnimationHash.HitUp);
-                rigidbody.AddForce((_knockbackDirection * 1.3f) * _heavyKnockbackPower, ForceMode.Impulse);
-            }
-            
             else
             {
                 animator.SetTrigger(AnimationHash.Hit);
                 rigidbody.AddForce(_knockbackDirection * _lightKnockbackPower, ForceMode.Impulse);
             }
-            
             await UniTask.Delay(TimeSpan.FromSeconds(0.25f));
             AttackRangeOff();
             animator.ResetTrigger(AnimationHash.Hit);
