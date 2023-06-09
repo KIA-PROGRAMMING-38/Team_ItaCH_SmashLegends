@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using System;
 using System.Text;
+using UnityEngine.InputSystem;
 
 public class StageManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class StageManager : MonoBehaviour
     private int _teamMemberIndex;
     private int _teamBlueScore;
     private int _teamRedScore;
+    private int _winningScore;
 
 
     private GameObject _legendUIPrefab;
@@ -30,7 +32,8 @@ public class StageManager : MonoBehaviour
     public event Action<int, TeamType> OnTeamScoreChanged;
     private void Awake()
     {
-        GetGameMode(DEFAULT_GAME_MODE);
+        _selectedGameMode = DEFAULT_GAME_MODE;
+        GetGameMode(_selectedGameMode);
     }
     private void Start()
     {
@@ -42,9 +45,10 @@ public class StageManager : MonoBehaviour
         {
             _currentGameMode = new GameMode();
         }
-        _currentGameMode.InitGameMode(gameModeSelected);        
+        _currentGameMode.InitGameMode(gameModeSelected);
         _totalPlayer = _currentGameMode.TotalPlayer;
         _teamSize = _currentGameMode.TeamSize;
+        _winningScore = _currentGameMode.WinningScore;
     }
     public void SetStage(GameMode currentGameMode)
     {
@@ -68,7 +72,8 @@ public class StageManager : MonoBehaviour
             {
                 GameObject characterInstance = Instantiate(characterPrefab, spawnPoints[playerID].position, Quaternion.identity);
                 SetTeam(characterInstance, playerID);
-                _playerCharacterInstances[playerID] = characterInstance;                
+                SetPlayerInputController(characterInstance, playerID);
+                _playerCharacterInstances[playerID] = characterInstance;
             }
             else
             {
@@ -88,16 +93,35 @@ public class StageManager : MonoBehaviour
         {
             characterStatus.TeamType = TeamType.Red;
             _teamMemberIndex = id - _teamSize - INDEX_OFFSET_FOR_ZERO;
-            _teamRedCharacter[_teamMemberIndex] = character;            
+            _teamRedCharacter[_teamMemberIndex] = character;
+            characterStatus.TeamSpawnPoint = characterStatus.transform.position;
         }
         else
         {
             characterStatus.TeamType = TeamType.Blue;
             _teamMemberIndex = id - INDEX_OFFSET_FOR_ZERO;
             _teamBlueCharacter[_teamMemberIndex] = character;
+            characterStatus.TeamSpawnPoint = characterStatus.transform.position;
         }
         characterStatus.OnPlayerDie -= UpdateTeamScore;
-        characterStatus.OnPlayerDie += UpdateTeamScore;                
+        characterStatus.OnPlayerDie += UpdateTeamScore;
+    }
+    public void SetPlayerInputController(GameObject character, int id)
+    {
+        UnityEngine.InputSystem.PlayerInput playercontroller;
+        switch (id)
+        {
+            case 1:
+                playercontroller = character.GetComponent<UnityEngine.InputSystem.PlayerInput>();
+                playercontroller.defaultActionMap = "FirstPlayerActions";
+                break;
+            case 2:
+                playercontroller = character.GetComponent<UnityEngine.InputSystem.PlayerInput>();
+                playercontroller.defaultActionMap = "SecondPlayerActions";
+                break;
+            default:
+                return;
+        }
     }
     public void CreateMap(GameMode gameMode)
     {
@@ -135,7 +159,7 @@ public class StageManager : MonoBehaviour
                 break;
             case GameModeType.Duel:
                 _legendUI = new List<GameObject>();
-                for(int i = 1; i <= _totalPlayer; ++i)
+                for (int i = 1; i <= _totalPlayer; ++i)
                 {
                     SetLegendUI(_playerCharacterInstances[i]);
                 }
@@ -168,5 +192,32 @@ public class StageManager : MonoBehaviour
             ++_teamBlueScore;
             OnTeamScoreChanged.Invoke(_teamBlueScore, TeamType.Blue);
         }        
+        if (_teamBlueScore == _winningScore || _teamRedScore == _winningScore)
+        {
+            EndGameMode();
+        }
+    }
+    private int GetTeamScore(TeamType team)
+    {
+        return (team == TeamType.Blue) ? _teamBlueScore : _teamRedScore;
+    }
+    private void EndGameMode()
+    {
+        int teamBlueEndScore = GetTeamScore(TeamType.Blue);
+        int teamRedEndScore = GetTeamScore(TeamType.Red);
+        TeamType winningTeam = TeamType.None;
+        if (teamBlueEndScore == teamRedEndScore)
+        {
+            CheckTeamHealthRatio();
+        }
+        else
+        {
+            winningTeam = (teamBlueEndScore > teamRedEndScore) ? TeamType.Blue : TeamType.Red;
+        }
+    }
+    private TeamType CheckTeamHealthRatio()
+    {
+        // 다음 이슈에서 구현
+        return TeamType.None;
     }
 }
