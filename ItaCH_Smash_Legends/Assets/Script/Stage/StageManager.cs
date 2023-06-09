@@ -40,6 +40,7 @@ public class StageManager : MonoBehaviour
         {
             CreateCharacter(playerID, currentGameMode.SpawnPoints);
         }
+        SetModeUI(DEFAULT_GAME_MODE);
     }
     public void CreateCharacter(int playerID, Transform[] spawnPoints) // 캐릭터 선택 기능 구현 시 매개변수로 선택한 캐릭터 함께 전달
     {
@@ -84,11 +85,12 @@ public class StageManager : MonoBehaviour
                 break;
             case GameModeType.Duel:
                 _legendUI = new List<GameObject>();
-                for(int i = 0; i < _totalPlayer; ++i)
+                for(int i = 1; i <= _totalPlayer; ++i)
                 {
                     SetLegendUI(_playerCharacterInstances[i]);
                 }
                 _modeUI = Instantiate(_modeUIPrefab[(int)GameModeType.Duel]);
+                _modeUI.GetComponent<ModeUI>().InitModeUISettings(_playerCharacterInstances);
                 //추후 스테이지에 존재하는 레전드를 하나로 관리하는 배열 생성하여 foreach로 생성.
                 break;
             case GameModeType.TeamMatch:
@@ -102,5 +104,6 @@ public class StageManager : MonoBehaviour
         GameObject legendUI = Instantiate(_legendUIPrefab);
         legendUI.GetComponent<LegendUI>().InitLegendUISettings(player.transform);
         _legendUI.Add(legendUI);
+
     }
 }
