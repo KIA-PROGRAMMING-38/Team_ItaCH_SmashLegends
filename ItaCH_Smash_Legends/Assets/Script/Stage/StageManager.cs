@@ -8,7 +8,15 @@ public class StageManager : MonoBehaviour
     private GameMode _currentGameMode;
     private GameModeType _selectedGameMode;
     private GameObject[] _playerCharacterInstances;
+    private GameObject[] _teamBlueCharacter;
+    private GameObject[] _teamRedCharacter;
+    private const int INDEX_OFFSET_FOR_ZERO = 1;
     private int _totalPlayer;
+    private int _teamSize;
+    private int _teamMemberIndex;
+    private int _teamBlueScore;
+    private int _teamRedScore;
+
 
     // 테스트를 위해 인스펙터 창을 사용. 추후 리소스 폴더에서 로드하는 것으로 변경;
     [SerializeField] private GameObject _legendUIPrefab;
@@ -29,13 +37,16 @@ public class StageManager : MonoBehaviour
         {
             _currentGameMode = new GameMode();
         }
-        _currentGameMode.InitGameMode(gameModeSelected);
+        _currentGameMode.InitGameMode(gameModeSelected);        
         _totalPlayer = _currentGameMode.TotalPlayer;
+        _teamSize = _currentGameMode.TeamSize;
     }
     public void SetStage(GameMode currentGameMode)
     {
         CreateMap(currentGameMode);
-        _playerCharacterInstances = new GameObject[_totalPlayer + 1]; // index와 playerID를 일치시키기 위한 +1
+        _playerCharacterInstances = new GameObject[_totalPlayer + INDEX_OFFSET_FOR_ZERO];
+        _teamBlueCharacter = new GameObject[_teamSize];
+        _teamRedCharacter = new GameObject[_teamSize];
         for (int playerID = 1; playerID <= _totalPlayer; playerID++)
         {
             CreateCharacter(playerID, currentGameMode.SpawnPoints);
@@ -50,14 +61,37 @@ public class StageManager : MonoBehaviour
             if (spawnPoints[playerID] != null)
             {
                 GameObject characterInstance = Instantiate(characterPrefab, spawnPoints[playerID].position, Quaternion.identity);
-                _playerCharacterInstances[playerID] = characterInstance;
+                SetTeam(characterInstance, playerID);
+                _playerCharacterInstances[playerID] = characterInstance;                
             }
-            else Debug.LogError(playerID + "P character spawn position is Null");
+            else
+            {
+                Debug.LogError(playerID + "P character spawn position is Null");
+            }
         }
         else
         {
             Debug.LogError("Failed to load the prefab at path: " + characterPrefabPath);
         }
+    }
+    public void SetTeam(GameObject character, int id)
+    {
+        CharacterStatus characterStatus = character.GetComponent<CharacterStatus>();
+        characterStatus.PlayerID = id;
+        if (id > _teamSize)
+        {
+            characterStatus.TeamType = TeamType.Red;
+            _teamMemberIndex = id - _teamSize - INDEX_OFFSET_FOR_ZERO;
+            _teamRedCharacter[_teamMemberIndex] = character;            
+        }
+        else
+        {
+            characterStatus.TeamType = TeamType.Blue;
+            _teamMemberIndex = id - INDEX_OFFSET_FOR_ZERO;
+            _teamBlueCharacter[_teamMemberIndex] = character;
+        }
+        characterStatus.OnPlayerDie -= UpdateTeamScore;
+        characterStatus.OnPlayerDie += UpdateTeamScore;                
     }
     public void CreateMap(GameMode gameMode)
     {
@@ -84,7 +118,7 @@ public class StageManager : MonoBehaviour
                 break;
             case GameModeType.Duel:
                 _legendUI = new List<GameObject>();
-                for(int i = 0; i < _totalPlayer; ++i)
+                for (int i = 0; i < _totalPlayer; ++i)
                 {
                     SetLegendUI(_playerCharacterInstances[i]);
                 }
@@ -102,5 +136,16 @@ public class StageManager : MonoBehaviour
         GameObject legendUI = Instantiate(_legendUIPrefab);
         legendUI.GetComponent<LegendUI>().InitLegendUISettings(player.transform);
         _legendUI.Add(legendUI);
+    }
+    private void UpdateTeamScore(CharacterStatus character)
+    {
+        if (character.TeamType == TeamType.Blue)
+        {
+            ++_teamRedScore;
+        }
+        else
+        {
+            ++_teamBlueScore;
+        }        
     }
 }
