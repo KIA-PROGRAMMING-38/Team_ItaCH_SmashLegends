@@ -1,37 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StageManager : MonoBehaviour
-{      
+{
+    private const GameModeType DEFAULT_GAME_MODE = GameModeType.Duel;
     private GameMode _currentGameMode;
-    private GameModeType _selectedGameMode = GameModeType.Duel;
-    // ÇöÀç´Â Å×½ºÆ®¸¦ À§ÇØ Á÷Á¢ °ª ´ëÀÔ, ÇâÈÄ ¹æÀåÀÌ ¼±ÅÃÇÑ °ª ¿¬°á
-    private GameObject _characterPrefab;
-    private GameObject _1PCharacter;
-    private GameObject _2PCharacter;
-    private string _characterPrefabPath;
-    private Transform[] _spawnPoints;
-    private Transform _1pSpawnPoint;
-    private Transform _2pSpawnPoint;
+    private GameModeType _selectedGameMode;
+    private GameObject[] _playerCharacterInstances;
+    private int _totalPlayer;
 
-    // Å×½ºÆ®¸¦ À§ÇØ ÀÎ½ºÆåÅÍ Ã¢À» »ç¿ë. ÃßÈÄ ¸®¼Ò½º Æú´õ¿¡¼­ ·ÎµåÇÏ´Â °ÍÀ¸·Î º¯°æ;
+    // í…ŒìŠ¤íŠ¸ë¥¼ ìœ„í•´ ì¸ìŠ¤í™í„° ì°½ì„ ì‚¬ìš©. ì¶”í›„ ë¦¬ì†ŒìŠ¤ í´ë”ì—ì„œ ë¡œë“œí•˜ëŠ” ê²ƒìœ¼ë¡œ ë³€ê²½;
     [SerializeField] private GameObject _legendUIPrefab;
     [SerializeField] private GameObject[] _modeUIPrefab;
     private List<GameObject> _legendUI;
     private GameObject _modeUI;
-    private void Start()
-    {        
-        _spawnPoints = GameObject.FindWithTag("SpawnPoints").GetComponentsInChildren<Transform>();
-        _1pSpawnPoint = _spawnPoints[1];        
-        _2pSpawnPoint = _spawnPoints[2];        
-        StartGame();
-    }    
-    public void StartGame()
+    private void Awake()
     {
-        _characterPrefabPath = "Charater/Peter/Peter_Ingame/Peter_Ingame"; // Ä³¸¯ÅÍ ¼±ÅÃ ±â´É ±¸Çö ½Ã Ä³¸¯ÅÍ ÀÌ¸§À¸·Î °æ·Î ±¸¼º ÇÊ¿ä
-        _characterPrefab = Resources.Load<GameObject>(_characterPrefabPath);
-        if (_characterPrefab != null)
+        GetGameMode(DEFAULT_GAME_MODE);
+    }
+    private void Start()
+    {
+        SetStage(_currentGameMode);
+    }
+    public void GetGameMode(GameModeType gameModeSelected)
+    {
+        if (_currentGameMode == null)
+        {
+            _currentGameMode = new GameMode();
+        }
+        _currentGameMode.InitGameMode(gameModeSelected);
+        _totalPlayer = _currentGameMode.TotalPlayer;
+    }
+    public void SetStage(GameMode currentGameMode)
+    {
+        CreateMap(currentGameMode);
+        _playerCharacterInstances = new GameObject[_totalPlayer + 1]; // indexì™€ playerIDë¥¼ ì¼ì¹˜ì‹œí‚¤ê¸° ìœ„í•œ +1
+
+        for (int playerID = 1; playerID <= _totalPlayer; playerID++)
         {
             _1PCharacter = Instantiate(_characterPrefab, _1pSpawnPoint);
             _2PCharacter = Instantiate(_characterPrefab, _2pSpawnPoint);
@@ -40,19 +44,45 @@ public class StageManager : MonoBehaviour
         {
             Debug.LogError("Failed to load the prefab at path: " + _characterPrefabPath);
         }
-        // InGame Scene ºÒ·¯¿Í¾ß ÇÔ.
-        // _currentGameMode.MapÀÇ °ÔÀÓ¸ğµå Å¸ÀÔ°ú ¿¬°áµÇ´Â ¸Ê ÇÁ¸®Æé ºÒ·¯¿Í Instanciate
+        // InGame Scene ë¶ˆëŸ¬ì™€ì•¼ í•¨.
+        // _currentGameMode.Mapì˜ ê²Œì„ëª¨ë“œ íƒ€ì…ê³¼ ì—°ê²°ë˜ëŠ” ë§µ í”„ë¦¬í© ë¶ˆëŸ¬ì™€ Instanciate
         SetModeUI(_selectedGameMode);
-    }
-    public void InitGameMode(GameModeType gameModeSelected)
-    {
-        if(_currentGameMode == null)
-        {
-            _currentGameMode = new GameMode();
+            CreateCharacter(playerID, currentGameMode.SpawnPoints);
         }
-        _currentGameMode.GameModeType = gameModeSelected;
-        // °ÔÀÓ ¸ğµå Å¸ÀÔ°ú ÀÏÄ¡ÇÏ´Â °ÔÀÓ ¸ğµå ·ÎÁ÷ load ÇÊ¿ä
+    }
+    public void CreateCharacter(int playerID, Transform[] spawnPoints) // ìºë¦­í„° ì„ íƒ ê¸°ëŠ¥ êµ¬í˜„ ì‹œ ë§¤ê°œë³€ìˆ˜ë¡œ ì„ íƒí•œ ìºë¦­í„° í•¨ê»˜ ì „ë‹¬
+    {
+        string characterPrefabPath = "Charater/Peter/Peter_Ingame/Peter_Ingame"; // ìºë¦­í„° ì„ íƒ ê¸°ëŠ¥ êµ¬í˜„ ì‹œ ìºë¦­í„° ì´ë¦„ìœ¼ë¡œ ê²½ë¡œ êµ¬ì„± í•„ìš”
+        GameObject characterPrefab = Resources.Load<GameObject>(characterPrefabPath);
 
+        if (characterPrefab != null)
+        {
+            if (spawnPoints[playerID] != null)
+            {
+                GameObject characterInstance = Instantiate(characterPrefab, spawnPoints[playerID].position, Quaternion.identity);
+                _playerCharacterInstances[playerID] = characterInstance;
+            }
+            else Debug.LogError(playerID + "P character spawn position is Null");
+        }
+        else
+        {
+            Debug.LogError("Failed to load the prefab at path: " + characterPrefabPath);
+        }
+    }
+    public void CreateMap(GameMode gameMode)
+    {
+        GameObject mapInstance = Instantiate(gameMode.Map);
+    }
+    public void ChangeGameMode(GameModeType gameModeSelected)
+    {
+        if (_selectedGameMode == gameModeSelected)
+        {
+            return;
+        }
+        else
+        {
+            GetGameMode(gameModeSelected);
+        }
     }
 
     public void SetModeUI(GameModeType gameModeType)
@@ -67,10 +97,10 @@ public class StageManager : MonoBehaviour
                 SetLegendUI(_1PCharacter);
                 SetLegendUI(_2PCharacter);
                 _modeUI = Instantiate(_modeUIPrefab[(int)GameModeType.Duel]);
-                //ÃßÈÄ ½ºÅ×ÀÌÁö¿¡ Á¸ÀçÇÏ´Â ·¹Àüµå¸¦ ÇÏ³ª·Î °ü¸®ÇÏ´Â ¹è¿­ »ı¼ºÇÏ¿© foreach·Î »ı¼º.
+                //ì¶”í›„ ìŠ¤í…Œì´ì§€ì— ì¡´ì¬í•˜ëŠ” ë ˆì „ë“œë¥¼ í•˜ë‚˜ë¡œ ê´€ë¦¬í•˜ëŠ” ë°°ì—´ ìƒì„±í•˜ì—¬ foreachë¡œ ìƒì„±.
                 break;
             case GameModeType.TeamMatch:
-                // µà¾ó°ú À¯»çÇÑ ·ÎÁ÷À¸·Î ±¸Çö
+                // ë“€ì–¼ê³¼ ìœ ì‚¬í•œ ë¡œì§ìœ¼ë¡œ êµ¬í˜„
                 Debug.Log("Failed to Find ModeUI" + $"{gameModeType}");
                 break;
         }

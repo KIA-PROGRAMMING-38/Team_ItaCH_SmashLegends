@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -18,6 +16,6 @@ public class GameManager : MonoBehaviour
         GameObject gameObject;
         gameObject = new GameObject(nameof(StageManager));
         gameObject.transform.parent = transform;
-        StageManager = gameObject.AddComponent<StageManager>();        
+        StageManager = gameObject.AddComponent<StageManager>();
     }
 }

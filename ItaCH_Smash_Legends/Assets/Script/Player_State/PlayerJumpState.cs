@@ -11,7 +11,7 @@ public class PlayerJumpState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _playerJump = animator.GetComponent<PlayerJump>();
-        _playerStatus =animator.GetComponent<PlayerStatus>();
+        _playerStatus = animator.GetComponent<PlayerStatus>();
         
         _playerStatus.IsJump = false;
         _playerStatus.CurrentState = PlayerStatus.State.Jump;
