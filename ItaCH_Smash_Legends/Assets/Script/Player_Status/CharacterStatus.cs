@@ -18,7 +18,6 @@ public class CharacterStatus : CharacterDefaultStatus
 
     private TeamType _teamType;
 
-
     private void Awake()
     {
         InitHP();
