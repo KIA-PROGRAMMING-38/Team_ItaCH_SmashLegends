@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using System;
+using System.Text;
 
 public class StageManager : MonoBehaviour
 {
@@ -18,9 +20,9 @@ public class StageManager : MonoBehaviour
     private int _teamRedScore;
 
 
-    // 테스트를 위해 인스펙터 창을 사용. 추후 리소스 폴더에서 로드하는 것으로 변경;
-    [SerializeField] private GameObject _legendUIPrefab;
-    [SerializeField] private GameObject[] _modeUIPrefab;
+    private GameObject _legendUIPrefab;
+    private GameObject[] _modeUIPrefab;
+
     private List<GameObject> _legendUI;
     private GameObject _modeUI;
     private void Awake()
@@ -112,6 +114,17 @@ public class StageManager : MonoBehaviour
 
     public void SetModeUI(GameModeType gameModeType)
     {
+        _modeUIPrefab = new GameObject[Enum.GetValues(typeof(GameModeType)).Length];
+        StringBuilder stringBuilder = new StringBuilder();
+        string ModeUIFolderPath = "UI/ModeUI/ModeUI_";
+        for (int i = 0; i < _modeUIPrefab.Length; ++i)
+        {
+            stringBuilder.Clear();
+            stringBuilder.Append(ModeUIFolderPath);
+            stringBuilder.Append($"{i:00}");
+            _modeUIPrefab[i] = Resources.Load<GameObject>(stringBuilder.ToString());
+        }
+
         switch (gameModeType)
         {
             case GameModeType.None:
@@ -135,10 +148,10 @@ public class StageManager : MonoBehaviour
     }
     public void SetLegendUI(GameObject player)
     {
+        _legendUIPrefab = Resources.Load<GameObject>("UI/LegendUI");
         GameObject legendUI = Instantiate(_legendUIPrefab);
         legendUI.GetComponent<LegendUI>().InitLegendUISettings(player.transform);
         _legendUI.Add(legendUI);
-
     }
     private void UpdateTeamScore(CharacterStatus character)
     {

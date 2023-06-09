@@ -939,7 +939,7 @@ GameObject:
   - component: {fileID: 4009383113922755996}
   - component: {fileID: -8860429355547902378}
   m_Layer: 5
-  m_Name: ModeUI
+  m_Name: ModeUI_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
