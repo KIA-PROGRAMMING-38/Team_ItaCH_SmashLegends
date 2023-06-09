@@ -11,6 +11,7 @@ public class PlayerInput : MonoBehaviour
     private PlayerJump _playerJump;
     private PlayerMove _playerMove;
     private PlayerStatus _playerStatus;
+    private PlayerHit _playerHit;
     private PlayerRollUp _playerRollUp;
     private Animator _animator;
 
@@ -21,8 +22,8 @@ public class PlayerInput : MonoBehaviour
         _playerAttack = GetComponent<PlayerAttack>();
         _playerJump = GetComponent<PlayerJump>();
         _playerStatus = GetComponent<PlayerStatus>();
+        _playerHit= GetComponent<PlayerHit>();
         _playerRollUp = GetComponent<PlayerRollUp>();
-
         _animator = GetComponent<Animator>();
     }
 
@@ -38,6 +39,7 @@ public class PlayerInput : MonoBehaviour
         if (IsPossibleFirstAttack())
         {
             _animator.Play(AnimationHash.FirstAttack);
+            _playerHit.AttackRangeOn();
         }
 
         if (_playerAttack.isFirstAttack && _playerAttack.CurrentPossibleComboCount == _playerAttack.COMBO_SECOND_COUNT)

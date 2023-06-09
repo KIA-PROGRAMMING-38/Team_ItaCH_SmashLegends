@@ -8,12 +8,16 @@ public class PlayerSecondAttackState : StateMachineBehaviour
 {
     private PlayerAttack _playerAttack;
     private PlayerStatus _playerStatus;
+    private PlayerHit _playerHit;
     
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _playerAttack = animator.GetComponent<PlayerAttack>();
         _playerStatus = animator.GetComponent<PlayerStatus>();
+        _playerHit = animator.GetComponent<PlayerHit>();
+
         _playerAttack.AttackOnDefaultDash();
+        _playerHit.AttackRangeOn();
 
         --_playerAttack.CurrentPossibleComboCount;
         _playerAttack.isFirstAttack = false;
@@ -30,6 +34,7 @@ public class PlayerSecondAttackState : StateMachineBehaviour
         {
             _playerAttack.CurrentPossibleComboCount = _playerAttack.MAX_POSSIBLE_ATTACK_COUNT;
             _playerAttack.isSecondAttack = false;
+            _playerHit.AttackRangeOff();
         }
     }
 
