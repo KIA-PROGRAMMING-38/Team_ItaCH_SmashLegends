@@ -17,23 +17,10 @@ public class CharacterStatus : CharacterDefaultStatus
     public event Action OnPlayerDie;
 
     private TeamType _teamType;
-    float time= 0;
 
     private void Awake()
     {
         InitHP();
-    }
-    private void Update()
-    {
-        if(time >= 1)
-        {
-            GetDamage(500);
-            time = 0;
-        }
-        else
-        {
-            time += Time.deltaTime;
-        }
     }
     public void InitHP()
     {

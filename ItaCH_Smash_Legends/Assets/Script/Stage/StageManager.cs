@@ -40,7 +40,7 @@ public class StageManager : MonoBehaviour
         {
             CreateCharacter(playerID, currentGameMode.SpawnPoints);
         }
-        SetModeUI(DEFAULT_GAME_MODE);
+        SetModeUI(currentGameMode.GameModeType);
     }
     public void CreateCharacter(int playerID, Transform[] spawnPoints) // 캐릭터 선택 기능 구현 시 매개변수로 선택한 캐릭터 함께 전달
     {
