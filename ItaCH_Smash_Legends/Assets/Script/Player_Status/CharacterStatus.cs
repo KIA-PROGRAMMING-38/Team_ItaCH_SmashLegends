@@ -19,7 +19,6 @@ public class CharacterStatus : CharacterDefaultStatus
     private int _playerID;
     private TeamType _teamType;
 
-
     private void Awake()
     {
         InitHP();

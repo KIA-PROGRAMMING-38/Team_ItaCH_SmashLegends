@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class ModeUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private HealthBar[] _healthPointBars;
 
-    // Update is called once per frame
-    void Update()
+    public void InitModeUISettings(GameObject[] players)
     {
-        
+        for (int i = 0; i < players.Length - 1; ++i)
+        {
+            _healthPointBars[i].InitHealthBarSettings(players[i + 1].GetComponent<CharacterStatus>());
+        }
     }
 }
