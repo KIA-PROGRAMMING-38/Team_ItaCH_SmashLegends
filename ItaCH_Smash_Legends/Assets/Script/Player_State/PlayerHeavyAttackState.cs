@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerHeavyAttackState : StateMachineBehaviour
 {
-    PlayerAttack _playerAttack;
-    PlayerStatus _playerStatus;
+    private PlayerAttack _playerAttack;
+    private PlayerHit _playerHit;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _playerAttack = animator.GetComponent<PlayerAttack>();
-        _playerStatus = animator.GetComponent<PlayerStatus>();
+        _playerHit = animator.GetComponent<PlayerHit>();
         animator.SetBool(AnimationHash.Run, false);
 
         _playerAttack.AttackOnDefaultDash();
@@ -19,6 +19,8 @@ public class PlayerHeavyAttackState : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _playerAttack.AttackRotate();
+        _playerHit.AttackRangeOff();
+
     }
 
 }
