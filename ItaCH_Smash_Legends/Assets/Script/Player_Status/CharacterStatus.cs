@@ -1,7 +1,8 @@
+using System;
 using UnityEngine;
 public class CharacterStatus : CharacterDefaultStatus
 {
-    // ∞‘¿” ¡ﬂ πŸ≤ ºˆ ¿÷¥¬ Ω∫≈»µÈ
+    // Í≤åÏûÑ Ï§ë Î∞îÎÄî Ïàò ÏûàÎäî Ïä§ÌÉØÎì§
     public int HealthPoint { get => _currentHealthPoint; set => _currentHealthPoint = value; }
     public int HealthPointRatio { get => _currentHealthPointRatio; set => _currentHealthPointRatio = value; }
     public TeamType TeamType { get => _teamType; set => _teamType = value; }
@@ -11,7 +12,12 @@ public class CharacterStatus : CharacterDefaultStatus
     
     private const int DEAD_TRIGGER_HP = 0;
 
+
+    public event Action<int, int> OnPlayerHealthPointChange;
+    public event Action OnPlayerDie;
+
     private TeamType _teamType;
+
 
     private void Awake()
     {
@@ -20,8 +26,9 @@ public class CharacterStatus : CharacterDefaultStatus
     public void InitHP()
     {
         _currentHealthPoint = base.MaxHealthPoint;
+        _currentHealthPointRatio = 100;
     }
-    public void GetDamage(int damage) // ««∞› ∆«¡§ Ω√ »£√‚
+    public void GetDamage(int damage) // ÌîºÍ≤© ÌåêÏ†ï Ïãú Ìò∏Ï∂ú
     {
         int damagedHealthPoint = _currentHealthPoint - damage;
         _currentHealthPoint = Mathf.Max(damagedHealthPoint, DEAD_TRIGGER_HP);
@@ -29,6 +36,8 @@ public class CharacterStatus : CharacterDefaultStatus
         if (_currentHealthPoint == DEAD_TRIGGER_HP)
         {
             this.gameObject.SetActive(false);
+            OnPlayerDie.Invoke();
         }
+        OnPlayerHealthPointChange.Invoke(_currentHealthPoint, _currentHealthPointRatio);
     }
 }

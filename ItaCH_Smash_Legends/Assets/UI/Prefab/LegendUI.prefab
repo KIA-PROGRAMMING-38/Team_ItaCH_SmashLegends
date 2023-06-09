@@ -1098,6 +1098,7 @@ GameObject:
   - component: {fileID: 4638945906941721819}
   - component: {fileID: 4638945906941721816}
   - component: {fileID: 4638945906941721817}
+  - component: {fileID: 4784419801319683131}
   m_Layer: 5
   m_Name: LegendUI
   m_TagString: Untagged
@@ -1136,7 +1137,8 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 2420857655630144888, guid: 27e4b2daae1a53646876f9ddea1da388,
+    type: 3}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1144,7 +1146,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: 2037405431
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &4638945906941721816
@@ -1169,7 +1171,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &4638945906941721817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1186,7 +1188,23 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
+--- !u!114 &4784419801319683131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4638945906941721822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff6cf97b079d0d4cb9b22d748e5cca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heightOffset: 2.5
+  _healthPointText: {fileID: 4638945906326984404}
+  _healthPointBarFilling: {fileID: 4638945905928080402}
+  _healthPointSeperator: {fileID: 4638945905734021664}
 --- !u!1 &4638945906946531545
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,11 +1273,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
+    type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0

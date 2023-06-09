@@ -8,6 +8,11 @@ public class StageManager : MonoBehaviour
     private GameObject[] _playerCharacterInstances;
     private int _totalPlayer;
 
+    // í…ŒìŠ¤íŠ¸ë¥¼ ìœ„í•´ ì¸ìŠ¤í™í„° ì°½ì„ ì‚¬ìš©. ì¶”í›„ ë¦¬ì†ŒìŠ¤ í´ë”ì—ì„œ ë¡œë“œí•˜ëŠ” ê²ƒìœ¼ë¡œ ë³€ê²½;
+    [SerializeField] private GameObject _legendUIPrefab;
+    [SerializeField] private GameObject[] _modeUIPrefab;
+    private List<GameObject> _legendUI;
+    private GameObject _modeUI;
     private void Awake()
     {
         GetGameMode(DEFAULT_GAME_MODE);
@@ -28,16 +33,26 @@ public class StageManager : MonoBehaviour
     public void SetStage(GameMode currentGameMode)
     {
         CreateMap(currentGameMode);
-        _playerCharacterInstances = new GameObject[_totalPlayer + 1]; // index¿Í playerID¸¦ ÀÏÄ¡½ÃÅ°±â À§ÇÑ +1
+        _playerCharacterInstances = new GameObject[_totalPlayer + 1]; // indexì™€ playerIDë¥¼ ì¼ì¹˜ì‹œí‚¤ê¸° ìœ„í•œ +1
 
         for (int playerID = 1; playerID <= _totalPlayer; playerID++)
         {
+            _1PCharacter = Instantiate(_characterPrefab, _1pSpawnPoint);
+            _2PCharacter = Instantiate(_characterPrefab, _2pSpawnPoint);
+        }
+        else
+        {
+            Debug.LogError("Failed to load the prefab at path: " + _characterPrefabPath);
+        }
+        // InGame Scene ë¶ˆëŸ¬ì™€ì•¼ í•¨.
+        // _currentGameMode.Mapì˜ ê²Œì„ëª¨ë“œ íƒ€ì…ê³¼ ì—°ê²°ë˜ëŠ” ë§µ í”„ë¦¬í© ë¶ˆëŸ¬ì™€ Instanciate
+        SetModeUI(_selectedGameMode);
             CreateCharacter(playerID, currentGameMode.SpawnPoints);
         }
     }
-    public void CreateCharacter(int playerID, Transform[] spawnPoints) // Ä³¸¯ÅÍ ¼±ÅÃ ±â´É ±¸Çö ½Ã ¸Å°³º¯¼ö·Î ¼±ÅÃÇÑ Ä³¸¯ÅÍ ÇÔ²² Àü´Ş
+    public void CreateCharacter(int playerID, Transform[] spawnPoints) // ìºë¦­í„° ì„ íƒ ê¸°ëŠ¥ êµ¬í˜„ ì‹œ ë§¤ê°œë³€ìˆ˜ë¡œ ì„ íƒí•œ ìºë¦­í„° í•¨ê»˜ ì „ë‹¬
     {
-        string characterPrefabPath = "Charater/Peter/Peter_Ingame/Peter_Ingame"; // Ä³¸¯ÅÍ ¼±ÅÃ ±â´É ±¸Çö ½Ã Ä³¸¯ÅÍ ÀÌ¸§À¸·Î °æ·Î ±¸¼º ÇÊ¿ä
+        string characterPrefabPath = "Charater/Peter/Peter_Ingame/Peter_Ingame"; // ìºë¦­í„° ì„ íƒ ê¸°ëŠ¥ êµ¬í˜„ ì‹œ ìºë¦­í„° ì´ë¦„ìœ¼ë¡œ ê²½ë¡œ êµ¬ì„± í•„ìš”
         GameObject characterPrefab = Resources.Load<GameObject>(characterPrefabPath);
 
         if (characterPrefab != null)
@@ -68,5 +83,32 @@ public class StageManager : MonoBehaviour
         {
             GetGameMode(gameModeSelected);
         }
+    }
+
+    public void SetModeUI(GameModeType gameModeType)
+    {
+        switch (gameModeType)
+        {
+            case GameModeType.None:
+                Debug.Log("Failed to Find ModeUI" + $"{gameModeType}");
+                break;
+            case GameModeType.Duel:
+                _legendUI = new List<GameObject>();
+                SetLegendUI(_1PCharacter);
+                SetLegendUI(_2PCharacter);
+                _modeUI = Instantiate(_modeUIPrefab[(int)GameModeType.Duel]);
+                //ì¶”í›„ ìŠ¤í…Œì´ì§€ì— ì¡´ì¬í•˜ëŠ” ë ˆì „ë“œë¥¼ í•˜ë‚˜ë¡œ ê´€ë¦¬í•˜ëŠ” ë°°ì—´ ìƒì„±í•˜ì—¬ foreachë¡œ ìƒì„±.
+                break;
+            case GameModeType.TeamMatch:
+                // ë“€ì–¼ê³¼ ìœ ì‚¬í•œ ë¡œì§ìœ¼ë¡œ êµ¬í˜„
+                Debug.Log("Failed to Find ModeUI" + $"{gameModeType}");
+                break;
+        }
+    }
+    public void SetLegendUI(GameObject player)
+    {
+        GameObject legendUI = Instantiate(_legendUIPrefab);
+        legendUI.GetComponent<LegendUI>().InitLegendUISettings(player.transform);
+        _legendUI.Add(legendUI);
     }
 }

@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameMode
@@ -21,15 +24,15 @@ public class GameMode
     }
     private void GetGameModeData(GameModeType gameModeType)
     {
-        // ÃßÈÄ µ¥ÀÌÅÍ ºĞ¸® ÇÊ¿ä
+        // ì¶”í›„ ë°ì´í„° ë¶„ë¦¬ í•„ìš”
         _totalPlayer = 2;
         _maxGameTime = 120f;
         _winningScore = 3;
-        // ÇöÀç Duel Mode °ª Á÷Á¢ ÁöÁ¤
+        // í˜„ì¬ Duel Mode ê°’ ì§ì ‘ ì§€ì •
     }
     private void GetMapData()
     {
-        string mapPrefabPath = "Map/SingleLogBridge/Prefab/Map"; // ÃßÈÄ µ¥ÀÌÅÍ ºĞ¸® ÇÊ¿ä
+        string mapPrefabPath = "Map/SingleLogBridge/Prefab/Map"; // ì¶”í›„ ë°ì´í„° ë¶„ë¦¬ í•„ìš”
         _currentMap = Resources.Load<GameObject>(mapPrefabPath);
         _spawnPoints = _currentMap.transform.GetChild(0).GetComponentsInChildren<Transform>();
     }
