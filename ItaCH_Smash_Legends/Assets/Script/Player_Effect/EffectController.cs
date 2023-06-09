@@ -34,5 +34,8 @@ public abstract class EffectController : MonoBehaviour
     public abstract void EnableSecondAttackFirstEffect();
     public abstract void EnableSecondAttackSecondEffect();
     public abstract void EnableFinishAttackEffect();
-    public abstract void EnableSmashAttackEffect();
+    public abstract void EnableHeavyAttackEffect();
+    public abstract void EnableJumpAttackEffect();
+    public abstract void DisableJumpAttackEffect();
+
 }
