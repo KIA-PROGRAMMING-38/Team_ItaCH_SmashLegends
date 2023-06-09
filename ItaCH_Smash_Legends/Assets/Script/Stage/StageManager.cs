@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class StageManager : MonoBehaviour
 {
@@ -34,19 +36,8 @@ public class StageManager : MonoBehaviour
     {
         CreateMap(currentGameMode);
         _playerCharacterInstances = new GameObject[_totalPlayer + 1]; // index와 playerID를 일치시키기 위한 +1
-
         for (int playerID = 1; playerID <= _totalPlayer; playerID++)
         {
-            _1PCharacter = Instantiate(_characterPrefab, _1pSpawnPoint);
-            _2PCharacter = Instantiate(_characterPrefab, _2pSpawnPoint);
-        }
-        else
-        {
-            Debug.LogError("Failed to load the prefab at path: " + _characterPrefabPath);
-        }
-        // InGame Scene 불러와야 함.
-        // _currentGameMode.Map의 게임모드 타입과 연결되는 맵 프리펩 불러와 Instanciate
-        SetModeUI(_selectedGameMode);
             CreateCharacter(playerID, currentGameMode.SpawnPoints);
         }
     }
@@ -54,7 +45,6 @@ public class StageManager : MonoBehaviour
     {
         string characterPrefabPath = "Charater/Peter/Peter_Ingame/Peter_Ingame"; // 캐릭터 선택 기능 구현 시 캐릭터 이름으로 경로 구성 필요
         GameObject characterPrefab = Resources.Load<GameObject>(characterPrefabPath);
-
         if (characterPrefab != null)
         {
             if (spawnPoints[playerID] != null)
@@ -94,8 +84,10 @@ public class StageManager : MonoBehaviour
                 break;
             case GameModeType.Duel:
                 _legendUI = new List<GameObject>();
-                SetLegendUI(_1PCharacter);
-                SetLegendUI(_2PCharacter);
+                for(int i = 0; i < _totalPlayer; ++i)
+                {
+                    SetLegendUI(_playerCharacterInstances[i]);
+                }
                 _modeUI = Instantiate(_modeUIPrefab[(int)GameModeType.Duel]);
                 //추후 스테이지에 존재하는 레전드를 하나로 관리하는 배열 생성하여 foreach로 생성.
                 break;
