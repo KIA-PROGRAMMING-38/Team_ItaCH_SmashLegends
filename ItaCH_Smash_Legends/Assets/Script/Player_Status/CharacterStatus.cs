@@ -30,6 +30,7 @@ public class CharacterStatus : CharacterDefaultStatus
     {
         _currentHealthPoint = base.MaxHealthPoint;
         _currentHealthPointRatio = 100;
+        OnPlayerHealthPointChange.Invoke(_currentHealthPoint, _currentHealthPointRatio);
     }
     public void GetDamage(int damage) // 피격 판정 시 호출
     {
