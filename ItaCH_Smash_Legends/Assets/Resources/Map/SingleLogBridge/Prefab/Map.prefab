@@ -342,7 +342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1496535028872922364}
   - component: {fileID: 1496535028872922365}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Position{0.16,0,0}
   m_TagString: HangZone
   m_Icon: {fileID: 0}
@@ -1223,7 +1223,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1496535029317670530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1425,7 +1425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1496535029429864365}
   - component: {fileID: 1496535029429864366}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Position{0,0,0.02}
   m_TagString: HangZone
   m_Icon: {fileID: 0}
@@ -1800,7 +1800,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1496535029878673444}
   - component: {fileID: 1496535029878673445}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Position{0,0,-0.02}
   m_TagString: HangZone
   m_Icon: {fileID: 0}
@@ -2139,7 +2139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1496535030021998022}
   - component: {fileID: 1496535030021998023}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Position{-0.16,0,0}
   m_TagString: HangZone
   m_Icon: {fileID: 0}
