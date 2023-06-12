@@ -23,7 +23,7 @@ public class LegendUI : MonoBehaviour
     private const float StandardHealthPoint = 3000;
     void Update()
     {
-        transform.position = new Vector3(_characterTransform.position.x, 
+        transform.position = new Vector3(_characterTransform.position.x,
             _characterTransform.position.y + _heightOffset,
             _characterTransform.position.z);
         // 테스트 코드. 이후에는 이동, 공격, 피격 다운, 점프 등 이동이 있을 때에만 연산 예정.
@@ -33,6 +33,7 @@ public class LegendUI : MonoBehaviour
     {
         _characterStatus.OnPlayerHealthPointChange -= SetHealthPoint;
         _characterStatus.OnPlayerDie -= DisableLegendUI;
+        _characterStatus.OnPlayerRespawn -= EnableLegendUI;
     }
     public void InitLegendUISettings(Transform characterTransform)
     {
@@ -49,6 +50,8 @@ public class LegendUI : MonoBehaviour
         _characterStatus.OnPlayerHealthPointChange += SetHealthPoint;
         _characterStatus.OnPlayerDie -= DisableLegendUI;
         _characterStatus.OnPlayerDie += DisableLegendUI;
+        _characterStatus.OnPlayerRespawn -= EnableLegendUI;
+        _characterStatus.OnPlayerRespawn += EnableLegendUI;
 
         SetHealthPointBar(_characterStatus.MaxHealthPoint);
         SetHealthPoint(_characterStatus.HealthPoint, _characterStatus.HealthPointRatio);
@@ -56,11 +59,11 @@ public class LegendUI : MonoBehaviour
 
     public void SetHealthPointBar(int maxHealthPoint)
     {
-        if(_healthPointBlocks == null)
+        if (_healthPointBlocks == null)
         {
             _healthPointBlocks = new RectTransform[_healthPointSeperator.childCount];
 
-            for(int i = 0; i < _healthPointBlocks.Length; ++i)
+            for (int i = 0; i < _healthPointBlocks.Length; ++i)
             {
                 _healthPointBlocks[i] = _healthPointSeperator.GetChild(i).GetComponent<RectTransform>();
             }
@@ -68,7 +71,7 @@ public class LegendUI : MonoBehaviour
             _healthPointSeperatorMask = _healthPointSeperator.GetComponentInParent<Image>();
             Debug.Assert(_healthPointSeperatorMask != null);
         }
-        
+
         Vector3 healthPointBlockScale = new Vector3(StandardHealthPoint / maxHealthPoint, 1, 1);
 
         foreach (RectTransform rectTransform in _healthPointBlocks)
@@ -86,4 +89,5 @@ public class LegendUI : MonoBehaviour
     }
 
     public void DisableLegendUI(CharacterStatus character) => gameObject.SetActive(false);
+    public void EnableLegendUI(CharacterStatus character) => gameObject.SetActive(true);
 }
