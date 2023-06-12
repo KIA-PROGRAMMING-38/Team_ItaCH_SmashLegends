@@ -1,10 +1,8 @@
-using UnityEngine;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using System;
-using System.Text;
-using UnityEngine.InputSystem;
 using System.Collections;
+using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
@@ -59,7 +57,7 @@ public class StageManager : MonoBehaviour
     private void Start()
     {
         SetStage(_currentGameMode);
-    }    
+    }
     public void GetGameMode(GameModeType gameModeSelected)
     {
         if (_currentGameMode == null)
@@ -238,12 +236,12 @@ public class StageManager : MonoBehaviour
         return (team == TeamType.Blue) ? _teamBlueScore : _teamRedScore;
     }
     private void EndGameMode()
-    {        
+    {
         int teamBlueEndScore = GetTeamScore(TeamType.Blue);
         int teamRedEndScore = GetTeamScore(TeamType.Red);
         TeamType winningTeam = TeamType.None;
         if (teamBlueEndScore == teamRedEndScore)
-        {            
+        {
             winningTeam = CheckTeamHealthRatio();
             if (winningTeam == TeamType.None)
             {
@@ -254,13 +252,14 @@ public class StageManager : MonoBehaviour
         else
         {
             winningTeam = (teamBlueEndScore > teamRedEndScore) ? TeamType.Blue : TeamType.Red;
+            Debug.Log($"게임 종료 {winningTeam}팀 승리"); // 게임 종료 씬 구성 이후 승리 팀 연출 구현 필요
         }
     }
     private TeamType CheckTeamHealthRatio()
     {
         int teamBlueCharacterHealthRatio = _teamBlueCharacter[0].HealthPointRatio;
         int teamRedCharacterHelathRatio = _teamRedCharacter[0].HealthPointRatio;
-        
+
         if (teamBlueCharacterHealthRatio == teamRedCharacterHelathRatio)
             return TeamType.None;
         else if (teamBlueCharacterHealthRatio > teamRedCharacterHelathRatio)
