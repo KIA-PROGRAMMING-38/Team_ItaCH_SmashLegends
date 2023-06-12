@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1053788930}
   - component: {fileID: 1053788931}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HitZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ SphereCollider:
   m_GameObject: {fileID: 1053788929}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.016975254
   m_Center: {x: 0, y: 0.0069752443, z: 0}
@@ -706,7 +706,7 @@ GameObject:
   - component: {fileID: 1207978726}
   m_Layer: 0
   m_Name: Peter_Ingame
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -931,7 +931,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d03d9b7de5d11004c8ff85a7dcf5a1a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _secondPlayer: {fileID: 0}
 --- !u!1 &1839266365119039902
 GameObject:
   m_ObjectHideFlags: 0

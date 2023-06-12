@@ -25,7 +25,6 @@ public class PlayerSecondAttackState : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _playerHit.AttackRangeOn();
         if (_playerAttack.isFinishAttack && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.7f)
         {
             _playerAttack.AttackRotate();

@@ -11,7 +11,7 @@ public class PlayerHitState : StateMachineBehaviour
     {
         _playerHit = animator.GetComponent<PlayerHit>();
         
-        _playerHit.invincible = false;
+        _playerHit.invincible = true;
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -21,7 +21,8 @@ public class PlayerHitState : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _playerHit.invincible = true;
+        _playerHit.invincible = false;
+        animator.ResetTrigger(AnimationHash.Hit);
     }
 
 
