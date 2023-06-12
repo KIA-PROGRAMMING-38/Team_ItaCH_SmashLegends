@@ -35,6 +35,7 @@ public class StageManager : MonoBehaviour
             if (_gameTimeInt != currentGameTimeInt)
             {
                 _gameTimeInt = currentGameTimeInt;
+                OnTimeChange.Invoke(RemainGameTime);
             }
         }
     }
@@ -48,6 +49,8 @@ public class StageManager : MonoBehaviour
     private GameObject _modeUI;
 
     public event Action<int, TeamType> OnTeamScoreChanged;
+    public event Action<int> OnTimeChange;
+
     private void Awake()
     {
         _selectedGameMode = DEFAULT_GAME_MODE;
