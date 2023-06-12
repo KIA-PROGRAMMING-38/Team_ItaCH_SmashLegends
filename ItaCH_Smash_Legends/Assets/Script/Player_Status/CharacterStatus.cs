@@ -50,6 +50,6 @@ public class CharacterStatus : CharacterDefaultStatus
         this.transform.position = _spawnPoint;
         this.gameObject.SetActive(true);
         this.GetComponent<Collider>().isTrigger = false;
-        InitHP();
+        InitHP();        
     }
 }
