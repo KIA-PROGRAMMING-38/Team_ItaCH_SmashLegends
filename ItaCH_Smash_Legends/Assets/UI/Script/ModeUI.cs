@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks.Triggers;
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,8 @@ public class ModeUI : MonoBehaviour
     [Header("UI Images in Prefab")]
     [SerializeField] private HealthBar[] _healthPointBars;
     [SerializeField] private ScoreSet[] _scoreSets;
+    [SerializeField] private Timer _timer;
+
     private StageManager _stageManager;
     public void InitModeUISettings(StageManager stageManager)
     {
@@ -19,6 +22,7 @@ public class ModeUI : MonoBehaviour
         {
             _healthPointBars[i].InitHealthBarSettings(players[i + 1].GetComponent<CharacterStatus>());
             _scoreSets[i].InitScoreSetSettings((TeamType)(i + 1));
+            _timer.InitTimerSettings();
             BindEventWithScoreSets(i);
         }
     }
