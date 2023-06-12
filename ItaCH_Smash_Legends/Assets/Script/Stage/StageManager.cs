@@ -114,6 +114,7 @@ public class StageManager : MonoBehaviour
             characterStatus.TeamType = TeamType.Red;
             _teamMemberIndex = id - _teamSize - INDEX_OFFSET_FOR_ZERO;
             _teamRedCharacter[_teamMemberIndex] = characterStatus;
+            character.layer = LayerMask.NameToLayer("TeamRed");
             characterStatus.TeamSpawnPoint = characterStatus.transform.position;
         }
         else
@@ -121,6 +122,7 @@ public class StageManager : MonoBehaviour
             characterStatus.TeamType = TeamType.Blue;
             _teamMemberIndex = id - INDEX_OFFSET_FOR_ZERO;
             _teamBlueCharacter[_teamMemberIndex] = characterStatus;
+            character.layer = LayerMask.NameToLayer("TeamBlue");
             characterStatus.TeamSpawnPoint = characterStatus.transform.position;
         }
         characterStatus.OnPlayerDie -= UpdateTeamScore;

@@ -30,8 +30,11 @@ public class PlayerHit : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && _playerStatus.CurrentState == PlayerStatus.State.ComboAttack)
+        Debug.Log("충돌 발생하는지");
+        if (other.CompareTag("Player") && (_playerStatus.CurrentState == PlayerStatus.State.ComboAttack
+            || _playerStatus.CurrentState == PlayerStatus.State.HeavyAttack))
         {
+            Debug.Log("공격판정");
             Vector3 hitPoint = other.transform.position - transform.position;
             other.transform.rotation = Quaternion.LookRotation(-hitPoint);
             Hit().Forget();
@@ -48,7 +51,13 @@ public class PlayerHit : MonoBehaviour
             //_characterStatus.GetDamage();
             if (EndComboAttack())
             {
+                animator.Play(AnimationHash.HitUp);
                 rigidbody.AddForce(_knockbackDirection * _heavyKnockbackPower, ForceMode.Impulse);
+            }
+            else if (_playerStatus.CurrentState == PlayerStatus.State.HeavyAttack)
+            {
+                animator.Play(AnimationHash.HitUp);
+                rigidbody.AddForce((_knockbackDirection * 1.3f) * _heavyKnockbackPower, ForceMode.Impulse);
             }
             else
             {
