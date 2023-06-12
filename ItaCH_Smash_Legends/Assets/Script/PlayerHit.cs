@@ -14,7 +14,6 @@ public class PlayerHit : MonoBehaviour
 
     private Vector3 _knockbackDirection;
 
-    public GameObject _secondPlayer;
     private PlayerAttack _playerAttack;
     private CharacterStatus _characterStatus;
     private PlayerStatus _playerStatus;
@@ -30,34 +29,41 @@ public class PlayerHit : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && _playerStatus.CurrentState == PlayerStatus.State.ComboAttack)
+        Debug.Log(other.name);
+        if (other.CompareTag("Player") &&  (_playerStatus.CurrentState == PlayerStatus.State.ComboAttack
+            || _playerStatus.CurrentState == PlayerStatus.State.HeavyAttack))
         {
             Vector3 hitPoint = other.transform.position - transform.position;
             other.transform.rotation = Quaternion.LookRotation(-hitPoint);
-            Hit().Forget();
+            Hit(other);
         }
     }
-    private async UniTaskVoid Hit()
+    private void Hit(Collider other)
     {
         _knockbackDirection = transform.forward + transform.up;
-        Rigidbody rigidbody = _secondPlayer.GetComponent<Rigidbody>();
-        Animator animator = _secondPlayer.GetComponent<Animator>();
-        if (!invincible)
+        Rigidbody rigidbody = other.GetComponent<Rigidbody>();
+        Animator animator = other.GetComponent<Animator>();
+        PlayerHit playerHit = other.GetComponent<PlayerHit>();
+        if (playerHit.invincible == false)
         {
+            AttackRangeOff();
             // 공격력 아직 미정
             //_characterStatus.GetDamage();
             if (EndComboAttack())
             {
+                animator.Play(AnimationHash.HitUp);
                 rigidbody.AddForce(_knockbackDirection * _heavyKnockbackPower, ForceMode.Impulse);
             }
-            else
+            else if (_playerStatus.CurrentState == PlayerStatus.State.HeavyAttack)
+            {
+                animator.Play(AnimationHash.HitUp);
+                rigidbody.AddForce((_knockbackDirection * 1.3f) * _heavyKnockbackPower, ForceMode.Impulse);
+            }
+            else if(_playerStatus.CurrentState == PlayerStatus.State.ComboAttack)
             {
                 animator.SetTrigger(AnimationHash.Hit);
                 rigidbody.AddForce(_knockbackDirection * _lightKnockbackPower, ForceMode.Impulse);
             }
-            await UniTask.Delay(TimeSpan.FromSeconds(0.25f));
-            AttackRangeOff();
-            animator.ResetTrigger(AnimationHash.Hit);
         }
     }
 

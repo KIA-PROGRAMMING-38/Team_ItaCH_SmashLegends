@@ -9,7 +9,7 @@ public class PlayerSecondAttackState : StateMachineBehaviour
     private PlayerAttack _playerAttack;
     private PlayerStatus _playerStatus;
     private PlayerHit _playerHit;
-    
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _playerAttack = animator.GetComponent<PlayerAttack>();
@@ -37,5 +37,4 @@ public class PlayerSecondAttackState : StateMachineBehaviour
             _playerHit.AttackRangeOff();
         }
     }
-
 }

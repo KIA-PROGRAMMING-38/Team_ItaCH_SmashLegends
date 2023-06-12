@@ -1,18 +1,42 @@
+using Cysharp.Threading.Tasks.Triggers;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ModeUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("UI Images in Prefab")]
+    [SerializeField] private HealthBar[] _healthPointBars;
+    [SerializeField] private ScoreSet[] _scoreSets;
+    [SerializeField] private Timer _timer;
+
+    private StageManager _stageManager;
+    public void InitModeUISettings(StageManager stageManager)
     {
-        
+        _stageManager = stageManager;
+        GameObject[] players = stageManager.Players;
+        for (int i = 0; i < players.Length - 1; ++i)
+        {
+            _healthPointBars[i].InitHealthBarSettings(players[i + 1].GetComponent<CharacterStatus>());
+            _scoreSets[i].InitScoreSetSettings((TeamType)(i + 1));
+            _timer.InitTimerSettings();
+            BindEventWithScoreSets(i);
+        }
+    }
+    public void BindEventWithScoreSets(int i)
+    {
+        _stageManager.OnTeamScoreChanged -= _scoreSets[i].GetScore;
+        _stageManager.OnTeamScoreChanged += _scoreSets[i].GetScore;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnDestroy()
     {
-        
+        for (int i = 0; i < _scoreSets.Length; ++i)
+        {
+            _stageManager.OnTeamScoreChanged -= _scoreSets[i].GetScore;
+        }
     }
 }
