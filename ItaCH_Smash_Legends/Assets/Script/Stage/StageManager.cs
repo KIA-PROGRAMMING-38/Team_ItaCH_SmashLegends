@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using System;
 using System.Text;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class StageManager : MonoBehaviour
 {
@@ -12,8 +13,8 @@ public class StageManager : MonoBehaviour
     private GameModeType _selectedGameMode;
     private GameObject[] _playerCharacterInstances;
     public GameObject[] Players { get => _playerCharacterInstances; }
-    private GameObject[] _teamBlueCharacter;
-    private GameObject[] _teamRedCharacter;
+    private CharacterStatus[] _teamBlueCharacter;
+    private CharacterStatus[] _teamRedCharacter;
     private const int INDEX_OFFSET_FOR_ZERO = 1;
     private int _totalPlayer;
     private int _teamSize;
@@ -22,6 +23,23 @@ public class StageManager : MonoBehaviour
     private int _teamRedScore;
     private int _winningScore;
 
+    private float _gameTime;
+    private int _gameTimeInt;
+    public float GameTime
+    {
+        get => _gameTime;
+        set
+        {
+            _gameTime = value;
+            int currentGameTimeInt = Mathf.FloorToInt(_gameTime);
+            if (_gameTimeInt != currentGameTimeInt)
+            {
+                _gameTimeInt = currentGameTimeInt;
+            }
+        }
+    }
+    public int RemainGameTime => Mathf.Max(_currentGameMode.MaxGameTime - _gameTimeInt, 0);
+    private bool _isGameOver;
 
     private GameObject _legendUIPrefab;
     private GameObject[] _modeUIPrefab;
@@ -38,7 +56,7 @@ public class StageManager : MonoBehaviour
     private void Start()
     {
         SetStage(_currentGameMode);
-    }
+    }    
     public void GetGameMode(GameModeType gameModeSelected)
     {
         if (_currentGameMode == null)
@@ -49,18 +67,20 @@ public class StageManager : MonoBehaviour
         _totalPlayer = _currentGameMode.TotalPlayer;
         _teamSize = _currentGameMode.TeamSize;
         _winningScore = _currentGameMode.WinningScore;
+        _isGameOver = false;
     }
     public void SetStage(GameMode currentGameMode)
     {
         CreateMap(currentGameMode);
         _playerCharacterInstances = new GameObject[_totalPlayer + INDEX_OFFSET_FOR_ZERO];
-        _teamBlueCharacter = new GameObject[_teamSize];
-        _teamRedCharacter = new GameObject[_teamSize];
+        _teamBlueCharacter = new CharacterStatus[_teamSize];
+        _teamRedCharacter = new CharacterStatus[_teamSize];
         for (int playerID = 1; playerID <= _totalPlayer; playerID++)
         {
             CreateCharacter(playerID, currentGameMode.SpawnPoints);
         }
         SetModeUI(currentGameMode.GameModeType);
+        StartCoroutine(UpdateGameTime());
     }
     public void CreateCharacter(int playerID, Transform[] spawnPoints) // 캐릭터 선택 기능 구현 시 매개변수로 선택한 캐릭터 함께 전달
     {
@@ -93,14 +113,14 @@ public class StageManager : MonoBehaviour
         {
             characterStatus.TeamType = TeamType.Red;
             _teamMemberIndex = id - _teamSize - INDEX_OFFSET_FOR_ZERO;
-            _teamRedCharacter[_teamMemberIndex] = character;
+            _teamRedCharacter[_teamMemberIndex] = characterStatus;
             characterStatus.TeamSpawnPoint = characterStatus.transform.position;
         }
         else
         {
             characterStatus.TeamType = TeamType.Blue;
             _teamMemberIndex = id - INDEX_OFFSET_FOR_ZERO;
-            _teamBlueCharacter[_teamMemberIndex] = character;
+            _teamBlueCharacter[_teamMemberIndex] = characterStatus;
             characterStatus.TeamSpawnPoint = characterStatus.transform.position;
         }
         characterStatus.OnPlayerDie -= UpdateTeamScore;
@@ -180,6 +200,16 @@ public class StageManager : MonoBehaviour
         legendUI.GetComponent<LegendUI>().InitLegendUISettings(player.transform);
         _legendUI.Add(legendUI);
     }
+    private IEnumerator UpdateGameTime()
+    {
+        while (false == _isGameOver && GameTime < _currentGameMode.MaxGameTime)
+        {
+            GameTime += Time.deltaTime;
+            yield return null;
+        }
+        _isGameOver = true;
+        EndGameMode();
+    }
     private void UpdateTeamScore(CharacterStatus character)
     {
         if (character.TeamType == TeamType.Blue)
@@ -191,9 +221,10 @@ public class StageManager : MonoBehaviour
         {
             ++_teamBlueScore;
             OnTeamScoreChanged.Invoke(_teamBlueScore, TeamType.Blue);
-        }        
+        }
         if (_teamBlueScore == _winningScore || _teamRedScore == _winningScore)
         {
+            _isGameOver = true;
             EndGameMode();
         }
     }
@@ -202,13 +233,18 @@ public class StageManager : MonoBehaviour
         return (team == TeamType.Blue) ? _teamBlueScore : _teamRedScore;
     }
     private void EndGameMode()
-    {
+    {        
         int teamBlueEndScore = GetTeamScore(TeamType.Blue);
         int teamRedEndScore = GetTeamScore(TeamType.Red);
         TeamType winningTeam = TeamType.None;
         if (teamBlueEndScore == teamRedEndScore)
-        {
-            CheckTeamHealthRatio();
+        {            
+            winningTeam = CheckTeamHealthRatio();
+            if (winningTeam == TeamType.None)
+            {
+                Debug.Log("무승부"); // 게임 종료 씬 구성 이후 무승부 시 연출 구현 필요
+            }
+            Debug.Log($"{winningTeam}팀 승리"); // 게임 종료 씬 구성 이후 승리 팀 연출 구현 필요
         }
         else
         {
@@ -217,7 +253,14 @@ public class StageManager : MonoBehaviour
     }
     private TeamType CheckTeamHealthRatio()
     {
-        // 다음 이슈에서 구현
-        return TeamType.None;
+        int teamBlueCharacterHealthRatio = _teamBlueCharacter[0].HealthPointRatio;
+        int teamRedCharacterHelathRatio = _teamRedCharacter[0].HealthPointRatio;
+        
+        if (teamBlueCharacterHealthRatio == teamRedCharacterHelathRatio)
+            return TeamType.None;
+        else if (teamBlueCharacterHealthRatio > teamRedCharacterHelathRatio)
+            return TeamType.Blue;
+        else
+            return TeamType.Red;
     }
 }
