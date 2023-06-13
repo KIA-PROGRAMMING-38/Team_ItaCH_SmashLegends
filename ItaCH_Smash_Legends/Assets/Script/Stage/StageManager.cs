@@ -5,6 +5,9 @@ using System;
 using System.Text;
 using UnityEngine.InputSystem;
 using System.Collections;
+using TreeEditor;
+using UnityEngine.iOS;
+using System.Linq;
 
 public class StageManager : MonoBehaviour
 {
@@ -56,7 +59,7 @@ public class StageManager : MonoBehaviour
     private void Start()
     {
         SetStage(_currentGameMode);
-    }    
+    }
     public void GetGameMode(GameModeType gameModeSelected)
     {
         if (_currentGameMode == null)
@@ -135,11 +138,16 @@ public class StageManager : MonoBehaviour
         {
             case 1:
                 playercontroller = character.GetComponent<UnityEngine.InputSystem.PlayerInput>();
-                playercontroller.defaultActionMap = "FirstPlayerActions";
+                playercontroller.SwitchCurrentActionMap("FirstPlayerActions");
                 break;
             case 2:
                 playercontroller = character.GetComponent<UnityEngine.InputSystem.PlayerInput>();
-                playercontroller.defaultActionMap = "SecondPlayerActions";
+                playercontroller.actions.name = "PlayerInput";
+                playercontroller.SwitchCurrentControlScheme("PC");
+                playercontroller.GetDevice<Keyboard>();
+                Keyboard keyBoard = InputSystem.GetDevice<Keyboard>();
+                playercontroller.actions.devices = new InputDevice[] { keyBoard };
+                playercontroller.SwitchCurrentActionMap("SecondPlayerActions");
                 break;
             default:
                 return;
@@ -235,12 +243,12 @@ public class StageManager : MonoBehaviour
         return (team == TeamType.Blue) ? _teamBlueScore : _teamRedScore;
     }
     private void EndGameMode()
-    {        
+    {
         int teamBlueEndScore = GetTeamScore(TeamType.Blue);
         int teamRedEndScore = GetTeamScore(TeamType.Red);
         TeamType winningTeam = TeamType.None;
         if (teamBlueEndScore == teamRedEndScore)
-        {            
+        {
             winningTeam = CheckTeamHealthRatio();
             if (winningTeam == TeamType.None)
             {
@@ -257,7 +265,7 @@ public class StageManager : MonoBehaviour
     {
         int teamBlueCharacterHealthRatio = _teamBlueCharacter[0].HealthPointRatio;
         int teamRedCharacterHelathRatio = _teamRedCharacter[0].HealthPointRatio;
-        
+
         if (teamBlueCharacterHealthRatio == teamRedCharacterHelathRatio)
             return TeamType.None;
         else if (teamBlueCharacterHealthRatio > teamRedCharacterHelathRatio)
