@@ -5,9 +5,6 @@ using System;
 using System.Text;
 using UnityEngine.InputSystem;
 using System.Collections;
-using TreeEditor;
-using UnityEngine.iOS;
-using System.Linq;
 
 public class StageManager : MonoBehaviour
 {
@@ -144,7 +141,6 @@ public class StageManager : MonoBehaviour
                 playercontroller = character.GetComponent<UnityEngine.InputSystem.PlayerInput>();
                 playercontroller.actions.name = "PlayerInput";
                 playercontroller.SwitchCurrentControlScheme("PC");
-                playercontroller.GetDevice<Keyboard>();
                 Keyboard keyBoard = InputSystem.GetDevice<Keyboard>();
                 playercontroller.actions.devices = new InputDevice[] { keyBoard };
                 playercontroller.SwitchCurrentActionMap("SecondPlayerActions");
