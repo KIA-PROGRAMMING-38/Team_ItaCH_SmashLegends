@@ -1,10 +1,7 @@
-using Cysharp.Threading.Tasks;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class PlayerHit : MonoBehaviour
 {
@@ -17,6 +14,7 @@ public class PlayerHit : MonoBehaviour
     private PlayerAttack _playerAttack;
     private CharacterStatus _characterStatus;
     private PlayerStatus _playerStatus;
+    private Animator _animator;
 
     void Start()
     {
@@ -24,8 +22,17 @@ public class PlayerHit : MonoBehaviour
         _characterStatus = GetComponent<CharacterStatus>();
         _playerStatus = GetComponent<PlayerStatus>();
 
+        _animator = GetComponent<Animator>();
+
         invincible = false;
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground") && _playerStatus.CurrentState == PlayerStatus.State.HitUp)
+        {
+            _animator.SetTrigger(AnimationHash.HitDown);
+        }
+    } 
 
     private void OnTriggerEnter(Collider other)
     {
