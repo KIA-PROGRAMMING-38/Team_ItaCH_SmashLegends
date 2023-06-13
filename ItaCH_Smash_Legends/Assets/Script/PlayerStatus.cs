@@ -7,7 +7,7 @@ public class PlayerStatus : MonoBehaviour
 {
     public enum State
     {
-        None, Idle, Run, Jump, Hang, HitUp, ComboAttack, HeavyAttack, SkillAttack
+        None, Idle, Run, Jump, Hang, HitUp, ComboAttack, HeavyAttack, SkillAttack, SkillEndAttack
     }
 
     public State CurrentState;
