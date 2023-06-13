@@ -136,11 +136,15 @@ public class StageManager : MonoBehaviour
         {
             case 1:
                 playercontroller = character.GetComponent<UnityEngine.InputSystem.PlayerInput>();
-                playercontroller.defaultActionMap = "FirstPlayerActions";
+                playercontroller.SwitchCurrentActionMap("FirstPlayerActions");
                 break;
             case 2:
                 playercontroller = character.GetComponent<UnityEngine.InputSystem.PlayerInput>();
-                playercontroller.defaultActionMap = "SecondPlayerActions";
+                playercontroller.actions.name = "PlayerInput";
+                playercontroller.SwitchCurrentControlScheme("PC");
+                Keyboard keyBoard = InputSystem.GetDevice<Keyboard>();
+                playercontroller.actions.devices = new InputDevice[] { keyBoard };
+                playercontroller.SwitchCurrentActionMap("SecondPlayerActions");
                 break;
             default:
                 return;
