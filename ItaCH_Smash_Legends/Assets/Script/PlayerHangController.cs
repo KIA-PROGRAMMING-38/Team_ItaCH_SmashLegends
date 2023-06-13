@@ -40,12 +40,12 @@ public class PlayerHangController : MonoBehaviour
 
     private Vector3 SetHangRotation(Vector3 other)
     {
-        other = other.normalized * -1;
-        other.x = Mathf.Round(other.x);
-        other.y = Mathf.Round(other.y);
-        other.z = Mathf.Round(other.z);
-
-        return other;
+     Vector3 otherPosition = other.normalized;
+        otherPosition.x = Mathf.Round(other.x);
+        otherPosition.y = 0;
+        otherPosition.z = Mathf.Round(other.z);
+        
+        return otherPosition * -1;
     }
     private Vector3 SetHangPosition(Collider other)
     {
