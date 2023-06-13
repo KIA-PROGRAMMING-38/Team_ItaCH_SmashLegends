@@ -22,14 +22,20 @@ public class ModeUI : MonoBehaviour
         {
             _healthPointBars[i].InitHealthBarSettings(players[i + 1].GetComponent<CharacterStatus>());
             _scoreSets[i].InitScoreSetSettings((TeamType)(i + 1));
-            _timer.InitTimerSettings();
             BindEventWithScoreSets(i);
         }
+        _timer.InitTimerSettings();
+        BindEventWithTimer();
     }
     public void BindEventWithScoreSets(int i)
     {
         _stageManager.OnTeamScoreChanged -= _scoreSets[i].GetScore;
         _stageManager.OnTeamScoreChanged += _scoreSets[i].GetScore;
+    }
+    public void BindEventWithTimer()
+    {
+        _stageManager.OnTimeChange -= _timer.ChangeTime;
+        _stageManager.OnTimeChange += _timer.ChangeTime;
     }
 
     public void OnDestroy()
