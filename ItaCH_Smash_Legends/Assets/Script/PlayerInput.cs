@@ -73,6 +73,18 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
+    private void OnSkillAttack()
+    {
+        if(_playerStatus.CurrentState == PlayerStatus.State.Run ||
+            _playerStatus.CurrentState == PlayerStatus.State.Idle ||
+            _playerStatus.CurrentState == PlayerStatus.State.Jump)
+        {
+            _animator.Play(AnimationHash.SkillAttack);
+            _playerStatus.CurrentState = PlayerStatus.State.SkillAttack;
+            _playerHit.AttackRangeOn();
+        }
+    }
+
     private void OnJump()
     {
         if (_playerStatus.IsJump && (_playerStatus.CurrentState == PlayerStatus.State.Run

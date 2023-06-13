@@ -1,12 +1,9 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class PlayerHit : MonoBehaviour
 {
-    private float _lightKnockbackPower = 0.4f;
-    private float _heavyKnockbackPower = 0.7f;
+    private float _lightKnockbackPower = 0.2f;
+    private float _heavyKnockbackPower = 0.8f;
     internal bool invincible;
 
     private Vector3 _knockbackDirection;
@@ -32,12 +29,14 @@ public class PlayerHit : MonoBehaviour
         {
             _animator.SetTrigger(AnimationHash.HitDown);
         }
-    } 
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && (_playerStatus.CurrentState == PlayerStatus.State.ComboAttack
-            || _playerStatus.CurrentState == PlayerStatus.State.HeavyAttack))
+            || _playerStatus.CurrentState == PlayerStatus.State.HeavyAttack
+            || _playerStatus.CurrentState == PlayerStatus.State.SkillEndAttack
+            || _playerStatus.CurrentState == PlayerStatus.State.SkillAttack))
         {
             Vector3 hitPoint = other.transform.position - transform.position;
             other.transform.rotation = Quaternion.LookRotation(-hitPoint);
@@ -58,28 +57,37 @@ public class PlayerHit : MonoBehaviour
             CharacterStatus opponentCharacter = other.GetComponent<CharacterStatus>();
             if (EndComboAttack())
             {
-                animator.Play(AnimationHash.HitUp);
-                rigidbody.AddForce(_knockbackDirection * _heavyKnockbackPower, ForceMode.Impulse);
-                currentAttackDamage = _characterStatus.DefaultAttackDamage;
-                opponentCharacter.GetDamage(currentAttackDamage);
+                GetHit(_lightKnockbackPower, other, AnimationHash.HitUp /*_characterStatus.DefaultAttackDamage*/);
+            }
+            else if (_playerStatus.CurrentState == PlayerStatus.State.SkillAttack)
+            {
+                GetHit(_lightKnockbackPower, other, AnimationHash.Hit /*_characterStatus.DefaultAttackDamage*/);
+            }
+            else if (_playerStatus.CurrentState == PlayerStatus.State.SkillEndAttack)
+            {
+                GetHit(_heavyKnockbackPower, other, AnimationHash.HitUp /*_characterStatus.HeavyAttackDamage*/);
             }
             else if (_playerStatus.CurrentState == PlayerStatus.State.HeavyAttack)
             {
-                animator.Play(AnimationHash.HitUp);
-                rigidbody.AddForce((_knockbackDirection * 1.3f) * _heavyKnockbackPower, ForceMode.Impulse);
-                currentAttackDamage = _characterStatus.HeavyAttackDamage;
-                opponentCharacter.GetDamage(currentAttackDamage);
+                GetHit(_heavyKnockbackPower, other, AnimationHash.HitUp /*_characterStatus.HeavyAttackDamage*/);
             }
             else if (_playerStatus.CurrentState == PlayerStatus.State.ComboAttack)
             {
-                animator.SetTrigger(AnimationHash.Hit);
-                rigidbody.AddForce(_knockbackDirection * _lightKnockbackPower, ForceMode.Impulse);
-                currentAttackDamage = _characterStatus.DefaultAttackDamage;
-                opponentCharacter.GetDamage(currentAttackDamage);
+                GetHit(_lightKnockbackPower, other, AnimationHash.Hit /*_characterStatus.DefaultAttackDamage*/);
             }
         }
-    }
 
+    }
+    private void GetHit(float power, Collider other, int animationHash /*int damage*/)
+    {
+        Rigidbody rigidbody = other.GetComponent<Rigidbody>();
+        Animator animator = other.GetComponent<Animator>();
+        CharacterStatus opponentCharacter = other.GetComponent<CharacterStatus>();
+
+        rigidbody.AddForce(_knockbackDirection * power, ForceMode.Impulse);
+        animator.Play(animationHash);
+        //opponentCharacter.GetDamage(damage);
+    }
     private bool EndComboAttack() => _playerAttack.CurrentPossibleComboCount == 0;
     public void AttackRangeOn() => _playerAttack.attackRange.enabled = true;
     public void AttackRangeOff() => _playerAttack.attackRange.enabled = false;
