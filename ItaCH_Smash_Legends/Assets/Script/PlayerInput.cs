@@ -1,9 +1,6 @@
-using Cysharp.Threading.Tasks;
-using System.Diagnostics.Tracing;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+
 
 public class PlayerInput : MonoBehaviour
 {
@@ -14,7 +11,6 @@ public class PlayerInput : MonoBehaviour
     private PlayerHit _playerHit;
     private PlayerRollUp _playerRollUp;
     private Animator _animator;
-
 
     private void Awake()
     {
@@ -79,8 +75,9 @@ public class PlayerInput : MonoBehaviour
 
     private void OnJump()
     {
-        if (_playerStatus.IsJump && _playerStatus.CurrentState == PlayerStatus.State.Run
-            || _playerStatus.CurrentState == PlayerStatus.State.Idle)
+        if (_playerStatus.IsJump && (_playerStatus.CurrentState == PlayerStatus.State.Run
+            || _playerStatus.CurrentState == PlayerStatus.State.Idle 
+            || _playerStatus.CurrentState == PlayerStatus.State.HitUp))
         {
             _playerJump.JumpInput();
             _animator.Play(AnimationHash.Jump);

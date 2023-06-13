@@ -78,5 +78,9 @@ public class PlayerJump : MonoBehaviour
     public void JumpInput()
     {
         _rigidbody.AddForce(JUMP_DIRECTION * MAX_JUMP_POWER, ForceMode.Impulse);
+        if(_playerStatus.CurrentState == PlayerStatus.State.HitUp)
+        {
+            _rigidbody.velocity = Vector3.zero;
+        }
     }
 }

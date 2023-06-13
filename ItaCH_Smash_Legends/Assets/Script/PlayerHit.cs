@@ -1,10 +1,7 @@
-using Cysharp.Threading.Tasks;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class PlayerHit : MonoBehaviour
 {
@@ -17,20 +14,27 @@ public class PlayerHit : MonoBehaviour
     private PlayerAttack _playerAttack;
     private CharacterStatus _characterStatus;
     private PlayerStatus _playerStatus;
+    private Animator _animator;
 
     void Start()
     {
-        _playerAttack= GetComponent<PlayerAttack>();
-        _characterStatus= GetComponent<CharacterStatus>();
-        _playerStatus= GetComponent<PlayerStatus>();
+        _playerAttack = GetComponent<PlayerAttack>();
+        _characterStatus = GetComponent<CharacterStatus>();
+        _playerStatus = GetComponent<PlayerStatus>();
+        _animator = GetComponent<Animator>();
 
         invincible = false;
     }
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground") && _playerStatus.CurrentState == PlayerStatus.State.HitUp)
+        {
+            _animator.SetTrigger(AnimationHash.HitDown);
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
-        if (other.CompareTag("Player") &&  (_playerStatus.CurrentState == PlayerStatus.State.ComboAttack
+        if (other.CompareTag("Player") && (_playerStatus.CurrentState == PlayerStatus.State.ComboAttack
             || _playerStatus.CurrentState == PlayerStatus.State.HeavyAttack))
         {
             Vector3 hitPoint = other.transform.position - transform.position;
