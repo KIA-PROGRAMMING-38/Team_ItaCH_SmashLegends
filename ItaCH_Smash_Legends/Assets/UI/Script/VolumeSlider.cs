@@ -1,20 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class VolumeSlider : MonoBehaviour
 {
-    private Text _volumeAmount;
+    private TextMeshProUGUI _volumeAmount;
+    private Slider _slider;
 
-    public void InitVolumeSliderSettings()
+    //테스트 코드. 추후 필요한 부분에서 호출할 예정
+    private void Start()
     {
-        _volumeAmount = transform.Find("Text").GetComponent<Text>();
+        InitVolumeSliderSetting();
     }
-
-    public void ChangeText(float value)
+    public void InitVolumeSliderSetting()
     {
-        int percentageValue = (int)(value * 100);
-        _volumeAmount.text = {value};
+        _volumeAmount = transform.GetChild(0).GetChild(2).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
+        _slider = transform.GetChild(0).GetComponent<Slider>();
+        ChangeText();
+    }
+    public void ChangeText()
+    {
+        int percentageValue = (int)(_slider.value * 100);
+        _volumeAmount.text = $"{percentageValue}";
     }
 }
