@@ -21,6 +21,7 @@ public class PlayerHit : MonoBehaviour
         _playerAttack = GetComponent<PlayerAttack>();
         _characterStatus = GetComponent<CharacterStatus>();
         _playerStatus = GetComponent<PlayerStatus>();
+
         _animator = GetComponent<Animator>();
 
         invincible = false;
@@ -31,7 +32,8 @@ public class PlayerHit : MonoBehaviour
         {
             _animator.SetTrigger(AnimationHash.HitDown);
         }
-    }
+    } 
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && (_playerStatus.CurrentState == PlayerStatus.State.ComboAttack
@@ -45,28 +47,35 @@ public class PlayerHit : MonoBehaviour
     private void Hit(Collider other)
     {
         _knockbackDirection = transform.forward + transform.up;
+        int currentAttackDamage;
         Rigidbody rigidbody = other.GetComponent<Rigidbody>();
         Animator animator = other.GetComponent<Animator>();
         PlayerHit playerHit = other.GetComponent<PlayerHit>();
+
         if (playerHit.invincible == false)
         {
             AttackRangeOff();
-            // 공격력 아직 미정
-            //_characterStatus.GetDamage();
+            CharacterStatus opponentCharacter = other.GetComponent<CharacterStatus>();
             if (EndComboAttack())
             {
                 animator.Play(AnimationHash.HitUp);
                 rigidbody.AddForce(_knockbackDirection * _heavyKnockbackPower, ForceMode.Impulse);
+                currentAttackDamage = _characterStatus.DefaultAttackDamage;
+                opponentCharacter.GetDamage(currentAttackDamage);
             }
             else if (_playerStatus.CurrentState == PlayerStatus.State.HeavyAttack)
             {
                 animator.Play(AnimationHash.HitUp);
                 rigidbody.AddForce((_knockbackDirection * 1.3f) * _heavyKnockbackPower, ForceMode.Impulse);
+                currentAttackDamage = _characterStatus.HeavyAttackDamage;
+                opponentCharacter.GetDamage(currentAttackDamage);
             }
-            else if(_playerStatus.CurrentState == PlayerStatus.State.ComboAttack)
+            else if (_playerStatus.CurrentState == PlayerStatus.State.ComboAttack)
             {
                 animator.SetTrigger(AnimationHash.Hit);
                 rigidbody.AddForce(_knockbackDirection * _lightKnockbackPower, ForceMode.Impulse);
+                currentAttackDamage = _characterStatus.DefaultAttackDamage;
+                opponentCharacter.GetDamage(currentAttackDamage);
             }
         }
     }
