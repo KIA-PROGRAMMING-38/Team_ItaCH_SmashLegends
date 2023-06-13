@@ -26,7 +26,6 @@ public class PlayerAttack : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         CurrentPossibleComboCount = MAX_POSSIBLE_ATTACK_COUNT;
     }
-
     public void AttackOnDefaultDash()
     {
         _rigidbody.AddForce(transform.forward * _defaultDashPower, ForceMode.Impulse);
