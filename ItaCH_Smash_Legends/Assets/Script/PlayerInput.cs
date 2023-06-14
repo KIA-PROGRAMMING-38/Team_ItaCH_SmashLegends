@@ -29,13 +29,14 @@ public class PlayerInput : MonoBehaviour
         if (_playerStatus.IsJump == false)
         {
             _animator.SetTrigger(AnimationHash.JumpAttack);
+            _playerAttack.JumpAttack();
             return;
         }
 
         if (IsPossibleFirstAttack())
         {
             _animator.Play(AnimationHash.FirstAttack);
-            _playerHit.AttackRangeOn();
+            //_playerHit.AttackRangeOn();
         }
 
         if (_playerAttack.isFirstAttack && _playerAttack.CurrentPossibleComboCount == _playerAttack.COMBO_SECOND_COUNT)
@@ -48,11 +49,12 @@ public class PlayerInput : MonoBehaviour
             _playerAttack.isFinishAttack = true;
         }
     }
+
     private bool IsPossibleFirstAttack()
     {
         if (_playerAttack.CurrentPossibleComboCount == _playerAttack.MAX_POSSIBLE_ATTACK_COUNT &&
-         _playerStatus.CurrentState == PlayerStatus.State.Run ||
-         _playerStatus.CurrentState == PlayerStatus.State.Idle)
+         (_playerStatus.CurrentState == PlayerStatus.State.Run ||
+         _playerStatus.CurrentState == PlayerStatus.State.Idle))
         {
             return true;
         }
@@ -69,7 +71,7 @@ public class PlayerInput : MonoBehaviour
         {
             _animator.Play(AnimationHash.HeavyAttack);
             _playerStatus.CurrentState = PlayerStatus.State.HeavyAttack;
-            _playerHit.AttackRangeOn();
+            //_playerHit.AttackRangeOn();
         }
     }
 
@@ -81,7 +83,7 @@ public class PlayerInput : MonoBehaviour
         {
             _animator.Play(AnimationHash.SkillAttack);
             _playerStatus.CurrentState = PlayerStatus.State.SkillAttack;
-            _playerHit.AttackRangeOn();
+            //_playerHit.AttackRangeOn();
         }
     }
 

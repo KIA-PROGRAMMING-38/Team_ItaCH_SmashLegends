@@ -12,7 +12,7 @@ public class PlayerFirstAttackState : StateMachineBehaviour
         _playerHit = animator.GetComponent<PlayerHit>();
         animator.SetBool(AnimationHash.Run, false);
         _playerStatus.CurrentState = PlayerStatus.State.ComboAttack;
-        _playerAttack.AttackOnDefaultDash();
+        _playerAttack.AttackOnDash();
 
         --_playerAttack.CurrentPossibleComboCount;
         _playerAttack.isFirstAttack = true;
@@ -30,7 +30,7 @@ public class PlayerFirstAttackState : StateMachineBehaviour
         {
             _playerAttack.CurrentPossibleComboCount = _playerAttack.MAX_POSSIBLE_ATTACK_COUNT;
             _playerAttack.isFirstAttack = false;
-            _playerHit.AttackRangeOff();
+            //_playerHit.AttackRangeOff();
         }
     }
 
