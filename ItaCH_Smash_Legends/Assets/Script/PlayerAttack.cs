@@ -34,6 +34,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
             transform.forward = playerMove.moveDirection;
         }
     }
+
     public virtual void AttackOnDash() => Debug.Log("재정의 필요");
 
     public virtual void DefaultAttack() => Debug.Log("재정의 필요");
