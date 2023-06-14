@@ -2555,7 +2555,7 @@ MonoBehaviour:
   attackRange: {fileID: 0}
   _bulletSpawnPositionLeft: {fileID: 3136454066675876769}
   _bulletSpawnPositionRight: {fileID: 7543404459505114782}
-  _hookBullet: {fileID: 0}
+  _hookEffectContainer: {fileID: 0}
 --- !u!1 &6469862050080975118
 GameObject:
   m_ObjectHideFlags: 0
