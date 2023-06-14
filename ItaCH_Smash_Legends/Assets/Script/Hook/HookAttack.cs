@@ -82,37 +82,37 @@ public class HookAttack : PlayerAttack
             effect.transform.rotation = Quaternion.Euler(-90, 0, 0);
 
         }
-        if (transform.rotation.eulerAngles.y == 45)
+        else if (transform.rotation.eulerAngles.y == 45)
         {
             effect.transform.rotation = Quaternion.Euler(-90, 45, 0);
 
         }
-        if (transform.rotation.eulerAngles.y == 90)
+        else if (transform.rotation.eulerAngles.y == 90)
         {
             effect.transform.rotation = Quaternion.Euler(0, 0, 90);
 
         }
-        if (transform.rotation.eulerAngles.y == 135)
+        else if (transform.rotation.eulerAngles.y == 135)
         {
 
             effect.transform.rotation = Quaternion.Euler(90, -45, 0);
         }
-        if (transform.rotation.eulerAngles.y == 180)
+        else if (transform.rotation.eulerAngles.y == 180)
         {
             effect.transform.rotation = Quaternion.Euler(90, 0, 0);
 
         }
-        if (transform.rotation.eulerAngles.y == 225)
+        else if (transform.rotation.eulerAngles.y == 225)
         {
             effect.transform.rotation = Quaternion.Euler(90, 45, 0);
 
         }
-        if (transform.rotation.eulerAngles.y == 270)
+        else if (transform.rotation.eulerAngles.y == 270)
         {
             effect.transform.rotation = Quaternion.Euler(0, 0, -90);
 
         }
-        if (transform.rotation.eulerAngles.y == 315)
+        else if (transform.rotation.eulerAngles.y == 315)
         {
             effect.transform.rotation = Quaternion.Euler(0, 45, -90);
 
