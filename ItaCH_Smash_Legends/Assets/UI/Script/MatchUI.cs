@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MatchUI : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class MatchUI : MonoBehaviour
     [SerializeField] private MatchBox[] _matchBoxes;
     [SerializeField] private MatchIcon _matchIcon;
     [SerializeField] private TextMeshProUGUI _matchText;
+    [SerializeField] private Button _removePanelButton;
 
     public event Action _OnStageStart;
 
@@ -33,6 +35,8 @@ public class MatchUI : MonoBehaviour
         _matchIcon.InitMatchIconSettings();
         _OnStageStart -= _matchIcon.SetMatchCompleteImage;
         _OnStageStart += _matchIcon.SetMatchCompleteImage;
+        _OnStageStart -= () => _removePanelButton.enabled = false;
+        _OnStageStart += () => _removePanelButton.enabled = false;
     }
 
     //추후 포톤 로직으로 변경 예정
@@ -71,7 +75,8 @@ public class MatchUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        _OnStageStart -= _matchIcon.SetMatchCompleteImage;        
+        _OnStageStart -= _matchIcon.SetMatchCompleteImage;
+        _OnStageStart -= () => _removePanelButton.enabled = false;
     }
 
     public void SetBox(bool isMatched, MatchBox _matchBox)
