@@ -2,14 +2,17 @@ using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MatchIcon : MonoBehaviour
 {
     [SerializeField] private Sprite[] _sprites;
+    [SerializeField] private Image _matchedImage;
     [SerializeField] private float _firstTurnSpeed;
     [SerializeField] private float _secondTurnSpeed;
+
     private float _firstTurnOffset;
     private float _secondTurnOffset;
     private Image _image;
@@ -22,7 +25,7 @@ public class MatchIcon : MonoBehaviour
     private Vector3 _counterClockWiseRotateDirection;
     private Vector3 _clockWiseRotateDirection;
 
-    private UniTask _uniTask;
+    private CancellationTokenSource _cancellationTokenSource;
 
     #region const 
     private const int FirstTurnAngle = 40;
@@ -31,11 +34,6 @@ public class MatchIcon : MonoBehaviour
     private const int SecondTurnDelay = 200;
     private const int FirstTurnDelay = 1000;
     #endregion
-
-    private void Start()
-    {
-        InitMatchIconSettings();
-    }
 
     public void InitMatchIconSettings()
     {
@@ -48,14 +46,24 @@ public class MatchIcon : MonoBehaviour
         _clockWiseRotateDirection = Vector3.back;
         _firstTurnOffset = _firstTurnSpeed * Time.fixedDeltaTime;
         _secondTurnOffset = _secondTurnSpeed * Time.fixedDeltaTime;
-        _uniTask = RotateIcons();
     }
-
-    private async UniTask RotateIcons()
+    private void OnEnable()
+    {
+        _cancellationTokenSource = new CancellationTokenSource();
+        _matchedImage.enabled = false;
+        RotateIcons(_cancellationTokenSource.Token).Forget();
+    }
+    private void OnDisable()
+    {
+        _cancellationTokenSource?.Cancel();
+    }
+    private async UniTask RotateIcons(CancellationToken cancellationToken)
     {
         while(true)
         {
-            if(_isTurned)
+            cancellationToken.ThrowIfCancellationRequested();
+
+            if (_isTurned)
             {
                 _rectTransform.Rotate(_clockWiseRotateDirection * (_secondTurnSpeed * Time.fixedDeltaTime));
                 if (!_isSpriteChanged && CalculateAbsolute(180 - CalculateAbsolute(_rectTransform.rotation.eulerAngles.z)) < _secondTurnOffset)
@@ -91,6 +99,10 @@ public class MatchIcon : MonoBehaviour
         }
     }
 
+    public void SetMatchCompleteImage()
+    {
+        _matchedImage.enabled = true;
+    }
     private float CalculateAbsolute(float someFloat)
     {
         if (someFloat > 0)
