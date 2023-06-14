@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class PlayerHit : MonoBehaviour
 {
@@ -31,7 +33,7 @@ public class PlayerHit : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void  OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && (_playerStatus.CurrentState == PlayerStatus.State.ComboAttack
             || _playerStatus.CurrentState == PlayerStatus.State.HeavyAttack
@@ -46,7 +48,6 @@ public class PlayerHit : MonoBehaviour
     private void Hit(Collider other)
     {
         _knockbackDirection = transform.forward + transform.up;
-        int currentAttackDamage;
         Rigidbody rigidbody = other.GetComponent<Rigidbody>();
         Animator animator = other.GetComponent<Animator>();
         PlayerHit playerHit = other.GetComponent<PlayerHit>();
