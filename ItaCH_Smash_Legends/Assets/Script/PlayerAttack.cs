@@ -2,7 +2,7 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using Cysharp.Threading.Tasks.CompilerServices;
 
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttack : MonoBehaviour, IAttack
 {
 
     public readonly int MAX_POSSIBLE_ATTACK_COUNT = 3;
@@ -14,28 +14,36 @@ public class PlayerAttack : MonoBehaviour
     internal bool isSecondAttack;
     internal bool isFinishAttack;
 
-    private PlayerMove _playerMove;
-    private Rigidbody _rigidbody;
+    protected PlayerMove playerMove;
+    protected Rigidbody rigidbodyAttack;
+    
     public Collider attackRange;
 
-    private float _defaultDashPower = 1f;
+    protected float _defaultDashPower = 1f;
 
     private void Awake()
     {
-        _playerMove = GetComponent<PlayerMove>();
-        _rigidbody = GetComponent<Rigidbody>();
+        playerMove = GetComponent<PlayerMove>();
+        rigidbodyAttack = GetComponent<Rigidbody>();
         CurrentPossibleComboCount = MAX_POSSIBLE_ATTACK_COUNT;
-    }
-    public void AttackOnDefaultDash()
-    {
-        _rigidbody.AddForce(transform.forward * _defaultDashPower, ForceMode.Impulse);
     }
     public void AttackRotate()
     {
-        if (_playerMove.moveDirection != Vector3.zero)
+        if (playerMove.moveDirection != Vector3.zero)
         {
-            transform.forward = _playerMove.moveDirection;
+            transform.forward = playerMove.moveDirection;
         }
     }
-   
+    public virtual void AttackOnDash() => Debug.Log("재정의 필요");
+
+    public virtual void DefaultAttack() => Debug.Log("재정의 필요");
+
+
+    public virtual void SkillAttack() => Debug.Log("재정의 필요");
+
+    public virtual void HeavyAttack() => Debug.Log("재정의 필요");
+
+    public virtual void JumpAttack() => Debug.Log("재정의 필요");
+
+
 }

@@ -13,13 +13,13 @@ public class PlayerHeavyAttackState : StateMachineBehaviour
         _playerHit = animator.GetComponent<PlayerHit>();
         animator.SetBool(AnimationHash.Run, false);
 
-        _playerAttack.AttackOnDefaultDash();
+        _playerAttack.AttackOnDash();
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _playerAttack.AttackRotate();
-        _playerHit.AttackRangeOff();
+        //_playerHit.AttackRangeOff();
     }
 
 }

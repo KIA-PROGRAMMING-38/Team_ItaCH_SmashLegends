@@ -53,7 +53,7 @@ public class PlayerHit : MonoBehaviour
 
         if (playerHit.invincible == false)
         {
-            AttackRangeOff();
+            //AttackRangeOff();
             CharacterStatus opponentCharacter = other.GetComponent<CharacterStatus>();
             if (EndComboAttack())
             {

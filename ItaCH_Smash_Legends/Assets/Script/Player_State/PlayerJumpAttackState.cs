@@ -22,6 +22,6 @@ public class PlayerJumpAttackState : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.ResetTrigger(AnimationHash.JumpAttack);
-        _peterEffectController.DisableJumpAttackEffect();
+        //_peterEffectController.DisableJumpAttackEffect();
     }
 }
