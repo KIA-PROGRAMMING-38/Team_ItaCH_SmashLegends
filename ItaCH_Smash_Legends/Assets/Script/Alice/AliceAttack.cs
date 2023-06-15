@@ -1,0 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AliceAttack : PlayerAttack
+{
+    private void Start()
+    {
+        CurrentPossibleComboCount = MAX_POSSIBLE_ATTACK_COUNT;
+    }
+    
+    public override void DefaultAttack()
+    {
+        if (IsPossibleFirstAttack())
+        {
+            _animator.Play(AnimationHash.FirstAttack);
+            --CurrentPossibleComboCount;
+        }
+        if (isFirstAttack && CurrentPossibleComboCount == COMBO_FINISH_COUNT)
+        {
+            isSecondAttack = true;
+        }
+    } 
+}
