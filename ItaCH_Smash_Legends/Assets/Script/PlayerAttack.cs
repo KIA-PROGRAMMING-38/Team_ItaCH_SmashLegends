@@ -17,8 +17,8 @@ public class PlayerAttack : MonoBehaviour, IAttack
     protected PlayerMove playerMove;
     protected Rigidbody rigidbodyAttack;
 
-    private PlayerStatus _playerStatus;
-    private Animator _animator;
+    protected PlayerStatus playerStatus;
+    protected Animator animator;
 
     protected float _defaultDashPower = 1f;
 
@@ -26,8 +26,8 @@ public class PlayerAttack : MonoBehaviour, IAttack
     {
         playerMove = GetComponent<PlayerMove>();
         rigidbodyAttack = GetComponent<Rigidbody>();
-        _playerStatus = GetComponent<PlayerStatus>();
-        _animator = GetComponent<Animator>();
+        playerStatus = GetComponent<PlayerStatus>();
+        animator = GetComponent<Animator>();
 
         CurrentPossibleComboCount = MAX_POSSIBLE_ATTACK_COUNT;
     }
@@ -40,11 +40,11 @@ public class PlayerAttack : MonoBehaviour, IAttack
         }
     }
 
-    private bool IsPossibleFirstAttack()
+    protected bool IsPossibleFirstAttack()
     {
         if (CurrentPossibleComboCount == MAX_POSSIBLE_ATTACK_COUNT &&
-         (_playerStatus.CurrentState == PlayerStatus.State.Run ||
-         _playerStatus.CurrentState == PlayerStatus.State.Idle))
+         (playerStatus.CurrentState == PlayerStatus.State.Run ||
+         playerStatus.CurrentState == PlayerStatus.State.Idle))
         {
             return true;
         }
@@ -60,7 +60,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     {
         if (IsPossibleFirstAttack())
         {
-            _animator.Play(AnimationHash.FirstAttack);
+            animator.Play(AnimationHash.FirstAttack);
         }
 
         if (isFirstAttack && CurrentPossibleComboCount == COMBO_SECOND_COUNT)
@@ -76,30 +76,30 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     public virtual void SkillAttack()
     {
-        if (_playerStatus.CurrentState == PlayerStatus.State.Run ||
-            _playerStatus.CurrentState == PlayerStatus.State.Idle ||
-            _playerStatus.CurrentState == PlayerStatus.State.Jump)
+        if (playerStatus.CurrentState == PlayerStatus.State.Run ||
+            playerStatus.CurrentState == PlayerStatus.State.Idle ||
+            playerStatus.CurrentState == PlayerStatus.State.Jump)
         {
-            _animator.Play(AnimationHash.SkillAttack);
-            _playerStatus.CurrentState = PlayerStatus.State.SkillAttack;
+            animator.Play(AnimationHash.SkillAttack);
+            playerStatus.CurrentState = PlayerStatus.State.SkillAttack;
         }
     }
 
     public virtual void HeavyAttack()
     {
-        if (_playerStatus.CurrentState == PlayerStatus.State.Run ||
-           _playerStatus.CurrentState == PlayerStatus.State.Idle)
+        if (playerStatus.CurrentState == PlayerStatus.State.Run ||
+           playerStatus.CurrentState == PlayerStatus.State.Idle)
         {
-            _animator.Play(AnimationHash.HeavyAttack);
-            _playerStatus.CurrentState = PlayerStatus.State.HeavyAttack;
+            animator.Play(AnimationHash.HeavyAttack);
+            playerStatus.CurrentState = PlayerStatus.State.HeavyAttack;
         }
     }
 
     public virtual void JumpAttack()
     {
-        if (_playerStatus.IsJump == false)
+        if (playerStatus.IsJump == false)
         {
-            _animator.SetTrigger(AnimationHash.JumpAttack);
+            animator.SetTrigger(AnimationHash.JumpAttack);
             return;
         }
     }

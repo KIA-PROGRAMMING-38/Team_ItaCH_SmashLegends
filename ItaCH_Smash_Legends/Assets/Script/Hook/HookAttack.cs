@@ -9,9 +9,6 @@ using UnityEngine.Pool;
 
 public class HookAttack : PlayerAttack
 {
-    private PlayerStatus _playerStatus;
-    private Animator _animator;
-
     private Transform _bulletSpawnPositionLeft;
     private Transform _bulletSpawnPositionRight;
 
@@ -26,7 +23,6 @@ public class HookAttack : PlayerAttack
 
     private void Start()
     {
-        _playerStatus = GetComponent<PlayerStatus>();
         _bulletSpawnPositionLeft = transform.GetChild(5).GetChild(0).GetChild(2).GetChild(0).transform;
         _bulletSpawnPositionRight = transform.GetChild(5).GetChild(0).GetChild(3).GetChild(0).transform;
 
@@ -46,7 +42,7 @@ public class HookAttack : PlayerAttack
 
         }
         if (CurrentPossibleComboCount == MAX_POSSIBLE_ATTACK_COUNT &&
-            _playerStatus.CurrentState == PlayerStatus.State.HeavyAttack)
+            playerStatus.CurrentState == PlayerStatus.State.HeavyAttack)
         {
             rigidbodyAttack.AddForce(transform.forward * (_defaultDashPower * -0.65f), ForceMode.Impulse);
         }
@@ -54,7 +50,19 @@ public class HookAttack : PlayerAttack
 
     public override void DefaultAttack()
     {
+        if (IsPossibleFirstAttack())
+        {
+            animator.Play(AnimationHash.FirstAttack);
+        }
 
+        if (isFirstAttack && CurrentPossibleComboCount == COMBO_SECOND_COUNT)
+        {
+            isSecondAttack = true;
+        }
+        if (isSecondAttack && CurrentPossibleComboCount == COMBO_FINISH_COUNT)
+        {
+            isFinishAttack = true;
+        }
     }
 
     public override void HeavyAttack()
@@ -64,7 +72,11 @@ public class HookAttack : PlayerAttack
 
     public override void JumpAttack()
     {
-        _animator.SetTrigger(AnimationHash.JumpAttack);
+        if (playerStatus.IsJump == false)
+        {
+            animator.SetTrigger(AnimationHash.JumpAttack);
+            return;
+        }
     }
 
     public override void SkillAttack()
