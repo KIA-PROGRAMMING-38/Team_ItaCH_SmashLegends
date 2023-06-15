@@ -95,7 +95,6 @@ public class PlayerAttack : MonoBehaviour, IAttack
         if (playerStatus.IsJump == false)
         {
             animator.SetTrigger(AnimationHash.JumpAttack);
-            return;
         }
     }
 
