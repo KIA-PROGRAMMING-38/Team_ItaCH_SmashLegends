@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_Alice_Skin_000_Weapon_02
+  m_Shader: {fileID: 211, guid: 0000000000000000f000000000000000, type: 0}
+  m_ValidKeywords:
+  - _ALPHABLEND_ON
+  m_InvalidKeywords:
+  - _CUBEMAPBLURSEPERATE_ON
+  - _FRESNELMODE_DARK
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
+  disabledShaderPasses:
+  - GRABPASS
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AddMatcapTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DataTex:
+        m_Texture: {fileID: 2800000, guid: 44bc0ade75865a246b7c59604547f940, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DecalTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LinePattern:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 4da90687eccee4b4e98ccb662521533f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MulMatcapTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AddAmount: 1
+    - _AddEnabled: 0
+    - _AnisoSpecularIntensity: 1
+    - _AnisoSpecularPosition: 0
+    - _AnisoSpecularPower: 0.02
+    - _AnisoSpecularSmooth: 0.5
+    - _AnisotropyEnabled: 0
+    - _BlendOp: 0
+    - _BumpScale: 1
+    - _CameraFadingEnabled: 0
+    - _CameraFarFadeDistance: 2
+    - _CameraNearFadeDistance: 1
+    - _ClipYPosition: 0
+    - _ColorMode: 0
+    - _CubemapBlurAmount: 1
+    - _CubemapBlurSeperate: 1
+    - _CubemapIntensity: 0.8
+    - _Cull: 2
+    - _Cutoff: 0.5
+    - _DecalEnabled: 0
+    - _DetailNormalMapScale: 1
+    - _DiffuseMode: 0
+    - _DistortionBlend: 0.5
+    - _DistortionEnabled: 0
+    - _DistortionStrength: 1
+    - _DistortionStrengthScaled: 0
+    - _DstBlend: 1
+    - _EmissionEnabled: 0
+    - _EmissiveMultiplier: 3.5
+    - _EnableClip: 0
+    - _FlipbookMode: 0
+    - _FresnelMode: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _LightingEnabled: 0
+    - _LineWidth: 1
+    - _MedToneSmooth: 0
+    - _MedToneThreshold: 0
+    - _Metallic: 1
+    - _Mode: 4
+    - _MulAmount: 1
+    - _MulEnabled: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _RealtimeShadowAmount: 1
+    - _RimEnabled: 1
+    - _RimGradation: 0
+    - _RimIntensity: 0.2
+    - _RimSize: 1
+    - _ScanLineEnabled: 0
+    - _SecondLineWidth: 1
+    - _ShadowGradation: 0.5
+    - _ShadowSmooth: 0
+    - _ShadowThreshold: 0.8
+    - _ShiftMax: 0.9
+    - _ShiftMin: -0.9
+    - _Smoothness: 1
+    - _SmoothnessTextureChannel: 0
+    - _SoftParticlesEnabled: 0
+    - _SoftParticlesFarFadeDistance: 1
+    - _SoftParticlesNearFadeDistance: 0
+    - _SpecularHighlights: 1
+    - _SpecularIntensity: 0.1
+    - _SrcBlend: 5
+    - _UVSec: 0
+    - _UseMatcapOnly: 0
+    - _ZWrite: 0
+    m_Colors:
+    - _AnisoSpecularColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissiveColor: {r: 0, g: 0.16037738, b: 0.0016111903, a: 1}
+    - _LineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _LinePos: {r: 0, g: 0, b: 0, a: 0}
+    - _MedToneColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
+    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SecondLineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ShadowColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
