@@ -32,12 +32,15 @@ public class PlayerInput : MonoBehaviour
     }
     private void OnJump()
     {
-        if (_playerStatus.IsJump && (_playerStatus.CurrentState == PlayerStatus.State.Run
-            || _playerStatus.CurrentState == PlayerStatus.State.Idle
-            || _playerStatus.CurrentState == PlayerStatus.State.HitUp))
+        if (_playerStatus.IsJump)
         {
-            _playerJump.JumpInput();
-            _animator.Play(AnimationHash.Jump);
+            if(_playerStatus.CurrentState == PlayerStatus.State.Run
+            || _playerStatus.CurrentState == PlayerStatus.State.Idle
+            || _playerStatus.CurrentState == PlayerStatus.State.HitUp)
+            {
+                _playerJump.JumpInput();
+                _animator.Play(AnimationHash.Jump);
+            }
         }
         if (_playerStatus.IsHang)
         {

@@ -17,6 +17,8 @@ public static class AnimationHash
     public readonly static int JumpDown = Animator.StringToHash("JumpDown");
     public readonly static int JumpLand = Animator.StringToHash("JumpLand");
     public readonly static int JumpAttack = Animator.StringToHash("JumpAttack");
+    public readonly static int JumpSecondAttack = Animator.StringToHash("JumpSecondAttack");
+    public readonly static int JumpFinishAttack = Animator.StringToHash("JumpFinishAttack");
     public readonly static int Hang = Animator.StringToHash("Hang");
     public readonly static int HangJumpUp = Animator.StringToHash("HangJumpUp");
     public readonly static int HangFalling = Animator.StringToHash("HangFalling");

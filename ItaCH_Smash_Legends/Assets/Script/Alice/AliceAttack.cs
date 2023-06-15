@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,5 +20,13 @@ public class AliceAttack : PlayerAttack
         {
             isSecondAttack = true;
         }
-    } 
+    }
+
+    public override void JumpAttack()
+    {
+        if (playerStatus.IsJump == false)
+        {
+            animator.SetTrigger(AnimationHash.JumpAttack);
+        }
+    }
 }
