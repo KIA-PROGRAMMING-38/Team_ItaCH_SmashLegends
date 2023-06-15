@@ -16,8 +16,9 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     protected PlayerMove playerMove;
     protected Rigidbody rigidbodyAttack;
-    
-    //public Collider attackRange;
+    protected PlayerStatus playerStatus;
+    protected Animator animator;
+
 
     protected float _defaultDashPower = 1f;
 
@@ -25,8 +26,12 @@ public class PlayerAttack : MonoBehaviour, IAttack
     {
         playerMove = GetComponent<PlayerMove>();
         rigidbodyAttack = GetComponent<Rigidbody>();
+        playerStatus = GetComponent<PlayerStatus>();
+        animator = GetComponent<Animator>();
+
         CurrentPossibleComboCount = MAX_POSSIBLE_ATTACK_COUNT;
     }
+
     public void AttackRotate()
     {
         if (playerMove.moveDirection != Vector3.zero)
@@ -35,16 +40,69 @@ public class PlayerAttack : MonoBehaviour, IAttack
         }
     }
 
-    public virtual void AttackOnDash() => Debug.Log("¿Á¡§¿« « ø‰");
+    protected bool IsPossibleFirstAttack()
+    {
+        if (CurrentPossibleComboCount == MAX_POSSIBLE_ATTACK_COUNT &&
+         (playerStatus.CurrentState == PlayerStatus.State.Run ||
+         playerStatus.CurrentState == PlayerStatus.State.Idle))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
-    public virtual void DefaultAttack() => Debug.Log("¿Á¡§¿« « ø‰");
+    public virtual void AttackOnDash() => Debug.Log("Ïû¨Ï†ïÏùò ÌïÑÏöî");
+
+    public virtual void DefaultAttack()
+    {
+        if (IsPossibleFirstAttack())
+        {
+            animator.Play(AnimationHash.FirstAttack);
+        }
+
+        if (isFirstAttack && CurrentPossibleComboCount == COMBO_SECOND_COUNT)
+        {
+            isSecondAttack = true;
+        }
+        if (isSecondAttack && CurrentPossibleComboCount == COMBO_FINISH_COUNT)
+        {
+            isFinishAttack = true;
+        }
+    }
 
 
-    public virtual void SkillAttack() => Debug.Log("¿Á¡§¿« « ø‰");
+    public virtual void SkillAttack()
+    {
+        if (playerStatus.CurrentState == PlayerStatus.State.Run ||
+            playerStatus.CurrentState == PlayerStatus.State.Idle ||
+            playerStatus.CurrentState == PlayerStatus.State.Jump)
+        {
+            animator.Play(AnimationHash.SkillAttack);
+            playerStatus.CurrentState = PlayerStatus.State.SkillAttack;
+        }
+    }
 
-    public virtual void HeavyAttack() => Debug.Log("¿Á¡§¿« « ø‰");
+    public virtual void HeavyAttack()
+    {
+        if (playerStatus.CurrentState == PlayerStatus.State.Run ||
+           playerStatus.CurrentState == PlayerStatus.State.Idle)
+        {
+            animator.Play(AnimationHash.HeavyAttack);
+            playerStatus.CurrentState = PlayerStatus.State.HeavyAttack;
+        }
+    }
 
-    public virtual void JumpAttack() => Debug.Log("¿Á¡§¿« « ø‰");
+    public virtual void JumpAttack()
+    {
+        if (playerStatus.IsJump == false)
+        {
+            animator.SetTrigger(AnimationHash.JumpAttack);
+            return;
+        }
+    }
 
 
 }
