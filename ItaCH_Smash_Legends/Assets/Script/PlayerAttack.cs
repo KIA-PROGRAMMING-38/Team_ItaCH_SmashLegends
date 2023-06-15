@@ -16,9 +16,9 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     protected PlayerMove playerMove;
     protected Rigidbody rigidbodyAttack;
-
     protected PlayerStatus playerStatus;
     protected Animator animator;
+
 
     protected float _defaultDashPower = 1f;
 
@@ -54,7 +54,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
         }
     }
 
-    public virtual void AttackOnDash() => Debug.Log("ÀçÁ¤ÀÇ ÇÊ¿ä");
+    public virtual void AttackOnDash() => Debug.Log("ì¬ì •ì˜ í•„ìš”");
 
     public virtual void DefaultAttack()
     {

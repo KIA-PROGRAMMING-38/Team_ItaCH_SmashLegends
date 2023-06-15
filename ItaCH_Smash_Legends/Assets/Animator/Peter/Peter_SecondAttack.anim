@@ -55115,13 +55115,6 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.26666668
-    functionName: EnableSecondAttackSecondEffect
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.26666668
     functionName: AttackRangeOn
     data: 
     objectReferenceParameter: {fileID: 0}
