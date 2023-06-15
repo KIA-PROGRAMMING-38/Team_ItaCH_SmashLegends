@@ -5,25 +5,39 @@ using UnityEngine;
 
 public class HookBullet : MonoBehaviour
 {
-    [SerializeField]
-    private float _currentBulletSpeed = 30f;
+    protected float currentBulletSpeed = 20;
+    protected float bulletDeleteTime = 0.23f;
+
     private float _elapsedTime;
-    private float _bulletDeleteTime = 0.23f;
-    public GameObject BulletDeleteEffect;
+    private GameObject _bulletDeleteEffect;
+
+    private void Awake()
+    {
+        _bulletDeleteEffect = transform.GetChild(0).gameObject;
+        _bulletDeleteEffect.SetActive(false);
+    }
 
     private void Update()
     {
-        transform.Translate(Vector3.forward * (_currentBulletSpeed * Time.deltaTime));
+        BulletDirection();
         _elapsedTime += Time.deltaTime;
-        if (_elapsedTime >= _bulletDeleteTime)
+        if (_elapsedTime >= bulletDeleteTime)
         {
-            _elapsedTime = 0;
-            GameObject effect = Instantiate(BulletDeleteEffect, transform.position, Quaternion.identity);
-            effect.SetActive(true);
-            gameObject.SetActive(false);
+            BulletPostProcessing();
         }
-
     }
 
+    private void BulletDirection()
+    {
+        transform.Translate(Vector3.forward * (currentBulletSpeed * Time.deltaTime));
+    }
+
+    private  void BulletPostProcessing()
+    {
+        GameObject effect = Instantiate(_bulletDeleteEffect, transform.position, Quaternion.identity);
+        effect.SetActive(true);
+        _elapsedTime = 0;
+        gameObject.SetActive(false);
+    }
 
 }

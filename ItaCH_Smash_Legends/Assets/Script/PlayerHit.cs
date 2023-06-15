@@ -90,6 +90,4 @@ public class PlayerHit : MonoBehaviour
         //opponentCharacter.GetDamage(damage);
     }
     private bool EndComboAttack() => _playerAttack.CurrentPossibleComboCount == 0;
-    public void AttackRangeOn() => _playerAttack.attackRange.enabled = true;
-    public void AttackRangeOff() => _playerAttack.attackRange.enabled = false;
 }

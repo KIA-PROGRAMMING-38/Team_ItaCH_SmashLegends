@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -10,18 +11,32 @@ public class HookAttack : PlayerAttack
 {
     private PlayerStatus _playerStatus;
     private Animator _animator;
-    public Transform _bulletSpawnPositionLeft;
-    public Transform _bulletSpawnPositionRight;
-    public GameObject _hookEffectContainer;
 
-    private HookBullet _hookBullet;
-    private GameObject _bulletCreateEffect;
+    private Transform _bulletSpawnPositionLeft;
+    private Transform _bulletSpawnPositionRight;
+
+    private GameObject[] _bulletContainers = new GameObject[3];
+
+    private HookBullet[] _bullets = new HookBullet[3];
+    private GameObject[] _bulletCreateEffect = new GameObject[3];
+
+    private int _defalutIndex = 0;
+    private int _heavyIndex = 1;
+    private int _lastHeavyIndex = 2;
 
     private void Start()
     {
         _playerStatus = GetComponent<PlayerStatus>();
-        _hookBullet = _hookEffectContainer.transform.GetChild(0).GetComponent<HookBullet>();
-        _bulletCreateEffect = _hookEffectContainer.transform.GetChild(2).gameObject;
+        _bulletSpawnPositionLeft = transform.GetChild(5).GetChild(0).GetChild(2).GetChild(0).transform;
+        _bulletSpawnPositionRight = transform.GetChild(5).GetChild(0).GetChild(3).GetChild(0).transform;
+
+        for (int i = 0; i < _bulletContainers.Length; ++i)
+        {
+            _bulletContainers[i] = transform.GetChild(i).gameObject;
+            _bullets[i] = _bulletContainers[i].transform.GetChild(0).GetComponent<HookBullet>();
+            _bulletCreateEffect[i] = _bulletContainers[i].transform.GetChild(1).gameObject;
+        }
+
     }
     public override void AttackOnDash()
     {
@@ -56,26 +71,58 @@ public class HookAttack : PlayerAttack
     {
         base.SkillAttack();
     }
+
     public void DefaultAttackLeft()
     {
-        CreateBullet(_bulletSpawnPositionLeft);
+        CreateBullet(_bulletSpawnPositionLeft.position, _bullets[_defalutIndex], _defalutIndex);
+        CreateDefaultBulletEffect(_bulletSpawnPositionLeft.position, _defalutIndex);
     }
 
     public void DefaultAttackRight()
     {
-        CreateBullet(_bulletSpawnPositionRight);
+        CreateBullet(_bulletSpawnPositionRight.position, _bullets[_defalutIndex], _defalutIndex);
+        CreateDefaultBulletEffect(_bulletSpawnPositionRight.position, _defalutIndex);
     }
 
-    private void CreateBullet(Transform spawnPosition)
+    public void HeavyAttackLeft()
     {
-        GameObject effect = Instantiate(_bulletCreateEffect, spawnPosition.position, _bulletCreateEffect.transform.rotation);
-        HookBullet bullet = Instantiate(_hookBullet, spawnPosition.position, Quaternion.identity);
-        SetEffectRotate(effect);
+        CreateBullet(_bulletSpawnPositionLeft.position, _bullets[_heavyIndex], _heavyIndex);
+        CreateHeavyBulletEffect(_bulletSpawnPositionLeft.position, _heavyIndex);
+    }
+    public void HeavyAttackRight()
+    {
+        CreateBullet(_bulletSpawnPositionRight.position, _bullets[_heavyIndex], _heavyIndex);
+        CreateHeavyBulletEffect(_bulletSpawnPositionRight.position, _heavyIndex);
+    }
+
+    public void LastHeavyAttack()
+    {
+        Vector3 lastBulletPosition = _bulletSpawnPositionLeft.position - _bulletSpawnPositionRight.position;
+        Vector3 spawnPosition = _bulletSpawnPositionRight.position + (lastBulletPosition / 2);
+        CreateBullet(spawnPosition, _bullets[_lastHeavyIndex], _lastHeavyIndex);
+        Vector3 startEffectPosition = spawnPosition + transform.forward;
+        CreateHeavyBulletEffect(startEffectPosition, _lastHeavyIndex);
+    }
+
+    private void CreateBullet(Vector3 spawnPosition, HookBullet bulletKind, int index)
+    {
+        spawnPosition = spawnPosition + transform.forward;
+        HookBullet bullet = Instantiate(bulletKind, spawnPosition, Quaternion.identity);
 
         bullet.gameObject.SetActive(true);
         bullet.transform.forward = transform.forward;
     }
-    private void SetEffectRotate(GameObject effect)
+    private void CreateDefaultBulletEffect(Vector3 spawnPosition, int index)
+    {
+        GameObject effect = Instantiate(_bulletCreateEffect[index], spawnPosition, transform.rotation);
+        DefaultBulletEffectRotate(effect);   
+    }
+    private void CreateHeavyBulletEffect(Vector3 spawnPosition, int index)
+    {
+        GameObject effect = Instantiate(_bulletCreateEffect[index], spawnPosition, transform.rotation);
+        effect.transform.forward = transform.forward;
+    }
+    private void DefaultBulletEffectRotate(GameObject effect)
     {
         if (transform.rotation.eulerAngles.y == 0)
         {
@@ -117,8 +164,6 @@ public class HookAttack : PlayerAttack
             effect.transform.rotation = Quaternion.Euler(0, 45, -90);
 
         }
-
-
     }
 }
 
