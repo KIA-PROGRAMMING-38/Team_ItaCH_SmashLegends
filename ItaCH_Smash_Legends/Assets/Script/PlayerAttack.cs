@@ -43,7 +43,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     {
         if (CurrentPossibleComboCount == MAX_POSSIBLE_ATTACK_COUNT)
         {
-            if (_playerStatus.CurrentState == PlayerStatus.State.Idle || _playerStatus.CurrentState == PlayerStatus.State.Run)
+            if (playerStatus.CurrentState == PlayerStatus.State.Idle || playerStatus.CurrentState == PlayerStatus.State.Run)
             {
                 return true;
             }

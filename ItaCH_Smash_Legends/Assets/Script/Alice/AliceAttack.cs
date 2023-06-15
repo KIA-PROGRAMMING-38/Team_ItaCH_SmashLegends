@@ -13,7 +13,7 @@ public class AliceAttack : PlayerAttack
     {
         if (IsPossibleFirstAttack())
         {
-            _animator.Play(AnimationHash.FirstAttack);
+            animator.Play(AnimationHash.FirstAttack);
             --CurrentPossibleComboCount;
         }
         if (isFirstAttack && CurrentPossibleComboCount == COMBO_FINISH_COUNT)
