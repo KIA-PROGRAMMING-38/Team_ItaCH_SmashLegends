@@ -1,9 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LegendMenuUI : MonoBehaviour
 {
+    private enum LegendName
+    { 
+        앨리스,
+        후크,
+        피터
+    }
+
     [SerializeField] private Sprite[] _portraitSprites;
     [SerializeField] private GameObject _legendSelectMenuPrefab;
     private LegendSelectUI[] _legendSelectMenu;
@@ -24,7 +32,7 @@ public class LegendMenuUI : MonoBehaviour
         for(int i = 0; i < _numberOfLegends; ++i)
         {
             _legendSelectMenu[i] = Instantiate(_legendSelectMenuPrefab, _contentTransform).AddComponent<LegendSelectUI>();
-            _legendSelectMenu[i].InitLegendSelectUI(i, _portraitSprites[i]);
+            _legendSelectMenu[i].InitLegendSelectUI(i, _portraitSprites[i], Enum.ToObject(typeof(LegendName), i).ToString());
             _legendSelectMenu[i].OnSelectLegend -= RefreshFrame;
             _legendSelectMenu[i].OnSelectLegend += RefreshFrame;
         }
