@@ -1,13 +1,12 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using Cysharp.Threading.Tasks.CompilerServices;
-
 public class PlayerAttack : MonoBehaviour, IAttack
 {
-
     public readonly int MAX_POSSIBLE_ATTACK_COUNT = 3;
     public readonly int COMBO_SECOND_COUNT = 2;
     public readonly int COMBO_FINISH_COUNT = 1;
+
     public int CurrentPossibleComboCount;
 
     internal bool isFirstAttack;
@@ -16,16 +15,16 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     protected PlayerMove playerMove;
     protected Rigidbody rigidbodyAttack;
+
     protected PlayerStatus playerStatus;
     protected Animator animator;
-
-
+    
     protected float _defaultDashPower = 1f;
-
     private void Awake()
     {
         playerMove = GetComponent<PlayerMove>();
         rigidbodyAttack = GetComponent<Rigidbody>();
+
         playerStatus = GetComponent<PlayerStatus>();
         animator = GetComponent<Animator>();
 
@@ -42,19 +41,16 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     protected bool IsPossibleFirstAttack()
     {
-        if (CurrentPossibleComboCount == MAX_POSSIBLE_ATTACK_COUNT &&
-         (playerStatus.CurrentState == PlayerStatus.State.Run ||
-         playerStatus.CurrentState == PlayerStatus.State.Idle))
+        if (CurrentPossibleComboCount == MAX_POSSIBLE_ATTACK_COUNT)
         {
-            return true;
+            if (_playerStatus.CurrentState == PlayerStatus.State.Idle || _playerStatus.CurrentState == PlayerStatus.State.Run)
+            {
+                return true;
+            }
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
-
-    public virtual void AttackOnDash() => Debug.Log("재정의 필요");
+    public virtual void AttackOnDash() => Debug.Log("����� �ʿ�");
 
     public virtual void DefaultAttack()
     {
@@ -72,7 +68,6 @@ public class PlayerAttack : MonoBehaviour, IAttack
             isFinishAttack = true;
         }
     }
-
 
     public virtual void SkillAttack()
     {
