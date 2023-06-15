@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     protected PlayerMove playerMove;
     protected Rigidbody rigidbodyAttack;
     
-    public Collider attackRange;
+    //public Collider attackRange;
 
     protected float _defaultDashPower = 1f;
 

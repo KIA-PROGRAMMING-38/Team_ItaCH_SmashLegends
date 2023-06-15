@@ -13,6 +13,7 @@ public class PlayerHitUpState : StateMachineBehaviour
         _playerHit = animator.GetComponent<PlayerHit>();
         _playerStatus = animator.GetComponent<PlayerStatus>();
         _playerStatus.CurrentState = PlayerStatus.State.HitUp;
+        Debug.Log("HitUp 들어옴");
         _playerHit.invincible = true;
     }
     // 추후 수정
@@ -24,7 +25,8 @@ public class PlayerHitUpState : StateMachineBehaviour
     //}
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        _playerStatus.CurrentState = PlayerStatus.State.Idle;
         _playerHit.invincible = false;
-        animator.ResetTrigger(AnimationHash.HitDown);
+        animator.ResetTrigger(AnimationHash.HitUp);
     }
 }

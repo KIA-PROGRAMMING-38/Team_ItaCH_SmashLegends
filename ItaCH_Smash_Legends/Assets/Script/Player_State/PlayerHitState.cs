@@ -24,6 +24,4 @@ public class PlayerHitState : StateMachineBehaviour
         _playerHit.invincible = false;
         animator.ResetTrigger(AnimationHash.Hit);
     }
-
-
 }
