@@ -42,16 +42,14 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     protected bool IsPossibleFirstAttack()
     {
-        if (CurrentPossibleComboCount == MAX_POSSIBLE_ATTACK_COUNT &&
-         (playerStatus.CurrentState == PlayerStatus.State.Run ||
-         playerStatus.CurrentState == PlayerStatus.State.Idle))
+        if (CurrentPossibleComboCount == MAX_POSSIBLE_ATTACK_COUNT)
         {
-            return true;
+            if (playerStatus.CurrentState == PlayerStatus.State.Run || playerStatus.CurrentState == PlayerStatus.State.Idle)
+            {
+                return true;
+            }
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 
     public virtual void AttackOnDash() => Debug.Log("재정의 필요");

@@ -44,9 +44,8 @@ public class PlayerJump : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground") && _playerStatus.IsJump == false)
         {
-            _playerStatus.IsJump = true;
             _animator.SetBool(AnimationHash.JumpDown, false);
-
+            _playerStatus.IsJump = true;
         }
     }
 
