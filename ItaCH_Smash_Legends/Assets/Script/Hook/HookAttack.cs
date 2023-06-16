@@ -21,7 +21,7 @@ public class HookAttack : PlayerAttack
     private float _jumpRotateValue = 45f;
     private Vector3 _jumpUpDashPower = new Vector3(0, 0.3f, 0);
     private Vector3 _jumpDashPower;
-
+    private float _hookRotateValue;
     private void Start()
     {
         _bulletSpawnPositionLeft = transform.GetChild(5).GetChild(0).GetChild(2).GetChild(0).transform;
@@ -204,8 +204,8 @@ public class HookAttack : PlayerAttack
     }
     private void DefaultBulletEffectRotate(GameObject effect, float value)
     {
-
-        if (transform.rotation.eulerAngles.y == 0)
+        _hookRotateValue = transform.rotation.eulerAngles.y;
+        if (_hookRotateValue == 0)
         {
             if (playerStatus.IsJump == true)
             {
@@ -216,7 +216,7 @@ public class HookAttack : PlayerAttack
                 effect.transform.rotation = Quaternion.Euler(-value, 0, 0);
             }
         }
-        else if (transform.rotation.eulerAngles.y == 45)
+        else if (_hookRotateValue == 45)
         {
             if (playerStatus.IsJump == true)
             {
@@ -227,7 +227,7 @@ public class HookAttack : PlayerAttack
                 effect.transform.rotation = Quaternion.Euler(-value, 45, 0);
             }
         }
-        else if (transform.rotation.eulerAngles.y == 90)
+        else if (_hookRotateValue == 90)
         {
             if (playerStatus.IsJump == true)
             {
@@ -238,7 +238,7 @@ public class HookAttack : PlayerAttack
                 effect.transform.rotation = Quaternion.Euler(0, 0, 45);
             }
         }
-        else if (transform.rotation.eulerAngles.y == 135)
+        else if (_hookRotateValue == 135)
         {
 
             if (playerStatus.IsJump == true)
@@ -250,7 +250,7 @@ public class HookAttack : PlayerAttack
                 effect.transform.rotation = Quaternion.Euler(value, -45, 0);
             }
         }
-        else if (transform.rotation.eulerAngles.y == 180)
+        else if (_hookRotateValue == 180)
         {
             if (playerStatus.IsJump == true)
             {
@@ -261,7 +261,7 @@ public class HookAttack : PlayerAttack
                 effect.transform.rotation = Quaternion.Euler(value, 0, 0);
             }
         }
-        else if (transform.rotation.eulerAngles.y == 225)
+        else if (_hookRotateValue == 225)
         {
             if (playerStatus.IsJump == true)
             {
@@ -272,7 +272,7 @@ public class HookAttack : PlayerAttack
                 effect.transform.rotation = Quaternion.Euler(value, 45, 0);
             }
         }
-        else if (transform.rotation.eulerAngles.y == 270)
+        else if (_hookRotateValue == 270)
         {
             if (playerStatus.IsJump == true)
             {
@@ -283,7 +283,7 @@ public class HookAttack : PlayerAttack
                 effect.transform.rotation = Quaternion.Euler(0, 0, -value);
             }
         }
-        else if (transform.rotation.eulerAngles.y == 315)
+        else if (_hookRotateValue == 315)
         {
             if (playerStatus.IsJump == true)
             {
