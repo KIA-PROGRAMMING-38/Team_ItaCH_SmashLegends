@@ -22,6 +22,7 @@ public class StageManager : MonoBehaviour
     private int _teamRedScore;
     private int _winningScore;
 
+    private float _modeDefaultRespawnTime;
     private float _gameTime;
     private int _gameTimeInt;
     public float GameTime
@@ -69,6 +70,7 @@ public class StageManager : MonoBehaviour
         _totalPlayer = _currentGameMode.TotalPlayer;
         _teamSize = _currentGameMode.TeamSize;
         _winningScore = _currentGameMode.WinningScore;
+        _modeDefaultRespawnTime = _currentGameMode.ModeDefaultRespawnTime;
         _isGameOver = false;
     }
     public void SetStage(GameMode currentGameMode)
@@ -111,6 +113,7 @@ public class StageManager : MonoBehaviour
     {
         CharacterStatus characterStatus = character.GetComponent<CharacterStatus>();
         characterStatus.PlayerID = id;
+        characterStatus.RepawnTime = _modeDefaultRespawnTime;
         if (id > _teamSize)
         {
             characterStatus.TeamType = TeamType.Red;
