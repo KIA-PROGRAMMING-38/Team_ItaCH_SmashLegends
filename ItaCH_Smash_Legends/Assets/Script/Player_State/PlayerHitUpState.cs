@@ -13,7 +13,6 @@ public class PlayerHitUpState : StateMachineBehaviour
         _playerHit = animator.GetComponent<PlayerHit>();
         _playerStatus = animator.GetComponent<PlayerStatus>();
         _playerStatus.CurrentState = PlayerStatus.State.HitUp;
-        Debug.Log("HitUp 들어옴");
         _playerHit.invincible = true;
     }
     // 추후 수정
