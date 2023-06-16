@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerFinishAttackState : StateMachineBehaviour
 {
     private PlayerAttack _playerAttack;
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _playerAttack = animator.GetComponent<PlayerAttack>();

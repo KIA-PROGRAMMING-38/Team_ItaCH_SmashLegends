@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHit : MonoBehaviour
+public class PlayerHit : MonoBehaviour, IHit
 {
     protected float lightKnockbackPower;
     protected float heavyKnockbackPower;
@@ -40,7 +40,7 @@ public class PlayerHit : MonoBehaviour
     }
     public virtual void Hit(Collider other)
     {
-        
+
     }
     public void GetHit(float power, int animationHash, Collider other /*int damage*/)
     {
