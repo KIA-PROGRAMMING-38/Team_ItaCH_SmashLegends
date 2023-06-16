@@ -2,17 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PeterAttack : MonoBehaviour
+public class PeterAttack : PlayerAttack
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void AttackOnDash()
     {
-        
+        rigidbodyAttack.AddForce(transform.forward * defaultDashPower, ForceMode.Impulse);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void DefaultAttack()
     {
-        
+        if (IsPossibleFirstAttack())
+        {
+            playerStatus.CurrentState = PlayerStatus.State.ComboAttack;
+            animator.Play(AnimationHash.FirstAttack);
+        }
+
+        if (isFirstAttack && CurrentPossibleComboCount == COMBO_SECOND_COUNT)
+        {
+            isSecondAttack = true;
+        }
+        if (isSecondAttack && CurrentPossibleComboCount == COMBO_FINISH_COUNT)
+        {
+            isFinishAttack = true;
+            playerStatus.CurrentState = PlayerStatus.State.FinishComboAttack;
+        }
     }
 }

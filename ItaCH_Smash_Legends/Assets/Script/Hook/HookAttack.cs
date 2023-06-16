@@ -40,13 +40,13 @@ public class HookAttack : PlayerAttack
 
         if (CurrentPossibleComboCount == COMBO_FINISH_COUNT && playerStatus.CurrentState == PlayerStatus.State.ComboAttack)
         {
-            rigidbodyAttack.AddForce(transform.forward * (_defaultDashPower * -0.4f), ForceMode.Impulse);
+            rigidbodyAttack.AddForce(transform.forward * (defaultDashPower * -0.4f), ForceMode.Impulse);
 
         }
         if (CurrentPossibleComboCount == MAX_POSSIBLE_ATTACK_COUNT &&
             playerStatus.CurrentState == PlayerStatus.State.HeavyAttack)
         {
-            rigidbodyAttack.AddForce(transform.forward * (_defaultDashPower * -0.65f), ForceMode.Impulse);
+            rigidbodyAttack.AddForce(transform.forward * (defaultDashPower * -0.65f), ForceMode.Impulse);
         }
 
         if (playerStatus.IsJump == false)
