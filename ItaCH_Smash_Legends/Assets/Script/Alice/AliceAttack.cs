@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AliceAttack : PlayerAttack
 {
+    [SerializeField] private GameObject _aliceBomb;
     private void Start()
     {
         CurrentPossibleComboCount = MAX_POSSIBLE_ATTACK_COUNT;
@@ -22,11 +23,15 @@ public class AliceAttack : PlayerAttack
         }
     }
 
-    public override void JumpAttack()
+    public override void HeavyAttack()
     {
-        if (playerStatus.IsJump == false)
+        if (playerStatus.CurrentState == PlayerStatus.State.Run ||
+           playerStatus.CurrentState == PlayerStatus.State.Idle)
         {
-            animator.SetTrigger(AnimationHash.JumpAttack);
+            animator.Play(AnimationHash.HeavyAttack);
+            playerStatus.CurrentState = PlayerStatus.State.HeavyAttack;
         }
     }
+
+    private void HeavyAttackBomb() => _aliceBomb.gameObject.SetActive(true);
 }
