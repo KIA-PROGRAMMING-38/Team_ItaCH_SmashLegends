@@ -28,6 +28,7 @@ public class PlayerSkillAttackState : StateMachineBehaviour
         //_rigidbody.velocity = _transform.forward * _moveSpeed;
         if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f)
         {
+            // Peter Lagacy Code 및 추가 이슈에서 수정
             //_rigidbody.velocity = Vector3.zero;
         }
         if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.35f)
