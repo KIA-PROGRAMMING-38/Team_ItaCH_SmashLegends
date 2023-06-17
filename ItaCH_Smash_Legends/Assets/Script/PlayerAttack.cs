@@ -19,7 +19,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     protected PlayerStatus playerStatus;
     protected Animator animator;
     
-    protected float _defaultDashPower = 1f;
+    protected float defaultDashPower = 1f;
     private void Awake()
     {
         playerMove = GetComponent<PlayerMove>();
@@ -50,7 +50,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
         }
         return false;
     }
-    public virtual void AttackOnDash() => Debug.Log("����� �ʿ�");
+    public virtual void AttackOnDash() => Debug.Log("재정의 필요");
 
     public virtual void DefaultAttack()
     {
