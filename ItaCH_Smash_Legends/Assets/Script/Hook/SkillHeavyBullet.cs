@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeavyBullet : HookBullet
+public class SkillHeavyBullet : HookBullet
 {
-    private void Start()
+    void Start()
     {
-        bulletDeleteTime = HEAVY_BULLET_DELETE_TIME;
+        bulletDeleteTime = SKILL_HEAVY_BULLET_DELETE_TIME;
         currentBulletSpeed = HEAVY_BULLET_SPEED;
     }
+
 }

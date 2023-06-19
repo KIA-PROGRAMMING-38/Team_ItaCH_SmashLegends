@@ -1,6 +1,8 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using Cysharp.Threading.Tasks.CompilerServices;
+using System;
+
 public class PlayerAttack : MonoBehaviour, IAttack
 {
     public readonly int MAX_POSSIBLE_ATTACK_COUNT = 3;
@@ -20,6 +22,9 @@ public class PlayerAttack : MonoBehaviour, IAttack
     protected Animator animator;
     
     protected float defaultDashPower = 1f;
+    internal float nextTransitionMinValue = 0.5f;
+    internal float nextTransitionMaxValue = 0.8f;
+
     private void Awake()
     {
         playerMove = GetComponent<PlayerMove>();
@@ -98,5 +103,5 @@ public class PlayerAttack : MonoBehaviour, IAttack
         }
     }
 
-
+    
 }
