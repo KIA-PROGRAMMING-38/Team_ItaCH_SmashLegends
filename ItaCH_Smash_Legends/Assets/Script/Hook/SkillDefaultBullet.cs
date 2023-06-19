@@ -6,7 +6,7 @@ public class SkillDefaultBullet : HookBullet
 {
     void Start()
     {
-        bulletDeleteTime = 0.28f;
-        currentBulletSpeed = 20f;
+        bulletDeleteTime = SKILL_BULLET_DELETE_TIME;
+        currentBulletSpeed = DEFAULT_BULLET_SPEED;
     }
 }

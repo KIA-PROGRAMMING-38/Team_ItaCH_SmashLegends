@@ -6,8 +6,8 @@ public class SkillHeavyBullet : HookBullet
 {
     void Start()
     {
-        bulletDeleteTime = 0.33f;
-        currentBulletSpeed = 30f;
+        bulletDeleteTime = SKILL_HEAVY_BULLET_DELETE_TIME;
+        currentBulletSpeed = HEAVY_BULLET_SPEED;
     }
 
 }

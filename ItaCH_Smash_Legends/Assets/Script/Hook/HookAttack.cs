@@ -14,8 +14,6 @@ public class HookAttack : PlayerAttack
     private GameObject[] _bulletContainers = new GameObject[5];
     private HookBullet[] _bullets = new HookBullet[5];
     private GameObject[] _bulletCreateEffect = new GameObject[3];
-
-
     public GameObject Parrot;
     private ParticleSystem _shotEffect;
 
@@ -24,20 +22,26 @@ public class HookAttack : PlayerAttack
     private int _lastHeavyIndex = 2;
     private int _skillIndex = 3;
     private int _skillHeavyIndex = 4;
+    private int _rootIndex = 6;
+    private int _boneIndex = 0;
+    private int _leftWeaponIndex = 2;
+    private int _rightWeaponIndex = 3;
+    private int _cylinderIndex = 0;
 
+    private float _hookRotateValue;
     private float _jumpRotateValue = 45f;
+    
     private Vector3 _jumpUpDashPower = new Vector3(0, 0.3f, 0);
     private Vector3 _jumpDashPower;
     private Vector3 _defaultSkillBulletRatate = new Vector3(0, -5f, 0);
     private Vector3 _heavySkillBulletRatate = new Vector3(0, -7f, 0);
-
-    private float _hookRotateValue;
+    
 
     private void Start()
     {
         nextTransitionMinValue = 0.6f;
-        _bulletSpawnPositionLeft = transform.GetChild(6).GetChild(0).GetChild(2).GetChild(0).transform;
-        _bulletSpawnPositionRight = transform.GetChild(6).GetChild(0).GetChild(3).GetChild(0).transform;
+        _bulletSpawnPositionLeft = transform.GetChild(_rootIndex).GetChild(_boneIndex).GetChild(_leftWeaponIndex).GetChild(_cylinderIndex).transform;
+        _bulletSpawnPositionRight = transform.GetChild(_rootIndex).GetChild(_boneIndex).GetChild(_rightWeaponIndex).GetChild(_cylinderIndex).transform;
         for (int i = 0; i < _bulletContainers.Length; ++i)
         {
             _bulletContainers[i] = transform.GetChild(i).gameObject;
