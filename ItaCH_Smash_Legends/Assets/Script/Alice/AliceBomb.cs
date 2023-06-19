@@ -44,14 +44,18 @@ public class AliceBomb : MonoBehaviour
 
     private async UniTaskVoid PlayEffect(Collider other)
     {
+        for(int index = 0; index < effect.Length; ++index)
+        {
+            effect[index].transform.SetParent(null);
+        }
         effect[0].gameObject.SetActive(true);
         effect[0].Play();
 
         await UniTask.Delay(4500);
         effect[1].Play();
         effect[2].Play();
-
         gameObject.SetActive(false);
+        
         _bezier = true;
     }
     
@@ -94,5 +98,4 @@ public class AliceBomb : MonoBehaviour
 
         //transform.position = Vector3.Lerp(middleOne, middleTwo, time);
     }
-    
 }
