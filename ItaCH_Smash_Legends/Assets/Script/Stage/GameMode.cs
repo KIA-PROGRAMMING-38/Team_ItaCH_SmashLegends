@@ -12,6 +12,7 @@ public class GameMode
     public int MaxGameTime { get => _maxGameTimeSec; private set => _maxGameTimeSec = value; }
     public int WinningScore { get => _winningScore; private set => _winningScore = value; }
     public Transform[] SpawnPoints { get => _spawnPoints; private set => _spawnPoints = value; }
+    public float ModeDefaultRespawnTime { get => _modeDefaultRespawnTime; private set => _modeDefaultRespawnTime = value; }
     
     private GameModeType _currentGameModeType;
     private GameObject _currentMap;
@@ -19,6 +20,7 @@ public class GameMode
     private int _teamSize;
     private int _winningScore;
     private int _maxGameTimeSec;
+    private float _modeDefaultRespawnTime;
     private Transform[] _spawnPoints;
 
     public void InitGameMode(GameModeType gameModeType)
@@ -34,6 +36,8 @@ public class GameMode
         _teamSize = 1;
         _maxGameTimeSec = 120;
         _winningScore = 3;
+        _modeDefaultRespawnTime = 5f;
+
         // 현재 Duel Mode 값 직접 지정
     }
     private void GetMapData()

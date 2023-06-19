@@ -7,8 +7,8 @@ public class DefaultBullet : HookBullet
 {
     private void Start()
     {
-        bulletDeleteTime = 0.23f;
-        currentBulletSpeed = 20f;
+        bulletDeleteTime = DEFAULT_BULLET_DELETE_TIME;
+        currentBulletSpeed = DEFAULT_BULLET_SPEED;
     }
 
 

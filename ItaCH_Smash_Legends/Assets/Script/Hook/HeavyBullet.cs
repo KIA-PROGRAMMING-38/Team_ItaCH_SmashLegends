@@ -6,7 +6,7 @@ public class HeavyBullet : HookBullet
 {
     private void Start()
     {
-        bulletDeleteTime = 0.3f;
-        currentBulletSpeed = 30f;
+        bulletDeleteTime = HEAVY_BULLET_DELETE_TIME;
+        currentBulletSpeed = HEAVY_BULLET_SPEED;
     }
 }

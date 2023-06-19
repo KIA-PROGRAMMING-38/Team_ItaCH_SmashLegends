@@ -1,6 +1,8 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using Cysharp.Threading.Tasks.CompilerServices;
+using System;
+
 public class PlayerAttack : MonoBehaviour, IAttack
 {
     public readonly int MAX_POSSIBLE_ATTACK_COUNT = 3;
@@ -19,7 +21,10 @@ public class PlayerAttack : MonoBehaviour, IAttack
     protected PlayerStatus playerStatus;
     protected Animator animator;
     
-    protected float _defaultDashPower = 1f;
+    protected float defaultDashPower = 1f;
+    internal float nextTransitionMinValue = 0.5f;
+    internal float nextTransitionMaxValue = 0.8f;
+
     private void Awake()
     {
         playerMove = GetComponent<PlayerMove>();
@@ -50,7 +55,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
         }
         return false;
     }
-    public virtual void AttackOnDash() => Debug.Log("����� �ʿ�");
+    public virtual void AttackOnDash() => Debug.Log("재정의 필요");
 
     public virtual void DefaultAttack()
     {
@@ -98,5 +103,5 @@ public class PlayerAttack : MonoBehaviour, IAttack
         }
     }
 
-
+    
 }

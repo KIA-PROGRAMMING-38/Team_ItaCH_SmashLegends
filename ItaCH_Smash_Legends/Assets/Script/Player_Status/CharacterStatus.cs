@@ -1,4 +1,6 @@
+using Cysharp.Threading.Tasks;
 using System;
+using System.Collections;
 using UnityEngine;
 public class CharacterStatus : CharacterDefaultStatus
 {
@@ -6,6 +8,8 @@ public class CharacterStatus : CharacterDefaultStatus
     public int HealthPoint { get => _currentHealthPoint; set => _currentHealthPoint = value; }
     public int HealthPointRatio { get => _currentHealthPointRatio; set => _currentHealthPointRatio = value; }
     public int PlayerID { get => _playerID; set => _playerID = value; }
+
+    public float RepawnTime { get => _currentRespawnTime; set => _currentRespawnTime = value; }
     public TeamType TeamType { get => _teamType; set => _teamType = value; }
     public Vector3 TeamSpawnPoint { get => _spawnPoint; set => _spawnPoint = value; }
 
@@ -16,8 +20,9 @@ public class CharacterStatus : CharacterDefaultStatus
 
     private int _currentHealthPoint;
     private int _currentHealthPointRatio;
-
+    private float _currentRespawnTime;
     private const int DEAD_TRIGGER_HP = 0;
+    private bool _isDead = false;
 
     public event Action<int, int> OnPlayerHealthPointChange;
     public event Action<CharacterStatus> OnPlayerDie;
@@ -52,23 +57,30 @@ public class CharacterStatus : CharacterDefaultStatus
         _skillAttackDamage = 1000;
     }
     public void GetDamage(int damage) // 피격 판정 시 호출
-    {        
+    {
         int damagedHealthPoint = _currentHealthPoint - damage;
         _currentHealthPoint = Mathf.Max(damagedHealthPoint, DEAD_TRIGGER_HP);
-        _currentHealthPointRatio = (_currentHealthPoint * 100) / base.MaxHealthPoint;        
+        _currentHealthPointRatio = (_currentHealthPoint * 100) / base.MaxHealthPoint;
         OnPlayerHealthPointChange.Invoke(_currentHealthPoint, _currentHealthPointRatio);
-        if (_currentHealthPoint <= DEAD_TRIGGER_HP)
+        if (_currentHealthPoint <= DEAD_TRIGGER_HP && !this._isDead)
         {
+            this._isDead = true;
             this.gameObject.SetActive(false);
-            OnPlayerDie.Invoke(this);
-            Respawn();
+            OnPlayerDie.Invoke(this);            
+            RespawnAsync(_currentRespawnTime).Forget();
         }
+    }
+    private async UniTaskVoid RespawnAsync(float respawnTime)
+    {
+        await UniTask.Delay((int)respawnTime * 1000);
+        Respawn();
     }
     public void Respawn()
     {
         this.transform.position = _spawnPoint;
         this.gameObject.SetActive(true);
-        this.GetComponent<Collider>().isTrigger = false;        
+        this.GetComponent<Collider>().isTrigger = false;
+        this._isDead = false;
         OnPlayerRespawn.Invoke(this);
         InitHP();
     }
