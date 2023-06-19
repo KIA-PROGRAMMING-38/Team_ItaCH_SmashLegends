@@ -28,14 +28,32 @@ public class HookAttack : PlayerAttack
     private int _rightWeaponIndex = 3;
     private int _cylinderIndex = 0;
 
-    private float _hookRotateValue;
     private float _jumpRotateValue = 45f;
     
     private Vector3 _jumpUpDashPower = new Vector3(0, 0.3f, 0);
     private Vector3 _jumpDashPower;
     private Vector3 _defaultSkillBulletRatate = new Vector3(0, -5f, 0);
     private Vector3 _heavySkillBulletRatate = new Vector3(0, -7f, 0);
-    
+    private Vector3[] _effectEulerAnglesOnJump = {
+        new Vector3(-90, 0, 0),
+        new Vector3(-90, 45, 0),
+        new Vector3(0, 0, 90),
+        new Vector3(90, -45, 0),
+        new Vector3(90, 0, 0),
+        new Vector3(90, 45, 0),
+        new Vector3(0, 0, -90),
+        new Vector3(0, 45, -90)
+    };
+    private Vector3[] _effectEulerAngles = {
+        new Vector3(-1, 0, 0),
+        new Vector3(-1, 45, 0),
+        new Vector3(0, 0, 45),
+        new Vector3(1, -45, 0),
+        new Vector3(1, 0, 0),
+        new Vector3(1, 45, 0),
+        new Vector3(0, 0, -1),
+        new Vector3(0, 45, -1)
+    };
 
     private void Start()
     {
@@ -169,7 +187,6 @@ public class HookAttack : PlayerAttack
         --CurrentPossibleComboCount;
         DefaultAttackRight();
         AttackOnDash();
-
     }
     public void SkillAttackBullet()
     {
@@ -228,99 +245,6 @@ public class HookAttack : PlayerAttack
         }
         effect.SetActive(true);
     }
-    private void DefaultBulletEffectRotate(GameObject effect, float value)
-    {
-        _hookRotateValue = transform.rotation.eulerAngles.y;
-        if (_hookRotateValue == 0)
-        {
-            if (playerStatus.IsJump == true)
-            {
-                effect.transform.rotation = Quaternion.Euler(-90, 0, 0);
-            }
-            else
-            {
-                effect.transform.rotation = Quaternion.Euler(-value, 0, 0);
-            }
-        }
-        else if (_hookRotateValue == 45)
-        {
-            if (playerStatus.IsJump == true)
-            {
-                effect.transform.rotation = Quaternion.Euler(-90, 45, 0);
-            }
-            else
-            {
-                effect.transform.rotation = Quaternion.Euler(-value, 45, 0);
-            }
-        }
-        else if (_hookRotateValue == 90)
-        {
-            if (playerStatus.IsJump == true)
-            {
-                effect.transform.rotation = Quaternion.Euler(0, 0, 90);
-            }
-            else
-            {
-                effect.transform.rotation = Quaternion.Euler(0, 0, 45);
-            }
-        }
-        else if (_hookRotateValue == 135)
-        {
-
-            if (playerStatus.IsJump == true)
-            {
-                effect.transform.rotation = Quaternion.Euler(90, -45, 0);
-            }
-            else
-            {
-                effect.transform.rotation = Quaternion.Euler(value, -45, 0);
-            }
-        }
-        else if (_hookRotateValue == 180)
-        {
-            if (playerStatus.IsJump == true)
-            {
-                effect.transform.rotation = Quaternion.Euler(90, 0, 0);
-            }
-            else
-            {
-                effect.transform.rotation = Quaternion.Euler(value, 0, 0);
-            }
-        }
-        else if (_hookRotateValue == 225)
-        {
-            if (playerStatus.IsJump == true)
-            {
-                effect.transform.rotation = Quaternion.Euler(90, 45, 0);
-            }
-            else
-            {
-                effect.transform.rotation = Quaternion.Euler(value, 45, 0);
-            }
-        }
-        else if (_hookRotateValue == 270)
-        {
-            if (playerStatus.IsJump == true)
-            {
-                effect.transform.rotation = Quaternion.Euler(0, 0, -90);
-            }
-            else
-            {
-                effect.transform.rotation = Quaternion.Euler(0, 0, -value);
-            }
-        }
-        else if (_hookRotateValue == 315)
-        {
-            if (playerStatus.IsJump == true)
-            {
-                effect.transform.rotation = Quaternion.Euler(0, 45, -90);
-            }
-            else
-            {
-                effect.transform.rotation = Quaternion.Euler(0, 45, -value);
-            }
-        }
-    }
     private Vector3 JumpBulletRotate(float value)
     {
         if (playerStatus.IsJump == false && CurrentPossibleComboCount == 0)
@@ -340,7 +264,37 @@ public class HookAttack : PlayerAttack
             return transform.forward * value;
         }
     }
+    private void DefaultBulletEffectRotate(GameObject effect, float value)
+    {
+        if (IsDiagonalAttack())
+        {
+            int direction = (int)transform.rotation.eulerAngles.y / 45;
+            if (playerStatus.IsJump)
+            {
+                effect.transform.rotation = Quaternion.Euler(_effectEulerAnglesOnJump[direction]);
+            }
+            else
+            {
+                Vector3 eulerAngle = CalculateEffectEulerAngle(direction, value);
+                effect.transform.rotation = Quaternion.Euler(eulerAngle);
+            }
+        }
+    }
+    private Vector3 CalculateEffectEulerAngle(int direction, float value)
+    {
+        Vector3 currentEulerAngle = _effectEulerAngles[direction];
+
+        currentEulerAngle.x *= value;
+        if (currentEulerAngle.z != 45)
+        {
+            currentEulerAngle.z *= value;
+        }
+
+        return currentEulerAngle;
+    }
+    private bool IsDiagonalAttack() => transform.rotation.eulerAngles.y % 45 == 0;
 }
+
 
 interface IObjectPool
 {
