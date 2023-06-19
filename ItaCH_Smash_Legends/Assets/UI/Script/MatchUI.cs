@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,10 @@ public class MatchUI : MonoBehaviour
     private void Awake()
     {
         InitMatchUISettings(2);
+    }
+    private void OnEnable()
+    {
+        SoundManager._instance.Play("Match", SoundType.BGM);
     }
     public void InitMatchUISettings(int currentModePlayer)
     {

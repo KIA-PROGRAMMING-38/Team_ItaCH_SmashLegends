@@ -18,6 +18,7 @@ public class EnablePanelButton : MonoBehaviour
         _button = GetComponent<Button>();
         _button.onClick.RemoveAllListeners();
         _button.onClick.AddListener(EnablePanel);
+        _button.onClick.AddListener(() => SoundManager._instance.Play("EnablePanel"));
     }
     public void EnablePanel()
     {
