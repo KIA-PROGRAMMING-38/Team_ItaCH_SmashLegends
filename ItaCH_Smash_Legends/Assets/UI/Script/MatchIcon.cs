@@ -26,6 +26,7 @@ public class MatchIcon : MonoBehaviour
     private Vector3 _clockWiseRotateDirection;
 
     private CancellationTokenSource _cancellationTokenSource;
+    private bool _isInitialSettingFinished = false;
 
     #region const 
     private const int FirstTurnAngle = 40;
@@ -46,12 +47,16 @@ public class MatchIcon : MonoBehaviour
         _clockWiseRotateDirection = Vector3.back;
         _firstTurnOffset = _firstTurnSpeed * Time.fixedDeltaTime;
         _secondTurnOffset = _secondTurnSpeed * Time.fixedDeltaTime;
+        _isInitialSettingFinished = true;
     }
     private void OnEnable()
     {
-        _cancellationTokenSource = new CancellationTokenSource();
-        _matchedImage.enabled = false;
-        RotateIcons(_cancellationTokenSource.Token).Forget();
+        if(_isInitialSettingFinished)
+        {
+            _cancellationTokenSource = new CancellationTokenSource();
+            _matchedImage.enabled = false;
+            RotateIcons(_cancellationTokenSource.Token).Forget();
+        }
     }
     private void OnDisable()
     {

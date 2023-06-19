@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Util;
 
 public class LegendSelectUI : MonoBehaviour
 {
@@ -14,7 +15,6 @@ public class LegendSelectUI : MonoBehaviour
     private Button _button;
     private TextMeshProUGUI _legendName;
 
-    //추후, 레전드의 인덱스 번호로 선택한 레전드를 확인할 수 있음.
     public event Action<int> OnSelectLegend;
 
     public void InitLegendSelectUI(int currentIndex, Sprite portraitSprite, string legendName)
@@ -30,6 +30,10 @@ public class LegendSelectUI : MonoBehaviour
         _button.onClick.AddListener(OnPressButton);
         _legendName = transform.GetChild(3).GetComponent<TextMeshProUGUI>();
         _legendName.text = legendName;
+        if (currentIndex.Equals((int)CharacterType.Alice))
+        {
+            EnableSelectFrame();
+        }
     }
 
     public void OnPressButton()

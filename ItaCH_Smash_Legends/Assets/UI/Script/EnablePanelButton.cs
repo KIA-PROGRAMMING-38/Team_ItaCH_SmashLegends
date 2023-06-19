@@ -5,16 +5,12 @@ using UnityEngine.UI;
 
 public class EnablePanelButton : MonoBehaviour
 {
-    [SerializeField] private GameObject _panel;
+    private GameObject _panel;
     private Button _button;
 
-    //테스트 코드. 추후 필요한 부분에서 호출할 예정
-    private void Start()
+    public void InitEnablePanelButtonSettings(GameObject panel)
     {
-        InitEnablePanelButtonSettings();
-    }
-    public void InitEnablePanelButtonSettings()
-    {
+        _panel = panel;
         _button = GetComponent<Button>();
         _button.onClick.RemoveAllListeners();
         _button.onClick.AddListener(EnablePanel);

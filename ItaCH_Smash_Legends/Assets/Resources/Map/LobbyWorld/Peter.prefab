@@ -726,7 +726,7 @@ GameObject:
   - component: {fileID: 2330613169377623083}
   - component: {fileID: 1751047180354962794}
   m_Layer: 0
-  m_Name: PF_Peter_Skin000_Lobby
+  m_Name: Peter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

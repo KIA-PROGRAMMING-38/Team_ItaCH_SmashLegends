@@ -4460,7 +4460,7 @@ GameObject:
   - component: {fileID: 8476027672063660640}
   - component: {fileID: 9145463864556259547}
   m_Layer: 0
-  m_Name: Alice_Lobby
+  m_Name: Alice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

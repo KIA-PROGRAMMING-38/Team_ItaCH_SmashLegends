@@ -26,6 +26,6 @@ public class RemovePanelButton : MonoBehaviour
     }
     private void OnDestroy()
     {
-        _button.onClick.RemoveAllListeners();
+        _button?.onClick.RemoveAllListeners();
     }
 }

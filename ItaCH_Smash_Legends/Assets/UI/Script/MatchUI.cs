@@ -5,8 +5,9 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Util;
 
-public class MatchUI : MonoBehaviour
+public class MatchUI : MonoBehaviour, IPanel
 {
     private bool[] _isPlayerMatched;
     private int _maxPlayer;
@@ -20,17 +21,10 @@ public class MatchUI : MonoBehaviour
 
     private float _time;
 
-    private void Awake()
+    public void InitPanelSettings(LobbyUI lobbyUI)
     {
-        InitMatchUISettings(2);
-    }
-    private void OnEnable()
-    {
-        SoundManager._instance.Play("Match", SoundType.BGM);
-    }
-    public void InitMatchUISettings(int currentModePlayer)
-    {
-        _maxPlayer = currentModePlayer;
+        //추후 모드에서 최대 인원수를 가져올 예정.
+        _maxPlayer = 2;
         _isPlayerMatched = new bool[_maxPlayer];
         _currentMatchedPlayer = 0;
         for(int i = 0; i < _maxPlayer; ++i)

@@ -3911,7 +3911,7 @@ GameObject:
   - component: {fileID: 8343389850932212081}
   - component: {fileID: 8343389850932212082}
   m_Layer: 0
-  m_Name: PF_Hook_Skin000_Lobby
+  m_Name: Hook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

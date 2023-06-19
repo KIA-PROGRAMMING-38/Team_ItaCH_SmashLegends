@@ -5,21 +5,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class SettingPanel : MonoBehaviour
+public class SettingPanel : MonoBehaviour, IPanel
 {
     [SerializeField] private VolumeSlider[] _volumeSliders;
 
-    //테스트 코드. 추후 값을 외부에서 받아올 예정.
-    void Awake()
-    {
-        InitSettingPanel(1);
-    }
-
-    public void InitSettingPanel(float defaultVolume)
+    public void InitPanelSettings(LobbyUI lobbyUI)
     {
         for(int i = 0; i < (int)SoundType.NumOfSoundType; ++i)
         {
-            _volumeSliders[i].InitVolumeSliderSetting((SoundType)i, defaultVolume);
+            _volumeSliders[i].InitVolumeSliderSetting((SoundType)i, lobbyUI.DefaultVolume);
         }
     }
 }
