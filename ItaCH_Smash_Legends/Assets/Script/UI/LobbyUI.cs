@@ -6,11 +6,15 @@ public class LobbyUI : MonoBehaviour
 {
     private CharacterType _characterType;
     private GameObject[] _characterModels;
+
     [SerializeField] private Transform _spawnPoint;
+    [SerializeField] private GameObject _result;
+
     private int _currentCharacterIndex;
 
     private float _defaultVolume = 1f;
     public float DefaultVolume { get => _defaultVolume; }
+
     private void Awake()
     {
         InitLobbyUISettings();
@@ -21,6 +25,7 @@ public class LobbyUI : MonoBehaviour
         SetPanelAndButton(FilePath.SettingUIPath, FilePath.SettingButtonPath);
         SetPanelAndButton(FilePath.MatchingUIPath, FilePath.MatchingButtonPath);
 
+        GameObject resultUI = Instantiate(_result);        
         _characterModels = new GameObject[(int)CharacterType.NumOfCharacter];
         _currentCharacterIndex = (int)CharacterType.Alice;
         for (int i = 0; i < (int)CharacterType.NumOfCharacter; ++i)
@@ -51,5 +56,22 @@ public class LobbyUI : MonoBehaviour
         panel.InitPanelSettings(this);
         button.InitEnablePanelButtonSettings(panelGameObject);
         panelGameObject.SetActive(false);
+    }
+
+    public void ResetModelTransform()
+    {
+        foreach(GameObject characterModel in _characterModels)
+        {
+            Transform modelTransform = characterModel.transform;
+            modelTransform.SetParent(_spawnPoint);
+            modelTransform.localPosition = Vector3.zero;
+            modelTransform.localScale = new Vector3(1, 1, 1);
+            modelTransform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+    }
+
+    public GameObject GetCharacterModel(CharacterType characterType)
+    {
+        return _characterModels[(int)characterType];
     }
 }

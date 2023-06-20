@@ -8,24 +8,34 @@ public class AliceAttack : PlayerAttack
 {
     [SerializeField] private GameObject _aliceBomb;
     private Rigidbody _rigidbody;
-    private AliceEffectController _aliceEffectController;
+    
     private void Start()
     {
         CurrentPossibleComboCount = MAX_POSSIBLE_ATTACK_COUNT;
         _rigidbody = GetComponent<Rigidbody>();
-        _aliceEffectController = GetComponent<AliceEffectController>();
     }
-    
+
+    public override void AttackOnDash()
+    {
+        defaultDashPower = 0.7f;
+        if (playerStatus.CurrentState == PlayerStatus.State.ComboAttack)
+        {
+            rigidbodyAttack.AddForce(transform.forward * defaultDashPower, ForceMode.Impulse);
+        }
+    }
+
     public override void DefaultAttack()
     {
         if (IsPossibleFirstAttack())
         {
+            playerStatus.CurrentState = PlayerStatus.State.ComboAttack;
+            AttackOnDash();
             animator.Play(AnimationHash.FirstAttack);
             --CurrentPossibleComboCount;
         }
         if (isFirstAttack && CurrentPossibleComboCount == COMBO_FINISH_COUNT)
         {
-            isSecondAttack = true;
+            isFinishAttack = true;
         }
     }
 

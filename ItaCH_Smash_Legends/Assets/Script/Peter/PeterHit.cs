@@ -29,7 +29,20 @@ public class PeterHit : PlayerHit
                 case PlayerStatus.State.FinishComboAttack:
                     GetHit(heavyKnockbackPower, AnimationHash.HitUp, other /*_characterStatus.DefaultAttackDamage*/);
                     break;
+                case PlayerStatus.State.JumpAttack:
+                    GetHit(heavyKnockbackPower, AnimationHash.HitUp, other);
+                    break;
             }
         }
+    }
+    private void GetHit(float power, int animationHash, Collider other /*int damage*/)
+    {
+        Rigidbody rigidbody = other.GetComponent<Rigidbody>();
+        Animator animator = other.GetComponent<Animator>();
+        //CharacterStatus opponentCharacter = GetComponent<CharacterStatus>();
+
+        rigidbody.AddForce(_knockbackDirection * power, ForceMode.Impulse);
+        animator.SetTrigger(animationHash);
+        //opponentCharacter.GetDamage(damage);
     }
 }

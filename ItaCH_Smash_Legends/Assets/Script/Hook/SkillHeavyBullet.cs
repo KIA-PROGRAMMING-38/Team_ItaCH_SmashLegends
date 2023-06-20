@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SkillHeavyBullet : HookBullet
 {
-    void Start()
+   private void Awake()
     {
+        bulletDeleteEffectPath = SKILL_BULLET_DELETE_EFFECT_PATH;
         bulletDeleteTime = SKILL_HEAVY_BULLET_DELETE_TIME;
         currentBulletSpeed = HEAVY_BULLET_SPEED;
     }
-
 }
