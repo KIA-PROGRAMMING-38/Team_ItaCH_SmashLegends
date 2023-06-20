@@ -1,11 +1,6 @@
 using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using System;
-using UnityEngine.Assertions.Must;
 
 public class AliceHit : PlayerHit
 {
@@ -36,6 +31,7 @@ public class AliceHit : PlayerHit
     {
         
         float knockbackPower = 0.8f;
+        float pullingPower = 0.5f;
         Vector3 firstKnockbackDirection = transform.up;
         Vector3 secondKnockbackDirection = (transform.position - other.transform.position).normalized;
         Rigidbody rigidbody = other.GetComponent<Rigidbody>();
@@ -46,7 +42,7 @@ public class AliceHit : PlayerHit
         rigidbody.AddForce(firstKnockbackDirection * knockbackPower, ForceMode.Impulse);
         animator.SetTrigger(AnimationHash.Hit);
         await UniTask.Delay(400);
-        rigidbody.AddForce((transform.up + secondKnockbackDirection) * 0.5f, ForceMode.Impulse);
+        rigidbody.AddForce((transform.up + secondKnockbackDirection) * pullingPower, ForceMode.Impulse);
         animator.SetTrigger(AnimationHash.Hit);
         await UniTask.Delay(1000);
         playerStatus.CurrentState = PlayerStatus.State.Idle;
