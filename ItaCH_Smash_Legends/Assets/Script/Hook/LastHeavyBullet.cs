@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeavyBullet : HookBullet
+public class LastHeavyBullet : HookBullet
 {
     private void Awake()
     {
-        bulletDeleteEffectPath = HEAVY_BULLET_DELETE_EFFECT_PATH;
+        bulletDeleteEffectPath = LAST_HEAVY_BULLET_DELETE_EFFECT_PATH;
         bulletDeleteTime = HEAVY_BULLET_DELETE_TIME;
         currentBulletSpeed = HEAVY_BULLET_SPEED;
     }
