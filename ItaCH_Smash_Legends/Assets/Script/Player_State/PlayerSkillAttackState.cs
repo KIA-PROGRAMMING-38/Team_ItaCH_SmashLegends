@@ -12,7 +12,6 @@ public class PlayerSkillAttackState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _playerStatus = animator.GetComponent<PlayerStatus>();
-        _playerStatus.CurrentState = PlayerStatus.State.SkillAttack;
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
