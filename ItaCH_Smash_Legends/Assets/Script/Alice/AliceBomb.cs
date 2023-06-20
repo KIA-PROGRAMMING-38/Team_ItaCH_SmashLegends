@@ -33,7 +33,7 @@ public class AliceBomb : MonoBehaviour
             _bezier = false;
             transform.rotation = Quaternion.Euler(-90, 0, 0);
             
-            PlayEffect(other);
+            PlayEffect(other).Forget();
         }
         //if (other.CompareTag("Enemy"))
         //{

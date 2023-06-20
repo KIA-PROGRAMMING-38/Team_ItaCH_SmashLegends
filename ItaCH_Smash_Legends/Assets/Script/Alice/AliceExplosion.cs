@@ -15,7 +15,6 @@ public class AliceExplosion : MonoBehaviour
     {
         float heavyKnockbackPower = 0.8f;
 
-        Debug.Log("µé¾î¿È");
         AliceGetHit(heavyKnockbackPower, AnimationHash.Hit, other);
     }
 

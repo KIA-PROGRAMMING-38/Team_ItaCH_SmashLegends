@@ -9,7 +9,7 @@ public class AliceEffectController : EffectController
     {
         FirstAttackEffect,
         FirstAttackEndEffect,
-        SecondAttackEffect,
+        FinishAttackEffect,
         JumpAttackEffect,
         JumpSmokeEffect,
         SkillAttackStartEffect,
@@ -17,7 +17,7 @@ public class AliceEffectController : EffectController
     }
     public void EnableFirstAttackEffect() => _effects[(int)EffectName.FirstAttackEffect].SetActive(true);
     public void EnableFirstAttackEndEffect() => _effects[(int)EffectName.FirstAttackEndEffect].SetActive(true);
-    public void EnableSecondAttack() => _effects[(int)EffectName.SecondAttackEffect].SetActive(true);
+    public void EnableFinishAttack() => _effects[(int)EffectName.FinishAttackEffect].SetActive(true);
     public void EnableJumpAttackEffect() => _effects[(int)EffectName.JumpAttackEffect].SetActive(true);
     public void EnableJumpSmokeEffect() => _effects[(int)EffectName.JumpSmokeEffect].SetActive(true);
     public void EnableSkillAttackEffect() => _effects[(int)EffectName.SkillAttackEffect].SetActive(true);

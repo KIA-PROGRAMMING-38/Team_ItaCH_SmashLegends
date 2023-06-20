@@ -1,6 +1,5 @@
 using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class AliceHit : PlayerHit
@@ -16,7 +15,7 @@ public class AliceHit : PlayerHit
             switch (_playerStatus.CurrentState)
             {
                 case PlayerStatus.State.SkillEndAttack:
-                    GetHit(heavyKnockbackPower, AnimationHash.Hit, other /*_characterStatus.HeavyAttackDamage*/);
+                    SkillAttackHit(other).Forget();
                     break;
                 case PlayerStatus.State.ComboAttack:
                     GetHit(lightKnockbackPower, AnimationHash.Hit, other /*_characterStatus.DefaultAttackDamage*/);
@@ -26,5 +25,26 @@ public class AliceHit : PlayerHit
                     break;
             }
         }
+    }
+
+    private async UniTask SkillAttackHit(Collider other)
+    {
+        
+        float knockbackPower = 0.8f;
+        float pullingPower = 0.5f;
+        Vector3 firstKnockbackDirection = transform.up;
+        Vector3 secondKnockbackDirection = (transform.position - other.transform.position).normalized;
+        Rigidbody rigidbody = other.GetComponent<Rigidbody>();
+        Animator animator = other.GetComponent<Animator>();
+        PlayerStatus playerStatus = other.GetComponent<PlayerStatus>();
+
+        playerStatus.CurrentState = PlayerStatus.State.None;
+        rigidbody.AddForce(firstKnockbackDirection * knockbackPower, ForceMode.Impulse);
+        animator.SetTrigger(AnimationHash.Hit);
+        await UniTask.Delay(400);
+        rigidbody.AddForce((transform.up + secondKnockbackDirection) * pullingPower, ForceMode.Impulse);
+        animator.SetTrigger(AnimationHash.Hit);
+        await UniTask.Delay(1000);
+        playerStatus.CurrentState = PlayerStatus.State.Idle;
     }
 }
