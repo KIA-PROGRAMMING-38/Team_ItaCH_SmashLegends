@@ -55,7 +55,10 @@ public class PlayerAttack : MonoBehaviour, IAttack
         }
         return false;
     }
-    public virtual void AttackOnDash() => Debug.Log("재정의 필요");
+    public virtual void AttackOnDash()
+    {
+
+    }
 
     public virtual void DefaultAttack()
     {
@@ -99,6 +102,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     {
         if (playerStatus.IsJump == false)
         {
+            playerStatus.CurrentState = PlayerStatus.State.JumpAttack;
             animator.SetTrigger(AnimationHash.JumpAttack);
         }
     }

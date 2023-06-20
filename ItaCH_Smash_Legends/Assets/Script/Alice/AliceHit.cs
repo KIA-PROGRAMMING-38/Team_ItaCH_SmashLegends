@@ -6,10 +6,10 @@ public class AliceHit : PlayerHit
 {
     public override void Hit(Collider other)
     {
-        lightKnockbackPower = 0.2f;
+        Vector3 defaultAttackKnockbackDirection = transform.up;
+        Vector3 heavyAttackKnockbackDirection = transform.up + transform.forward;
+        lightKnockbackPower = 0.8f;
         heavyKnockbackPower = 0.8f;
-        _knockbackDirection = transform.forward + transform.up;
-
         if (!invincible)
         {
             switch (_playerStatus.CurrentState)
@@ -18,10 +18,13 @@ public class AliceHit : PlayerHit
                     SkillAttackHit(other).Forget();
                     break;
                 case PlayerStatus.State.ComboAttack:
-                    GetHit(lightKnockbackPower, AnimationHash.Hit, other /*_characterStatus.DefaultAttackDamage*/);
+                    GetHit(defaultAttackKnockbackDirection, lightKnockbackPower, AnimationHash.Hit, other);
                     break;
                 case PlayerStatus.State.FinishComboAttack:
-                    GetHit(heavyKnockbackPower, AnimationHash.HitUp, other /*_characterStatus.DefaultAttackDamage*/);
+                    GetHit(heavyAttackKnockbackDirection, heavyKnockbackPower, AnimationHash.HitUp, other);
+                    break;
+                case PlayerStatus.State.JumpAttack:
+                    GetHit(heavyAttackKnockbackDirection, heavyKnockbackPower, AnimationHash.HitUp, other);
                     break;
             }
         }
@@ -46,5 +49,17 @@ public class AliceHit : PlayerHit
         animator.SetTrigger(AnimationHash.Hit);
         await UniTask.Delay(1000);
         playerStatus.CurrentState = PlayerStatus.State.Idle;
+    }
+
+    private void GetHit(Vector3 transform, float power, int AnimationHash, Collider other)
+    {
+        lightKnockbackPower = 0.2f;
+        heavyKnockbackPower = 0.8f;
+       
+        Rigidbody rigidbody = other.GetComponent<Rigidbody>();
+        Animator animator = other.GetComponent<Animator>();
+
+        rigidbody.AddForce(transform * power, ForceMode.Impulse);
+        animator.SetTrigger(AnimationHash);
     }
 }

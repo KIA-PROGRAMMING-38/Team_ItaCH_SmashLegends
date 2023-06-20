@@ -33,8 +33,7 @@ public class PlayerHit : MonoBehaviour, IHit
     {
         if (other.CompareTag("Player"))
         {
-            Vector3 hitPoint = other.transform.position - transform.position;
-            other.transform.rotation = Quaternion.LookRotation(-hitPoint);
+            other.transform.forward = (-1) * transform.forward;
             Hit(other);
         }
     }
@@ -42,14 +41,5 @@ public class PlayerHit : MonoBehaviour, IHit
     {
 
     }
-    public void GetHit(float power, int animationHash, Collider other /*int damage*/)
-    {
-        Rigidbody rigidbody = other.GetComponent<Rigidbody>();
-        Animator animator = other.GetComponent<Animator>();
-        //CharacterStatus opponentCharacter = GetComponent<CharacterStatus>();
-
-        rigidbody.AddForce(_knockbackDirection * power, ForceMode.Impulse);
-        animator.SetTrigger(animationHash);
-        //opponentCharacter.GetDamage(damage);
-    }
+    
 }
