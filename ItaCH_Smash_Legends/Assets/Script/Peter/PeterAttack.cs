@@ -5,8 +5,15 @@ using UnityEngine;
 public class PeterAttack : PlayerAttack
 {
     private float _skillAttackMoveSpeed = 7f;
+    private MeshCollider _skillAttackHitZone;
+
+    private void Start()
+    {
+        _skillAttackHitZone = GetComponentInChildren<MeshCollider>();
+    }
     public override void AttackOnDash()
     {
+        defaultDashPower = 0.8f;
         rigidbodyAttack.AddForce(transform.forward * defaultDashPower, ForceMode.Impulse);
     }
 
@@ -36,7 +43,6 @@ public class PeterAttack : PlayerAttack
         if (isSecondAttack && CurrentPossibleComboCount == COMBO_FINISH_COUNT)
         {
             isFinishAttack = true;
-            playerStatus.CurrentState = PlayerStatus.State.FinishComboAttack;
         }
     }
 
@@ -49,4 +55,7 @@ public class PeterAttack : PlayerAttack
             playerStatus.CurrentState = PlayerStatus.State.SkillAttack;
         }
     }
+
+    public void EnableSkillAttackHitZone() => _skillAttackHitZone.enabled = true;
+    public void DisableSkillAttackHitZone() => _skillAttackHitZone.enabled = false;
 }
