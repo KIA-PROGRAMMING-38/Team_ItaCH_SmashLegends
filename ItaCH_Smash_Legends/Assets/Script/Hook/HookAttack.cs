@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using TreeEditor;
 using UnityEngine;
@@ -9,13 +10,19 @@ using UnityEngine.Pool;
 
 public class HookAttack : PlayerAttack
 {
+    private GameObject[] _bulletContainers = new GameObject[5];
+
+    private ObjectPool<HookBullet>[] _bulletPool = new ObjectPool<HookBullet>[5];
+    private HookBullet[] _bullets = new HookBullet[5];
+    
+    private ObjectPool<FireEffect>[] _bulletCreateEffectPool = new ObjectPool<FireEffect>[3];
+    private FireEffect[] _bulletCreateEffects = new FireEffect[3];
+
     private Transform _bulletSpawnPositionLeft;
     private Transform _bulletSpawnPositionRight;
-    private GameObject[] _bulletContainers = new GameObject[5];
-    private HookBullet[] _bullets = new HookBullet[5];
-    private GameObject[] _bulletCreateEffect = new GameObject[3];
-    public GameObject Parrot;
     private ParticleSystem _shotEffect;
+
+    public GameObject Parrot;
 
     private int _defalutIndex = 0;
     private int _heavyIndex = 1;
@@ -29,7 +36,7 @@ public class HookAttack : PlayerAttack
     private int _cylinderIndex = 0;
 
     private float _jumpRotateValue = 45f;
-    
+
     private Vector3 _jumpUpDashPower = new Vector3(0, 0.3f, 0);
     private Vector3 _jumpDashPower;
     private Vector3 _defaultSkillBulletRatate = new Vector3(0, -5f, 0);
@@ -54,9 +61,9 @@ public class HookAttack : PlayerAttack
         new Vector3(0, 0, -1),
         new Vector3(0, 45, -1)
     };
-
     private void Start()
     {
+        CreateObjectPool();
         nextTransitionMinValue = 0.6f;
         _bulletSpawnPositionLeft = transform.GetChild(_rootIndex).GetChild(_boneIndex).GetChild(_leftWeaponIndex).GetChild(_cylinderIndex).transform;
         _bulletSpawnPositionRight = transform.GetChild(_rootIndex).GetChild(_boneIndex).GetChild(_rightWeaponIndex).GetChild(_cylinderIndex).transform;
@@ -65,16 +72,15 @@ public class HookAttack : PlayerAttack
             _bulletContainers[i] = transform.GetChild(i).gameObject;
             _bullets[i] = _bulletContainers[i].transform.GetChild(0).GetComponent<HookBullet>();
         }
-        for (int i = 0; i < _bulletCreateEffect.Length; ++i)
+        for (int i = 0; i < _bulletCreateEffects.Length; ++i)
         {
-            _bulletCreateEffect[i] = _bulletContainers[i].transform.GetChild(1).gameObject;
+            _bulletCreateEffects[i] = _bulletContainers[i].transform.GetChild(1).GetComponent<FireEffect>();
         }
 
         _shotEffect = Parrot.transform.GetChild(0).GetComponent<ParticleSystem>();
     }
     public override void AttackOnDash()
     {
-
         if (CurrentPossibleComboCount == COMBO_FINISH_COUNT && playerStatus.CurrentState == PlayerStatus.State.ComboAttack)
         {
             rigidbodyAttack.AddForce(transform.forward * (defaultDashPower * -0.4f), ForceMode.Impulse);
@@ -149,30 +155,30 @@ public class HookAttack : PlayerAttack
     }
     public void DefaultAttackLeft()
     {
-        CreateBullet(_bulletSpawnPositionLeft.position, _bullets[_defalutIndex]);
+        CreateBullet(_bulletSpawnPositionLeft.position, _defalutIndex);
         CreateBulletEffect(_bulletSpawnPositionLeft.position, _defalutIndex);
 
     }
     public void DefaultAttackRight()
     {
-        CreateBullet(_bulletSpawnPositionRight.position, _bullets[_defalutIndex]);
+        CreateBullet(_bulletSpawnPositionRight.position, _defalutIndex);
         CreateBulletEffect(_bulletSpawnPositionRight.position, _defalutIndex);
     }
     public void HeavyAttackLeft()
     {
-        CreateBullet(_bulletSpawnPositionLeft.position, _bullets[_heavyIndex]);
+        CreateBullet(_bulletSpawnPositionLeft.position, _heavyIndex);
         CreateBulletEffect(_bulletSpawnPositionLeft.position, _heavyIndex);
     }
     public void HeavyAttackRight()
     {
-        CreateBullet(_bulletSpawnPositionRight.position, _bullets[_heavyIndex]);
+        CreateBullet(_bulletSpawnPositionRight.position, _heavyIndex);
         CreateBulletEffect(_bulletSpawnPositionRight.position, _heavyIndex);
     }
     public void LastHeavyAttack()
     {
         Vector3 lastBulletPosition = _bulletSpawnPositionLeft.position - _bulletSpawnPositionRight.position;
         Vector3 spawnPosition = _bulletSpawnPositionRight.position + (lastBulletPosition / 2);
-        CreateBullet(spawnPosition, _bullets[_lastHeavyIndex]);
+        CreateBullet(spawnPosition, _lastHeavyIndex);
         Vector3 startEffectPosition = spawnPosition + transform.forward;
         CreateBulletEffect(startEffectPosition, _lastHeavyIndex);
     }
@@ -196,19 +202,19 @@ public class HookAttack : PlayerAttack
             _shotEffect.Play();
         }
     }
-    private HookBullet CreateBullet(Vector3 spawnPosition, HookBullet bulletKind)
+    private HookBullet CreateBullet(Vector3 spawnPosition, int bulletIndex)
     {
         if (playerStatus.IsJump)
         {
             spawnPosition = spawnPosition + transform.forward;
         }
-
-        HookBullet bullet = Instantiate(bulletKind, spawnPosition, Quaternion.identity);
-
+        
+        HookBullet bullet = _bulletPool[bulletIndex].Get();
+        bullet.transform.position = spawnPosition;
+        
         if (playerStatus.IsJump)
         {
             bullet.transform.forward = transform.forward;
-
         }
         else
         {
@@ -217,23 +223,23 @@ public class HookAttack : PlayerAttack
         }
 
         bullet.gameObject.SetActive(true);
-
         return bullet;
     }
     private void CreateSkillBullet()
     {
         if (playerStatus.CurrentState == PlayerStatus.State.HeavyAttack)
         {
-            CreateBullet(Parrot.transform.position, _bullets[_skillHeavyIndex]).transform.Rotate(_defaultSkillBulletRatate);
+            CreateBullet(Parrot.transform.position, _skillHeavyIndex).transform.Rotate(_defaultSkillBulletRatate);
         }
         else
         {
-            CreateBullet(Parrot.transform.position, _bullets[_skillIndex]).transform.Rotate(_heavySkillBulletRatate);
+            CreateBullet(Parrot.transform.position, _skillIndex).transform.Rotate(_heavySkillBulletRatate);
         }
     }
     private void CreateBulletEffect(Vector3 spawnPosition, int index)
     {
-        GameObject effect = Instantiate(_bulletCreateEffect[index], spawnPosition, transform.rotation);
+        FireEffect effect = _bulletCreateEffectPool[index].Get();
+        effect.transform.position = spawnPosition;
 
         if (playerStatus.CurrentState == PlayerStatus.State.HeavyAttack)
         {
@@ -241,9 +247,9 @@ public class HookAttack : PlayerAttack
         }
         else
         {
-            DefaultBulletEffectRotate(effect, _jumpRotateValue);
+            DefaultBulletEffectRotate(effect.gameObject, _jumpRotateValue);
         }
-        effect.SetActive(true);
+        effect.gameObject.SetActive(true);
     }
     private Vector3 JumpBulletRotate(float value)
     {
@@ -293,10 +299,70 @@ public class HookAttack : PlayerAttack
         return currentEulerAngle;
     }
     private bool IsDiagonalAttack() => transform.rotation.eulerAngles.y % 45 == 0;
-}
+    
+    private void CreateObjectPool()
+    {
+        _bulletPool[_defalutIndex] = new ObjectPool<HookBullet>(CreateBulletOnPool, GetPoolBullet, ReturnBulletToPool, (bullet) => Destroy(bullet.gameObject), true, 50, 500);
+        _bulletPool[_heavyIndex] = new ObjectPool<HookBullet>(CreateHeavyBulletOnPool, GetPoolBullet, ReturnBulletToPool, (bullet) => Destroy(bullet.gameObject), true, 50, 500);
+        _bulletPool[_lastHeavyIndex] = new ObjectPool<HookBullet>(CreateLastHeavyBulletOnPool, GetPoolBullet, ReturnBulletToPool, (bullet) => Destroy(bullet.gameObject), true, 50, 500);
+        _bulletPool[_skillIndex] = new ObjectPool<HookBullet>(CreateSkillBulletOnPool, GetPoolBullet, ReturnBulletToPool, (bullet) => Destroy(bullet.gameObject), true, 50, 500);
+        _bulletPool[_skillHeavyIndex] = new ObjectPool<HookBullet>(CreateSkillHeavyBulletOnPool, GetPoolBullet, ReturnBulletToPool, (bullet) => Destroy(bullet.gameObject), true, 50, 500);
+        
+        _bulletCreateEffectPool[_defalutIndex] = new ObjectPool<FireEffect>(CreateDefaultBulletFireEffectOnPool, GetPoolBulletFireEffect, ReturnBulletFireEffect, (effect) => Destroy(effect.gameObject), true, 50, 500);
+        _bulletCreateEffectPool[_heavyIndex] = new ObjectPool<FireEffect>(CreateHeavyBulletFireEffectOnPool, GetPoolBulletFireEffect, ReturnBulletFireEffect, (effect) => Destroy(effect.gameObject), true, 50, 500);
+        _bulletCreateEffectPool[_lastHeavyIndex] = new ObjectPool<FireEffect>(CreateLastHeavyBulletFireEffectOnPool, GetPoolBulletFireEffect, ReturnBulletFireEffect, (effect) => Destroy(effect.gameObject), true, 50, 500);
 
-
-interface IObjectPool
-{
-
+    }
+    private HookBullet CreateBulletOnPool()
+    {
+        HookBullet bullet = Instantiate(_bullets[_defalutIndex]);
+        bullet.Pool = _bulletPool[_defalutIndex];
+        return bullet;
+    }
+    private HookBullet CreateHeavyBulletOnPool()
+    {
+        HookBullet bullet = Instantiate(_bullets[_heavyIndex]);
+        bullet.Pool = _bulletPool[_heavyIndex];
+        return bullet;
+    }
+    private HookBullet CreateLastHeavyBulletOnPool()
+    {
+        HookBullet bullet = Instantiate(_bullets[_lastHeavyIndex]);
+        bullet.Pool = _bulletPool[_lastHeavyIndex];
+        return bullet;
+    }
+    private HookBullet CreateSkillBulletOnPool()
+    {
+        HookBullet bullet = Instantiate(_bullets[_skillIndex]);
+        bullet.Pool = _bulletPool[_skillIndex];
+        return bullet;
+    }
+    private HookBullet CreateSkillHeavyBulletOnPool()
+    {
+        HookBullet bullet = Instantiate(_bullets[_skillHeavyIndex]);
+        bullet.Pool = _bulletPool[_skillHeavyIndex];
+        return bullet;
+    }
+    private void GetPoolBullet(HookBullet bullet) => bullet.gameObject.SetActive(true);
+    private void ReturnBulletToPool(HookBullet bullet) => bullet.gameObject.SetActive(false);
+    private FireEffect CreateDefaultBulletFireEffectOnPool()
+    {
+        FireEffect effect = Instantiate(_bulletCreateEffects[_defalutIndex]);
+        effect.pool = _bulletCreateEffectPool[_defalutIndex];
+        return effect;
+    }
+    private FireEffect CreateHeavyBulletFireEffectOnPool()
+    {
+        FireEffect effect = Instantiate(_bulletCreateEffects[_heavyIndex]);
+        effect.pool = _bulletCreateEffectPool[_heavyIndex];
+        return effect;
+    }
+    private FireEffect CreateLastHeavyBulletFireEffectOnPool()
+    {
+        FireEffect effect = Instantiate(_bulletCreateEffects[_lastHeavyIndex]);
+        effect.pool = _bulletCreateEffectPool[_lastHeavyIndex];
+        return effect;
+    }
+    private void GetPoolBulletFireEffect(FireEffect effect) => effect.gameObject.SetActive(true);
+    private void ReturnBulletFireEffect(FireEffect effect) => effect.gameObject.SetActive(false);
 }
