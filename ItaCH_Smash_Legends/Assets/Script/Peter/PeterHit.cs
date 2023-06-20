@@ -29,6 +29,9 @@ public class PeterHit : PlayerHit
                 case PlayerStatus.State.FinishComboAttack:
                     GetHit(heavyKnockbackPower, AnimationHash.HitUp, other /*_characterStatus.DefaultAttackDamage*/);
                     break;
+                case PlayerStatus.State.JumpAttack:
+                    GetHit(heavyKnockbackPower, AnimationHash.HitUp, other);
+                    break;
             }
         }
     }
