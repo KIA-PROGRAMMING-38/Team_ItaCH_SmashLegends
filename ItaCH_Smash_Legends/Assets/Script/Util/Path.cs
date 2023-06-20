@@ -9,6 +9,7 @@ namespace Util.Path
     public static class FilePath
     {
         #region 파일 경로
+        public const string UIResources = "UI/";
         public const string LegendMenuUIPath = "UI/LegendMenu";
         public const string LegendMenuButtonPath = "UI/LegendMenuButton";
         public const string SettingUIPath = "UI/SettingPanel";

@@ -21,6 +21,15 @@ public class MatchUI : MonoBehaviour, IPanel
 
     private float _time;
 
+    private void OnEnable()
+    {
+        GameManager.Instance.LobbyManager.ConnectionInfoText = _matchText;
+        GameManager.Instance.LobbyManager.Connect();
+    }
+    private void OnDisable()
+    {
+        
+    }
     public void InitPanelSettings(LobbyUI lobbyUI)
     {
         //추후 모드에서 최대 인원수를 가져올 예정.
@@ -39,38 +48,38 @@ public class MatchUI : MonoBehaviour, IPanel
     }
 
     //추후 포톤 로직으로 변경 예정
-    public void Update()
-    {
-        if (_time >= 3)
-        {
-            int random = UnityEngine.Random.Range(0,3);
-            switch(random)
-            {
-                case 1:
-                    _isPlayerMatched[0] = true;
-                    _isPlayerMatched[1] = false;
-                    break;
-                case 2:
-                    _isPlayerMatched[0] = true;
-                    _isPlayerMatched[1] = true;
-                    break;
-                default:
-                    _isPlayerMatched[0] = false;
-                    _isPlayerMatched[1] = false;
-                    break;
-            }
-            for(int i = 0; i < _maxPlayer; ++i)
-            {
-                SetBox(_isPlayerMatched[i], _matchBoxes[i]);
-            }
-            _time = 0;
-        }
-        else
-        {
-            _time += Time.deltaTime;
-        }
+    //public void Update()
+    //{
+    //    if (_time >= 3)
+    //    {
+    //        int random = UnityEngine.Random.Range(0,3);
+    //        switch(random)
+    //        {
+    //            case 1:
+    //                _isPlayerMatched[0] = true;
+    //                _isPlayerMatched[1] = false;
+    //                break;
+    //            case 2:
+    //                _isPlayerMatched[0] = true;
+    //                _isPlayerMatched[1] = true;
+    //                break;
+    //            default:
+    //                _isPlayerMatched[0] = false;
+    //                _isPlayerMatched[1] = false;
+    //                break;
+    //        }
+    //        for(int i = 0; i < _maxPlayer; ++i)
+    //        {
+    //            SetBox(_isPlayerMatched[i], _matchBoxes[i]);
+    //        }
+    //        _time = 0;
+    //    }
+    //    else
+    //    {
+    //        _time += Time.deltaTime;
+    //    }
 
-    }
+    //}
 
     private void OnDestroy()
     {

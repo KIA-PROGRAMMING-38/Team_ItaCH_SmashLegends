@@ -50,16 +50,14 @@ public class StageManager : MonoBehaviour
 
     public event Action<int, TeamType> OnTeamScoreChanged;
     public event Action<int> OnTimeChange;
+    
 
     private void Awake()
     {
-        _selectedGameMode = DEFAULT_GAME_MODE;
-        GetGameMode(_selectedGameMode);
+        GameManager.Instance.LobbyManager.OnMatchSuccess -= GetGameMode;
+        GameManager.Instance.LobbyManager.OnMatchSuccess += GetGameMode;
     }
-    private void Start()
-    {
-        SetStage(_currentGameMode);
-    }
+    
     public void GetGameMode(GameModeType gameModeSelected)
     {
         if (_currentGameMode == null)
@@ -72,6 +70,7 @@ public class StageManager : MonoBehaviour
         _winningScore = _currentGameMode.WinningScore;
         _modeDefaultRespawnTime = _currentGameMode.ModeDefaultRespawnTime;
         _isGameOver = false;
+        SetStage(_currentGameMode);
     }
     public void SetStage(GameMode currentGameMode)
     {

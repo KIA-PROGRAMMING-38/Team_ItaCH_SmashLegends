@@ -1,20 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using System;
 using Util.Enum;
 using Util.Path;
-using System.Runtime.CompilerServices;
 
 public class LobbyUI : MonoBehaviour
 {
     private CharacterType _characterType;
     private GameObject[] _characterModels;
-    [SerializeField]private Transform _spawnPoint;
+    [SerializeField] private Transform _spawnPoint;
     private int _currentCharacterIndex;
 
-    private int _numberOfPanels;
     private float _defaultVolume = 1f;
     public float DefaultVolume { get => _defaultVolume; }
     private void Awake()
