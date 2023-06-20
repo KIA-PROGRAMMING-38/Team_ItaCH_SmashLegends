@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Util;
+using Util.Enum;
 
 public class LegendMenuUI : MonoBehaviour, IPanel
 {

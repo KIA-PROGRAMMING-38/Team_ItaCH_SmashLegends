@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using System;
-using Util;
+using Util.Enum;
+using Util.Path;
 using System.Runtime.CompilerServices;
 
 public class LobbyUI : MonoBehaviour
