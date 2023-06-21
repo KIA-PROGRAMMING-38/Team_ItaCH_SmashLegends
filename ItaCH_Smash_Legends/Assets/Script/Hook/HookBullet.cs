@@ -14,7 +14,7 @@ public class HookBullet : MonoBehaviour
     protected const float SKILL_BULLET_DELETE_TIME = 0.28f;
     protected const float SKILL_HEAVY_BULLET_DELETE_TIME = 0.33f;
     protected readonly string HEAVY_BULLET_DELETE_EFFECT_PATH = "Charater/Hook/Hook_Ingame/Hook_Heavy_Bullet_Delete_Effect";
-    protected readonly string LAST_HEAVY_BULLET_DELETE_EFFECT_PATH ="Charater/Hook/Hook_Ingame/Hook_Last_Heavy_Bullet_Delete_Effect";
+    protected readonly string LAST_HEAVY_BULLET_DELETE_EFFECT_PATH = "Charater/Hook/Hook_Ingame/Hook_Last_Heavy_Bullet_Delete_Effect";
     protected readonly string SKILL_BULLET_DELETE_EFFECT_PATH = "Charater/Hook/Hook_Ingame/Hook_SKill_Bullet_Delete_Effect";
 
     protected float bulletDeleteTime = 0.23f;
@@ -22,9 +22,11 @@ public class HookBullet : MonoBehaviour
 
     protected string bulletDeleteEffectPath = "Charater/Hook/Hook_Ingame/Hook_Default_Bullet_Delete_Effect";
 
-    public ObjectPool<HookBullet> Pool { private get; set; }
+    public ObjectPool<HookBullet> Pool { get; set; }
     private ObjectPool<BulletDeleteEffect> _bulletDeleteEffectPool;
     private float _elapsedTime;
+
+    internal GameObject constructor;
 
     protected BulletDeleteEffect bulletDeleteEffect;
 
@@ -40,25 +42,20 @@ public class HookBullet : MonoBehaviour
         _elapsedTime += Time.deltaTime;
         if (_elapsedTime >= bulletDeleteTime)
         {
-            BulletPostProcessing();
+            BulletPostProcessing(transform.position);
         }
     }
-    private void OnDisable()
-    {
-        BulletDeleteEffect effect = _bulletDeleteEffectPool.Get();
-        effect.transform.position = transform.position;
-    }
+
     private void BulletDirection()
     {
         transform.Translate(Vector3.forward * (currentBulletSpeed * Time.deltaTime));
     }
-    private void BulletPostProcessing()
+    public void BulletPostProcessing(Vector3 position)
     {
-        if (gameObject.activeSelf)
-        {
-            Pool.Release(this);
-            _elapsedTime = 0;
-        }
+        Pool.Release(this);
+        BulletDeleteEffect effect = _bulletDeleteEffectPool.Get();
+        effect.transform.position = position;
+        _elapsedTime = 0;
     }
     private BulletDeleteEffect CreateBulletDeleteEffectOnPool()
     {

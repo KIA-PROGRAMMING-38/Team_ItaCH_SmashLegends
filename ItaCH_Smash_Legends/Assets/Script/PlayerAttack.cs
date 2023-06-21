@@ -99,6 +99,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     {
         if (playerStatus.IsJump == false)
         {
+            playerStatus.CurrentState = PlayerStatus.State.JumpAttack;
             animator.SetTrigger(AnimationHash.JumpAttack);
         }
     }
