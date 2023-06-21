@@ -55,7 +55,6 @@ public class AliceHit : PlayerHit
     {
         lightKnockbackPower = 0.2f;
         heavyKnockbackPower = 0.8f;
-
         Rigidbody rigidbody = other.GetComponent<Rigidbody>();
         Animator animator = other.GetComponent<Animator>();
 

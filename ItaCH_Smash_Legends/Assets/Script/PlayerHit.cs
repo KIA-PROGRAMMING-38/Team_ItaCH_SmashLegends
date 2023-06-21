@@ -19,7 +19,8 @@ public class PlayerHit : MonoBehaviour, IHit
         _playerStatus = GetComponent<PlayerStatus>();
         _animator = GetComponent<Animator>();
 
-        invincible = false;
+        // TODO : 무적이 해결되면 같이 처리
+        //invincible = true;
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -31,7 +32,7 @@ public class PlayerHit : MonoBehaviour, IHit
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !invincible)
         {
             other.transform.forward = (-1) * transform.forward;
             Hit(other);
@@ -41,5 +42,4 @@ public class PlayerHit : MonoBehaviour, IHit
     {
 
     }
-
 }
