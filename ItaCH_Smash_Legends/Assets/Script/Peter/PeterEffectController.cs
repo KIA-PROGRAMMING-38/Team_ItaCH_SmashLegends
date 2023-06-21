@@ -14,7 +14,9 @@ public class PeterEffectController : EffectController
         JumpAttackEffect,
         SkillAttackEffectStart,
         SkillAttackEffectMiddle,
-        SkillAttackEffectEnd
+        SkillAttackEffectEnd,
+        AttackSmokeEffect,
+        HeavySmokeEffect
     }
     public void EnableFirstAttackEffect() => _effects[(int)EffectName.FirstAttackEffect].SetActive(true);
     public void EnableSecondAttackFirstEffect() => _effects[(int)EffectName.SecondAttackFirstEffect].SetActive(true);
@@ -26,5 +28,7 @@ public class PeterEffectController : EffectController
     public void EnableSkillAttackEffect() => _effects[(int)EffectName.SkillAttackEffectStart].SetActive(true);
     public void EnableMiddleSkillAttackEffect() => _effects[(int)EffectName.SkillAttackEffectMiddle].SetActive(true);
     public void EnableEndSkillAttackEffect() => _effects[(int)EffectName.SkillAttackEffectEnd].SetActive(true);
+    public void EnableAttackSmokeEffect() => _effects[(int)EffectName.AttackSmokeEffect].SetActive(true);
+    public void EnableHeavySmokeEffect() => _effects[(int)EffectName.HeavyAttackEffect].SetActive(true);
 
 }
