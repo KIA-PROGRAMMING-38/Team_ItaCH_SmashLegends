@@ -13,21 +13,21 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private GameMode _currentGameMode; // 현재 스테이지 매니저에서 진행하고 있던 모드 초기화를 여기서 실행하게
     private void Start()
     {
-        ConnectToServer();
+        //ConnectToServer();
     }
 
     private void ConnectToServer()
     {
         PhotonNetwork.GameVersion = _gameVersion;
         PhotonNetwork.ConnectUsingSettings();
-        GameStartButton.interactable = false;
+        //GameStartButton.interactable = false;
         ConnectionInfoText.text = "서버에 접속 중입니다.";
     }
-    public override void OnConnectedToMaster()
-    {
-        GameStartButton.interactable = true;
-        ConnectionInfoText.text = "서버 연결에 성공하였습니다.";
-    }
+    //public override void OnConnectedToMaster()
+    //{
+    //    //GameStartButton.interactable = true;
+    //    ConnectionInfoText.text = "서버 연결에 성공하였습니다.";
+    //}
 
     public override void OnDisconnected(DisconnectCause cause)
     {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 497190101}
   m_Layer: 0
   m_Name: Hook_Heavy_Bullet
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 859178662}
   m_Layer: 0
   m_Name: Hook_Dafault_Last_Combo_Bullet
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 2055637760}
   m_Layer: 0
   m_Name: Hook_Heavy_Last_Bullet
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7917,7 +7917,7 @@ GameObject:
   - component: {fileID: 7494829356766107015}
   m_Layer: 0
   m_Name: Hook_Skill_Bullet
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28151,7 +28151,7 @@ GameObject:
   - component: {fileID: 5519850115519438530}
   m_Layer: 0
   m_Name: Hook_Dafault_Bullet
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

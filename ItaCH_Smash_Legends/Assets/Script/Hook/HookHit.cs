@@ -33,7 +33,7 @@ public class HookHit : MonoBehaviour
             PlayerStatus playerStatus = other.GetComponent<PlayerStatus>();
 
             SetDirection(other);
-            if (playerStatus.CurrentState != PlayerStatus.State.HitUp)
+            if (playerStatus.CurrentState != PlayerStatus.State.HitUp && playerStatus.CurrentState != PlayerStatus.State.SkillAttack)
             {
                 GetBulletKnockBack(other);
             }

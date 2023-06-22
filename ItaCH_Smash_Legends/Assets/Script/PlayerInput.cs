@@ -55,10 +55,5 @@ public class PlayerInput : MonoBehaviour
         {
             _playerMove.MoveHellper(value);
         }
-        if (_playerStatus.IsRollUp)
-        {
-            _playerMove.MoveHellper(value);
-            _playerRollUp.RollingDirection();
-        }
     }
 }
