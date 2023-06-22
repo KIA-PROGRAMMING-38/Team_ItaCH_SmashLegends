@@ -16,12 +16,21 @@ namespace Util.Path
         public const string MatchingUIPath = "UI/MatchingPanel";
         public const string MatchingButtonPath = "UI/GameStartButton";
         public const string MapPath = "Map/LobbyWorld/";
+        public const string UISpritePath = "UI/Sprite/";
         #endregion
         public static string GetLobbyCharacterPath(CharacterType characterType)
         {
             StringBuilder stringBuilder = new StringBuilder();
             string characterName = characterType.ToString();
             stringBuilder.Append(MapPath);
+            stringBuilder.Append(characterName);
+            return stringBuilder.ToString();
+        }
+        public static string GetCharacterSpritePath(CharacterType characterType)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            string characterName = characterType.ToString();
+            stringBuilder.Append(UISpritePath);
             stringBuilder.Append(characterName);
             return stringBuilder.ToString();
         }

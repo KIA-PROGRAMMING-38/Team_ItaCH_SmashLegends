@@ -95,6 +95,8 @@ public class StageManager : MonoBehaviour
             if (spawnPoints[playerID] != null)
             {
                 GameObject characterInstance = Instantiate(characterPrefab, spawnPoints[playerID].position, Quaternion.identity);
+                //테스트 코드. 추후 레전드 선택 기능 구현 시 코드 교체
+                characterInstance.GetComponent<CharacterStatus>().InitCharacterType(Util.Enum.CharacterType.Peter);
                 SetTeam(characterInstance, playerID);
                 SetPlayerInputController(characterInstance, playerID);
                 _playerCharacterInstances[playerID] = characterInstance;

@@ -11,6 +11,7 @@ public class ModeUI : MonoBehaviour
     [Header("UI Images in Prefab")]
     [SerializeField] private HealthBar[] _healthPointBars;
     [SerializeField] private ScoreSet[] _scoreSets;
+    [SerializeField] private Image[] _portraits;
     [SerializeField] private Timer _timer;
     [SerializeField] private RespawnTimer _respawnTimer;
 
@@ -23,7 +24,11 @@ public class ModeUI : MonoBehaviour
         CharacterStatus playerCharacterStatus = players[1].GetComponent<CharacterStatus>();
         for (int i = 0; i < players.Length - 1; ++i)
         {
-            _healthPointBars[i].InitHealthBarSettings(players[i + 1].GetComponent<CharacterStatus>());
+            CharacterStatus characterStatus = players[i + 1].GetComponent<CharacterStatus>();
+            _healthPointBars[i].InitHealthBarSettings(characterStatus);
+            Sprite characterPortrait = Resources.Load<Sprite>(Util.Path.FilePath.GetCharacterSpritePath(characterStatus.CharacterType));
+            Debug.Log(Util.Path.FilePath.GetCharacterSpritePath(characterStatus.CharacterType));
+            _portraits[i].GetComponent<Image>().sprite = characterPortrait;
             _scoreSets[i].InitScoreSetSettings((TeamType)(i + 1));
             BindEventWithScoreSets(i);
         }

@@ -2,6 +2,8 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using UnityEngine;
+using Util.Enum;
+
 public class CharacterStatus : CharacterDefaultStatus
 {
     // 게임 중 바뀔 수 있는 스탯들
@@ -37,11 +39,17 @@ public class CharacterStatus : CharacterDefaultStatus
     private int _heavyAttackDamage;
     private int _jumpAttackDamage;
     private int _skillAttackDamage;
+    private CharacterType _characterType;
+    public CharacterType CharacterType { get => _characterType; }
 
     private void Awake()
     {
         InitHP();
         InitAttackDamage();
+    }
+    public void InitCharacterType(CharacterType characterType)
+    {
+        _characterType = characterType;
     }
     public void InitHP()
     {

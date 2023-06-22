@@ -1065,6 +1065,9 @@ MonoBehaviour:
   _scoreSets:
   - {fileID: 969691503906526617}
   - {fileID: 1948783999208810618}
+  _portraits:
+  - {fileID: 4009383113984026479}
+  - {fileID: 4009383113734029216}
   _timer: {fileID: 5642821199759404105}
   _respawnTimer: {fileID: 129356780460176573}
 --- !u!1 &4009383113923921176
