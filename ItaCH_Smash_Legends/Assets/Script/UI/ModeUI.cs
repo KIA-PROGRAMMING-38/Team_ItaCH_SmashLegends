@@ -45,17 +45,24 @@ public class ModeUI : MonoBehaviour
         characterStatus.OnPlayerDie -= portrait.StartRespawnTimer;
         characterStatus.OnPlayerDie += portrait.StartRespawnTimer;
     }
+    public void BindEventWithHealthBar(CharacterStatus characterStatus, HealthBar healthBar)
+    {
+        characterStatus.OnPlayerHealthPointChange -= healthBar.SetHealthPoint;
+        characterStatus.OnPlayerHealthPointChange += healthBar.SetHealthPoint;
+    }
     private void SetUIForEachPlayers(GameObject[] players)
     {
         for (int i = 0; i < players.Length - 1; ++i)
         {
             CharacterStatus characterStatus = players[i + 1].GetComponent<CharacterStatus>();
-            _healthPointBars[i].InitHealthBarSettings(characterStatus);
+
+            _healthPointBars[i].InitHealthBarSettings();
+            BindEventWithHealthBar(characterStatus, _healthPointBars[i]);
+
             Sprite characterPortrait = Resources.Load<Sprite>(Util.Path.FilePath.GetCharacterSpritePath(characterStatus.CharacterType));
-            Debug.Log(Util.Path.FilePath.GetCharacterSpritePath(characterStatus.CharacterType));
-            _portraits[i].GetComponent<Image>().sprite = characterPortrait;
-            _portraits[i].InitPortraitSetting();
+            _portraits[i].InitPortraitSetting(characterPortrait);
             BindEventWithPortraits(characterStatus, _portraits[i]);
+
             _scoreSets[i].InitScoreSetSettings((TeamType)(i + 1));
             BindEventWithScoreSets(i);
         }

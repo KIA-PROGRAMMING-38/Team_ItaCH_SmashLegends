@@ -13,12 +13,13 @@ public class Portrait : MonoBehaviour
     private RotatingImage _rotateCircle;
     private TextMeshProUGUI _timeLeft;
     
-    public void InitPortraitSetting()
+    public void InitPortraitSetting(Sprite sprite)
     {
         _portrait = GetComponent<Image>();
         _respawnTimer = transform.GetChild(0).gameObject;
         _rotateCircle = _respawnTimer.transform.GetChild(0).GetComponent<RotatingImage>();
         _timeLeft = _respawnTimer.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        _portrait.sprite = sprite;
         _respawnTimer.SetActive(false);
     }
 
