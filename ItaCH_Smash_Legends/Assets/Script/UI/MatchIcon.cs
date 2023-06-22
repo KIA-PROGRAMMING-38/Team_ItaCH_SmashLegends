@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
+using Util.Method;
 
 public class MatchIcon : MonoBehaviour
 {
@@ -71,7 +72,7 @@ public class MatchIcon : MonoBehaviour
             if (_isTurned)
             {
                 _rectTransform.Rotate(_clockWiseRotateDirection * (_secondTurnSpeed * Time.fixedDeltaTime));
-                if (!_isSpriteChanged && CalculateAbsolute(180 - CalculateAbsolute(_rectTransform.rotation.eulerAngles.z)) < _secondTurnOffset)
+                if (!_isSpriteChanged && Method.CalculateAbsolute(180 - Method.CalculateAbsolute(_rectTransform.rotation.eulerAngles.z)) < _secondTurnOffset)
                 {
                     _rectTransform.rotation = Quaternion.Euler(0, 0, SpriteChangeAngle);
                     ++_currentSpriteIndex;
@@ -103,20 +104,8 @@ public class MatchIcon : MonoBehaviour
             await UniTask.Yield(PlayerLoopTiming.FixedUpdate);
         }
     }
-
     public void SetMatchCompleteImage()
     {
         _matchedImage.enabled = true;
-    }
-    private float CalculateAbsolute(float someFloat)
-    {
-        if (someFloat > 0)
-        {
-            return someFloat;
-        }
-        else
-        {
-            return -someFloat;
-        }
     }
 }

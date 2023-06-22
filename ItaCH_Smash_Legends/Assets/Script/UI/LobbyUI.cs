@@ -29,8 +29,7 @@ public class LobbyUI : MonoBehaviour
         SetPanelAndButton(FilePath.SettingUIPath, FilePath.SettingButtonPath);
         SetPanelAndButton(FilePath.MatchingUIPath, FilePath.MatchingButtonPath);
 
-        GameObject resultUI = Instantiate(_result);
-        resultUI.GetComponent<ResultUI>().InitSettings(this);
+
         _characterModels = new GameObject[(int)CharacterType.NumOfCharacter];
         _currentCharacterIndex = (int)CharacterType.Alice;
         for (int i = 0; i < (int)CharacterType.NumOfCharacter; ++i)
