@@ -32,7 +32,7 @@ public class AliceHit : PlayerHit
 
     private async UniTask SkillAttackHit(Collider other)
     {
-        
+
         float knockbackPower = 0.8f;
         float pullingPower = 0.5f;
         Vector3 firstKnockbackDirection = transform.up;
@@ -55,7 +55,6 @@ public class AliceHit : PlayerHit
     {
         lightKnockbackPower = 0.2f;
         heavyKnockbackPower = 0.8f;
-       
         Rigidbody rigidbody = other.GetComponent<Rigidbody>();
         Animator animator = other.GetComponent<Animator>();
 

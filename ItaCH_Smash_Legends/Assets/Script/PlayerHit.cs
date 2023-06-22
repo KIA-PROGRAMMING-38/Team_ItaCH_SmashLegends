@@ -13,16 +13,16 @@ public class PlayerHit : MonoBehaviour, IHit
     protected PlayerStatus _playerStatus;
     protected Animator _animator;
 
-    protected void Start()
+    private void Start()
     {
         _characterStatus = GetComponent<CharacterStatus>();
         _playerStatus = GetComponent<PlayerStatus>();
         _animator = GetComponent<Animator>();
 
-        // TODO : ¹«ÀûÀÌ ÇØ°áµÇ¸é °°ÀÌ Ã³¸®
+        // TODO : ë¬´ì ì´ í•´ê²°ë˜ë©´ ê°™ì´ ì²˜ë¦¬
         //invincible = true;
     }
-    protected void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground") && _playerStatus.CurrentState == PlayerStatus.State.HitUp)
         {
@@ -30,7 +30,7 @@ public class PlayerHit : MonoBehaviour, IHit
         }
     }
 
-    protected void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !invincible)
         {
@@ -42,5 +42,4 @@ public class PlayerHit : MonoBehaviour, IHit
     {
 
     }
-    
 }
