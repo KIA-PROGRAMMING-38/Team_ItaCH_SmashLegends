@@ -10,29 +10,29 @@ public class PeterHit : PlayerHit
         heavyKnockbackPower = 0.8f;
         _knockbackDirection = transform.forward + transform.up;
 
-        if (!invincible)
+
+        switch (_playerStatus.CurrentState)
         {
-            switch (_playerStatus.CurrentState)
-            {
-                case PlayerStatus.State.SkillAttack:
-                    GetHit(lightKnockbackPower, AnimationHash.Hit, other, _characterStatus.SkillAttackDamage);
-                    break;
-                case PlayerStatus.State.SkillEndAttack:
-                    GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.HeavyAttackDamage);
-                    break;
-                case PlayerStatus.State.HeavyAttack:
-                    GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.HeavyAttackDamage);
-                    break;
-                case PlayerStatus.State.ComboAttack:
-                    GetHit(lightKnockbackPower, AnimationHash.Hit, other, _characterStatus.DefaultAttackDamage);
-                    break;
-                case PlayerStatus.State.FinishComboAttack:
-                    GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.DefaultAttackDamage);
-                    break;
-                case PlayerStatus.State.JumpAttack:
-                    GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.DefaultAttackDamage);
-                    break;
-            }
+            
+            case PlayerStatus.State.SkillAttack:
+                GetHit(lightKnockbackPower, AnimationHash.Hit, other, _characterStatus.SkillAttackDamage);
+                break;
+            case PlayerStatus.State.SkillEndAttack:
+                GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.HeavyAttackDamage);
+                break;
+            case PlayerStatus.State.HeavyAttack:
+                GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.HeavyAttackDamage);
+                break;
+            case PlayerStatus.State.ComboAttack:
+                GetHit(lightKnockbackPower, AnimationHash.Hit, other, _characterStatus.DefaultAttackDamage);
+                break;
+            case PlayerStatus.State.FinishComboAttack:
+                GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.DefaultAttackDamage);
+                break;
+            case PlayerStatus.State.JumpAttack:
+                GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.DefaultAttackDamage);
+                break;
+
         }
     }
     private void GetHit(float power, int animationHash, Collider other, int damage)
@@ -40,7 +40,10 @@ public class PeterHit : PlayerHit
         Rigidbody rigidbody = other.GetComponent<Rigidbody>();
         Animator animator = other.GetComponent<Animator>();
         CharacterStatus opponentCharacter = other.GetComponent<CharacterStatus>();
-
+        if(rigidbody.velocity != Vector3.zero)
+        {
+            rigidbody.velocity = Vector3.zero;
+        }
         rigidbody.AddForce(_knockbackDirection * power, ForceMode.Impulse);
         animator.SetTrigger(animationHash);
         opponentCharacter.GetDamage(damage);

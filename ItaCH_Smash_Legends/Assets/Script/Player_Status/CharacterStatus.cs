@@ -2,7 +2,11 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using UnityEngine;
+<<<<<<< Updated upstream
 using Util.Enum;
+=======
+using UnityEngine.InputSystem;
+>>>>>>> Stashed changes
 
 public class CharacterStatus : CharacterDefaultStatus
 {
@@ -19,7 +23,6 @@ public class CharacterStatus : CharacterDefaultStatus
     public int HeavyAttackDamage { get => _heavyAttackDamage; set => _heavyAttackDamage = value; }
     public int JumpAttackDamage { get => _jumpAttackDamage; set => _jumpAttackDamage = value; }
     public int SkillAttackDamage { get => _skillAttackDamage; set => _skillAttackDamage = value; }
-
     private int _currentHealthPoint;
     private int _currentHealthPointRatio;
     private float _currentRespawnTime;
@@ -29,7 +32,7 @@ public class CharacterStatus : CharacterDefaultStatus
     public event Action<int, int> OnPlayerHealthPointChange;
     public event Action<CharacterStatus> OnPlayerDie;
     public event Action<CharacterStatus> OnPlayerRespawn;
-
+    public event Action<GameObject, int> OnRespawnSetting;
     private int _playerID;
     private TeamType _teamType;
 
@@ -59,9 +62,9 @@ public class CharacterStatus : CharacterDefaultStatus
     }
     public void InitAttackDamage() // 데이터 테이블 구성 이후 반영 필요
     {
-        _defaultAttackDamage = 100;
-        _heavyAttackDamage = 200;
-        _jumpAttackDamage = 100;
+        _defaultAttackDamage = 150;
+        _heavyAttackDamage = 500;
+        _jumpAttackDamage = 300;
         _skillAttackDamage = 200;
     }
     public void GetDamage(int damage) // 피격 판정 시 호출
@@ -90,6 +93,7 @@ public class CharacterStatus : CharacterDefaultStatus
         this.GetComponent<Collider>().isTrigger = false;
         this._isDead = false;
         OnPlayerRespawn.Invoke(this);
+        OnRespawnSetting.Invoke(this.gameObject,PlayerID);
         InitHP();
     }
 }

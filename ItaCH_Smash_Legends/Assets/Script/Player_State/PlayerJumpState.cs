@@ -16,6 +16,8 @@ public class PlayerJumpState : StateMachineBehaviour
         _playerStatus = animator.GetComponent<PlayerStatus>();
         
         _playerStatus.IsJump = false;
+        _playerStatus.IsHang = false;
+
         _playerStatus.CurrentState = PlayerStatus.State.Jump;
 
         animator.SetBool(AnimationHash.Run, false);
