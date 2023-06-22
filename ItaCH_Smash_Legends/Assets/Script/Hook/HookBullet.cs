@@ -8,11 +8,11 @@ using UnityEngine.Pool;
 public class HookBullet : MonoBehaviour
 {
     protected const float DEFAULT_BULLET_SPEED = 20f;
-    protected const float HEAVY_BULLET_SPEED = 30f;
+    protected const float HEAVY_BULLET_SPEED = 28f;
     protected const float DEFAULT_BULLET_DELETE_TIME = 0.23f;
-    protected const float HEAVY_BULLET_DELETE_TIME = 0.3f;
+    protected const float HEAVY_BULLET_DELETE_TIME = 0.28f;
     protected const float SKILL_BULLET_DELETE_TIME = 0.28f;
-    protected const float SKILL_HEAVY_BULLET_DELETE_TIME = 0.33f;
+    protected const float SKILL_HEAVY_BULLET_DELETE_TIME = 0.3f;
     protected readonly string HEAVY_BULLET_DELETE_EFFECT_PATH = "Charater/Hook/Hook_Ingame/Hook_Heavy_Bullet_Delete_Effect";
     protected readonly string LAST_HEAVY_BULLET_DELETE_EFFECT_PATH = "Charater/Hook/Hook_Ingame/Hook_Last_Heavy_Bullet_Delete_Effect";
     protected readonly string SKILL_BULLET_DELETE_EFFECT_PATH = "Charater/Hook/Hook_Ingame/Hook_SKill_Bullet_Delete_Effect";

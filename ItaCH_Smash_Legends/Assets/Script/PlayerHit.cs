@@ -32,7 +32,7 @@ public class PlayerHit : MonoBehaviour, IHit
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !invincible)
+        if (other.CompareTag("Player"))
         {
             other.transform.forward = (-1) * transform.forward;
             Hit(other);

@@ -45,9 +45,8 @@ public class LogInUI : MonoBehaviour
         {
             GameManager.Instance.UserManager.UserData.Name = _userInput;            
             _logInField.SetActive(false);
-            _loadingObject.SetActive(true);            
-            _loadingObject.transform.GetChild(0).GetComponent<LoadingImage>()?.StartRotation();
-            GameManager.Instance.StartGame();
+            _loadingObject.SetActive(true);
+            _loadingObject.transform.GetChild(0).GetComponent<RotatingImage>()?.StartRotation();
         }
         else
         {

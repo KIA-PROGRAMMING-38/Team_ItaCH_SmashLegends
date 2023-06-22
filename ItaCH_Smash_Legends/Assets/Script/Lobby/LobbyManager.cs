@@ -15,7 +15,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public TextMeshProUGUI ConnectionInfoText { get => _connectionInfoText; set => _connectionInfoText = value; } // 로딩 패널에서 현재 접속 상태를 보여줄 텍스트    
     private TextMeshProUGUI _connectionInfoText;
-    private GameMode _currentGameMode; // 현재 스테이지 매니저에서 진행하고 있던 모드 초기화를 여기서 실행하게
     public Button ExitRoomButton { get => _exitRoomButton; set => _exitRoomButton = value; }
     private Button _exitRoomButton;
 
@@ -33,10 +32,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.GameVersion = _gameVersion;
         PhotonNetwork.ConnectUsingSettings();        
-        _connectionInfoText.text = "서버에 접속 중입니다.";
+        ConnectionInfoText.text = "서버에 접속 중입니다.";
     }
     public override void OnConnectedToMaster()
-    {        
+    {
         _connectionInfoText.text = "서버 연결에 성공하였습니다.";        
         OnLogInSuccess.Invoke();        
     }

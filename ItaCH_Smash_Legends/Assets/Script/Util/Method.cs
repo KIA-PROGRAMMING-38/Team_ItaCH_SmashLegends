@@ -1,6 +1,11 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+using System.Threading;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Util.Method
 {
@@ -27,6 +32,16 @@ namespace Util.Method
             else
             {
                 return false;
+            }
+        }
+
+        public static async UniTask Rotate(CancellationToken cancellationToken, RectTransform rectTransform, Vector3 direction, float turnSpeed)
+        {
+            while (true)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                rectTransform.Rotate(direction * (turnSpeed * Time.fixedDeltaTime));
+                await UniTask.DelayFrame(1);
             }
         }
     }

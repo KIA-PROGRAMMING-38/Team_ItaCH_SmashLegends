@@ -77,6 +77,13 @@ public class HookAttack : PlayerAttack
 
         _shotEffect = Parrot.transform.GetChild(0).GetComponent<ParticleSystem>();
     }
+    private void OnDisable()
+    {
+        if(Parrot.activeSelf)
+        {
+            Parrot.SetActive(false);
+        }
+    }
     public override void AttackOnDash()
     {
         if (CurrentPossibleComboCount == COMBO_FINISH_COUNT && playerStatus.CurrentState == PlayerStatus.State.ComboAttack)
