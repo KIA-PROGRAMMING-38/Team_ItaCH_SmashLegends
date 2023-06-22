@@ -13,7 +13,6 @@ public class PlayerFirstAttackState : StateMachineBehaviour
         _playerAttack.isFirstAttack = true;
     }
 
-
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if(_playerAttack.isFinishAttack && _playerAttack.CurrentPossibleComboCount == 1)
@@ -35,5 +34,4 @@ public class PlayerFirstAttackState : StateMachineBehaviour
             _playerAttack.isFirstAttack = false;
         }
     }
-
 }

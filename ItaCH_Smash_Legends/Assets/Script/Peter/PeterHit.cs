@@ -15,34 +15,34 @@ public class PeterHit : PlayerHit
             switch (_playerStatus.CurrentState)
             {
                 case PlayerStatus.State.SkillAttack:
-                    GetHit(lightKnockbackPower, AnimationHash.Hit, other /*_characterStatus.DefaultAttackDamage*/);
+                    GetHit(lightKnockbackPower, AnimationHash.Hit, other, _characterStatus.SkillAttackDamage);
                     break;
                 case PlayerStatus.State.SkillEndAttack:
-                    GetHit(heavyKnockbackPower, AnimationHash.HitUp, other /*_characterStatus.HeavyAttackDamage*/);
+                    GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.HeavyAttackDamage);
                     break;
                 case PlayerStatus.State.HeavyAttack:
-                    GetHit(heavyKnockbackPower, AnimationHash.HitUp, other /*_characterStatus.HeavyAttackDamage*/);
+                    GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.HeavyAttackDamage);
                     break;
                 case PlayerStatus.State.ComboAttack:
-                    GetHit(lightKnockbackPower, AnimationHash.Hit, other /*_characterStatus.DefaultAttackDamage*/);
+                    GetHit(lightKnockbackPower, AnimationHash.Hit, other, _characterStatus.DefaultAttackDamage);
                     break;
                 case PlayerStatus.State.FinishComboAttack:
-                    GetHit(heavyKnockbackPower, AnimationHash.HitUp, other /*_characterStatus.DefaultAttackDamage*/);
+                    GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.DefaultAttackDamage);
                     break;
                 case PlayerStatus.State.JumpAttack:
-                    GetHit(heavyKnockbackPower, AnimationHash.HitUp, other);
+                    GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.DefaultAttackDamage);
                     break;
             }
         }
     }
-    private void GetHit(float power, int animationHash, Collider other /*int damage*/)
+    private void GetHit(float power, int animationHash, Collider other, int damage)
     {
         Rigidbody rigidbody = other.GetComponent<Rigidbody>();
         Animator animator = other.GetComponent<Animator>();
-        //CharacterStatus opponentCharacter = GetComponent<CharacterStatus>();
+        CharacterStatus opponentCharacter = other.GetComponent<CharacterStatus>();
 
         rigidbody.AddForce(_knockbackDirection * power, ForceMode.Impulse);
         animator.SetTrigger(animationHash);
-        //opponentCharacter.GetDamage(damage);
+        opponentCharacter.GetDamage(damage);
     }
 }

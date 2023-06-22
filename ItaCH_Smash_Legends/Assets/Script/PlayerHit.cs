@@ -13,15 +13,16 @@ public class PlayerHit : MonoBehaviour, IHit
     protected PlayerStatus _playerStatus;
     protected Animator _animator;
 
-    protected void Start()
+    private void Start()
     {
         _characterStatus = GetComponent<CharacterStatus>();
         _playerStatus = GetComponent<PlayerStatus>();
         _animator = GetComponent<Animator>();
 
-        invincible = false;
+        // TODO : 무적이 해결되면 같이 처리
+        //invincible = true;
     }
-    protected void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground") && _playerStatus.CurrentState == PlayerStatus.State.HitUp)
         {
@@ -29,9 +30,9 @@ public class PlayerHit : MonoBehaviour, IHit
         }
     }
 
-    protected void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !invincible)
         {
             other.transform.forward = (-1) * transform.forward;
             Hit(other);
@@ -41,5 +42,4 @@ public class PlayerHit : MonoBehaviour, IHit
     {
 
     }
-    
 }

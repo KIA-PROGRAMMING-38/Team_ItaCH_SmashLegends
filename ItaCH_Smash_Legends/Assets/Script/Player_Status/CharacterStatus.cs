@@ -51,10 +51,10 @@ public class CharacterStatus : CharacterDefaultStatus
     }
     public void InitAttackDamage() // 데이터 테이블 구성 이후 반영 필요
     {
-        _defaultAttackDamage = 800;
-        _heavyAttackDamage = 2000;
-        _jumpAttackDamage = 1000;
-        _skillAttackDamage = 1000;
+        _defaultAttackDamage = 100;
+        _heavyAttackDamage = 200;
+        _jumpAttackDamage = 100;
+        _skillAttackDamage = 200;
     }
     public void GetDamage(int damage) // 피격 판정 시 호출
     {
