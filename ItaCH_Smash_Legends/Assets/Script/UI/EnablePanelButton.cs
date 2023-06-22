@@ -7,6 +7,7 @@ public class EnablePanelButton : MonoBehaviour
 {
     private GameObject _panel;
     private Button _button;
+    public Button Button { get => _button; set => _button = value; }
 
     public void InitEnablePanelButtonSettings(GameObject panel)
     {

@@ -10,6 +10,7 @@ namespace Util.Path
     {
         #region 파일 경로
         public const string UIResources = "UI/";
+        public const string LobbyWorldPrefabPath = "Map/LobbyWorld/LobbySceneWorld";
         public const string LegendMenuUIPath = "UI/LegendMenu";
         public const string LegendMenuButtonPath = "UI/LegendMenuButton";
         public const string SettingUIPath = "UI/SettingPanel";

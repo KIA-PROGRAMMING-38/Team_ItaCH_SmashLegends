@@ -1,14 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
-using UnityEngine;
-using static AliceEffectController;
+﻿using UnityEngine;
 
 public class AliceAttack : PlayerAttack
 {
     [SerializeField] private GameObject _aliceBomb;
     private Rigidbody _rigidbody;
-    
+
     private void Start()
     {
         CurrentPossibleComboCount = MAX_POSSIBLE_ATTACK_COUNT;
@@ -51,9 +47,9 @@ public class AliceAttack : PlayerAttack
 
     public override void SkillAttack()
     {
-        if (playerStatus.CurrentState == PlayerStatus.State.Run 
+        if (playerStatus.CurrentState == PlayerStatus.State.Run
             || playerStatus.CurrentState == PlayerStatus.State.Idle)
-            
+
         {
             Vector3 direction = (transform.forward + transform.up).normalized;
             _rigidbody.AddForce(direction * 1f, ForceMode.Impulse);

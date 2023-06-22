@@ -1,13 +1,10 @@
+using Photon.Pun;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using Util;
 
-public class MatchUI : MonoBehaviour, IPanel
+public class MatchUI : MonoBehaviourPunCallbacks, IPanel
 {
     private bool[] _isPlayerMatched;
     private int _maxPlayer;
@@ -20,23 +17,27 @@ public class MatchUI : MonoBehaviour, IPanel
     public event Action _OnStageStart;
 
     private float _time;
+    public bool IsGameStarted { get => _isGameStarted; set => _isGameStarted = value; }
+    private bool _isGameStarted;
 
     private void OnEnable()
     {
         GameManager.Instance.LobbyManager.ConnectionInfoText = _matchText;
-        GameManager.Instance.LobbyManager.Connect();
-    }
-    private void OnDisable()
-    {
-        
-    }
+
+        if (_isGameStarted)
+        {
+            Debug.Log("connect 실행");
+            GameManager.Instance.LobbyManager.Connect();
+        }
+    }    
+
     public void InitPanelSettings(LobbyUI lobbyUI)
     {
         //추후 모드에서 최대 인원수를 가져올 예정.
         _maxPlayer = 2;
         _isPlayerMatched = new bool[_maxPlayer];
         _currentMatchedPlayer = 0;
-        for(int i = 0; i < _maxPlayer; ++i)
+        for (int i = 0; i < _maxPlayer; ++i)
         {
             _matchBoxes[i].InitMatchBoxSettings();
         }
@@ -89,7 +90,7 @@ public class MatchUI : MonoBehaviour, IPanel
 
     public void SetBox(bool isMatched, MatchBox _matchBox)
     {
-        if(isMatched)
+        if (isMatched)
         {
             _matchBox.StartBoxGlow();
             _currentMatchedPlayer = Mathf.Min(++_currentMatchedPlayer, _maxPlayer);
@@ -100,7 +101,7 @@ public class MatchUI : MonoBehaviour, IPanel
             _currentMatchedPlayer = Mathf.Max(0, --_currentMatchedPlayer);
         }
 
-        if(_currentMatchedPlayer.Equals(_maxPlayer))
+        if (_currentMatchedPlayer.Equals(_maxPlayer))
         {
             StartStage();
         }

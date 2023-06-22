@@ -8,52 +8,47 @@ using System;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
-    private string _gameVersion = "1";
+    private string _gameVersion = "1";    
+    public GameObject LobbyUI { get => _lobbyUI; set => _lobbyUI = value; }
+    private GameObject _lobbyUI;
+
 
     public TextMeshProUGUI ConnectionInfoText { get => _connectionInfoText; set => _connectionInfoText = value; } // 로딩 패널에서 현재 접속 상태를 보여줄 텍스트    
     private TextMeshProUGUI _connectionInfoText;
-    public Button GameStartButton; // 게임 시작 버튼 클릭 시 매칭 시작
     private GameMode _currentGameMode; // 현재 스테이지 매니저에서 진행하고 있던 모드 초기화를 여기서 실행하게
-    public Button PlayGameButton { get => _playGameButton; set => _playGameButton = value; }
-    private Button _playGameButton;
-    public event Action<GameModeType> OnMatchSuccess;
+    public Button ExitRoomButton { get => _exitRoomButton; set => _exitRoomButton = value; }
+    private Button _exitRoomButton;
 
-    // 게임 시작 시 ID 입력 이후 서버 접속
+    public event Action OnLogInSuccess;
+    public event Action<GameModeType> OnMatchSuccess;
+    
     private void Awake()
     {        
-        GameManager.Instance.StartGame -= ConnectToServer;
-        GameManager.Instance.StartGame += ConnectToServer;
+        GameManager.Instance.OnStartGame -= ConnectToServer;
+        GameManager.Instance.OnStartGame += ConnectToServer;        
     }
-    private void SetLobbyUI()
-    {
-        GameObject lobbyUIPrefab = Resources.Load<GameObject>(FilePath.UIResources + "LobbyUI");
-        Instantiate(lobbyUIPrefab);
-    }
+
+    // 게임 시작 시 ID 입력 및 버튼 클릭 시 서버 접속
     private void ConnectToServer()
     {
         PhotonNetwork.GameVersion = _gameVersion;
-        PhotonNetwork.ConnectUsingSettings();
-        //GameStartButton.interactable = false;
+        PhotonNetwork.ConnectUsingSettings();        
         _connectionInfoText.text = "서버에 접속 중입니다.";
     }
     public override void OnConnectedToMaster()
-    {
-        //GameStartButton.interactable = true;
-        _connectionInfoText.text = "서버 연결에 성공하였습니다."; 
-        SetLobbyUI();
-        GameManager.Instance.OnLogInSuccess();
+    {        
+        _connectionInfoText.text = "서버 연결에 성공하였습니다.";        
+        OnLogInSuccess.Invoke();        
     }
 
     public override void OnDisconnected(DisconnectCause cause)
-    {
-        //GameStartButton.interactable = true;
+    {        
         _connectionInfoText.text = "서버 연결에 실패하였습니다.";
         PhotonNetwork.ConnectUsingSettings();
     }
 
     public void Connect()
-    {
-        //GameStartButton.interactable = false;
+    {        
         if (PhotonNetwork.IsConnected)
         {
             _connectionInfoText.text = "룸에 접속 중입니다.";
@@ -75,8 +70,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         _connectionInfoText.text = "아레나가 열리고 있습니다. 상대를 기다리고 있습니다.";
-        PhotonNetwork.LoadLevel("InGame");
-        OnMatchSuccess.Invoke(GameModeType.None);
+        PhotonNetwork.LoadLevel("InGame");                 
     }
 
 }
