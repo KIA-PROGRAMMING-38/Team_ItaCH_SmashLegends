@@ -40,13 +40,12 @@ public class LogInUI : MonoBehaviour
     }
     public void SetName()
     {
-
         _userInput = _inputField.text;
         if (Regex.IsMatch(_userInput, InputPattern))
         {
             _logInField.SetActive(false);
             _loadingObject.SetActive(true);
-            _loadingObject.transform.GetChild(0).GetComponent<LoadingImage>()?.StartRotation();
+            _loadingObject.transform.GetChild(0).GetComponent<RotatingImage>()?.StartRotation();
         }
         else
         {

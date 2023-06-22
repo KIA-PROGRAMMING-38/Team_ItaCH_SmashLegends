@@ -28,8 +28,8 @@ public class RespawnTimer : MonoBehaviour
             gameObject.SetActive(true);
 
             UniTask[] uniTasks = new UniTask[]{
-            ChangeSliderValue(characterStatus.RepawnTime),
-            ChangeTextValue(characterStatus.RepawnTime)
+            ChangeSliderValue(characterStatus.RespawnTime),
+            ChangeTextValue(characterStatus.RespawnTime)
             };
 
             await UniTask.WhenAll(uniTasks);

@@ -115,7 +115,7 @@ public class StageManager : MonoBehaviour
     {
         CharacterStatus characterStatus = character.GetComponent<CharacterStatus>();
         characterStatus.PlayerID = id;
-        characterStatus.RepawnTime = _modeDefaultRespawnTime;
+        characterStatus.RespawnTime = _modeDefaultRespawnTime;
         if (id > _teamSize)
         {
             characterStatus.TeamType = TeamType.Red;

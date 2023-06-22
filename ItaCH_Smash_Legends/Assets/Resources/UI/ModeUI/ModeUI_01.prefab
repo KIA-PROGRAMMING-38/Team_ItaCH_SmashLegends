@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 7343322750322902455}
   - component: {fileID: 475583500013307585}
   - component: {fileID: 5428248364449927360}
+  - component: {fileID: 2227394578810577307}
   m_Layer: 5
   m_Name: Circle
   m_TagString: Untagged
@@ -152,6 +153,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2227394578810577307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067784130067204756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d55d7b23476940408e82a5c8da6b1c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3692940811737265272
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,6 +732,7 @@ GameObject:
   - component: {fileID: 4009383113734029223}
   - component: {fileID: 4009383113734029217}
   - component: {fileID: 4009383113734029216}
+  - component: {fileID: 3396536804136747701}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -785,6 +799,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3396536804136747701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4009383113734029222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17705f73e0987b74a9fbdc1d5725410c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4009383113740094597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,8 +1092,8 @@ MonoBehaviour:
   - {fileID: 969691503906526617}
   - {fileID: 1948783999208810618}
   _portraits:
-  - {fileID: 4009383113984026479}
-  - {fileID: 4009383113734029216}
+  - {fileID: 7674904347926690253}
+  - {fileID: 3396536804136747701}
   _timer: {fileID: 5642821199759404105}
   _respawnTimer: {fileID: 129356780460176573}
 --- !u!1 &4009383113923921176
@@ -1121,6 +1147,7 @@ GameObject:
   - component: {fileID: 4009383113984026478}
   - component: {fileID: 4009383113984026472}
   - component: {fileID: 4009383113984026479}
+  - component: {fileID: 7674904347926690253}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -1187,6 +1214,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7674904347926690253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4009383113984026477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17705f73e0987b74a9fbdc1d5725410c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4009383113992206864
 GameObject:
   m_ObjectHideFlags: 0
@@ -3783,6 +3822,7 @@ GameObject:
   - component: {fileID: 4086940045550835607}
   - component: {fileID: 4811905859580900762}
   - component: {fileID: 8723733507449274685}
+  - component: {fileID: 4150876777275810268}
   m_Layer: 5
   m_Name: Circle
   m_TagString: Untagged
@@ -3848,6 +3888,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4150876777275810268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8280481256664192710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d55d7b23476940408e82a5c8da6b1c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6440483378241576838
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class ModeUI : MonoBehaviour
     [Header("UI Images in Prefab")]
     [SerializeField] private HealthBar[] _healthPointBars;
     [SerializeField] private ScoreSet[] _scoreSets;
-    [SerializeField] private Image[] _portraits;
+    [SerializeField] private Portrait[] _portraits;
     [SerializeField] private Timer _timer;
     [SerializeField] private RespawnTimer _respawnTimer;
 
@@ -22,20 +22,8 @@ public class ModeUI : MonoBehaviour
         GameObject[] players = stageManager.Players;
         //실제로 조작을 하는 플레이어의 characterStatus
         CharacterStatus playerCharacterStatus = players[1].GetComponent<CharacterStatus>();
-        for (int i = 0; i < players.Length - 1; ++i)
-        {
-            CharacterStatus characterStatus = players[i + 1].GetComponent<CharacterStatus>();
-            _healthPointBars[i].InitHealthBarSettings(characterStatus);
-            Sprite characterPortrait = Resources.Load<Sprite>(Util.Path.FilePath.GetCharacterSpritePath(characterStatus.CharacterType));
-            Debug.Log(Util.Path.FilePath.GetCharacterSpritePath(characterStatus.CharacterType));
-            _portraits[i].GetComponent<Image>().sprite = characterPortrait;
-            _scoreSets[i].InitScoreSetSettings((TeamType)(i + 1));
-            BindEventWithScoreSets(i);
-        }
-        _timer.InitTimerSettings();
-        _respawnTimer.InitRespawnTimerSettings(playerCharacterStatus);
-        BindEventWithRespawnUI(playerCharacterStatus);
-        BindEventWithTimer();
+        SetUIForEachPlayers(players);
+        SetUIForCurrentPlayer(playerCharacterStatus);
     }
     public void BindEventWithScoreSets(int i)
     {
@@ -52,7 +40,34 @@ public class ModeUI : MonoBehaviour
         characterStatus.OnPlayerDie -= _respawnTimer.CheckPlayer;
         characterStatus.OnPlayerDie += _respawnTimer.CheckPlayer;
     }
+    public void BindEventWithPortraits(CharacterStatus characterStatus, Portrait portrait)
+    {
+        characterStatus.OnPlayerDie -= portrait.StartRespawnTimer;
+        characterStatus.OnPlayerDie += portrait.StartRespawnTimer;
+    }
+    private void SetUIForEachPlayers(GameObject[] players)
+    {
+        for (int i = 0; i < players.Length - 1; ++i)
+        {
+            CharacterStatus characterStatus = players[i + 1].GetComponent<CharacterStatus>();
+            _healthPointBars[i].InitHealthBarSettings(characterStatus);
+            Sprite characterPortrait = Resources.Load<Sprite>(Util.Path.FilePath.GetCharacterSpritePath(characterStatus.CharacterType));
+            Debug.Log(Util.Path.FilePath.GetCharacterSpritePath(characterStatus.CharacterType));
+            _portraits[i].GetComponent<Image>().sprite = characterPortrait;
+            _portraits[i].InitPortraitSetting();
+            BindEventWithPortraits(characterStatus, _portraits[i]);
+            _scoreSets[i].InitScoreSetSettings((TeamType)(i + 1));
+            BindEventWithScoreSets(i);
+        }
+    }
 
+    private void SetUIForCurrentPlayer(CharacterStatus characterStatus)
+    {
+        _timer.InitTimerSettings();
+        _respawnTimer.InitRespawnTimerSettings(characterStatus);
+        BindEventWithRespawnUI(characterStatus);
+        BindEventWithTimer();
+    }
     public void OnDestroy()
     {
         for (int i = 0; i < _scoreSets.Length; ++i)

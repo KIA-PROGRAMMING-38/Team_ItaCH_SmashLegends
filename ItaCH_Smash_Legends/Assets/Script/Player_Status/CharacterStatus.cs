@@ -11,7 +11,7 @@ public class CharacterStatus : CharacterDefaultStatus
     public int HealthPointRatio { get => _currentHealthPointRatio; set => _currentHealthPointRatio = value; }
     public int PlayerID { get => _playerID; set => _playerID = value; }
 
-    public float RepawnTime { get => _currentRespawnTime; set => _currentRespawnTime = value; }
+    public float RespawnTime { get => _currentRespawnTime; set => _currentRespawnTime = value; }
     public TeamType TeamType { get => _teamType; set => _teamType = value; }
     public Vector3 TeamSpawnPoint { get => _spawnPoint; set => _spawnPoint = value; }
 
