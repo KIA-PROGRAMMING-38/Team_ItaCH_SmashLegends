@@ -12,12 +12,15 @@ public class ModeUI : MonoBehaviour
     [SerializeField] private HealthBar[] _healthPointBars;
     [SerializeField] private ScoreSet[] _scoreSets;
     [SerializeField] private Timer _timer;
+    [SerializeField] private RespawnTimer _respawnTimer;
 
     private StageManager _stageManager;
     public void InitModeUISettings(StageManager stageManager)
     {
         _stageManager = stageManager;
         GameObject[] players = stageManager.Players;
+        //실제로 조작을 하는 플레이어의 characterStatus
+        CharacterStatus playerCharacterStatus = players[1].GetComponent<CharacterStatus>();
         for (int i = 0; i < players.Length - 1; ++i)
         {
             _healthPointBars[i].InitHealthBarSettings(players[i + 1].GetComponent<CharacterStatus>());
@@ -25,6 +28,8 @@ public class ModeUI : MonoBehaviour
             BindEventWithScoreSets(i);
         }
         _timer.InitTimerSettings();
+        _respawnTimer.InitRespawnTimerSettings(playerCharacterStatus);
+        BindEventWithRespawnUI(playerCharacterStatus);
         BindEventWithTimer();
     }
     public void BindEventWithScoreSets(int i)
@@ -36,6 +41,11 @@ public class ModeUI : MonoBehaviour
     {
         _stageManager.OnTimeChange -= _timer.ChangeTime;
         _stageManager.OnTimeChange += _timer.ChangeTime;
+    }
+    public void BindEventWithRespawnUI(CharacterStatus characterStatus)
+    {
+        characterStatus.OnPlayerDie -= _respawnTimer.CheckPlayer;
+        characterStatus.OnPlayerDie += _respawnTimer.CheckPlayer;
     }
 
     public void OnDestroy()
