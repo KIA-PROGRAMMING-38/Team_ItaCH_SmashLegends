@@ -132,14 +132,10 @@ public class StageManager : MonoBehaviourPunCallbacks
     {
         CharacterStatus characterStatus = character.GetComponent<CharacterStatus>();
         characterStatus.PlayerID = id;
-<<<<<<< Updated upstream
         characterStatus.RespawnTime = _modeDefaultRespawnTime;
-=======
-        characterStatus.RepawnTime = _modeDefaultRespawnTime;
         characterStatus.OnRespawnSetting -= SetPlayerInputController;
         characterStatus.OnRespawnSetting += SetPlayerInputController;
 
->>>>>>> Stashed changes
         if (id > _teamSize)
         {
             characterStatus.TeamType = TeamType.Red;

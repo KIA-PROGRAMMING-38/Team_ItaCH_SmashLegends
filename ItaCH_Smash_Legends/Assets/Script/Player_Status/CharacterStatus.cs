@@ -1,12 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System;
-using System.Collections;
 using UnityEngine;
-<<<<<<< Updated upstream
 using Util.Enum;
-=======
-using UnityEngine.InputSystem;
->>>>>>> Stashed changes
 
 public class CharacterStatus : CharacterDefaultStatus
 {

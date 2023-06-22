@@ -34,6 +34,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings();        
         ConnectionInfoText.text = "서버에 접속 중입니다.";
     }
+
     public override void OnConnectedToMaster()
     {
         _connectionInfoText.text = "서버 연결에 성공하였습니다.";        
