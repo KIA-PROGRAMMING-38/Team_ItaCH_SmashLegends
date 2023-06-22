@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.UIElements;
+using Util.Method;
 
-public class LoadingImage : MonoBehaviour
+public class RotatingImage : MonoBehaviour
 {
     private CancellationTokenSource _cancellationTokenSource;
     private CancellationToken _cancellationToken;
@@ -17,17 +19,7 @@ public class LoadingImage : MonoBehaviour
         _rectTransform = GetComponent<RectTransform>();
         _cancellationTokenSource = new CancellationTokenSource();
         _cancellationToken = _cancellationTokenSource.Token;
-        Rotate(_cancellationToken).Forget();
-    }
-
-    private async UniTask Rotate(CancellationToken cancellationToken)
-    {
-        while(true)
-        {
-            cancellationToken.ThrowIfCancellationRequested();
-            _rectTransform.Rotate(_clockWiseDirection * (_turnSpeed * Time.fixedDeltaTime));
-            await UniTask.DelayFrame(1);
-        }
+        Method.Rotate(_cancellationToken, _rectTransform, _clockWiseDirection, _turnSpeed).Forget();
     }
 
     private void OnDestroy()

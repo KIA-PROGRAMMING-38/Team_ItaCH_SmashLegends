@@ -2,6 +2,8 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using UnityEngine;
+using Util.Enum;
+
 public class CharacterStatus : CharacterDefaultStatus
 {
     // 게임 중 바뀔 수 있는 스탯들
@@ -9,7 +11,7 @@ public class CharacterStatus : CharacterDefaultStatus
     public int HealthPointRatio { get => _currentHealthPointRatio; set => _currentHealthPointRatio = value; }
     public int PlayerID { get => _playerID; set => _playerID = value; }
 
-    public float RepawnTime { get => _currentRespawnTime; set => _currentRespawnTime = value; }
+    public float RespawnTime { get => _currentRespawnTime; set => _currentRespawnTime = value; }
     public TeamType TeamType { get => _teamType; set => _teamType = value; }
     public Vector3 TeamSpawnPoint { get => _spawnPoint; set => _spawnPoint = value; }
 
@@ -37,11 +39,17 @@ public class CharacterStatus : CharacterDefaultStatus
     private int _heavyAttackDamage;
     private int _jumpAttackDamage;
     private int _skillAttackDamage;
+    private CharacterType _characterType;
+    public CharacterType CharacterType { get => _characterType; }
 
     private void Awake()
     {
         InitHP();
         InitAttackDamage();
+    }
+    public void InitCharacterType(CharacterType characterType)
+    {
+        _characterType = characterType;
     }
     public void InitHP()
     {
