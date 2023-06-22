@@ -1,14 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Util.Enum;
-using UnityEngine.UI;
-using TMPro;
-using UnityEditor.Experimental.GraphView;
-using JetBrains.Annotations;
-using UnityEditor.TextCore.Text;
 using Util.Path;
-using Cysharp.Threading.Tasks.Triggers;
 
 public class ResultUI : MonoBehaviour
 {
@@ -38,7 +32,7 @@ public class ResultUI : MonoBehaviour
     {
         _lobbyUI = lobbyUI;
         _canvas = GetComponent<Canvas>();
-        if(_resultCharacter == null)
+        if (_resultCharacter == null)
         {
             _resultCharacter = Instantiate(_characterSpawnPrefab);
             int numberOfSpawnPoints = _resultCharacter.transform.childCount - 1;
@@ -59,18 +53,18 @@ public class ResultUI : MonoBehaviour
     }
 
 
-    private void Start()
-    {
-        //전체가 테스트 코드.
-        UserData[] test = new UserData[_maxPlayer];
-        test[0] = new UserData();
-        test[1] = new UserData();
-        test[0].Name = "파랑셩";
-        test[0].TeamType = TeamType.Red;
-        test[1].Name = "김갑수";
-        test[1].TeamType = TeamType.Blue;
-        ShowResultUI(TeamType.Red, test);
-    }
+    //private void Start()
+    //{
+    //    //전체가 테스트 코드.
+    //    UserData[] test = new UserData[_maxPlayer];
+    //    test[0] = new UserData();
+    //    test[1] = new UserData();
+    //    test[0].Name = "파랑셩";
+    //    test[0].TeamType = TeamType.Red;
+    //    test[1].Name = "김갑수";
+    //    test[1].TeamType = TeamType.Blue;
+    //    ShowResultUI(TeamType.Red, test);
+    //}
     //추후 게임이 끝났을 때 실행될 함수. 이벤트에 구독해서 사용하자.
     //유저 데이터를 배열 형식으로 관리하여 0번에 본인을 삽입..?
     public void ShowResultUI(TeamType winningteam, UserData[] usersData)
@@ -138,12 +132,12 @@ public class ResultUI : MonoBehaviour
 
     private void ResetModelTransform()
     {
-        if(_copiedModels == null)
+        if (_copiedModels == null)
         {
             return;
         }
 
-        for(int i = 0; i < _copiedModels.Count; ++i)
+        for (int i = 0; i < _copiedModels.Count; ++i)
         {
             Destroy(_copiedModels[i]);
         }

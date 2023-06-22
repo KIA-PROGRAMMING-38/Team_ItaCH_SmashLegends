@@ -1,8 +1,5 @@
 using Cysharp.Threading.Tasks;
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,17 +36,17 @@ public class MatchBox : MonoBehaviour
                 isGlowAlphaReachedMax = false;
                 isGlowAlphaReachedMin = true;
             }
-            else if(_glow.color.a >= 1)
+            else if (_glow.color.a >= 1)
             {
                 isGlowAlphaReachedMin = false;
                 isGlowAlphaReachedMax = true;
             }
 
-            if(isGlowAlphaReachedMax)
+            if (isGlowAlphaReachedMax)
             {
                 _glowAmount -= Time.deltaTime;
             }
-            else if(isGlowAlphaReachedMin)
+            else if (isGlowAlphaReachedMin)
             {
                 _glowAmount += Time.deltaTime;
             }

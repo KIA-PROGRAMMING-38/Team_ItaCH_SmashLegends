@@ -18,7 +18,7 @@ public class RemovePanelButton : MonoBehaviour
         _button = GetComponent<Button>();
         _button.onClick.RemoveAllListeners();
         _button.onClick.AddListener(RemovePanel);
-        _button.onClick.AddListener(() => SoundManager._instance.Play("RemovePanel"));
+        //_button.onClick.AddListener(() => SoundManager._instance.Play("RemovePanel"));
     }
     public void RemovePanel()
     {

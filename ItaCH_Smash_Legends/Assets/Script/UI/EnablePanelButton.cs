@@ -7,6 +7,7 @@ public class EnablePanelButton : MonoBehaviour
 {
     private GameObject _panel;
     private Button _button;
+    public Button Button { get => _button; set => _button = value; }
 
     public void InitEnablePanelButtonSettings(GameObject panel)
     {
@@ -14,7 +15,7 @@ public class EnablePanelButton : MonoBehaviour
         _button = GetComponent<Button>();
         _button.onClick.RemoveAllListeners();
         _button.onClick.AddListener(EnablePanel);
-        _button.onClick.AddListener(() => SoundManager._instance.Play("EnablePanel"));
+        //_button.onClick.AddListener(() => SoundManager._instance.Play("EnablePanel"));
     }
     public void EnablePanel()
     {

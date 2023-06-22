@@ -5,8 +5,12 @@ using System.ComponentModel.Design.Serialization;
 using System.Text;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using Photon;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class StageManager : MonoBehaviour
+public class StageManager : MonoBehaviourPunCallbacks
 {
     private const GameModeType DEFAULT_GAME_MODE = GameModeType.Duel;
     private GameMode _currentGameMode;
@@ -51,16 +55,12 @@ public class StageManager : MonoBehaviour
 
     public event Action<int, TeamType> OnTeamScoreChanged;
     public event Action<int> OnTimeChange;
+    
 
-    private void Awake()
+    private void OnEnable()
     {
-        _selectedGameMode = DEFAULT_GAME_MODE;
-        GetGameMode(_selectedGameMode);
-    }
-    private void Start()
-    {
-        SetStage(_currentGameMode);
-    }
+        GetGameMode(DEFAULT_GAME_MODE);
+    }    
     public void GetGameMode(GameModeType gameModeSelected)
     {
         if (_currentGameMode == null)
@@ -72,11 +72,11 @@ public class StageManager : MonoBehaviour
         _teamSize = _currentGameMode.TeamSize;
         _winningScore = _currentGameMode.WinningScore;
         _modeDefaultRespawnTime = _currentGameMode.ModeDefaultRespawnTime;
-        _isGameOver = false;
+        _isGameOver = false;        
     }
     public void SetStage(GameMode currentGameMode)
     {
-        CreateMap(currentGameMode);
+        CreateMap(currentGameMode);        
         _playerCharacterInstances = new GameObject[_totalPlayer + INDEX_OFFSET_FOR_ZERO];
         _teamBlueCharacter = new CharacterStatus[_teamSize];
         _teamRedCharacter = new CharacterStatus[_teamSize];
@@ -87,6 +87,13 @@ public class StageManager : MonoBehaviour
         SetModeUI(currentGameMode.GameModeType);
         StartCoroutine(UpdateGameTime());
     }
+
+    public void CreateMap(GameMode gameMode)
+    {        
+        //GameObject mapInstance = Instantiate(gameMode.Map, null);
+
+    }
+
     public void CreateCharacter(int playerID, Transform[] spawnPoints) // 캐릭터 선택 기능 구현 시 매개변수로 선택한 캐릭터 함께 전달
     {
         string characterPrefabPath = "Charater/Peter/Peter_Ingame/Peter_Ingame"; // 캐릭터 선택 기능 구현 시 캐릭터 이름으로 경로 구성 필요
@@ -125,14 +132,10 @@ public class StageManager : MonoBehaviour
     {
         CharacterStatus characterStatus = character.GetComponent<CharacterStatus>();
         characterStatus.PlayerID = id;
-<<<<<<< Updated upstream
         characterStatus.RespawnTime = _modeDefaultRespawnTime;
-=======
-        characterStatus.RepawnTime = _modeDefaultRespawnTime;
         characterStatus.OnRespawnSetting -= SetPlayerInputController;
         characterStatus.OnRespawnSetting += SetPlayerInputController;
 
->>>>>>> Stashed changes
         if (id > _teamSize)
         {
             characterStatus.TeamType = TeamType.Red;
@@ -178,10 +181,7 @@ public class StageManager : MonoBehaviour
                 return;
         }
     }
-    public void CreateMap(GameMode gameMode)
-    {
-        GameObject mapInstance = Instantiate(gameMode.Map);
-    }
+    
     public void ChangeGameMode(GameModeType gameModeSelected)
     {
         if (_selectedGameMode == gameModeSelected)
@@ -272,19 +272,20 @@ public class StageManager : MonoBehaviour
         int teamBlueEndScore = GetTeamScore(TeamType.Blue);
         int teamRedEndScore = GetTeamScore(TeamType.Red);
         TeamType winningTeam = TeamType.None;
+
         if (teamBlueEndScore == teamRedEndScore)
         {
             winningTeam = CheckTeamHealthRatio();
             if (winningTeam == TeamType.None)
             {
-                Debug.Log("무승부"); // 게임 종료 씬 구성 이후 무승부 시 연출 구현 필요
+                Debug.Log("무승부"); // Result UI 스크립트와 연결 필요
             }
-            Debug.Log($"{winningTeam}팀 승리"); // 게임 종료 씬 구성 이후 승리 팀 연출 구현 필요
+            Debug.Log($"{winningTeam}팀 승리"); // Result UI 스크립트와 연결 필요
         }
         else
         {
             winningTeam = (teamBlueEndScore > teamRedEndScore) ? TeamType.Blue : TeamType.Red;
-            Debug.Log($"게임 종료 {winningTeam}팀 승리"); // 게임 종료 씬 구성 이후 승리 팀 연출 구현 필요
+            Debug.Log($"게임 종료 {winningTeam}팀 승리"); // Result UI 스크립트와 연결 필요
         }
     }
     private TeamType CheckTeamHealthRatio()

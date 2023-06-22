@@ -23,7 +23,7 @@ public class LogInUI : MonoBehaviour
     private Image _logoShadow;
     private Image _logo;
 
-    private const string InputPattern = @"^[a-zA-Z]{2,8}$|^[°¡-ÆR]{1,4}$";
+    private const string InputPattern = @"^[a-zA-Z°¡-ÆR]{2,8}$";
 
     private void Awake()
     {
@@ -43,6 +43,7 @@ public class LogInUI : MonoBehaviour
         _userInput = _inputField.text;
         if (Regex.IsMatch(_userInput, InputPattern))
         {
+            GameManager.Instance.UserManager.UserData.Name = _userInput;            
             _logInField.SetActive(false);
             _loadingObject.SetActive(true);
             _loadingObject.transform.GetChild(0).GetComponent<RotatingImage>()?.StartRotation();
@@ -51,7 +52,7 @@ public class LogInUI : MonoBehaviour
         {
             _errorMessage.enabled = true;
         }
-    }
+    }    
 
     private async UniTask RunOpening()
     {

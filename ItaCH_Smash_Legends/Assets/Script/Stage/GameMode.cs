@@ -43,7 +43,7 @@ public class GameMode
     private void GetMapData()
     {
         string mapPrefabPath = "Map/SingleLogBridge/Prefab/Map"; // 추후 데이터 분리 필요
-        _currentMap = Resources.Load<GameObject>(mapPrefabPath);
+        _currentMap = Resources.Load<GameObject>(mapPrefabPath);        
         _spawnPoints = _currentMap.transform.GetChild(0).GetComponentsInChildren<Transform>();
     }
 }
