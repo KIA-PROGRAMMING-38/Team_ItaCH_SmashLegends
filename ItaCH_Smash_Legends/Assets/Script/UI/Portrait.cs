@@ -1,6 +1,4 @@
 using Cysharp.Threading.Tasks;
-using System.Collections;
-using System.Collections.Generic;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -12,7 +10,7 @@ public class Portrait : MonoBehaviour
     private GameObject _respawnTimer;
     private RotatingImage _rotateCircle;
     private TextMeshProUGUI _timeLeft;
-    
+
     public void InitPortraitSetting(Sprite sprite)
     {
         _portrait = GetComponent<Image>();

@@ -1,9 +1,6 @@
 using Cysharp.Threading.Tasks;
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Util.Method;
 
 public class RotatingImage : MonoBehaviour

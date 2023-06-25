@@ -15,9 +15,9 @@ public class PlayerFirstAttackState : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(_playerAttack.isFinishAttack && _playerAttack.CurrentPossibleComboCount == 1)
+        if (_playerAttack.isFinishAttack && _playerAttack.CurrentPossibleComboCount == 1)
         {
-            if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= _playerAttack.nextTransitionMinValue)
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= _playerAttack.nextTransitionMinValue)
             {
                 animator.Play(AnimationHash.FinishAttack);
             }

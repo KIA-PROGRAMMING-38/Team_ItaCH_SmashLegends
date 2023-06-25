@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStartIdleState : StateMachineBehaviour
@@ -19,7 +17,7 @@ public class PlayerStartIdleState : StateMachineBehaviour
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+
     }
 
     private void InvincibleTime()
@@ -27,7 +25,7 @@ public class PlayerStartIdleState : StateMachineBehaviour
         float delta = Time.deltaTime;
         _elapsedTime += delta;
         Debug.Log(_elapsedTime);
-        if(_elapsedTime > 2.1f)
+        if (_elapsedTime > 2.1f)
         {
             Debug.Log("무적 풀림");
             _playerHit.invincible = false;

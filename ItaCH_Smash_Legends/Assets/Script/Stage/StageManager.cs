@@ -1,14 +1,10 @@
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.Design.Serialization;
 using System.Text;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
-using Photon;
-using Photon.Pun;
-using Photon.Realtime;
 
 public class StageManager : MonoBehaviourPunCallbacks
 {
@@ -55,12 +51,12 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     public event Action<int, TeamType> OnTeamScoreChanged;
     public event Action<int> OnTimeChange;
-    
+
 
     private void OnEnable()
     {
         GetGameMode(DEFAULT_GAME_MODE);
-    }    
+    }
     public void GetGameMode(GameModeType gameModeSelected)
     {
         if (_currentGameMode == null)
@@ -72,11 +68,11 @@ public class StageManager : MonoBehaviourPunCallbacks
         _teamSize = _currentGameMode.TeamSize;
         _winningScore = _currentGameMode.WinningScore;
         _modeDefaultRespawnTime = _currentGameMode.ModeDefaultRespawnTime;
-        _isGameOver = false;        
+        _isGameOver = false;
     }
     public void SetStage(GameMode currentGameMode)
     {
-        CreateMap(currentGameMode);        
+        CreateMap(currentGameMode);
         _playerCharacterInstances = new GameObject[_totalPlayer + INDEX_OFFSET_FOR_ZERO];
         _teamBlueCharacter = new CharacterStatus[_teamSize];
         _teamRedCharacter = new CharacterStatus[_teamSize];
@@ -89,7 +85,7 @@ public class StageManager : MonoBehaviourPunCallbacks
     }
 
     public void CreateMap(GameMode gameMode)
-    {        
+    {
         //GameObject mapInstance = Instantiate(gameMode.Map, null);
 
     }
@@ -181,7 +177,7 @@ public class StageManager : MonoBehaviourPunCallbacks
                 return;
         }
     }
-    
+
     public void ChangeGameMode(GameModeType gameModeSelected)
     {
         if (_selectedGameMode == gameModeSelected)

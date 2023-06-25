@@ -1,7 +1,6 @@
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,14 +18,14 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        Instance = this;        
+        Instance = this;
         _logInCanvas = GetComponentInChildren<Canvas>();
         _connectionInfoText = transform.GetChild(0).GetChild(2).GetComponentInChildren<TextMeshProUGUI>();
         CreateMangerObjects();
-    } 
+    }
 
-    public void StartGame() 
-        // 현재 인스펙터 창에서 직접 할당 및 로그인 패널 버튼 입력 시 실행
+    public void StartGame()
+    // 현재 인스펙터 창에서 직접 할당 및 로그인 패널 버튼 입력 시 실행
     {
         OnStartGame.Invoke();
     }
@@ -47,17 +46,17 @@ public class GameManager : MonoBehaviour
 
         gameObject = new GameObject(nameof(UserManager));
         gameObject.transform.parent = transform;
-        UserManager = gameObject.AddComponent<UserManager>();        
+        UserManager = gameObject.AddComponent<UserManager>();
 
         // 스테이지 매니저 오브젝트 생성
         gameObject = new GameObject(nameof(StageManager));
         gameObject.transform.parent = transform;
         StageManager = gameObject.AddComponent<StageManager>();
         gameObject.SetActive(false);
-    }    
+    }
 
-    public void OnLogInSuccess() 
-        // Photon의 OnConnectedToMaster() 서버 접속 성공 콜백 실행 시 실행
+    public void OnLogInSuccess()
+    // Photon의 OnConnectedToMaster() 서버 접속 성공 콜백 실행 시 실행
     {
         _logInCanvas.gameObject.SetActive(false);
         LobbyUI.SetActive(true);

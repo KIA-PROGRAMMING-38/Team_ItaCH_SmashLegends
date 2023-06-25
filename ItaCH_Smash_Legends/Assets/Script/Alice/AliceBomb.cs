@@ -16,6 +16,7 @@ public class AliceBomb : MonoBehaviour
     {
         _bezier = true;
     }
+
     private void Update()
     {
         if (_bezier)
@@ -32,19 +33,18 @@ public class AliceBomb : MonoBehaviour
             time = 0;
             _bezier = false;
             transform.rotation = Quaternion.Euler(-90, 0, 0);
-            
+
             PlayEffect(other).Forget();
         }
         //if (other.CompareTag("Enemy"))
         //{
         //    BombHit(other);
         //}
-
     }
 
     private async UniTaskVoid PlayEffect(Collider other)
     {
-        for(int index = 0; index < effect.Length; ++index)
+        for (int index = 0; index < effect.Length; ++index)
         {
             effect[index].transform.SetParent(null);
         }
@@ -55,18 +55,17 @@ public class AliceBomb : MonoBehaviour
         effect[1].Play();
         effect[2].Play();
         gameObject.SetActive(false);
-        
+
         _bezier = true;
     }
-    
+
     // TODO : 피격 시 같이 구현
     //private void BombHit(Collider other)
     //{
     //    Rigidbody rigidbody = other.GetComponent<Rigidbody>();
-
-    //    Debug.Log("들어옴");
     //    rigidbody.velocity = Vector3.up * 3f;
     //}
+
     public void ThirdBezierCurve(Transform[] point, float time)
     {
         Vector3 middleOne = Vector3.Lerp(point[0].position, point[1].position, time);
@@ -76,11 +75,11 @@ public class AliceBomb : MonoBehaviour
         Vector3 middleFive = Vector3.Lerp(middleTwo, middleThree, time);
 
         transform.position = Vector3.Lerp(middleFour, middleFive, time);
-        
 
-        if(time < 0.6f)
+
+        if (time < 0.6f)
         {
-            transform.localRotation = Quaternion.Euler(-180, 0, 0); 
+            transform.localRotation = Quaternion.Euler(-180, 0, 0);
         }
         else
         {

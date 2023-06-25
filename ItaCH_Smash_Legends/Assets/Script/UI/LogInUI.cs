@@ -1,7 +1,4 @@
 using Cysharp.Threading.Tasks;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
@@ -52,7 +49,7 @@ public class LogInUI : MonoBehaviour
         {
             _errorMessage.enabled = true;
         }
-    }    
+    }
 
     private async UniTask RunOpening()
     {

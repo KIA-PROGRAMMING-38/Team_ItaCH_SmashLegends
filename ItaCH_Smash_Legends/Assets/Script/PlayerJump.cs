@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 
 public class PlayerJump : MonoBehaviour
 {
@@ -11,9 +9,9 @@ public class PlayerJump : MonoBehaviour
     internal Rigidbody _rigidbody;
     private Animator _animator;
 
-    private float _jumpAcceleration = 14.28f; 
-    private float _maxFallingSpeed = 23f; 
-    private float _gravitationalAcceleration = 36f; 
+    private float _jumpAcceleration = 14.28f;
+    private float _maxFallingSpeed = 23f;
+    private float _gravitationalAcceleration = 36f;
 
     public static readonly float MAX_JUMP_POWER = 1f;
     private static readonly Vector3 JUMP_DIRECTION = Vector3.up;
@@ -73,11 +71,10 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
-
     public void JumpInput()
     {
         _rigidbody.AddForce(JUMP_DIRECTION * MAX_JUMP_POWER, ForceMode.Impulse);
-        if(_playerStatus.CurrentState == PlayerStatus.State.HitUp)
+        if (_playerStatus.CurrentState == PlayerStatus.State.HitUp)
         {
             _rigidbody.velocity = Vector3.zero;
         }

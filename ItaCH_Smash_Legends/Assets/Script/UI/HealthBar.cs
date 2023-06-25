@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +7,7 @@ public class HealthBar : MonoBehaviour
 
     public void InitHealthBarSettings()
     {
-        _filling= transform.GetChild(0).GetComponent<Image>();
+        _filling = transform.GetChild(0).GetComponent<Image>();
     }
 
     public void SetHealthPoint(int healthPoint, int healthPointPercent)

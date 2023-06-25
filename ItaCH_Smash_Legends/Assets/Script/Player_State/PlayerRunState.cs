@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerRunState : StateMachineBehaviour
@@ -15,7 +13,6 @@ public class PlayerRunState : StateMachineBehaviour
         _playerAttack = animator.GetComponent<PlayerAttack>();
         _playerStatus.CurrentState = PlayerStatus.State.Run;
     }
-
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

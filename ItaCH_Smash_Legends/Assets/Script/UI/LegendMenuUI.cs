@@ -1,13 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Util.Enum;
 
 public class LegendMenuUI : MonoBehaviour, IPanel
 {
     private enum LegendName
-    { 
+    {
         앨리스,
         후크,
         피터
@@ -27,7 +25,7 @@ public class LegendMenuUI : MonoBehaviour, IPanel
 
         _contentTransform = transform.Find("Scroll View").GetChild(0).GetChild(0);
         _legendSelectMenu = new LegendSelectUI[_numberOfLegends];
-        for(int i = 0; i < _numberOfLegends; ++i)
+        for (int i = 0; i < _numberOfLegends; ++i)
         {
             _legendSelectMenu[i] = Instantiate(_legendSelectMenuPrefab, _contentTransform).AddComponent<LegendSelectUI>();
             _legendSelectMenu[i].InitLegendSelectUI(i, _portraitSprites[i], Enum.ToObject(typeof(LegendName), i).ToString());
@@ -40,10 +38,10 @@ public class LegendMenuUI : MonoBehaviour, IPanel
 
     public void RefreshFrame(int indexOfLegend)
     {
-        for(int i = 0; i < _numberOfLegends; ++i)
+        for (int i = 0; i < _numberOfLegends; ++i)
         {
             _legendSelectMenu[i].DisableSelectFrame();
-            if(i.Equals(indexOfLegend))
+            if (i.Equals(indexOfLegend))
             {
                 _legendSelectMenu[i].EnableSelectFrame();
             }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HookJumpLandState : StateMachineBehaviour
@@ -13,8 +11,5 @@ public class HookJumpLandState : StateMachineBehaviour
         animator.ResetTrigger(AnimationHash.JumpAttack);
         animator.SetBool(AnimationHash.JumpSecondAttack, false);
         animator.SetBool(AnimationHash.JumpFinishAttack, false);
-
-
     }
-
 }

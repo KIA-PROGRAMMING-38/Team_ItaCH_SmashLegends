@@ -34,7 +34,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (_playerStatus.IsJump)
         {
-            if(_playerStatus.CurrentState == PlayerStatus.State.Run
+            if (_playerStatus.CurrentState == PlayerStatus.State.Run
             || _playerStatus.CurrentState == PlayerStatus.State.Idle
             || _playerStatus.CurrentState == PlayerStatus.State.HitUp)
             {

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -22,7 +19,7 @@ public class Timer : MonoBehaviour
         int second = time % 60;
         stringBuilder.Append(minute);
         stringBuilder.Append(":");
-        stringBuilder.Append($"{second : 00}");
+        stringBuilder.Append($"{second: 00}");
         _timerText.SetText(stringBuilder);
     }
 }

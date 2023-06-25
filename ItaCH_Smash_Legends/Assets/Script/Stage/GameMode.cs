@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameMode
@@ -13,7 +10,7 @@ public class GameMode
     public int WinningScore { get => _winningScore; private set => _winningScore = value; }
     public Transform[] SpawnPoints { get => _spawnPoints; private set => _spawnPoints = value; }
     public float ModeDefaultRespawnTime { get => _modeDefaultRespawnTime; private set => _modeDefaultRespawnTime = value; }
-    
+
     private GameModeType _currentGameModeType;
     private GameObject _currentMap;
     private int _totalPlayer;
@@ -43,7 +40,7 @@ public class GameMode
     private void GetMapData()
     {
         string mapPrefabPath = "Map/SingleLogBridge/Prefab/Map"; // 추후 데이터 분리 필요
-        _currentMap = Resources.Load<GameObject>(mapPrefabPath);        
+        _currentMap = Resources.Load<GameObject>(mapPrefabPath);
         _spawnPoints = _currentMap.transform.GetChild(0).GetComponentsInChildren<Transform>();
     }
 }

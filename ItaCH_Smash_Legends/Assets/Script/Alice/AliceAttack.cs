@@ -57,6 +57,5 @@ public class AliceAttack : PlayerAttack
             playerStatus.CurrentState = PlayerStatus.State.SkillAttack;
         }
     }
-
     private void HeavyAttackBomb() => _aliceBomb.gameObject.SetActive(true);
 }

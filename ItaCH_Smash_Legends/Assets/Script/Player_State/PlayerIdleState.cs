@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerIdleState : StateMachineBehaviour
@@ -27,7 +25,4 @@ public class PlayerIdleState : StateMachineBehaviour
             animator.SetBool(AnimationHash.Run, true);
         }
     }
-
-
-
 }

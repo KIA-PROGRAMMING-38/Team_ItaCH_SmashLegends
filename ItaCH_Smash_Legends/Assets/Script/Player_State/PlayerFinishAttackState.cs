@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerFinishAttackState : StateMachineBehaviour
@@ -18,7 +16,7 @@ public class PlayerFinishAttackState : StateMachineBehaviour
         _playerAttack.isFinishAttack = false;
 
     }
-    
+
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _playerAttack.CurrentPossibleComboCount = _playerAttack.MAX_POSSIBLE_ATTACK_COUNT;

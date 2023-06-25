@@ -1,10 +1,8 @@
-using System.Collections.Generic;
-using UnityEngine;
 using System;
+using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 using UnityEngine.Audio;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
-using UnityEngine.UIElements;
 
 public class SoundManager : MonoBehaviour
 {
@@ -83,7 +81,7 @@ public class SoundManager : MonoBehaviour
     //3D음향이 필요없는 소리 재생 (이름으로 재생)
     public void Play(string name, SoundType soundType = SoundType.SFX)
     {
-        if(soundType.Equals(SoundType.SFX) && _audioClips.ContainsKey(name))
+        if (soundType.Equals(SoundType.SFX) && _audioClips.ContainsKey(name))
         {
             Play(_audioClips[name], soundType);
             return;
@@ -103,7 +101,7 @@ public class SoundManager : MonoBehaviour
     {
         AudioSource audioSource = audioSourceObject.GetComponent<AudioSource>();
 
-        if(audioSource == null)
+        if (audioSource == null)
         {
             audioSourceObject.AddComponent<AudioSource>();
             audioSource.outputAudioMixerGroup = _audioMixer.FindMatchingGroups(soundType.ToString())[0];

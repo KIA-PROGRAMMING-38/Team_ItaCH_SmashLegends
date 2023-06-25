@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PeterAttack : PlayerAttack
@@ -19,10 +17,10 @@ public class PeterAttack : PlayerAttack
 
     private void Update()
     {
-        if(playerStatus.CurrentState == PlayerStatus.State.SkillAttack)
+        if (playerStatus.CurrentState == PlayerStatus.State.SkillAttack)
         {
             rigidbodyAttack.velocity = transform.forward * _skillAttackMoveSpeed;
-            if(playerStatus.CurrentState == PlayerStatus.State.SkillEndAttack)
+            if (playerStatus.CurrentState == PlayerStatus.State.SkillEndAttack)
             {
                 rigidbodyAttack.velocity = Vector3.zero;
             }

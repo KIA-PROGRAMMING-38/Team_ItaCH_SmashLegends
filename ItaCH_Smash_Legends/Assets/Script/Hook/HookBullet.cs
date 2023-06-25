@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
-
 public class HookBullet : MonoBehaviour
 {
     protected const float DEFAULT_BULLET_SPEED = 20f;
@@ -65,6 +64,4 @@ public class HookBullet : MonoBehaviour
     }
     private void GetPoolBulletDeleteEffect(BulletDeleteEffect effect) => effect.gameObject.SetActive(true);
     private void ReturnBulletDeleteEffect(BulletDeleteEffect effect) => effect.gameObject.SetActive(false);
-
-
 }

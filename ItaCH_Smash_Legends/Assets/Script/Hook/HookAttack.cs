@@ -79,7 +79,7 @@ public class HookAttack : PlayerAttack
     }
     private void OnDisable()
     {
-        if(Parrot.activeSelf)
+        if (Parrot.activeSelf)
         {
             Parrot.SetActive(false);
         }
@@ -162,7 +162,6 @@ public class HookAttack : PlayerAttack
     {
         CreateBullet(_bulletSpawnPositionLeft.position, _defaultIndex);
         CreateBulletEffect(_bulletSpawnPositionLeft.position, _defaultFireEffect);
-
     }
     public void DefaultAttackRight()
     {
@@ -258,7 +257,6 @@ public class HookAttack : PlayerAttack
         {
             CreateBullet(Parrot.transform.position, _skillIndex).transform.Rotate(_heavySkillBulletRatate);
         }
-
     }
     private void CreateBulletEffect(Vector3 spawnPosition, int index)
     {
@@ -323,7 +321,6 @@ public class HookAttack : PlayerAttack
         return currentEulerAngle;
     }
     private bool IsDiagonalAttack() => transform.rotation.eulerAngles.y % 45 == 0;
-
     private void CreateObjectPool()
     {
         _bulletPool[_defaultIndex] = new ObjectPool<HookBullet>(CreateBulletOnPool, GetPoolBullet, ReturnBulletToPool, (bullet) => Destroy(bullet.gameObject), true, 50, 500);
@@ -336,7 +333,6 @@ public class HookAttack : PlayerAttack
         _bulletCreateEffectPool[_defaultFireEffect] = new ObjectPool<FireEffect>(CreateDefaultBulletFireEffectOnPool, GetPoolBulletFireEffect, ReturnBulletFireEffect, (effect) => Destroy(effect.gameObject), true, 50, 500);
         _bulletCreateEffectPool[_heavyFireEffect] = new ObjectPool<FireEffect>(CreateHeavyBulletFireEffectOnPool, GetPoolBulletFireEffect, ReturnBulletFireEffect, (effect) => Destroy(effect.gameObject), true, 50, 500);
         _bulletCreateEffectPool[_lastHeavyFireEffect] = new ObjectPool<FireEffect>(CreateLastHeavyBulletFireEffectOnPool, GetPoolBulletFireEffect, ReturnBulletFireEffect, (effect) => Destroy(effect.gameObject), true, 50, 500);
-
     }
     private HookBullet CreateBulletOnPool()
     {

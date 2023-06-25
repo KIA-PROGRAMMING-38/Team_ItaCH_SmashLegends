@@ -29,7 +29,7 @@ public class MatchUI : MonoBehaviourPunCallbacks, IPanel
             Debug.Log("connect ½ÇÇà");
             GameManager.Instance.LobbyManager.Connect();
         }
-    }    
+    }
 
     public void InitPanelSettings(LobbyUI lobbyUI)
     {

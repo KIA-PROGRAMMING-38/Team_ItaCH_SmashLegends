@@ -1,9 +1,6 @@
 using Cysharp.Threading.Tasks;
-using System.Collections;
-using System.Collections.Generic;
 using System.Text;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +8,7 @@ public class RespawnTimer : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
     [SerializeField] private TextMeshProUGUI _text;
-    private StringBuilder stringBuilder= new StringBuilder();   
+    private StringBuilder stringBuilder = new StringBuilder();
     private int _playerId;
     //지금은 로직상 무조건 나의 playerID가 1이라, 이를 반영하여 코드 작성,
     //추후 UserData의 실제 ID를 가져와 나인지, 내가 아닌지를 구분할 예정
@@ -23,7 +20,7 @@ public class RespawnTimer : MonoBehaviour
 
     public async void CheckPlayer(CharacterStatus characterStatus)
     {
-        if(characterStatus.PlayerID.Equals(_playerId))
+        if (characterStatus.PlayerID.Equals(_playerId))
         {
             gameObject.SetActive(true);
 

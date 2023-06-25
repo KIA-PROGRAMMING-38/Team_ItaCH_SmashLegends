@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class HookSkillHit : HookHit
 {
     void Start()
@@ -10,5 +6,4 @@ public class HookSkillHit : HookHit
         knockbackUpDirection = skillKnockbackUpDirection;
         knockbackPower = lightKnockbackPower;
     }
-
 }

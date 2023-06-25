@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PeterHit : PlayerHit
@@ -13,7 +11,7 @@ public class PeterHit : PlayerHit
 
         switch (_playerStatus.CurrentState)
         {
-            
+
             case PlayerStatus.State.SkillAttack:
                 GetHit(lightKnockbackPower, AnimationHash.Hit, other, _characterStatus.SkillAttackDamage);
                 break;
@@ -40,7 +38,7 @@ public class PeterHit : PlayerHit
         Rigidbody rigidbody = other.GetComponent<Rigidbody>();
         Animator animator = other.GetComponent<Animator>();
         CharacterStatus opponentCharacter = other.GetComponent<CharacterStatus>();
-        if(rigidbody.velocity != Vector3.zero)
+        if (rigidbody.velocity != Vector3.zero)
         {
             rigidbody.velocity = Vector3.zero;
         }

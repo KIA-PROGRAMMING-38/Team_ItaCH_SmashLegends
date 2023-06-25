@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class HookHeavyHit : HookHit
 {
     void Start()
@@ -11,5 +7,4 @@ public class HookHeavyHit : HookHit
         knockbackUpDirection = heavyKnockbackUpDirection;
         animationHashValue = AnimationHash.HitUp;
     }
-
 }

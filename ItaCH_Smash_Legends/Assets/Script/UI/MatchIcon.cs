@@ -1,7 +1,4 @@
 using Cysharp.Threading.Tasks;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,7 +37,7 @@ public class MatchIcon : MonoBehaviour
     public void InitMatchIconSettings()
     {
         _image = GetComponent<Image>();
-        _rectTransform= GetComponent<RectTransform>();
+        _rectTransform = GetComponent<RectTransform>();
         _numberOfSprites = _sprites.Length;
         _currentSpriteIndex = 0;
         _image.sprite = _sprites[_currentSpriteIndex];
@@ -52,7 +49,7 @@ public class MatchIcon : MonoBehaviour
     }
     private void OnEnable()
     {
-        if(_isInitialSettingFinished)
+        if (_isInitialSettingFinished)
         {
             _cancellationTokenSource = new CancellationTokenSource();
             _matchedImage.enabled = false;
@@ -65,7 +62,7 @@ public class MatchIcon : MonoBehaviour
     }
     private async UniTask RotateIcons(CancellationToken cancellationToken)
     {
-        while(true)
+        while (true)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
@@ -83,7 +80,7 @@ public class MatchIcon : MonoBehaviour
                     _image.sprite = _sprites[_currentSpriteIndex];
                     _isSpriteChanged = true;
                 }
-                else if(_isSpriteChanged && _rectTransform.rotation.eulerAngles.z <= EndCycleAngle)
+                else if (_isSpriteChanged && _rectTransform.rotation.eulerAngles.z <= EndCycleAngle)
                 {
                     _rectTransform.rotation = Quaternion.Euler(0, 0, 0);
                     await UniTask.Delay(FirstTurnDelay);

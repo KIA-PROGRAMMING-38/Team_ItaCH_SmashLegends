@@ -72,7 +72,7 @@ public class CharacterStatus : CharacterDefaultStatus
         {
             this._isDead = true;
             this.gameObject.SetActive(false);
-            OnPlayerDie.Invoke(this);            
+            OnPlayerDie.Invoke(this);
             RespawnAsync(_currentRespawnTime).Forget();
         }
     }
@@ -88,7 +88,7 @@ public class CharacterStatus : CharacterDefaultStatus
         this.GetComponent<Collider>().isTrigger = false;
         this._isDead = false;
         OnPlayerRespawn.Invoke(this);
-        OnRespawnSetting.Invoke(this.gameObject,PlayerID);
+        OnRespawnSetting.Invoke(this.gameObject, PlayerID);
         InitHP();
     }
 }

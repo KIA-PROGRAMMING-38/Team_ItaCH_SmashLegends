@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AliceExplosion : MonoBehaviour
@@ -27,6 +24,6 @@ public class AliceExplosion : MonoBehaviour
 
         rigidbody.AddForce(knockbackDirection * power, ForceMode.Impulse);
         animator.SetTrigger(animationHash);
-        //opponentCharacter.GetDamage(damage);
+        //opponentCharacter.GetDamage(damage); // 피격 판정 수정 필요 
     }
 }

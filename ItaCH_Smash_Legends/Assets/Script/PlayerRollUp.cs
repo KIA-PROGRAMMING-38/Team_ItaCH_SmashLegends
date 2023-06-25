@@ -1,6 +1,4 @@
 using Cysharp.Threading.Tasks;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerRollUp : MonoBehaviour
@@ -105,8 +103,6 @@ public class PlayerRollUp : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             RollingForward = -transform.forward;
-
-
         }
     }
 }

@@ -21,7 +21,7 @@ public class LobbyUI : MonoBehaviour
     private TextMeshProUGUI _userName;
 
     private void Start() // 이보다 먼저 실행될 경우(Awake, OnEnable) 실행흐름에 영향
-    {        
+    {
         InitLobbyUISettings();
     }
 
@@ -32,7 +32,7 @@ public class LobbyUI : MonoBehaviour
         {
             return;
         }
-        _userName.text = GameManager.Instance.UserManager.UserData.Name;        
+        _userName.text = GameManager.Instance.UserManager.UserData.Name;
     }
 
     public void InitLobbyUISettings()

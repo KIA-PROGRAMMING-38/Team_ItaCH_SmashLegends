@@ -1,7 +1,4 @@
 using UnityEngine;
-using Cysharp.Threading.Tasks;
-using Cysharp.Threading.Tasks.CompilerServices;
-using System;
 
 public class PlayerAttack : MonoBehaviour, IAttack
 {
@@ -20,7 +17,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     protected PlayerStatus playerStatus;
     protected Animator animator;
-    
+
     protected float defaultDashPower = 1f;
     internal float nextTransitionMinValue = 0.5f;
     internal float nextTransitionMaxValue = 0.8f;
@@ -107,5 +104,4 @@ public class PlayerAttack : MonoBehaviour, IAttack
         }
     }
 
-    
 }

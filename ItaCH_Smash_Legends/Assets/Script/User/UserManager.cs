@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UserManager : MonoBehaviour
@@ -8,6 +6,6 @@ public class UserManager : MonoBehaviour
     private UserData _userData;
     void Start()
     {
-        _userData = new UserData();        
-    }    
+        _userData = new UserData();
+    }
 }

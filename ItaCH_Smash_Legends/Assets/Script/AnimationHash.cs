@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class AnimationHash
@@ -30,5 +28,5 @@ public static class AnimationHash
     public readonly static int RollUpBack = Animator.StringToHash("RollUpBack");
     public readonly static int StandUp = Animator.StringToHash("StandUp");
     public readonly static int Die = Animator.StringToHash("Die");
-    
+
 }
