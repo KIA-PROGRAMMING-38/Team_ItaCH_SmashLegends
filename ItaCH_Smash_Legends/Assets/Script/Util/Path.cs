@@ -16,6 +16,7 @@ namespace Util.Path
         public const string MatchingButtonPath = "UI/GameStartButton";
         public const string MapPath = "Map/LobbyWorld/";
         public const string UISpritePath = "UI/Sprite/";
+        public const string CharacterDataTable = "Charater/CharacterData/CharacterDefaultStatusData";
         #endregion
         public static string GetLobbyCharacterPath(CharacterType characterType)
         {
