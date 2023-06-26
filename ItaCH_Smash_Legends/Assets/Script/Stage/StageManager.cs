@@ -5,10 +5,12 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class StageManager : MonoBehaviourPunCallbacks
 {
     private const GameModeType DEFAULT_GAME_MODE = GameModeType.Duel;
+    public GameMode CurrentGameMode { get => _currentGameMode; private set => _currentGameMode = value; }
     private GameMode _currentGameMode;
     private GameModeType _selectedGameMode;
     private GameObject[] _playerCharacterInstances;
@@ -52,10 +54,17 @@ public class StageManager : MonoBehaviourPunCallbacks
     public event Action<int, TeamType> OnTeamScoreChanged;
     public event Action<int> OnTimeChange;
 
-
-    private void OnEnable()
+    private void Awake()
     {
+
+    }
+    public override void OnEnable()
+    {
+        const float INTENSITY = 1.23f;
+        RenderSettings.sun.intensity *= INTENSITY;
         GetGameMode(DEFAULT_GAME_MODE);
+        GameManager.Instance.LobbyManager.OnEnteringGameMode -= SetStage;
+        GameManager.Instance.LobbyManager.OnEnteringGameMode += SetStage;
     }
     public void GetGameMode(GameModeType gameModeSelected)
     {
@@ -86,8 +95,7 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     public void CreateMap(GameMode gameMode)
     {
-        //GameObject mapInstance = Instantiate(gameMode.Map, null);
-
+        GameObject mapInstance = Instantiate(gameMode.Map, null);
     }
 
     public void CreateCharacter(int playerID, Transform[] spawnPoints) // 캐릭터 선택 기능 구현 시 매개변수로 선택한 캐릭터 함께 전달

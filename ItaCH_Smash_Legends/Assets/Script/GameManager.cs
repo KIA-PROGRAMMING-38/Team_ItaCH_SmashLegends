@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     private Canvas _logInCanvas;
     public event Action OnStartGame;
 
-
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -39,10 +38,10 @@ public class GameManager : MonoBehaviour
         gameObject.transform.parent = transform;
         LobbyManager = gameObject.AddComponent<LobbyManager>();
         LobbyManager.ConnectionInfoText = _connectionInfoText;
-        LobbyManager.OnLogInSuccess -= OnLogInSuccess;
-        LobbyManager.OnLogInSuccess += OnLogInSuccess;
-        LobbyManager.OnMatchSuccess -= OnMatchSuccess;
-        LobbyManager.OnMatchSuccess += OnMatchSuccess;
+        LobbyManager.OnLogInSuccess -= LogInSuccess;
+        LobbyManager.OnLogInSuccess += LogInSuccess;
+        LobbyManager.OnMatchSuccess -= MatchSuccess;
+        LobbyManager.OnMatchSuccess += MatchSuccess;
 
         gameObject = new GameObject(nameof(UserManager));
         gameObject.transform.parent = transform;
@@ -55,13 +54,13 @@ public class GameManager : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void OnLogInSuccess()
+    public void LogInSuccess()
     // Photon의 OnConnectedToMaster() 서버 접속 성공 콜백 실행 시 실행
     {
         _logInCanvas.gameObject.SetActive(false);
         LobbyUI.SetActive(true);
     }
-    public void OnMatchSuccess(GameModeType gameModeType)
+    public void MatchSuccess(GameModeType gameModeType)
     {
         StageManager.gameObject.SetActive(true);
     }
