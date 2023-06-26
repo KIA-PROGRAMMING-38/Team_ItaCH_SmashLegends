@@ -9,24 +9,23 @@ public class AliceHit : PlayerHit
         Vector3 heavyAttackKnockbackDirection = transform.up + transform.forward;
         lightKnockbackPower = 0.8f;
         heavyKnockbackPower = 0.8f;
-        if (!invincible)
+
+        switch (_playerStatus.CurrentState)
         {
-            switch (_playerStatus.CurrentState)
-            {
-                case PlayerStatus.State.SkillEndAttack:
-                    SkillAttackHit(other).Forget();
-                    break;
-                case PlayerStatus.State.ComboAttack:
-                    GetHit(defaultAttackKnockbackDirection, lightKnockbackPower, AnimationHash.Hit, other);
-                    break;
-                case PlayerStatus.State.FinishComboAttack:
-                    GetHit(heavyAttackKnockbackDirection, heavyKnockbackPower, AnimationHash.HitUp, other);
-                    break;
-                case PlayerStatus.State.JumpAttack:
-                    GetHit(heavyAttackKnockbackDirection, heavyKnockbackPower, AnimationHash.HitUp, other);
-                    break;
-            }
+            case PlayerStatus.State.SkillAttack:
+                SkillAttackHit(other).Forget();
+                break;
+            case PlayerStatus.State.ComboAttack:
+                GetHit(defaultAttackKnockbackDirection, lightKnockbackPower, AnimationHash.Hit, other);
+                break;
+            case PlayerStatus.State.FinishComboAttack:
+                GetHit(heavyAttackKnockbackDirection, heavyKnockbackPower, AnimationHash.HitUp, other);
+                break;
+            case PlayerStatus.State.JumpAttack:
+                GetHit(heavyAttackKnockbackDirection, heavyKnockbackPower, AnimationHash.HitUp, other);
+                break;
         }
+
     }
 
     private async UniTask SkillAttackHit(Collider other)

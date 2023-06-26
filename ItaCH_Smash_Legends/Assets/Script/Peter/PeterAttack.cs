@@ -56,4 +56,5 @@ public class PeterAttack : PlayerAttack
 
     public void EnableSkillAttackHitZone() => _skillAttackHitZone.enabled = true;
     public void DisableSkillAttackHitZone() => _skillAttackHitZone.enabled = false;
+    public void ChangeSkillEndAttackStatus() => playerStatus.CurrentState = PlayerStatus.State.SkillEndAttack;
 }
