@@ -1,30 +1,25 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
-public class PlayerHit : MonoBehaviour
+public class PlayerHit : MonoBehaviour, IHit
 {
-    private float _lightKnockbackPower = 0.4f;
-    private float _heavyKnockbackPower = 0.7f;
+    protected float lightKnockbackPower;
+    protected float heavyKnockbackPower;
     internal bool invincible;
 
-    private Vector3 _knockbackDirection;
+    protected Vector3 _knockbackDirection;
 
-    private PlayerAttack _playerAttack;
-    private CharacterStatus _characterStatus;
-    private PlayerStatus _playerStatus;
-    private Animator _animator;
+    protected CharacterStatus _characterStatus;
+    protected PlayerStatus _playerStatus;
+    protected Animator _animator;
 
-    void Start()
+    private void Start()
     {
-        _playerAttack = GetComponent<PlayerAttack>();
         _characterStatus = GetComponent<CharacterStatus>();
         _playerStatus = GetComponent<PlayerStatus>();
-
         _animator = GetComponent<Animator>();
 
-        invincible = false;
+        // TODO : 무적이 해결되면 같이 처리
+        //invincible = true;
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -32,55 +27,18 @@ public class PlayerHit : MonoBehaviour
         {
             _animator.SetTrigger(AnimationHash.HitDown);
         }
-    } 
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && (_playerStatus.CurrentState == PlayerStatus.State.ComboAttack
-            || _playerStatus.CurrentState == PlayerStatus.State.HeavyAttack))
+        if (other.CompareTag("Player"))
         {
-            Vector3 hitPoint = other.transform.position - transform.position;
-            other.transform.rotation = Quaternion.LookRotation(-hitPoint);
+            other.transform.forward = (-1) * transform.forward;
             Hit(other);
         }
     }
-    private void Hit(Collider other)
+    public virtual void Hit(Collider other)
     {
-        _knockbackDirection = transform.forward + transform.up;
-        int currentAttackDamage;
-        Rigidbody rigidbody = other.GetComponent<Rigidbody>();
-        Animator animator = other.GetComponent<Animator>();
-        PlayerHit playerHit = other.GetComponent<PlayerHit>();
 
-        if (playerHit.invincible == false)
-        {
-            AttackRangeOff();
-            CharacterStatus opponentCharacter = other.GetComponent<CharacterStatus>();
-            if (EndComboAttack())
-            {
-                animator.Play(AnimationHash.HitUp);
-                rigidbody.AddForce(_knockbackDirection * _heavyKnockbackPower, ForceMode.Impulse);
-                currentAttackDamage = _characterStatus.DefaultAttackDamage;
-                opponentCharacter.GetDamage(currentAttackDamage);
-            }
-            else if (_playerStatus.CurrentState == PlayerStatus.State.HeavyAttack)
-            {
-                animator.Play(AnimationHash.HitUp);
-                rigidbody.AddForce((_knockbackDirection * 1.3f) * _heavyKnockbackPower, ForceMode.Impulse);
-                currentAttackDamage = _characterStatus.HeavyAttackDamage;
-                opponentCharacter.GetDamage(currentAttackDamage);
-            }
-            else if (_playerStatus.CurrentState == PlayerStatus.State.ComboAttack)
-            {
-                animator.SetTrigger(AnimationHash.Hit);
-                rigidbody.AddForce(_knockbackDirection * _lightKnockbackPower, ForceMode.Impulse);
-                currentAttackDamage = _characterStatus.DefaultAttackDamage;
-                opponentCharacter.GetDamage(currentAttackDamage);
-            }
-        }
     }
-
-    private bool EndComboAttack() => _playerAttack.CurrentPossibleComboCount == 0;
-    public void AttackRangeOn() => _playerAttack.attackRange.enabled = true;
-    public void AttackRangeOff() => _playerAttack.attackRange.enabled = false;
 }

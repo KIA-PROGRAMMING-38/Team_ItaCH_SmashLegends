@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerJumpState : StateMachineBehaviour
@@ -14,8 +11,10 @@ public class PlayerJumpState : StateMachineBehaviour
         _playerJump = animator.GetComponent<PlayerJump>();
         _rigidbody = animator.GetComponent<Rigidbody>();
         _playerStatus = animator.GetComponent<PlayerStatus>();
-        
+
         _playerStatus.IsJump = false;
+        _playerStatus.IsHang = false;
+
         _playerStatus.CurrentState = PlayerStatus.State.Jump;
 
         animator.SetBool(AnimationHash.Run, false);

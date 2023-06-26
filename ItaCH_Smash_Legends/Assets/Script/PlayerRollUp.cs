@@ -1,6 +1,4 @@
 using Cysharp.Threading.Tasks;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerRollUp : MonoBehaviour
@@ -54,13 +52,14 @@ public class PlayerRollUp : MonoBehaviour
     }
 
     // DownIdle 상태에서 호출 
-    private async UniTaskVoid RoiingInputWaitTask()
+    public async UniTaskVoid RoiingInputWaitTask()
     {
         while (_playerStatus.IsRollUp)
         {
             await UniTask.Delay(100);
             if (_playerMove.moveDirection != Vector3.zero)
             {
+                RollingDirection();
                 RollingDash(_playerMove.moveDirection);
             }
 
@@ -97,23 +96,13 @@ public class PlayerRollUp : MonoBehaviour
         }
     }
 
-    
+
     private void OnTriggerEnter(Collider other)
     {
         //플레이어 피격시 체공 후 가 조건
-        if (other.CompareTag("Finish"))
+        if (other.CompareTag("Player"))
         {
-            Rigidbody rigidbody = GetComponent<Rigidbody>();
-            Animator _anim = GetComponent<Animator>();
-
-            rigidbody.AddForce(-transform.forward + transform.up, ForceMode.Impulse);
             RollingForward = -transform.forward;
-
-
-            _anim.Play(AnimationHash.DownIdle);
-            _playerStatus.IsRollUp = true;
-            RoiingInputWaitTask().Forget();
-
         }
     }
 }

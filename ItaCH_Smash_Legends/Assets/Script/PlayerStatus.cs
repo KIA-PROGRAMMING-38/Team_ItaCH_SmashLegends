@@ -1,13 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
     public enum State
     {
-        None, Idle, Run, Jump, Hang, HitUp, ComboAttack, HeavyAttack, SkillAttack
+        None, Idle, Run, Jump, Hang, HitUp, DownIdle, ComboAttack, FinishComboAttack, JumpAttack, HeavyAttack, SkillAttack, SkillEndAttack
     }
 
     public State CurrentState;

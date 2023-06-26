@@ -8,6 +8,7 @@ TagManager:
   - HangZone
   - SpawnPoints
   - DeadZone
+  - Enemy
   layers:
   - Default
   - TransparentFX

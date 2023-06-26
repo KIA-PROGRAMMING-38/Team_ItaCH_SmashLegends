@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SkillAttack",
+                    "type": "Button",
+                    "id": "35ed300c-a325-4764-9f4d-cb59ca821893",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -101,7 +110,7 @@
                 {
                     "name": "",
                     "id": "ffc6c73e-eae6-48e6-ae28-8edc0fe0100c",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/rightShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
@@ -112,7 +121,7 @@
                 {
                     "name": "",
                     "id": "cb71c032-8bbf-4a42-8fa6-5c39bcaf033e",
-                    "path": "<Keyboard>/z",
+                    "path": "<Keyboard>/comma",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
@@ -123,11 +132,22 @@
                 {
                     "name": "",
                     "id": "1ada06a1-1c08-4a94-afef-b92ac634e01c",
-                    "path": "<Keyboard>/x",
+                    "path": "<Keyboard>/period",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
                     "action": "SmashAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f8101bfd-2bfd-462d-8d90-2befdcbb2916",
+                    "path": "<Keyboard>/slash",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "SkillAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -168,6 +188,15 @@
                     "name": "SmashAttack",
                     "type": "Button",
                     "id": "356af590-fdfa-4ef8-8a7b-8ab230bcb3c5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SkillAttack",
+                    "type": "Button",
+                    "id": "be1fafdf-dbb0-4f9b-beee-63525d1da329",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -260,6 +289,17 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "SmashAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "442cdf9e-7aa4-4601-ab46-720afdc99390",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "SkillAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

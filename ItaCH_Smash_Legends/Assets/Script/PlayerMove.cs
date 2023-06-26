@@ -8,7 +8,7 @@ public class PlayerMove : MonoBehaviour
     private Animator _animator;
 
     internal Vector3 moveDirection;
-    
+
     internal float _currentMoveSpeed = 5.4f;
 
     private void Start()

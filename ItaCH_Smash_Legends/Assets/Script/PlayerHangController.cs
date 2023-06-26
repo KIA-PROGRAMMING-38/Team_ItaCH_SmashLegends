@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Threading;
+using UnityEngine;
 
 public class PlayerHangController : MonoBehaviour
 {
@@ -12,9 +10,9 @@ public class PlayerHangController : MonoBehaviour
     private Rigidbody _rigidbody;
     private Animator _animator;
     private Collider _collider;
-    
+
     public CancellationTokenSource TaskCancel;
-    
+
     private float _hangPositionY = 2.5f;
     private float _fallingWaitTime = 3f;
 
@@ -40,12 +38,12 @@ public class PlayerHangController : MonoBehaviour
 
     private Vector3 SetHangRotation(Vector3 other)
     {
-        other = other.normalized * -1;
-        other.x = Mathf.Round(other.x);
-        other.y = Mathf.Round(other.y);
-        other.z = Mathf.Round(other.z);
+        Vector3 otherPosition = other.normalized;
+        otherPosition.x = Mathf.Round(other.x);
+        otherPosition.y = 0;
+        otherPosition.z = Mathf.Round(other.z);
 
-        return other;
+        return otherPosition * -1;
     }
     private Vector3 SetHangPosition(Collider other)
     {
@@ -83,7 +81,7 @@ public class PlayerHangController : MonoBehaviour
     {
         _rigidbody.constraints = RigidbodyConstraints.FreezeAll;
     }
-    
+
     public void OffConstraints()
     {
         _rigidbody.constraints = RigidbodyConstraints.None;
@@ -96,7 +94,5 @@ public class PlayerHangController : MonoBehaviour
         await UniTask.Delay(TimeSpan.FromSeconds(_fallingWaitTime), cancellationToken: TaskCancel.Token);
         _collider.isTrigger = true;
         _animator.Play(AnimationHash.HangFalling);
-
-
     }
 }

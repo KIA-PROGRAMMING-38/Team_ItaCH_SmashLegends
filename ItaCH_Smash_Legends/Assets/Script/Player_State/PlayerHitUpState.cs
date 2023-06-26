@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerHitUpState : StateMachineBehaviour
 {
     private PlayerHit _playerHit;
     private PlayerStatus _playerStatus;
-    
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _playerHit = animator.GetComponent<PlayerHit>();
@@ -24,7 +21,8 @@ public class PlayerHitUpState : StateMachineBehaviour
     //}
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        _playerStatus.CurrentState = PlayerStatus.State.Idle;
         _playerHit.invincible = false;
-        animator.ResetTrigger(AnimationHash.HitDown);
+        animator.ResetTrigger(AnimationHash.HitUp);
     }
 }

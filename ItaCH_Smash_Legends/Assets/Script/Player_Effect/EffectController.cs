@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class EffectController : MonoBehaviour
@@ -30,12 +28,4 @@ public abstract class EffectController : MonoBehaviour
             _effects[i].SetActive(false);
         }
     }
-    public abstract void EnableFirstAttackEffect();
-    public abstract void EnableSecondAttackFirstEffect();
-    public abstract void EnableSecondAttackSecondEffect();
-    public abstract void EnableFinishAttackEffect();
-    public abstract void EnableHeavyAttackEffect();
-    public abstract void EnableJumpAttackEffect();
-    public abstract void DisableJumpAttackEffect();
-
 }
