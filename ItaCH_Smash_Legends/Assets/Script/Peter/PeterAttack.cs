@@ -3,12 +3,11 @@ using UnityEngine;
 public class PeterAttack : PlayerAttack
 {
     private float _skillAttackMoveSpeed = 7f;
-    private MeshCollider _skillAttackHitZone;
+    [SerializeField] private SphereCollider _skillAttackHitZone;
+    [SerializeField] private SphereCollider _attackHitZone;
+    [SerializeField] private SphereCollider _heavyAttackHitZone;
+    [SerializeField] private BoxCollider _jumpAttackHitZone;
 
-    private void Start()
-    {
-        _skillAttackHitZone = GetComponentInChildren<MeshCollider>();
-    }
     public override void AttackOnDash()
     {
         defaultDashPower = 0.8f;
@@ -50,11 +49,16 @@ public class PeterAttack : PlayerAttack
             playerStatus.CurrentState == PlayerStatus.State.Idle)
         {
             animator.Play(AnimationHash.SkillAttack);
-            playerStatus.CurrentState = PlayerStatus.State.SkillAttack;
         }
     }
 
-    public void EnableSkillAttackHitZone() => _skillAttackHitZone.enabled = true;
-    public void DisableSkillAttackHitZone() => _skillAttackHitZone.enabled = false;
-    public void ChangeSkillEndAttackStatus() => playerStatus.CurrentState = PlayerStatus.State.SkillEndAttack;
+    private void EnableAttackHitZone() => _attackHitZone.enabled = true;
+    private void DisableAttackHitZone() => _attackHitZone.enabled = false;
+    private void EnableJumpAttackHitZone() => _jumpAttackHitZone.enabled = true;
+    private void DisableJumpAttackHitZone() => _jumpAttackHitZone.enabled = false;
+    private void EnableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = true;
+    private void DisableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = false;
+    private void EnableSkillAttackHitZone() => _skillAttackHitZone.enabled = true;
+    private void DisableSkillAttackHitZone() => _skillAttackHitZone.enabled = false;
+    private void ChangeSkillEndAttackStatus() => playerStatus.CurrentState = PlayerStatus.State.SkillEndAttack;
 }
