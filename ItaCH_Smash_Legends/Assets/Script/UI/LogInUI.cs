@@ -44,6 +44,7 @@ public class LogInUI : MonoBehaviour
             _logInField.SetActive(false);
             _loadingObject.SetActive(true);
             _loadingObject.transform.GetChild(0).GetComponent<RotatingImage>()?.StartRotation();
+            GameManager.Instance.StartGame();
         }
         else
         {
