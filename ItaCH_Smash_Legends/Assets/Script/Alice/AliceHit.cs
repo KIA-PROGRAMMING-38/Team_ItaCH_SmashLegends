@@ -7,8 +7,6 @@ public class AliceHit : PlayerHit
     {
         Vector3 defaultAttackKnockbackDirection = transform.up;
         Vector3 heavyAttackKnockbackDirection = transform.up + transform.forward;
-        lightKnockbackPower = 0.8f;
-        heavyKnockbackPower = 0.8f;
 
         switch (_playerStatus.CurrentState)
         {
@@ -16,7 +14,7 @@ public class AliceHit : PlayerHit
                 SkillAttackHit(other).Forget();
                 break;
             case PlayerStatus.State.ComboAttack:
-                GetHit(defaultAttackKnockbackDirection, lightKnockbackPower, AnimationHash.Hit, other);
+                GetHit(defaultAttackKnockbackDirection, defaultKnockbackPower, AnimationHash.Hit, other);
                 break;
             case PlayerStatus.State.FinishComboAttack:
                 GetHit(heavyAttackKnockbackDirection, heavyKnockbackPower, AnimationHash.HitUp, other);
@@ -51,7 +49,7 @@ public class AliceHit : PlayerHit
 
     private void GetHit(Vector3 transform, float power, int AnimationHash, Collider other)
     {
-        lightKnockbackPower = 0.2f;
+        defaultKnockbackPower = 0.2f;
         heavyKnockbackPower = 0.8f;
         Rigidbody rigidbody = other.GetComponent<Rigidbody>();
         Animator animator = other.GetComponent<Animator>();

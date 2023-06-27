@@ -57,6 +57,10 @@ public class StageManager : MonoBehaviourPunCallbacks
     {
         GetGameMode(DEFAULT_GAME_MODE);
     }
+    private void Start()
+    {
+        SetStage(_currentGameMode);
+    }
     public void GetGameMode(GameModeType gameModeSelected)
     {
         if (_currentGameMode == null)
@@ -86,8 +90,7 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     public void CreateMap(GameMode gameMode)
     {
-        //GameObject mapInstance = Instantiate(gameMode.Map, null);
-
+        GameObject mapInstance = Instantiate(gameMode.Map, null);
     }
 
     public void CreateCharacter(int playerID, Transform[] spawnPoints) // 캐릭터 선택 기능 구현 시 매개변수로 선택한 캐릭터 함께 전달

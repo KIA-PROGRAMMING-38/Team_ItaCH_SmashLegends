@@ -1,24 +1,42 @@
 using Cysharp.Threading.Tasks;
 using System;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Util.Enum;
 
 public class CharacterStatus : CharacterDefaultStatus
 {
     // 게임 중 바뀔 수 있는 스탯들
     public int HealthPoint { get => _currentHealthPoint; set => _currentHealthPoint = value; }
+    public int MaxHealthPoint { get => _maxHealthPoint; private set => _maxHealthPoint = value; }
     public int HealthPointRatio { get => _currentHealthPointRatio; set => _currentHealthPointRatio = value; }
     public int PlayerID { get => _playerID; set => _playerID = value; }
-
+    public int Size { get => _size; set => _size = value; }
     public float RespawnTime { get => _currentRespawnTime; set => _currentRespawnTime = value; }
     public TeamType TeamType { get => _teamType; set => _teamType = value; }
     public Vector3 TeamSpawnPoint { get => _spawnPoint; set => _spawnPoint = value; }
 
-    public int DefaultAttackDamage { get => _defaultAttackDamage; private set => _defaultAttackDamage = value; }
+
+    public int DefaultAttackDamage { get => _defaultAttackDamage; set => _defaultAttackDamage = value; }
     public int HeavyAttackDamage { get => _heavyAttackDamage; set => _heavyAttackDamage = value; }
     public int JumpAttackDamage { get => _jumpAttackDamage; set => _jumpAttackDamage = value; }
     public int SkillAttackDamage { get => _skillAttackDamage; set => _skillAttackDamage = value; }
+    public int SkillGauage { get => _skillGauage; set => _skillGauage = value; }
+    public int SkillGauageRecovery { get => _skillRecovery; set => _skillRecovery = value; }
+
+    public float DefaultKnockbackPower { get => _defaultKnockbackPower; set => _defaultKnockbackPower = value; }
+    public float HeavyKnockbackPower { get => _heavyKnockbackPower; set => _heavyKnockbackPower = value; }
+    public float HeavyCooltime { get => _heavyCooltime; set => _heavyCooltime = value; }
+    public float DashPower { get => _dashpower; set => _dashpower = value; }
+
+    public float JumpAcceleration { get => _jumpAcceleration; set => _jumpAcceleration = value; }
+    public float MaxFallingSpeed { get => _maxFallingSpeed; set => _maxFallingSpeed = value; }
+    public float GravitationalAcceleration { get => _gravitationalAcceleration; set => _gravitationalAcceleration = value; }
+    public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
+
     private int _currentHealthPoint;
+    private int _maxHealthPoint;
     private int _currentHealthPointRatio;
     private float _currentRespawnTime;
     private const int DEAD_TRIGGER_HP = 0;
@@ -32,41 +50,80 @@ public class CharacterStatus : CharacterDefaultStatus
     private TeamType _teamType;
 
     private Vector3 _spawnPoint;
+    private int _size;
 
     private int _defaultAttackDamage;
     private int _heavyAttackDamage;
     private int _jumpAttackDamage;
     private int _skillAttackDamage;
+    private int _skillGauage;
+    private int _skillRecovery;
+
+    private float _defaultKnockbackPower;
+    private float _heavyKnockbackPower;
+    private float _dashpower;
+    private float _heavyCooltime;
+
+    private float _jumpAcceleration;
+    private float _maxFallingSpeed;
+    private float _gravitationalAcceleration;
+    private float _moveSpeed;
+
     private CharacterType _characterType;
     public CharacterType CharacterType { get => _characterType; }
 
     private void Awake()
     {
-        InitHP();
-        InitAttackDamage();
+        InitStatus();
     }
     public void InitCharacterType(CharacterType characterType)
     {
         _characterType = characterType;
+        InitCharacterStatus(_characterType);
     }
-    public void InitHP()
+    public void InitStatus()
     {
-        _currentHealthPoint = base.MaxHealthPoint;
+        InitHP();
+        InitSize();
+        InitAttackRelevant();
+        InitMoveRelevant();
+    }
+    private void InitHP()
+    {
+        _currentHealthPoint = base.HpData;
+        _maxHealthPoint = base.HpData;
         _currentHealthPointRatio = 100;
         OnPlayerHealthPointChange?.Invoke(_currentHealthPoint, _currentHealthPointRatio);
     }
-    public void InitAttackDamage() // 데이터 테이블 구성 이후 반영 필요
+    private void InitAttackRelevant()
     {
-        _defaultAttackDamage = 150;
-        _heavyAttackDamage = 500;
-        _jumpAttackDamage = 300;
-        _skillAttackDamage = 200;
+        _defaultAttackDamage = base.DefaultAttackDamageData;
+        _heavyAttackDamage = base.HeavyAttackDamageData;
+        _jumpAttackDamage = base.JumpAttackDamageData;
+        _skillAttackDamage = base.SkillAttackDamageData;
+        _defaultKnockbackPower = base.DefaultKnockbackPowerData;
+        _heavyKnockbackPower = base.HeavyKnockbackPowerData;
+        _dashpower = base.DashPowerData;
+        _heavyCooltime = base.HeavyCooltimeData;
+        _skillGauage = base.SkillGaugeData;
+        _skillRecovery = base.SkillRecoveryData;
+    }
+    private void InitMoveRelevant()
+    {
+        _jumpAcceleration = base.JumpAccelerationData;
+        _maxFallingSpeed = base.MaxFallingSpeedData;
+        _gravitationalAcceleration = base.GravitationalAccelerationData;
+        _moveSpeed = base.MoveSpeedData;
+    }
+    private void InitSize()
+    {
+        _size = base.SizeData;
     }
     public void GetDamage(int damage) // 피격 판정 시 호출
     {
         int damagedHealthPoint = _currentHealthPoint - damage;
         _currentHealthPoint = Mathf.Max(damagedHealthPoint, DEAD_TRIGGER_HP);
-        _currentHealthPointRatio = (_currentHealthPoint * 100) / base.MaxHealthPoint;
+        _currentHealthPointRatio = (_currentHealthPoint * 100) / MaxHealthPoint;
         OnPlayerHealthPointChange.Invoke(_currentHealthPoint, _currentHealthPointRatio);
         if (_currentHealthPoint <= DEAD_TRIGGER_HP && !this._isDead)
         {

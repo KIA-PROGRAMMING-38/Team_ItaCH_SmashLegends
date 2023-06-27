@@ -4,7 +4,6 @@ public class PeterAttack : PlayerAttack
 {
     private float _skillAttackMoveSpeed = 7f;
     private MeshCollider _skillAttackHitZone;
-
     private void Start()
     {
         _skillAttackHitZone = GetComponentInChildren<MeshCollider>();
