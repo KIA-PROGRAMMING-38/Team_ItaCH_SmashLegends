@@ -66,6 +66,10 @@ public class StageManager : MonoBehaviourPunCallbacks
         GameManager.Instance.LobbyManager.OnEnteringGameMode -= SetStage;
         GameManager.Instance.LobbyManager.OnEnteringGameMode += SetStage;
     }
+    private void Start()
+    {
+        SetStage(_currentGameMode);
+    }
     public void GetGameMode(GameModeType gameModeSelected)
     {
         if (_currentGameMode == null)

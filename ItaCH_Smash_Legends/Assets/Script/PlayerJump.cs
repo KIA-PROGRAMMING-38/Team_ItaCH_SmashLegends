@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
-
+    private CharacterStatus _characterStatus;
     private PlayerStatus _playerStatus;
     private PlayerMove _playerMove;
 
     internal Rigidbody _rigidbody;
     private Animator _animator;
 
-    private float _jumpAcceleration = 14.28f;
+    private float _jumpAcceleration = 14.2f;
     private float _maxFallingSpeed = 23f;
     private float _gravitationalAcceleration = 36f;
 
@@ -19,6 +19,7 @@ public class PlayerJump : MonoBehaviour
 
     private void Awake()
     {
+        _characterStatus= GetComponent<CharacterStatus>();
         _rigidbody = GetComponent<Rigidbody>();
         _playerStatus = GetComponent<PlayerStatus>();
         _playerMove = GetComponent<PlayerMove>();
@@ -29,8 +30,12 @@ public class PlayerJump : MonoBehaviour
 
     void Start()
     {
-        // 플레이어의 mass 설정
+        _jumpAcceleration = _characterStatus.JumpAcceleration;
+        _maxFallingSpeed = _characterStatus.MaxFallingSpeed;
+        _gravitationalAcceleration = _characterStatus.GravitationalAcceleration;
+
         _rigidbody.mass = MAX_JUMP_POWER / _jumpAcceleration;
+
     }
 
     private void FixedUpdate()

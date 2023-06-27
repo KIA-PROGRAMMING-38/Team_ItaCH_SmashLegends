@@ -2,8 +2,8 @@ public class HookSkillHit : HookHit
 {
     void Start()
     {
-        damage = skillDamage;
+        defaultdamage = skillDamage;
         knockbackUpDirection = skillKnockbackUpDirection;
-        knockbackPower = lightKnockbackPower;
+        knockbackPower = defaultKnockbackPower;
     }
 }

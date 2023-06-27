@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class HookHit : MonoBehaviour
 {
-    protected float lightKnockbackPower = 0.05f;
+    protected float defaultKnockbackPower = 0.05f;
     protected float heavyKnockbackPower = 0.7f;
     protected float knockbackPower;
     protected int animationHashValue = AnimationHash.Hit;
-    protected int damage = 100;
+    protected int defaultdamage = 100;
     protected int skillDamage = 50;
     protected int heavyDamage = 200;
     protected Vector3 heavyKnockbackUpDirection = new Vector3(0, 0.7f, 0);
@@ -18,10 +18,23 @@ public class HookHit : MonoBehaviour
     private Vector3 _bulletHitPosition;
     private HookBullet _hookBullet;
 
+    private CharacterStatus _characterStatus;
+
     private void Awake()
     {
         _hookBullet = transform.GetParentComponent<HookBullet>();
-        knockbackPower = lightKnockbackPower;
+        _characterStatus = _hookBullet.constructor.GetComponent<CharacterStatus>();
+        SetPowerAndDamage();
+        knockbackPower = defaultKnockbackPower;
+    }
+
+    private void SetPowerAndDamage()
+    {
+        defaultKnockbackPower = _characterStatus.DefaultKnockbackPower;
+        heavyKnockbackPower = _characterStatus.HeavyKnockbackPower;
+        defaultdamage = _characterStatus.DefaultAttackDamage;
+        skillDamage = _characterStatus.SkillAttackDamage;
+        heavyDamage = _characterStatus.SkillAttackDamage;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -69,6 +82,6 @@ public class HookHit : MonoBehaviour
     private void GetHitDamage(Collider other)
     {
         CharacterStatus opponentCharacter = other.GetComponent<CharacterStatus>();
-        opponentCharacter.GetDamage(damage);
+        opponentCharacter.GetDamage(defaultdamage);
     }
 }

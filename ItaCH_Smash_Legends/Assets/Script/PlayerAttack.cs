@@ -14,22 +14,30 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     protected PlayerMove playerMove;
     protected Rigidbody rigidbodyAttack;
-
+    protected CharacterStatus characterStatus;
     protected PlayerStatus playerStatus;
     protected Animator animator;
 
     protected float defaultDashPower = 1f;
     internal float nextTransitionMinValue = 0.5f;
     internal float nextTransitionMaxValue = 0.8f;
+    protected float heavyCooltime;
+    protected int skillGauage;
+    protected int skillGauageRecovery;
 
     private void Awake()
     {
         playerMove = GetComponent<PlayerMove>();
         rigidbodyAttack = GetComponent<Rigidbody>();
-
+        characterStatus= GetComponent<CharacterStatus>();
         playerStatus = GetComponent<PlayerStatus>();
         animator = GetComponent<Animator>();
 
+        defaultDashPower = characterStatus.DashPower;
+        heavyCooltime = characterStatus.HeavyCooltime;
+        skillGauage = characterStatus.SkillGauage;
+        skillGauageRecovery = characterStatus.SkillGauageRecovery;
+        
         CurrentPossibleComboCount = MAX_POSSIBLE_ATTACK_COUNT;
     }
 

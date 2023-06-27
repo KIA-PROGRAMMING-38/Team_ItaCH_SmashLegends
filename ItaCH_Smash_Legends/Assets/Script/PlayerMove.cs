@@ -3,18 +3,23 @@ using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
 {
-
+    private CharacterStatus _characterStatus;
     private PlayerStatus _playerStatus;
     private Animator _animator;
 
     internal Vector3 moveDirection;
-
     internal float _currentMoveSpeed = 5.4f;
+
+    private void Awake()
+    {
+        _characterStatus= GetComponent<CharacterStatus>();
+        _playerStatus = GetComponent<PlayerStatus>();
+        _animator = GetComponent<Animator>();
+    }
 
     private void Start()
     {
-        _playerStatus = GetComponent<PlayerStatus>();
-        _animator = GetComponent<Animator>();
+        _currentMoveSpeed = _characterStatus.MoveSpeed;
     }
 
     public void MoveAndRotate()

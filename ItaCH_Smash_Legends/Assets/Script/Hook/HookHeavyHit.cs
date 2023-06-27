@@ -2,7 +2,7 @@ public class HookHeavyHit : HookHit
 {
     void Start()
     {
-        damage = heavyDamage;
+        defaultdamage = heavyDamage;
         knockbackPower = heavyKnockbackPower;
         knockbackUpDirection = heavyKnockbackUpDirection;
         animationHashValue = AnimationHash.HitUp;

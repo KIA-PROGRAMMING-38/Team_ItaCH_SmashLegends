@@ -1,4 +1,4 @@
-레전드,궁게이지,궁회복량,이동속도,점프가속도,중력가속도,최대낙하속도,사이즈,체력,공격력,헤비 공격력,스킬 공격력,최대 공격 횟수,대시 파워,기본 공격 넉백,헤비 공격 넉백,스매시 쿨타임
-앨리스(Alice),1600,10,5.2,14.7,32,20,1,4000,500,1000,1500,3,1,0.3,0.5,5
-후크(Hook),950,10,5.6,14.7,36,20,1,4000,500,1000,1500,3,1,0.3,0.5,5
-피터(Peter),2000,10,5.4,14.28,36,23,1,4000,500,1000,1500,3,1,0.3,0.5,5
+LegendID,SkillGauge,SkillRecovery,MoveSpeed,JumpAcceleration,GravitationalAcceleration,MaxFallingSpeed,Size,HP,DefaultAttackDamage,JumpAttackDamage,HeavyAttackDamage,SkillAttackDamage,DashPower,DefaultKnockbackPower,HeavyKnockbackPower,HeavyCooltime
+0,1600,10,5.2,14.7,32,20,1,4000,500,300,1000,1500,1,0.2,0.8,5
+1,950,10,5.6,14.7,36,20,1,4000,500,300,1000,1500,1,0.05,0.7,5
+2,2000,10,5.4,14.28,36,23,1,4000,500,300,1000,1500,1,0.8,0.8,5

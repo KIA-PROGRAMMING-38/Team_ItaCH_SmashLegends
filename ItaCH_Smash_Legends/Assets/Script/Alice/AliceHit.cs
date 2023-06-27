@@ -7,8 +7,6 @@ public class AliceHit : PlayerHit
     {
         Vector3 defaultAttackKnockbackDirection = transform.up;
         Vector3 heavyAttackKnockbackDirection = transform.up + transform.forward;
-        lightKnockbackPower = 0.8f;
-        heavyKnockbackPower = 0.8f;
 
         switch (_playerStatus.CurrentState)
         {
@@ -16,7 +14,7 @@ public class AliceHit : PlayerHit
                 SkillAttackHit(other, _characterStatus.SkillAttackDamage).Forget();
                 break;
             case PlayerStatus.State.ComboAttack:
-                GetHit(defaultAttackKnockbackDirection, lightKnockbackPower, AnimationHash.Hit, other, _characterStatus.DefaultAttackDamage);
+                GetHit(defaultAttackKnockbackDirection, defaultKnockbackPower, AnimationHash.Hit, other,_characterStatus.DefaultAttackDamage);
                 break;
             case PlayerStatus.State.FinishComboAttack:
                 GetHit(heavyAttackKnockbackDirection, heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.HeavyAttackDamage);
@@ -45,7 +43,7 @@ public class AliceHit : PlayerHit
         playerStatus.CurrentState = PlayerStatus.State.None;
         rigidbody.AddForce(firstKnockbackDirection * knockbackPower, ForceMode.Impulse);
         animator.SetTrigger(AnimationHash.Hit);
-        // damageÀÇ °æ¿ì InGame¿¡¼­ È®ÀÎÀ» ÇØ¾ßÇØ¼­ ÁÖ¼®Ã³¸®ÇØµ×½À´Ï´Ù.
+        // damageì˜ ê²½ìš° InGameì—ì„œ í™•ì¸ì„ í•´ì•¼í•´ì„œ ì£¼ì„ì²˜ë¦¬í•´ë’€ìŠµë‹ˆë‹¤.
         //opponentCharacter.GetDamage(damage);
         await UniTask.Delay(afterSmashDelay);
         rigidbody.AddForce((transform.up + secondKnockbackDirection) * pullingPower, ForceMode.Impulse);
@@ -57,7 +55,7 @@ public class AliceHit : PlayerHit
 
     private void GetHit(Vector3 transform, float power, int AnimationHash, Collider other, int damage)
     {
-        lightKnockbackPower = 0.2f;
+        defaultKnockbackPower = 0.2f;
         heavyKnockbackPower = 0.8f;
 
         Rigidbody rigidbody = other.GetComponent<Rigidbody>();
