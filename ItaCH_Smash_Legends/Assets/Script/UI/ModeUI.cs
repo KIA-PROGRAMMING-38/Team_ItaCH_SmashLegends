@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class ModeUI : MonoBehaviour
@@ -8,6 +9,8 @@ public class ModeUI : MonoBehaviour
     [SerializeField] private Portrait[] _portraits;
     [SerializeField] private Timer _timer;
     [SerializeField] private RespawnTimer _respawnTimer;
+    [SerializeField] private TextMeshProUGUI _1PUserName;
+    [SerializeField] private TextMeshProUGUI _2PUserName;
 
     private StageManager _stageManager;
     public void InitModeUISettings(StageManager stageManager)
@@ -15,6 +18,7 @@ public class ModeUI : MonoBehaviour
         _stageManager = stageManager;
         GameObject[] players = stageManager.Players;
         //실제로 조작을 하는 플레이어의 characterStatus
+        _1PUserName.text = GameManager.Instance.UserManager.UserData.Name;
         CharacterStatus playerCharacterStatus = players[1].GetComponent<CharacterStatus>();
         SetUIForEachPlayers(players);
         SetUIForCurrentPlayer(playerCharacterStatus);

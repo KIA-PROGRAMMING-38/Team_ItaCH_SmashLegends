@@ -16,11 +16,11 @@ public class MatchUI : MonoBehaviourPunCallbacks, IPanel
 
     public event Action _OnStageStart;
 
-    private float _time;
+    //private float _time;
     public bool IsGameStarted { get => _isGameStarted; set => _isGameStarted = value; }
     private bool _isGameStarted;
 
-    private void OnEnable()
+    public override void OnEnable()
     {
         GameManager.Instance.LobbyManager.ConnectionInfoText = _matchText;
 
