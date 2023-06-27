@@ -70,10 +70,9 @@ public class HookAttack : PlayerAttack
             _bulletContainers[i] = transform.GetChild(i).gameObject;
             _bullets[i] = _bulletContainers[i].transform.GetChild(0).GetComponent<HookBullet>();
         }
-        for (int i = 0; i < _bulletCreateEffects.Length; ++i)
-        {
-            _bulletCreateEffects[i] = _bulletContainers[i].transform.GetChild(1).GetComponent<FireEffect>();
-        }
+            _bulletCreateEffects[_defaultFireEffect] = _bulletContainers[_defaultIndex].transform.GetChild(1).GetComponent<FireEffect>();
+        _bulletCreateEffects[_heavyFireEffect] = _bulletContainers[_heavyIndex].transform.GetChild(1).GetComponent<FireEffect>();
+        _bulletCreateEffects[_lastHeavyFireEffect] = _bulletContainers[_lastHeavyIndex].transform.GetChild(1).GetComponent<FireEffect>();
 
         _shotEffect = Parrot.transform.GetChild(0).GetComponent<ParticleSystem>();
     }
@@ -380,20 +379,20 @@ public class HookAttack : PlayerAttack
     private void ReturnBulletToPool(HookBullet bullet) => bullet.gameObject.SetActive(false);
     private FireEffect CreateDefaultBulletFireEffectOnPool()
     {
-        FireEffect effect = Instantiate(_bulletCreateEffects[_defaultIndex]);
-        effect.pool = _bulletCreateEffectPool[_defaultIndex];
+        FireEffect effect = Instantiate(_bulletCreateEffects[_defaultFireEffect]);
+        effect.pool = _bulletCreateEffectPool[_defaultFireEffect];
         return effect;
     }
     private FireEffect CreateHeavyBulletFireEffectOnPool()
     {
-        FireEffect effect = Instantiate(_bulletCreateEffects[_heavyIndex]);
-        effect.pool = _bulletCreateEffectPool[_heavyIndex];
+        FireEffect effect = Instantiate(_bulletCreateEffects[_heavyFireEffect]);
+        effect.pool = _bulletCreateEffectPool[_heavyFireEffect];
         return effect;
     }
     private FireEffect CreateLastHeavyBulletFireEffectOnPool()
     {
-        FireEffect effect = Instantiate(_bulletCreateEffects[_lastHeavyIndex]);
-        effect.pool = _bulletCreateEffectPool[_lastHeavyIndex];
+        FireEffect effect = Instantiate(_bulletCreateEffects[_lastHeavyFireEffect]);
+        effect.pool = _bulletCreateEffectPool[_lastHeavyFireEffect];
         return effect;
     }
     private void GetPoolBulletFireEffect(FireEffect effect) => effect.gameObject.SetActive(true);
