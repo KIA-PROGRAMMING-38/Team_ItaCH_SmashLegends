@@ -41,10 +41,5 @@ public class CharacterDefaultStatus : MonoBehaviour
         DefaultKnockbackPowerData = dataTable.CharacterTable[(int)id].defaultKnockbackPower;
         HeavyKnockbackPowerData = dataTable.CharacterTable[(int)id].heavyKnockbackPower;
         HeavyCooltimeData = dataTable.CharacterTable[(int)id].heavyCooltime;
-
-        Debug.Log(HeavyAttackDamageData);
-        Debug.Log(HeavyCooltimeData);
-
     }
-
 }
