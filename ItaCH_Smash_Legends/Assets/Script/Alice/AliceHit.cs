@@ -11,50 +11,63 @@ public class AliceHit : PlayerHit
         switch (_playerStatus.CurrentState)
         {
             case PlayerStatus.State.SkillAttack:
-                SkillAttackHit(other).Forget();
+                SkillAttackHit(other, _characterStatus.SkillAttackDamage).Forget();
                 break;
             case PlayerStatus.State.ComboAttack:
-                GetHit(defaultAttackKnockbackDirection, defaultKnockbackPower, AnimationHash.Hit, other);
+                GetHit(defaultAttackKnockbackDirection, defaultKnockbackPower, AnimationHash.Hit, other,_characterStatus.DefaultAttackDamage);
                 break;
             case PlayerStatus.State.FinishComboAttack:
-                GetHit(heavyAttackKnockbackDirection, heavyKnockbackPower, AnimationHash.HitUp, other);
+                GetHit(heavyAttackKnockbackDirection, heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.HeavyAttackDamage);
                 break;
             case PlayerStatus.State.JumpAttack:
-                GetHit(heavyAttackKnockbackDirection, heavyKnockbackPower, AnimationHash.HitUp, other);
+                GetHit(heavyAttackKnockbackDirection, heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.JumpAttackDamage);
                 break;
         }
 
     }
 
-    private async UniTask SkillAttackHit(Collider other)
+    private async UniTask SkillAttackHit(Collider other, int damage)
     {
 
         float knockbackPower = 0.8f;
         float pullingPower = 0.5f;
+        int afterSmashDelay = 400;
+        int unControllableMovement = 1000;
         Vector3 firstKnockbackDirection = transform.up;
         Vector3 secondKnockbackDirection = (transform.position - other.transform.position).normalized;
         Rigidbody rigidbody = other.GetComponent<Rigidbody>();
         Animator animator = other.GetComponent<Animator>();
         PlayerStatus playerStatus = other.GetComponent<PlayerStatus>();
+        CharacterStatus opponentCharacter = other.GetComponent<CharacterStatus>();
 
         playerStatus.CurrentState = PlayerStatus.State.None;
         rigidbody.AddForce(firstKnockbackDirection * knockbackPower, ForceMode.Impulse);
         animator.SetTrigger(AnimationHash.Hit);
-        await UniTask.Delay(400);
+        // damage의 경우 InGame에서 확인을 해야해서 주석처리해뒀습니다.
+        //opponentCharacter.GetDamage(damage);
+        await UniTask.Delay(afterSmashDelay);
         rigidbody.AddForce((transform.up + secondKnockbackDirection) * pullingPower, ForceMode.Impulse);
         animator.SetTrigger(AnimationHash.Hit);
-        await UniTask.Delay(1000);
+        //opponentCharacter.GetDamage(damage);
+        await UniTask.Delay(unControllableMovement);
         playerStatus.CurrentState = PlayerStatus.State.Idle;
     }
 
-    private void GetHit(Vector3 transform, float power, int AnimationHash, Collider other)
+    private void GetHit(Vector3 transform, float power, int AnimationHash, Collider other, int damage)
     {
         defaultKnockbackPower = 0.2f;
         heavyKnockbackPower = 0.8f;
+
         Rigidbody rigidbody = other.GetComponent<Rigidbody>();
         Animator animator = other.GetComponent<Animator>();
+        PlayerStatus playerStatus = other.GetComponent<PlayerStatus>();
+        CharacterStatus opponentCharacter = other.GetComponent<CharacterStatus>();
+
+        if (playerStatus.CurrentState == PlayerStatus.State.Jump && _playerStatus.CurrentState != PlayerStatus.State.JumpAttack)
+            return;
 
         rigidbody.AddForce(transform * power, ForceMode.Impulse);
         animator.SetTrigger(AnimationHash);
+        opponentCharacter.GetDamage(damage);
     }
 }

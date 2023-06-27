@@ -18,6 +18,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public event Action OnLogInSuccess;
     public event Action<GameModeType> OnMatchSuccess;
+    public event Action<GameMode> OnEnteringGameMode;
 
     private void Awake()
     {
@@ -69,6 +70,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         _connectionInfoText.text = "아레나가 열리고 있습니다. 상대를 기다리고 있습니다.";
         PhotonNetwork.LoadLevel("InGame");
+        OnMatchSuccess.Invoke(GameModeType.Duel);
     }
-
+    public void OnLevelWasLoaded(int level)
+    {
+        GameMode currentGameMode = GameManager.Instance.StageManager.CurrentGameMode;
+        OnEnteringGameMode.Invoke(currentGameMode);
+    }
 }
