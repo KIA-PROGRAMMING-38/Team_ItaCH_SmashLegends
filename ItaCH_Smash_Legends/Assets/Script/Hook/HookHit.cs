@@ -40,8 +40,6 @@ public class HookHit : MonoBehaviour
     {
         if (other.CompareTag("Player") && other.gameObject.layer != _hookBullet.constructor.layer)
         {
-            EffectController effect = other.GetComponent<EffectController>();
-            effect.SetDieSmokeEffect();
             PlayerStatus playerStatus = other.GetComponent<PlayerStatus>();
 
             SetDirection(other);
