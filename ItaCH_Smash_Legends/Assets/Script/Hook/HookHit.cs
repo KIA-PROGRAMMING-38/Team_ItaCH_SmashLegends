@@ -23,7 +23,7 @@ public class HookHit : MonoBehaviour
     private void Awake()
     {
         _hookBullet = transform.GetParentComponent<HookBullet>();
-        _characterStatus = _hookBullet.constructor.GetComponent<CharacterStatus>();
+        _characterStatus = _hookBullet.constructor.gameObject.GetComponent<CharacterStatus>();
         SetPowerAndDamage();
         knockbackPower = defaultKnockbackPower;
     }
