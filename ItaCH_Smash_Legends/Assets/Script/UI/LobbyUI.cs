@@ -18,7 +18,7 @@ public class LobbyUI : MonoBehaviour
     private float _defaultVolume = 1f;
     public float DefaultVolume { get => _defaultVolume; }
 
-    private TextMeshProUGUI _userName;
+    private TextMeshProUGUI _userNameTextUI;
 
     private void Start() // 이보다 먼저 실행될 경우(Awake, OnEnable) 실행흐름에 영향
     {
@@ -27,12 +27,13 @@ public class LobbyUI : MonoBehaviour
 
     private void OnEnable()
     {
-        _userName = GetComponentInChildren<TextMeshProUGUI>();
-        if (GameManager.Instance.UserManager.UserData.Name == null)
+        _userNameTextUI = GetComponentInChildren<TextMeshProUGUI>();
+        string userName = GameManager.Instance.UserManager.UserLocalData.Name;
+        if (userName == null)
         {
             return;
         }
-        _userName.text = GameManager.Instance.UserManager.UserData.Name;
+        _userNameTextUI.text = userName;
     }
 
     public void InitLobbyUISettings()
@@ -46,7 +47,8 @@ public class LobbyUI : MonoBehaviour
     private void SetLobbyCharaterModel()
     {
         _characterModels = new GameObject[(int)CharacterType.NumOfCharacter];
-        _currentCharacterIndex = (int)CharacterType.Alice;
+        _currentCharacterIndex = (int)GameManager.Instance.UserManager.UserLocalData.SelectedCharacter;
+
         for (int i = 0; i < (int)CharacterType.NumOfCharacter; ++i)
         {
             GameObject characterModelPrefab = Resources.Load<GameObject>(FilePath.GetLobbyCharacterPath((CharacterType)i));

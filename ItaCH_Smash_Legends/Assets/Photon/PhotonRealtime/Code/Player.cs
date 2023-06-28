@@ -43,7 +43,7 @@ namespace Photon.Realtime
         /// Used internally to identify the masterclient of a room.
         /// </summary>
         protected internal Room RoomReference { get; set; }
-
+        
 
         /// <summary>Backing field for property.</summary>
         private int actorNumber = -1;
