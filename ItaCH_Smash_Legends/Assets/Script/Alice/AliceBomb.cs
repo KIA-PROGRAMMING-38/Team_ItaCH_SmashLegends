@@ -24,13 +24,13 @@ public class AliceBomb : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        float bezierSpeed = 1.5f;
         if (!_bezier)
         {
-            _time += Time.deltaTime * 1.5f;
+            _time += Time.deltaTime * bezierSpeed;
             ThirdBezierCurve(point, _time);
         }
     }
-    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ground") && !_bezier)
@@ -73,8 +73,6 @@ public class AliceBomb : MonoBehaviour
         RootReCall();
         _bezier = false;
     }
-
-
     private void BombHit(Collider other, int AnimationHash)
     {
         Rigidbody rigidbody = other.GetComponent<Rigidbody>();
@@ -82,8 +80,6 @@ public class AliceBomb : MonoBehaviour
         rigidbody.AddForce(_knockBackDirection * _knockBackPower, ForceMode.Impulse);
         animator.SetTrigger(AnimationHash);
     }
-
-   
     public void ThirdBezierCurve(Transform[] point, float time)
     {
         Vector3 transformPosition = Vector3.Lerp(Vector3.Lerp(point[0].position, point[1].position, time),
