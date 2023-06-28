@@ -2,15 +2,11 @@ using Photon.Pun;
 using Photon.Realtime;
 using System;
 using TMPro;
-using UnityEngine;
 using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
     private string _gameVersion = "1";
-    public GameObject LobbyUI { get => _lobbyUI; set => _lobbyUI = value; }
-    private GameObject _lobbyUI;
-
     public TextMeshProUGUI ConnectionInfoText { get => _connectionInfoText; set => _connectionInfoText = value; } // 로딩 패널에서 현재 접속 상태를 보여줄 텍스트    
     private TextMeshProUGUI _connectionInfoText;
     public Button ExitRoomButton { get => _exitRoomButton; set => _exitRoomButton = value; }
@@ -69,8 +65,14 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         _connectionInfoText.text = "아레나가 열리고 있습니다. 상대를 기다리고 있습니다.";
+        // UserManager에 로컬 데이터 넘겨줘야함
         PhotonNetwork.LoadLevel("InGame");
         OnMatchSuccess.Invoke(GameModeType.Duel);
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        // 상대 데이터 받아오는 부분
     }
     public void OnLevelWasLoaded(int level)
     {

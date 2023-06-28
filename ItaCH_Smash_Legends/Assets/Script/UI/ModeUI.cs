@@ -18,7 +18,7 @@ public class ModeUI : MonoBehaviour
         _stageManager = stageManager;
         GameObject[] players = stageManager.Players;
         //실제로 조작을 하는 플레이어의 characterStatus
-        _1PUserName.text = GameManager.Instance.UserManager.UserData.Name;
+        _1PUserName.text = GameManager.Instance.UserManager.UserLocalData.Name;
         CharacterStatus playerCharacterStatus = players[1].GetComponent<CharacterStatus>();
         SetUIForEachPlayers(players);
         SetUIForCurrentPlayer(playerCharacterStatus);

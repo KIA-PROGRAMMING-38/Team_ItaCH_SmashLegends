@@ -1,7 +1,20 @@
-﻿public class UserData
+﻿using Util.Enum;
+
+public class UserData
 {
-    public string Name { get; set; } // 게임 실행 시 유저 입력값
-    public int Id { get; set; }
-    // public CharaterType SelectedCharacter 유저가 선택한 캐릭터 타입 저장 필요
+    public string Name { get; set; }
+    public int Id { get; set; }    
     public TeamType TeamType { get; set; }
+    private CharacterType _selectedCharacter;      
+    public CharacterType SelectedCharacter 
+    {
+        get
+        {
+            if (_selectedCharacter == default)
+                return CharacterType.Peter;
+            else 
+                return _selectedCharacter; 
+        }
+        set => _selectedCharacter = value; 
+    }
 }
