@@ -12,11 +12,13 @@ public class LegendSelectUI : MonoBehaviour
     private Image _selectedFrame;
     private Button _button;
     private TextMeshProUGUI _legendName;
+    private int _selectedCharacter;
 
     public event Action<int> OnSelectLegend;
 
     public void InitLegendSelectUI(int currentIndex, Sprite portraitSprite, string legendName)
     {
+        _selectedCharacter = (int)GameManager.Instance.UserManager.UserLocalData.SelectedCharacter;
         _legendIndex = currentIndex;
         _portrait = transform.GetChild(0).GetComponent<Image>();
         _portrait.sprite = portraitSprite;
@@ -28,7 +30,7 @@ public class LegendSelectUI : MonoBehaviour
         _button.onClick.AddListener(OnPressButton);
         _legendName = transform.GetChild(3).GetComponent<TextMeshProUGUI>();
         _legendName.text = legendName;
-        if (currentIndex.Equals((int)CharacterType.Alice))
+        if (currentIndex.Equals(_selectedCharacter))
         {
             EnableSelectFrame();
         }

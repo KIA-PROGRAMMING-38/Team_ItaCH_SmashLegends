@@ -2,9 +2,9 @@ namespace Util.Enum
 {
     public enum CharacterType
     {
-        Alice,
-        Hook,
-        Peter,
-        NumOfCharacter
+        Alice = 0,
+        Hook = 1,
+        Peter = 2,
+        NumOfCharacter = 3
     }
 }

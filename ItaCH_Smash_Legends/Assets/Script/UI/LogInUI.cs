@@ -40,7 +40,7 @@ public class LogInUI : MonoBehaviour
         _userInput = _inputField.text;
         if (Regex.IsMatch(_userInput, InputPattern))
         {
-            GameManager.Instance.UserManager.UserData.Name = _userInput;            
+            GameManager.Instance.UserManager.UserLocalData.Name = _userInput;
             _logInField.SetActive(false);
             _loadingObject.SetActive(true);
             _loadingObject.transform.GetChild(0).GetComponent<RotatingImage>()?.StartRotation();
