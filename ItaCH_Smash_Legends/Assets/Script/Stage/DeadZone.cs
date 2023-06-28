@@ -11,7 +11,7 @@ public class DeadZone : MonoBehaviour
         }
         else
         {
-            playerCharacter.GetDamage(int.MaxValue);
+            playerCharacter.gameObject.SetActive(false);
         }
     }
 }

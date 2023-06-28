@@ -3474,6 +3474,10 @@ MonoBehaviour:
   - {fileID: 930808028322010420, guid: 56c1fd8c736943243a898f1255867e95, type: 3}
   - {fileID: 5350989257972595798, guid: ef4b8177a7bd472459ba25aa12cef8f7, type: 3}
   - {fileID: 6660569015604856780, guid: 008d707aa702e4c46adc6b78b554f441, type: 3}
+  _dieSmokeEffect: {fileID: 8341773896087580420, guid: ba3f644a32443b04b9e3a00efdd6cf28,
+    type: 3}
+  _dieEffect: {fileID: 5560711985344258914, guid: de00bf207de25c04794e954fba336145,
+    type: 3}
 --- !u!114 &601871154
 MonoBehaviour:
   m_ObjectHideFlags: 0
