@@ -46,6 +46,9 @@ public class CharacterStatus : CharacterDefaultStatus
     public event Action<CharacterStatus> OnPlayerDie;
     public event Action<CharacterStatus> OnPlayerRespawn;
     public event Action<GameObject, int> OnRespawnSetting;
+    public event Action OnPlayerDieEffect;
+    public event Action OnPlayerDieSmokeEffect;
+
     private int _playerID;
     private TeamType _teamType;
 
@@ -75,6 +78,14 @@ public class CharacterStatus : CharacterDefaultStatus
     private void Awake()
     {
         InitStatus();
+    }
+    private void OnDisable()
+    {
+        if (this._isDead)
+        {
+            OnPlayerDieEffect.Invoke();
+            RespawnAsync(_currentRespawnTime).Forget();
+        }
     }
     public void InitCharacterType(CharacterType characterType)
     {
@@ -128,9 +139,8 @@ public class CharacterStatus : CharacterDefaultStatus
         if (_currentHealthPoint <= DEAD_TRIGGER_HP && !this._isDead)
         {
             this._isDead = true;
-            this.gameObject.SetActive(false);
             OnPlayerDie.Invoke(this);
-            RespawnAsync(_currentRespawnTime).Forget();
+            OnPlayerDieSmokeEffect.Invoke();
         }
     }
     private async UniTaskVoid RespawnAsync(float respawnTime)

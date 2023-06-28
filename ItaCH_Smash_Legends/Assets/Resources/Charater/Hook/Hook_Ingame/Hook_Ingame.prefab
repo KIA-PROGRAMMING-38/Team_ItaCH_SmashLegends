@@ -43412,6 +43412,10 @@ MonoBehaviour:
   _effectPrefabs:
   - {fileID: 5770820884259517901, guid: 1a706ca8bc0e7f3489ab8aca300d87e3, type: 3}
   - {fileID: 2796731914531648696, guid: 6f2aa2d47dd627a45b109faf8af98074, type: 3}
+  _dieSmokeEffect: {fileID: 8341773896087580420, guid: ba3f644a32443b04b9e3a00efdd6cf28,
+    type: 3}
+  _dieEffect: {fileID: 5560711985344258914, guid: de00bf207de25c04794e954fba336145,
+    type: 3}
 --- !u!1 &6469862050080975118
 GameObject:
   m_ObjectHideFlags: 0

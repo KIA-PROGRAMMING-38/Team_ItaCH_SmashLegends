@@ -1049,6 +1049,10 @@ MonoBehaviour:
   - {fileID: 4924041956568858271, guid: 34b26521f87033d41b237a70e8779175, type: 3}
   - {fileID: 2326422481478165339, guid: ca19f25a857cde849b776c701dfda18e, type: 3}
   - {fileID: 164321923476620983, guid: 3e7d3149614c4f3468faf3c7f4b5e2d4, type: 3}
+  _dieSmokeEffect: {fileID: 8341773896087580420, guid: ba3f644a32443b04b9e3a00efdd6cf28,
+    type: 3}
+  _dieEffect: {fileID: 5560711985344258914, guid: de00bf207de25c04794e954fba336145,
+    type: 3}
 --- !u!114 &1049115965
 MonoBehaviour:
   m_ObjectHideFlags: 0

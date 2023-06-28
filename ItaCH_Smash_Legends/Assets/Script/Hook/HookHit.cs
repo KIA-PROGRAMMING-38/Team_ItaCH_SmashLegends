@@ -23,8 +23,8 @@ public class HookHit : MonoBehaviour
     private void Awake()
     {
         _hookBullet = transform.GetParentComponent<HookBullet>();
-        _characterStatus = _hookBullet.constructor.gameObject.GetComponent<CharacterStatus>();
-        SetPowerAndDamage();
+        //_characterStatus = _hookBullet.constructor.gameObject.GetComponent<CharacterStatus>();
+        //SetPowerAndDamage();
         knockbackPower = defaultKnockbackPower;
     }
 
@@ -40,6 +40,8 @@ public class HookHit : MonoBehaviour
     {
         if (other.CompareTag("Player") && other.gameObject.layer != _hookBullet.constructor.layer)
         {
+            EffectController effect = other.GetComponent<EffectController>();
+            effect.SetDieSmokeEffect();
             PlayerStatus playerStatus = other.GetComponent<PlayerStatus>();
 
             SetDirection(other);
@@ -47,7 +49,7 @@ public class HookHit : MonoBehaviour
             {
                 GetBulletKnockBack(other);
             }
-            GetHitDamage(other);
+            //GetHitDamage(other);
             _hookBullet.BulletPostProcessing(BulletDeleteEffectPosition(other));
         }
     }
