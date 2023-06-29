@@ -107,6 +107,10 @@ public class SoundManager : MonoBehaviour
         {
             SetSoundPath(_3DSoundRootFolderPath, name, soundType);
             AudioClip audioClip = Resources.Load<AudioClip>(_stringBuilder.ToString());
+            if(audioClip.Equals(null))
+            {
+                return;
+            }
             dictionary[name] = audioClip;
             audioSource.PlayOneShot(audioClip);
         }
