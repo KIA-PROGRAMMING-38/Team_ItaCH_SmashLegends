@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using System;
 using System.Threading;
 using UnityEngine;
 
@@ -8,7 +9,9 @@ public class AliceBomb : MonoBehaviour
     public ParticleSystem[] effect;
     private CharacterStatus _characterStatus;
     private CancellationTokenSource _cancelToken;
+    private AliceHit _aliceHit;
     private Transform currentTransform;
+    private BoxCollider _boxCollider;
 
     private Vector3 _knockBackDirection { get => Vector3.up; }
     private float _knockBackPower { get => 0.8f; }
@@ -19,6 +22,8 @@ public class AliceBomb : MonoBehaviour
     private void Awake()
     {
         _characterStatus = GetComponent<CharacterStatus>();
+        _boxCollider = GetComponent<BoxCollider>();
+        _aliceHit = GetComponent<AliceHit>();
         currentTransform = transform.root;
         _cancelToken = new CancellationTokenSource();
     }
@@ -33,52 +38,50 @@ public class AliceBomb : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        int resetTime = 0;
         if (other.CompareTag("Ground") && !_bezier)
         {
-            _time = 0;
+            _time = resetTime;
             _bezier = true;
             transform.rotation = Quaternion.Euler(-90, 0, 0);
-            PlayEffect().Forget();
+            PlayBombEffect().Forget();
         }
         if (other.CompareTag("Player") && other.gameObject.layer != currentTransform.gameObject.layer)
         {
             if (_isAttack)
             {
-                HitEffect(other).Forget();
+                HitBombEffect(other).Forget();
             }
         }
     }
-    private async UniTaskVoid PlayEffect()
+    
+    private async UniTaskVoid PlayBombEffect()
     {
-        gameObject.transform.SetParent(null);
-        effect[0].gameObject.SetActive(true);
-        effect[0].Play();
+        int startEffectIndex = 0;
+
+        SetParent();
+        _boxCollider.enabled = true;
+        PlayEffect(startEffectIndex);
         _isAttack = true;
         await UniTask.Delay(4000, cancellationToken: _cancelToken.Token);
-        EffectPlay();
+        PlayAllEffect();
         await UniTask.Delay(400);
         RootReCall();
+        _boxCollider.enabled = false;
         _isAttack = false;
         _bezier = false;
     }
-    public async UniTaskVoid HitEffect(Collider other)
+    public async UniTaskVoid HitBombEffect(Collider other)
     {
         _isAttack = false;
-        gameObject.transform.SetParent(null);
-        EffectPlay();
-        BombHit(other, AnimationHash.Hit);
-        //_aliceHit.GetHit(_knockBackDirection * 3, _knockBackPower, AnimationHash.Hit, other, _characterStatus.HeavyAttackDamage);
+        SetParent();
+        PlayAllEffect();
+        _aliceHit.GetHit(_knockBackDirection, _knockBackPower, AnimationHash.Hit, other, _characterStatus.HeavyAttackDamage);
         await UniTask.Delay(400);
         CancelUniTask();
         RootReCall();
+        _boxCollider.enabled = false;
         _bezier = false;
-    }
-    private void BombHit(Collider other, int AnimationHash)
-    {
-        Rigidbody rigidbody = other.GetComponent<Rigidbody>();
-        Animator animator = other.GetComponent<Animator>();
-        rigidbody.AddForce(_knockBackDirection * _knockBackPower, ForceMode.Impulse);
-        animator.SetTrigger(AnimationHash);
     }
     public void ThirdBezierCurve(Transform[] point, float time)
     {
@@ -96,12 +99,13 @@ public class AliceBomb : MonoBehaviour
             transform.localRotation = Quaternion.Euler(-30, 0, 0);
         }
     }
-    private void EffectPlay()
+
+    private void PlayAllEffect() => Array.ForEach(effect, elem => PlayEffect(elem));
+    private void PlayEffect(int index) => PlayEffect(effect[index]);
+    private void PlayEffect(ParticleSystem effect)
     {
-        for(int index = 1; index < effect.Length; ++index)
-        {
-            effect[index].Play();
-        }
+        effect.gameObject.SetActive(true);
+        effect.Play();
     }
     private void CancelUniTask()
     {
@@ -113,4 +117,5 @@ public class AliceBomb : MonoBehaviour
         gameObject.transform.SetParent(currentTransform);
         gameObject.SetActive(false);
     }
+    private void SetParent() => gameObject.transform.SetParent(null);
 }
