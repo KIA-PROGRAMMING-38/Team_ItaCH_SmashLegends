@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 156017278}
   - component: {fileID: 156017281}
   - component: {fileID: 156017282}
+  - component: {fileID: 1519340378}
   m_Layer: 9
   m_Name: AliceBomb
   m_TagString: Untagged
@@ -35,6 +36,7 @@ Transform:
   - {fileID: 8743887244564235630}
   - {fileID: 7852971585384660627}
   - {fileID: 3150936180792256576}
+  - {fileID: 1030473973}
   m_Father: {fileID: 8764072940790701996}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -120,8 +122,21 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0043013818
-  m_Center: {x: 0, y: 7.132581e-17, z: 0.00475161}
+  m_Radius: 0.0027525714
+  m_Center: {x: 0, y: 2.417393e-17, z: 0.002864026}
+--- !u!65 &1519340378
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156017277}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.038, y: 0.04, z: 0.001}
+  m_Center: {x: 0, y: 0, z: 0.002}
 --- !u!1 &713464083
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,6 +182,51 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.065
   m_Center: {x: 0, y: 0, z: 0.015}
+--- !u!1 &1030473972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1030473973}
+  - component: {fileID: 1030473974}
+  m_Layer: 9
+  m_Name: HitRangdCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1030473973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030473972}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.00013333333, y: 0.0017333342, z: -0.0040666675}
+  m_LocalScale: {x: 0.0066666664, y: 0.0066666645, z: 0.0066666645}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 156017280}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1030473974
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030473972}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 6, y: 0.1, z: 6}
+  m_Center: {x: -1, y: 0, z: 0.5}
 --- !u!1 &1229936079
 GameObject:
   m_ObjectHideFlags: 0
