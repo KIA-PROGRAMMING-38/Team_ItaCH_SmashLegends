@@ -1,8 +1,6 @@
 using Cysharp.Threading.Tasks;
 using System;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Util.Enum;
 
 public class CharacterStatus : CharacterDefaultStatus
