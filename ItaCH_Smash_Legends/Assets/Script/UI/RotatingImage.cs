@@ -7,6 +7,7 @@ public class RotatingImage : MonoBehaviour
 {
     private CancellationTokenSource _cancellationTokenSource;
     private CancellationToken _cancellationToken;
+    public CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource; }
     private RectTransform _rectTransform;
     private Vector3 _clockWiseDirection = Vector3.back;
     private float _turnSpeed = 360;
