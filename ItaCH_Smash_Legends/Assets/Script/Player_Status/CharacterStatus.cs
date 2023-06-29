@@ -40,7 +40,7 @@ public class CharacterStatus : CharacterDefaultStatus
     private int _currentHealthPointRatio;
     private float _currentRespawnTime;
     private const int DEAD_TRIGGER_HP = 0;
-    private bool _isDead = false;
+    internal bool _isDead = false;
 
     public event Action<int, int> OnPlayerHealthPointChange;
     public event Action<CharacterStatus> OnPlayerDie;
@@ -138,7 +138,6 @@ public class CharacterStatus : CharacterDefaultStatus
         OnPlayerHealthPointChange.Invoke(_currentHealthPoint, _currentHealthPointRatio);
         if (_currentHealthPoint <= DEAD_TRIGGER_HP && !this._isDead)
         {
-            this._isDead = true;
             OnPlayerDie.Invoke(this);
             OnPlayerDieSmokeEffect.Invoke();
         }
