@@ -57,9 +57,11 @@ public class AliceBomb : MonoBehaviour
     
     private async UniTaskVoid PlayBombEffect()
     {
+        int startEffectIndex = 0;
+
         SetParent();
         _boxCollider.enabled = true;
-        PlayEffect(0);
+        PlayEffect(startEffectIndex);
         _isAttack = true;
         await UniTask.Delay(4000, cancellationToken: _cancelToken.Token);
         PlayAllEffect();
@@ -74,7 +76,7 @@ public class AliceBomb : MonoBehaviour
         _isAttack = false;
         SetParent();
         PlayAllEffect();
-        _aliceHit.GetHit(_knockBackDirection * 3, _knockBackPower, AnimationHash.Hit, other, _characterStatus.HeavyAttackDamage);
+        _aliceHit.GetHit(_knockBackDirection, _knockBackPower, AnimationHash.Hit, other, _characterStatus.HeavyAttackDamage);
         await UniTask.Delay(400);
         CancelUniTask();
         RootReCall();
