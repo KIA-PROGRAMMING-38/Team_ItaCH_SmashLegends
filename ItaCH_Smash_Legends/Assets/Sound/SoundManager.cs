@@ -97,18 +97,23 @@ public class SoundManager : MonoBehaviour
 
     //3D음향 재생이 필요한 소리재생. 캐릭터가 자체적으로 가지고 있는 소리 Dictionary를 검사한 후 Play 실행.
     //name은 Peter/Die00 이런식으로 캐릭터이름/상황으로 설정.
-    public void Play(string name, GameObject audioSourceObject, SoundType soundType = SoundType.SFX)
+    public void Play(string name, Dictionary<string, AudioClip> dictionary, AudioSource audioSource, SoundType soundType)
     {
-        AudioSource audioSource = audioSourceObject.GetComponent<AudioSource>();
-
-        if (audioSource == null)
+        if (dictionary.ContainsKey(name))
         {
-            audioSourceObject.AddComponent<AudioSource>();
-            audioSource.outputAudioMixerGroup = _audioMixer.FindMatchingGroups(soundType.ToString())[0];
+            audioSource.PlayOneShot(dictionary[name]);
         }
-        SetSoundPath(_3DSoundRootFolderPath, name, soundType);
-        AudioClip audioClip = Resources.Load<AudioClip>(_stringBuilder.ToString());
-        audioSource.PlayOneShot(audioClip);
+        else
+        {
+            SetSoundPath(_3DSoundRootFolderPath, name, soundType);
+            AudioClip audioClip = Resources.Load<AudioClip>(_stringBuilder.ToString());
+            if(audioClip.Equals(null))
+            {
+                return;
+            }
+            dictionary[name] = audioClip;
+            audioSource.PlayOneShot(audioClip);
+        }
     }
 
     public void SetVolume(SoundType soundType, float value)
