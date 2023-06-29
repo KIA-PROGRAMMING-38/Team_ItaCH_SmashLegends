@@ -17,8 +17,9 @@ public class HookHit : MonoBehaviour
     private Vector3 _knockbackDirection;
     private Vector3 _bulletHitPosition;
     private HookBullet _hookBullet;
-
+    private EffectController _effectController;
     private CharacterStatus _characterStatus;
+    private PlayerHit _playerHit;
 
     private void Awake()
     {
@@ -41,17 +42,34 @@ public class HookHit : MonoBehaviour
         if (other.CompareTag("Player") && other.gameObject.layer != _hookBullet.constructor.layer)
         {
             PlayerStatus playerStatus = other.GetComponent<PlayerStatus>();
-
-            SetDirection(other);
-            if (playerStatus.CurrentState != PlayerStatus.State.HitUp && playerStatus.CurrentState != PlayerStatus.State.SkillAttack)
+            _playerHit = other.GetComponent<PlayerHit>();
+            if (_playerHit.invincible == false)
             {
-                GetBulletKnockBack(other);
+                _effectController = other.GetComponent<EffectController>();
+                SetDirection(other);
+
+                if (PossibleAttack(playerStatus))
+                {
+                    GetBulletKnockBack(other);
+                    _effectController.StartHitFlashEffet().Forget();
+                }
+                //GetHitDamage(other);
+                _hookBullet.BulletPostProcessing(BulletDeleteEffectPosition(other));
             }
-            //GetHitDamage(other);
-            _hookBullet.BulletPostProcessing(BulletDeleteEffectPosition(other));
         }
     }
 
+    private bool PossibleAttack(PlayerStatus playerStatus)
+    {
+        if (playerStatus.CurrentState != PlayerStatus.State.HitUp && playerStatus.CurrentState != PlayerStatus.State.SkillAttack)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     private void SetDirection(Collider other)
     {
         _knockbackDirection = knockbackPower * _hookBullet.constructor.transform.forward;

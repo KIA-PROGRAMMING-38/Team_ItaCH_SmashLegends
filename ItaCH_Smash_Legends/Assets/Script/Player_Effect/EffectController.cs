@@ -1,8 +1,5 @@
 using Cysharp.Threading.Tasks;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.UIElements;
 
 public abstract class EffectController : MonoBehaviour
 {
@@ -12,6 +9,7 @@ public abstract class EffectController : MonoBehaviour
     protected GameObject[] _effects;
     private CharacterStatus _characterStatus;
     private Rigidbody _rigidbody;
+    private PlayerHit _playerHit;
     private float _scaleOffset;
 
     private Color _hitColor = new Color(0.302f, 0.192f, 0.075f);
@@ -21,6 +19,7 @@ public abstract class EffectController : MonoBehaviour
 
     private void Awake()
     {
+        _playerHit = GetComponent<PlayerHit>();
         _rigidbody = GetComponent<Rigidbody>();
         _characterStatus = GetComponent<CharacterStatus>();
         SetEventSubscription();
@@ -132,10 +131,10 @@ public abstract class EffectController : MonoBehaviour
             --count;
         }
     }
-
     public async UniTaskVoid StartInvincibleFlashEffet(int count)
     {
         SetInvincibleEffectColor();
+        _playerHit.invincible = true;
         while (count > 0)
         {
             OnFlashEffect();
@@ -144,7 +143,6 @@ public abstract class EffectController : MonoBehaviour
             await UniTask.Delay(50);
             --count;
         }
+        _playerHit.invincible = false;
     }
-
-
 }

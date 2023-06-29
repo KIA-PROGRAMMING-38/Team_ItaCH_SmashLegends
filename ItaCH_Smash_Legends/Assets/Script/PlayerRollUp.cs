@@ -7,12 +7,14 @@ public class PlayerRollUp : MonoBehaviour
     private PlayerStatus _playerStatus;
     private Rigidbody _rigidbody;
     private Animator _animator;
+    private EffectController _effectController;
     private float _rollingDashPower = 1.2f;
 
     public Vector3 RollingForward;
 
     private void Awake()
     {
+        _effectController= GetComponent<EffectController>();
         _playerMove = GetComponent<PlayerMove>();
         _playerStatus = GetComponent<PlayerStatus>();
         _rigidbody = GetComponent<Rigidbody>();
@@ -61,6 +63,7 @@ public class PlayerRollUp : MonoBehaviour
             {
                 RollingDirection();
                 RollingDash(_playerMove.moveDirection);
+                _effectController.StartInvincibleFlashEffet(5).Forget();
             }
 
         }
