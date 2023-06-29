@@ -7,7 +7,7 @@ public class AliceExplosion : MonoBehaviour
     {
         _playerHit= GetComponent<PlayerHit>();
     }
-    
+
     private void OnParticleCollision(GameObject other)
     {
         float heavyKnockbackPower = 0.8f;

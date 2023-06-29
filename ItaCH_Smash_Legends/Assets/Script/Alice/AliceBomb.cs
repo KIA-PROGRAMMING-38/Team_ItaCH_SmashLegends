@@ -1,81 +1,91 @@
 using Cysharp.Threading.Tasks;
-using Cysharp.Threading.Tasks.Triggers;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class AliceBomb : MonoBehaviour
 {
     public Transform[] point;
     public ParticleSystem[] effect;
-    private bool _bezier;
-    private float time;
+    private CharacterStatus _characterStatus;
+    private CancellationTokenSource _cancelToken;
+    private Transform currentTransform;
+
+    private Vector3 _knockBackDirection { get => Vector3.up; }
+    private float _knockBackPower { get => 0.8f; }
+    private bool _bezier { get; set; }
+    private bool _isAttack { get; set; }
+    private float _time;
 
     private void Awake()
     {
-        _bezier = true;
+        _characterStatus = GetComponent<CharacterStatus>();
+        currentTransform = transform.root;
+        _cancelToken = new CancellationTokenSource();
     }
-
-    private void Update()
+    private void FixedUpdate()
     {
-        if (_bezier)
+        float bezierSpeed = 1.5f;
+        if (!_bezier)
         {
-            time += Time.deltaTime / 1f;
-            ThirdBezierCurve(point, time);
+            _time += Time.deltaTime * bezierSpeed;
+            ThirdBezierCurve(point, _time);
         }
     }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Ground"))
+        if (other.CompareTag("Ground") && !_bezier)
         {
-            time = 0;
-            _bezier = false;
+            _time = 0;
+            _bezier = true;
             transform.rotation = Quaternion.Euler(-90, 0, 0);
-
-            PlayEffect(other).Forget();
+            PlayEffect().Forget();
         }
-        //if (other.CompareTag("Enemy"))
-        //{
-        //    BombHit(other);
-        //}
-    }
-
-    private async UniTaskVoid PlayEffect(Collider other)
-    {
-        for (int index = 0; index < effect.Length; ++index)
+        if (other.CompareTag("Player") && other.gameObject.layer != currentTransform.gameObject.layer)
         {
-            effect[index].transform.SetParent(null);
+            if (_isAttack)
+            {
+                HitEffect(other).Forget();
+            }
         }
+    }
+    private async UniTaskVoid PlayEffect()
+    {
+        gameObject.transform.SetParent(null);
         effect[0].gameObject.SetActive(true);
         effect[0].Play();
-
-        await UniTask.Delay(4500);
-        effect[1].Play();
-        effect[2].Play();
-        gameObject.SetActive(false);
-
-        _bezier = true;
+        _isAttack = true;
+        await UniTask.Delay(4000, cancellationToken: _cancelToken.Token);
+        EffectPlay();
+        await UniTask.Delay(400);
+        RootReCall();
+        _isAttack = false;
+        _bezier = false;
     }
-
-    // TODO : 피격 시 같이 구현
-    //private void BombHit(Collider other)
-    //{
-    //    Rigidbody rigidbody = other.GetComponent<Rigidbody>();
-    //    rigidbody.velocity = Vector3.up * 3f;
-    //}
-
+    public async UniTaskVoid HitEffect(Collider other)
+    {
+        _isAttack = false;
+        gameObject.transform.SetParent(null);
+        EffectPlay();
+        BombHit(other, AnimationHash.Hit);
+        //_aliceHit.GetHit(_knockBackDirection * 3, _knockBackPower, AnimationHash.Hit, other, _characterStatus.HeavyAttackDamage);
+        await UniTask.Delay(400);
+        CancelUniTask();
+        RootReCall();
+        _bezier = false;
+    }
+    private void BombHit(Collider other, int AnimationHash)
+    {
+        Rigidbody rigidbody = other.GetComponent<Rigidbody>();
+        Animator animator = other.GetComponent<Animator>();
+        rigidbody.AddForce(_knockBackDirection * _knockBackPower, ForceMode.Impulse);
+        animator.SetTrigger(AnimationHash);
+    }
     public void ThirdBezierCurve(Transform[] point, float time)
     {
-        Vector3 middleOne = Vector3.Lerp(point[0].position, point[1].position, time);
-        Vector3 middleTwo = Vector3.Lerp(point[1].position, point[2].position, time);
-        Vector3 middleThree = Vector3.Lerp(point[2].position, point[3].position, time);
-        Vector3 middleFour = Vector3.Lerp(middleOne, middleTwo, time);
-        Vector3 middleFive = Vector3.Lerp(middleTwo, middleThree, time);
+        Vector3 transformPosition = Vector3.Lerp(Vector3.Lerp(point[0].position, point[1].position, time),
+                                    Vector3.Lerp(point[2].position, point[3].position, time), time);
 
-        transform.position = Vector3.Lerp(middleFour, middleFive, time);
-
+        transform.position = transformPosition;
 
         if (time < 0.6f)
         {
@@ -85,16 +95,22 @@ public class AliceBomb : MonoBehaviour
         {
             transform.localRotation = Quaternion.Euler(-30, 0, 0);
         }
-
-        // TODO : 더 가독성을 높이려고 했으나 추후에 다시 리팩토링
-        //for (int index = 0; index < point.Length - 1; ++index)
-        //{
-        //    point[index].position = Vector3.Lerp(point[index].position, point[index + 1].position, time);
-        //}
-
-        //Vector3 middleOne = Vector3.Lerp(point[0].position, point[1].position, time);
-        //Vector3 middleTwo = Vector3.Lerp(point[1].position, point[2].position, time);
-
-        //transform.position = Vector3.Lerp(middleOne, middleTwo, time);
+    }
+    private void EffectPlay()
+    {
+        for(int index = 1; index < effect.Length; ++index)
+        {
+            effect[index].Play();
+        }
+    }
+    private void CancelUniTask()
+    {
+        _cancelToken.Cancel();
+        _cancelToken = new CancellationTokenSource();
+    }
+    private void RootReCall()
+    {
+        gameObject.transform.SetParent(currentTransform);
+        gameObject.SetActive(false);
     }
 }

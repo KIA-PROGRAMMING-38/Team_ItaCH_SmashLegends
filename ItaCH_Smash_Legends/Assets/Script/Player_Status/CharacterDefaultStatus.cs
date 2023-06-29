@@ -3,7 +3,7 @@ using Util.Enum;
 
 public class CharacterDefaultStatus : MonoBehaviour
 {
-    protected DataTable dataTable;
+    internal DataTable dataTable;
 
     protected int LegendIdData;
     protected int SkillGaugeData;
