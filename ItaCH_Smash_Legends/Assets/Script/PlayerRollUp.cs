@@ -63,7 +63,7 @@ public class PlayerRollUp : MonoBehaviour
             {
                 RollingDirection();
                 RollingDash(_playerMove.moveDirection);
-                _effectController.StartInvincibleFlashEffet(5).Forget();
+                _effectController.StartInvincibleFlashEffet(_effectController.FLASH_COUNT).Forget();
             }
 
         }

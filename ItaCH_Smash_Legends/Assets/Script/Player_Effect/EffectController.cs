@@ -12,6 +12,9 @@ public abstract class EffectController : MonoBehaviour
     private PlayerHit _playerHit;
     private float _scaleOffset;
 
+    public readonly int FLASH_COUNT = 5;
+    public readonly int HANG_JUMP_FLASH_COUNT = 3;
+
     private Color _hitColor = new Color(0.302f, 0.192f, 0.075f);
     private Color _invincibleColor = new Color(0.425f, 0.425f, 0.425f);
 

@@ -21,7 +21,7 @@ public class PlayerHangState : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _playerHangController.OffConstraints();
-        _effectController.StartInvincibleFlashEffet(5).Forget();
+        _effectController.StartInvincibleFlashEffet(_effectController.HANG_JUMP_FLASH_COUNT).Forget();
         _playerHangController.TaskCancel.Cancel();
     }
 }

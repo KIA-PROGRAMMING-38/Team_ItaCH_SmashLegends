@@ -34,7 +34,7 @@ public class PlayerHangController : MonoBehaviour
 
             _animator.Play(AnimationHash.Hang);
             _playerStatus.IsHang = true;
-            _effectController.StartInvincibleFlashEffet(5).Forget();
+            _effectController.StartInvincibleFlashEffet(_effectController.FLASH_COUNT).Forget();
         }
     }
 
