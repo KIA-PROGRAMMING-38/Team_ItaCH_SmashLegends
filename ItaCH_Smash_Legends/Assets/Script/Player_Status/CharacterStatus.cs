@@ -43,6 +43,7 @@ public class CharacterStatus : CharacterDefaultStatus
     private bool _isDead = false;
 
     public event Action<int, int> OnPlayerHealthPointChange;
+    public event Action<int> OnPlayerGetDamage;
     public event Action<CharacterStatus> OnPlayerDie;
     public event Action<CharacterStatus> OnPlayerRespawn;
     public event Action<GameObject, int> OnRespawnSetting;
@@ -136,6 +137,7 @@ public class CharacterStatus : CharacterDefaultStatus
         _currentHealthPoint = Mathf.Max(damagedHealthPoint, DEAD_TRIGGER_HP);
         _currentHealthPointRatio = (_currentHealthPoint * 100) / MaxHealthPoint;
         OnPlayerHealthPointChange.Invoke(_currentHealthPoint, _currentHealthPointRatio);
+        OnPlayerGetDamage?.Invoke(damage);
         if (_currentHealthPoint <= DEAD_TRIGGER_HP && !this._isDead)
         {
             this._isDead = true;
