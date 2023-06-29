@@ -49,7 +49,6 @@ public abstract class EffectController : MonoBehaviour
         InitMaterial();
         CreateDieSmokeEffect();
         CreateDieEffect();
-        StartInvincibleFlashEffet(5).Forget();
     }
 
     public void SetDieSmokeEffect()
