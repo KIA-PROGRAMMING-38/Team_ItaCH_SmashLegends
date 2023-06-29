@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1504174971402115622}
   m_Layer: 0
   m_Name: Hook_Default_Bullet_Delete_Effect
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

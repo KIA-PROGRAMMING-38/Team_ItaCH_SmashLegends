@@ -2,16 +2,17 @@ using UnityEngine;
 
 public class PlayerHit : MonoBehaviour, IHit
 {
+    private EffectController _effectController;
+    private PlayerHit _playerHit;
     protected CharacterStatus _characterStatus;
     protected PlayerStatus _playerStatus;
     protected Animator _animator;
-   
+
     protected float defaultKnockbackPower;
     protected float heavyKnockbackPower;
     internal bool invincible;
 
     protected Vector3 _knockbackDirection;
-
 
     private void Start()
     {
@@ -21,9 +22,9 @@ public class PlayerHit : MonoBehaviour, IHit
 
         defaultKnockbackPower = _characterStatus.DefaultKnockbackPower;
         heavyKnockbackPower = _characterStatus.HeavyKnockbackPower;
-        // TODO : 무적이 해결되면 같이 처리
-        //invincible = true;
+        invincible = false;
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground") && _playerStatus.CurrentState == PlayerStatus.State.HitUp)
@@ -36,8 +37,15 @@ public class PlayerHit : MonoBehaviour, IHit
     {
         if (other.CompareTag("Player"))
         {
-            other.transform.forward = (-1) * transform.forward;
-            Hit(other);
+            _playerHit = other.GetComponent<PlayerHit>();
+            _effectController = other.GetComponent<EffectController>();
+
+            if (_playerHit.invincible == false)
+            {
+                other.transform.forward = (-1) * transform.forward;
+                _effectController.StartHitFlashEffet().Forget();
+                Hit(other);
+            }
         }
     }
     public virtual void Hit(Collider other)

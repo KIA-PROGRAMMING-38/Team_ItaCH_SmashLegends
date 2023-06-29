@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerHangController : MonoBehaviour
 {
     private PlayerStatus _playerStatus;
-
+    private EffectController _effectController;
     private Rigidbody _rigidbody;
     private Animator _animator;
     private Collider _collider;
@@ -18,6 +18,7 @@ public class PlayerHangController : MonoBehaviour
 
     private void Awake()
     {
+        _effectController = GetComponent<EffectController>();
         _collider = GetComponent<Collider>();
         _playerStatus = GetComponent<PlayerStatus>();
         _rigidbody = GetComponent<Rigidbody>();
@@ -33,6 +34,7 @@ public class PlayerHangController : MonoBehaviour
 
             _animator.Play(AnimationHash.Hang);
             _playerStatus.IsHang = true;
+            _effectController.StartInvincibleFlashEffet(_effectController.FLASH_COUNT).Forget();
         }
     }
 
