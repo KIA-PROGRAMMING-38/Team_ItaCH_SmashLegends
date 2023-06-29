@@ -1,5 +1,8 @@
+using Cysharp.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 public abstract class EffectController : MonoBehaviour
 {
@@ -10,6 +13,11 @@ public abstract class EffectController : MonoBehaviour
     private CharacterStatus _characterStatus;
     private Rigidbody _rigidbody;
     private float _scaleOffset;
+
+    private Color _hitColor = new Color(0.302f, 0.192f, 0.075f);
+    private Color _invincibleColor = new Color(0.425f, 0.425f, 0.425f);
+
+    [SerializeField] private Renderer[] _renderer;
 
     private void Awake()
     {
@@ -38,8 +46,16 @@ public abstract class EffectController : MonoBehaviour
                 transform.position.z + (_effects[i].transform.position.z * _scaleOffset));
             _effects[i].SetActive(false);
         }
+        InitMaterial();
         CreateDieSmokeEffect();
         CreateDieEffect();
+    }
+
+    public void SetDieSmokeEffect()
+    {
+        _dieSmokeEffect.gameObject.SetActive(true);
+        _dieSmokeEffect.transform.position = transform.position;
+        _dieSmokeEffect.Play();
     }
     private void CreateDieSmokeEffect()
     {
@@ -52,7 +68,6 @@ public abstract class EffectController : MonoBehaviour
         _dieEffect = Instantiate(_dieEffect, transform.position, Quaternion.identity);
         _dieEffect.gameObject.SetActive(false);
     }
-
     private void SetDieEffect()
     {
         _dieEffect.gameObject.SetActive(true);
@@ -60,14 +75,6 @@ public abstract class EffectController : MonoBehaviour
         _dieEffect.transform.forward = _rigidbody.velocity;
         _dieEffect.Play();
     }
-
-    public void SetDieSmokeEffect()
-    {
-        _dieSmokeEffect.gameObject.SetActive(true);
-        _dieSmokeEffect.transform.position = transform.position;
-        _dieSmokeEffect.Play();
-    }
-
     private void SetEventSubscription()
     {
         _characterStatus.OnPlayerDieEffect -= SetDieEffect;
@@ -75,4 +82,69 @@ public abstract class EffectController : MonoBehaviour
         _characterStatus.OnPlayerDieSmokeEffect -= SetDieSmokeEffect;
         _characterStatus.OnPlayerDieSmokeEffect += SetDieSmokeEffect;
     }
+    private void InitMaterial()
+    {
+        for (int i = 0; i < _renderer.Length; ++i)
+        {
+            Material material = Instantiate(_renderer[i].material);
+            _renderer[i].material = material;
+        }
+    }
+    private void SetHitEffectColor()
+    {
+        for (int i = 0; i < _renderer.Length; ++i)
+        {
+            _renderer[i].material.SetColor("_EmissionColor", _hitColor);
+        }
+    }
+    private void SetInvincibleEffectColor()
+    {
+        for (int i = 0; i < _renderer.Length; ++i)
+        {
+            _renderer[i].material.SetColor("_EmissionColor", _invincibleColor);
+        }
+    }
+    private void OnFlashEffect()
+    {
+        for (int i = 0; i < _renderer.Length; ++i)
+        {
+            _renderer[i].material.EnableKeyword("_EMISSION");
+        }
+    }
+    private void OffFlashEffect()
+    {
+        for (int i = 0; i < _renderer.Length; ++i)
+        {
+            _renderer[i].material.DisableKeyword("_EMISSION");
+        }
+    }
+
+    public async UniTaskVoid StartHitFlashEffet()
+    {
+        int count = 3;
+        SetHitEffectColor();
+        while (count > 0)
+        {
+            OnFlashEffect();
+            await UniTask.Delay(80);
+            OffFlashEffect();
+            await UniTask.Delay(80);
+            --count;
+        }
+    }
+
+    public async UniTaskVoid StartInvincibleFlashEffet(int count)
+    {
+        SetInvincibleEffectColor();
+        while (count > 0)
+        {
+            OnFlashEffect();
+            await UniTask.Delay(50);
+            OffFlashEffect();
+            await UniTask.Delay(50);
+            --count;
+        }
+    }
+
+
 }

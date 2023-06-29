@@ -43416,6 +43416,11 @@ MonoBehaviour:
     type: 3}
   _dieEffect: {fileID: 5560711985344258914, guid: de00bf207de25c04794e954fba336145,
     type: 3}
+  _renderer:
+  - {fileID: 1418555804791988108}
+  - {fileID: 4455090787304474694}
+  - {fileID: 2615689016070737968}
+  - {fileID: 0}
 --- !u!1 &6469862050080975118
 GameObject:
   m_ObjectHideFlags: 0

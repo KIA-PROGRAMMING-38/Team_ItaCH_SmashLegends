@@ -3478,6 +3478,11 @@ MonoBehaviour:
     type: 3}
   _dieEffect: {fileID: 5560711985344258914, guid: de00bf207de25c04794e954fba336145,
     type: 3}
+  _renderer:
+  - {fileID: 1101579146358846399}
+  - {fileID: 1670619019223973489}
+  - {fileID: 3571347649490385576}
+  - {fileID: 4072693562315221167}
 --- !u!114 &601871154
 MonoBehaviour:
   m_ObjectHideFlags: 0
