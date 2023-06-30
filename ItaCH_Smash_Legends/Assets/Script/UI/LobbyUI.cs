@@ -39,7 +39,7 @@ public class LobbyUI : MonoBehaviour
         _userNameTextUI.text = userName;
     }
 
-    public void InitLobbyUISettings()
+    public void InitLobbyUISettings() // 패널 3개 생성 : 레전드 메뉴, 환경설정 메뉴, 매칭 UI
     {
         SetPanelAndButton(ResourcesManager.LegendMenuUIPath, ResourcesManager.LegendMenuButtonPath);
         SetPanelAndButton(ResourcesManager.SettingUIPath, ResourcesManager.SettingButtonPath);
@@ -63,7 +63,7 @@ public class LobbyUI : MonoBehaviour
         _characterModels[_currentCharacterIndex].SetActive(true);
     }
 
-    public void ChangeMainCharacter(int characterIndex)
+    public void ChangeLobbyCharacterModel(int characterIndex)
     {
         _characterModels[_currentCharacterIndex].SetActive(false);
         _characterModels[characterIndex].SetActive(true);

@@ -10,12 +10,11 @@ public class RespawnTimer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _text;
     private StringBuilder stringBuilder = new StringBuilder();
     private int _playerId;
-    //지금은 로직상 무조건 나의 playerID가 1이라, 이를 반영하여 코드 작성,
-    //추후 UserData의 실제 ID를 가져와 나인지, 내가 아닌지를 구분할 예정
+
     public void InitRespawnTimerSettings(CharacterStatus characterStatus)
     {
         gameObject.SetActive(false);
-        _playerId = characterStatus.PlayerID;
+        _playerId = GameManager.Instance.UserManager.UserLocalData.Id;
     }
 
     public async void CheckPlayer(CharacterStatus characterStatus)

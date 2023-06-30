@@ -13,7 +13,7 @@ public class UserData
     {
         get
         {
-            if (_selectedCharacter == default)
+            if (_selectedCharacter == CharacterType.None)
             {
                 _selectedCharacter = (CharacterType)Random.Range(0, 3);
                 return _selectedCharacter;
@@ -21,8 +21,11 @@ public class UserData
             else
                 return _selectedCharacter;
         }
+        set
+        {
+            _selectedCharacter = value;
+        }
     }
-
     public void SetSelectedCharacter(CharacterType selectedCharacter)
     {
         _selectedCharacter = selectedCharacter;
