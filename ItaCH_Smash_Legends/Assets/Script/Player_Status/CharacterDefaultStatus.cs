@@ -23,23 +23,25 @@ public class CharacterDefaultStatus : MonoBehaviour
     protected float HeavyKnockbackPowerData;
     protected float HeavyCooltimeData;
 
-    public void InitCharacterStatus(CharacterType id)
+    public void GetCharacterDefaultData(int characterID)
     {
-        LegendIdData = dataTable.CharacterTable[(int)id].legendId;
-        SkillGaugeData = dataTable.CharacterTable[(int)id].skillGauge;
-        SkillRecoveryData = dataTable.CharacterTable[(int)id].skillRecovery;
-        MoveSpeedData = dataTable.CharacterTable[(int)id].moveSpeed;
-        JumpAccelerationData = dataTable.CharacterTable[(int)id].jumpAcceleration;
-        GravitationalAccelerationData = dataTable.CharacterTable[(int)id].gravitationalAcceleration;
-        MaxFallingSpeedData = dataTable.CharacterTable[(int)id].maxFallingSpeed;
-        SizeData = dataTable.CharacterTable[(int)id].size;
-        HpData = dataTable.CharacterTable[(int)id].hp;
-        DefaultAttackDamageData = dataTable.CharacterTable[(int)id].defaultAttackDamage;
-        HeavyAttackDamageData = dataTable.CharacterTable[(int)id].heavyAttackDamage;
-        SkillAttackDamageData = dataTable.CharacterTable[(int)id].skillAttackDamage;
-        DashPowerData = dataTable.CharacterTable[(int)id].dashPower;
-        DefaultKnockbackPowerData = dataTable.CharacterTable[(int)id].defaultKnockbackPower;
-        HeavyKnockbackPowerData = dataTable.CharacterTable[(int)id].heavyKnockbackPower;
-        HeavyCooltimeData = dataTable.CharacterTable[(int)id].heavyCooltime;
+        dataTable = GameManager.Instance.CharacterTable;
+        
+        LegendIdData = dataTable.CharacterTable[characterID].legendId;        
+        SkillGaugeData = dataTable.CharacterTable[characterID].skillGauge;
+        SkillRecoveryData = dataTable.CharacterTable[characterID].skillRecovery;
+        MoveSpeedData = dataTable.CharacterTable[characterID].moveSpeed;        
+        JumpAccelerationData = dataTable.CharacterTable[characterID].jumpAcceleration;
+        GravitationalAccelerationData = dataTable.CharacterTable[characterID].gravitationalAcceleration;
+        MaxFallingSpeedData = dataTable.CharacterTable[characterID].maxFallingSpeed;
+        SizeData = dataTable.CharacterTable[characterID].size;
+        HpData = dataTable.CharacterTable[characterID].hp;
+        DefaultAttackDamageData = dataTable.CharacterTable[characterID].defaultAttackDamage;
+        HeavyAttackDamageData = dataTable.CharacterTable[characterID].heavyAttackDamage;
+        SkillAttackDamageData = dataTable.CharacterTable[characterID].skillAttackDamage;
+        DashPowerData = dataTable.CharacterTable[characterID].dashPower;
+        DefaultKnockbackPowerData = dataTable.CharacterTable[characterID].defaultKnockbackPower;
+        HeavyKnockbackPowerData = dataTable.CharacterTable[characterID].heavyKnockbackPower;
+        HeavyCooltimeData = dataTable.CharacterTable[characterID].heavyCooltime;
     }
 }

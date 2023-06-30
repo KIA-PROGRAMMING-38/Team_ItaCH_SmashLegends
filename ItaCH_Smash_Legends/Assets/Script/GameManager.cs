@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
     public LobbyManager LobbyManager { get; private set; }
     public UserManager UserManager { get; private set; }
 
-    public GameObject LobbyUI;
+    public DataTable CharacterTable { get => _characterTable; private set => _characterTable = value; }
+    private DataTable _characterTable;
+    public LobbyUI LobbyUI;
     private TextMeshProUGUI _connectionInfoText;
     private Canvas _logInCanvas;
     public event Action OnStartGame;
@@ -21,6 +23,8 @@ public class GameManager : MonoBehaviour
         _logInCanvas = GetComponentInChildren<Canvas>();
         _connectionInfoText = transform.GetChild(0).GetChild(2).GetComponentInChildren<TextMeshProUGUI>();
         CreateMangerObjects();
+        _characterTable = new DataTable();
+        _characterTable.SetDataTable();
     }
 
     public void StartGame()
@@ -31,34 +35,37 @@ public class GameManager : MonoBehaviour
 
     private void CreateMangerObjects()
     {
-        GameObject gameObject;
+        GameObject newManagerObject;
 
         // 로비 매니저 오브젝트 생성
-        gameObject = new GameObject(nameof(LobbyManager));
-        gameObject.transform.parent = transform;
-        LobbyManager = gameObject.AddComponent<LobbyManager>();
+        newManagerObject = new GameObject(nameof(LobbyManager));
+        newManagerObject.transform.parent = transform;
+        LobbyManager = newManagerObject.AddComponent<LobbyManager>();
         LobbyManager.ConnectionInfoText = _connectionInfoText;
         LobbyManager.OnLogInSuccess -= LogInSuccess;
         LobbyManager.OnLogInSuccess += LogInSuccess;
         LobbyManager.OnMatchSuccess -= MatchSuccess;
         LobbyManager.OnMatchSuccess += MatchSuccess;
 
-        gameObject = new GameObject(nameof(UserManager));
-        gameObject.transform.parent = transform;
-        UserManager = gameObject.AddComponent<UserManager>();
+        // 유저 매니저 오브젝트 생성
+        newManagerObject = new GameObject(nameof(UserManager));
+        newManagerObject.transform.parent = transform;
+        UserManager = newManagerObject.AddComponent<UserManager>();
+        LobbyUI.OnCharacterChanged -= UserManager.UserLocalData.SetSelectedCharacter;
+        LobbyUI.OnCharacterChanged += UserManager.UserLocalData.SetSelectedCharacter;
 
         // 스테이지 매니저 오브젝트 생성
-        gameObject = new GameObject(nameof(StageManager));
-        gameObject.transform.parent = transform;
-        StageManager = gameObject.AddComponent<StageManager>();
-        gameObject.SetActive(false);
+        newManagerObject = new GameObject(nameof(StageManager));
+        newManagerObject.transform.parent = transform;
+        StageManager = newManagerObject.AddComponent<StageManager>();
+        newManagerObject.SetActive(false);
     }
 
     public void LogInSuccess()
     // Photon의 OnConnectedToMaster() 서버 접속 성공 콜백 실행 시 실행
     {
         _logInCanvas.gameObject.SetActive(false);
-        LobbyUI.SetActive(true);
+        LobbyUI.transform.parent.gameObject.SetActive(true);
     }
     public void MatchSuccess(GameModeType gameModeType)
     {

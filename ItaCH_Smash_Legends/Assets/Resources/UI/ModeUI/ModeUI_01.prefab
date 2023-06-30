@@ -1096,8 +1096,9 @@ MonoBehaviour:
   - {fileID: 3396536804136747701}
   _timer: {fileID: 5642821199759404105}
   _respawnTimer: {fileID: 129356780460176573}
-  _1PUserName: {fileID: 4009383114774856648}
-  _2PUserName: {fileID: 4009383115344991904}
+  _userName:
+  - {fileID: 4009383114774856648}
+  - {fileID: 4009383115344991904}
 --- !u!1 &4009383113923921176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,7 +1109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4009383113923921177}
   m_Layer: 5
-  m_Name: Portrait_Enemy
+  m_Name: Portrait_Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2244,7 +2245,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4009383114771311891}
   m_Layer: 5
-  m_Name: Portrait_Player
+  m_Name: Portrait_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

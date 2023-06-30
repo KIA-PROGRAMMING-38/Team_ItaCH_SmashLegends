@@ -3,16 +3,15 @@ using UnityEngine;
 
 public class CharacterTestModule : MonoBehaviour
 {
-    
-    private void Awake()
-    {
-        CharacterStatus characterStatus = transform.root.GetComponent<CharacterStatus>();
+    //private void Awake()
+    //{
+    //    CharacterStatus characterStatus = transform.root.GetComponent<CharacterStatus>();
 
-        characterStatus.dataTable = new DataTable();
-        characterStatus.dataTable.SetDataTable();
-        characterStatus.InitCharacterType(characterStatus.CharacterType);
-        characterStatus.InitStatus();
-    }
+    //    characterStatus.dataTable = new DataTable();
+    //    characterStatus.dataTable.SetDataTable();
+    //    characterStatus.InitCharacterType(characterStatus.CharacterType);
+    //    characterStatus.InitStatus();
+    //}
     // 앨리스Bomb Hit 관련 임시 코드
     //private void BombHit(Collider other, int AnimationHash)
     //{

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using Util.Enum;
@@ -19,6 +20,8 @@ public class LobbyUI : MonoBehaviour
     public float DefaultVolume { get => _defaultVolume; }
 
     private TextMeshProUGUI _userNameTextUI;
+
+    public event Action<CharacterType> OnCharacterChanged;
 
     private void Start() // 이보다 먼저 실행될 경우(Awake, OnEnable) 실행흐름에 영향
     {
@@ -66,6 +69,7 @@ public class LobbyUI : MonoBehaviour
         _characterModels[characterIndex].SetActive(true);
         _characterType = (CharacterType)characterIndex;
         _currentCharacterIndex = characterIndex;
+        OnCharacterChanged.Invoke(_characterType);
     }
 
     private void SetPanelAndButton(string panelPath, string buttonPath)
