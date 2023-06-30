@@ -16,6 +16,7 @@ public class ModeUI : MonoBehaviour
     {
         _stageManager = stageManager;
         GameObject[] players = stageManager.Players;
+
         SetUIForEachPlayers(players);
     }
     public void BindEventWithScoreSets(int i)
@@ -47,8 +48,7 @@ public class ModeUI : MonoBehaviour
     {
         for (int i = 0; i < players.Length; ++i)
         {
-            CharacterStatus characterStatus = players[i].GetComponent<CharacterStatus>();
-
+            CharacterStatus characterStatus = players[i].GetComponent<CharacterStatus>();            
             _healthPointBars[i].InitHealthBarSettings();
             BindEventWithHealthBar(characterStatus, _healthPointBars[i]);
 
@@ -73,7 +73,7 @@ public class ModeUI : MonoBehaviour
     }
 
     private void SetPlayerName(CharacterStatus playerData)
-    {        
+    {
         _userName[playerData.PlayerID].text = playerData.Name;
     }
 

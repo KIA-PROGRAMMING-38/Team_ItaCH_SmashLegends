@@ -1,4 +1,5 @@
 using UnityEngine;
+using Util.Enum;
 
 public class UserManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class UserManager : MonoBehaviour
     void Awake()
     {
         _userLocalData = new UserData();
+        _userLocalData.SelectedCharacter = CharacterType.None;
         GameManager.Instance.LobbyManager.OnUpdateUserDatas -= ResiterUserData;
         GameManager.Instance.LobbyManager.OnUpdateUserDatas += ResiterUserData;
     }
@@ -34,7 +36,7 @@ public class UserManager : MonoBehaviour
 
     private void ResiterUserData(int id, UserData userLocalData)
     {
-        AllUserDatas[id] = userLocalData;        
+        AllUserDatas[id] = userLocalData;
     }
 
     private void ClearUserData(int id)

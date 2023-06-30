@@ -98,7 +98,6 @@ public class StageManager : MonoBehaviourPunCallbacks
     public void CreateCharacter(UserData userData, Transform[] spawnPoints) // 캐릭터 선택 기능 구현 시 매개변수로 선택한 캐릭터 함께 전달
     {
         int playerID = userData.Id;
-        Debug.Log(playerID + "캐릭터 생성 시점");
         CharacterType selectedCharacter = userData.SelectedCharacter;
         GameObject characterPrefab = GetCharacterPrefab(selectedCharacter);
 
@@ -172,22 +171,22 @@ public class StageManager : MonoBehaviourPunCallbacks
     public void SetPlayerInputController(GameObject character, int id)
     {
         UnityEngine.InputSystem.PlayerInput playercontroller;
+
         switch (id)
         {
             case 0:
                 playercontroller = character.GetComponent<UnityEngine.InputSystem.PlayerInput>();
                 playercontroller.SwitchCurrentActionMap("FirstPlayerActions");
-
                 break;
+
             case 1:
                 playercontroller = character.GetComponent<UnityEngine.InputSystem.PlayerInput>();
                 playercontroller.actions.name = "PlayerInput";
-                playercontroller.SwitchCurrentControlScheme("PC");
+                playercontroller.SwitchCurrentActionMap("SecondPlayerActions");
                 Keyboard keyBoard = InputSystem.GetDevice<Keyboard>();
                 playercontroller.actions.devices = new InputDevice[] { keyBoard };
-                playercontroller.SwitchCurrentActionMap("SecondPlayerActions");
-
                 break;
+
             default:
                 return;
         }

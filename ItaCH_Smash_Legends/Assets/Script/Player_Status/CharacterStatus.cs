@@ -1,8 +1,6 @@
 using Cysharp.Threading.Tasks;
 using System;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Util.Enum;
 
 public class CharacterStatus : CharacterDefaultStatus
@@ -83,7 +81,9 @@ public class CharacterStatus : CharacterDefaultStatus
     {
         if (this._isDead)
         {
+
             OnPlayerDieEffect.Invoke();
+            OnPlayerDie.Invoke(this);
             RespawnAsync(_currentRespawnTime).Forget();
         }
     }
@@ -139,10 +139,10 @@ public class CharacterStatus : CharacterDefaultStatus
         OnPlayerGetDamage?.Invoke(damage);
         if (_currentHealthPoint <= DEAD_TRIGGER_HP && !this._isDead)
         {
-            OnPlayerDie.Invoke(this);
             OnPlayerDieSmokeEffect.Invoke();
         }
     }
+
     private async UniTaskVoid RespawnAsync(float respawnTime)
     {
         await UniTask.Delay((int)respawnTime * 1000);

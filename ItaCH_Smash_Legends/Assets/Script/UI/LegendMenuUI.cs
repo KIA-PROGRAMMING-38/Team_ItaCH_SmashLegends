@@ -29,11 +29,14 @@ public class LegendMenuUI : MonoBehaviour, IPanel
         {
             _legendSelectMenu[i] = Instantiate(_legendSelectMenuPrefab, _contentTransform).AddComponent<LegendSelectUI>();
             _legendSelectMenu[i].InitLegendSelectUI(i, _portraitSprites[i], Enum.ToObject(typeof(LegendName), i).ToString());
+            
             _legendSelectMenu[i].OnSelectLegend -= RefreshFrame;
             _legendSelectMenu[i].OnSelectLegend += RefreshFrame;
-            _legendSelectMenu[i].OnSelectLegend -= _lobbyUI.ChangeMainCharacter;
-            _legendSelectMenu[i].OnSelectLegend += _lobbyUI.ChangeMainCharacter;
+
+            _legendSelectMenu[i].OnSelectLegend -= _lobbyUI.ChangeLobbyCharacterModel;
+            _legendSelectMenu[i].OnSelectLegend += _lobbyUI.ChangeLobbyCharacterModel;
         }
+        
     }
 
     public void RefreshFrame(int indexOfLegend)
@@ -53,7 +56,7 @@ public class LegendMenuUI : MonoBehaviour, IPanel
         for (int i = 0; i < _numberOfLegends; ++i)
         {
             _legendSelectMenu[i].OnSelectLegend -= RefreshFrame;
-            _legendSelectMenu[i].OnSelectLegend -= _lobbyUI.ChangeMainCharacter;
+            _legendSelectMenu[i].OnSelectLegend -= _lobbyUI.ChangeLobbyCharacterModel;
         }
     }
 }
