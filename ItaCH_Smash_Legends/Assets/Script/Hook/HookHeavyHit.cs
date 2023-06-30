@@ -1,6 +1,6 @@
 public class HookHeavyHit : HookHit
 {
-    void Start()
+    protected override void CalculationPowerAndDamage()
     {
         defaultdamage = heavyDamage;
         knockbackPower = heavyKnockbackPower;

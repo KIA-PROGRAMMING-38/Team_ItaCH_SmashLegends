@@ -195,6 +195,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Peter_Ingame (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1801810034622763246, guid: 6b1442466a235874686d9585788f272f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b1442466a235874686d9585788f272f, type: 3}
 --- !u!1001 &52416001
@@ -655,6 +660,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 8280973247567168790, guid: e3ee9b69ab5171641abfb8bf06a2db63,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8364983912144816812, guid: e3ee9b69ab5171641abfb8bf06a2db63,
         type: 3}
       propertyPath: m_Layer
@@ -896,7 +906,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &269641501
+--- !u!1 &132276754
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -904,22 +914,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 269641502}
-  - component: {fileID: 269641503}
-  m_Layer: 0
+  - component: {fileID: 132276755}
+  - component: {fileID: 132276756}
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &269641502
+--- !u!4 &132276755
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 269641501}
+  m_GameObject: {fileID: 132276754}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.0276, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
@@ -928,13 +938,13 @@ Transform:
   m_Father: {fileID: 1881243128}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &269641503
+--- !u!114 &132276756
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 269641501}
+  m_GameObject: {fileID: 132276754}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35dd08ea9a28ed946b15f1e478bacdf8, type: 3}
@@ -992,6 +1002,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1629445725069444990, guid: 0a820f92e71e03e42a7435b844051544,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6047655085950843869, guid: 0a820f92e71e03e42a7435b844051544,
         type: 3}
       propertyPath: m_RootOrder
@@ -1046,6 +1061,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081881771450060189, guid: 0a820f92e71e03e42a7435b844051544,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6387871113122111847, guid: 0a820f92e71e03e42a7435b844051544,
         type: 3}
@@ -1141,6 +1161,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Peter_Ingame (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801810034622763246, guid: 6b1442466a235874686d9585788f272f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b1442466a235874686d9585788f272f, type: 3}
@@ -2109,6 +2134,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 8280973247567168790, guid: e3ee9b69ab5171641abfb8bf06a2db63,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8364983912144816812, guid: e3ee9b69ab5171641abfb8bf06a2db63,
         type: 3}
       propertyPath: m_Layer
@@ -2797,6 +2827,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387871113122111847, guid: 0a820f92e71e03e42a7435b844051544,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6469862050080975118, guid: 0a820f92e71e03e42a7435b844051544,
         type: 3}

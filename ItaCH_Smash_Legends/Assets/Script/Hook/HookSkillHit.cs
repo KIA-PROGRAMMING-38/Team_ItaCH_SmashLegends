@@ -1,6 +1,6 @@
 public class HookSkillHit : HookHit
 {
-    void Start()
+    protected override void CalculationPowerAndDamage()
     {
         defaultdamage = skillDamage;
         knockbackUpDirection = skillKnockbackUpDirection;
