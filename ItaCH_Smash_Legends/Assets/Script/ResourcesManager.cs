@@ -1,6 +1,6 @@
 
 
-public static class ResourcesManager 
+public static class ResourcesManager
 {
     #region Folder Path
     public const string UIResources = "UI/";
@@ -23,10 +23,10 @@ public static class ResourcesManager
     public const string PeterHeavyAttackIcon = "UI/MobileUI/Sprite/Peter/Peter_HeavyAttackIcon";
     public const string PeterSkillAttackIcon = "UI/MobileUI/Sprite/Peter/Peter_SkillAttackIcon";
     public const string AttackOutline = "UI/MobileUI/Sprite/TouchController/Attack_Outline";
-    public const string MoveOutline = "UI/MobileUI/Sprite/TouchController/Move_Outline";
-    public const string MoveOutlineSecond = "UI/MobileUI/Sprite/TouchController/Move_Outline2";
-    public const string MovePoint = "UI/MobileUI/Sprite/TouchController/Move_Point";
-    public const string MovePointOutline = "UI/MobileUI/Sprite/TouchController/Move_Point_Outline";
+    public const string MovePad = "UI/MobileUI/Sprite/TouchController/Move_Pad";
+    public const string MovePadOutline = "UI/MobileUI/Sprite/TouchController/Move_Pad_Outline";
+    public const string JoyStick = "UI/MobileUI/Sprite/TouchController/JoyStick";
+    public const string JoyStickOutline = "UI/MobileUI/Sprite/TouchController/JoyStick_Outline";
     public const string SecondaryOutline = "UI/MobileUI/Sprite/TouchController/Secondary_Outline";
     public const string Shadow = "UI/MobileUI/Sprite/TouchController/Shadow";
     #endregion
@@ -49,6 +49,32 @@ public static class ResourcesManager
     #endregion
 
     #region CSV File Path
-    public const string CharacterDataTable = "Character/CharacterData/CharacterDefaultStatusData";
+    public const string CharacterDataTable = "Data/Character_Data/CharacterDefaultStatusData";
     #endregion
+
+    /*데이터 테이블 구성후 구분된 ID 순서
+     * 
+     * AttackIconOutline
+    AliceDefaultAttack
+    HookDefaultAttack
+    PeterDefaultAttack
+    AttackIconShadow
+    HeavyAttackIconOutline
+    AliceHeavyAttack
+    HookHeavyAttack
+    PeterHeavyAttack
+    HeavyAttackIconShadow
+    SkillAttackOutline
+    AliceSkillAttack
+    HookSkillAttack
+    PeterSkillAttack
+    SkillAttackIconShadow
+    JumpOutline
+    JumpIcon
+    JumpIconShadow
+    MovePad
+    JoyStick
+    JoyStickOutline
+    MovePadShadow
+     */
 }
