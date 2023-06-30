@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Util.Method
 {
@@ -36,6 +37,19 @@ namespace Util.Method
             {
                 cancellationToken.ThrowIfCancellationRequested();
                 rectTransform.Rotate(direction * (turnSpeed * Time.fixedDeltaTime));
+                await UniTask.DelayFrame(1);
+            }
+        }
+
+        public static async UniTask ChangeFillAmountGradually(float startValue, float targetValue, Image image)
+        {
+            float elapsedTime = 0;
+            float changingTime = 1f;
+            while (elapsedTime <= changingTime)
+            {
+                float currentValueRatio = Mathf.Clamp01(elapsedTime / changingTime);
+                image.fillAmount = Mathf.Lerp(startValue, targetValue, currentValueRatio);
+                elapsedTime += Time.deltaTime;
                 await UniTask.DelayFrame(1);
             }
         }
