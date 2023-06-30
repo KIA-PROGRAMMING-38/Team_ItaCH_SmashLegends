@@ -41,9 +41,9 @@ public class LobbyUI : MonoBehaviour
 
     public void InitLobbyUISettings()
     {
-        SetPanelAndButton(FilePath.LegendMenuUIPath, FilePath.LegendMenuButtonPath);
-        SetPanelAndButton(FilePath.SettingUIPath, FilePath.SettingButtonPath);
-        SetPanelAndButton(FilePath.MatchingUIPath, FilePath.MatchingButtonPath);
+        SetPanelAndButton(ResourcesManager.LegendMenuUIPath, ResourcesManager.LegendMenuButtonPath);
+        SetPanelAndButton(ResourcesManager.SettingUIPath, ResourcesManager.SettingButtonPath);
+        SetPanelAndButton(ResourcesManager.MatchingUIPath, ResourcesManager.MatchingButtonPath);
         SetLobbyCharaterModel();
     }
 
@@ -83,7 +83,7 @@ public class LobbyUI : MonoBehaviour
         panel.InitPanelSettings(this);
         button.InitEnablePanelButtonSettings(panelGameObject);
         panelGameObject.SetActive(false);
-        if (buttonPath == FilePath.MatchingButtonPath)
+        if (buttonPath == ResourcesManager.MatchingButtonPath)
         {
             button.Button.onClick.AddListener(GameManager.Instance.LobbyManager.Connect);
         }

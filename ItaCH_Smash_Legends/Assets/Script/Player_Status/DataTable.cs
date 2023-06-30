@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using Util.Path;
-using Util.CharacterData;
 using UnityEngine;
+using Util.CharacterData;
 
 public class DataTable
 {
@@ -13,7 +12,7 @@ public class DataTable
     }
     private void SetCharacterData()
     {
-        TextAsset characterCSV = Resources.Load<TextAsset>(FilePath.CharacterDataTable);
+        TextAsset characterCSV = Resources.Load<TextAsset>(ResourcesManager.CharacterDataTable);
         string[] characters = characterCSV.text.Split('\n');
 
         for (int i = 1; i < characters.Length; ++i)
