@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Pool;
+
 public class HookBullet : MonoBehaviour
 {
     protected BulletDeleteEffect bulletDeleteEffect;
@@ -9,14 +10,14 @@ public class HookBullet : MonoBehaviour
     protected const float HEAVY_BULLET_DELETE_TIME = 0.28f;
     protected const float SKILL_BULLET_DELETE_TIME = 0.28f;
     protected const float SKILL_HEAVY_BULLET_DELETE_TIME = 0.3f;
-    protected readonly string HEAVY_BULLET_DELETE_EFFECT_PATH = "Charater/Hook/Hook_Ingame/Hook_Heavy_Bullet_Delete_Effect";
-    protected readonly string LAST_HEAVY_BULLET_DELETE_EFFECT_PATH = "Charater/Hook/Hook_Ingame/Hook_Last_Heavy_Bullet_Delete_Effect";
-    protected readonly string SKILL_BULLET_DELETE_EFFECT_PATH = "Charater/Hook/Hook_Ingame/Hook_SKill_Bullet_Delete_Effect";
+    protected readonly string HEAVY_BULLET_DELETE_EFFECT_PATH = ResourcesManager.HeavyBulletDeleteEffect;
+    protected readonly string LAST_HEAVY_BULLET_DELETE_EFFECT_PATH = ResourcesManager   .LastHeavyBulletDeleteEffect;
+    protected readonly string SKILL_BULLET_DELETE_EFFECT_PATH = ResourcesManager.SkillBulletDeleteEffect;
 
     protected float bulletDeleteTime = 0.23f;
     protected float currentBulletSpeed = 20;
 
-    protected string bulletDeleteEffectPath = "Charater/Hook/Hook_Ingame/Hook_Default_Bullet_Delete_Effect";
+    protected string bulletDeleteEffectPath = ResourcesManager.BulletDeleteEffect;
 
     public ObjectPool<HookBullet> Pool { get; set; }
     internal GameObject constructor;
