@@ -21,14 +21,18 @@ public class HookHit : MonoBehaviour
     private CharacterStatus _characterStatus;
     private PlayerHit _playerHit;
 
-    private void Awake()
+    private void Start()
     {
-        _hookBullet = transform.GetParentComponent<HookBullet>();
-        //_characterStatus = _hookBullet.constructor.gameObject.GetComponent<CharacterStatus>();
-        //SetPowerAndDamage();
+        _hookBullet = GetComponentInParent<HookBullet>();
+        _characterStatus = _hookBullet.constructor.GetComponent<CharacterStatus>();
+        SetPowerAndDamage();
         knockbackPower = defaultKnockbackPower;
+        CalculationPowerAndDamage();
     }
+    protected virtual void CalculationPowerAndDamage()
+    {
 
+    }
     private void SetPowerAndDamage()
     {
         defaultKnockbackPower = _characterStatus.DefaultKnockbackPower;
@@ -53,7 +57,7 @@ public class HookHit : MonoBehaviour
                     GetBulletKnockBack(other);
                     _effectController.StartHitFlashEffet().Forget();
                 }
-                //GetHitDamage(other);
+                GetHitDamage(other);
                 _hookBullet.BulletPostProcessing(BulletDeleteEffectPosition(other));
             }
         }

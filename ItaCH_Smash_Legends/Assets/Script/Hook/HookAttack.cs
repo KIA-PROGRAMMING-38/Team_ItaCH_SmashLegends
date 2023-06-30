@@ -34,6 +34,8 @@ public class HookAttack : PlayerAttack
     private int _lastHeavyFireEffect = 2;
 
     private float _jumpRotateValue = 45f;
+    private float _defaultDashPower;
+    private float _heavyDashPower;
 
     private Vector3 _jumpUpDashPower = new Vector3(0, 0.3f, 0);
     private Vector3 _jumpDashPower;
@@ -61,8 +63,8 @@ public class HookAttack : PlayerAttack
     };
     private void Start()
     {
-        CreateObjectPool();
         nextTransitionMinValue = 0.6f;
+
         _bulletSpawnPositionLeft = transform.GetChild(_rootIndex).GetChild(_boneIndex).GetChild(_leftWeaponIndex).GetChild(_cylinderIndex).transform;
         _bulletSpawnPositionRight = transform.GetChild(_rootIndex).GetChild(_boneIndex).GetChild(_rightWeaponIndex).GetChild(_cylinderIndex).transform;
         for (int i = 0; i < _bulletContainers.Length; ++i)
@@ -70,11 +72,15 @@ public class HookAttack : PlayerAttack
             _bulletContainers[i] = transform.GetChild(i).gameObject;
             _bullets[i] = _bulletContainers[i].transform.GetChild(0).GetComponent<HookBullet>();
         }
-            _bulletCreateEffects[_defaultFireEffect] = _bulletContainers[_defaultIndex].transform.GetChild(1).GetComponent<FireEffect>();
+        _bulletCreateEffects[_defaultFireEffect] = _bulletContainers[_defaultIndex].transform.GetChild(1).GetComponent<FireEffect>();
         _bulletCreateEffects[_heavyFireEffect] = _bulletContainers[_heavyIndex].transform.GetChild(1).GetComponent<FireEffect>();
         _bulletCreateEffects[_lastHeavyFireEffect] = _bulletContainers[_lastHeavyIndex].transform.GetChild(1).GetComponent<FireEffect>();
 
+        CreateObjectPool();
         _shotEffect = Parrot.transform.GetChild(0).GetComponent<ParticleSystem>();
+        
+        _defaultDashPower = defaultDashPower * -0.4f;
+        _heavyDashPower = defaultDashPower * -0.65f;
     }
     private void OnDisable()
     {
@@ -87,13 +93,13 @@ public class HookAttack : PlayerAttack
     {
         if (CurrentPossibleComboCount == COMBO_FINISH_COUNT && playerStatus.CurrentState == PlayerStatus.State.ComboAttack)
         {
-            rigidbodyAttack.AddForce(transform.forward * (defaultDashPower * -0.4f), ForceMode.Impulse);
+            rigidbodyAttack.AddForce(transform.forward * (_defaultDashPower), ForceMode.Impulse);
 
         }
         if (CurrentPossibleComboCount == MAX_POSSIBLE_ATTACK_COUNT &&
             playerStatus.CurrentState == PlayerStatus.State.HeavyAttack)
         {
-            rigidbodyAttack.AddForce(transform.forward * (defaultDashPower * -0.65f), ForceMode.Impulse);
+            rigidbodyAttack.AddForce(transform.forward * (_heavyDashPower ), ForceMode.Impulse);
         }
 
         if (playerStatus.IsJump == false)

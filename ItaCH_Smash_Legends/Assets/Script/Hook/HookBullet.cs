@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 public class HookBullet : MonoBehaviour
 {
+    protected BulletDeleteEffect bulletDeleteEffect;
     protected const float DEFAULT_BULLET_SPEED = 20f;
     protected const float HEAVY_BULLET_SPEED = 28f;
     protected const float DEFAULT_BULLET_DELETE_TIME = 0.23f;
@@ -18,17 +19,16 @@ public class HookBullet : MonoBehaviour
     protected string bulletDeleteEffectPath = "Charater/Hook/Hook_Ingame/Hook_Default_Bullet_Delete_Effect";
 
     public ObjectPool<HookBullet> Pool { get; set; }
-    private ObjectPool<BulletDeleteEffect> _bulletDeleteEffectPool;
-    private float _elapsedTime;
-
     internal GameObject constructor;
 
-    protected BulletDeleteEffect bulletDeleteEffect;
+    private ObjectPool<BulletDeleteEffect> _bulletDeleteEffectPool;
+    private float _elapsedTime;
 
     private void Start()
     {
         bulletDeleteEffect = Resources.Load<BulletDeleteEffect>(bulletDeleteEffectPath);
-        _bulletDeleteEffectPool = new ObjectPool<BulletDeleteEffect>(CreateBulletDeleteEffectOnPool, GetPoolBulletDeleteEffect, ReturnBulletDeleteEffect, (effect) => Destroy(effect), true, 10, 500);
+        _bulletDeleteEffectPool = new ObjectPool<BulletDeleteEffect>(CreateBulletDeleteEffectOnPool,
+            GetPoolBulletDeleteEffect, ReturnBulletDeleteEffect, (effect) => Destroy(effect), true, 10, 500);
     }
 
     private void Update()
