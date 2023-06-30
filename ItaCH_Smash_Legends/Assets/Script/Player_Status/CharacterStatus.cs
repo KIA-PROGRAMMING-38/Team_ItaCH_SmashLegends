@@ -73,12 +73,11 @@ public class CharacterStatus : CharacterDefaultStatus
     private float _moveSpeed;
 
     private CharacterType _characterType;
-    public CharacterType CharacterType { get => _characterType; }
+    public CharacterType CharacterType { get => _characterType; set => _characterType = value; }
 
-    private void Awake()
-    {
-        InitStatus();
-    }
+    private string _name;
+    public string Name { get => _name; set => _name = value; }
+
     private void OnDisable()
     {
         if (this._isDead)
@@ -87,10 +86,10 @@ public class CharacterStatus : CharacterDefaultStatus
             RespawnAsync(_currentRespawnTime).Forget();
         }
     }
-    public void InitCharacterType(CharacterType characterType)
+    public void InitCharacterDefaultData(CharacterType characterType)
     {
-        _characterType = characterType;
-        InitCharacterStatus(_characterType);
+        int character = (int)characterType;
+        GetCharacterDefaultData(character);
     }
     public void InitStatus()
     {
@@ -155,7 +154,7 @@ public class CharacterStatus : CharacterDefaultStatus
         this.GetComponent<Collider>().isTrigger = false;
         this._isDead = false;
         OnPlayerRespawn.Invoke(this);
-        OnRespawnSetting.Invoke(this.gameObject, PlayerID);
+        OnRespawnSetting.Invoke(this.gameObject, _playerID);
         InitHP();
     }
 }

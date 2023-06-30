@@ -1,3 +1,4 @@
+using UnityEngine;
 using System.Text;
 using Util.Enum;
 
@@ -16,7 +17,7 @@ namespace Util.Path
         public const string MatchingButtonPath = "UI/GameStartButton";
         public const string MapPath = "Map/LobbyWorld/";
         public const string UISpritePath = "UI/Sprite/";
-        public const string CharacterDataTable = "Charater/CharacterData/CharacterDefaultStatusData";
+        public const string CharacterDataTable = "Character/CharacterData/CharacterDefaultStatusData";
         public const string CharacterPath = "Character/";
         public const string CharacterInGamePath = "_Ingame/";
         public const string CharacterInGamePrefabName = "_Ingame";
@@ -38,14 +39,14 @@ namespace Util.Path
             return stringBuilder.ToString();
         }
 
-        public static string GetChracterInGamePrefab(CharacterType characterType)
+        public static string GetCharacterInGamePrefabPath(CharacterType characterType)
         {
             StringBuilder stringBuilder = new StringBuilder();
             string characterName = characterType.ToString();
             stringBuilder.Append(CharacterPath);
             stringBuilder.Append(characterName);
             stringBuilder.Append($"/{characterName}{CharacterInGamePath}");
-            stringBuilder.Append($"{characterName}{CharacterInGamePrefabName}");            
+            stringBuilder.Append($"{characterName}{CharacterInGamePrefabName}");
             return stringBuilder.ToString();
         }
     }
