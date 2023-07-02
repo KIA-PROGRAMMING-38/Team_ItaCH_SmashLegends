@@ -31,7 +31,7 @@ public static class ResourcesManager
     public const string Shadow = "UI/MobileUI/Sprite/TouchController/Shadow";
     #endregion
 
-    #region Prefebs Path
+    #region Prefabs Path
     public const string LegendMenuUIPath = "UI/LegendMenu";
     public const string LegendMenuButtonPath = "UI/LegendMenuButton";
     public const string SettingUIPath = "UI/SettingPanel";
