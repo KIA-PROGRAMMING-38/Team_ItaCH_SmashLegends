@@ -1,8 +1,3 @@
-using Mono.Cecil;
-using System;
-using Unity.Mathematics;
-using UnityEngine.UIElements;
-using UnityEngine;
 using System.Collections.Generic;
 
 namespace Util.Enum
@@ -30,8 +25,8 @@ namespace Util.Enum
         public const string ScaleY = "scale_y";
         public const string ScaleZ = "scale_z";
 
-        public static void SwapData(List<Dictionary<string, object>> mobileData, 
-            MobileUIName beforeName, string beforeKey, 
+        public static void SwapData(List<Dictionary<string, object>> mobileData,
+            MobileUIName beforeName, string beforeKey,
             MobileUIName afterName, string afterKey)
         {
             mobileData[(int)beforeName][beforeKey] = mobileData[(int)afterName][afterKey];
