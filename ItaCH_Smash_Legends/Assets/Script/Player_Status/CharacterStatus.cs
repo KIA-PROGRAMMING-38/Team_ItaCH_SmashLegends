@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Util.Enum;
 
@@ -79,9 +80,9 @@ public class CharacterStatus : CharacterDefaultStatus
 
     private void OnDisable()
     {
+        
         if (this._isDead)
         {
-
             OnPlayerDieEffect.Invoke();
             OnPlayerDie.Invoke(this);
             RespawnAsync(_currentRespawnTime).Forget();
