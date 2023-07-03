@@ -131,6 +131,17 @@
                 },
                 {
                     "name": "",
+                    "id": "4905d8c3-beec-4c8a-b3f7-b885a8153e71",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mobile",
+                    "action": "DefaultAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1ada06a1-1c08-4a94-afef-b92ac634e01c",
                     "path": "<Keyboard>/period",
                     "interactions": "",
@@ -318,6 +329,17 @@
                 },
                 {
                     "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Mobile",
+            "bindingGroup": "Mobile",
+            "devices": [
+                {
+                    "devicePath": "<AndroidJoystick>",
                     "isOptional": false,
                     "isOR": false
                 }
