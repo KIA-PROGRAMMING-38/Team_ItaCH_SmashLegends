@@ -1,4 +1,5 @@
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 public class PeterAttack : PlayerAttack
 {
@@ -11,35 +12,43 @@ public class PeterAttack : PlayerAttack
     public override void AttackOnDash()
     {
         defaultDashPower = 0.8f;
+        Debug.Log(rigidbodyAttack);
+        Debug.Log(transform.forward);
         rigidbodyAttack.AddForce(transform.forward * defaultDashPower, ForceMode.Impulse);
     }
 
     private void Update()
     {
-        if (playerStatus.CurrentState == PlayerStatus.State.SkillAttack)
-        {
-            rigidbodyAttack.velocity = transform.forward * _skillAttackMoveSpeed;
-            if (playerStatus.CurrentState == PlayerStatus.State.SkillEndAttack)
-            {
-                rigidbodyAttack.velocity = Vector3.zero;
-            }
-        }
+        //if (playerStatus.CurrentState == PlayerStatus.State.SkillAttack)
+        //{
+        //    rigidbodyAttack.velocity = transform.forward * _skillAttackMoveSpeed;
+        //    if (playerStatus.CurrentState == PlayerStatus.State.SkillEndAttack)
+        //    {
+        //        rigidbodyAttack.velocity = Vector3.zero;
+        //    }
+        //}
     }
     public override void DefaultAttack()
     {
         if (IsPossibleFirstAttack())
         {
             playerStatus.CurrentState = PlayerStatus.State.ComboAttack;
+            AttackOnDash();
             animator.Play(AnimationHash.FirstAttack);
+            return;
         }
 
         if (isFirstAttack && CurrentPossibleComboCount == COMBO_SECOND_COUNT)
         {
             isSecondAttack = true;
+            AttackOnDash();
+            return;
         }
         if (isSecondAttack && CurrentPossibleComboCount == COMBO_FINISH_COUNT)
         {
             isFinishAttack = true;
+            AttackOnDash();
+            return;
         }
     }
 
@@ -48,10 +57,24 @@ public class PeterAttack : PlayerAttack
         if (playerStatus.CurrentState == PlayerStatus.State.Run ||
             playerStatus.CurrentState == PlayerStatus.State.Idle)
         {
+            
+            MoveSkillAttack().Forget();
             animator.Play(AnimationHash.SkillAttack);
         }
     }
 
+    private async UniTaskVoid MoveSkillAttack()
+    {
+        if (playerStatus.CurrentState == PlayerStatus.State.SkillAttack)
+        {
+            rigidbodyAttack.velocity = transform.forward * _skillAttackMoveSpeed;
+            await UniTask.Delay(3000);
+            if (playerStatus.CurrentState == PlayerStatus.State.SkillEndAttack)
+            {
+                rigidbodyAttack.velocity = Vector3.zero;
+            }
+        }
+    }
     private void EnableAttackHitZone() => _attackHitZone.enabled = true;
     private void DisableAttackHitZone() => _attackHitZone.enabled = false;
     private void EnableJumpAttackHitZone() => _jumpAttackHitZone.enabled = true;
