@@ -29,7 +29,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     {
         playerMove = GetComponent<PlayerMove>();
         rigidbodyAttack = GetComponent<Rigidbody>();
-        characterStatus= GetComponent<CharacterStatus>();
+        characterStatus = GetComponent<CharacterStatus>();
         playerStatus = GetComponent<PlayerStatus>();
         animator = GetComponent<Animator>();
 
@@ -74,6 +74,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     {
         if (IsPossibleFirstAttack())
         {
+            isFinishAttack = false;
             animator.Play(AnimationHash.FirstAttack);
         }
 
