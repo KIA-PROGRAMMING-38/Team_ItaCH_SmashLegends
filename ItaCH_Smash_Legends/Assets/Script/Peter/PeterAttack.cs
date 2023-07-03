@@ -12,22 +12,9 @@ public class PeterAttack : PlayerAttack
     public override void AttackOnDash()
     {
         defaultDashPower = 0.8f;
-        Debug.Log(rigidbodyAttack);
-        Debug.Log(transform.forward);
         rigidbodyAttack.AddForce(transform.forward * defaultDashPower, ForceMode.Impulse);
     }
 
-    private void Update()
-    {
-        //if (playerStatus.CurrentState == PlayerStatus.State.SkillAttack)
-        //{
-        //    rigidbodyAttack.velocity = transform.forward * _skillAttackMoveSpeed;
-        //    if (playerStatus.CurrentState == PlayerStatus.State.SkillEndAttack)
-        //    {
-        //        rigidbodyAttack.velocity = Vector3.zero;
-        //    }
-        //}
-    }
     public override void DefaultAttack()
     {
         if (IsPossibleFirstAttack())

@@ -63,7 +63,6 @@ public class JoyStickController : MonoBehaviour
             _movementFinger = null;
             _joystick.rectTransform.anchoredPosition = new Vector2(395,290);
             _joystick.Knob.anchoredPosition = Vector2.zero;
-            //_joystick.gameObject.SetActive(false);
             _movementAmount = Vector2.zero;
         }
     }
@@ -74,7 +73,6 @@ public class JoyStickController : MonoBehaviour
         {
             _movementFinger = TouchedFinger;
             _movementAmount = Vector2.zero;
-            //_joystick.gameObject.SetActive(true);
             _joystick.rectTransform.anchoredPosition = ClampStartPosition(TouchedFinger.screenPosition);
         }
     }
