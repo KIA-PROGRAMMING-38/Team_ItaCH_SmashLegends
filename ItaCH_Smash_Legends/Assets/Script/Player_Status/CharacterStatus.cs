@@ -103,8 +103,11 @@ public class CharacterStatus : CharacterDefaultStatus
     {
         _currentHealthPoint = base.HpData;
         _maxHealthPoint = base.HpData;
-        _currentHealthPointRatio = 100;
+        //Hpbar 내부 로직때문에 1000으로 변경.
+        _currentHealthPointRatio = 1000;
         OnPlayerHealthPointChange?.Invoke(_currentHealthPoint, _currentHealthPointRatio);
+        //이후 원래 수치로.
+        _currentHealthPointRatio = 100;
     }
     private void InitAttackRelevant()
     {

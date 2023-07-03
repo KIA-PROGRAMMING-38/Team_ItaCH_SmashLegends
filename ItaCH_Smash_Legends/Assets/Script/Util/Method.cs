@@ -41,17 +41,18 @@ namespace Util.Method
             }
         }
 
-        public static async UniTask ChangeFillAmountGradually(float startValue, float targetValue, Image image)
+        public static async UniTask ChangeFillAmountGradually(float targetValue, float targetTime, Image image)
         {
             float elapsedTime = 0;
-            float changingTime = 1f;
-            while (elapsedTime <= changingTime)
+            float startValue = image.fillAmount;
+            while (elapsedTime <= targetTime)
             {
-                float currentValueRatio = Mathf.Clamp01(elapsedTime / changingTime);
+                float currentValueRatio = Mathf.Clamp01(elapsedTime / targetTime);
                 image.fillAmount = Mathf.Lerp(startValue, targetValue, currentValueRatio);
                 elapsedTime += Time.deltaTime;
                 await UniTask.DelayFrame(1);
             }
+            image.fillAmount = targetValue;
         }
     }
 }
