@@ -21,9 +21,9 @@ public class AliceBomb : MonoBehaviour
 
     private void Awake()
     {
-        _characterStatus = GetComponent<CharacterStatus>();
+        _characterStatus = transform.root.GetComponent<CharacterStatus>();
         _boxCollider = GetComponent<BoxCollider>();
-        _aliceHit = GetComponent<AliceHit>();
+        _aliceHit = transform.root.GetComponent<AliceHit>();
         currentTransform = transform.root;
         _cancelToken = new CancellationTokenSource();
     }
@@ -54,7 +54,7 @@ public class AliceBomb : MonoBehaviour
             }
         }
     }
-    
+
     private async UniTaskVoid PlayBombEffect()
     {
         int startEffectIndex = 0;
@@ -76,6 +76,7 @@ public class AliceBomb : MonoBehaviour
         _isAttack = false;
         SetParent();
         PlayAllEffect();
+        await UniTask.Delay(200);
         _aliceHit.GetHit(_knockBackDirection, _knockBackPower, AnimationHash.Hit, other, _characterStatus.HeavyAttackDamage);
         await UniTask.Delay(400);
         CancelUniTask();
