@@ -1,8 +1,6 @@
 using Cysharp.Threading.Tasks;
 using System;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Util.Enum;
 
 public class CharacterStatus : CharacterDefaultStatus
@@ -40,9 +38,10 @@ public class CharacterStatus : CharacterDefaultStatus
     private int _currentHealthPointRatio;
     private float _currentRespawnTime;
     private const int DEAD_TRIGGER_HP = 0;
-    private bool _isDead = false;
+    internal bool _isDead = false;
 
     public event Action<int, int> OnPlayerHealthPointChange;
+    public event Action<int> OnPlayerGetDamage;
     public event Action<CharacterStatus> OnPlayerDie;
     public event Action<CharacterStatus> OnPlayerRespawn;
     public event Action<GameObject, int> OnRespawnSetting;
@@ -73,24 +72,25 @@ public class CharacterStatus : CharacterDefaultStatus
     private float _moveSpeed;
 
     private CharacterType _characterType;
-    public CharacterType CharacterType { get => _characterType; }
+    public CharacterType CharacterType { get => _characterType; set => _characterType = value; }
 
-    private void Awake()
-    {
-        InitStatus();
-    }
+    private string _name;
+    public string Name { get => _name; set => _name = value; }
+
     private void OnDisable()
     {
         if (this._isDead)
         {
+
             OnPlayerDieEffect.Invoke();
+            OnPlayerDie.Invoke(this);
             RespawnAsync(_currentRespawnTime).Forget();
         }
     }
-    public void InitCharacterType(CharacterType characterType)
+    public void InitCharacterDefaultData(CharacterType characterType)
     {
-        _characterType = characterType;
-        InitCharacterStatus(_characterType);
+        int character = (int)characterType;
+        GetCharacterDefaultData(character);
     }
     public void InitStatus()
     {
@@ -139,13 +139,13 @@ public class CharacterStatus : CharacterDefaultStatus
         _currentHealthPoint = Mathf.Max(damagedHealthPoint, DEAD_TRIGGER_HP);
         _currentHealthPointRatio = (_currentHealthPoint * 100) / MaxHealthPoint;
         OnPlayerHealthPointChange.Invoke(_currentHealthPoint, _currentHealthPointRatio);
+        OnPlayerGetDamage?.Invoke(damage);
         if (_currentHealthPoint <= DEAD_TRIGGER_HP && !this._isDead)
         {
-            this._isDead = true;
-            OnPlayerDie.Invoke(this);
             OnPlayerDieSmokeEffect.Invoke();
         }
     }
+
     private async UniTaskVoid RespawnAsync(float respawnTime)
     {
         await UniTask.Delay((int)respawnTime * 1000);
@@ -158,7 +158,7 @@ public class CharacterStatus : CharacterDefaultStatus
         this.GetComponent<Collider>().isTrigger = false;
         this._isDead = false;
         OnPlayerRespawn.Invoke(this);
-        OnRespawnSetting.Invoke(this.gameObject, PlayerID);
+        OnRespawnSetting.Invoke(this.gameObject, _playerID);
         InitHP();
     }
 }

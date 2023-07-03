@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
+using Util.Enum;
+using Util.Path;
 
 public class StageManager : MonoBehaviourPunCallbacks
 {
@@ -54,22 +55,13 @@ public class StageManager : MonoBehaviourPunCallbacks
     public event Action<int, TeamType> OnTeamScoreChanged;
     public event Action<int> OnTimeChange;
 
-    private void Awake()
-    {
-
-    }
     public override void OnEnable()
     {
-        const float INTENSITY = 1.23f;
-        RenderSettings.sun.intensity *= INTENSITY;
         GetGameMode(DEFAULT_GAME_MODE);
         GameManager.Instance.LobbyManager.OnEnteringGameMode -= SetStage;
         GameManager.Instance.LobbyManager.OnEnteringGameMode += SetStage;
     }
-    private void Start()
-    {
-        SetStage(_currentGameMode);
-    }
+
     public void GetGameMode(GameModeType gameModeSelected)
     {
         if (_currentGameMode == null)
@@ -86,12 +78,13 @@ public class StageManager : MonoBehaviourPunCallbacks
     public void SetStage(GameMode currentGameMode)
     {
         CreateMap(currentGameMode);
-        _playerCharacterInstances = new GameObject[_totalPlayer + INDEX_OFFSET_FOR_ZERO];
+        _playerCharacterInstances = new GameObject[_totalPlayer];
         _teamBlueCharacter = new CharacterStatus[_teamSize];
         _teamRedCharacter = new CharacterStatus[_teamSize];
-        for (int playerID = 1; playerID <= _totalPlayer; playerID++)
+        for (int playerID = 0; playerID < _totalPlayer; playerID++)
         {
-            CreateCharacter(playerID, currentGameMode.SpawnPoints);
+            UserData userData = GameManager.Instance.UserManager.GetUserData(playerID);
+            CreateCharacter(userData, currentGameMode.SpawnPoints);
         }
         SetModeUI(currentGameMode.GameModeType);
         StartCoroutine(UpdateGameTime());
@@ -102,27 +95,18 @@ public class StageManager : MonoBehaviourPunCallbacks
         GameObject mapInstance = Instantiate(gameMode.Map, null);
     }
 
-    public void CreateCharacter(int playerID, Transform[] spawnPoints) // 캐릭터 선택 기능 구현 시 매개변수로 선택한 캐릭터 함께 전달
+    public void CreateCharacter(UserData userData, Transform[] spawnPoints) // 캐릭터 선택 기능 구현 시 매개변수로 선택한 캐릭터 함께 전달
     {
-        string characterPrefabPath = "Charater/Peter/Peter_Ingame/Peter_Ingame"; // 캐릭터 선택 기능 구현 시 캐릭터 이름으로 경로 구성 필요
-        string hookPrefabPath = "Charater/Hook/Hook_Ingame/Hook_Ingame"; // 캐릭터 선택 기능 구현 시 캐릭터 이름으로 경로 구성 필요
-        string alicePrefabPath = "Charater/Alice/Alice_Ingame/Alice_Ingame"; // 캐릭터 선택 기능 구현 시 캐릭터 이름으로 경로 구성 필요
-        GameObject characterPrefab = Resources.Load<GameObject>(characterPrefabPath);
-        GameObject hookPrefab = Resources.Load<GameObject>(hookPrefabPath);
-        GameObject alicePrefab = Resources.Load<GameObject>(alicePrefabPath);
+        int playerID = userData.Id;
+        CharacterType selectedCharacter = userData.SelectedCharacter;
+        GameObject characterPrefab = GetCharacterPrefab(selectedCharacter);
 
         if (characterPrefab != null)
         {
             if (spawnPoints[playerID] != null)
             {
-                if (playerID == 2)
-                {
-                    characterPrefab = hookPrefab;
-                }
-                GameObject characterInstance = Instantiate(characterPrefab, spawnPoints[playerID].position, Quaternion.identity);
-                //테스트 코드. 추후 레전드 선택 기능 구현 시 코드 교체
-                characterInstance.GetComponent<CharacterStatus>().InitCharacterType(Util.Enum.CharacterType.Peter);
-                SetTeam(characterInstance, playerID);
+                GameObject characterInstance = Instantiate(characterPrefab, spawnPoints[playerID + INDEX_OFFSET_FOR_ZERO].position, Quaternion.identity);
+                InitCharacterStatus(characterInstance, userData);
                 SetPlayerInputController(characterInstance, playerID);
                 _playerCharacterInstances[playerID] = characterInstance;
             }
@@ -133,58 +117,76 @@ public class StageManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            Debug.LogError("Failed to load the prefab at path: " + characterPrefabPath);
+            Debug.LogError("Failed to load the prefab at path");
         }
     }
-    public void SetTeam(GameObject character, int id)
+
+    private GameObject GetCharacterPrefab(CharacterType character)
+    {
+        string characterPrefabPath = FilePath.GetCharacterInGamePrefabPath(character);
+        return Resources.Load<GameObject>(characterPrefabPath);
+    }
+    private void InitCharacterStatus(GameObject character, UserData userData)
     {
         CharacterStatus characterStatus = character.GetComponent<CharacterStatus>();
-        characterStatus.PlayerID = id;
+        int playerID = userData.Id;
+        CharacterType selectedCharacter = userData.SelectedCharacter;
+
+        characterStatus.InitCharacterDefaultData(selectedCharacter);
+        characterStatus.InitStatus();
+        characterStatus.CharacterType = selectedCharacter;
+        characterStatus.PlayerID = playerID;
+        characterStatus.Name = userData.Name;
         characterStatus.RespawnTime = _modeDefaultRespawnTime;
+        SetTeam(characterStatus, playerID);
+
         characterStatus.OnRespawnSetting -= SetPlayerInputController;
         characterStatus.OnRespawnSetting += SetPlayerInputController;
 
-        if (id > _teamSize)
-        {
-            characterStatus.TeamType = TeamType.Red;
-            _teamMemberIndex = id - _teamSize - INDEX_OFFSET_FOR_ZERO;
-            _teamRedCharacter[_teamMemberIndex] = characterStatus;
-            character.layer = LayerMask.NameToLayer("TeamRed");
-            characterStatus.TeamSpawnPoint = characterStatus.transform.position;
-            character.name = "red";
-        }
-        else
-        {
-            characterStatus.TeamType = TeamType.Blue;
-            _teamMemberIndex = id - INDEX_OFFSET_FOR_ZERO;
-            _teamBlueCharacter[_teamMemberIndex] = characterStatus;
-            character.layer = LayerMask.NameToLayer("TeamBlue");
-            characterStatus.TeamSpawnPoint = characterStatus.transform.position;
-            character.name = "blue";
-
-        }
         characterStatus.OnPlayerDie -= UpdateTeamScore;
         characterStatus.OnPlayerDie += UpdateTeamScore;
+    }
+    private void SetTeam(CharacterStatus character, int playerID)
+    {
+        if (playerID >= _teamSize)
+        {
+            character.TeamType = TeamType.Red;
+            _teamMemberIndex = playerID - _teamSize;
+            _teamRedCharacter[_teamMemberIndex] = character;
+            character.gameObject.layer = LayerMask.NameToLayer("TeamRed");
+            character.TeamSpawnPoint = character.transform.position;
+            character.gameObject.name = "red";
+        }
+
+        else
+        {
+            character.TeamType = TeamType.Blue;
+            _teamMemberIndex = playerID;
+            _teamBlueCharacter[_teamMemberIndex] = character;
+            character.gameObject.layer = LayerMask.NameToLayer("TeamBlue");
+            character.TeamSpawnPoint = character.transform.position;
+            character.gameObject.name = "blue";
+        }
     }
     public void SetPlayerInputController(GameObject character, int id)
     {
         UnityEngine.InputSystem.PlayerInput playercontroller;
+
         switch (id)
         {
-            case 1:
+            case 0:
                 playercontroller = character.GetComponent<UnityEngine.InputSystem.PlayerInput>();
                 playercontroller.SwitchCurrentActionMap("FirstPlayerActions");
-
                 break;
-            case 2:
+
+            case 1:
                 playercontroller = character.GetComponent<UnityEngine.InputSystem.PlayerInput>();
                 playercontroller.actions.name = "PlayerInput";
-                playercontroller.SwitchCurrentControlScheme("PC");
+                playercontroller.SwitchCurrentActionMap("SecondPlayerActions");
                 Keyboard keyBoard = InputSystem.GetDevice<Keyboard>();
                 playercontroller.actions.devices = new InputDevice[] { keyBoard };
-                playercontroller.SwitchCurrentActionMap("SecondPlayerActions");
-
                 break;
+
             default:
                 return;
         }
@@ -222,7 +224,7 @@ public class StageManager : MonoBehaviourPunCallbacks
                 break;
             case GameModeType.Duel:
                 _legendUI = new List<GameObject>();
-                for (int i = 1; i <= _totalPlayer; ++i)
+                for (int i = 0; i < _totalPlayer; ++i)
                 {
                     SetLegendUI(_playerCharacterInstances[i]);
                 }

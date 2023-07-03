@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using Util.Enum;
@@ -20,6 +21,8 @@ public class LobbyUI : MonoBehaviour
 
     private TextMeshProUGUI _userNameTextUI;
 
+    public event Action<CharacterType> OnCharacterChanged;
+
     private void Start() // 이보다 먼저 실행될 경우(Awake, OnEnable) 실행흐름에 영향
     {
         InitLobbyUISettings();
@@ -36,11 +39,11 @@ public class LobbyUI : MonoBehaviour
         _userNameTextUI.text = userName;
     }
 
-    public void InitLobbyUISettings()
+    public void InitLobbyUISettings() // 패널 3개 생성 : 레전드 메뉴, 환경설정 메뉴, 매칭 UI
     {
-        SetPanelAndButton(FilePath.LegendMenuUIPath, FilePath.LegendMenuButtonPath);
-        SetPanelAndButton(FilePath.SettingUIPath, FilePath.SettingButtonPath);
-        SetPanelAndButton(FilePath.MatchingUIPath, FilePath.MatchingButtonPath);
+        SetPanelAndButton(ResourcesManager.LegendMenuUIPath, ResourcesManager.LegendMenuButtonPath);
+        SetPanelAndButton(ResourcesManager.SettingUIPath, ResourcesManager.SettingButtonPath);
+        SetPanelAndButton(ResourcesManager.MatchingUIPath, ResourcesManager.MatchingButtonPath);
         SetLobbyCharaterModel();
     }
 
@@ -60,12 +63,13 @@ public class LobbyUI : MonoBehaviour
         _characterModels[_currentCharacterIndex].SetActive(true);
     }
 
-    public void ChangeMainCharacter(int characterIndex)
+    public void ChangeLobbyCharacterModel(int characterIndex)
     {
         _characterModels[_currentCharacterIndex].SetActive(false);
         _characterModels[characterIndex].SetActive(true);
         _characterType = (CharacterType)characterIndex;
         _currentCharacterIndex = characterIndex;
+        OnCharacterChanged.Invoke(_characterType);
     }
 
     private void SetPanelAndButton(string panelPath, string buttonPath)
@@ -79,7 +83,7 @@ public class LobbyUI : MonoBehaviour
         panel.InitPanelSettings(this);
         button.InitEnablePanelButtonSettings(panelGameObject);
         panelGameObject.SetActive(false);
-        if (buttonPath == FilePath.MatchingButtonPath)
+        if (buttonPath == ResourcesManager.MatchingButtonPath)
         {
             button.Button.onClick.AddListener(GameManager.Instance.LobbyManager.Connect);
         }

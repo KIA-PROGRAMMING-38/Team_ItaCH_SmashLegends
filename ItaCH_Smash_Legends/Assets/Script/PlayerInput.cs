@@ -17,7 +17,7 @@ public class PlayerInput : MonoBehaviour
         _playerRollUp = GetComponent<PlayerRollUp>();
         _animator = GetComponent<Animator>();
     }
-    private void OnDefaultAttack()
+    public void OnDefaultAttack()
     {
         _playerAttack.JumpAttack();
         _playerAttack.DefaultAttack();

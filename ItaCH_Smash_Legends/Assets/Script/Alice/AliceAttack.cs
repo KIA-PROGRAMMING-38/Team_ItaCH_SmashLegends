@@ -25,13 +25,14 @@ public class AliceAttack : PlayerAttack
     }
 
     public override void DefaultAttack()
-    {
+    {        
         if (IsPossibleFirstAttack())
         {
+            isFinishAttack = false;
             playerStatus.CurrentState = PlayerStatus.State.ComboAttack;
             AttackOnDash();
             animator.Play(AnimationHash.FirstAttack);
-            --CurrentPossibleComboCount;
+            --CurrentPossibleComboCount;            
         }
         if (isFirstAttack && CurrentPossibleComboCount == COMBO_FINISH_COUNT)
         {

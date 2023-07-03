@@ -45,5 +45,6 @@ public class Portrait : MonoBehaviour
             await UniTask.Delay(1000);
             elapsedTime += 1;
         }
+        _rotateCircle.CancellationTokenSource.Cancel();
     }
 }

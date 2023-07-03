@@ -29,18 +29,23 @@ public class PlayerAttack : MonoBehaviour, IAttack
     {
         playerMove = GetComponent<PlayerMove>();
         rigidbodyAttack = GetComponent<Rigidbody>();
-        characterStatus= GetComponent<CharacterStatus>();
+        characterStatus = GetComponent<CharacterStatus>();
         playerStatus = GetComponent<PlayerStatus>();
         animator = GetComponent<Animator>();
 
+        CurrentPossibleComboCount = MAX_POSSIBLE_ATTACK_COUNT;
+    }
+    private void Start()
+    {
+        SetStatus();
+    }
+    private void SetStatus()
+    {
         defaultDashPower = characterStatus.DashPower;
         heavyCooltime = characterStatus.HeavyCooltime;
         skillGauage = characterStatus.SkillGauage;
         skillGauageRecovery = characterStatus.SkillGauageRecovery;
-        
-        CurrentPossibleComboCount = MAX_POSSIBLE_ATTACK_COUNT;
     }
-
     public void AttackRotate()
     {
         if (playerMove.moveDirection != Vector3.zero)
@@ -69,6 +74,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     {
         if (IsPossibleFirstAttack())
         {
+            isFinishAttack = false;
             animator.Play(AnimationHash.FirstAttack);
         }
 
