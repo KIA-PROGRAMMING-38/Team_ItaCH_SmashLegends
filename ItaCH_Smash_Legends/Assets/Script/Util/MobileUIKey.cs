@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Util.Enum
+namespace Util
 {
     public static class MobileUIKey
     {
