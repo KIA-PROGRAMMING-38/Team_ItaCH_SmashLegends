@@ -48,7 +48,7 @@ public class ModeUI : MonoBehaviour
     {
         for (int i = 0; i < players.Length; ++i)
         {
-            CharacterStatus characterStatus = players[i].GetComponent<CharacterStatus>();            
+            CharacterStatus characterStatus = players[i].GetComponent<CharacterStatus>();
             _healthPointBars[i].InitHealthBarSettings();
             BindEventWithHealthBar(characterStatus, _healthPointBars[i]);
 

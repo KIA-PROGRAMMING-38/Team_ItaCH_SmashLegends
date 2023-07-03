@@ -19,6 +19,7 @@ namespace Util.Path
             string characterName = characterType.ToString();
             stringBuilder.Append(ResourcesManager.UISpritePath);
             stringBuilder.Append(characterName);
+            stringBuilder.Append($"/{characterName}");
             return stringBuilder.ToString();
         }
 
