@@ -74,6 +74,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     {
         if (IsPossibleFirstAttack())
         {
+            isFinishAttack = false;
             animator.Play(AnimationHash.FirstAttack);
         }
 

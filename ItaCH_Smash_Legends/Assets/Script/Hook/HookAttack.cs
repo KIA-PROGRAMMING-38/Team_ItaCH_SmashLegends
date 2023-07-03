@@ -114,6 +114,7 @@ public class HookAttack : PlayerAttack
     {
         if (IsPossibleFirstAttack())
         {
+            isFinishAttack = false;
             playerStatus.CurrentState = PlayerStatus.State.ComboAttack;
             animator.Play(AnimationHash.FirstAttack);
         }
