@@ -1,4 +1,5 @@
-
+using System.Collections.Generic;
+using UnityEngine;
 
 public static class ResourcesManager
 {
@@ -42,39 +43,16 @@ public static class ResourcesManager
     public const string MapPath = "Map/LobbyWorld/";
     public const string CharacterInGamePath = "_Ingame/";
     public const string CharacterInGamePrefabName = "_Ingame";
-    public const string HeavyBulletDeleteEffect = "Charater/Hook/Hook_Ingame/Hook_Heavy_Bullet_Delete_Effect";
-    public const string LastHeavyBulletDeleteEffect = "Charater/Hook/Hook_Ingame/Hook_Last_Heavy_Bullet_Delete_Effect";
-    public const string SkillBulletDeleteEffect = "Charater/Hook/Hook_Ingame/Hook_SKill_Bullet_Delete_Effect";
-    public const string BulletDeleteEffect = "Charater/Hook/Hook_Ingame/Hook_Default_Bullet_Delete_Effect";
+    public const string HeavyBulletDeleteEffect = "Character/Hook/Hook_Ingame/Hook_Heavy_Bullet_Delete_Effect";
+    public const string LastHeavyBulletDeleteEffect = "Character/Hook/Hook_Ingame/Hook_Last_Heavy_Bullet_Delete_Effect";
+    public const string SkillBulletDeleteEffect = "Character/Hook/Hook_Ingame/Hook_SKill_Bullet_Delete_Effect";
+    public const string BulletDeleteEffect = "Character/Hook/Hook_Ingame/Hook_Default_Bullet_Delete_Effect";
     #endregion
 
     #region CSV File Path
     public const string CharacterDataTable = "Data/Character_Data/CharacterDefaultStatusData";
+    public const string MobileUIDataBase = "Data/UI_Data/Mobile_UI_DataBase";
     #endregion
 
-    /*데이터 테이블 구성후 구분된 ID 순서
-     * 
-     * AttackIconOutline
-    AliceDefaultAttack
-    HookDefaultAttack
-    PeterDefaultAttack
-    AttackIconShadow
-    HeavyAttackIconOutline
-    AliceHeavyAttack
-    HookHeavyAttack
-    PeterHeavyAttack
-    HeavyAttackIconShadow
-    SkillAttackOutline
-    AliceSkillAttack
-    HookSkillAttack
-    PeterSkillAttack
-    SkillAttackIconShadow
-    JumpOutline
-    JumpIcon
-    JumpIconShadow
-    MovePad
-    JoyStick
-    JoyStickOutline
-    MovePadShadow
-     */
+    
 }
