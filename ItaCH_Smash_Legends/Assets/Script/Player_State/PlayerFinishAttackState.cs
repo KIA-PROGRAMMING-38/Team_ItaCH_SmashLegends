@@ -8,7 +8,7 @@ public class PlayerFinishAttackState : StateMachineBehaviour
     {
         _legendController = animator.GetComponent<LegendController>();
 
-        _legendController.NextComboImPossible();
+        _legendController.SetComboImPossible();
         _legendController.PlayNextClip();
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

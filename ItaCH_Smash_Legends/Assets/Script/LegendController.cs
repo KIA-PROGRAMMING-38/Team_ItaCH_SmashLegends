@@ -1,12 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Windows;
 
 public enum ActionType
 {
@@ -21,16 +14,15 @@ public class LegendController : MonoBehaviour
 {
     // 추후 리소스로 매니저로 캐싱 후 사용
     public AnimationClip[] ApplyClip;
-    public Animator peter;
 
     public Vector3 MoveDirection { get; private set; }
 
     private Animator _anim;
-    private InputAction[] _action = new InputAction[5];
+    private InputAction[] _action;
     private string[] _actionLiteral = new[] { "Move", "Jump", "DefaultAttack", "SmashAttack", "SkillAttack" };
 
     // 추후 스트링 리터럴 캐싱 후 사용
-    private string[] _animationClipLiteral = new[] { "Hook_FirstAttack", "Hook_FinishAttack" };
+    private string[] _animationClipLiteral = new[] { "Peter_FirstAttack", "_FinishAttack" };
 
     private ActionType _actionType;
     private bool _isAttack { get; set; }
@@ -39,18 +31,18 @@ public class LegendController : MonoBehaviour
     private AnimatorOverrideController _animatorOverride;
     private UnityEngine.InputSystem.PlayerInput _input;
     private CharacterStatus _characterStatus;
+
     private void Awake()
     {
-        // 애니메이션 교체 가능 확인완료
-        //_anim.runtimeAnimatorController = Instantiate(Resources.Load<RuntimeAnimatorController>(ResourcesManager.PeterAnimator));
         _anim = GetComponent<Animator>();
         _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
-        _characterStatus= GetComponent<CharacterStatus>();
-
+        _characterStatus = GetComponent<CharacterStatus>();
+        _action = new InputAction[_actionLiteral.Length];
+        // 동적으로 애니메이터 변경
+        //_anim.runtimeAnimatorController = Instantiate(Resources.Load<RuntimeAnimatorController>(ResourcesManager.HookAnimator));
         _animatorOverride = new AnimatorOverrideController(_anim.runtimeAnimatorController);
-        _anim.runtimeAnimatorController = _animatorOverride;
-
     }
+
     private void Start()
     {
         for (int i = 0; i < _action.Length; ++i)
@@ -58,9 +50,7 @@ public class LegendController : MonoBehaviour
             _action[i] = _input.actions[_actionLiteral[i]];
         }
     }
-    private void Update()
-    {
-    }
+
     private void OnMove(InputValue value)
     {
         Vector2 input = value.Get<Vector2>();
@@ -71,7 +61,6 @@ public class LegendController : MonoBehaviour
             _anim.SetBool(AnimationHash.Run, true);
         }
     }
-
     private void OnJump() { }
     private void OnDefaultAttack() { }
     private void OnSmashAttack() { }
@@ -84,28 +73,32 @@ public class LegendController : MonoBehaviour
             // Animation.Play(Hang);
         }
     }
-
-    public void NextAnimation()
+    public void SetNextAnimation()
     {
-        if (OnActionTrigger(ActionType.Move))
+        if (_action[(int)ActionType.Move].triggered)
         {
             _anim.Play(AnimationHash.Run);
+            return;
         }
-        if (OnActionTrigger(ActionType.Jump))
+        if (_action[(int)ActionType.Jump].triggered)
         {
             _anim.Play(AnimationHash.Jump);
+            return;
         }
-        if (OnActionTrigger(ActionType.DefaultAttack))
+        if (_action[(int)ActionType.DefaultAttack].triggered)
         {
             _anim.Play(AnimationHash.FirstAttack);
+            return;
         }
-        if (OnActionTrigger(ActionType.HeavyAttack))
+        if (_action[(int)ActionType.HeavyAttack].triggered)
         {
             _anim.Play(AnimationHash.HeavyAttack);
+            return;
         }
-        if (OnActionTrigger(ActionType.SkillAttack))
+        if (_action[(int)ActionType.SkillAttack].triggered)
         {
             _anim.Play(AnimationHash.SkillAttack);
+            return;
         }
     }
     public void PlayFirstAttack()
@@ -113,7 +106,7 @@ public class LegendController : MonoBehaviour
         if (SetAttackable(ActionType.DefaultAttack))
         {
             _anim.Play(AnimationHash.FirstAttack);
-            AttackRotate();
+            SetRotateOnAttack();
         }
     }
     public void PlaySecondAttack()
@@ -121,7 +114,7 @@ public class LegendController : MonoBehaviour
         if (SetAttackable(ActionType.DefaultAttack))
         {
             _anim.Play(AnimationHash.SecondAttack);
-            AttackRotate();
+            SetRotateOnAttack();
         }
     }
     public void PlayNextClip()
@@ -132,21 +125,9 @@ public class LegendController : MonoBehaviour
             ++PossibleComboCount;
         }
     }
-
-    private bool OnActionTrigger(ActionType type)
-    {
-        if (_action[(int)type].triggered)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
     public bool SetAttackable(ActionType type)
     {
-        if (OnActionTrigger(type) && PossibleComboCount < ApplyClip.Length)
+        if (_action[(int)type].triggered && PossibleComboCount < ApplyClip.Length)
         {
             return true;
         }
@@ -166,19 +147,22 @@ public class LegendController : MonoBehaviour
             return false;
         }
     }
-    public void NextComboPossible()
-    {
-        _isAttack = true;
-    }
-    public void NextComboImPossible()
-    {
-        _isAttack = false;
-    }
-    private void AttackRotate()
+    public void SetComboPossible() => _isAttack = true;
+    public void SetComboImPossible() => _isAttack = false;
+    private void SetRotateOnAttack()
     {
         if (MoveDirection != Vector3.zero)
         {
             transform.forward = MoveDirection;
+        }
+    }
+    public void JumpMoveAndRotate()
+    {
+        if (MoveDirection != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(MoveDirection);
+            transform.Translate(Vector3.forward * (_characterStatus.MoveSpeed * Time.deltaTime));
+
         }
     }
     // PlayerRollUp 

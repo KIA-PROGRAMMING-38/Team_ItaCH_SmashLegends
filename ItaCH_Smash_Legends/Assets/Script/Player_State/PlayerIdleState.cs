@@ -13,7 +13,7 @@ public class PlayerIdleState : StateMachineBehaviour
         animator.ResetTrigger(AnimationHash.RollUpFront);
 
         _legendController.PossibleComboCount = 0;
-        _legendController.NextComboImPossible();
+        _legendController.SetComboImPossible();
 
         if (_legendController.MoveDirection != Vector3.zero)
         {
@@ -23,6 +23,6 @@ public class PlayerIdleState : StateMachineBehaviour
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _legendController.NextAnimation();
+        _legendController.SetNextAnimation();
     }
 }

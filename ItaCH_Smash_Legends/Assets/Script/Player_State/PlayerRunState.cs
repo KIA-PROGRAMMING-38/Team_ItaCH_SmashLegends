@@ -16,6 +16,6 @@ public class PlayerRunState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _playerMove.MoveAndRotate(_legendController.MoveDirection);
-        _legendController.NextAnimation();
+        _legendController.SetNextAnimation();
     }
 }
