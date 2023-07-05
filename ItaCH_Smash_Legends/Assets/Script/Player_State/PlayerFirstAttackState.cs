@@ -9,7 +9,7 @@ public class PlayerFirstAttackState : StateMachineBehaviour
         _legendController = animator.GetComponent<LegendController>();
 
         _legendController.NextComboImPossible();
-        _legendController.NextPlayClip();
+        _legendController.PlayNextClip();
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

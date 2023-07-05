@@ -38,13 +38,15 @@ public class LegendController : MonoBehaviour
 
     private AnimatorOverrideController _animatorOverride;
     private UnityEngine.InputSystem.PlayerInput _input;
-
+    private CharacterStatus _characterStatus;
     private void Awake()
     {
         // 애니메이션 교체 가능 확인완료
         //_anim.runtimeAnimatorController = Instantiate(Resources.Load<RuntimeAnimatorController>(ResourcesManager.PeterAnimator));
         _anim = GetComponent<Animator>();
         _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
+        _characterStatus= GetComponent<CharacterStatus>();
+
         _animatorOverride = new AnimatorOverrideController(_anim.runtimeAnimatorController);
         _anim.runtimeAnimatorController = _animatorOverride;
 
@@ -122,7 +124,7 @@ public class LegendController : MonoBehaviour
             AttackRotate();
         }
     }
-    public void NextPlayClip()
+    public void PlayNextClip()
     {
         if (PossibleComboCount < ApplyClip.Length - 1)
         {
