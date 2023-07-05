@@ -22,7 +22,7 @@ public class PlayerMove : MonoBehaviour
         _currentMoveSpeed = _characterStatus.MoveSpeed;
     }
 
-    public void MoveAndRotate()
+    public void MoveAndRotate(Vector3 moveDirection)
     {
         if (moveDirection != Vector3.zero)
         {

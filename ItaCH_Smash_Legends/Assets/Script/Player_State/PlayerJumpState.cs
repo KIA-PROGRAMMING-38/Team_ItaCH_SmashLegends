@@ -16,7 +16,7 @@ public class PlayerJumpState : StateMachineBehaviour
         _playerStatus.IsHang = false;
 
         _playerStatus.CurrentState = PlayerStatus.State.Jump;
-
+        _playerJump.JumpInput();
         animator.SetBool(AnimationHash.Run, false);
 
     }

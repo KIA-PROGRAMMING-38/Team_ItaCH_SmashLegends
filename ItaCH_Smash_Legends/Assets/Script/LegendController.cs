@@ -1,5 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -7,16 +10,50 @@ using UnityEngine.Windows;
 
 public class LegendController : MonoBehaviour
 {
-    public Vector3 _moveDirection;
+    // 추후 리소스로 매니저로 캐싱 후 사용
+    public AnimationClip[] ApplyClip;
+    public Animator peter;
+
+    public Vector3 MoveDirection { get; private set; }
     private Animator _anim;
-    private InputAction _jump;
-    private Avatar _avatar;
-    UnityEngine.InputSystem.PlayerInput _input;
+    private InputAction[] _action = new InputAction[5];
+    private string[] _actionLiteral = new[] { "Move", "Jump", "DefaultAttack", "SmashAttack", "SkillAttack" };
+    
+    // 추후 스트링 리터럴 캐싱 후 사용
+    private string[] _animationClipLiteral = new[]{"Hook_FirstAttack", "Hook_FinishAttack" };
+
+    public int ActionMove { get; private set; } = 0;
+    public int ActionJump { get; private set; } = 1;
+    public int ActionDefaultAttack { get; private set; } = 2;
+    public int ActionHeavyAttack { get; private set; } = 3;
+    public int ActionSkillAttack { get; private set; } = 4;
+
+    private AnimatorOverrideController _animatorOverride;
+    public int PossibleComboCount { get; set; } = 0;
+
+    private UnityEngine.InputSystem.PlayerInput _input;
 
     private void Awake()
     {
-        // 애니메이션 교체
-        _anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>(ResourcesManager.PeterDefaultAttackIcon);
+        _anim = GetComponent<Animator>();
+
+        // 애니메이션 교체 가능 확인완료
+        //_anim.runtimeAnimatorController = Instantiate(Resources.Load<RuntimeAnimatorController>(ResourcesManager.PeterAnimator));
+        
+        _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
+        _animatorOverride = new AnimatorOverrideController(_anim.runtimeAnimatorController);
+        _anim.runtimeAnimatorController = _animatorOverride;
+
+    }
+    private void Start()
+    {
+        for (int i = 0; i < _action.Length; ++i)
+        {
+            _action[i] = _input.actions[_actionLiteral[i]];
+        }
+    }
+    private void Update()
+    {
     }
     private void OnMove(InputValue value)
     {
@@ -24,61 +61,80 @@ public class LegendController : MonoBehaviour
 
         if (input != null)
         {
-            _anim.Play("Run");
-            _moveDirection = new Vector3(input.x, 0, input.y);
+            MoveDirection = new Vector3(input.x, 0, input.y);
+            _anim.SetBool(AnimationHash.Run, true);
         }
     }
 
-    // 애니메이터 오버라이드 -> 1.점프공격 3회 캐릭터 -> 1회로 바꾸는 형태
-    // 2.노멀라이즈 시간으로 애니메이션 클립재생 ?
-    // 3.if(AnimationClip[CurrentPossibleComboCount] != null) 콤보카운트를 애니메이션 이벤트로 감소
-    // 다음 애니메이션 재생 
-
-    private void OnJump()
-    {
-        //_jump = _input.actions["Jump"];
-        //if (_jump.triggered)
-        //{
-        //    Debug.Log(_jump);
-        //}
-
-        // 1.Anumation.SetBool() => 런, 아이들, 다운상태, 행 상태에서 가능하게
-        // 2.각 상태에서 Jump.triggered 로 전환가능
-
-        // 로직은 JumpState 에서 
-    }
-
-    private void OnDefaultAttack()
-    {
-        //1. Animation.SetBool(DefaultAttack,true); => 런 , 아이들 때만 넘어갈 수 있음
-        //2. Run, Idle 스테이트 머신 에서 triggered 시 전환 가능
-
-        // 애니메이션 이벤트로 공격 가능 횟수 -1 
-        // 해당 횟수에서 DefaultAttack.triggered 라면 다음 애니메이션 재생?
-    }
-
-    private void OnHeavyAttack()
-    {
-        //1. Animation.SetBool(HeavyAttack,true); => 런 , 아이들 때만 넘어갈 수 있음
-        //2. Run, Idle 스테이트 머신 에서 triggered 시 전환 가능
-    }
-
-    private void OnSKillAttack()
-    {
-        //1. Animation.SetBool(SkillAttack,true); => 런 , 아이들 때만 넘어갈 수 있음
-        //2. Run, Idle 스테이트 머신 에서 triggered 시 전환 가능
-    }
-
+    private void OnJump() { }
+    private void OnDefaultAttack() { }
+    private void OnSmashAttack() { }
+    private void OnSkillAttack() { }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Edge"))
+        if (other.CompareTag("HangZone"))
         {
             // Animation.Play(Hang);
         }
-
     }
 
+    public void NextAnimation()
+    {
+        if (OnActionTrigger(ActionJump))
+        {
+            _anim.Play(AnimationHash.Jump);
+        }
+        if (OnActionTrigger(ActionDefaultAttack))
+        {
+            _anim.Play(AnimationHash.FirstAttack);
+        }
+    }
+    public void PlayFirstAttack()
+    {
+        if (SetAttackable(ActionDefaultAttack))
+        {
+            _anim.Play(AnimationHash.FirstAttack);
+        }
+    }
+    public void PlaySecondAttack()
+    {
+        if (SetAttackable(ActionDefaultAttack))
+        {
+            _anim.Play(AnimationHash.SecondAttack);
+        }
+    }
+    public void NextPlayClip()
+    {
+        if (PossibleComboCount < ApplyClip.Length - 1)
+        {
+            _animatorOverride[_animationClipLiteral[PossibleComboCount]] = ApplyClip[PossibleComboCount];
+            ++PossibleComboCount;
+        }
+    }
+
+    public bool OnActionTrigger(int actionNumber)
+    {
+        if (_action[actionNumber].triggered)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public bool SetAttackable(int actionNumber)
+    {
+        if(OnActionTrigger(actionNumber) && PossibleComboCount < ApplyClip.Length)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     // PlayerRollUp 
     // DownIdle 상태에서 기능 수행
 
