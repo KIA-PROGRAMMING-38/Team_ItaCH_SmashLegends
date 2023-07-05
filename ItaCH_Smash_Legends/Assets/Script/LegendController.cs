@@ -1,23 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.InputSystem;
-
-public class LegendController : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -34,7 +15,7 @@ public class LegendController : MonoBehaviour
 
     private void Awake()
     {
-        // ¾Ö´Ï¸ŞÀÌ¼Ç ±³Ã¼
+        // ì• ë‹ˆë©”ì´ì…˜ êµì²´
         _anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>(ResourcesManager.PeterDefaultAttackIcon);
     }
     private void OnMove(InputValue value)
@@ -48,10 +29,10 @@ public class LegendController : MonoBehaviour
         }
     }
 
-    // ¾Ö´Ï¸ŞÀÌÅÍ ¿À¹ö¶óÀÌµå -> 1.Á¡ÇÁ°ø°İ 3È¸ Ä³¸¯ÅÍ -> 1È¸·Î ¹Ù²Ù´Â ÇüÅÂ
-    // 2.³ë¸Ö¶óÀÌÁî ½Ã°£À¸·Î ¾Ö´Ï¸ŞÀÌ¼Ç Å¬¸³Àç»ı ?
-    // 3.if(AnimationClip[CurrentPossibleComboCount] != null) ÄŞº¸Ä«¿îÆ®¸¦ ¾Ö´Ï¸ŞÀÌ¼Ç ÀÌº¥Æ®·Î °¨¼Ò
-    // ´ÙÀ½ ¾Ö´Ï¸ŞÀÌ¼Ç Àç»ı 
+    // ì• ë‹ˆë©”ì´í„° ì˜¤ë²„ë¼ì´ë“œ -> 1.ì í”„ê³µê²© 3íšŒ ìºë¦­í„° -> 1íšŒë¡œ ë°”ê¾¸ëŠ” í˜•íƒœ
+    // 2.ë…¸ë©€ë¼ì´ì¦ˆ ì‹œê°„ìœ¼ë¡œ ì• ë‹ˆë©”ì´ì…˜ í´ë¦½ì¬ìƒ ?
+    // 3.if(AnimationClip[CurrentPossibleComboCount] != null) ì½¤ë³´ì¹´ìš´íŠ¸ë¥¼ ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸ë¡œ ê°ì†Œ
+    // ë‹¤ìŒ ì• ë‹ˆë©”ì´ì…˜ ì¬ìƒ 
 
     private void OnJump()
     {
@@ -61,31 +42,31 @@ public class LegendController : MonoBehaviour
         //    Debug.Log(_jump);
         //}
 
-        // 1.Anumation.SetBool() => ·±, ¾ÆÀÌµé, ´Ù¿î»óÅÂ, Çà »óÅÂ¿¡¼­ °¡´ÉÇÏ°Ô
-        // 2.°¢ »óÅÂ¿¡¼­ Jump.triggered ·Î ÀüÈ¯°¡´É
+        // 1.Anumation.SetBool() => ëŸ°, ì•„ì´ë“¤, ë‹¤ìš´ìƒíƒœ, í–‰ ìƒíƒœì—ì„œ ê°€ëŠ¥í•˜ê²Œ
+        // 2.ê° ìƒíƒœì—ì„œ Jump.triggered ë¡œ ì „í™˜ê°€ëŠ¥
 
-        // ·ÎÁ÷Àº JumpState ¿¡¼­ 
+        // ë¡œì§ì€ JumpState ì—ì„œ 
     }
 
     private void OnDefaultAttack()
     {
-        //1. Animation.SetBool(DefaultAttack,true); => ·± , ¾ÆÀÌµé ¶§¸¸ ³Ñ¾î°¥ ¼ö ÀÖÀ½
-        //2. Run, Idle ½ºÅ×ÀÌÆ® ¸Ó½Å ¿¡¼­ triggered ½Ã ÀüÈ¯ °¡´É
+        //1. Animation.SetBool(DefaultAttack,true); => ëŸ° , ì•„ì´ë“¤ ë•Œë§Œ ë„˜ì–´ê°ˆ ìˆ˜ ìˆìŒ
+        //2. Run, Idle ìŠ¤í…Œì´íŠ¸ ë¨¸ì‹  ì—ì„œ triggered ì‹œ ì „í™˜ ê°€ëŠ¥
 
-        // ¾Ö´Ï¸ŞÀÌ¼Ç ÀÌº¥Æ®·Î °ø°İ °¡´É È½¼ö -1 
-        // ÇØ´ç È½¼ö¿¡¼­ DefaultAttack.triggered ¶ó¸é ´ÙÀ½ ¾Ö´Ï¸ŞÀÌ¼Ç Àç»ı?
+        // ì• ë‹ˆë©”ì´ì…˜ ì´ë²¤íŠ¸ë¡œ ê³µê²© ê°€ëŠ¥ íšŸìˆ˜ -1 
+        // í•´ë‹¹ íšŸìˆ˜ì—ì„œ DefaultAttack.triggered ë¼ë©´ ë‹¤ìŒ ì• ë‹ˆë©”ì´ì…˜ ì¬ìƒ?
     }
 
     private void OnHeavyAttack()
     {
-        //1. Animation.SetBool(HeavyAttack,true); => ·± , ¾ÆÀÌµé ¶§¸¸ ³Ñ¾î°¥ ¼ö ÀÖÀ½
-        //2. Run, Idle ½ºÅ×ÀÌÆ® ¸Ó½Å ¿¡¼­ triggered ½Ã ÀüÈ¯ °¡´É
+        //1. Animation.SetBool(HeavyAttack,true); => ëŸ° , ì•„ì´ë“¤ ë•Œë§Œ ë„˜ì–´ê°ˆ ìˆ˜ ìˆìŒ
+        //2. Run, Idle ìŠ¤í…Œì´íŠ¸ ë¨¸ì‹  ì—ì„œ triggered ì‹œ ì „í™˜ ê°€ëŠ¥
     }
 
     private void OnSKillAttack()
     {
-        //1. Animation.SetBool(SkillAttack,true); => ·± , ¾ÆÀÌµé ¶§¸¸ ³Ñ¾î°¥ ¼ö ÀÖÀ½
-        //2. Run, Idle ½ºÅ×ÀÌÆ® ¸Ó½Å ¿¡¼­ triggered ½Ã ÀüÈ¯ °¡´É
+        //1. Animation.SetBool(SkillAttack,true); => ëŸ° , ì•„ì´ë“¤ ë•Œë§Œ ë„˜ì–´ê°ˆ ìˆ˜ ìˆìŒ
+        //2. Run, Idle ìŠ¤í…Œì´íŠ¸ ë¨¸ì‹  ì—ì„œ triggered ì‹œ ì „í™˜ ê°€ëŠ¥
     }
 
 
@@ -99,8 +80,8 @@ public class LegendController : MonoBehaviour
     }
 
     // PlayerRollUp 
-    // DownIdle »óÅÂ¿¡¼­ ±â´É ¼öÇà
+    // DownIdle ìƒíƒœì—ì„œ ê¸°ëŠ¥ ìˆ˜í–‰
 
     // PlayerHangController
-    // Hang »óÅÂ¿¡¼­ ÀÔ·Â½Ã Ã³¸®
+    // Hang ìƒíƒœì—ì„œ ì…ë ¥ì‹œ ì²˜ë¦¬
 }
