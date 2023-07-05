@@ -33,9 +33,7 @@ public class LogInUI : MonoBehaviour
     }
 
     private void Init()
-    {
-        // 지금 얘가 문제
-        Managers manager = Managers.Instance;
+    {   
         // LobbyManager에서 서버 접속 상태 변경에 따라 UI 텍스트 변경 위한 구독
         Managers.LobbyManager.OnUpdateConnctionInfo -= UpdateConnectionInfoText;
         Managers.LobbyManager.OnUpdateConnctionInfo += UpdateConnectionInfoText;

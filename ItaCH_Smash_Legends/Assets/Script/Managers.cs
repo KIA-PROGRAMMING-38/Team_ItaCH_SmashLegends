@@ -45,10 +45,5 @@ public class Managers : MonoBehaviour
             s_stageManager = StageManager.Init();
             s_userManager.Init();
         }
-    }
-
-    //UI 생성하는 UIManager 생성 이후 반영되어야할 부분 
-    //LobbyUI.OnCharacterChanged -= UserManager.UserLocalData.SetSelectedCharacter;
-    //LobbyUI.OnCharacterChanged += UserManager.UserLocalData.SetSelectedCharacter;
-
+    }    
 }
