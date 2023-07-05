@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using TMPro;
 using UnityEngine;
 
@@ -11,62 +11,55 @@ public class GameManager : MonoBehaviour
 
     public DataTable CharacterTable { get => _characterTable; private set => _characterTable = value; }
     private DataTable _characterTable;
-    public LobbyUI LobbyUI;
+    
     private TextMeshProUGUI _connectionInfoText;
-    private Canvas _logInCanvas;
+    public TextMeshProUGUI ConnectionInfoText { get => _connectionInfoText; set => _connectionInfoText = value; }
+    
     public event Action OnStartGame;
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
         Instance = this;
-        _logInCanvas = GetComponentInChildren<Canvas>();
-        _connectionInfoText = transform.GetChild(0).GetChild(2).GetComponentInChildren<TextMeshProUGUI>();
-        CreateMangerObjects();
+        
         _characterTable = new DataTable();
         _characterTable.SetDataTable();
     }
 
     public void StartGame()
-    // ÇöÀç ÀÎ½ºÆåÅÍ Ã¢¿¡¼­ Á÷Á¢ ÇÒ´ç ¹× ·Î±×ÀÎ ÆĞ³Î ¹öÆ° ÀÔ·Â ½Ã ½ÇÇà
+    // í˜„ì¬ ì¸ìŠ¤í™í„° ì°½ì—ì„œ ì§ì ‘ í• ë‹¹ ë° ë¡œê·¸ì¸ íŒ¨ë„ ë²„íŠ¼ ì…ë ¥ ì‹œ ì‹¤í–‰
     {
         OnStartGame.Invoke();
     }
 
-    private void CreateMangerObjects()
+    public void CreateMangerObjects()
     {
         GameObject newManagerObject;
 
-        // ·Îºñ ¸Å´ÏÀú ¿ÀºêÁ§Æ® »ı¼º
+        // ë¡œë¹„ ë§¤ë‹ˆì € ì˜¤ë¸Œì íŠ¸ ìƒì„±
         newManagerObject = new GameObject(nameof(LobbyManager));
         newManagerObject.transform.parent = transform;
         LobbyManager = newManagerObject.AddComponent<LobbyManager>();
-        LobbyManager.ConnectionInfoText = _connectionInfoText;
-        LobbyManager.OnLogInSuccess -= LogInSuccess;
-        LobbyManager.OnLogInSuccess += LogInSuccess;
+        LobbyManager.ConnectionInfoText = _connectionInfoText;        
         LobbyManager.OnMatchSuccess -= MatchSuccess;
         LobbyManager.OnMatchSuccess += MatchSuccess;
 
-        // À¯Àú ¸Å´ÏÀú ¿ÀºêÁ§Æ® »ı¼º
+        // ìœ ì € ë§¤ë‹ˆì € ì˜¤ë¸Œì íŠ¸ ìƒì„±
         newManagerObject = new GameObject(nameof(UserManager));
         newManagerObject.transform.parent = transform;
         UserManager = newManagerObject.AddComponent<UserManager>();
-        LobbyUI.OnCharacterChanged -= UserManager.UserLocalData.SetSelectedCharacter;
-        LobbyUI.OnCharacterChanged += UserManager.UserLocalData.SetSelectedCharacter;
 
-        // ½ºÅ×ÀÌÁö ¸Å´ÏÀú ¿ÀºêÁ§Æ® »ı¼º
+        //UI ìƒì„±í•˜ëŠ” UIManager ìƒì„± ì´í›„ ë°˜ì˜ë˜ì–´ì•¼í•  ë¶€ë¶„ 
+        //LobbyUI.OnCharacterChanged -= UserManager.UserLocalData.SetSelectedCharacter;
+        //LobbyUI.OnCharacterChanged += UserManager.UserLocalData.SetSelectedCharacter;
+
+        // ìŠ¤í…Œì´ì§€ ë§¤ë‹ˆì € ì˜¤ë¸Œì íŠ¸ ìƒì„±
         newManagerObject = new GameObject(nameof(StageManager));
         newManagerObject.transform.parent = transform;
         StageManager = newManagerObject.AddComponent<StageManager>();
         newManagerObject.SetActive(false);
     }
 
-    public void LogInSuccess()
-    // PhotonÀÇ OnConnectedToMaster() ¼­¹ö Á¢¼Ó ¼º°ø Äİ¹é ½ÇÇà ½Ã ½ÇÇà
-    {
-        _logInCanvas.gameObject.SetActive(false);
-        LobbyUI.transform.parent.gameObject.SetActive(true);
-    }
     public void MatchSuccess(GameModeType gameModeType)
     {
         StageManager.gameObject.SetActive(true);

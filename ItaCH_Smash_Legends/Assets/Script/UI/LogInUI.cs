@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
@@ -12,6 +12,7 @@ public class LogInUI : MonoBehaviour
     [SerializeField] private GameObject _logInField;
     [SerializeField] private GameObject _loadingObject;
     [SerializeField] private TextMeshProUGUI _errorMessage;
+    [SerializeField] private TextMeshProUGUI _connectionInfoText;
 
     private Image _background;
     private float _fadeInTime = 1f;
@@ -20,12 +21,29 @@ public class LogInUI : MonoBehaviour
     private Image _logoShadow;
     private Image _logo;
 
-    private const string InputPattern = @"^[a-zA-Z°¡-ÆR]{2,8}$";
+    private const string InputPattern = @"^[a-zA-Zê°€-í£]{2,8}$";
 
     private void Awake()
     {
+        Init();
         ShowOpening();
     }
+
+    private void Init()
+    {
+        GameObject newManagerObject;
+
+        // ê²Œì„ë§¤ë‹ˆì € ì˜¤ë¸Œì íŠ¸ ìƒì„±
+        newManagerObject = new GameObject { name = "GameManager" };        
+        GameManager gameManager = newManagerObject.AddComponent<GameManager>();
+        gameManager.ConnectionInfoText = _connectionInfoText;
+        gameManager.CreateMangerObjects();
+
+        // LobbyManagerì—ì„œ ì„œë²„ ì ‘ì† í™•ì¸ í›„ UI ë¹„í™œì„±í™”ë¥¼ ìœ„í•œ êµ¬ë…
+        gameManager.LobbyManager.OnLogInSuccess -= CloseUI;
+        gameManager.LobbyManager.OnLogInSuccess += CloseUI;
+    }
+
     public void ShowOpening()
     {
         _logInField.SetActive(false);
@@ -35,6 +53,7 @@ public class LogInUI : MonoBehaviour
 
         RunOpening().Forget();
     }
+
     public void SetName()
     {
         _userInput = _inputField.text;
@@ -60,6 +79,7 @@ public class LogInUI : MonoBehaviour
         await UniTask.Delay(1000);
         ShowLogIn();
     }
+
     private async UniTask ChangeColor(Image image, Color startColor, Color targetColor)
     {
         float fadeInSpeed = 1 / _fadeInTime;
@@ -82,14 +102,14 @@ public class LogInUI : MonoBehaviour
     {
         float popUpSpeed = 1 / popUpTime;
         float initialDifference = startSize.x - targetSize.x;
-        // ½ÃÀÛ Å©±â°¡ ´õ Ä¿¼­ ÀÛ¾ÆÁ®¾ß ÇÑ´Ù¸é -1 °öÇÏ±â
+        // ì‹œì‘ í¬ê¸°ê°€ ë” ì»¤ì„œ ì‘ì•„ì ¸ì•¼ í•œë‹¤ë©´ -1 ê³±í•˜ê¸°
         if (Method.IsPositive(initialDifference))
         {
             popUpSpeed *= -1;
         }
         rectTransform.localScale = startSize;
 
-        //ºÎÈ£°¡ ´Ş¶óÁú ¶§±îÁö ½ÇÇà
+        //ë¶€í˜¸ê°€ ë‹¬ë¼ì§ˆ ë•Œê¹Œì§€ ì‹¤í–‰
         while (Method.IsPositive(initialDifference * (rectTransform.localScale.x - targetSize.x)))
         {
             float popUpAmount = Time.deltaTime * popUpSpeed;
@@ -101,8 +121,14 @@ public class LogInUI : MonoBehaviour
         }
         rectTransform.localScale = targetSize;
     }
+
     private void ShowLogIn()
     {
         _logInField.SetActive(true);
+    }
+
+    private void CloseUI()
+    {
+        gameObject.SetActive(false);
     }
 }
