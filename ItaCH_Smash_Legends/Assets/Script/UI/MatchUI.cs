@@ -1,4 +1,4 @@
-using Photon.Pun;
+ï»¿using Photon.Pun;
 using System;
 using TMPro;
 using UnityEngine;
@@ -16,24 +16,24 @@ public class MatchUI : MonoBehaviourPunCallbacks, IPanel
 
     public event Action _OnStageStart;
 
-    //private float _time;
     public bool IsGameStarted { get => _isGameStarted; set => _isGameStarted = value; }
     private bool _isGameStarted;
 
     public override void OnEnable()
     {
-        GameManager.Instance.LobbyManager.ConnectionInfoText = _matchText;
+        //Managers.Instance.LobbyManager.ConnectionInfoText = _matchText; << LobbyManager ì¬êµ¬ì„± ë° UIManager êµ¬ì„± ì‹œ ë³€ê²½ í•„ìš”
+        // OnUpdateConnectionInfo event invokeë°©ì‹
 
         if (_isGameStarted)
         {
-            Debug.Log("connect ½ÇÇà");
-            GameManager.Instance.LobbyManager.Connect();
+            Debug.Log("connect ì‹¤í–‰");
+            Managers.LobbyManager.Connect();
         }
     }
 
     public void InitPanelSettings(LobbyUI lobbyUI)
     {
-        //ÃßÈÄ ¸ğµå¿¡¼­ ÃÖ´ë ÀÎ¿ø¼ö¸¦ °¡Á®¿Ã ¿¹Á¤.
+        //ì¶”í›„ ëª¨ë“œì—ì„œ ìµœëŒ€ ì¸ì›ìˆ˜ë¥¼ ê°€ì ¸ì˜¬ ì˜ˆì •.
         _maxPlayer = 2;
         _isPlayerMatched = new bool[_maxPlayer];
         _currentMatchedPlayer = 0;
@@ -48,7 +48,7 @@ public class MatchUI : MonoBehaviourPunCallbacks, IPanel
         _OnStageStart += () => _removePanelButton.enabled = false;
     }
 
-    //ÃßÈÄ Æ÷Åæ ·ÎÁ÷À¸·Î º¯°æ ¿¹Á¤
+    //ì¶”í›„ í¬í†¤ ë¡œì§ìœ¼ë¡œ ë³€ê²½ ì˜ˆì •
     //public void Update()
     //{
     //    if (_time >= 3)
@@ -109,7 +109,7 @@ public class MatchUI : MonoBehaviourPunCallbacks, IPanel
 
     public void StartStage()
     {
-        _matchText.text = "°ÔÀÓÀÌ ½ÃÀÛµË´Ï´Ù! ÁØºñÇÏ¼¼¿ä!";
+        _matchText.text = "ê²Œì„ì´ ì‹œì‘ë©ë‹ˆë‹¤! ì¤€ë¹„í•˜ì„¸ìš”!";
         _OnStageStart.Invoke();
     }
 }

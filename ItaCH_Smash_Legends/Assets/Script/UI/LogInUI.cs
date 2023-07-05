@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using System;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
@@ -23,7 +24,9 @@ public class LogInUI : MonoBehaviour
 
     private const string InputPattern = @"^[a-zA-Z가-힣]{2,8}$";
 
-    private void Awake()
+    public event Action OnAcceptNickname;
+
+    private void Start()
     {
         Init();
         ShowOpening();
@@ -31,17 +34,15 @@ public class LogInUI : MonoBehaviour
 
     private void Init()
     {
-        GameObject newManagerObject;
-
-        // 게임매니저 오브젝트 생성
-        newManagerObject = new GameObject { name = "GameManager" };        
-        GameManager gameManager = newManagerObject.AddComponent<GameManager>();
-        gameManager.ConnectionInfoText = _connectionInfoText;
-        gameManager.CreateMangerObjects();
+        // 지금 얘가 문제
+        Managers manager = Managers.Instance;
+        // LobbyManager에서 서버 접속 상태 변경에 따라 UI 텍스트 변경 위한 구독
+        Managers.LobbyManager.OnUpdateConnctionInfo -= UpdateConnectionInfoText;
+        Managers.LobbyManager.OnUpdateConnctionInfo += UpdateConnectionInfoText;
 
         // LobbyManager에서 서버 접속 확인 후 UI 비활성화를 위한 구독
-        gameManager.LobbyManager.OnLogInSuccess -= CloseUI;
-        gameManager.LobbyManager.OnLogInSuccess += CloseUI;
+        Managers.LobbyManager.OnLogInSuccess -= CloseUI;
+        Managers.LobbyManager.OnLogInSuccess += CloseUI;
     }
 
     public void ShowOpening()
@@ -59,11 +60,11 @@ public class LogInUI : MonoBehaviour
         _userInput = _inputField.text;
         if (Regex.IsMatch(_userInput, InputPattern))
         {
-            GameManager.Instance.UserManager.UserLocalData.Name = _userInput;
+            Managers.UserManager.UserLocalData.Name = _userInput;
             _logInField.SetActive(false);
             _loadingObject.SetActive(true);
             _loadingObject.transform.GetChild(0).GetComponent<RotatingImage>()?.StartRotation();
-            GameManager.Instance.StartGame();
+            Managers.LobbyManager.ConnectToServer();
         }
         else
         {
@@ -129,6 +130,11 @@ public class LogInUI : MonoBehaviour
 
     private void CloseUI()
     {
-        gameObject.SetActive(false);
+        Destroy(gameObject);
+    }
+
+    private void UpdateConnectionInfoText(string connectionInfo)
+    {
+        _connectionInfoText.text = connectionInfo;
     }
 }

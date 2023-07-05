@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using TMPro;
 using UnityEngine;
 using Util.Enum;
@@ -23,7 +23,7 @@ public class LobbyUI : MonoBehaviour
 
     public event Action<CharacterType> OnCharacterChanged;
 
-    private void Start() // ÀÌº¸´Ù ¸ÕÀú ½ÇÇàµÉ °æ¿ì(Awake, OnEnable) ½ÇÇàÈå¸§¿¡ ¿µÇâ
+    private void Start() // ì´ë³´ë‹¤ ë¨¼ì € ì‹¤í–‰ë  ê²½ìš°(Awake, OnEnable) ì‹¤í–‰íë¦„ì— ì˜í–¥
     {
         InitLobbyUISettings();
     }
@@ -31,7 +31,7 @@ public class LobbyUI : MonoBehaviour
     private void OnEnable()
     {
         _userNameTextUI = GetComponentInChildren<TextMeshProUGUI>();
-        string userName = GameManager.Instance.UserManager.UserLocalData.Name;
+        string userName = Managers.UserManager.UserLocalData.Name;
         if (userName == null)
         {
             return;
@@ -39,7 +39,7 @@ public class LobbyUI : MonoBehaviour
         _userNameTextUI.text = userName;
     }
 
-    public void InitLobbyUISettings() // ÆĞ³Î 3°³ »ı¼º : ·¹Àüµå ¸Ş´º, È¯°æ¼³Á¤ ¸Ş´º, ¸ÅÄª UI
+    public void InitLobbyUISettings() // íŒ¨ë„ 3ê°œ ìƒì„± : ë ˆì „ë“œ ë©”ë‰´, í™˜ê²½ì„¤ì • ë©”ë‰´, ë§¤ì¹­ UI
     {
         SetPanelAndButton(ResourcesManager.LegendMenuUIPath, ResourcesManager.LegendMenuButtonPath);
         SetPanelAndButton(ResourcesManager.SettingUIPath, ResourcesManager.SettingButtonPath);
@@ -50,7 +50,7 @@ public class LobbyUI : MonoBehaviour
     private void SetLobbyCharaterModel()
     {
         _characterModels = new GameObject[(int)CharacterType.NumOfCharacter];
-        _currentCharacterIndex = (int)GameManager.Instance.UserManager.UserLocalData.SelectedCharacter;
+        _currentCharacterIndex = (int)Managers.UserManager.UserLocalData.SelectedCharacter;
 
         for (int i = 0; i < (int)CharacterType.NumOfCharacter; ++i)
         {
@@ -85,7 +85,7 @@ public class LobbyUI : MonoBehaviour
         panelGameObject.SetActive(false);
         if (buttonPath == ResourcesManager.MatchingButtonPath)
         {
-            button.Button.onClick.AddListener(GameManager.Instance.LobbyManager.Connect);
+            button.Button.onClick.AddListener(Managers.LobbyManager.Connect);
         }
     }
 

@@ -1,15 +1,16 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using Photon.Realtime;
 using System;
-using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
+    public static LobbyManager s_instance = null;
     private string _gameVersion = "1";
-    public TextMeshProUGUI ConnectionInfoText { get => _connectionInfoText; set => _connectionInfoText = value; } // ·Îµù ÆĞ³Î¿¡¼­ ÇöÀç Á¢¼Ó »óÅÂ¸¦ º¸¿©ÁÙ ÅØ½ºÆ®    
-    private TextMeshProUGUI _connectionInfoText;
+
+    private string _connectionInfoText;
     public Button ExitRoomButton { get => _exitRoomButton; set => _exitRoomButton = value; }
     private Button _exitRoomButton;
 
@@ -17,32 +18,44 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public event Action<GameModeType> OnMatchSuccess;
     public event Action<GameMode> OnEnteringGameMode;
     public event Action<int, UserData> OnUpdateUserDatas;
+    public event Action<string> OnUpdateConnctionInfo;
 
-    private int _totalPlayerOfGameMode = 4; // °ÔÀÓ ¸ğµå ¼±ÅÃ ±â´É Ãß°¡ ½Ã ÇØ´ç ¼ıÀÚ °ª ºñ¿ì°í ¸ğµå °ªÀ¸·Î ÇÒ´ç    
-
-    private void Awake()
+    private int _totalPlayerOfGameMode = 4; // ê²Œì„ ëª¨ë“œ ì„ íƒ ê¸°ëŠ¥ ì¶”ê°€ ì‹œ í•´ë‹¹ ìˆ«ì ê°’ ë¹„ìš°ê³  ëª¨ë“œ ê°’ìœ¼ë¡œ í• ë‹¹    
+    public static LobbyManager Init()
     {
-        GameManager.Instance.OnStartGame -= ConnectToServer;
-        GameManager.Instance.OnStartGame += ConnectToServer;
+        if (s_instance == null)
+        {
+            GameObject gameObject = GameObject.Find("LobbyManager");
+            if (gameObject == null)
+            {
+                gameObject = new GameObject { name = "LobbyManager" };
+                s_instance = gameObject.AddComponent<LobbyManager>();
+                gameObject.transform.SetParent(Managers.Instance.transform);
+            }
+        }
+        return s_instance;
     }
 
-    // °ÔÀÓ ½ÃÀÛ ½Ã ID ÀÔ·Â ¹× ¹öÆ° Å¬¸¯ ½Ã ¼­¹ö Á¢¼Ó
-    private void ConnectToServer()
+    // ê²Œì„ ì‹œì‘ ì‹œ ID ì…ë ¥ ë° ë²„íŠ¼ í´ë¦­ ì‹œ ì„œë²„ ì ‘ì†
+    public void ConnectToServer()
     {
         PhotonNetwork.GameVersion = _gameVersion;
         PhotonNetwork.ConnectUsingSettings();
-        ConnectionInfoText.text = "¼­¹ö¿¡ Á¢¼Ó ÁßÀÔ´Ï´Ù.";
+        _connectionInfoText = "ì„œë²„ì— ì ‘ì† ì¤‘ì…ë‹ˆë‹¤.";
+        OnUpdateConnctionInfo.Invoke(_connectionInfoText);
     }
 
     public override void OnConnectedToMaster()
     {
-        _connectionInfoText.text = "¼­¹ö ¿¬°á¿¡ ¼º°øÇÏ¿´½À´Ï´Ù.";
+        _connectionInfoText = "ì„œë²„ ì—°ê²°ì— ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤.";
+        OnUpdateConnctionInfo.Invoke(_connectionInfoText);
         OnLogInSuccess.Invoke();
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        _connectionInfoText.text = "¼­¹ö ¿¬°á¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.";
+        _connectionInfoText = "ì„œë²„ ì—°ê²°ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.";
+        OnUpdateConnctionInfo.Invoke(_connectionInfoText);
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -50,32 +63,36 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsConnected)
         {
-            _connectionInfoText.text = "·ë¿¡ Á¢¼Ó ÁßÀÔ´Ï´Ù.";
+            _connectionInfoText = "ë£¸ì— ì ‘ì† ì¤‘ì…ë‹ˆë‹¤.";
+            OnUpdateConnctionInfo.Invoke(_connectionInfoText);
             PhotonNetwork.JoinRandomRoom();
         }
         else
         {
-            _connectionInfoText.text = "¼­¹ö ¿¬°á¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.";
+            _connectionInfoText = "ì„œë²„ ì—°ê²°ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.";
+            OnUpdateConnctionInfo.Invoke(_connectionInfoText);
             PhotonNetwork.ConnectUsingSettings();
         }
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        _connectionInfoText.text = "°ÔÀÓÀÌ ¾ø½À´Ï´Ù. »õ·Î »ı¼ºÇÕ´Ï´Ù.";
-        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = _totalPlayerOfGameMode }); // °ÔÀÓ¸ğµå¿¡ ¸Â°Ô º¯°æ ÇÊ¿ä // °ÔÀÓ¸ğµå¸¦ ½ºÅ×ÀÌÁö°¡ ¾Æ´Ï¶ó ·Îºñ¿¡¼­ ¼±ÅÃÇÏµµ·Ï
+        _connectionInfoText = "ê²Œì„ì´ ì—†ìŠµë‹ˆë‹¤. ìƒˆë¡œ ìƒì„±í•©ë‹ˆë‹¤.";
+        OnUpdateConnctionInfo.Invoke(_connectionInfoText);
+        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = _totalPlayerOfGameMode }); // ê²Œì„ëª¨ë“œì— ë§ê²Œ ë³€ê²½ í•„ìš” // ê²Œì„ëª¨ë“œë¥¼ ìŠ¤í…Œì´ì§€ê°€ ì•„ë‹ˆë¼ ë¡œë¹„ì—ì„œ ì„ íƒí•˜ë„ë¡
     }
 
     public override void OnJoinedRoom()
     {
-        _connectionInfoText.text = "¾Æ·¹³ª°¡ ¿­¸®°í ÀÖ½À´Ï´Ù. »ó´ë¸¦ ±â´Ù¸®°í ÀÖ½À´Ï´Ù.";
+        _connectionInfoText = "ì•„ë ˆë‚˜ê°€ ì—´ë¦¬ê³  ìˆìŠµë‹ˆë‹¤. ìƒëŒ€ë¥¼ ê¸°ë‹¤ë¦¬ê³  ìˆìŠµë‹ˆë‹¤.";
+        OnUpdateConnctionInfo.Invoke(_connectionInfoText);
         ResisterUserLocalData();
         MatchWithBot();
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        // »ó´ë µ¥ÀÌÅÍ ¹Ş¾Æ¿À´Â ºÎºĞ        
+        // ìƒëŒ€ ë°ì´í„° ë°›ì•„ì˜¤ëŠ” ë¶€ë¶„        
     }
     private void EnterInGameScene()
     {
@@ -85,7 +102,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public void OnLevelWasLoaded(int level)
     {
-        GameMode currentGameMode = GameManager.Instance.StageManager.CurrentGameMode;
+        GameMode currentGameMode = Managers.StageManager.CurrentGameMode;
         OnEnteringGameMode.Invoke(currentGameMode);
     }
 
@@ -104,18 +121,18 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         {
             return 0;
         }
-        return 1; // 4ÀÎ ¸ğµå °í·Á ½Ã ¼öÁ¤ ÇÊ¿ä
+        return 1; // 4ì¸ ëª¨ë“œ ê³ ë ¤ ì‹œ ìˆ˜ì • í•„ìš”
     }
 
     private UserData GetUserLocalData()
     {
-        UserData userLocalData = GameManager.Instance.UserManager.UserLocalData;
+        UserData userLocalData = Managers.UserManager.UserLocalData;
         return userLocalData;
     }
 
     private async UniTask MatchWithBot()
     {
-        await UniTask.Delay(2000); // ÇöÀç 2ÃÊ µ¿¾È ¸ÅÄª ¾È ÀâÈ÷¸é ¿¬½ÀÀå ÀÚµ¿ ÀÔÀå
+        await UniTask.Delay(2000); // í˜„ì¬ 2ì´ˆ ë™ì•ˆ ë§¤ì¹­ ì•ˆ ì¡íˆë©´ ì—°ìŠµì¥ ìë™ ì…ì¥
         EnterInGameScene();
     }
 }

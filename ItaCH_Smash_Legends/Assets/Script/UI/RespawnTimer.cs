@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -14,7 +14,7 @@ public class RespawnTimer : MonoBehaviour
     public void InitRespawnTimerSettings(CharacterStatus characterStatus)
     {
         gameObject.SetActive(false);
-        _playerId = GameManager.Instance.UserManager.UserLocalData.Id;
+        _playerId = Managers.UserManager.UserLocalData.Id;
     }
 
     public async void CheckPlayer(CharacterStatus characterStatus)
@@ -60,7 +60,7 @@ public class RespawnTimer : MonoBehaviour
     private void ChangeText(int timeLeft)
     {
         stringBuilder.Clear();
-        stringBuilder.Append($"��Ȱ ({timeLeft})");
+        stringBuilder.Append($"부활 ({timeLeft})");
         _text.text = stringBuilder.ToString();
     }
 }

@@ -1,19 +1,19 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Util.Enum;
 
-public class UserManager : MonoBehaviour
+public class UserManager
 {
     private const int MAXIMUM_PLAYER = 4;
     public UserData[] AllUserDatas = new UserData[MAXIMUM_PLAYER];
     public UserData UserLocalData { get => _userLocalData; set => _userLocalData = value; }
     private UserData _userLocalData;
 
-    void Awake()
+    public void Init()
     {
         _userLocalData = new UserData();
         _userLocalData.SelectedCharacter = CharacterType.None;
-        GameManager.Instance.LobbyManager.OnUpdateUserDatas -= ResiterUserData;
-        GameManager.Instance.LobbyManager.OnUpdateUserDatas += ResiterUserData;
+        Managers.LobbyManager.OnUpdateUserDatas -= ResiterUserData;
+        Managers.LobbyManager.OnUpdateUserDatas += ResiterUserData;
     }
 
     public UserData GetUserData(int userID)

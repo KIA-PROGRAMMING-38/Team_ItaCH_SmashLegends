@@ -10,6 +10,7 @@ using Util.Path;
 
 public class StageManager : MonoBehaviourPunCallbacks
 {
+    private static StageManager s_instance = null;
     private const GameModeType DEFAULT_GAME_MODE = GameModeType.Duel;
     public GameMode CurrentGameMode { get => _currentGameMode; private set => _currentGameMode = value; }
     private GameMode _currentGameMode;
@@ -55,11 +56,25 @@ public class StageManager : MonoBehaviourPunCallbacks
     public event Action<int, TeamType> OnTeamScoreChanged;
     public event Action<int> OnTimeChange;
 
-    public override void OnEnable()
+    public static StageManager Init()
+    {
+        if (s_instance == null)
+        {
+            GameObject gameObject = GameObject.Find("StageManager");
+            if (gameObject == null)
+            {
+                gameObject = new GameObject { name = "StageManager" };
+                s_instance = gameObject.AddComponent<StageManager>();
+                gameObject.transform.SetParent(Managers.Instance.transform);
+            }
+        }
+        return s_instance;
+    }
+    public void OnEnable()
     {
         GetGameMode(DEFAULT_GAME_MODE);
-        GameManager.Instance.LobbyManager.OnEnteringGameMode -= SetStage;
-        GameManager.Instance.LobbyManager.OnEnteringGameMode += SetStage;
+        Managers.LobbyManager.OnEnteringGameMode -= SetStage;
+        Managers.LobbyManager.OnEnteringGameMode += SetStage;
     }
 
     public void GetGameMode(GameModeType gameModeSelected)
@@ -83,7 +98,7 @@ public class StageManager : MonoBehaviourPunCallbacks
         _teamRedCharacter = new CharacterStatus[_teamSize];
         for (int playerID = 0; playerID < _totalPlayer; playerID++)
         {
-            UserData userData = GameManager.Instance.UserManager.GetUserData(playerID);
+            UserData userData = Managers.UserManager.GetUserData(playerID);
             CreateCharacter(userData, currentGameMode.SpawnPoints);
         }
         SetModeUI(currentGameMode.GameModeType);
