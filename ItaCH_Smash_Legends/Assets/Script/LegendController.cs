@@ -8,6 +8,15 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
 
+public enum ActionType
+{
+    Move = 0,
+    Jump = 1,
+    DefaultAttack = 2,
+    HeavyAttack = 3,
+    SkillAttack = 4
+}
+
 public class LegendController : MonoBehaviour
 {
     // 추후 리소스로 매니저로 캐싱 후 사용
@@ -15,31 +24,26 @@ public class LegendController : MonoBehaviour
     public Animator peter;
 
     public Vector3 MoveDirection { get; private set; }
+
     private Animator _anim;
     private InputAction[] _action = new InputAction[5];
     private string[] _actionLiteral = new[] { "Move", "Jump", "DefaultAttack", "SmashAttack", "SkillAttack" };
-    
+
     // 추후 스트링 리터럴 캐싱 후 사용
-    private string[] _animationClipLiteral = new[]{"Hook_FirstAttack", "Hook_FinishAttack" };
+    private string[] _animationClipLiteral = new[] { "Hook_FirstAttack", "Hook_FinishAttack" };
 
-    public int ActionMove { get; private set; } = 0;
-    public int ActionJump { get; private set; } = 1;
-    public int ActionDefaultAttack { get; private set; } = 2;
-    public int ActionHeavyAttack { get; private set; } = 3;
-    public int ActionSkillAttack { get; private set; } = 4;
-
-    private AnimatorOverrideController _animatorOverride;
+    private ActionType _actionType;
+    private bool _isAttack { get; set; }
     public int PossibleComboCount { get; set; } = 0;
 
+    private AnimatorOverrideController _animatorOverride;
     private UnityEngine.InputSystem.PlayerInput _input;
 
     private void Awake()
     {
-        _anim = GetComponent<Animator>();
-
         // 애니메이션 교체 가능 확인완료
         //_anim.runtimeAnimatorController = Instantiate(Resources.Load<RuntimeAnimatorController>(ResourcesManager.PeterAnimator));
-        
+        _anim = GetComponent<Animator>();
         _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
         _animatorOverride = new AnimatorOverrideController(_anim.runtimeAnimatorController);
         _anim.runtimeAnimatorController = _animatorOverride;
@@ -81,27 +85,41 @@ public class LegendController : MonoBehaviour
 
     public void NextAnimation()
     {
-        if (OnActionTrigger(ActionJump))
+        if (OnActionTrigger(ActionType.Move))
+        {
+            _anim.Play(AnimationHash.Run);
+        }
+        if (OnActionTrigger(ActionType.Jump))
         {
             _anim.Play(AnimationHash.Jump);
         }
-        if (OnActionTrigger(ActionDefaultAttack))
+        if (OnActionTrigger(ActionType.DefaultAttack))
         {
             _anim.Play(AnimationHash.FirstAttack);
+        }
+        if (OnActionTrigger(ActionType.HeavyAttack))
+        {
+            _anim.Play(AnimationHash.HeavyAttack);
+        }
+        if (OnActionTrigger(ActionType.SkillAttack))
+        {
+            _anim.Play(AnimationHash.SkillAttack);
         }
     }
     public void PlayFirstAttack()
     {
-        if (SetAttackable(ActionDefaultAttack))
+        if (SetAttackable(ActionType.DefaultAttack))
         {
             _anim.Play(AnimationHash.FirstAttack);
+            AttackRotate();
         }
     }
     public void PlaySecondAttack()
     {
-        if (SetAttackable(ActionDefaultAttack))
+        if (SetAttackable(ActionType.DefaultAttack))
         {
             _anim.Play(AnimationHash.SecondAttack);
+            AttackRotate();
         }
     }
     public void NextPlayClip()
@@ -113,9 +131,9 @@ public class LegendController : MonoBehaviour
         }
     }
 
-    public bool OnActionTrigger(int actionNumber)
+    private bool OnActionTrigger(ActionType type)
     {
-        if (_action[actionNumber].triggered)
+        if (_action[(int)type].triggered)
         {
             return true;
         }
@@ -124,15 +142,41 @@ public class LegendController : MonoBehaviour
             return false;
         }
     }
-    public bool SetAttackable(int actionNumber)
+    public bool SetAttackable(ActionType type)
     {
-        if(OnActionTrigger(actionNumber) && PossibleComboCount < ApplyClip.Length)
+        if (OnActionTrigger(type) && PossibleComboCount < ApplyClip.Length)
         {
             return true;
         }
         else
         {
             return false;
+        }
+    }
+    public bool SetAttackable()
+    {
+        if (_isAttack)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public void NextComboPossible()
+    {
+        _isAttack = true;
+    }
+    public void NextComboImPossible()
+    {
+        _isAttack = false;
+    }
+    private void AttackRotate()
+    {
+        if (MoveDirection != Vector3.zero)
+        {
+            transform.forward = MoveDirection;
         }
     }
     // PlayerRollUp 
