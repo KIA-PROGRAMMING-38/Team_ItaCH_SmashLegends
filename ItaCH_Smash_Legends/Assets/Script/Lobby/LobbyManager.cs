@@ -19,8 +19,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public event Action<int, UserData> OnUpdateUserDatas;
 
-    // 게임 시작 시 ID 입력 및 버튼 클릭 시 서버 접속
-
     public void Init()
     {
 

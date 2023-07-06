@@ -134,6 +134,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8867678597762831876, guid: 6bfffcdb81594a744be9d0cbff1182a5,
         type: 3}
+      propertyPath: _spinnerImage
+      value: 
+      objectReference: {fileID: 1980032959}
+    - target: {fileID: 8867678597762831876, guid: 6bfffcdb81594a744be9d0cbff1182a5,
+        type: 3}
       propertyPath: _connectionInfoText
       value: 
       objectReference: {fileID: 1867702749}
@@ -271,6 +276,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: LogInUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8867678598402717709, guid: 6bfffcdb81594a744be9d0cbff1182a5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9685832
+      objectReference: {fileID: 0}
+    - target: {fileID: 8867678598402717709, guid: 6bfffcdb81594a744be9d0cbff1182a5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.24868986
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bfffcdb81594a744be9d0cbff1182a5, type: 3}
@@ -467,5 +482,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1980032959 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8867678598402717704, guid: 6bfffcdb81594a744be9d0cbff1182a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1094847118}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d55d7b23476940408e82a5c8da6b1c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
