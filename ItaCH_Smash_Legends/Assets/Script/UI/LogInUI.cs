@@ -7,8 +7,7 @@ using UnityEngine.UI;
 using Util.Method;
 
 public class LogInUI : MonoBehaviour
-{
-    private string _userInput;
+{    
     [SerializeField] private TMP_InputField _inputField;
     [SerializeField] private GameObject _logInField;
     [SerializeField] private GameObject _loadingObject;
@@ -19,13 +18,10 @@ public class LogInUI : MonoBehaviour
     private float _fadeInTime = 1f;
     private Vector3 _targetBigSize = new Vector3(1.5f, 1.5f, 1.5f);
 
-    private Image _logoShadow;
-    private Image _logo;
+    private Image _logoShadow;    
 
     private const string InputPattern = @"^[a-zA-Z가-힣]{2,8}$";
-
-    public event Action OnAcceptNickname;
-
+       
     private void Start()
     {
         Init();
@@ -33,32 +29,34 @@ public class LogInUI : MonoBehaviour
     }
 
     private void Init()
-    {   
+    {
         // LobbyManager에서 서버 접속 상태 변경에 따라 UI 텍스트 변경 위한 구독
-        Managers.LobbyManager.OnUpdateConnctionInfo -= UpdateConnectionInfoText;
-        Managers.LobbyManager.OnUpdateConnctionInfo += UpdateConnectionInfoText;
+        Managers.LobbyManager.OnConnectingtoServer -= SetConnectingServerInfo;
+        Managers.LobbyManager.OnConnectingtoServer += SetConnectingServerInfo;
+
+        Managers.LobbyManager.OnDisconnectedfromServer -= SetFailureConnectionInfo;
+        Managers.LobbyManager.OnDisconnectedfromServer += SetFailureConnectionInfo;
 
         // LobbyManager에서 서버 접속 확인 후 UI 비활성화를 위한 구독
-        Managers.LobbyManager.OnLogInSuccess -= CloseUI;
-        Managers.LobbyManager.OnLogInSuccess += CloseUI;
+        Managers.LobbyManager.OnLogInSuccessed -= CloseUI;
+        Managers.LobbyManager.OnLogInSuccessed += CloseUI;
     }
 
     public void ShowOpening()
     {
         _logInField.SetActive(false);
         _background = transform.GetChild(0).GetComponent<Image>();
-        _logoShadow = _background.transform.GetChild(0).GetComponent<Image>();
-        _logo = _logoShadow.transform.GetChild(0).GetComponent<Image>();
+        _logoShadow = _background.transform.GetChild(0).GetComponent<Image>();         
 
         RunOpening().Forget();
     }
 
     public void SetName()
     {
-        _userInput = _inputField.text;
-        if (Regex.IsMatch(_userInput, InputPattern))
+        string userInput = _inputField.text;
+        if (Regex.IsMatch(userInput, InputPattern))
         {
-            Managers.UserManager.UserLocalData.Name = _userInput;
+            Managers.UserManager.UserLocalData.Name = userInput;
             _logInField.SetActive(false);
             _loadingObject.SetActive(true);
             _loadingObject.transform.GetChild(0).GetComponent<RotatingImage>()?.StartRotation();
@@ -121,18 +119,15 @@ public class LogInUI : MonoBehaviour
         rectTransform.localScale = targetSize;
     }
 
-    private void ShowLogIn()
-    {
-        _logInField.SetActive(true);
-    }
+    private void ShowLogIn() => _logInField.SetActive(true);
+
+    private void SetConnectingServerInfo() => _connectionInfoText.text = StringLiteral.CONNECT_SERVER;
+    private void SetSuccessConnectionInfo() => _connectionInfoText.text = StringLiteral.CONNECT_SERVER;
+    private void SetFailureConnectionInfo() => _connectionInfoText.text = StringLiteral.CONNECTION_FAILURE;
 
     private void CloseUI()
     {
+        SetSuccessConnectionInfo();
         Destroy(gameObject);
-    }
-
-    private void UpdateConnectionInfoText(string connectionInfo)
-    {
-        _connectionInfoText.text = connectionInfo;
     }
 }

@@ -137,6 +137,11 @@ PrefabInstance:
       propertyPath: _connectionInfoText
       value: 
       objectReference: {fileID: 1867702749}
+    - target: {fileID: 8867678597762831898, guid: 6bfffcdb81594a744be9d0cbff1182a5,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8867678597762831899, guid: 6bfffcdb81594a744be9d0cbff1182a5,
         type: 3}
       propertyPath: m_Pivot.x
@@ -276,6 +281,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1430969371551387012, guid: 7c56a5492b3107b4284f582bb087f6a5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430969371551387012, guid: 7c56a5492b3107b4284f582bb087f6a5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430969371551387012, guid: 7c56a5492b3107b4284f582bb087f6a5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800184350451473907, guid: 7c56a5492b3107b4284f582bb087f6a5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3973304076543894513, guid: 7c56a5492b3107b4284f582bb087f6a5,
         type: 3}
       propertyPath: m_RootOrder
@@ -335,6 +360,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LobbySceneWorld
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815568311637900010, guid: 7c56a5492b3107b4284f582bb087f6a5,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c56a5492b3107b4284f582bb087f6a5, type: 3}

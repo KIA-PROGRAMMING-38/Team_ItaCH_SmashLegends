@@ -23,28 +23,28 @@ public class LobbyUI : MonoBehaviour
 
     public event Action<CharacterType> OnCharacterChanged;
 
-    private void Start() // 이보다 먼저 실행될 경우(Awake, OnEnable) 실행흐름에 영향
+    private void Awake()
     {
-        InitLobbyUISettings();
-    }
-
-    private void OnEnable()
-    {
-        _userNameTextUI = GetComponentInChildren<TextMeshProUGUI>();
-        string userName = Managers.UserManager.UserLocalData.Name;
-        if (userName == null)
-        {
-            return;
-        }
-        _userNameTextUI.text = userName;
+        Managers.LobbyManager.OnLogInSuccessed -= InitLobbyUISettings;
+        Managers.LobbyManager.OnLogInSuccessed += InitLobbyUISettings;        
     }
 
     public void InitLobbyUISettings() // 패널 3개 생성 : 레전드 메뉴, 환경설정 메뉴, 매칭 UI
-    {
+    {        
+        SetUserName();
         SetPanelAndButton(ResourcesManager.LegendMenuUIPath, ResourcesManager.LegendMenuButtonPath);
         SetPanelAndButton(ResourcesManager.SettingUIPath, ResourcesManager.SettingButtonPath);
         SetPanelAndButton(ResourcesManager.MatchingUIPath, ResourcesManager.MatchingButtonPath);
         SetLobbyCharaterModel();
+    }
+    private void SetUserName()
+    {
+        _userNameTextUI = GetComponentInChildren<TextMeshProUGUI>();
+        string userName = Managers.UserManager.UserLocalData.Name;
+
+        if (userName == null) return;
+
+        _userNameTextUI.text = userName;
     }
 
     private void SetLobbyCharaterModel()
@@ -69,7 +69,7 @@ public class LobbyUI : MonoBehaviour
         _characterModels[characterIndex].SetActive(true);
         _characterType = (CharacterType)characterIndex;
         _currentCharacterIndex = characterIndex;
-        OnCharacterChanged.Invoke(_characterType);
+        Managers.UserManager.UserLocalData.SetSelectedCharacter(_characterType);
     }
 
     private void SetPanelAndButton(string panelPath, string buttonPath)

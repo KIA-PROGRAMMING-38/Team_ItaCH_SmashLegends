@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Managers : MonoBehaviour
 {
@@ -14,11 +13,10 @@ public class Managers : MonoBehaviour
     public static LobbyManager LobbyManager { get { Init(); return s_lobbyManager; } }
     public static UserManager UserManager { get { Init(); return s_userManager; } }
 
+    // DataManager 구성 이후 옮겨갈 부분
     public DataTable CharacterTable { get => _characterTable; private set => _characterTable = value; }
     private DataTable _characterTable;
-
-    public event Action OnStartGame;
-
+    
     private void Start()
     {
         Init();
@@ -35,15 +33,20 @@ public class Managers : MonoBehaviour
             if (gameObject == null)
             {
                 gameObject = new GameObject { name = "@Managers" };
-                gameObject.AddComponent<Managers>();
+                s_instance = gameObject.AddComponent<Managers>();
+                DontDestroyOnLoad(gameObject);
+
+                gameObject = new GameObject { name = "@LobbyManager" };
+                s_lobbyManager = gameObject.AddComponent<LobbyManager>();
+                gameObject.transform.SetParent(s_instance.transform);
+
+                gameObject = new GameObject { name = "@StageManager" };
+                s_stageManager = gameObject.AddComponent<StageManager>();
+                gameObject.transform.SetParent(s_instance.transform);
+
+                s_userManager.Init();
             }
-
             s_instance = gameObject.GetComponent<Managers>();
-            DontDestroyOnLoad(gameObject);
-
-            s_lobbyManager = LobbyManager.Init();
-            s_stageManager = StageManager.Init();
-            s_userManager.Init();
         }
     }    
 }

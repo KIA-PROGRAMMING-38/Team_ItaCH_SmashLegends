@@ -2,60 +2,38 @@
 using Photon.Pun;
 using Photon.Realtime;
 using System;
-using UnityEngine;
-using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
-    public static LobbyManager s_instance = null;
-    private string _gameVersion = "1";
+    private readonly string _gameVersion = "1";
 
-    private string _connectionInfoText;
-    public Button ExitRoomButton { get => _exitRoomButton; set => _exitRoomButton = value; }
-    private Button _exitRoomButton;
+    // 서버 접속 이벤트 >> LogIn UI 화면
+    public event Action OnConnectingtoServer;
+    public event Action OnDisconnectedfromServer;
+    public event Action OnLogInSuccessed;
 
-    public event Action OnLogInSuccess;
-    public event Action<GameModeType> OnMatchSuccess;
-    public event Action<GameMode> OnEnteringGameMode;
+    // 룸 매칭 이벤트 >> Match UI 화면
+    public event Action OnJoiningRoom;
+    public event Action OnCreatingRoom;
+    public event Action OnWaitingPlayer;
+    public event Action<GameModeType> OnMatchingSuccess;
+    public event Action<GameMode> OnInGameSceneLoaded;
+
     public event Action<int, UserData> OnUpdateUserDatas;
-    public event Action<string> OnUpdateConnctionInfo;
-
-    private int _totalPlayerOfGameMode = 4; // 게임 모드 선택 기능 추가 시 해당 숫자 값 비우고 모드 값으로 할당    
-    public static LobbyManager Init()
-    {
-        if (s_instance == null)
-        {
-            GameObject gameObject = GameObject.Find("LobbyManager");
-            if (gameObject == null)
-            {
-                gameObject = new GameObject { name = "LobbyManager" };
-                s_instance = gameObject.AddComponent<LobbyManager>();
-                gameObject.transform.SetParent(Managers.Instance.transform);
-            }
-        }
-        return s_instance;
-    }
 
     // 게임 시작 시 ID 입력 및 버튼 클릭 시 서버 접속
     public void ConnectToServer()
     {
         PhotonNetwork.GameVersion = _gameVersion;
         PhotonNetwork.ConnectUsingSettings();
-        _connectionInfoText = "서버에 접속 중입니다.";
-        OnUpdateConnctionInfo.Invoke(_connectionInfoText);
+        OnConnectingtoServer.Invoke();
     }
 
-    public override void OnConnectedToMaster()
-    {
-        _connectionInfoText = "서버 연결에 성공하였습니다.";
-        OnUpdateConnctionInfo.Invoke(_connectionInfoText);
-        OnLogInSuccess.Invoke();
-    }
+    public override void OnConnectedToMaster() => OnLogInSuccessed.Invoke();
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        _connectionInfoText = "서버 연결에 실패하였습니다.";
-        OnUpdateConnctionInfo.Invoke(_connectionInfoText);
+        OnDisconnectedfromServer.Invoke();
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -63,29 +41,26 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsConnected)
         {
-            _connectionInfoText = "룸에 접속 중입니다.";
-            OnUpdateConnctionInfo.Invoke(_connectionInfoText);
+            OnJoiningRoom.Invoke();
             PhotonNetwork.JoinRandomRoom();
         }
         else
         {
-            _connectionInfoText = "서버 연결에 실패하였습니다.";
-            OnUpdateConnctionInfo.Invoke(_connectionInfoText);
+            OnDisconnectedfromServer.Invoke();
             PhotonNetwork.ConnectUsingSettings();
         }
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        _connectionInfoText = "게임이 없습니다. 새로 생성합니다.";
-        OnUpdateConnctionInfo.Invoke(_connectionInfoText);
-        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = _totalPlayerOfGameMode }); // 게임모드에 맞게 변경 필요 // 게임모드를 스테이지가 아니라 로비에서 선택하도록
+        OnCreatingRoom.Invoke();
+        int totalPlayer = Managers.StageManager.CurrentGameMode.TotalPlayer;
+        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = totalPlayer });
     }
 
     public override void OnJoinedRoom()
     {
-        _connectionInfoText = "아레나가 열리고 있습니다. 상대를 기다리고 있습니다.";
-        OnUpdateConnctionInfo.Invoke(_connectionInfoText);
+        OnWaitingPlayer.Invoke();
         ResisterUserLocalData();
         MatchWithBot();
     }
@@ -94,18 +69,18 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         // 상대 데이터 받아오는 부분        
     }
+
     private void EnterInGameScene()
     {
-        PhotonNetwork.LoadLevel("InGame");
-        OnMatchSuccess.Invoke(GameModeType.Duel);
+        PhotonNetwork.LoadLevel(StringLiteral.INGAME);
+        OnMatchingSuccess.Invoke(GameModeType.Duel);
     }
 
     public void OnLevelWasLoaded(int level)
     {
         GameMode currentGameMode = Managers.StageManager.CurrentGameMode;
-        OnEnteringGameMode.Invoke(currentGameMode);
+        OnInGameSceneLoaded.Invoke(currentGameMode);
     }
-
 
     private void ResisterUserLocalData()
     {

@@ -21,14 +21,23 @@ public class MatchUI : MonoBehaviourPunCallbacks, IPanel
 
     public override void OnEnable()
     {
-        //Managers.Instance.LobbyManager.ConnectionInfoText = _matchText; << LobbyManager 재구성 및 UIManager 구성 시 변경 필요
-        // OnUpdateConnectionInfo event invoke방식
-
+        Init();
         if (_isGameStarted)
-        {
-            Debug.Log("connect 실행");
+        {            
             Managers.LobbyManager.Connect();
         }
+    }
+
+    private void Init()
+    {
+        Managers.LobbyManager.OnJoiningRoom -= SetEnterRoomConnectionInfo;
+        Managers.LobbyManager.OnJoiningRoom += SetEnterRoomConnectionInfo;
+
+        Managers.LobbyManager.OnCreatingRoom -= SetCreateRoomConnectionInfo;
+        Managers.LobbyManager.OnCreatingRoom += SetCreateRoomConnectionInfo;
+
+        Managers.LobbyManager.OnWaitingPlayer -= SetWaitPlayerConnectionInfo;
+        Managers.LobbyManager.OnWaitingPlayer += SetWaitPlayerConnectionInfo;
     }
 
     public void InitPanelSettings(LobbyUI lobbyUI)
@@ -41,9 +50,12 @@ public class MatchUI : MonoBehaviourPunCallbacks, IPanel
         {
             _matchBoxes[i].InitMatchBoxSettings();
         }
+
         _matchIcon.InitMatchIconSettings();
+
         _OnStageStart -= _matchIcon.SetMatchCompleteImage;
         _OnStageStart += _matchIcon.SetMatchCompleteImage;
+
         _OnStageStart -= () => _removePanelButton.enabled = false;
         _OnStageStart += () => _removePanelButton.enabled = false;
     }
@@ -112,4 +124,8 @@ public class MatchUI : MonoBehaviourPunCallbacks, IPanel
         _matchText.text = "게임이 시작됩니다! 준비하세요!";
         _OnStageStart.Invoke();
     }
+
+    private void SetEnterRoomConnectionInfo() => _matchText.text = StringLiteral.ENTER_ROOM;
+    private void SetCreateRoomConnectionInfo() => _matchText.text = StringLiteral.CREATE_ROOM;
+    private void SetWaitPlayerConnectionInfo() => _matchText.text = StringLiteral.WAIT_PLAYER;
 }
