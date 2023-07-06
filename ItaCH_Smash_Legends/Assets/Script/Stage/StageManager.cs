@@ -55,11 +55,15 @@ public class StageManager : MonoBehaviourPunCallbacks
     public event Action<int, TeamType> OnTeamScoreChanged;
     public event Action<int> OnTimeChange;
 
-    public override void OnEnable()
+    private void OnEnable()
+    {
+        Managers.LobbyManager.OnInGameSceneLoaded -= SetStage;
+        Managers.LobbyManager.OnInGameSceneLoaded += SetStage;        
+    }
+
+    public void Init()
     {
         GetGameMode(DEFAULT_GAME_MODE);
-        GameManager.Instance.LobbyManager.OnEnteringGameMode -= SetStage;
-        GameManager.Instance.LobbyManager.OnEnteringGameMode += SetStage;
     }
 
     public void GetGameMode(GameModeType gameModeSelected)
@@ -83,7 +87,7 @@ public class StageManager : MonoBehaviourPunCallbacks
         _teamRedCharacter = new CharacterStatus[_teamSize];
         for (int playerID = 0; playerID < _totalPlayer; playerID++)
         {
-            UserData userData = GameManager.Instance.UserManager.GetUserData(playerID);
+            UserData userData = Managers.UserManager.GetUserData(playerID);
             CreateCharacter(userData, currentGameMode.SpawnPoints);
         }
         SetModeUI(currentGameMode.GameModeType);

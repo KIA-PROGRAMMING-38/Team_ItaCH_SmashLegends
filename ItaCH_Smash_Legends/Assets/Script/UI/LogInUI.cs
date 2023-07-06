@@ -1,4 +1,5 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
+using System;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
@@ -7,49 +8,43 @@ using Util.Method;
 
 public class LogInUI : MonoBehaviour
 {
-    private string _userInput;
     [SerializeField] private TMP_InputField _inputField;
-    [SerializeField] private GameObject _logInField;
-    [SerializeField] private GameObject _loadingObject;
+    [SerializeField] private GameObject _inputBox;
+    [SerializeField] private RotatingImage _spinnerImage;
     [SerializeField] private TextMeshProUGUI _errorMessage;
+    [SerializeField] private TextMeshProUGUI _connectionInfoText;
+    [SerializeField] private Image _background;
+    [SerializeField] private Image _logoShadow;
 
-    private Image _background;
     private float _fadeInTime = 1f;
     private Vector3 _targetBigSize = new Vector3(1.5f, 1.5f, 1.5f);
 
-    private Image _logoShadow;
-    private Image _logo;
+    private const string InputPattern = @"^[a-zA-Zê°€-í£]{2,8}$";
 
-    private const string InputPattern = @"^[a-zA-Z°¡-ÆR]{2,8}$";
-
-    private void Awake()
+    private void Start()
     {
+        Init();
         ShowOpening();
     }
+
+    private void Init()
+    {
+        // LobbyManagerì—ì„œ ì„œë²„ ì ‘ì† ìƒíƒœ ë³€ê²½ì— ë”°ë¼ UI í…ìŠ¤íŠ¸ ë³€ê²½ ìœ„í•œ êµ¬ë…        
+        Managers.LobbyManager.OnConnectingtoServer -= () => SetConnectionInfo(StringLiteral.CONNECT_SERVER);
+        Managers.LobbyManager.OnConnectingtoServer += () => SetConnectionInfo(StringLiteral.CONNECT_SERVER);
+
+        Managers.LobbyManager.OnDisconnectedfromServer -= () => SetConnectionInfo(StringLiteral.CONNECTION_FAILURE);
+        Managers.LobbyManager.OnDisconnectedfromServer += () => SetConnectionInfo(StringLiteral.CONNECTION_FAILURE);
+
+        // LobbyManagerì—ì„œ ì„œë²„ ì ‘ì† í™•ì¸ í›„ UI ë¹„í™œì„±í™”ë¥¼ ìœ„í•œ êµ¬ë…
+        Managers.LobbyManager.OnLogInSuccessed -= CloseUI;
+        Managers.LobbyManager.OnLogInSuccessed += CloseUI;
+    }
+
     public void ShowOpening()
     {
-        _logInField.SetActive(false);
-        _background = transform.GetChild(0).GetComponent<Image>();
-        _logoShadow = _background.transform.GetChild(0).GetComponent<Image>();
-        _logo = _logoShadow.transform.GetChild(0).GetComponent<Image>();
-
+        _inputBox.SetActive(false);
         RunOpening().Forget();
-    }
-    public void SetName()
-    {
-        _userInput = _inputField.text;
-        if (Regex.IsMatch(_userInput, InputPattern))
-        {
-            GameManager.Instance.UserManager.UserLocalData.Name = _userInput;
-            _logInField.SetActive(false);
-            _loadingObject.SetActive(true);
-            _loadingObject.transform.GetChild(0).GetComponent<RotatingImage>()?.StartRotation();
-            GameManager.Instance.StartGame();
-        }
-        else
-        {
-            _errorMessage.enabled = true;
-        }
     }
 
     private async UniTask RunOpening()
@@ -60,6 +55,7 @@ public class LogInUI : MonoBehaviour
         await UniTask.Delay(1000);
         ShowLogIn();
     }
+
     private async UniTask ChangeColor(Image image, Color startColor, Color targetColor)
     {
         float fadeInSpeed = 1 / _fadeInTime;
@@ -82,14 +78,14 @@ public class LogInUI : MonoBehaviour
     {
         float popUpSpeed = 1 / popUpTime;
         float initialDifference = startSize.x - targetSize.x;
-        // ½ÃÀÛ Å©±â°¡ ´õ Ä¿¼­ ÀÛ¾ÆÁ®¾ß ÇÑ´Ù¸é -1 °öÇÏ±â
+        // ì‹œì‘ í¬ê¸°ê°€ ë” ì»¤ì„œ ì‘ì•„ì ¸ì•¼ í•œë‹¤ë©´ -1 ê³±í•˜ê¸°
         if (Method.IsPositive(initialDifference))
         {
             popUpSpeed *= -1;
         }
         rectTransform.localScale = startSize;
 
-        //ºÎÈ£°¡ ´Ş¶óÁú ¶§±îÁö ½ÇÇà
+        //ë¶€í˜¸ê°€ ë‹¬ë¼ì§ˆ ë•Œê¹Œì§€ ì‹¤í–‰
         while (Method.IsPositive(initialDifference * (rectTransform.localScale.x - targetSize.x)))
         {
             float popUpAmount = Time.deltaTime * popUpSpeed;
@@ -101,8 +97,35 @@ public class LogInUI : MonoBehaviour
         }
         rectTransform.localScale = targetSize;
     }
-    private void ShowLogIn()
+
+    private void ShowLogIn() => _inputBox.SetActive(true);
+
+    public void SetName()
     {
-        _logInField.SetActive(true);
+        string userInput = _inputField.text;
+        if (Regex.IsMatch(userInput, InputPattern))
+        {
+            Managers.UserManager.UserLocalData.Name = userInput;
+
+            _inputBox.SetActive(false);
+
+            GameObject connectionInfoObject = _spinnerImage.transform.parent.gameObject;
+            connectionInfoObject.SetActive(true);
+            _spinnerImage.StartRotation();
+
+            Managers.LobbyManager.ConnectToServer();
+        }
+        else
+        {
+            _errorMessage.enabled = true;
+        }
+    }
+
+    private void SetConnectionInfo(string text) => _connectionInfoText.text = text;
+
+    private void CloseUI()
+    {
+        SetConnectionInfo(StringLiteral.CONNECTION_SUCCESS);
+        Destroy(gameObject);
     }
 }

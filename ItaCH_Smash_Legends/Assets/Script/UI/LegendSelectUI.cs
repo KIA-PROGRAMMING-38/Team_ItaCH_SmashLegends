@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +18,7 @@ public class LegendSelectUI : MonoBehaviour
 
     public void InitLegendSelectUI(int currentIndex, Sprite portraitSprite, string legendName)
     {
-        _selectedCharacter = (int)GameManager.Instance.UserManager.UserLocalData.SelectedCharacter;
+        _selectedCharacter = (int)Managers.UserManager.UserLocalData.SelectedCharacter;
         _legendIndex = currentIndex;
         _portrait = transform.GetChild(0).GetComponent<Image>();
         _portrait.sprite = portraitSprite;

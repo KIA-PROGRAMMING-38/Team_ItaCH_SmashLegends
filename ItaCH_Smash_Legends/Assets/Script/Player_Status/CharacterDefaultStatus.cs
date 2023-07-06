@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Util.Enum;
 
 public class CharacterDefaultStatus : MonoBehaviour
@@ -25,7 +25,7 @@ public class CharacterDefaultStatus : MonoBehaviour
 
     public void GetCharacterDefaultData(int characterID)
     {
-        dataTable = GameManager.Instance.CharacterTable;
+        dataTable = Managers.Instance.CharacterTable;
         
         LegendIdData = dataTable.CharacterTable[characterID].legendId;        
         SkillGaugeData = dataTable.CharacterTable[characterID].skillGauge;

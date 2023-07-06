@@ -1,48 +1,40 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using Photon.Realtime;
 using System;
-using TMPro;
-using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
-    private string _gameVersion = "1";
-    public TextMeshProUGUI ConnectionInfoText { get => _connectionInfoText; set => _connectionInfoText = value; } // ·Îµù ÆĞ³Î¿¡¼­ ÇöÀç Á¢¼Ó »óÅÂ¸¦ º¸¿©ÁÙ ÅØ½ºÆ®    
-    private TextMeshProUGUI _connectionInfoText;
-    public Button ExitRoomButton { get => _exitRoomButton; set => _exitRoomButton = value; }
-    private Button _exitRoomButton;
+    // ì„œë²„ ì ‘ì† ì´ë²¤íŠ¸ >> LogIn UI í™”ë©´
+    public event Action OnConnectingtoServer;
+    public event Action OnDisconnectedfromServer;
+    public event Action OnLogInSuccessed;
 
-    public event Action OnLogInSuccess;
-    public event Action<GameModeType> OnMatchSuccess;
-    public event Action<GameMode> OnEnteringGameMode;
+    // ë£¸ ë§¤ì¹­ ì´ë²¤íŠ¸ >> Match UI í™”ë©´
+    public event Action OnJoiningRoom;
+    public event Action OnCreatingRoom;
+    public event Action OnWaitingPlayer;
+    public event Action<GameModeType> OnMatchingSuccess;
+    public event Action<GameMode> OnInGameSceneLoaded;
+
     public event Action<int, UserData> OnUpdateUserDatas;
 
-    private int _totalPlayerOfGameMode = 4; // °ÔÀÓ ¸ğµå ¼±ÅÃ ±â´É Ãß°¡ ½Ã ÇØ´ç ¼ıÀÚ °ª ºñ¿ì°í ¸ğµå °ªÀ¸·Î ÇÒ´ç    
-
-    private void Awake()
+    public void Init()
     {
-        GameManager.Instance.OnStartGame -= ConnectToServer;
-        GameManager.Instance.OnStartGame += ConnectToServer;
+
     }
 
-    // °ÔÀÓ ½ÃÀÛ ½Ã ID ÀÔ·Â ¹× ¹öÆ° Å¬¸¯ ½Ã ¼­¹ö Á¢¼Ó
-    private void ConnectToServer()
+    public void ConnectToServer()
     {
-        PhotonNetwork.GameVersion = _gameVersion;
         PhotonNetwork.ConnectUsingSettings();
-        ConnectionInfoText.text = "¼­¹ö¿¡ Á¢¼Ó ÁßÀÔ´Ï´Ù.";
+        OnConnectingtoServer.Invoke();
     }
 
-    public override void OnConnectedToMaster()
-    {
-        _connectionInfoText.text = "¼­¹ö ¿¬°á¿¡ ¼º°øÇÏ¿´½À´Ï´Ù.";
-        OnLogInSuccess.Invoke();
-    }
+    public override void OnConnectedToMaster() => OnLogInSuccessed.Invoke();
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        _connectionInfoText.text = "¼­¹ö ¿¬°á¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.";
+        OnDisconnectedfromServer.Invoke();
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -50,45 +42,60 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsConnected)
         {
-            _connectionInfoText.text = "·ë¿¡ Á¢¼Ó ÁßÀÔ´Ï´Ù.";
+            OnJoiningRoom.Invoke();
             PhotonNetwork.JoinRandomRoom();
         }
         else
         {
-            _connectionInfoText.text = "¼­¹ö ¿¬°á¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.";
+            OnDisconnectedfromServer.Invoke();
             PhotonNetwork.ConnectUsingSettings();
         }
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        _connectionInfoText.text = "°ÔÀÓÀÌ ¾ø½À´Ï´Ù. »õ·Î »ı¼ºÇÕ´Ï´Ù.";
-        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = _totalPlayerOfGameMode }); // °ÔÀÓ¸ğµå¿¡ ¸Â°Ô º¯°æ ÇÊ¿ä // °ÔÀÓ¸ğµå¸¦ ½ºÅ×ÀÌÁö°¡ ¾Æ´Ï¶ó ·Îºñ¿¡¼­ ¼±ÅÃÇÏµµ·Ï
+        OnCreatingRoom.Invoke();
+        int totalPlayer = Managers.StageManager.CurrentGameMode.TotalPlayer;
+        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = totalPlayer });
     }
 
     public override void OnJoinedRoom()
     {
-        _connectionInfoText.text = "¾Æ·¹³ª°¡ ¿­¸®°í ÀÖ½À´Ï´Ù. »ó´ë¸¦ ±â´Ù¸®°í ÀÖ½À´Ï´Ù.";
+        OnWaitingPlayer.Invoke();
         ResisterUserLocalData();
         MatchWithBot();
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        // »ó´ë µ¥ÀÌÅÍ ¹Ş¾Æ¿À´Â ºÎºĞ        
+        // ìƒëŒ€ ë°ì´í„° ë°›ì•„ì˜¤ëŠ” ë¶€ë¶„        
     }
+
     private void EnterInGameScene()
     {
-        PhotonNetwork.LoadLevel("InGame");
-        OnMatchSuccess.Invoke(GameModeType.Duel);
+        PhotonNetwork.LoadLevel(StringLiteral.INGAME);
+        OnMatchingSuccess.Invoke(GameModeType.Duel);
+    }
+
+    private enum Level
+    {
+        Lobby,
+        Ingame
     }
 
     public void OnLevelWasLoaded(int level)
     {
-        GameMode currentGameMode = GameManager.Instance.StageManager.CurrentGameMode;
-        OnEnteringGameMode.Invoke(currentGameMode);
-    }
+        switch (level)
+        {
+            case (int)Level.Lobby:
+                return;
 
+            case (int)Level.Ingame:
+                GameMode currentGameMode = Managers.StageManager.CurrentGameMode;
+                OnInGameSceneLoaded.Invoke(currentGameMode);
+                return;
+        }
+    }
 
     private void ResisterUserLocalData()
     {
@@ -104,18 +111,18 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         {
             return 0;
         }
-        return 1; // 4ÀÎ ¸ğµå °í·Á ½Ã ¼öÁ¤ ÇÊ¿ä
+        return 1; // 4ì¸ ëª¨ë“œ ê³ ë ¤ ì‹œ ìˆ˜ì • í•„ìš”
     }
 
     private UserData GetUserLocalData()
     {
-        UserData userLocalData = GameManager.Instance.UserManager.UserLocalData;
+        UserData userLocalData = Managers.UserManager.UserLocalData;
         return userLocalData;
     }
 
     private async UniTask MatchWithBot()
     {
-        await UniTask.Delay(2000); // ÇöÀç 2ÃÊ µ¿¾È ¸ÅÄª ¾È ÀâÈ÷¸é ¿¬½ÀÀå ÀÚµ¿ ÀÔÀå
+        await UniTask.Delay(2000); // í˜„ì¬ 2ì´ˆ ë™ì•ˆ ë§¤ì¹­ ì•ˆ ì¡íˆë©´ ì—°ìŠµì¥ ìë™ ì…ì¥
         EnterInGameScene();
     }
 }
