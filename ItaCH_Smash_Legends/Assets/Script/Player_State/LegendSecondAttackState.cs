@@ -1,11 +1,15 @@
 using UnityEngine;
 
-public class PlayerSecondAttackState : StateMachineBehaviour
+public class LegendSecondAttackState : LegendBaseState
 {
+    // LegnedController 완료시 리펙토링
+
     private PlayerAttack _playerAttack;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStateEnter(animator, stateInfo, layerIndex);
+
         _playerAttack = animator.GetComponent<PlayerAttack>();
 
         --_playerAttack.CurrentPossibleComboCount;

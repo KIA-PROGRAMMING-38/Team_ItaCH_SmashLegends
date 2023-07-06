@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayeFinishAttackState : LegendBaseState
+public class LegendFirstAttackState : LegendBaseState
 {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -11,7 +11,6 @@ public class PlayeFinishAttackState : LegendBaseState
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-            legendController.PlayComboAttack(ComboAttackType.First);
-
+        legendController.PlayComboAttack(ComboAttackType.Second);
     }
 }

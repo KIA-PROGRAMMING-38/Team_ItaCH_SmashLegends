@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
 {
+    // LegnedController 완료시 리펙토링
+
     private CharacterStatus _characterStatus;
     private PlayerStatus _playerStatus;
     private Animator _animator;

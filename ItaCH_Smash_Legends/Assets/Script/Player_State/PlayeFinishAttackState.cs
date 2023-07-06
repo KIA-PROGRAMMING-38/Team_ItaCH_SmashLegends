@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayeFinishAttackState : LegendBaseState
+public class LegendFinishAttackSt: LegendBaseState
 {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
