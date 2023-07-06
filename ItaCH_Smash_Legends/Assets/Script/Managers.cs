@@ -3,7 +3,7 @@
 public class Managers : MonoBehaviour
 {
     public static Managers s_instance = null;
-    public static Managers Instance { get { return s_instance; } }
+    public static Managers Instance { get { Init(); return s_instance; } }
 
     private static StageManager s_stageManager;
     private static LobbyManager s_lobbyManager;
@@ -16,7 +16,7 @@ public class Managers : MonoBehaviour
     // DataManager 구성 이후 옮겨갈 부분
     public DataTable CharacterTable { get => _characterTable; private set => _characterTable = value; }
     private DataTable _characterTable;
-    
+
     private void Start()
     {
         Init();
@@ -32,21 +32,27 @@ public class Managers : MonoBehaviour
             GameObject gameObject = GameObject.Find("@Managers");
             if (gameObject == null)
             {
-                gameObject = new GameObject { name = "@Managers" };
+                gameObject = new GameObject { name = "@managers" };
                 s_instance = gameObject.AddComponent<Managers>();
+
                 DontDestroyOnLoad(gameObject);
 
-                gameObject = new GameObject { name = "@LobbyManager" };
-                s_lobbyManager = gameObject.AddComponent<LobbyManager>();
-                gameObject.transform.SetParent(s_instance.transform);
-
-                gameObject = new GameObject { name = "@StageManager" };
-                s_stageManager = gameObject.AddComponent<StageManager>();
-                gameObject.transform.SetParent(s_instance.transform);
+                s_lobbyManager = CreateManager<LobbyManager>();
+                s_stageManager = CreateManager<StageManager>();
 
                 s_userManager.Init();
+                s_lobbyManager.Init();
+                s_stageManager.Init();
             }
-            s_instance = gameObject.GetComponent<Managers>();
         }
-    }    
+    }
+
+    private static T CreateManager<T>() where T : UnityEngine.Component
+    {
+        var go = new GameObject($"@{typeof(T)}");
+        T result = go.AddComponent<T>();
+        go.transform.SetParent(s_instance.transform);
+
+        return result;
+    }
 }

@@ -5,8 +5,6 @@ using System;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
-    private readonly string _gameVersion = "1";
-
     // 서버 접속 이벤트 >> LogIn UI 화면
     public event Action OnConnectingtoServer;
     public event Action OnDisconnectedfromServer;
@@ -22,9 +20,14 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public event Action<int, UserData> OnUpdateUserDatas;
 
     // 게임 시작 시 ID 입력 및 버튼 클릭 시 서버 접속
+
+    public void Init()
+    {
+
+    }
+
     public void ConnectToServer()
     {
-        PhotonNetwork.GameVersion = _gameVersion;
         PhotonNetwork.ConnectUsingSettings();
         OnConnectingtoServer.Invoke();
     }
@@ -76,10 +79,24 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         OnMatchingSuccess.Invoke(GameModeType.Duel);
     }
 
+    private enum Level
+    {
+        Lobby,
+        Ingame
+    }
+
     public void OnLevelWasLoaded(int level)
     {
-        GameMode currentGameMode = Managers.StageManager.CurrentGameMode;
-        OnInGameSceneLoaded.Invoke(currentGameMode);
+        switch (level)
+        {
+            case (int)Level.Lobby:
+                return;
+
+            case (int)Level.Ingame:
+                GameMode currentGameMode = Managers.StageManager.CurrentGameMode;
+                OnInGameSceneLoaded.Invoke(currentGameMode);
+                return;
+        }
     }
 
     private void ResisterUserLocalData()

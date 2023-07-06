@@ -19,12 +19,14 @@ public class LobbyUI : MonoBehaviour
     private float _defaultVolume = 1f;
     public float DefaultVolume { get => _defaultVolume; }
 
-    private TextMeshProUGUI _userNameTextUI;
+    private TextMeshProUGUI _userNameText;
 
     public event Action<CharacterType> OnCharacterChanged;
 
-    private void Awake()
+    private void Start()
     {
+        SetUserName();
+
         Managers.LobbyManager.OnLogInSuccessed -= InitLobbyUISettings;
         Managers.LobbyManager.OnLogInSuccessed += InitLobbyUISettings;        
     }
@@ -39,12 +41,12 @@ public class LobbyUI : MonoBehaviour
     }
     private void SetUserName()
     {
-        _userNameTextUI = GetComponentInChildren<TextMeshProUGUI>();
-        string userName = Managers.UserManager.UserLocalData.Name;
+        _userNameText = GetComponentInChildren<TextMeshProUGUI>();
+        string userNameInput = Managers.UserManager.UserLocalData.Name;
 
-        if (userName == null) return;
+        if (userNameInput == null) return;
 
-        _userNameTextUI.text = userName;
+        _userNameText.text = userNameInput;
     }
 
     private void SetLobbyCharaterModel()

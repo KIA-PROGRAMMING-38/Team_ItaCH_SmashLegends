@@ -55,11 +55,15 @@ public class StageManager : MonoBehaviourPunCallbacks
     public event Action<int, TeamType> OnTeamScoreChanged;
     public event Action<int> OnTimeChange;
 
-    public override void OnEnable()
+    private void OnEnable()
+    {
+        Managers.LobbyManager.OnInGameSceneLoaded -= SetStage;
+        Managers.LobbyManager.OnInGameSceneLoaded += SetStage;        
+    }
+
+    public void Init()
     {
         GetGameMode(DEFAULT_GAME_MODE);
-        Managers.LobbyManager.OnInGameSceneLoaded -= SetStage;
-        Managers.LobbyManager.OnInGameSceneLoaded += SetStage;
     }
 
     public void GetGameMode(GameModeType gameModeSelected)

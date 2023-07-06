@@ -11,7 +11,7 @@ public class MatchUI : MonoBehaviourPunCallbacks, IPanel
     private int _currentMatchedPlayer;
     [SerializeField] private MatchBox[] _matchBoxes;
     [SerializeField] private MatchIcon _matchIcon;
-    [SerializeField] private TextMeshProUGUI _matchText;
+    [SerializeField] private TextMeshProUGUI _matchingInfoText;
     [SerializeField] private Button _removePanelButton;
 
     public event Action _OnStageStart;
@@ -23,22 +23,24 @@ public class MatchUI : MonoBehaviourPunCallbacks, IPanel
     {
         Init();
         if (_isGameStarted)
-        {            
+        {
             Managers.LobbyManager.Connect();
         }
     }
 
     private void Init()
     {
-        Managers.LobbyManager.OnJoiningRoom -= SetEnterRoomConnectionInfo;
-        Managers.LobbyManager.OnJoiningRoom += SetEnterRoomConnectionInfo;
+        Managers.LobbyManager.OnJoiningRoom -= () => SetMatchingInfo(StringLiteral.ENTER_ROOM);
+        Managers.LobbyManager.OnJoiningRoom += () => SetMatchingInfo(StringLiteral.ENTER_ROOM);
 
-        Managers.LobbyManager.OnCreatingRoom -= SetCreateRoomConnectionInfo;
-        Managers.LobbyManager.OnCreatingRoom += SetCreateRoomConnectionInfo;
+        Managers.LobbyManager.OnCreatingRoom -= () => SetMatchingInfo(StringLiteral.CREATE_ROOM);
+        Managers.LobbyManager.OnCreatingRoom += () => SetMatchingInfo(StringLiteral.CREATE_ROOM);
 
-        Managers.LobbyManager.OnWaitingPlayer -= SetWaitPlayerConnectionInfo;
-        Managers.LobbyManager.OnWaitingPlayer += SetWaitPlayerConnectionInfo;
+        Managers.LobbyManager.OnWaitingPlayer -= () => SetMatchingInfo(StringLiteral.WAIT_PLAYER);
+        Managers.LobbyManager.OnWaitingPlayer += () => SetMatchingInfo(StringLiteral.WAIT_PLAYER);
     }
+
+    private void SetMatchingInfo(string text) => _matchingInfoText.text = text;
 
     public void InitPanelSettings(LobbyUI lobbyUI)
     {
@@ -121,11 +123,7 @@ public class MatchUI : MonoBehaviourPunCallbacks, IPanel
 
     public void StartStage()
     {
-        _matchText.text = "게임이 시작됩니다! 준비하세요!";
+        _matchingInfoText.text = "게임이 시작됩니다! 준비하세요!";
         _OnStageStart.Invoke();
     }
-
-    private void SetEnterRoomConnectionInfo() => _matchText.text = StringLiteral.ENTER_ROOM;
-    private void SetCreateRoomConnectionInfo() => _matchText.text = StringLiteral.CREATE_ROOM;
-    private void SetWaitPlayerConnectionInfo() => _matchText.text = StringLiteral.WAIT_PLAYER;
 }
