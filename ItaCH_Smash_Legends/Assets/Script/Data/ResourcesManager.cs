@@ -47,6 +47,7 @@ public static class ResourcesManager
     public const string LastHeavyBulletDeleteEffect = "Prefab/Hook/Hook_Ingame/Hook_Last_Heavy_Bullet_Delete_Effect";
     public const string SkillBulletDeleteEffect = "Prefab/Hook/Hook_Ingame/Hook_SKill_Bullet_Delete_Effect";
     public const string BulletDeleteEffect = "Prefab/Hook/Hook_Ingame/Hook_Default_Bullet_Delete_Effect";
+    public const string HookAnimator = "Hook";
     #endregion
 
     #region CSV File Path

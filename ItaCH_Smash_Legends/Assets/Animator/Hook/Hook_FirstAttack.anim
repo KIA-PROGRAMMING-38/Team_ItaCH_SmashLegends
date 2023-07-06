@@ -66443,7 +66443,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.3
-    functionName: NextComboPossible
+    functionName: SetComboPossible
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -66457,7 +66457,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.56666666
-    functionName: NextComboImPossible
+    functionName: SetComboImPossible
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

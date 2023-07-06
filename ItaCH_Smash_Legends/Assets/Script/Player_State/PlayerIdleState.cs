@@ -13,6 +13,7 @@ public class PlayerIdleState : StateMachineBehaviour
         animator.ResetTrigger(AnimationHash.RollUpFront);
 
         _legendController.PossibleComboCount = 0;
+        _legendController.AnimationClipIndex = 0;
         _legendController.SetComboImPossible();
 
         if (_legendController.MoveDirection != Vector3.zero)

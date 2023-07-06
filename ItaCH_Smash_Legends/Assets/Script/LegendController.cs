@@ -12,9 +12,6 @@ public enum ActionType
 
 public class LegendController : MonoBehaviour
 {
-    // 추후 리소스로 매니저로 캐싱 후 사용
-    public AnimationClip[] ApplyClip;
-
     public Vector3 MoveDirection { get; private set; }
 
     private Animator _anim;
@@ -22,25 +19,42 @@ public class LegendController : MonoBehaviour
     private string[] _actionLiteral = new[] { "Move", "Jump", "DefaultAttack", "SmashAttack", "SkillAttack" };
 
     // 추후 스트링 리터럴 캐싱 후 사용
-    private string[] _animationClipLiteral = new[] { "Peter_FirstAttack", "_FinishAttack" };
+    private string[] _animationClipLiteral = new[] { "Peter_FirstAttack", "Peter_SecondAttack" };
 
     private ActionType _actionType;
     private bool _isAttack { get; set; }
     public int PossibleComboCount { get; set; } = 0;
+    public int AnimationClipIndex { get; set; } = 0;
 
     private AnimatorOverrideController _animatorOverride;
     private UnityEngine.InputSystem.PlayerInput _input;
     private CharacterStatus _characterStatus;
 
+    // 추후 리소스로 매니저로 캐싱 후 사용
+    // Character Type 으로 변환해야함.
+    private AnimatorOverrideController hook;
+
+    private string[] _overrideAnimatorName;
+    private AnimationClip[] _applyAnimationClip;
     private void Awake()
     {
         _anim = GetComponent<Animator>();
         _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
         _characterStatus = GetComponent<CharacterStatus>();
         _action = new InputAction[_actionLiteral.Length];
-        // 동적으로 애니메이터 변경
-        //_anim.runtimeAnimatorController = Instantiate(Resources.Load<RuntimeAnimatorController>(ResourcesManager.HookAnimator));
+        hook = Resources.Load<AnimatorOverrideController>(ResourcesManager.HookAnimator);
+
+        _overrideAnimatorName = new string[_anim.runtimeAnimatorController.animationClips.Length];
+        _applyAnimationClip = new AnimationClip[_anim.runtimeAnimatorController.animationClips.Length];
         _animatorOverride = new AnimatorOverrideController(_anim.runtimeAnimatorController);
+
+        for (int i = 0; i < _anim.runtimeAnimatorController.animationClips.Length; ++i)
+        {
+
+            SetAnimatorClip(i);
+        }
+
+        _anim.runtimeAnimatorController = _animatorOverride;
     }
 
     private void Start()
@@ -50,7 +64,9 @@ public class LegendController : MonoBehaviour
             _action[i] = _input.actions[_actionLiteral[i]];
         }
     }
-
+    private void Update()
+    {
+    }
     private void OnMove(InputValue value)
     {
         Vector2 input = value.Get<Vector2>();
@@ -103,7 +119,7 @@ public class LegendController : MonoBehaviour
     }
     public void PlayFirstAttack()
     {
-        if (SetAttackable(ActionType.DefaultAttack))
+        if (SetAttackable())
         {
             _anim.Play(AnimationHash.FirstAttack);
             SetRotateOnAttack();
@@ -111,30 +127,31 @@ public class LegendController : MonoBehaviour
     }
     public void PlaySecondAttack()
     {
-        if (SetAttackable(ActionType.DefaultAttack))
+        if (SetAttackable())
         {
             _anim.Play(AnimationHash.SecondAttack);
             SetRotateOnAttack();
         }
     }
+    private void SetAnimatorClip(int i)
+    {
+        _overrideAnimatorName[i] = _animatorOverride.animationClips[i].name;
+        //hook.animationClips => 추후 캐릭터 Type 으로
+        _applyAnimationClip[i] = hook.animationClips[i];
+        _animatorOverride[_overrideAnimatorName[i]] = _applyAnimationClip[i];
+    }
     public void PlayNextClip()
     {
-        if (PossibleComboCount < ApplyClip.Length - 1)
-        {
-            _animatorOverride[_animationClipLiteral[PossibleComboCount]] = ApplyClip[PossibleComboCount];
-            ++PossibleComboCount;
-        }
-    }
-    public bool SetAttackable(ActionType type)
-    {
-        if (_action[(int)type].triggered && PossibleComboCount < ApplyClip.Length)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        //if (PossibleComboCount < ApplyClip.Length - 1)
+        //{
+        //    _animatorOverride[_animationClipLiteral[AnimationClipIndex]] = ApplyClip[PossibleComboCount];
+        //    ++PossibleComboCount;
+        //    ++AnimationClipIndex;
+        //    if (AnimationClipIndex == 2)
+        //    {
+        //        AnimationClipIndex = 0;
+        //    }
+        //}
     }
     public bool SetAttackable()
     {
