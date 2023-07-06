@@ -1,13 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
+public enum ComboAttackType
+{
+    First,
+    Second
+}
 public enum ActionType
 {
-    Move = 0,
-    Jump = 1,
-    DefaultAttack = 2,
-    HeavyAttack = 3,
-    SkillAttack = 4
+    Move,
+    Jump,
+    DefaultAttack,
+    HeavyAttack,
+    SkillAttack
 }
 
 public class LegendController : MonoBehaviour
@@ -22,7 +29,7 @@ public class LegendController : MonoBehaviour
     private string[] _animationClipLiteral = new[] { "Peter_FirstAttack", "Peter_SecondAttack" };
 
     private ActionType _actionType;
-    private bool _isAttack { get; set; }
+    private bool _canAttack;
     public int PossibleComboCount { get; set; } = 0;
     public int AnimationClipIndex { get; set; } = 0;
 
@@ -32,7 +39,6 @@ public class LegendController : MonoBehaviour
 
     // 추후 리소스로 매니저로 캐싱 후 사용
     // Character Type 으로 변환해야함.
-    private AnimatorOverrideController hook;
 
     private string[] _overrideAnimatorName;
     private AnimationClip[] _applyAnimationClip;
@@ -43,12 +49,13 @@ public class LegendController : MonoBehaviour
         _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
         _characterStatus = GetComponent<CharacterStatus>();
         _action = new InputAction[_actionLiteral.Length];
-        hook = Resources.Load<AnimatorOverrideController>(ResourcesManager.HookAnimator);
+        _animatorOverride = Resources.Load<AnimatorOverrideController>(ResourcesManager.HookAnimator);
 
         _overrideAnimatorName = new string[_anim.runtimeAnimatorController.animationClips.Length];
         _applyAnimationClip = new AnimationClip[_anim.runtimeAnimatorController.animationClips.Length];
         _animatorOverride = new AnimatorOverrideController(_anim.runtimeAnimatorController);
 
+        // 애니메이터 오버라이딩 후 코드
         //for (int i = 0; i < _anim.runtimeAnimatorController.animationClips.Length; ++i)
         //{
 
@@ -57,16 +64,6 @@ public class LegendController : MonoBehaviour
 
         //_anim.runtimeAnimatorController = _animatorOverride;
     }
-    /*
-     * 2 콤보 까지 쓰고 Idle
-     * 아이들 =>
-     *  
-     *  stack.clear
-     *  stack = saveStack;
-     *  
-     * int[][][][]
-     * 
-     */
     private void Start()
     {
         for (int i = 0; i < _action.Length; ++i)
@@ -74,9 +71,14 @@ public class LegendController : MonoBehaviour
             _action[i] = _input.actions[_actionLiteral[i]];
         }
     }
-    private void Update()
+    private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("HangZone"))
+        {
+            // Animation.Play(Hang);
+        }
     }
+
     private void OnMove(InputValue value)
     {
         Vector2 input = value.Get<Vector2>();
@@ -91,63 +93,66 @@ public class LegendController : MonoBehaviour
     private void OnDefaultAttack() { }
     private void OnSmashAttack() { }
     private void OnSkillAttack() { }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("HangZone"))
-        {
-            // Animation.Play(Hang);
-        }
-    }
     public void SetNextAnimation()
     {
-        if (_action[(int)ActionType.Move].triggered)
+        foreach (ActionType actionType in Enum.GetValues(typeof(ActionType)))
         {
-            _anim.Play(AnimationHash.Run);
-            return;
+            if (IsTriggered(actionType))
+            {
+                ChangeNextAnimation(actionType);
+
+                return;
+            }
         }
-        if (_action[(int)ActionType.Jump].triggered)
+
+    }
+    private bool IsTriggered(ActionType actionType) => _action[(int)actionType].triggered;
+    private void ChangeNextAnimation(ActionType actionType)
+    {
+        switch (actionType)
         {
-            _anim.Play(AnimationHash.Jump);
-            return;
-        }
-        if (_action[(int)ActionType.DefaultAttack].triggered)
-        {
-            _anim.Play(AnimationHash.FirstAttack);
-            return;
-        }
-        if (_action[(int)ActionType.HeavyAttack].triggered)
-        {
-            _anim.Play(AnimationHash.HeavyAttack);
-            return;
-        }
-        if (_action[(int)ActionType.SkillAttack].triggered)
-        {
-            _anim.Play(AnimationHash.SkillAttack);
-            return;
+            case ActionType.Move:
+                _anim.Play(AnimationHash.Run);
+                break;
+            case ActionType.Jump:
+                _anim.Play(AnimationHash.Jump);
+                break;
+            case ActionType.DefaultAttack:
+                _anim.Play(AnimationHash.FirstAttack);
+                break;
+            case ActionType.HeavyAttack:
+                _anim.Play(AnimationHash.HeavyAttack);
+                break;
+            case ActionType.SkillAttack:
+                _anim.Play(AnimationHash.SkillAttack);
+                break;
         }
     }
-    public void PlayFirstAttack()
+    public void PlayComboAttack(ComboAttackType comboAttackType)
     {
-        if (SetAttackable())
+        if (_canAttack)
         {
-            _anim.Play(AnimationHash.FirstAttack);
-            SetRotateOnAttack();
+            PlayAttackAnimation(comboAttackType);
+            SetRotateForwardOnAttack();
         }
     }
-    public void PlaySecondAttack()
+    private void PlayAttackAnimation(ComboAttackType comboAttackType)
     {
-        if (SetAttackable())
+        switch (comboAttackType)
         {
-            _anim.Play(AnimationHash.SecondAttack);
-            SetRotateOnAttack();
+            case ComboAttackType.First:
+                _anim.Play(AnimationHash.FirstAttack);
+                break;
+            case ComboAttackType.Second:
+                _anim.Play(AnimationHash.SecondAttack);
+                break;
         }
     }
     private void SetAnimatorClip(int i)
     {
         _overrideAnimatorName[i] = _animatorOverride.animationClips[i].name;
         //hook.animationClips => 추후 캐릭터 Type 으로
-        _applyAnimationClip[i] = hook.animationClips[i];
+        _applyAnimationClip[i] = _animatorOverride.animationClips[i];
         _animatorOverride[_overrideAnimatorName[i]] = _applyAnimationClip[i];
     }
     public void PlayNextClip()
@@ -163,20 +168,9 @@ public class LegendController : MonoBehaviour
         //    }
         //}
     }
-    public bool SetAttackable()
-    {
-        if (_isAttack)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    public void SetComboPossible() => _isAttack = true;
-    public void SetComboImPossible() => _isAttack = false;
-    private void SetRotateOnAttack()
+    public void SetComboPossible() => _canAttack = true;
+    public void SetComboImpossible() => _canAttack = false;
+    private void SetRotateForwardOnAttack()
     {
         if (MoveDirection != Vector3.zero)
         {

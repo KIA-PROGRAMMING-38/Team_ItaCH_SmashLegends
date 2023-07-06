@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class PlayerIdleState : StateMachineBehaviour
 {
-    private PlayerStatus _playerStatus;
-    private PlayerAttack _playerAttack;
     private LegendController _legendController;
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _legendController = animator.GetComponent<LegendController>();
@@ -14,7 +13,7 @@ public class PlayerIdleState : StateMachineBehaviour
 
         _legendController.PossibleComboCount = 0;
         _legendController.AnimationClipIndex = 0;
-        _legendController.SetComboImPossible();
+        _legendController.SetComboImpossible();
 
         if (_legendController.MoveDirection != Vector3.zero)
         {

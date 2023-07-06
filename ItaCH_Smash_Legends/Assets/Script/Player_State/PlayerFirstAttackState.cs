@@ -8,14 +8,11 @@ public class PlayerFirstAttackState : StateMachineBehaviour
     {
         _legendController = animator.GetComponent<LegendController>();
 
-        _legendController.SetComboImPossible();
+        _legendController.SetComboImpossible();
         _legendController.PlayNextClip();
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (_legendController.SetAttackable())
-        {
-            _legendController.PlaySecondAttack();
-        }
+            _legendController.PlayComboAttack(ComboAttackType.Second);
     }
 }
