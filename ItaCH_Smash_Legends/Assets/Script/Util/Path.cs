@@ -9,7 +9,7 @@ namespace Util.Path
         {
             StringBuilder stringBuilder = new StringBuilder();
             string characterName = characterType.ToString();
-            stringBuilder.Append(ResourcesManager.MapPath);
+            stringBuilder.Append(ResourcesPath.MapPath);
             stringBuilder.Append(characterName);
             return stringBuilder.ToString();
         }
@@ -17,7 +17,7 @@ namespace Util.Path
         {
             StringBuilder stringBuilder = new StringBuilder();
             string characterName = characterType.ToString();
-            stringBuilder.Append(ResourcesManager.UISpritePath);
+            stringBuilder.Append(ResourcesPath.UISpritePath);
             stringBuilder.Append(characterName);
             stringBuilder.Append($"/{characterName}");
             return stringBuilder.ToString();
@@ -27,10 +27,10 @@ namespace Util.Path
         {
             StringBuilder stringBuilder = new StringBuilder();
             string characterName = characterType.ToString();
-            stringBuilder.Append(ResourcesManager.CharacterPath);
+            stringBuilder.Append(ResourcesPath.CharacterPath);
             stringBuilder.Append(characterName);
-            stringBuilder.Append($"/{characterName}{ResourcesManager.CharacterInGamePath}");
-            stringBuilder.Append($"{characterName}{ResourcesManager.CharacterInGamePrefabName}");
+            stringBuilder.Append($"/{characterName}{ResourcesPath.CharacterInGamePath}");
+            stringBuilder.Append($"{characterName}{ResourcesPath.CharacterInGamePrefabName}");
             return stringBuilder.ToString();
         }
     }

@@ -12,7 +12,7 @@ public class DataTable
     }
     private void SetCharacterData()
     {
-        TextAsset characterCSV = Resources.Load<TextAsset>(ResourcesManager.CharacterDataTable);
+        TextAsset characterCSV = Resources.Load<TextAsset>(ResourcesPath.CharacterDataTable);
         string[] characters = characterCSV.text.Split('\n');
 
         for (int i = 1; i < characters.Length; ++i)
