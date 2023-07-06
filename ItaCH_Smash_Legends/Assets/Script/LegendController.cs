@@ -13,7 +13,7 @@ public enum ActionType
 public class LegendController : MonoBehaviour
 {
     public Vector3 MoveDirection { get; private set; }
-
+    public AnimationClip[] ApplyClip;
     private Animator _anim;
     private InputAction[] _action;
     private string[] _actionLiteral = new[] { "Move", "Jump", "DefaultAttack", "SmashAttack", "SkillAttack" };
@@ -36,6 +36,7 @@ public class LegendController : MonoBehaviour
 
     private string[] _overrideAnimatorName;
     private AnimationClip[] _applyAnimationClip;
+
     private void Awake()
     {
         _anim = GetComponent<Animator>();
@@ -48,15 +49,24 @@ public class LegendController : MonoBehaviour
         _applyAnimationClip = new AnimationClip[_anim.runtimeAnimatorController.animationClips.Length];
         _animatorOverride = new AnimatorOverrideController(_anim.runtimeAnimatorController);
 
-        for (int i = 0; i < _anim.runtimeAnimatorController.animationClips.Length; ++i)
-        {
+        //for (int i = 0; i < _anim.runtimeAnimatorController.animationClips.Length; ++i)
+        //{
 
-            SetAnimatorClip(i);
-        }
+        //    SetAnimatorClip(i);
+        //}
 
-        _anim.runtimeAnimatorController = _animatorOverride;
+        //_anim.runtimeAnimatorController = _animatorOverride;
     }
-
+    /*
+     * 2 콤보 까지 쓰고 Idle
+     * 아이들 =>
+     *  
+     *  stack.clear
+     *  stack = saveStack;
+     *  
+     * int[][][][]
+     * 
+     */
     private void Start()
     {
         for (int i = 0; i < _action.Length; ++i)
