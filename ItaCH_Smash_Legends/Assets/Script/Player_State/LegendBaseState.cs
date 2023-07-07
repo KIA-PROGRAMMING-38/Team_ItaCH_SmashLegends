@@ -8,10 +8,6 @@ public class LegendBaseState : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        base.OnStateEnter(animator, stateInfo, layerIndex);
-
         legendController = animator.GetComponent<LegendController>();
     }
-
-
 }

@@ -7,6 +7,5 @@ public class LegendSkillAttackState : LegendBaseState
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
-
     }
 }

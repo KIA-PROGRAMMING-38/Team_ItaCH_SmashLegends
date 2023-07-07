@@ -9,8 +9,7 @@ public class LegendIdleState : LegendBaseState
         animator.ResetTrigger(AnimationHash.RollUpBack);
         animator.ResetTrigger(AnimationHash.RollUpFront);
 
-        legendController.PossibleComboCount = 0;
-        legendController.AnimationClipIndex = 0;
+        legendController.ResetComboAttack();
         legendController.SetComboImpossibleOnAnimationEvent();
 
         if (legendController.MoveDirection != Vector3.zero)

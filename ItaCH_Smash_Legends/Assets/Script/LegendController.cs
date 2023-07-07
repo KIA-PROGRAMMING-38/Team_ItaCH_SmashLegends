@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public enum ComboAttackType
 {
@@ -23,7 +22,7 @@ public class LegendController : MonoBehaviour
 
     private AnimationClip[] _applyAnimationClip;
     private InputAction[] _action;
-    private Animator _anim;
+    private Animator _animator;
     private AnimatorOverrideController _animatorOverrideController;
     private CharacterStatus _characterStatus;
     private UnityEngine.InputSystem.PlayerInput _input;
@@ -37,24 +36,23 @@ public class LegendController : MonoBehaviour
     private string[] _overrideAnimatorName;
 
     public Vector3 MoveDirection { get; private set; }
-    public int PossibleComboCount { get; set; } = 0;
-    public int AnimationClipIndex { get; set; } = 0;
-    
+    private int _animationClipIndex;
+
     private bool _canAttack;
 
     private void Awake()
     {
-        _anim = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
         _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
         _characterStatus = GetComponent<CharacterStatus>();
-        
+
         _action = new InputAction[_actionLiteral.Length];
-        
+
         _animatorOverrideController = Resources.Load<AnimatorOverrideController>(ResourcesManager.HookAnimator);
-        
-        _overrideAnimatorName = new string[_anim.runtimeAnimatorController.animationClips.Length];
-        _applyAnimationClip = new AnimationClip[_anim.runtimeAnimatorController.animationClips.Length];
-        _animatorOverrideController = new AnimatorOverrideController(_anim.runtimeAnimatorController);
+
+        _overrideAnimatorName = new string[_animator.runtimeAnimatorController.animationClips.Length];
+        _applyAnimationClip = new AnimationClip[_animator.runtimeAnimatorController.animationClips.Length];
+        _animatorOverrideController = new AnimatorOverrideController(_animator.runtimeAnimatorController);
 
         // 애니메이터 오버라이딩 후 코드
         //for (int i = 0; i < _anim.runtimeAnimatorController.animationClips.Length; ++i)
@@ -63,7 +61,7 @@ public class LegendController : MonoBehaviour
         //    SetAnimatorClip(i);
         //}
 
-        //_anim.runtimeAnimatorController = _animatorOverride;
+        _animator.runtimeAnimatorController = _animatorOverrideController;
     }
     private void Start()
     {
@@ -87,7 +85,7 @@ public class LegendController : MonoBehaviour
         if (input != null)
         {
             MoveDirection = new Vector3(input.x, 0, input.y);
-            _anim.SetBool(AnimationHash.Run, true);
+            _animator.SetBool(AnimationHash.Run, true);
         }
     }
     private void OnJump() { }
@@ -105,7 +103,6 @@ public class LegendController : MonoBehaviour
                 return;
             }
         }
-
     }
     private bool IsTriggered(ActionType actionType) => _action[(int)actionType].triggered;
     private void ChangeNextAnimation(ActionType actionType)
@@ -113,28 +110,29 @@ public class LegendController : MonoBehaviour
         switch (actionType)
         {
             case ActionType.Move:
-                _anim.Play(AnimationHash.Run);
+                _animator.Play(AnimationHash.Run);
                 break;
             case ActionType.Jump:
-                _anim.Play(AnimationHash.Jump);
+                _animator.Play(AnimationHash.Jump);
                 break;
             case ActionType.DefaultAttack:
-                _anim.Play(AnimationHash.FirstAttack);
+                _animator.Play(AnimationHash.FirstAttack);
                 break;
             case ActionType.HeavyAttack:
-                _anim.Play(AnimationHash.HeavyAttack);
+                _animator.Play(AnimationHash.HeavyAttack);
                 break;
             case ActionType.SkillAttack:
-                _anim.Play(AnimationHash.SkillAttack);
+                _animator.Play(AnimationHash.SkillAttack);
                 break;
         }
     }
     public void PlayComboAttack(ComboAttackType comboAttackType)
     {
-        if (_canAttack)
+        if (_canAttack && _action[(int)ActionType.DefaultAttack].triggered)
         {
             PlayAttackAnimation(comboAttackType);
             LookForwardOnAttack();
+            _canAttack = false;
         }
     }
     private void PlayAttackAnimation(ComboAttackType comboAttackType)
@@ -142,10 +140,10 @@ public class LegendController : MonoBehaviour
         switch (comboAttackType)
         {
             case ComboAttackType.First:
-                _anim.Play(AnimationHash.FirstAttack);
+                _animator.Play(AnimationHash.FirstAttack);
                 break;
             case ComboAttackType.Second:
-                _anim.Play(AnimationHash.SecondAttack);
+                _animator.Play(AnimationHash.SecondAttack);
                 break;
         }
     }
@@ -156,20 +154,26 @@ public class LegendController : MonoBehaviour
         _applyAnimationClip[i] = _animatorOverrideController.animationClips[i];
         _animatorOverrideController[_overrideAnimatorName[i]] = _applyAnimationClip[i];
     }
-    public void PlayNextClipOnAnimationEvent()
+    private void PlayNextAnimationClip()
     {
-        //if (PossibleComboCount < ApplyClip.Length - 1)
-        //{
-        //    _animatorOverride[_animationClipLiteral[AnimationClipIndex]] = ApplyClip[PossibleComboCount];
-        //    ++PossibleComboCount;
-        //    ++AnimationClipIndex;
-        //    if (AnimationClipIndex == 2)
-        //    {
-        //        AnimationClipIndex = 0;
-        //    }
-        //}
+        if (_animationClipIndex < ApplyClip.Length - 1)
+        {
+            ++_animationClipIndex;
+        }
+
+        int value = _animationClipIndex % 2;
+        _animatorOverrideController[_animationClipLiteral[value]] = ApplyClip[_animationClipIndex];
     }
-    public void SetComboPossibleOnAnimationEvent() => _canAttack = true;
+    public void SetComboPossibleOnAnimationEvent()
+    {
+        PlayNextAnimationClip();
+        _canAttack = true;
+    }
+    public void ResetComboAttack()
+    {
+        _animationClipIndex = 0;
+        _animatorOverrideController[_animationClipLiteral[0]] = ApplyClip[0];
+    }
     public void SetComboImpossibleOnAnimationEvent() => _canAttack = false;
     private void LookForwardOnAttack()
     {
@@ -184,7 +188,6 @@ public class LegendController : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(MoveDirection);
             transform.Translate(Vector3.forward * (_characterStatus.MoveSpeed * Time.deltaTime));
-
         }
     }
     // PlayerRollUp 
