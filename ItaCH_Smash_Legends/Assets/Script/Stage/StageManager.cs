@@ -58,7 +58,7 @@ public class StageManager : MonoBehaviourPunCallbacks
     private void OnEnable()
     {
         Managers.LobbyManager.OnInGameSceneLoaded -= SetStage;
-        Managers.LobbyManager.OnInGameSceneLoaded += SetStage;        
+        Managers.LobbyManager.OnInGameSceneLoaded += SetStage;
     }
 
     public void Init()

@@ -9,7 +9,7 @@ public static class ResourcesManager
     public const string AliceIcon = "UI/MobileUI/Sprite/Alice/Alice";
     public const string HookIcon = "UI/MobileUI/Sprite/Hook/Hook";
     public const string PeterIcon = "UI/MobileUI/Sprite/Peter/Peter";
-    public const string CharacterPath = "Character/";
+    public const string CharacterPath = "Prefab/";
     #endregion
 
     #region UI File Path
