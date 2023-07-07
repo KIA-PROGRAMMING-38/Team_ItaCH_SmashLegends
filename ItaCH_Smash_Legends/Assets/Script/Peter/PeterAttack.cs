@@ -3,6 +3,8 @@ using Cysharp.Threading.Tasks;
 
 public class PeterAttack : PlayerAttack
 {
+    // LegnedController 완료시 리펙토링
+
     private float _skillAttackMoveSpeed = 7f;
     [SerializeField] private SphereCollider _skillAttackHitZone;
     [SerializeField] private SphereCollider _attackHitZone;

@@ -1,12 +1,16 @@
 using UnityEngine;
 
-public class PlayerJumpDownState : StateMachineBehaviour
+public class LegendJumpDownState : LegendBaseState
 {
+    // LegnedController 완료시 리펙토링
+
     private PlayerJump _playerJump;
     private PlayerStatus _playerStatus;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStateEnter(animator, stateInfo, layerIndex);
+
         _playerJump = animator.GetComponent<PlayerJump>();
         _playerStatus = animator.GetComponent<PlayerStatus>();
     }
