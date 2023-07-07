@@ -175,7 +175,7 @@ MonoBehaviour:
   - {fileID: 704286116844931988}
   - {fileID: 704286116214321705}
   _matchIcon: {fileID: 704286116242119322}
-  _matchText: {fileID: 704286116619176003}
+  _matchingInfoText: {fileID: 704286116619176003}
   _removePanelButton: {fileID: 8032631592359144487}
 --- !u!1 &704286116020537294
 GameObject:

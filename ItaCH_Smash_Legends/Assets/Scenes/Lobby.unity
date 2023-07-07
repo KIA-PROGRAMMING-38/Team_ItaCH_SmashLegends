@@ -125,6 +125,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &91476650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8867678597390762942, guid: 6bfffcdb81594a744be9d0cbff1182a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1094847118}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1094847118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -132,6 +138,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8867678597762831876, guid: 6bfffcdb81594a744be9d0cbff1182a5,
+        type: 3}
+      propertyPath: _inputBox
+      value: 
+      objectReference: {fileID: 91476650}
     - target: {fileID: 8867678597762831876, guid: 6bfffcdb81594a744be9d0cbff1182a5,
         type: 3}
       propertyPath: _spinnerImage
