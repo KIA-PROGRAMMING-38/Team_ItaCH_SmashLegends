@@ -2,7 +2,7 @@
 {
     void DefaultAttack();
     void JumpAttack();
-    void AttackOnDash();
+    void DashOnAnimationEvent();
     void HeavyAttack();
     void SkillAttack();
 }

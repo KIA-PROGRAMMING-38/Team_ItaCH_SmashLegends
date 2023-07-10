@@ -5,7 +5,7 @@ public class PlayerJump : MonoBehaviour
     private CharacterStatus _characterStatus;
     private PlayerStatus _playerStatus;
     private PlayerMove _playerMove;
-
+    private LegendController _legendController;
     internal Rigidbody _rigidbody;
     private Animator _animator;
 
@@ -19,6 +19,7 @@ public class PlayerJump : MonoBehaviour
 
     private void Awake()
     {
+        _legendController = GetComponent<LegendController>();
         _characterStatus= GetComponent<CharacterStatus>();
         _rigidbody = GetComponent<Rigidbody>();
         _playerStatus = GetComponent<PlayerStatus>();
@@ -54,9 +55,9 @@ public class PlayerJump : MonoBehaviour
 
     public void JumpMoveAndRotate()
     {
-        if (_playerMove.moveDirection != Vector3.zero)
+        if (_legendController.MoveDirection != Vector3.zero)
         {
-            transform.rotation = Quaternion.LookRotation(_playerMove.moveDirection);
+            transform.rotation = Quaternion.LookRotation(_legendController.MoveDirection);
             transform.Translate(Vector3.forward * (_playerMove._currentMoveSpeed * Time.deltaTime));
 
         }

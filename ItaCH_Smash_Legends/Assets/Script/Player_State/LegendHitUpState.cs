@@ -1,12 +1,16 @@
 using UnityEngine;
 
-public class PlayerHitUpState : StateMachineBehaviour
+public class LegendHitUpState : LegendBaseState
 {
+    // LegnedController 완료시 리펙토링
+
     private PlayerHit _playerHit;
     private PlayerStatus _playerStatus;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStateEnter(animator, stateInfo, layerIndex);
+
         _playerHit = animator.GetComponent<PlayerHit>();
         _playerStatus = animator.GetComponent<PlayerStatus>();
         _playerStatus.CurrentState = PlayerStatus.State.HitUp;

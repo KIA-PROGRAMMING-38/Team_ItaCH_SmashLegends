@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour
 {
+    // LegnedController 완료시 리펙토링
+
     private PlayerAttack _playerAttack;
     private PlayerJump _playerJump;
     private PlayerMove _playerMove;

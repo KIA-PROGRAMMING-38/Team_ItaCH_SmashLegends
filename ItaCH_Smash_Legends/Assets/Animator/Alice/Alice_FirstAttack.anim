@@ -87202,6 +87202,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.36666667
+    functionName: SetComboPossibleOnAnimationEvent
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.4
     functionName: EnableFirstAttackEndEffect
     data: 
@@ -87211,6 +87218,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.43333334
     functionName: DisableAttackHitZone
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.9
+    functionName: SetComboImpossibleOnAnimationEvent
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

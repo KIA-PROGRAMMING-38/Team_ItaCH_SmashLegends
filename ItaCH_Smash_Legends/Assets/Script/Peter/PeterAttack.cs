@@ -3,13 +3,15 @@ using Cysharp.Threading.Tasks;
 
 public class PeterAttack : PlayerAttack
 {
+    // LegnedController 완료시 리펙토링
+
     private float _skillAttackMoveSpeed = 7f;
     [SerializeField] private SphereCollider _skillAttackHitZone;
     [SerializeField] private SphereCollider _attackHitZone;
     [SerializeField] private SphereCollider _heavyAttackHitZone;
     [SerializeField] private BoxCollider _jumpAttackHitZone;
 
-    public override void AttackOnDash()
+    public override void DashOnAnimationEvent()
     {
         defaultDashPower = 0.8f;
         rigidbodyAttack.AddForce(transform.forward * defaultDashPower, ForceMode.Impulse);
@@ -20,7 +22,7 @@ public class PeterAttack : PlayerAttack
         if (IsPossibleFirstAttack())
         {
             playerStatus.CurrentState = PlayerStatus.State.ComboAttack;
-            AttackOnDash();
+            DashOnAnimationEvent();
             animator.Play(AnimationHash.FirstAttack);
             return;
         }
@@ -28,13 +30,13 @@ public class PeterAttack : PlayerAttack
         if (isFirstAttack && CurrentPossibleComboCount == COMBO_SECOND_COUNT)
         {
             isSecondAttack = true;
-            AttackOnDash();
+            DashOnAnimationEvent();
             return;
         }
         if (isSecondAttack && CurrentPossibleComboCount == COMBO_FINISH_COUNT)
         {
             isFinishAttack = true;
-            AttackOnDash();
+            DashOnAnimationEvent();
             return;
         }
     }

@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
 {
+    // LegnedController 완료시 리펙토링
+
     private CharacterStatus _characterStatus;
     private PlayerStatus _playerStatus;
     private Animator _animator;
@@ -22,7 +24,7 @@ public class PlayerMove : MonoBehaviour
         _currentMoveSpeed = _characterStatus.MoveSpeed;
     }
 
-    public void MoveAndRotate()
+    public void MoveAndRotate(Vector3 moveDirection)
     {
         if (moveDirection != Vector3.zero)
         {

@@ -1,13 +1,17 @@
 using UnityEngine;
 
-public class PlayerHangState : StateMachineBehaviour
+public class LegendHangState : LegendBaseState
 {
+    // LegnedController 완료시 리펙토링
+
     private PlayerHangController _playerHangController;
     private PlayerStatus _playerStatus;
     private EffectController _effectController;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        base.OnStateEnter(animator, stateInfo, layerIndex);
+
         _effectController = animator.GetComponent<EffectController>();
         _playerHangController = animator.GetComponent<PlayerHangController>();
         _playerStatus = animator.GetComponent<PlayerStatus>();

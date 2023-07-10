@@ -41,12 +41,13 @@ public static class ResourcesManager
     public const string MatchingButtonPath = "UI/GameStartButton";
     public const string LobbyWorldPrefabPath = "Map/LobbyWorld/LobbySceneWorld";
     public const string MapPath = "Map/LobbyWorld/";
-    public const string CharacterInGamePath = "_Ingame/";
+    public const string CharacterInGamePath = "_Ingame";
     public const string CharacterInGamePrefabName = "_Ingame";
-    public const string HeavyBulletDeleteEffect = "Character/Hook/Hook_Ingame/Hook_Heavy_Bullet_Delete_Effect";
-    public const string LastHeavyBulletDeleteEffect = "Character/Hook/Hook_Ingame/Hook_Last_Heavy_Bullet_Delete_Effect";
-    public const string SkillBulletDeleteEffect = "Character/Hook/Hook_Ingame/Hook_SKill_Bullet_Delete_Effect";
-    public const string BulletDeleteEffect = "Character/Hook/Hook_Ingame/Hook_Default_Bullet_Delete_Effect";
+    public const string HeavyBulletDeleteEffect = "Prefab/Hook/Hook_Ingame/Hook_Heavy_Bullet_Delete_Effect";
+    public const string LastHeavyBulletDeleteEffect = "Prefab/Hook/Hook_Ingame/Hook_Last_Heavy_Bullet_Delete_Effect";
+    public const string SkillBulletDeleteEffect = "Prefab/Hook/Hook_Ingame/Hook_SKill_Bullet_Delete_Effect";
+    public const string BulletDeleteEffect = "Prefab/Hook/Hook_Ingame/Hook_Default_Bullet_Delete_Effect";
+    public const string HookAnimator = "Hook";
     #endregion
 
     #region CSV File Path
