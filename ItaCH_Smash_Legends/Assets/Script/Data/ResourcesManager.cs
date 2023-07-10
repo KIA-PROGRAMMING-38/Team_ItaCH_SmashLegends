@@ -41,7 +41,7 @@ public static class ResourcesManager
     public const string MatchingButtonPath = "UI/GameStartButton";
     public const string LobbyWorldPrefabPath = "Map/LobbyWorld/LobbySceneWorld";
     public const string MapPath = "Map/LobbyWorld/";
-    public const string CharacterInGamePath = "_Ingame/";
+    public const string CharacterInGamePath = "_Ingame";
     public const string CharacterInGamePrefabName = "_Ingame";
     public const string HeavyBulletDeleteEffect = "Prefab/Hook/Hook_Ingame/Hook_Heavy_Bullet_Delete_Effect";
     public const string LastHeavyBulletDeleteEffect = "Prefab/Hook/Hook_Ingame/Hook_Last_Heavy_Bullet_Delete_Effect";
