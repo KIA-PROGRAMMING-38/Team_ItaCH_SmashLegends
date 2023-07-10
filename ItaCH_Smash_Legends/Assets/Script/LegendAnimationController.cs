@@ -7,20 +7,21 @@ public class LegendAnimationController : MonoBehaviour
     private AnimationClip[] _applyAttackClip;
     [SerializeField]
     private AnimationClip[] _applyJumpAttackClip;
+    private AnimationClip[] _applyAnimationClip;
 
     private LegendController _legendController;
     private Animator _animator;
     private AnimatorOverrideController _animatorOverrideController;
-    private AnimationClip[] _applyAnimationClip;
+    
     private string[] _overrideAnimatorName;
     private int _animationClipIndex;
+    
     private void Awake()
     {
         _legendController = GetComponent<LegendController>();
         _animator = GetComponent<Animator>();
 
         SetAnimatorClip();
-
     }
 
     private void OnCollisionEnter(Collision collision)
