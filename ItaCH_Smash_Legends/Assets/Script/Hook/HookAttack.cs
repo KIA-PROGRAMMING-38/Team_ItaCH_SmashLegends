@@ -89,7 +89,7 @@ public class HookAttack : PlayerAttack
             Parrot.SetActive(false);
         }
     }
-    public override void AttackOnDash()
+    public override void DashOnAnimationEvent()
     {
         if (CurrentPossibleComboCount == COMBO_FINISH_COUNT && playerStatus.CurrentState == PlayerStatus.State.ComboAttack)
         {
@@ -203,7 +203,7 @@ public class HookAttack : PlayerAttack
     {
         --CurrentPossibleComboCount;
         DefaultAttackLeft();
-        AttackOnDash();
+        DashOnAnimationEvent();
     }
     public void JumpAttackRight()
     {
@@ -217,7 +217,7 @@ public class HookAttack : PlayerAttack
             CreateBullet(_bulletSpawnPositionRight.position, _defaultIndex);
         }
         CreateBulletEffect(_bulletSpawnPositionRight.position, _defaultFireEffect);
-        AttackOnDash();
+        DashOnAnimationEvent();
     }
     public void SkillAttackBullet()
     {

@@ -11,7 +11,7 @@ public class LegendJumpDownState : LegendBaseState
     {
         if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.3f)
         {
-            legendController.JumpMoveAndRotate();
+            legendController.MoveAndRotate();
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,8 +20,11 @@ public enum ActionType
 
 public class LegendController : MonoBehaviour
 {
-    public AnimationClip[] ApplyAttackClip;
-    public AnimationClip[] ApplyJumpAttackClip;
+    //추후 리소스 할당
+    [SerializeField]
+    private AnimationClip[] _applyAttackClip;
+    [SerializeField]
+    private AnimationClip[] _applyJumpAttackClip;
 
 
     private AnimationClip[] _applyAnimationClip;
@@ -34,10 +36,7 @@ public class LegendController : MonoBehaviour
     private UnityEngine.InputSystem.PlayerInput _input;
 
     private ActionType[] _actionType = (ActionType[])Enum.GetValues(typeof(ActionType));
-    private string[] _actionLiteral = new[] { "Move", "Jump", "DefaultAttack", "SmashAttack", "SkillAttack" };
-    // 추후 스트링 리터럴 캐싱 후 사용
-    private string[] _animationClipLiteral = new[] { "Peter_FirstAttack", "Peter_SecondAttack" };
-    private string _jumpAnimationClipLiteral = "Peter_JumpAttack";
+
     // 추후 리소스로 매니저로 캐싱 후 사용
     // Character Type 으로 변환해야함.
     private string[] _overrideAnimatorName;
@@ -56,23 +55,17 @@ public class LegendController : MonoBehaviour
         _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
         _characterStatus = GetComponent<CharacterStatus>();
 
-        _actions = new InputAction[_actionLiteral.Length];
-
-        _overrideAnimatorName = new string[_animator.runtimeAnimatorController.animationClips.Length];
-        _applyAnimationClip = new AnimationClip[_animator.runtimeAnimatorController.animationClips.Length];
+        _actions = new InputAction[StringLiteral.ActionLiteral.Length];
 
         SetAnimatorClip();
     }
     private void Start()
     {
-        for (int i = 0; i < _actions.Length; ++i)
-        {
-            _actions[i] = _input.actions[_actionLiteral[i]];
-        }
+        InitActions();
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("HangZone"))
+        if (other.CompareTag(StringLiteral.HangZone))
         {
             // Animation.Play(Hang);
         }
@@ -80,7 +73,7 @@ public class LegendController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag(StringLiteral.Ground))
         {
             _animator.SetBool(AnimationHash.JumpDown, false);
         }
@@ -99,13 +92,21 @@ public class LegendController : MonoBehaviour
     private void OnDefaultAttack() { }
     private void OnSmashAttack() { }
     private void OnSkillAttack() { }
+
+    private void InitActions()
+    {
+        for (int i = 0; i < _actions.Length; ++i)
+        {
+            _actions[i] = _input.actions[StringLiteral.ActionLiteral[i]];
+        }
+    }
     public void SetNextAnimation()
     {
         foreach (ActionType actionType in _actionType)
         {
             if (IsTriggered(actionType))
             {
-                ChangeNextAnimation(actionType);
+                PlayNextAnimation(actionType);
 
                 return;
             }
@@ -113,13 +114,13 @@ public class LegendController : MonoBehaviour
     }
     public void PlayJumpAttackAnimation()
     {
-        if (_actions[(int)ActionType.DefaultAttack].triggered)
+        if (IsTriggered(ActionType.DefaultAttack))
         {
             _animator.Play(AnimationHash.FirstJumpAttack);
         }
     }
     private bool IsTriggered(ActionType actionType) => _actions[(int)actionType].triggered;
-    private void ChangeNextAnimation(ActionType actionType)
+    private void PlayNextAnimation(ActionType actionType)
     {
         switch (actionType)
         {
@@ -128,25 +129,21 @@ public class LegendController : MonoBehaviour
                 break;
             case ActionType.Jump:
                 _animator.Play(AnimationHash.Jump);
-                _animator.SetBool(AnimationHash.Run, false);
                 break;
             case ActionType.DefaultAttack:
                 _animator.Play(AnimationHash.FirstAttack);
-                _animator.SetBool(AnimationHash.Run, false);
                 break;
             case ActionType.HeavyAttack:
                 _animator.Play(AnimationHash.HeavyAttack);
-                _animator.SetBool(AnimationHash.Run, false);
                 break;
             case ActionType.SkillAttack:
                 _animator.Play(AnimationHash.SkillAttack);
-                _animator.SetBool(AnimationHash.Run, false);
                 break;
         }
     }
     public void PlayComboAttack(ComboAttackType comboAttackType)
     {
-        if (_canAttack && _actions[(int)ActionType.DefaultAttack].triggered)
+        if (_canAttack && IsTriggered(ActionType.DefaultAttack))
         {
             PlayAttackAnimation(comboAttackType);
             LookForwardOnAttack();
@@ -173,6 +170,8 @@ public class LegendController : MonoBehaviour
     }
     private void SetAnimatorClip()
     {
+        _overrideAnimatorName = new string[_animator.runtimeAnimatorController.animationClips.Length];
+        _applyAnimationClip = new AnimationClip[_animator.runtimeAnimatorController.animationClips.Length];
         _animatorOverrideController = new AnimatorOverrideController(_animator.runtimeAnimatorController);
 
         for (int i = 0; i < _animator.runtimeAnimatorController.animationClips.Length; ++i)
@@ -186,25 +185,25 @@ public class LegendController : MonoBehaviour
     }
     private void PlayNextAnimationClip(ComboAttackType type)
     {
-        if (_animationClipIndex < ApplyJumpAttackClip.Length - 1)
+        if (_animationClipIndex < _applyJumpAttackClip.Length - 1)
         {
             ++_animationClipIndex;
         }
         if (type == ComboAttackType.FirstJump)
         {
-            _animatorOverrideController[_jumpAnimationClipLiteral] = ApplyJumpAttackClip[_animationClipIndex];
+            _animatorOverrideController[StringLiteral.JumpAnimationClipLiteral] = _applyJumpAttackClip[_animationClipIndex];
         }
         else
         {
             int value = _animationClipIndex % 2;
-            _animatorOverrideController[_animationClipLiteral[value]] = ApplyAttackClip[_animationClipIndex];
+            _animatorOverrideController[StringLiteral.AnimationClipLiteral[value]] = _applyAttackClip[_animationClipIndex];
         }
     }
-    public void ResetComboAttack()
+    public void ResetComboAttackAnimationClip()
     {
         _animationClipIndex = 0;
-        _animatorOverrideController[_animationClipLiteral[0]] = ApplyAttackClip[0];
-        _animatorOverrideController[_jumpAnimationClipLiteral] = ApplyJumpAttackClip[0];
+        _animatorOverrideController[StringLiteral.AnimationClipLiteral[0]] = _applyAttackClip[0];
+        _animatorOverrideController[StringLiteral.JumpAnimationClipLiteral] = _applyJumpAttackClip[0];
     }
     public void SetComboPossibleOnAnimationEvent(ComboAttackType type)
     {
@@ -219,7 +218,7 @@ public class LegendController : MonoBehaviour
             transform.forward = MoveDirection;
         }
     }
-    public void JumpMoveAndRotate()
+    public void MoveAndRotate()
     {
         if (MoveDirection != Vector3.zero)
         {

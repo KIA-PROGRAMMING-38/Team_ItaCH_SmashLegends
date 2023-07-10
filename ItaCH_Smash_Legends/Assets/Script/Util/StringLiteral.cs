@@ -14,5 +14,11 @@
     public const string WAIT_PLAYER = "아레나가 열리고 있습니다. 상대를 기다리고 있습니다.";
     #endregion
 
-
+    #region LegendController 
+    public static readonly string[] ActionLiteral = new[] { "Run", "Jump", "DefaultAttack", "SmashAttack", "SkillAttack" };
+    public static readonly string[] AnimationClipLiteral = new[] { "Peter_FirstAttack", "Peter_SecondAttack" };
+    public const string JumpAnimationClipLiteral = "Peter_JumpAttack";
+    public const string HangZone = "HangZone";
+    public const string Ground = "Ground";
+    #endregion
 }

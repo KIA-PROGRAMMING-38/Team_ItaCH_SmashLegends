@@ -15,7 +15,7 @@ public class AliceAttack : PlayerAttack
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    public override void AttackOnDash()
+    public override void DashOnAnimationEvent()
     {
         defaultDashPower = 0.7f;
         if (playerStatus.CurrentState == PlayerStatus.State.ComboAttack)
@@ -30,7 +30,7 @@ public class AliceAttack : PlayerAttack
         {
             isFinishAttack = false;
             playerStatus.CurrentState = PlayerStatus.State.ComboAttack;
-            AttackOnDash();
+            DashOnAnimationEvent();
             animator.Play(AnimationHash.FirstAttack);
             --CurrentPossibleComboCount;            
         }

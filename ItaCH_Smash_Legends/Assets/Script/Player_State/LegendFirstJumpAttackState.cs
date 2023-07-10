@@ -13,7 +13,7 @@ public class LegendFirstJumpAttackState : LegendBaseState
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        legendController.JumpMoveAndRotate();
+        legendController.MoveAndRotate();
         legendController.PlayComboAttack(ComboAttackType.SecondJump);
     }
 

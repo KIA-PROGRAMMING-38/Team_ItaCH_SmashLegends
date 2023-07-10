@@ -11,7 +11,7 @@ public class PeterAttack : PlayerAttack
     [SerializeField] private SphereCollider _heavyAttackHitZone;
     [SerializeField] private BoxCollider _jumpAttackHitZone;
 
-    public override void AttackOnDash()
+    public override void DashOnAnimationEvent()
     {
         defaultDashPower = 0.8f;
         rigidbodyAttack.AddForce(transform.forward * defaultDashPower, ForceMode.Impulse);
@@ -22,7 +22,7 @@ public class PeterAttack : PlayerAttack
         if (IsPossibleFirstAttack())
         {
             playerStatus.CurrentState = PlayerStatus.State.ComboAttack;
-            AttackOnDash();
+            DashOnAnimationEvent();
             animator.Play(AnimationHash.FirstAttack);
             return;
         }
@@ -30,13 +30,13 @@ public class PeterAttack : PlayerAttack
         if (isFirstAttack && CurrentPossibleComboCount == COMBO_SECOND_COUNT)
         {
             isSecondAttack = true;
-            AttackOnDash();
+            DashOnAnimationEvent();
             return;
         }
         if (isSecondAttack && CurrentPossibleComboCount == COMBO_FINISH_COUNT)
         {
             isFinishAttack = true;
-            AttackOnDash();
+            DashOnAnimationEvent();
             return;
         }
     }

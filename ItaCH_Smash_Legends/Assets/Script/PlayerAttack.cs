@@ -65,7 +65,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
         }
         return false;
     }
-    public virtual void AttackOnDash()
+    public virtual void DashOnAnimationEvent()
     {
 
     }
