@@ -9,6 +9,5 @@ public class LegendHitDownState : LegendBaseState
         base.OnStateEnter(animator, stateInfo, layerIndex);
 
         animator.ResetTrigger(AnimationHash.HitDown);
-        animator.ResetTrigger(AnimationHash.JumpAttack);
     }
 }

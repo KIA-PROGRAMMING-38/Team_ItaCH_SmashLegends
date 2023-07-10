@@ -14,7 +14,7 @@ public class LegendJumpState : LegendBaseState
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         legendController.MoveAndRotate();
-        legendController.PlayJumpAttackAnimation();
+        legendAnimationController.PlayJumpAttackAnimation();
         if (_rigidbody.velocity.y <= -1)
         {
             animator.SetBool(AnimationHash.JumpDown, true);

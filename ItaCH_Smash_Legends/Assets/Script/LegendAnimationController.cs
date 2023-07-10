@@ -7,15 +7,13 @@ public class LegendAnimationController : MonoBehaviour
     private AnimationClip[] _applyAttackClip;
     [SerializeField]
     private AnimationClip[] _applyJumpAttackClip;
-    private AnimationClip[] _applyAnimationClip;
 
     private LegendController _legendController;
     private Animator _animator;
     private AnimatorOverrideController _animatorOverrideController;
-    
-    private string[] _overrideAnimatorName;
+
     private int _animationClipIndex;
-    
+
     private void Awake()
     {
         _legendController = GetComponent<LegendController>();
@@ -40,8 +38,9 @@ public class LegendAnimationController : MonoBehaviour
     }
     private void SetAnimatorClip()
     {
-        _overrideAnimatorName = new string[_animator.runtimeAnimatorController.animationClips.Length];
-        _applyAnimationClip = new AnimationClip[_animator.runtimeAnimatorController.animationClips.Length];
+        string[] _overrideAnimatorName = new string[_animator.runtimeAnimatorController.animationClips.Length];
+        AnimationClip[] _applyAnimationClip = new AnimationClip[_animator.runtimeAnimatorController.animationClips.Length];
+
         _animatorOverrideController = new AnimatorOverrideController(_animator.runtimeAnimatorController);
 
         for (int i = 0; i < _animator.runtimeAnimatorController.animationClips.Length; ++i)
@@ -76,18 +75,24 @@ public class LegendAnimationController : MonoBehaviour
     }
     public void PlayNextAnimationClip(ComboAttackType type)
     {
-        if (_animationClipIndex < _applyJumpAttackClip.Length - 1)
-        {
-            ++_animationClipIndex;
-        }
         if (type == ComboAttackType.FirstJump)
         {
-            _animatorOverrideController[StringLiteral.JumpAnimationClipLiteral] = _applyJumpAttackClip[_animationClipIndex];
+            if (_animationClipIndex < _applyJumpAttackClip.Length - 1)
+            {
+                ++_animationClipIndex;
+            }
+
+            _animatorOverrideController[StringLiteral.JumpAnimationClip] = _applyJumpAttackClip[_animationClipIndex];
         }
         else
         {
+            if (_animationClipIndex < _applyAttackClip.Length - 1)
+            {
+                ++_animationClipIndex;
+            }
+
             int value = _animationClipIndex % 2;
-            _animatorOverrideController[StringLiteral.AnimationClipLiteral[value]] = _applyAttackClip[_animationClipIndex];
+            _animatorOverrideController[StringLiteral.AnimationClip[value]] = _applyAttackClip[_animationClipIndex];
         }
     }
     public void PlayJumpAttackAnimation()
@@ -118,7 +123,7 @@ public class LegendAnimationController : MonoBehaviour
     public void ResetComboAttackAnimationClip()
     {
         _animationClipIndex = 0;
-        _animatorOverrideController[StringLiteral.AnimationClipLiteral[0]] = _applyAttackClip[0];
-        _animatorOverrideController[StringLiteral.JumpAnimationClipLiteral] = _applyJumpAttackClip[0];
+        _animatorOverrideController[StringLiteral.AnimationClip[0]] = _applyAttackClip[0];
+        _animatorOverrideController[StringLiteral.JumpAnimationClip] = _applyJumpAttackClip[0];
     }
 }

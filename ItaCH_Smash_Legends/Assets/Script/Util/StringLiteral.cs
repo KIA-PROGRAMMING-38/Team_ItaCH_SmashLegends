@@ -15,9 +15,9 @@
     #endregion
 
     #region LegendController 
-    public static readonly string[] ActionLiteral = new[] { "Run", "Jump", "DefaultAttack", "SmashAttack", "SkillAttack" };
-    public static readonly string[] AnimationClipLiteral = new[] { "Peter_FirstAttack", "Peter_SecondAttack" };
-    public const string JumpAnimationClipLiteral = "Peter_JumpAttack";
+    public static readonly string[] Actions = new[] { "Move", "Jump", "DefaultAttack", "SmashAttack", "SkillAttack" };
+    public static readonly string[] AnimationClip = new[] { "Peter_FirstAttack", "Peter_SecondAttack" };
+    public const string JumpAnimationClip = "Peter_JumpAttack";
     public const string HangZone = "HangZone";
     public const string Ground = "Ground";
     #endregion

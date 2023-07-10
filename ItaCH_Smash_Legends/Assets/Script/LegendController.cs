@@ -43,12 +43,7 @@ public class LegendController : MonoBehaviour
         _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
         _characterStatus = GetComponent<CharacterStatus>();
         _legendAnimationController = GetComponent<LegendAnimationController>();
-        _actions = new InputAction[StringLiteral.ActionLiteral.Length];
 
-    }
-
-    private void Start()
-    {
         InitActions();
     }
 
@@ -59,7 +54,6 @@ public class LegendController : MonoBehaviour
         if (input != null)
         {
             MoveDirection = new Vector3(input.x, 0, input.y);
-            _animator.SetBool(AnimationHash.Run, true);
         }
     }
     private void OnJump() { }
@@ -69,9 +63,11 @@ public class LegendController : MonoBehaviour
 
     private void InitActions()
     {
+        _actions = new InputAction[StringLiteral.Actions.Length];
+
         for (int i = 0; i < _actions.Length; ++i)
         {
-            _actions[i] = _input.actions[StringLiteral.ActionLiteral[i]];
+            _actions[i] = _input.actions[StringLiteral.Actions[i]];
         }
     }
     public void SetNextAnimation()
