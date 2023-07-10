@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,7 +27,6 @@ public class LegendController : MonoBehaviour
     private Rigidbody _rigidbody;
     private UnityEngine.InputSystem.PlayerInput _input;
 
-    private ActionType[] _actionType = (ActionType[])Enum.GetValues(typeof(ActionType));
     private LegendAnimationController _legendAnimationController;
 
     public Vector3 MoveDirection { get; private set; }
@@ -55,11 +55,28 @@ public class LegendController : MonoBehaviour
         {
             MoveDirection = new Vector3(input.x, 0, input.y);
         }
+        else
+        {
+            _legendAnimationController.SetBoolAnimationFalse(AnimationHash.Run);
+        }
     }
-    private void OnJump() { }
-    private void OnDefaultAttack() { }
-    private void OnSmashAttack() { }
-    private void OnSkillAttack() { }
+
+    private void OnJump()
+    {
+        _legendAnimationController.SetTriggerAnimation(AnimationHash.Jump);
+    }
+    private void OnDefaultAttack()
+    {
+        _legendAnimationController.SetTriggerAnimation(AnimationHash.FirstAttack);
+    }
+    private void OnSmashAttack()
+    {
+        _legendAnimationController.SetTriggerAnimation(AnimationHash.HeavyAttack);
+    }
+    private void OnSkillAttack()
+    {
+        _legendAnimationController.SetTriggerAnimation(AnimationHash.SkillAttack);
+    }
 
     private void InitActions()
     {
@@ -70,18 +87,7 @@ public class LegendController : MonoBehaviour
             _actions[i] = _input.actions[StringLiteral.Actions[i]];
         }
     }
-    public void SetNextAnimation()
-    {
-        foreach (ActionType actionType in _actionType)
-        {
-            if (IsTriggered(actionType))
-            {
-                _legendAnimationController.PlayNextAnimation(actionType);
 
-                return;
-            }
-        }
-    }
     public bool IsTriggered(ActionType actionType) => _actions[(int)actionType].triggered;
     public void PlayComboAttack(ComboAttackType comboAttackType)
     {
@@ -94,7 +100,7 @@ public class LegendController : MonoBehaviour
     }
     public void SetComboPossibleOnAnimationEvent(ComboAttackType type)
     {
-        _legendAnimationController.PlayNextAnimationClip(type);
+        _legendAnimationController.SetNextAnimationClip(type);
         _canAttack = true;
     }
     public void SetComboImpossibleOnAnimationEvent() => _canAttack = false;
@@ -109,8 +115,13 @@ public class LegendController : MonoBehaviour
     {
         if (MoveDirection != Vector3.zero)
         {
+            _legendAnimationController.SetBoolAnimationTrue(AnimationHash.Run);
             transform.rotation = Quaternion.LookRotation(MoveDirection);
             transform.Translate(Vector3.forward * (_characterStatus.MoveSpeed * Time.deltaTime));
+        }
+        else
+        {
+            _legendAnimationController.SetPlayAnimation(AnimationHash.Idle);
         }
     }
     public void JumpInput()

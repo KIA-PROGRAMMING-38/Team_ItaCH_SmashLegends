@@ -21,7 +21,6 @@ public class LegendAnimationController : MonoBehaviour
 
         SetAnimatorClip();
     }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag(StringLiteral.Ground))
@@ -52,28 +51,7 @@ public class LegendAnimationController : MonoBehaviour
 
         _animator.runtimeAnimatorController = _animatorOverrideController;
     }
-    public void PlayNextAnimation(ActionType actionType)
-    {
-        switch (actionType)
-        {
-            case ActionType.Move:
-                _animator.Play(AnimationHash.Run);
-                break;
-            case ActionType.Jump:
-                _animator.Play(AnimationHash.Jump);
-                break;
-            case ActionType.DefaultAttack:
-                _animator.Play(AnimationHash.FirstAttack);
-                break;
-            case ActionType.HeavyAttack:
-                _animator.Play(AnimationHash.HeavyAttack);
-                break;
-            case ActionType.SkillAttack:
-                _animator.Play(AnimationHash.SkillAttack);
-                break;
-        }
-    }
-    public void PlayNextAnimationClip(ComboAttackType type)
+    public void SetNextAnimationClip(ComboAttackType type)
     {
         if (type == ComboAttackType.FirstJump)
         {
@@ -120,10 +98,36 @@ public class LegendAnimationController : MonoBehaviour
                 break;
         }
     }
+    public void SetTriggerAnimation(int animationHash)
+    {
+        _animator.SetTrigger(animationHash);
+    }
+    public void SetBoolAnimationTrue(int animationHash)
+    {
+        _animator.SetBool(animationHash, true);
+    }
+    public void SetBoolAnimationFalse(int animationHash)
+    {
+        _animator.SetBool(animationHash, false);
+    }
+    public void SetPlayAnimation(int animationHash)
+    {
+        _animator.Play(animationHash);
+    }
     public void ResetComboAttackAnimationClip()
     {
         _animationClipIndex = 0;
         _animatorOverrideController[StringLiteral.AnimationClip[0]] = _applyAttackClip[0];
         _animatorOverrideController[StringLiteral.JumpAnimationClip] = _applyJumpAttackClip[0];
+    }
+    public void ResetAllAnimatorTriggers(Animator animator)
+    {
+        foreach (AnimatorControllerParameter trigger in animator.parameters)
+        {
+            if (trigger.type == AnimatorControllerParameterType.Trigger)
+            {
+                animator.ResetTrigger(trigger.name);
+            }
+        }
     }
 }

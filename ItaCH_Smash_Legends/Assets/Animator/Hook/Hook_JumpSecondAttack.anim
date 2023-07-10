@@ -45211,14 +45211,14 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.13333334
-    functionName: SkillAttackBullet
+    functionName: JumpAttackLeft
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.13333334
-    functionName: JumpAttackLeft
+    functionName: SkillAttackBullet
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -45231,14 +45231,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.2
+  - time: 0.16666667
     functionName: SetComboPossibleOnAnimationEvent
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 2
     messageOptions: 0
-  - time: 0.33333334
+  - time: 0.36666667
     functionName: SetComboImpossibleOnAnimationEvent
     data: 
     objectReferenceParameter: {fileID: 0}
