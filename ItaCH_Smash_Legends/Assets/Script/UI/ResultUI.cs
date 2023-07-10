@@ -83,7 +83,7 @@ public class ResultUI : MonoBehaviour
         {
             _resultText.text = LoseText;
         }
-        _isCharacterAlreadyUsed = new bool[(int)CharacterType.NumOfCharacter];
+        _isCharacterAlreadyUsed = new bool[3];
         _copiedModels = new List<GameObject>();
         for (int i = 0; i < _maxPlayer; ++i)
         {

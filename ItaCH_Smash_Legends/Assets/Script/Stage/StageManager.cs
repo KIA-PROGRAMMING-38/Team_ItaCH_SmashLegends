@@ -136,13 +136,13 @@ public class StageManager : MonoBehaviourPunCallbacks
         int playerID = userData.Id;
         CharacterType selectedCharacter = userData.SelectedCharacter;
 
-        characterStatus.InitCharacterDefaultData(selectedCharacter);
-        characterStatus.InitStatus();
+        characterStatus.InitCharacterDefaultStat(selectedCharacter);
         characterStatus.CharacterType = selectedCharacter;
         characterStatus.PlayerID = playerID;
         characterStatus.Name = userData.Name;
         characterStatus.RespawnTime = _modeDefaultRespawnTime;
         SetTeam(characterStatus, playerID);
+        characterStatus.InitHP();
 
         characterStatus.OnRespawnSetting -= SetPlayerInputController;
         characterStatus.OnRespawnSetting += SetPlayerInputController;

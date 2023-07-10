@@ -22,7 +22,7 @@ public class LegendMenuUI : MonoBehaviour, IPanel
     public void InitPanelSettings(LobbyUI lobbyUI)
     {
         _lobbyUI = lobbyUI;
-        _numberOfLegends = (int)CharacterType.NumOfCharacter;
+        _numberOfLegends = 3;
         _contentTransform = GetComponentInChildren<ScrollRect>().transform.GetChild(0).GetChild(0); 
         _legendSelectMenu = new LegendSelectUI[_numberOfLegends];
         for (int i = 0; i < _numberOfLegends; ++i)

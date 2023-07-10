@@ -14,5 +14,7 @@
     public const string WAIT_PLAYER = "아레나가 열리고 있습니다. 상대를 기다리고 있습니다.";
     #endregion
 
-
+    #region DATA PATH
+    public const string LEGEND_STAT_DATA_PATH = "Assets/Resources/Data/LegendStatData.csv";
+    #endregion
 }

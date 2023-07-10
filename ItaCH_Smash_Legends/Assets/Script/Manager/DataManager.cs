@@ -5,17 +5,16 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 
-internal class DataManager
+public class DataManager
 {
     public Dictionary<int, LegendStatData> LegendStats { get; private set; }
     public void Init()
     {
-        LegendStats = LoadCSV<int, LegendStatData>("LegendStatData", data => data.LegendID);
+        LegendStats = LoadCSV<int, LegendStatData>(StringLiteral.LEGEND_STAT_DATA_PATH, data => data.LegendID);
     }
 
-    private List<T> LoadCSV<T>(string name)
-    {
-        string path = "data/" + name;
+    private List<T> LoadCSV<T>(string path)
+    {        
         using (var reader = new StreamReader(path))
         using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
         {
@@ -23,9 +22,8 @@ internal class DataManager
         }
     }
 
-    private Dictionary<Key, Item> LoadCSV<Key, Item>(string name, Func<Item, Key> keySelector)
+    private Dictionary<Key, Item> LoadCSV<Key, Item>(string path, Func<Item, Key> keySelector)
     {
-        string path = "data/" + name;
         using (var reader = new StreamReader(path))
         using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
         {

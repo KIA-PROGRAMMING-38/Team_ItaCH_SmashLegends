@@ -14,7 +14,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public event Action OnJoiningRoom;
     public event Action OnCreatingRoom;
     public event Action OnWaitingPlayer;
-    public event Action<GameModeType> OnMatchingSuccess;
+    public event Action OnMatchingSuccess;
     public event Action<GameMode> OnInGameSceneLoaded;
 
     public event Action<int, UserData> OnUpdateUserDatas;
@@ -74,7 +74,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private void EnterInGameScene()
     {
         PhotonNetwork.LoadLevel(StringLiteral.INGAME);
-        OnMatchingSuccess.Invoke(GameModeType.Duel);
+        OnMatchingSuccess.Invoke();
     }
 
     private enum Level

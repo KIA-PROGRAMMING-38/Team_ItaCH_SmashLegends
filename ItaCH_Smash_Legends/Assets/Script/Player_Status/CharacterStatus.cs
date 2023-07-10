@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Util.Enum;
 
-public class CharacterStatus : CharacterDefaultStatus
+public class CharacterStatus : MonoBehaviour
 {
     // 게임 중 바뀔 수 있는 스탯들
     public int HealthPoint { get => _currentHealthPoint; set => _currentHealthPoint = value; }
@@ -21,13 +21,13 @@ public class CharacterStatus : CharacterDefaultStatus
     public int HeavyAttackDamage { get => _heavyAttackDamage; set => _heavyAttackDamage = value; }
     public int JumpAttackDamage { get => _jumpAttackDamage; set => _jumpAttackDamage = value; }
     public int SkillAttackDamage { get => _skillAttackDamage; set => _skillAttackDamage = value; }
-    public int SkillGauage { get => _skillGauage; set => _skillGauage = value; }
+    public int SkillGauage { get => _skillGauge; set => _skillGauge = value; }
     public int SkillGauageRecovery { get => _skillRecovery; set => _skillRecovery = value; }
 
     public float DefaultKnockbackPower { get => _defaultKnockbackPower; set => _defaultKnockbackPower = value; }
     public float HeavyKnockbackPower { get => _heavyKnockbackPower; set => _heavyKnockbackPower = value; }
     public float HeavyCooltime { get => _heavyCooltime; set => _heavyCooltime = value; }
-    public float DashPower { get => _dashpower; set => _dashpower = value; }
+    public float DashPower { get => _dashPower; set => _dashPower = value; }
 
     public float JumpAcceleration { get => _jumpAcceleration; set => _jumpAcceleration = value; }
     public float MaxFallingSpeed { get => _maxFallingSpeed; set => _maxFallingSpeed = value; }
@@ -59,12 +59,12 @@ public class CharacterStatus : CharacterDefaultStatus
     private int _heavyAttackDamage;
     private int _jumpAttackDamage;
     private int _skillAttackDamage;
-    private int _skillGauage;
+    private int _skillGauge;
     private int _skillRecovery;
 
     private float _defaultKnockbackPower;
     private float _heavyKnockbackPower;
-    private float _dashpower;
+    private float _dashPower;
     private float _heavyCooltime;
 
     private float _jumpAcceleration;
@@ -80,7 +80,6 @@ public class CharacterStatus : CharacterDefaultStatus
 
     private void OnDisable()
     {
-        
         if (this._isDead)
         {
             OnPlayerDieEffect.Invoke();
@@ -88,52 +87,37 @@ public class CharacterStatus : CharacterDefaultStatus
             RespawnAsync(_currentRespawnTime).Forget();
         }
     }
-    public void InitCharacterDefaultData(CharacterType characterType)
+    public void InitCharacterDefaultStat(CharacterType character)
     {
-        int character = (int)characterType;
-        GetCharacterDefaultData(character);
+        int selectedCharacter = (int)character;
+        _skillGauge = Managers.DataManager.LegendStats[selectedCharacter].SkillGauge;
+        _skillRecovery = Managers.DataManager.LegendStats[selectedCharacter].SkillRecovery;
+        _moveSpeed = Managers.DataManager.LegendStats[selectedCharacter].MoveSpeed;
+        _jumpAcceleration = Managers.DataManager.LegendStats[selectedCharacter].JumpAcceleration;
+        _gravitationalAcceleration = Managers.DataManager.LegendStats[selectedCharacter].GravitationalAcceleration;
+        _maxFallingSpeed = Managers.DataManager.LegendStats[selectedCharacter].MaxFallingSpeed;
+        _size = Managers.DataManager.LegendStats[selectedCharacter].Size;
+        _maxHealthPoint = Managers.DataManager.LegendStats[selectedCharacter].HP;
+        _defaultAttackDamage = Managers.DataManager.LegendStats[selectedCharacter].DefaultAttackDamage;
+        _jumpAttackDamage = Managers.DataManager.LegendStats[selectedCharacter].JumpAttackDamage;
+        _heavyAttackDamage = Managers.DataManager.LegendStats[selectedCharacter].HeavyAttackDamage;
+        _skillAttackDamage = Managers.DataManager.LegendStats[selectedCharacter].SkillAttackDamage;
+        _dashPower = Managers.DataManager.LegendStats[selectedCharacter].DashPower;
+        _defaultKnockbackPower = Managers.DataManager.LegendStats[selectedCharacter].DefaultKnockbackPower;
+        _heavyKnockbackPower = Managers.DataManager.LegendStats[selectedCharacter].HeavyKnockbackPower;
+        _heavyCooltime = Managers.DataManager.LegendStats[selectedCharacter].HeavyCooltime;
     }
-    public void InitStatus()
+
+    public void InitHP()
     {
-        InitHP();
-        InitSize();
-        InitAttackRelevant();
-        InitMoveRelevant();
-    }
-    private void InitHP()
-    {
-        _currentHealthPoint = base.HpData;
-        _maxHealthPoint = base.HpData;
+        _currentHealthPoint = _maxHealthPoint;
         //Hpbar 내부 로직때문에 1000으로 변경.
         _currentHealthPointRatio = 1000;
         OnPlayerHealthPointChange?.Invoke(_currentHealthPoint, _currentHealthPointRatio);
         //이후 원래 수치로.
         _currentHealthPointRatio = 100;
     }
-    private void InitAttackRelevant()
-    {
-        _defaultAttackDamage = base.DefaultAttackDamageData;
-        _heavyAttackDamage = base.HeavyAttackDamageData;
-        _jumpAttackDamage = base.JumpAttackDamageData;
-        _skillAttackDamage = base.SkillAttackDamageData;
-        _defaultKnockbackPower = base.DefaultKnockbackPowerData;
-        _heavyKnockbackPower = base.HeavyKnockbackPowerData;
-        _dashpower = base.DashPowerData;
-        _heavyCooltime = base.HeavyCooltimeData;
-        _skillGauage = base.SkillGaugeData;
-        _skillRecovery = base.SkillRecoveryData;
-    }
-    private void InitMoveRelevant()
-    {
-        _jumpAcceleration = base.JumpAccelerationData;
-        _maxFallingSpeed = base.MaxFallingSpeedData;
-        _gravitationalAcceleration = base.GravitationalAccelerationData;
-        _moveSpeed = base.MoveSpeedData;
-    }
-    private void InitSize()
-    {
-        _size = base.SizeData;
-    }
+
     public void GetDamage(int damage) // 피격 판정 시 호출
     {
         int damagedHealthPoint = _currentHealthPoint - damage;
@@ -152,6 +136,7 @@ public class CharacterStatus : CharacterDefaultStatus
         await UniTask.Delay((int)respawnTime * 1000);
         Respawn();
     }
+
     public void Respawn()
     {
         this.transform.position = _spawnPoint;

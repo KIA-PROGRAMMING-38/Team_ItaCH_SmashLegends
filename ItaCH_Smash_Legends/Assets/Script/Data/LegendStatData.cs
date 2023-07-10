@@ -8,13 +8,13 @@
     public float GravitationalAcceleration { get; set; }
     public int MaxFallingSpeed { get; set; }
     public int Size { get; set; }
-    public int Hp { get; set; }
+    public int HP { get; set; }
     public int DefaultAttackDamage { get; set; }
     public int JumpAttackDamage { get; set; }
     public int HeavyAttackDamage { get; set; }
     public int SkillAttackDamage { get; set; }
     public float DashPower { get; set; }
     public float DefaultKnockbackPower { get; set; }
-    public float DeavyKnockbackPower { get; set; }
-    public float DeavyCooltime { get; set; }
+    public float HeavyKnockbackPower { get; set; }
+    public float HeavyCooltime { get; set; }
 }
