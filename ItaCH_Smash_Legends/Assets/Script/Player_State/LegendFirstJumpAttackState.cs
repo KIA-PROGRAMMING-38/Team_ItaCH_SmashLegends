@@ -1,17 +1,20 @@
 using UnityEngine;
 
-public class LegendFinishAttackSt: LegendBaseState
+public class LegendFirstJumpAttackState : LegendBaseState
 {
+    // LegnedController 완료시 리펙토링
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
-
-        legendController.SetComboImpossibleOnAnimationEvent();
-        legendController.PlayNextClipOnAnimationEvent();
+        animator.SetBool(AnimationHash.JumpDown, true); 
     }
+
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-            legendController.PlayComboAttack(ComboAttackType.First);
 
+        legendController.MoveAndRotate();
+        legendController.PlayComboAttack(ComboAttackType.SecondJump);
     }
+
 }

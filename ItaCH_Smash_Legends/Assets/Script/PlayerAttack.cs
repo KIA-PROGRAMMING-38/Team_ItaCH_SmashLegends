@@ -65,7 +65,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
         }
         return false;
     }
-    public virtual void AttackOnDash()
+    public virtual void DashOnAnimationEvent()
     {
 
     }
@@ -114,7 +114,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
         if (playerStatus.IsJump == false)
         {
             playerStatus.CurrentState = PlayerStatus.State.JumpAttack;
-            animator.SetTrigger(AnimationHash.JumpAttack);
+            //animator.SetTrigger(AnimationHash.JumpAttack);
         }
     }
 

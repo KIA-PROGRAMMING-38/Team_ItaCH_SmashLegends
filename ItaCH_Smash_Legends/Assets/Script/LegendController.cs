@@ -1,12 +1,14 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public enum ComboAttackType
 {
     First,
-    Second
+    Second,
+    FirstJump,
+    SecondJump,
 }
 public enum ActionType
 {
@@ -19,65 +21,30 @@ public enum ActionType
 
 public class LegendController : MonoBehaviour
 {
-    public AnimationClip[] ApplyClip;
+    private InputAction[] _actions;
 
-    private AnimationClip[] _applyAnimationClip;
-    private InputAction[] _action;
-    private Animator _anim;
-    private AnimatorOverrideController _animatorOverrideController;
     private CharacterStatus _characterStatus;
+    private Rigidbody _rigidbody;
     private UnityEngine.InputSystem.PlayerInput _input;
 
-    private ActionType[] _actionType = (ActionType[])Enum.GetValues(typeof(ActionType));
-    private string[] _actionLiteral = new[] { "Move", "Jump", "DefaultAttack", "SmashAttack", "SkillAttack" };
-    // 추후 스트링 리터럴 캐싱 후 사용
-    private string[] _animationClipLiteral = new[] { "Peter_FirstAttack", "Peter_SecondAttack" };
-    // 추후 리소스로 매니저로 캐싱 후 사용
-    // Character Type 으로 변환해야함.
-    private string[] _overrideAnimatorName;
+    private LegendAnimationController _legendAnimationController;
 
     public Vector3 MoveDirection { get; private set; }
-    public int PossibleComboCount { get; set; } = 0;
-    public int AnimationClipIndex { get; set; } = 0;
-    
+
     private bool _canAttack;
+
+    // 추후 Character base 데이터 로 변환해야함.
+    private const float MAX_JUMP_POWER = 1f;
+    private readonly Vector3 JUMP_DIRECTION = Vector3.up;
 
     private void Awake()
     {
-        _anim = GetComponent<Animator>();
+        _rigidbody = GetComponent<Rigidbody>();
         _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
         _characterStatus = GetComponent<CharacterStatus>();
-        
-        _action = new InputAction[_actionLiteral.Length];
-        
-        _animatorOverrideController = Resources.Load<AnimatorOverrideController>(ResourcesManager.HookAnimator);
-        
-        _overrideAnimatorName = new string[_anim.runtimeAnimatorController.animationClips.Length];
-        _applyAnimationClip = new AnimationClip[_anim.runtimeAnimatorController.animationClips.Length];
-        _animatorOverrideController = new AnimatorOverrideController(_anim.runtimeAnimatorController);
+        _legendAnimationController = GetComponent<LegendAnimationController>();
 
-        // 애니메이터 오버라이딩 후 코드
-        //for (int i = 0; i < _anim.runtimeAnimatorController.animationClips.Length; ++i)
-        //{
-
-        //    SetAnimatorClip(i);
-        //}
-
-        //_anim.runtimeAnimatorController = _animatorOverride;
-    }
-    private void Start()
-    {
-        for (int i = 0; i < _action.Length; ++i)
-        {
-            _action[i] = _input.actions[_actionLiteral[i]];
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("HangZone"))
-        {
-            // Animation.Play(Hang);
-        }
+        InitActions();
     }
 
     private void OnMove(InputValue value)
@@ -87,89 +54,55 @@ public class LegendController : MonoBehaviour
         if (input != null)
         {
             MoveDirection = new Vector3(input.x, 0, input.y);
-            _anim.SetBool(AnimationHash.Run, true);
         }
-    }
-    private void OnJump() { }
-    private void OnDefaultAttack() { }
-    private void OnSmashAttack() { }
-    private void OnSkillAttack() { }
-    public void SetNextAnimation()
-    {
-        foreach (ActionType actionType in _actionType)
+        else
         {
-            if (IsTriggered(actionType))
-            {
-                ChangeNextAnimation(actionType);
-
-                return;
-            }
+            _legendAnimationController.SetBoolAnimationFalse(AnimationHash.Run);
         }
-
     }
-    private bool IsTriggered(ActionType actionType) => _action[(int)actionType].triggered;
-    private void ChangeNextAnimation(ActionType actionType)
+
+    private void OnJump()
     {
-        switch (actionType)
+        _legendAnimationController.SetTriggerAnimation(AnimationHash.Jump);
+    }
+    private void OnDefaultAttack()
+    {
+        _legendAnimationController.SetTriggerAnimation(AnimationHash.FirstAttack);
+    }
+    private void OnSmashAttack()
+    {
+        _legendAnimationController.SetTriggerAnimation(AnimationHash.HeavyAttack);
+    }
+    private void OnSkillAttack()
+    {
+        _legendAnimationController.SetTriggerAnimation(AnimationHash.SkillAttack);
+    }
+
+    private void InitActions()
+    {
+        _actions = new InputAction[StringLiteral.Actions.Length];
+
+        for (int i = 0; i < _actions.Length; ++i)
         {
-            case ActionType.Move:
-                _anim.Play(AnimationHash.Run);
-                break;
-            case ActionType.Jump:
-                _anim.Play(AnimationHash.Jump);
-                break;
-            case ActionType.DefaultAttack:
-                _anim.Play(AnimationHash.FirstAttack);
-                break;
-            case ActionType.HeavyAttack:
-                _anim.Play(AnimationHash.HeavyAttack);
-                break;
-            case ActionType.SkillAttack:
-                _anim.Play(AnimationHash.SkillAttack);
-                break;
+            _actions[i] = _input.actions[StringLiteral.Actions[i]];
         }
     }
+
+    public bool IsTriggered(ActionType actionType) => _actions[(int)actionType].triggered;
     public void PlayComboAttack(ComboAttackType comboAttackType)
     {
-        if (_canAttack)
+        if (_canAttack && IsTriggered(ActionType.DefaultAttack))
         {
-            PlayAttackAnimation(comboAttackType);
+            _legendAnimationController.PlayAttackAnimation(comboAttackType);
             LookForwardOnAttack();
+            _canAttack = false;
         }
     }
-    private void PlayAttackAnimation(ComboAttackType comboAttackType)
+    public void SetComboPossibleOnAnimationEvent(ComboAttackType type)
     {
-        switch (comboAttackType)
-        {
-            case ComboAttackType.First:
-                _anim.Play(AnimationHash.FirstAttack);
-                break;
-            case ComboAttackType.Second:
-                _anim.Play(AnimationHash.SecondAttack);
-                break;
-        }
+        _legendAnimationController.SetNextAnimationClip(type);
+        _canAttack = true;
     }
-    private void SetAnimatorClip(int i)
-    {
-        _overrideAnimatorName[i] = _animatorOverrideController.animationClips[i].name;
-        //hook.animationClips => 추후 캐릭터 Type 으로
-        _applyAnimationClip[i] = _animatorOverrideController.animationClips[i];
-        _animatorOverrideController[_overrideAnimatorName[i]] = _applyAnimationClip[i];
-    }
-    public void PlayNextClipOnAnimationEvent()
-    {
-        //if (PossibleComboCount < ApplyClip.Length - 1)
-        //{
-        //    _animatorOverride[_animationClipLiteral[AnimationClipIndex]] = ApplyClip[PossibleComboCount];
-        //    ++PossibleComboCount;
-        //    ++AnimationClipIndex;
-        //    if (AnimationClipIndex == 2)
-        //    {
-        //        AnimationClipIndex = 0;
-        //    }
-        //}
-    }
-    public void SetComboPossibleOnAnimationEvent() => _canAttack = true;
     public void SetComboImpossibleOnAnimationEvent() => _canAttack = false;
     private void LookForwardOnAttack()
     {
@@ -178,14 +111,22 @@ public class LegendController : MonoBehaviour
             transform.forward = MoveDirection;
         }
     }
-    public void JumpMoveAndRotate()
+    public void MoveAndRotate()
     {
         if (MoveDirection != Vector3.zero)
         {
+            _legendAnimationController.SetBoolAnimationTrue(AnimationHash.Run);
             transform.rotation = Quaternion.LookRotation(MoveDirection);
             transform.Translate(Vector3.forward * (_characterStatus.MoveSpeed * Time.deltaTime));
-
         }
+        else
+        {
+            _legendAnimationController.SetPlayAnimation(AnimationHash.Idle);
+        }
+    }
+    public void JumpInput()
+    {
+        _rigidbody.AddForce(JUMP_DIRECTION * MAX_JUMP_POWER, ForceMode.Impulse);
     }
     // PlayerRollUp 
     // DownIdle 상태에서 기능 수행
