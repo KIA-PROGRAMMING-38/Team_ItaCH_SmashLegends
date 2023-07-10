@@ -134,15 +134,9 @@ public class StageManager : MonoBehaviourPunCallbacks
     {
         CharacterStatus characterStatus = character.GetComponent<CharacterStatus>();
         int playerID = userData.Id;
-        CharacterType selectedCharacter = userData.SelectedCharacter;
-
-        characterStatus.InitCharacterDefaultStat(selectedCharacter);
-        characterStatus.CharacterType = selectedCharacter;
-        characterStatus.PlayerID = playerID;
-        characterStatus.Name = userData.Name;
+        characterStatus.Init(userData);                
         characterStatus.RespawnTime = _modeDefaultRespawnTime;
-        SetTeam(characterStatus, playerID);
-        characterStatus.InitHP();
+        SetTeam(characterStatus, playerID);        
 
         characterStatus.OnRespawnSetting -= SetPlayerInputController;
         characterStatus.OnRespawnSetting += SetPlayerInputController;
@@ -158,7 +152,7 @@ public class StageManager : MonoBehaviourPunCallbacks
             _teamMemberIndex = playerID - _teamSize;
             _teamRedCharacter[_teamMemberIndex] = character;
             character.gameObject.layer = LayerMask.NameToLayer("TeamRed");
-            character.TeamSpawnPoint = character.transform.position;
+            character.SpawnPoint = character.transform.position;
             character.gameObject.name = "red";
         }
 
@@ -168,7 +162,7 @@ public class StageManager : MonoBehaviourPunCallbacks
             _teamMemberIndex = playerID;
             _teamBlueCharacter[_teamMemberIndex] = character;
             character.gameObject.layer = LayerMask.NameToLayer("TeamBlue");
-            character.TeamSpawnPoint = character.transform.position;
+            character.SpawnPoint = character.transform.position;
             character.gameObject.name = "blue";
         }
     }
@@ -304,8 +298,8 @@ public class StageManager : MonoBehaviourPunCallbacks
     }
     private TeamType CheckTeamHealthRatio()
     {
-        int teamBlueCharacterHealthRatio = _teamBlueCharacter[0].HealthPointRatio;
-        int teamRedCharacterHelathRatio = _teamRedCharacter[0].HealthPointRatio;
+        int teamBlueCharacterHealthRatio = _teamBlueCharacter[0].CurrentHPRatio;
+        int teamRedCharacterHelathRatio = _teamRedCharacter[0].CurrentHPRatio;
 
         if (teamBlueCharacterHealthRatio == teamRedCharacterHelathRatio)
             return TeamType.None;

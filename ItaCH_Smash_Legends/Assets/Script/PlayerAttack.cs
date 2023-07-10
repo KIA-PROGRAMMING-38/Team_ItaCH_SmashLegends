@@ -43,7 +43,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     {
         defaultDashPower = characterStatus.DashPower;
         heavyCooltime = characterStatus.HeavyCooltime;
-        skillGauage = characterStatus.SkillGauage;
+        skillGauage = characterStatus.SkillGauge;
         skillGauageRecovery = characterStatus.SkillGauageRecovery;
     }
     public void AttackRotate()

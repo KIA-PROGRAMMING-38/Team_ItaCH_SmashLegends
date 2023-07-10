@@ -489,6 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _portraitSprites:
+  - {fileID: 21300000, guid: 9148c011a25ee584aaf258df3ef18e1c, type: 3}
   - {fileID: 21300000, guid: 9f7b3718e7912114283b9be3d75aab3e, type: 3}
   - {fileID: 21300000, guid: 4c9331c32e92a0f4dbc53471eb1a1347, type: 3}
   - {fileID: 21300000, guid: 817416267dc71df4d8180cfda4e34e0c, type: 3}

@@ -51,12 +51,11 @@ public class LobbyUI : MonoBehaviour
 
     private void SetLobbyCharaterModel()
     {
-        _characterModels = new GameObject[4];
+        _characterModels = new GameObject[(int)CharacterType.MaxCount];
         _currentCharacterIndex = (int)Managers.UserManager.UserLocalData.SelectedCharacter;
 
-        for (int i = 0; i < 4; ++i)
-        {
-            if (i == 0) continue;
+        for (int i = 1; i < (int)CharacterType.MaxCount; ++i)
+        {            
             GameObject characterModelPrefab = Resources.Load<GameObject>(FilePath.GetLobbyCharacterPath((CharacterType)i));
             GameObject characterModelInstance = Instantiate(characterModelPrefab, _spawnPoint).gameObject;
             _characterModels[i] = characterModelInstance;
