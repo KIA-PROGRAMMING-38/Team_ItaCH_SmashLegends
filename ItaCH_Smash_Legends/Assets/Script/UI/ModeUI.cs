@@ -52,7 +52,7 @@ public class ModeUI : MonoBehaviour
             _healthPointBars[i].InitHealthBarSettings();
             BindEventWithHealthBar(characterStatus, _healthPointBars[i]);
 
-            Sprite characterPortrait = Resources.Load<Sprite>(Util.Path.FilePath.GetCharacterSpritePath(characterStatus.CharacterType));
+            Sprite characterPortrait = Resources.Load<Sprite>(Util.Path.FilePath.GetCharacterSpritePath(characterStatus.Character));
             _portraits[i].InitPortraitSetting(characterPortrait);
             BindEventWithPortraits(characterStatus, _portraits[i]);
 

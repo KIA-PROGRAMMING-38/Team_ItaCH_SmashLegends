@@ -15,7 +15,7 @@ public class UserData
         {
             if (_selectedCharacter == CharacterType.None)
             {
-                _selectedCharacter = (CharacterType)Random.Range(0, 3);
+                _selectedCharacter = (CharacterType)Random.Range((int)CharacterType.Alice, (int)CharacterType.MaxCount);
                 return _selectedCharacter;
             }
             else

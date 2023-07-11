@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -117,7 +117,7 @@ public class LegendController : MonoBehaviour
         {
             _legendAnimationController.SetBoolAnimationTrue(AnimationHash.Run);
             transform.rotation = Quaternion.LookRotation(MoveDirection);
-            transform.Translate(Vector3.forward * (_characterStatus.MoveSpeed * Time.deltaTime));
+            transform.Translate(Vector3.forward * (_characterStatus.Stat.MoveSpeed * Time.deltaTime));
         }
         else
         {

@@ -30,6 +30,7 @@ public class UserManager
         UserData defaultUserData = new UserData();
         defaultUserData.Name = $"Bot{id}";
         defaultUserData.Id = id;
+        defaultUserData.SelectedCharacter = CharacterType.None;
         defaultUserData.TeamType = TeamType.None;
         return defaultUserData;
     }

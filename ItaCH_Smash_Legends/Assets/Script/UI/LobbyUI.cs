@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using TMPro;
 using UnityEngine;
 using Util.Enum;
@@ -24,7 +24,7 @@ public class LobbyUI : MonoBehaviour
     public event Action<CharacterType> OnCharacterChanged;
 
     private void Start()
-    {
+    {        
         SetUserName();
 
         Managers.LobbyManager.OnLogInSuccessed -= InitLobbyUISettings;
@@ -51,11 +51,11 @@ public class LobbyUI : MonoBehaviour
 
     private void SetLobbyCharaterModel()
     {
-        _characterModels = new GameObject[(int)CharacterType.NumOfCharacter];
+        _characterModels = new GameObject[(int)CharacterType.MaxCount];
         _currentCharacterIndex = (int)Managers.UserManager.UserLocalData.SelectedCharacter;
 
-        for (int i = 0; i < (int)CharacterType.NumOfCharacter; ++i)
-        {
+        for (int i = 1; i < (int)CharacterType.MaxCount; ++i)
+        {            
             GameObject characterModelPrefab = Resources.Load<GameObject>(FilePath.GetLobbyCharacterPath((CharacterType)i));
             GameObject characterModelInstance = Instantiate(characterModelPrefab, _spawnPoint).gameObject;
             _characterModels[i] = characterModelInstance;

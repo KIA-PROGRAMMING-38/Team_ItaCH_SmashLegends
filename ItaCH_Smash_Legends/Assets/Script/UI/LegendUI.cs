@@ -15,14 +15,13 @@ public class LegendUI : MonoBehaviour
     private RectTransform[] _healthPointBlocks;
     private Image _healthPointSeperatorMask;
 
-    // ºñÀ² °è»êÀ» À§ÇØ floatÀ¸·Î ¼³Á¤
+    // ë¹„ìœ¨ ê³„ì‚°ì„ ìœ„í•´ floatìœ¼ë¡œ ì„¤ì •
     private const float StandardHealthPoint = 3000;
     void Update()
     {
         transform.position = new Vector3(_characterTransform.position.x,
             _characterTransform.position.y + _heightOffset,
-            _characterTransform.position.z);
-        // Å×½ºÆ® ÄÚµå. ÀÌÈÄ¿¡´Â ÀÌµ¿, °ø°İ, ÇÇ°İ ´Ù¿î, Á¡ÇÁ µî ÀÌµ¿ÀÌ ÀÖÀ» ¶§¿¡¸¸ ¿¬»ê ¿¹Á¤.
+            _characterTransform.position.z);        
     }
 
     private void OnDestroy()
@@ -49,8 +48,8 @@ public class LegendUI : MonoBehaviour
         _characterStatus.OnPlayerRespawn -= EnableLegendUI;
         _characterStatus.OnPlayerRespawn += EnableLegendUI;
 
-        SetHealthPointBar(_characterStatus.MaxHealthPoint);
-        SetHealthPoint(_characterStatus.HealthPoint, _characterStatus.HealthPointRatio);
+        SetHealthPointBar(_characterStatus.Stat.HP);
+        SetHealthPoint(_characterStatus.CurrentHP, _characterStatus.CurrentHPRatio);
     }
 
     public void SetHealthPointBar(int maxHealthPoint)

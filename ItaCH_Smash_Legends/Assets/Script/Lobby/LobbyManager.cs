@@ -14,7 +14,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public event Action OnJoiningRoom;
     public event Action OnCreatingRoom;
     public event Action OnWaitingPlayer;
-    public event Action<GameModeType> OnMatchingSuccess;
+    public event Action OnMatchingSuccess;
     public event Action<GameMode> OnInGameSceneLoaded;
 
     public event Action<int, UserData> OnUpdateUserDatas;
@@ -27,14 +27,14 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public void ConnectToServer()
     {
         PhotonNetwork.ConnectUsingSettings();
-        OnConnectingtoServer.Invoke();
+        OnConnectingtoServer?.Invoke();
     }
 
     public override void OnConnectedToMaster() => OnLogInSuccessed.Invoke();
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        OnDisconnectedfromServer.Invoke();
+        OnDisconnectedfromServer?.Invoke();
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -42,26 +42,26 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsConnected)
         {
-            OnJoiningRoom.Invoke();
+            OnJoiningRoom?.Invoke();
             PhotonNetwork.JoinRandomRoom();
         }
         else
         {
-            OnDisconnectedfromServer.Invoke();
+            OnDisconnectedfromServer?.Invoke();
             PhotonNetwork.ConnectUsingSettings();
         }
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        OnCreatingRoom.Invoke();
+        OnCreatingRoom?.Invoke();
         int totalPlayer = Managers.StageManager.CurrentGameMode.TotalPlayer;
         PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = totalPlayer });
     }
 
     public override void OnJoinedRoom()
     {
-        OnWaitingPlayer.Invoke();
+        OnWaitingPlayer?.Invoke();
         ResisterUserLocalData();
         MatchWithBot();
     }
@@ -74,7 +74,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private void EnterInGameScene()
     {
         PhotonNetwork.LoadLevel(StringLiteral.INGAME);
-        OnMatchingSuccess.Invoke(GameModeType.Duel);
+        OnMatchingSuccess?.Invoke();
     }
 
     private enum Level
@@ -92,7 +92,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
             case (int)Level.Ingame:
                 GameMode currentGameMode = Managers.StageManager.CurrentGameMode;
-                OnInGameSceneLoaded.Invoke(currentGameMode);
+                OnInGameSceneLoaded?.Invoke(currentGameMode);
                 return;
         }
     }
@@ -102,7 +102,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         int enteringOrder = GetEnteringOrder();
         UserData userLocalData = GetUserLocalData();
         userLocalData.Id = enteringOrder;
-        OnUpdateUserDatas.Invoke(enteringOrder, userLocalData);
+        OnUpdateUserDatas?.Invoke(enteringOrder, userLocalData);
     }
 
     private int GetEnteringOrder()
