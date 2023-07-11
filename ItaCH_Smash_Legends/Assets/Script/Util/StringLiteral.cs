@@ -18,6 +18,11 @@
     public const string LEGEND_STAT_DATA_PATH = "Assets/Resources/Data/LegendStatData.csv";
     #endregion
 
+    #region FOLDER PATH
+    public const string PREFAB_FOLDER = "Prefab";
+    public const string SUFFIX_INGAME = "_Ingame";
+    #endregion
+
     #region LegendController 
     public static readonly string[] Actions = new[] { "Move", "Jump", "DefaultAttack", "SmashAttack", "SkillAttack" };
     public static readonly string[] AnimationClip = new[] { "Peter_FirstAttack", "Peter_SecondAttack" };

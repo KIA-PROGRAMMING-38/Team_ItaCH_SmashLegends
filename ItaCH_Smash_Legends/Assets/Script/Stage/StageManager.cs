@@ -2,11 +2,11 @@ using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Util.Enum;
-using Util.Path;
 
 public class StageManager : MonoBehaviourPunCallbacks
 {
@@ -127,15 +127,16 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     private CharacterStatus GetCharacterPrefab(CharacterType character)
     {
-        string characterPrefabPath = FilePath.GetCharacterInGamePrefabPath(character);
-        return Resources.Load<CharacterStatus>(characterPrefabPath);
+        string characterName = character.ToString();
+        string characterPrefabPath = Path.Combine(StringLiteral.PREFAB_FOLDER, characterName, $"{characterName}{StringLiteral.SUFFIX_INGAME}", $"{characterName}{StringLiteral.SUFFIX_INGAME}");
+        return Managers.ResourceManager.Load<CharacterStatus>(characterPrefabPath);
     }
     private void InitCharacterStatus(CharacterStatus characterStatus, UserData userData)
-    {        
+    {
         int playerID = userData.Id;
-        characterStatus.Init(userData);                
+        characterStatus.Init(userData);
         characterStatus.RespawnTime = _modeDefaultRespawnTime;
-        SetTeam(characterStatus, playerID);        
+        SetTeam(characterStatus, playerID);
 
         characterStatus.OnRespawnSetting -= SetPlayerInputController;
         characterStatus.OnRespawnSetting += SetPlayerInputController;
@@ -143,7 +144,7 @@ public class StageManager : MonoBehaviourPunCallbacks
         characterStatus.OnPlayerDie -= UpdateTeamScore;
         characterStatus.OnPlayerDie += UpdateTeamScore;
     }
-    private void SetTeam(CharacterStatus character, int playerID)
+    private void SetTeam(CharacterStatus character, int playerID) // TO DO : Team Class로 관리 필요
     {
         if (playerID >= _teamSize)
         {
@@ -222,7 +223,7 @@ public class StageManager : MonoBehaviourPunCallbacks
             case GameModeType.Duel:
                 _legendUI = new List<GameObject>();
                 for (int i = 0; i < _totalPlayer; ++i)
-                {                    
+                {
                     SetLegendUI(_playerCharacterInstances[i]);
                 }
                 _modeUI = Instantiate(_modeUIPrefab[(int)GameModeType.Duel]);
@@ -237,7 +238,7 @@ public class StageManager : MonoBehaviourPunCallbacks
     }
     public void SetLegendUI(CharacterStatus player)
     {
-        _legendUIPrefab = Resources.Load<GameObject>("UI/LegendUI");        
+        _legendUIPrefab = Resources.Load<GameObject>("UI/LegendUI");
         GameObject legendUI = Instantiate(_legendUIPrefab);
         legendUI.GetComponent<LegendUI>().InitLegendUISettings(player.transform);
         _legendUI.Add(legendUI);

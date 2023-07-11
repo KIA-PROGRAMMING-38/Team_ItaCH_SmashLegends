@@ -10,8 +10,7 @@ namespace Util.Path
         public const string UISpritePath = "UI/Sprite/";
         public const string AliceIcon = "UI/MobileUI/Sprite/Alice/Alice";
         public const string HookIcon = "UI/MobileUI/Sprite/Hook/Hook";
-        public const string PeterIcon = "UI/MobileUI/Sprite/Peter/Peter";
-        public const string CharacterPath = "Prefab/";
+        public const string PeterIcon = "UI/MobileUI/Sprite/Peter/Peter";        
         #endregion
 
         #region UI File Path
@@ -43,8 +42,6 @@ namespace Util.Path
         public const string MatchingButtonPath = "UI/GameStartButton";
         public const string LobbyWorldPrefabPath = "Map/LobbyWorld/LobbySceneWorld";
         public const string MapPath = "Map/LobbyWorld/";
-        public const string CharacterInGamePath = "_Ingame";
-        public const string CharacterInGamePrefabName = "_Ingame";
         public const string HeavyBulletDeleteEffect = "Prefab/Hook/Hook_Ingame/Hook_Heavy_Bullet_Delete_Effect";
         public const string LastHeavyBulletDeleteEffect = "Prefab/Hook/Hook_Ingame/Hook_Last_Heavy_Bullet_Delete_Effect";
         public const string SkillBulletDeleteEffect = "Prefab/Hook/Hook_Ingame/Hook_SKill_Bullet_Delete_Effect";
@@ -70,18 +67,7 @@ namespace Util.Path
             string characterName = characterType.ToString();
             stringBuilder.Append(UISpritePath);
             stringBuilder.Append(characterName);
-            stringBuilder.Append($"/{characterName}");
-            return stringBuilder.ToString();
-        }
-
-        public static string GetCharacterInGamePrefabPath(CharacterType characterType)
-        {
-            StringBuilder stringBuilder = new StringBuilder();
-            string characterName = characterType.ToString();
-            stringBuilder.Append(CharacterPath);
-            stringBuilder.Append(characterName);
-            stringBuilder.Append($"/{characterName}{CharacterInGamePath}");
-            stringBuilder.Append($"/{characterName}{CharacterInGamePrefabName}");            
+            stringBuilder.Append($"/{characterName}");                        
             return stringBuilder.ToString();
         }
     }
