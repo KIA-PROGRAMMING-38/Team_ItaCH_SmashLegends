@@ -34,11 +34,7 @@ public class PeterHit : PlayerHit
     {
         Rigidbody rigidbody = other.GetComponent<Rigidbody>();
         Animator animator = other.GetComponent<Animator>();
-        PlayerStatus playerStatus = other.GetComponent<PlayerStatus>();
         CharacterStatus opponentCharacter = other.GetComponent<CharacterStatus>();
-
-        if (playerStatus.CurrentState == PlayerStatus.State.Jump && _playerStatus.CurrentState != PlayerStatus.State.JumpAttack)
-            return;
 
         if (rigidbody.velocity != Vector3.zero)
         {

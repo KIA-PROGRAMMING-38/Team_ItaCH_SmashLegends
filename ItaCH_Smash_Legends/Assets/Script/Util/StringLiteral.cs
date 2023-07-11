@@ -1,4 +1,4 @@
-﻿public static class StringLiteral
+public static class StringLiteral
 {
     #region SCENE NAME
     public const string LOBBY = "Lobby";
@@ -18,7 +18,11 @@
     public static readonly string[] Actions = new[] { "Move", "Jump", "DefaultAttack", "SmashAttack", "SkillAttack" };
     public static readonly string[] AnimationClip = new[] { "Peter_FirstAttack", "Peter_SecondAttack" };
     public const string JumpAnimationClip = "Peter_JumpAttack";
+    #endregion
+
+    #region Tag
     public const string HangZone = "HangZone";
     public const string Ground = "Ground";
+    public const string Player = "Player";
     #endregion
 }

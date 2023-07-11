@@ -131,24 +131,24 @@ public class HookAttack : PlayerAttack
     public override void JumpAttack()
     {
 
-        if (playerStatus.IsJump == false)
-        {
-            if (CurrentPossibleComboCount == MAX_POSSIBLE_ATTACK_COUNT)
-            {
-                animator.SetTrigger(AnimationHash.JumpAttack);
-                return;
-            }
-            else if (CurrentPossibleComboCount == COMBO_SECOND_COUNT)
-            {
-                animator.SetBool(AnimationHash.JumpSecondAttack, true);
-                return;
-            }
-            else if (CurrentPossibleComboCount == COMBO_FINISH_COUNT)
-            {
-                animator.SetBool(AnimationHash.JumpFinishAttack, true);
-                return;
-            }
-        }
+        //if (playerStatus.IsJump == false)
+        //{
+        //    if (CurrentPossibleComboCount == MAX_POSSIBLE_ATTACK_COUNT)
+        //    {
+        //        animator.SetTrigger(AnimationHash.JumpAttack);
+        //        return;
+        //    }
+        //    else if (CurrentPossibleComboCount == COMBO_SECOND_COUNT)
+        //    {
+        //        animator.SetBool(AnimationHash.JumpSecondAttack, true);
+        //        return;
+        //    }
+        //    else if (CurrentPossibleComboCount == COMBO_FINISH_COUNT)
+        //    {
+        //        animator.SetBool(AnimationHash.JumpFinishAttack, true);
+        //        return;
+        //    }
+        //}
     }
     public override void SkillAttack()
     {

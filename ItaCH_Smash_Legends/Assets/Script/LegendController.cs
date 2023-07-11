@@ -1,5 +1,3 @@
-﻿using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +6,7 @@ public enum ComboAttackType
     First,
     Second,
     FirstJump,
-    SecondJump,
+    SecondJump
 }
 public enum ActionType
 {
@@ -21,6 +19,16 @@ public enum ActionType
 
 public class LegendController : MonoBehaviour
 {
+    private float _jumpAcceleration = 14.2f;
+    private float _gravitationalAcceleration = 36f;
+    private float _maxFallingSpeed = 23f;
+    public static readonly float MAX_JUMP_POWER = 1f;
+
+    [SerializeField] private SphereCollider _skillAttackHitZone;
+    [SerializeField] private SphereCollider _attackHitZone;
+    [SerializeField] private SphereCollider _heavyAttackHitZone;
+    [SerializeField] private BoxCollider _jumpAttackHitZone;
+
     private InputAction[] _actions;
 
     private CharacterStatus _characterStatus;
@@ -31,10 +39,11 @@ public class LegendController : MonoBehaviour
 
     public Vector3 MoveDirection { get; private set; }
 
-    private bool _canAttack;
+    internal bool isJump = true;
+    internal bool _canAttack;
 
     // 추후 Character base 데이터 로 변환해야함.
-    private const float MAX_JUMP_POWER = 1f;
+    //private const float MAX_JUMP_POWER = 1f;
     private readonly Vector3 JUMP_DIRECTION = Vector3.up;
 
     private void Awake()
@@ -45,8 +54,15 @@ public class LegendController : MonoBehaviour
         _legendAnimationController = GetComponent<LegendAnimationController>();
 
         InitActions();
+
+        Physics.gravity = new Vector3(0f, -_gravitationalAcceleration, 0f);
+        _rigidbody.mass = MAX_JUMP_POWER / _jumpAcceleration;
     }
 
+    private void FixedUpdate()
+    {
+        FixedMaxFallSpeed();
+    }
     private void OnMove(InputValue value)
     {
         Vector2 input = value.Get<Vector2>();
@@ -55,27 +71,32 @@ public class LegendController : MonoBehaviour
         {
             MoveDirection = new Vector3(input.x, 0, input.y);
         }
-        else
-        {
-            _legendAnimationController.SetBoolAnimationFalse(AnimationHash.Run);
-        }
     }
 
     private void OnJump()
     {
-        _legendAnimationController.SetTriggerAnimation(AnimationHash.Jump);
+        if (isJump)
+        {
+            _legendAnimationController.TriggerAnimation(AnimationHash.Jump);
+            _rigidbody.AddForce(JUMP_DIRECTION * MAX_JUMP_POWER, ForceMode.Impulse);
+        }
     }
     private void OnDefaultAttack()
     {
-        _legendAnimationController.SetTriggerAnimation(AnimationHash.FirstAttack);
+        if (!isJump)
+        {
+            _legendAnimationController.TriggerAnimation(AnimationHash.FirstJumpAttack);
+            return;
+        }
+        _legendAnimationController.TriggerAnimation(AnimationHash.FirstAttack);
     }
     private void OnSmashAttack()
     {
-        _legendAnimationController.SetTriggerAnimation(AnimationHash.HeavyAttack);
+        _legendAnimationController.TriggerAnimation(AnimationHash.HeavyAttack);
     }
     private void OnSkillAttack()
     {
-        _legendAnimationController.SetTriggerAnimation(AnimationHash.SkillAttack);
+        _legendAnimationController.TriggerAnimation(AnimationHash.SkillAttack);
     }
 
     private void InitActions()
@@ -93,7 +114,7 @@ public class LegendController : MonoBehaviour
     {
         if (_canAttack && IsTriggered(ActionType.DefaultAttack))
         {
-            _legendAnimationController.PlayAttackAnimation(comboAttackType);
+            _legendAnimationController.AttackAnimation(comboAttackType);
             LookForwardOnAttack();
             _canAttack = false;
         }
@@ -115,19 +136,60 @@ public class LegendController : MonoBehaviour
     {
         if (MoveDirection != Vector3.zero)
         {
-            _legendAnimationController.SetBoolAnimationTrue(AnimationHash.Run);
+            _legendAnimationController.TrueAnimation(AnimationHash.Run);
             transform.rotation = Quaternion.LookRotation(MoveDirection);
             transform.Translate(Vector3.forward * (_characterStatus.MoveSpeed * Time.deltaTime));
         }
         else
         {
-            _legendAnimationController.SetPlayAnimation(AnimationHash.Idle);
+            _legendAnimationController.FalseAnimation(AnimationHash.Run);
         }
     }
-    public void JumpInput()
+    private void OnCollisionEnter(Collision collision)
     {
-        _rigidbody.AddForce(JUMP_DIRECTION * MAX_JUMP_POWER, ForceMode.Impulse);
+        if (collision.gameObject.CompareTag(StringLiteral.Ground))
+        {
+            _legendAnimationController.FalseAnimation(AnimationHash.JumpDown);
+            isJump = true;
+        }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(StringLiteral.HangZone))
+        {
+            // TODO : 추후구현
+            // Animation.Play(Hang);
+        }
+
+        if (other.CompareTag(StringLiteral.Player))
+        {
+            other.transform.forward = (-1) * transform.forward;
+            _legendAnimationController.LengendHit(other);
+        }
+    }
+    private void FixedMaxFallSpeed()
+    {
+        if (_rigidbody.velocity.y <= 0f)
+        {
+            Vector3 currentVelocity = _rigidbody.velocity;
+
+            if (currentVelocity.magnitude > _maxFallingSpeed)
+            {
+                currentVelocity = currentVelocity * _maxFallingSpeed / currentVelocity.magnitude;
+                _rigidbody.velocity = currentVelocity;
+            }
+        }
+    }
+    #region 각 공격별 HitZone 생성
+    private void EnableAttackHitZone() => _attackHitZone.enabled = true;
+    private void DisableAttackHitZone() => _attackHitZone.enabled = false;
+    private void EnableJumpAttackHitZone() => _jumpAttackHitZone.enabled = true;
+    private void DisableJumpAttackHitZone() => _jumpAttackHitZone.enabled = false;
+    private void EnableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = true;
+    private void DisableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = false;
+    private void EnableSkillAttackHitZone() => _skillAttackHitZone.enabled = true;
+    private void DisableSkillAttackHitZone() => _skillAttackHitZone.enabled = false;
+    #endregion
     // PlayerRollUp 
     // DownIdle 상태에서 기능 수행
 

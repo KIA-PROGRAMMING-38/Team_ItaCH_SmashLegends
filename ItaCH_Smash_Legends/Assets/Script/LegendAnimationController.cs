@@ -1,8 +1,9 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class LegendAnimationController : MonoBehaviour
 {
-    //ÃßÈÄ ¸®¼Ò½º ÇÒ´ç
+    //ì¶”í›„ ë¦¬ì†ŒìŠ¤ í• ë‹¹
     [SerializeField]
     private AnimationClip[] _applyAttackClip;
     [SerializeField]
@@ -13,6 +14,7 @@ public class LegendAnimationController : MonoBehaviour
     private AnimatorOverrideController _animatorOverrideController;
 
     private int _animationClipIndex;
+    internal bool _isHitUp;
 
     private void Awake()
     {
@@ -20,20 +22,6 @@ public class LegendAnimationController : MonoBehaviour
         _animator = GetComponent<Animator>();
 
         SetAnimatorClip();
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag(StringLiteral.Ground))
-        {
-            _animator.SetBool(AnimationHash.JumpDown, false);
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag(StringLiteral.HangZone))
-        {
-            // Animation.Play(Hang);
-        }
     }
     private void SetAnimatorClip()
     {
@@ -73,46 +61,33 @@ public class LegendAnimationController : MonoBehaviour
             _animatorOverrideController[StringLiteral.AnimationClip[value]] = _applyAttackClip[_animationClipIndex];
         }
     }
-    public void PlayJumpAttackAnimation()
-    {
-        if (_legendController.IsTriggered(ActionType.DefaultAttack))
-        {
-            _animator.Play(AnimationHash.FirstJumpAttack);
-        }
-    }
-    public void PlayAttackAnimation(ComboAttackType comboAttackType)
+    public void AttackAnimation(ComboAttackType comboAttackType)
     {
         switch (comboAttackType)
         {
             case ComboAttackType.First:
-                _animator.Play(AnimationHash.FirstAttack);
+                PlayAnimation(AnimationHash.FirstAttack);
                 break;
             case ComboAttackType.Second:
-                _animator.Play(AnimationHash.SecondAttack);
-                break;
-            case ComboAttackType.FirstJump:
-                _animator.Play(AnimationHash.FirstJumpAttack);
-                break;
-            case ComboAttackType.SecondJump:
-                _animator.Play(AnimationHash.SecondJumpAttack);
+                PlayAnimation(AnimationHash.SecondAttack);
                 break;
         }
     }
-    public void SetTriggerAnimation(int animationHash)
+    public void TriggerAnimation(int animationHash)
     {
         _animator.SetTrigger(animationHash);
     }
-    public void SetBoolAnimationTrue(int animationHash)
+    public void TrueAnimation(int animationHash)
     {
         _animator.SetBool(animationHash, true);
     }
-    public void SetBoolAnimationFalse(int animationHash)
+    public void FalseAnimation(int animationHash)
     {
         _animator.SetBool(animationHash, false);
     }
-    public void SetPlayAnimation(int animationHash)
+    public void PlayAnimation(int animationhash)
     {
-        _animator.Play(animationHash);
+        _animator.Play(animationhash);
     }
     public void ResetComboAttackAnimationClip()
     {
@@ -130,4 +105,23 @@ public class LegendAnimationController : MonoBehaviour
             }
         }
     }
+    public void LengendHit(Collider other)
+    {
+        Vector3 _knockbackDirection = transform.forward + transform.up;
+        float power = 0.3f;
+        float heavyPower = 0.5f;
+        Rigidbody rigidbody = other.GetComponent<Rigidbody>();
+        LegendAnimationController animator = other.GetComponent<LegendAnimationController>();
+
+        animator.TriggerAnimation(AnimationHash.Hit);
+        rigidbody.AddForce(_knockbackDirection * power, ForceMode.Impulse);
+
+        if (_isHitUp)
+        {
+            animator.TriggerAnimation(AnimationHash.HitUp);
+            rigidbody.AddForce(_knockbackDirection * heavyPower, ForceMode.Impulse);
+        }
+    }
+     
+    private void ConvertHitUpAnimationEvent() => _isHitUp = true;
 }
