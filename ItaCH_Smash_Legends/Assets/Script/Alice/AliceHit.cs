@@ -11,16 +11,16 @@ public class AliceHit : PlayerHit
         switch (_playerStatus.CurrentState)
         {
             case PlayerStatus.State.SkillAttack:
-                SkillAttackHit(other, _characterStatus.SkillAttackDamage).Forget();
+                SkillAttackHit(other, _characterStatus.Stat.SkillAttackDamage).Forget();
                 break;
             case PlayerStatus.State.ComboAttack:
-                GetHit(defaultAttackKnockbackDirection, defaultKnockbackPower, AnimationHash.Hit, other, _characterStatus.DefaultAttackDamage);
+                GetHit(defaultAttackKnockbackDirection, defaultKnockbackPower, AnimationHash.Hit, other, _characterStatus.Stat.DefaultAttackDamage);
                 break;
             case PlayerStatus.State.FinishComboAttack:
-                GetHit(heavyAttackKnockbackDirection, heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.HeavyAttackDamage);
+                GetHit(heavyAttackKnockbackDirection, heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.Stat.HeavyAttackDamage);
                 break;
             case PlayerStatus.State.JumpAttack:
-                GetHit(heavyAttackKnockbackDirection, heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.JumpAttackDamage);
+                GetHit(heavyAttackKnockbackDirection, heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.Stat.JumpAttackDamage);
                 break;
         }
 

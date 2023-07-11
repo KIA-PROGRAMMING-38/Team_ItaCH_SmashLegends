@@ -10,22 +10,22 @@ public class PeterHit : PlayerHit
         {
 
             case PlayerStatus.State.SkillAttack:
-                GetHit(defaultKnockbackPower, AnimationHash.Hit, other, _characterStatus.SkillAttackDamage);
+                GetHit(defaultKnockbackPower, AnimationHash.Hit, other, _characterStatus.Stat.SkillAttackDamage);
                 break;
             case PlayerStatus.State.SkillEndAttack:
-                GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.HeavyAttackDamage);
+                GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.Stat.HeavyAttackDamage);
                 break;
             case PlayerStatus.State.HeavyAttack:
-                GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.HeavyAttackDamage);
+                GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.Stat.HeavyAttackDamage);
                 break;
             case PlayerStatus.State.ComboAttack:
-                GetHit(defaultKnockbackPower, AnimationHash.Hit, other, _characterStatus.DefaultAttackDamage);
+                GetHit(defaultKnockbackPower, AnimationHash.Hit, other, _characterStatus.Stat.DefaultAttackDamage);
                 break;
             case PlayerStatus.State.FinishComboAttack:
-                GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.DefaultAttackDamage);
+                GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.Stat.DefaultAttackDamage);
                 break;
             case PlayerStatus.State.JumpAttack:
-                GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.DefaultAttackDamage);
+                GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.Stat.DefaultAttackDamage);
                 break;
 
         }

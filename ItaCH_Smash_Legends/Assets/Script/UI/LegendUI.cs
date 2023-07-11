@@ -1,4 +1,4 @@
-﻿using TMPro;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -48,8 +48,8 @@ public class LegendUI : MonoBehaviour
         _characterStatus.OnPlayerRespawn -= EnableLegendUI;
         _characterStatus.OnPlayerRespawn += EnableLegendUI;
 
-        SetHealthPointBar(_characterStatus.MaxHP);
-        SetHealthPoint(_characterStatus.HealthPoint, _characterStatus.CurrentHPRatio);
+        SetHealthPointBar(_characterStatus.Stat.HP);
+        SetHealthPoint(_characterStatus.CurrentHP, _characterStatus.CurrentHPRatio);
     }
 
     public void SetHealthPointBar(int maxHealthPoint)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Util.Enum;
@@ -7,14 +7,14 @@ public class LegendMenuUI : MonoBehaviour, IPanel
 {
     private enum LegendName
     {
-        // UI 로직 변경 이후 싹다 사라져야 할 한글enum
+        // TO DO:  UI 로직 변경 이후 싹다 사라져야 할 한글 리터럴
         None,
         앨리스,
         후크,
         피터
     }
 
-    [SerializeField] private Sprite[] _portraitSprites; // 리소스 매니저 수정 이후 바뀔 부분
+    [SerializeField] private Sprite[] _portraitSprites; // TO DO: 리소스 매니저 수정 이후 바뀔 부분
     [SerializeField] private GameObject _legendSelectMenuPrefab;
     private LobbyUI _lobbyUI;
     private LegendSelectUI[] _legendSelectMenu;

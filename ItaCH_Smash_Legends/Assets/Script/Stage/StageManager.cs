@@ -224,6 +224,7 @@ public class StageManager : MonoBehaviourPunCallbacks
                 _legendUI = new List<GameObject>();
                 for (int i = 0; i < _totalPlayer; ++i)
                 {
+                    Debug.Log(_playerCharacterInstances[i].name);
                     SetLegendUI(_playerCharacterInstances[i]);
                 }
                 _modeUI = Instantiate(_modeUIPrefab[(int)GameModeType.Duel]);
@@ -239,6 +240,7 @@ public class StageManager : MonoBehaviourPunCallbacks
     public void SetLegendUI(GameObject player)
     {
         _legendUIPrefab = Resources.Load<GameObject>("UI/LegendUI");
+        Debug.Log(_legendUIPrefab);
         GameObject legendUI = Instantiate(_legendUIPrefab);
         legendUI.GetComponent<LegendUI>().InitLegendUISettings(player.transform);
         _legendUI.Add(legendUI);

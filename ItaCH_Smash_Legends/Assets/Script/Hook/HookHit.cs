@@ -35,11 +35,11 @@ public class HookHit : MonoBehaviour
     }
     private void SetPowerAndDamage()
     {
-        defaultKnockbackPower = _characterStatus.DefaultKnockbackPower;
-        heavyKnockbackPower = _characterStatus.HeavyKnockbackPower;
-        defaultdamage = _characterStatus.DefaultAttackDamage;
-        skillDamage = _characterStatus.SkillAttackDamage;
-        heavyDamage = _characterStatus.SkillAttackDamage;
+        defaultKnockbackPower = _characterStatus.Stat.DefaultKnockbackPower;
+        heavyKnockbackPower = _characterStatus.Stat.HeavyKnockbackPower;
+        defaultdamage = _characterStatus.Stat.DefaultAttackDamage;
+        skillDamage = _characterStatus.Stat.SkillAttackDamage;
+        heavyDamage = _characterStatus.Stat.SkillAttackDamage;
     }
     private void OnTriggerEnter(Collider other)
     {

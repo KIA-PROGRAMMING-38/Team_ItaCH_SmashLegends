@@ -22,7 +22,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     internal float nextTransitionMinValue = 0.5f;
     internal float nextTransitionMaxValue = 0.8f;
     protected float heavyCooltime;
-    protected int skillGauage;
+    protected int skillGauge;
     protected int skillGauageRecovery;
 
     private void Awake()
@@ -41,10 +41,10 @@ public class PlayerAttack : MonoBehaviour, IAttack
     }
     private void SetStatus()
     {
-        defaultDashPower = characterStatus.DashPower;
-        heavyCooltime = characterStatus.HeavyCooltime;
-        skillGauage = characterStatus.SkillGauge;
-        skillGauageRecovery = characterStatus.SkillGauageRecovery;
+        defaultDashPower = characterStatus.Stat.DashPower;
+        heavyCooltime = characterStatus.Stat.HeavyCooltime;
+        skillGauge = characterStatus.Stat.SkillGauge;
+        skillGauageRecovery = characterStatus.Stat.SkillGaugeRecovery;
     }
     public void AttackRotate()
     {

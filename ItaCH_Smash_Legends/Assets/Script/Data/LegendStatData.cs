@@ -1,8 +1,8 @@
-﻿public class LegendStatData
+public class LegendStatData
 {
     public int LegendID { get; set; }
     public int SkillGauge { get; set; }
-    public int SkillRecovery { get; set; }
+    public int SkillGaugeRecovery { get; set; }
     public float MoveSpeed { get; set; }
     public float JumpAcceleration { get; set; }
     public float GravitationalAcceleration { get; set; }
@@ -17,4 +17,10 @@
     public float DefaultKnockbackPower { get; set; }
     public float HeavyKnockbackPower { get; set; }
     public float HeavyCooltime { get; set; }
+
+    public LegendStatData Clone()
+    {
+        return (LegendStatData)this.MemberwiseClone();
+    }
+
 }

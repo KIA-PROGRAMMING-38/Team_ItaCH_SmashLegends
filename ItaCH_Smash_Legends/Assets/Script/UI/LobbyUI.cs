@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using TMPro;
 using UnityEngine;
 using Util.Enum;
@@ -24,7 +24,7 @@ public class LobbyUI : MonoBehaviour
     public event Action<CharacterType> OnCharacterChanged;
 
     private void Start()
-    {
+    {        
         SetUserName();
 
         Managers.LobbyManager.OnLogInSuccessed -= InitLobbyUISettings;

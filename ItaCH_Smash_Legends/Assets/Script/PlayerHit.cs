@@ -20,8 +20,8 @@ public class PlayerHit : MonoBehaviour, IHit
         _playerStatus = GetComponent<PlayerStatus>();
         _animator = GetComponent<Animator>();
 
-        defaultKnockbackPower = _characterStatus.DefaultKnockbackPower;
-        heavyKnockbackPower = _characterStatus.HeavyKnockbackPower;
+        defaultKnockbackPower = _characterStatus.Stat.DefaultKnockbackPower;
+        heavyKnockbackPower = _characterStatus.Stat.HeavyKnockbackPower;
         invincible = false;
     }
 

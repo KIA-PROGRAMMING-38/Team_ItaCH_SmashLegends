@@ -77,7 +77,7 @@ public class AliceBomb : MonoBehaviour
         SetParent();
         PlayAllEffect();
         await UniTask.Delay(200);
-        _aliceHit.GetHit(_knockBackDirection, _knockBackPower, AnimationHash.Hit, other, _characterStatus.HeavyAttackDamage);
+        _aliceHit.GetHit(_knockBackDirection, _knockBackPower, AnimationHash.Hit, other, _characterStatus.Stat.HeavyAttackDamage);
         await UniTask.Delay(400);
         CancelUniTask();
         RootReCall();
