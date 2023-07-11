@@ -80,7 +80,7 @@ public class CharacterStatus : MonoBehaviour
     }
 
     public void GetDamage(int damage) // 피격 판정 시 호출
-    {        
+    {
         int damagedHealthPoint = _currentHealthPoint - damage;
         _currentHealthPoint = Mathf.Max(damagedHealthPoint, DEAD_TRIGGER_HP);        
         OnPlayerHealthPointChange.Invoke(_currentHealthPoint, CurrentHPRatio);
