@@ -29,7 +29,7 @@ public class CharacterStatus : MonoBehaviour
     public event Action<int> OnPlayerGetDamage;
     public event Action<CharacterStatus> OnPlayerDie;
     public event Action<CharacterStatus> OnPlayerRespawn;
-    public event Action<GameObject, int> OnRespawnSetting;
+    public event Action<CharacterStatus, int> OnRespawnSetting;
     public event Action OnPlayerDieEffect;
     public event Action OnPlayerDieSmokeEffect;
 
@@ -85,7 +85,7 @@ public class CharacterStatus : MonoBehaviour
         this.GetComponent<Collider>().isTrigger = false;
         this._isDead = false;
         OnPlayerRespawn.Invoke(this);
-        OnRespawnSetting.Invoke(this.gameObject, PlayerID);
+        OnRespawnSetting.Invoke(this, PlayerID);
         SetDefaultHP();
     }
 }

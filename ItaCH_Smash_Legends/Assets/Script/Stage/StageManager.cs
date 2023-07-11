@@ -14,8 +14,8 @@ public class StageManager : MonoBehaviourPunCallbacks
     public GameMode CurrentGameMode { get => _currentGameMode; private set => _currentGameMode = value; }
     private GameMode _currentGameMode;
     private GameModeType _selectedGameMode;
-    private GameObject[] _playerCharacterInstances;
-    public GameObject[] Players { get => _playerCharacterInstances; }
+    private CharacterStatus[] _playerCharacterInstances;
+    public CharacterStatus[] Players { get => _playerCharacterInstances; }
     private CharacterStatus[] _teamBlueCharacter;
     private CharacterStatus[] _teamRedCharacter;
     private const int INDEX_OFFSET_FOR_ZERO = 1;
@@ -82,7 +82,7 @@ public class StageManager : MonoBehaviourPunCallbacks
     public void SetStage(GameMode currentGameMode)
     {
         CreateMap(currentGameMode);
-        _playerCharacterInstances = new GameObject[_totalPlayer];
+        _playerCharacterInstances = new CharacterStatus[_totalPlayer];
         _teamBlueCharacter = new CharacterStatus[_teamSize];
         _teamRedCharacter = new CharacterStatus[_teamSize];
         for (int playerID = 0; playerID < _totalPlayer; playerID++)
@@ -103,13 +103,13 @@ public class StageManager : MonoBehaviourPunCallbacks
     {
         int playerID = userData.Id;
         CharacterType selectedCharacter = userData.SelectedCharacter;
-        GameObject characterPrefab = GetCharacterPrefab(selectedCharacter);
+        CharacterStatus characterPrefab = GetCharacterPrefab(selectedCharacter);
 
         if (characterPrefab != null)
         {
             if (spawnPoints[playerID] != null)
             {
-                GameObject characterInstance = Instantiate(characterPrefab, spawnPoints[playerID + INDEX_OFFSET_FOR_ZERO].position, Quaternion.identity);
+                CharacterStatus characterInstance = Instantiate(characterPrefab, spawnPoints[playerID + INDEX_OFFSET_FOR_ZERO].position, Quaternion.identity);
                 InitCharacterStatus(characterInstance, userData);
                 SetPlayerInputController(characterInstance, playerID);
                 _playerCharacterInstances[playerID] = characterInstance;
@@ -125,14 +125,13 @@ public class StageManager : MonoBehaviourPunCallbacks
         }
     }
 
-    private GameObject GetCharacterPrefab(CharacterType character)
+    private CharacterStatus GetCharacterPrefab(CharacterType character)
     {
         string characterPrefabPath = FilePath.GetCharacterInGamePrefabPath(character);
-        return Resources.Load<GameObject>(characterPrefabPath);
+        return Resources.Load<CharacterStatus>(characterPrefabPath);
     }
-    private void InitCharacterStatus(GameObject character, UserData userData)
-    {
-        CharacterStatus characterStatus = character.GetComponent<CharacterStatus>();
+    private void InitCharacterStatus(CharacterStatus characterStatus, UserData userData)
+    {        
         int playerID = userData.Id;
         characterStatus.Init(userData);                
         characterStatus.RespawnTime = _modeDefaultRespawnTime;
@@ -166,7 +165,7 @@ public class StageManager : MonoBehaviourPunCallbacks
             character.gameObject.name = "blue";
         }
     }
-    public void SetPlayerInputController(GameObject character, int id)
+    public void SetPlayerInputController(CharacterStatus character, int id)
     {
         UnityEngine.InputSystem.PlayerInput playercontroller;
 
@@ -236,7 +235,7 @@ public class StageManager : MonoBehaviourPunCallbacks
                 break;
         }
     }
-    public void SetLegendUI(GameObject player)
+    public void SetLegendUI(CharacterStatus player)
     {
         _legendUIPrefab = Resources.Load<GameObject>("UI/LegendUI");        
         GameObject legendUI = Instantiate(_legendUIPrefab);

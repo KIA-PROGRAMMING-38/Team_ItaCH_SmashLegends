@@ -15,7 +15,7 @@ public class ModeUI : MonoBehaviour
     public void InitModeUISettings(StageManager stageManager)
     {
         _stageManager = stageManager;
-        GameObject[] players = stageManager.Players;
+        CharacterStatus[] players = stageManager.Players;
 
         SetUIForEachPlayers(players);
     }
@@ -44,7 +44,7 @@ public class ModeUI : MonoBehaviour
         characterStatus.OnPlayerHealthPointChange -= healthBar.SetHealthPoint;
         characterStatus.OnPlayerHealthPointChange += healthBar.SetHealthPoint;
     }
-    private void SetUIForEachPlayers(GameObject[] players)
+    private void SetUIForEachPlayers(CharacterStatus[] players)
     {
         for (int i = 0; i < players.Length; ++i)
         {
