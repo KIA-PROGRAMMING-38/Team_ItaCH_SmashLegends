@@ -84,8 +84,8 @@ public class CharacterStatus : MonoBehaviour
         this.gameObject.SetActive(true);
         this.GetComponent<Collider>().isTrigger = false;
         this._isDead = false;
-        OnPlayerRespawn.Invoke(this);
-        OnRespawnSetting.Invoke(this, PlayerID);
+        OnPlayerRespawn?.Invoke(this);
+        OnRespawnSetting?.Invoke(this, PlayerID);
         SetDefaultHP();
     }
 }

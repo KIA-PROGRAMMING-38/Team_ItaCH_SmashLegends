@@ -5,12 +5,13 @@ namespace Util.Path
 {
     public static class FilePath
     {
+        // TO DO : 개별 기능 리팩토링 시 해당 부분에서 관리
         #region Folder Path
         public const string UIResources = "UI/";
         public const string UISpritePath = "UI/Sprite/";
         public const string AliceIcon = "UI/MobileUI/Sprite/Alice/Alice";
         public const string HookIcon = "UI/MobileUI/Sprite/Hook/Hook";
-        public const string PeterIcon = "UI/MobileUI/Sprite/Peter/Peter";        
+        public const string PeterIcon = "UI/MobileUI/Sprite/Peter/Peter";
         #endregion
 
         #region UI File Path
@@ -67,7 +68,7 @@ namespace Util.Path
             string characterName = characterType.ToString();
             stringBuilder.Append(UISpritePath);
             stringBuilder.Append(characterName);
-            stringBuilder.Append($"/{characterName}");                        
+            stringBuilder.Append($"/{characterName}");
             return stringBuilder.ToString();
         }
     }

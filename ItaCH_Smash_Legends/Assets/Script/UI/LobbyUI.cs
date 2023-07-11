@@ -37,6 +37,7 @@ public class LobbyUI : MonoBehaviour
         SetPanelAndButton(FilePath.LegendMenuUIPath, FilePath.LegendMenuButtonPath);
         SetPanelAndButton(FilePath.SettingUIPath, FilePath.SettingButtonPath);
         SetPanelAndButton(FilePath.MatchingUIPath, FilePath.MatchingButtonPath);
+        // TO DO : ResourceManager 및 UIManager에서 관리
         SetLobbyCharaterModel();
     }
     private void SetUserName()

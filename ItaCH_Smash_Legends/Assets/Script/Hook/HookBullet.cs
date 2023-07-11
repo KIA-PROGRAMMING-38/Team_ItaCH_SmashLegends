@@ -14,7 +14,7 @@ public class HookBullet : MonoBehaviour
     protected readonly string HEAVY_BULLET_DELETE_EFFECT_PATH = FilePath.HeavyBulletDeleteEffect;
     protected readonly string LAST_HEAVY_BULLET_DELETE_EFFECT_PATH = FilePath.LastHeavyBulletDeleteEffect;
     protected readonly string SKILL_BULLET_DELETE_EFFECT_PATH = FilePath.SkillBulletDeleteEffect;
-
+    // TO DO : ResourceManager에서 effect 관리
     protected float bulletDeleteTime = 0.23f;
     protected float currentBulletSpeed = 20;
 
