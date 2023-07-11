@@ -8,21 +8,16 @@ public class Managers : MonoBehaviour
     private static StageManager s_stageManager;
     private static LobbyManager s_lobbyManager;
     private static UserManager s_userManager = new UserManager();
+    private static DataManager s_dataManager = new DataManager();
 
     public static StageManager StageManager { get { Init(); return s_stageManager; } }
     public static LobbyManager LobbyManager { get { Init(); return s_lobbyManager; } }
     public static UserManager UserManager { get { Init(); return s_userManager; } }
-
-    // DataManager 구성 이후 옮겨갈 부분
-    public DataTable CharacterTable { get => _characterTable; private set => _characterTable = value; }
-    private DataTable _characterTable;
+    public static DataManager DataManager { get { Init(); return s_dataManager; } }
 
     private void Start()
     {
         Init();
-        // DataManager 구성 이후 옮겨갈 부분
-        _characterTable = new DataTable();
-        _characterTable.SetDataTable();
     }
 
     private static void Init()
@@ -43,6 +38,7 @@ public class Managers : MonoBehaviour
                 s_userManager.Init();
                 s_lobbyManager.Init();
                 s_stageManager.Init();
+                s_dataManager.Init();
             }
         }
     }

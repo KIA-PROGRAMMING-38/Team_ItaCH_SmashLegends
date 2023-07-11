@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
 {
-    // LegnedController ¿Ï·á½Ã ¸®ÆåÅä¸µ
+    // LegnedController ì™„ë£Œì‹œ ë¦¬í™í† ë§
 
     private CharacterStatus _characterStatus;
     private PlayerStatus _playerStatus;
@@ -21,7 +21,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
-        _currentMoveSpeed = _characterStatus.MoveSpeed;
+        _currentMoveSpeed = _characterStatus.Stat.MoveSpeed;
     }
 
     public void MoveAndRotate(Vector3 moveDirection)

@@ -11,10 +11,6 @@ public class HealthBar : MonoBehaviour
     private bool _isSetHealthPointCalledBefore;
     private CancellationTokenSource _cancellationTokenSource;
 
-    private void Start()
-    {
-        InitHealthBarSettings();
-    }
     public void InitHealthBarSettings()
     {
         _fillingBackground = transform.GetChild(0).GetComponent<Image>();

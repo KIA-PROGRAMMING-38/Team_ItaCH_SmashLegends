@@ -410,8 +410,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputField: {fileID: 8867678598626691846}
-  _logInField: {fileID: 8867678597390762942}
-  _loadingObject: {fileID: 8867678598402717704}
+  _inputBox: {fileID: 8867678597390762942}
+  _spinnerImage: {fileID: 8867678598402717704}
   _errorMessage: {fileID: 8867678598710665791}
   _connectionInfoText: {fileID: 8867678598530461073}
   _background: {fileID: 8867678597699730074}

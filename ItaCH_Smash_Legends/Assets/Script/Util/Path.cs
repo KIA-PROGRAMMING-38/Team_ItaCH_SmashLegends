@@ -30,7 +30,8 @@ namespace Util.Path
             stringBuilder.Append(ResourcesManager.CharacterPath);
             stringBuilder.Append(characterName);
             stringBuilder.Append($"/{characterName}{ResourcesManager.CharacterInGamePath}");
-            stringBuilder.Append($"{characterName}{ResourcesManager.CharacterInGamePrefabName}");
+            stringBuilder.Append($"/{characterName}{ResourcesManager.CharacterInGamePrefabName}");
+            UnityEngine.Debug.Log(stringBuilder.ToString());
             return stringBuilder.ToString();
         }
     }

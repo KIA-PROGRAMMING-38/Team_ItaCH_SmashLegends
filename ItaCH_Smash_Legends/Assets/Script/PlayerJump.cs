@@ -31,9 +31,9 @@ public class PlayerJump : MonoBehaviour
 
     void Start()
     {
-        _jumpAcceleration = _characterStatus.JumpAcceleration;
-        _maxFallingSpeed = _characterStatus.MaxFallingSpeed;
-        _gravitationalAcceleration = _characterStatus.GravitationalAcceleration;
+        _jumpAcceleration = _characterStatus.Stat.JumpAcceleration;
+        _maxFallingSpeed = _characterStatus.Stat.MaxFallingSpeed;
+        _gravitationalAcceleration = _characterStatus.Stat.GravitationalAcceleration;
 
         _rigidbody.mass = MAX_JUMP_POWER / _jumpAcceleration;
 

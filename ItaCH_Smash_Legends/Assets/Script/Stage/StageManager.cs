@@ -58,7 +58,7 @@ public class StageManager : MonoBehaviourPunCallbacks
     private void OnEnable()
     {
         Managers.LobbyManager.OnInGameSceneLoaded -= SetStage;
-        Managers.LobbyManager.OnInGameSceneLoaded += SetStage;        
+        Managers.LobbyManager.OnInGameSceneLoaded += SetStage;
     }
 
     public void Init()
@@ -134,15 +134,9 @@ public class StageManager : MonoBehaviourPunCallbacks
     {
         CharacterStatus characterStatus = character.GetComponent<CharacterStatus>();
         int playerID = userData.Id;
-        CharacterType selectedCharacter = userData.SelectedCharacter;
-
-        characterStatus.InitCharacterDefaultData(selectedCharacter);
-        characterStatus.InitStatus();
-        characterStatus.CharacterType = selectedCharacter;
-        characterStatus.PlayerID = playerID;
-        characterStatus.Name = userData.Name;
+        characterStatus.Init(userData);                
         characterStatus.RespawnTime = _modeDefaultRespawnTime;
-        SetTeam(characterStatus, playerID);
+        SetTeam(characterStatus, playerID);        
 
         characterStatus.OnRespawnSetting -= SetPlayerInputController;
         characterStatus.OnRespawnSetting += SetPlayerInputController;
@@ -158,7 +152,7 @@ public class StageManager : MonoBehaviourPunCallbacks
             _teamMemberIndex = playerID - _teamSize;
             _teamRedCharacter[_teamMemberIndex] = character;
             character.gameObject.layer = LayerMask.NameToLayer("TeamRed");
-            character.TeamSpawnPoint = character.transform.position;
+            character.SpawnPoint = character.transform.position;
             character.gameObject.name = "red";
         }
 
@@ -168,7 +162,7 @@ public class StageManager : MonoBehaviourPunCallbacks
             _teamMemberIndex = playerID;
             _teamBlueCharacter[_teamMemberIndex] = character;
             character.gameObject.layer = LayerMask.NameToLayer("TeamBlue");
-            character.TeamSpawnPoint = character.transform.position;
+            character.SpawnPoint = character.transform.position;
             character.gameObject.name = "blue";
         }
     }
@@ -230,6 +224,7 @@ public class StageManager : MonoBehaviourPunCallbacks
                 _legendUI = new List<GameObject>();
                 for (int i = 0; i < _totalPlayer; ++i)
                 {
+                    Debug.Log(_playerCharacterInstances[i].name);
                     SetLegendUI(_playerCharacterInstances[i]);
                 }
                 _modeUI = Instantiate(_modeUIPrefab[(int)GameModeType.Duel]);
@@ -245,6 +240,7 @@ public class StageManager : MonoBehaviourPunCallbacks
     public void SetLegendUI(GameObject player)
     {
         _legendUIPrefab = Resources.Load<GameObject>("UI/LegendUI");
+        Debug.Log(_legendUIPrefab);
         GameObject legendUI = Instantiate(_legendUIPrefab);
         legendUI.GetComponent<LegendUI>().InitLegendUISettings(player.transform);
         _legendUI.Add(legendUI);
@@ -304,8 +300,8 @@ public class StageManager : MonoBehaviourPunCallbacks
     }
     private TeamType CheckTeamHealthRatio()
     {
-        int teamBlueCharacterHealthRatio = _teamBlueCharacter[0].HealthPointRatio;
-        int teamRedCharacterHelathRatio = _teamRedCharacter[0].HealthPointRatio;
+        int teamBlueCharacterHealthRatio = _teamBlueCharacter[0].CurrentHPRatio;
+        int teamRedCharacterHelathRatio = _teamRedCharacter[0].CurrentHPRatio;
 
         if (teamBlueCharacterHealthRatio == teamRedCharacterHelathRatio)
             return TeamType.None;
