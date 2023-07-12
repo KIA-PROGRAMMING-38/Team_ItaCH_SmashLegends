@@ -1,28 +1,16 @@
 using UnityEngine;
 
-public class PlayerHit : MonoBehaviour, IHit
+public class PlayerHit : MonoBehaviour
 {
     private EffectController _effectController;
-    private PlayerHit _playerHit;
-    protected CharacterStatus _characterStatus;
     protected PlayerStatus _playerStatus;
     protected Animator _animator;
-
-    protected float defaultKnockbackPower;
-    protected float heavyKnockbackPower;
-    internal bool invincible;
-
-    protected Vector3 _knockbackDirection;
+    private Rigidbody _rigidbody;
 
     private void Start()
     {
-        _characterStatus = GetComponent<CharacterStatus>();
-        _playerStatus = GetComponent<PlayerStatus>();
         _animator = GetComponent<Animator>();
-
-        defaultKnockbackPower = _characterStatus.Stat.DefaultKnockbackPower;
-        heavyKnockbackPower = _characterStatus.Stat.HeavyKnockbackPower;
-        invincible = false;
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -33,23 +21,51 @@ public class PlayerHit : MonoBehaviour, IHit
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void GetKnockbackOnAttack(Collider other, int animationHash, KnockbackType type)
     {
-        if (other.CompareTag("Player"))
+        transform.forward = -1 * other.transform.forward;
+        Vector3 _knockbackDirection = other.transform.forward + transform.up;
+
+        _animator.SetTrigger(animationHash);
+        _rigidbody.AddForce(_knockbackDirection * SetKnockbackPower(type, other), ForceMode.Impulse);
+        _effectController.StartHitFlashEffet().Forget();
+    }
+    private float SetKnockbackPower(KnockbackType type, Collider other)
+    {
+        CharacterStatus otherStatus = other.GetComponent<CharacterStatus>();
+        float knockbackPower = 0;
+
+        switch (type)
         {
-            _playerHit = other.GetComponent<PlayerHit>();
-            _effectController = other.GetComponent<EffectController>();
+            case KnockbackType.Default:
+                knockbackPower = otherStatus.Stat.DefaultKnockbackPower;
+                break;
 
-            if (_playerHit.invincible == false)
-            {
-                other.transform.forward = (-1) * transform.forward;
-                _effectController.StartHitFlashEffet().Forget();
-                Hit(other);
-            }
+            case KnockbackType.Heavy:
+                knockbackPower = otherStatus.Stat.HeavyKnockbackPower;
+                break;
         }
-    }
-    public virtual void Hit(Collider other)
-    {
 
+        return knockbackPower;
     }
+
+    // 기존 로직 => 추후 삭제
+    public void LengendHit(Collider other)
+    {
+        Vector3 _knockbackDirection = transform.forward + transform.up;
+        float power = 0.3f;
+        float heavyPower = 0.5f;
+        Rigidbody rigidbody = other.GetComponent<Rigidbody>();
+        LegendAnimationController animator = other.GetComponent<LegendAnimationController>();
+
+        //animator.TriggerAnimation(AnimationHash.Hit);
+        rigidbody.AddForce(_knockbackDirection * power, ForceMode.Impulse);
+
+        //if (_legendAnimationController._isHitUp)
+        //{
+        //    animator.TriggerAnimation(AnimationHash.HitUp);
+        //    rigidbody.AddForce(_knockbackDirection * heavyPower, ForceMode.Impulse);
+        //}
+    }
+
 }

@@ -10,7 +10,7 @@ public class LegendAnimationController : MonoBehaviour
     private AnimationClip[] _applyJumpAttackClip;
 
     private LegendController _legendController;
-    private Animator _animator;
+    public Animator Animator { get; private set; }
     private AnimatorOverrideController _animatorOverrideController;
 
     private int _animationClipIndex;
@@ -19,25 +19,25 @@ public class LegendAnimationController : MonoBehaviour
     private void Awake()
     {
         _legendController = GetComponent<LegendController>();
-        _animator = GetComponent<Animator>();
+        Animator = GetComponent<Animator>();
 
         SetAnimatorClip();
     }
     private void SetAnimatorClip()
     {
-        string[] _overrideAnimatorName = new string[_animator.runtimeAnimatorController.animationClips.Length];
-        AnimationClip[] _applyAnimationClip = new AnimationClip[_animator.runtimeAnimatorController.animationClips.Length];
+        string[] _overrideAnimatorName = new string[Animator.runtimeAnimatorController.animationClips.Length];
+        AnimationClip[] _applyAnimationClip = new AnimationClip[Animator.runtimeAnimatorController.animationClips.Length];
 
-        _animatorOverrideController = new AnimatorOverrideController(_animator.runtimeAnimatorController);
+        _animatorOverrideController = new AnimatorOverrideController(Animator.runtimeAnimatorController);
 
-        for (int i = 0; i < _animator.runtimeAnimatorController.animationClips.Length; ++i)
+        for (int i = 0; i < Animator.runtimeAnimatorController.animationClips.Length; ++i)
         {
             _overrideAnimatorName[i] = _animatorOverrideController.animationClips[i].name;
-            _applyAnimationClip[i] = _animator.runtimeAnimatorController.animationClips[i];
+            _applyAnimationClip[i] = Animator.runtimeAnimatorController.animationClips[i];
             _animatorOverrideController[_overrideAnimatorName[i]] = _applyAnimationClip[i];
         }
 
-        _animator.runtimeAnimatorController = _animatorOverrideController;
+        Animator.runtimeAnimatorController = _animatorOverrideController;
     }
     public void SetNextAnimationClip(ComboAttackType type)
     {
@@ -66,29 +66,14 @@ public class LegendAnimationController : MonoBehaviour
         switch (comboAttackType)
         {
             case ComboAttackType.First:
-                PlayAnimation(AnimationHash.FirstAttack);
+                Animator.Play(AnimationHash.FirstAttack);
                 break;
             case ComboAttackType.Second:
-                PlayAnimation(AnimationHash.SecondAttack);
+                Animator.Play(AnimationHash.SecondAttack);
                 break;
         }
     }
-    public void TriggerAnimation(int animationHash)
-    {
-        _animator.SetTrigger(animationHash);
-    }
-    public void TrueAnimation(int animationHash)
-    {
-        _animator.SetBool(animationHash, true);
-    }
-    public void FalseAnimation(int animationHash)
-    {
-        _animator.SetBool(animationHash, false);
-    }
-    public void PlayAnimation(int animationhash)
-    {
-        _animator.Play(animationhash);
-    }
+    
     public void ResetComboAttackAnimationClip()
     {
         _animationClipIndex = 0;
@@ -105,23 +90,5 @@ public class LegendAnimationController : MonoBehaviour
             }
         }
     }
-    public void LengendHit(Collider other)
-    {
-        Vector3 _knockbackDirection = transform.forward + transform.up;
-        float power = 0.3f;
-        float heavyPower = 0.5f;
-        Rigidbody rigidbody = other.GetComponent<Rigidbody>();
-        LegendAnimationController animator = other.GetComponent<LegendAnimationController>();
-
-        animator.TriggerAnimation(AnimationHash.Hit);
-        rigidbody.AddForce(_knockbackDirection * power, ForceMode.Impulse);
-
-        if (_isHitUp)
-        {
-            animator.TriggerAnimation(AnimationHash.HitUp);
-            rigidbody.AddForce(_knockbackDirection * heavyPower, ForceMode.Impulse);
-        }
-    }
-     
     private void ConvertHitUpAnimationEvent() => _isHitUp = true;
 }

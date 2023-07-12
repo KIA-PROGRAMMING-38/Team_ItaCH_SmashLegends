@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class LegendJumpState : LegendBaseState
@@ -16,7 +17,7 @@ public class LegendJumpState : LegendBaseState
 
         if (_rigidbody.velocity.y <= -1)
         {
-            legendAnimationController.TrueAnimation(AnimationHash.JumpDown);
+            legendAnimationController.Animator.SetBool(AnimationHash.JumpDown,true);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,7 +17,11 @@ public enum ActionType
     HeavyAttack,
     SkillAttack
 }
-
+public enum KnockbackType
+{
+    Default,
+    Heavy
+}
 public class LegendController : MonoBehaviour
 {
     private float _jumpAcceleration = 14.2f;
@@ -34,13 +39,12 @@ public class LegendController : MonoBehaviour
     private CharacterStatus _characterStatus;
     private Rigidbody _rigidbody;
     private UnityEngine.InputSystem.PlayerInput _input;
-
+    private PlayerHit _playerHit;
     private LegendAnimationController _legendAnimationController;
-
     public Vector3 MoveDirection { get; private set; }
 
     internal bool isJump = true;
-    internal bool _canAttack;
+    private bool _canAttack;
 
     // 추후 Character base 데이터 로 변환해야함.
     //private const float MAX_JUMP_POWER = 1f;
@@ -48,11 +52,7 @@ public class LegendController : MonoBehaviour
 
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();
-        _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
-        _characterStatus = GetComponent<CharacterStatus>();
-        _legendAnimationController = GetComponent<LegendAnimationController>();
-
+        InitComponent();
         InitActions();
 
         Physics.gravity = new Vector3(0f, -_gravitationalAcceleration, 0f);
@@ -77,7 +77,7 @@ public class LegendController : MonoBehaviour
     {
         if (isJump)
         {
-            _legendAnimationController.TriggerAnimation(AnimationHash.Jump);
+            _legendAnimationController.Animator.SetTrigger(AnimationHash.Jump);
             _rigidbody.AddForce(JUMP_DIRECTION * MAX_JUMP_POWER, ForceMode.Impulse);
         }
     }
@@ -85,20 +85,27 @@ public class LegendController : MonoBehaviour
     {
         if (!isJump)
         {
-            _legendAnimationController.TriggerAnimation(AnimationHash.FirstJumpAttack);
+            _legendAnimationController.Animator.SetTrigger(AnimationHash.FirstJumpAttack);
             return;
         }
-        _legendAnimationController.TriggerAnimation(AnimationHash.FirstAttack);
+        _legendAnimationController.Animator.SetTrigger(AnimationHash.FirstAttack);
     }
     private void OnSmashAttack()
     {
-        _legendAnimationController.TriggerAnimation(AnimationHash.HeavyAttack);
+        _legendAnimationController.Animator.SetTrigger(AnimationHash.HeavyAttack);
     }
     private void OnSkillAttack()
     {
-        _legendAnimationController.TriggerAnimation(AnimationHash.SkillAttack);
+        _legendAnimationController.Animator.SetTrigger(AnimationHash.SkillAttack);
     }
-
+    private void InitComponent()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+        _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
+        _characterStatus = GetComponent<CharacterStatus>();
+        _legendAnimationController = GetComponent<LegendAnimationController>();
+        _playerHit = GetComponent<PlayerHit>();
+    }
     private void InitActions()
     {
         _actions = new InputAction[StringLiteral.Actions.Length];
@@ -136,20 +143,20 @@ public class LegendController : MonoBehaviour
     {
         if (MoveDirection != Vector3.zero)
         {
-            _legendAnimationController.TrueAnimation(AnimationHash.Run);
+            _legendAnimationController.Animator.SetBool(AnimationHash.Run,true);
             transform.rotation = Quaternion.LookRotation(MoveDirection);
             transform.Translate(Vector3.forward * (_characterStatus.Stat.MoveSpeed * Time.deltaTime));
         }
         else
         {
-            _legendAnimationController.FalseAnimation(AnimationHash.Run);
+            _legendAnimationController.Animator.SetBool(AnimationHash.Run, false);
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag(StringLiteral.Ground))
         {
-            _legendAnimationController.FalseAnimation(AnimationHash.JumpDown);
+            _legendAnimationController.Animator.SetBool(AnimationHash.JumpDown,false);
             isJump = true;
         }
     }
@@ -161,10 +168,13 @@ public class LegendController : MonoBehaviour
             // Animation.Play(Hang);
         }
 
-        if (other.CompareTag(StringLiteral.Player))
+        if (other.CompareTag(StringLiteral.DefaultHit))
         {
-            other.transform.forward = (-1) * transform.forward;
-            _legendAnimationController.LengendHit(other);
+            _playerHit.GetKnockbackOnAttack(other, AnimationHash.Hit, KnockbackType.Default);
+        }
+        if (other.CompareTag(StringLiteral.HeavyHit))
+        {
+            _playerHit.GetKnockbackOnAttack(other, AnimationHash.HitUp, KnockbackType.Heavy);
         }
     }
     private void FixedMaxFallSpeed()
@@ -180,6 +190,8 @@ public class LegendController : MonoBehaviour
             }
         }
     }
+
+
     #region 각 공격별 HitZone 생성
     private void EnableAttackHitZone() => _attackHitZone.enabled = true;
     private void DisableAttackHitZone() => _attackHitZone.enabled = false;

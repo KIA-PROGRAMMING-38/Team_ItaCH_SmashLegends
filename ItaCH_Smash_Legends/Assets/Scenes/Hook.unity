@@ -398,6 +398,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hook_Ingame
       objectReference: {fileID: 0}
+    - target: {fileID: 6387871113122111847, guid: 0a820f92e71e03e42a7435b844051544,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a820f92e71e03e42a7435b844051544, type: 3}
 --- !u!1001 &595411090

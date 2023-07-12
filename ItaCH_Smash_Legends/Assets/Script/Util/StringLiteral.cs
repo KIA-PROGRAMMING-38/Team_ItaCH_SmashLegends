@@ -28,5 +28,7 @@ public static class StringLiteral
     public const string HangZone = "HangZone";
     public const string Ground = "Ground";
     public const string Player = "Player";
+    public const string DefaultHit = "DefaultHit";
+    public const string HeavyHit = "HeavyHit";
     #endregion
 }

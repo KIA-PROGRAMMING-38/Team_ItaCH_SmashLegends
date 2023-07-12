@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LegendHitUpState : LegendBaseState
 {
-    // LegnedController ¿Ï·á½Ã ¸®ÆåÅä¸µ
+    // LegnedController ì™„ë£Œì‹œ ë¦¬í™í† ë§
 
     private PlayerHit _playerHit;
     private PlayerStatus _playerStatus;
@@ -14,9 +14,8 @@ public class LegendHitUpState : LegendBaseState
         _playerHit = animator.GetComponent<PlayerHit>();
         _playerStatus = animator.GetComponent<PlayerStatus>();
         _playerStatus.CurrentState = PlayerStatus.State.HitUp;
-        _playerHit.invincible = true;
     }
-    // ÃßÈÄ ¼öÁ¤
+    // ì¶”í›„ ìˆ˜ì •
     //public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
     //    if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.6)
@@ -26,7 +25,6 @@ public class LegendHitUpState : LegendBaseState
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _playerStatus.CurrentState = PlayerStatus.State.Idle;
-        _playerHit.invincible = false;
         animator.ResetTrigger(AnimationHash.HitUp);
     }
 }
