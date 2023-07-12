@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -75,19 +74,10 @@ public class LegendController : MonoBehaviour
 
     private void OnJump()
     {
-        if (isJump)
-        {
-            _legendAnimationController.Animator.SetTrigger(AnimationHash.Jump);
-            _rigidbody.AddForce(JUMP_DIRECTION * MAX_JUMP_POWER, ForceMode.Impulse);
-        }
+        _legendAnimationController.Animator.SetTrigger(AnimationHash.Jump);
     }
     private void OnDefaultAttack()
     {
-        if (!isJump)
-        {
-            _legendAnimationController.Animator.SetTrigger(AnimationHash.FirstJumpAttack);
-            return;
-        }
         _legendAnimationController.Animator.SetTrigger(AnimationHash.FirstAttack);
     }
     private void OnSmashAttack()
@@ -143,9 +133,9 @@ public class LegendController : MonoBehaviour
     {
         if (MoveDirection != Vector3.zero)
         {
-            _legendAnimationController.Animator.SetBool(AnimationHash.Run,true);
+            _legendAnimationController.Animator.SetBool(AnimationHash.Run, true);
             transform.rotation = Quaternion.LookRotation(MoveDirection);
-            transform.Translate(Vector3.forward * (_characterStatus.Stat.MoveSpeed * Time.deltaTime));
+            transform.Translate(Vector3.forward * (5.3f * Time.deltaTime));
         }
         else
         {
@@ -156,7 +146,7 @@ public class LegendController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(StringLiteral.Ground))
         {
-            _legendAnimationController.Animator.SetBool(AnimationHash.JumpDown,false);
+            _legendAnimationController.Animator.SetBool(AnimationHash.JumpDown, false);
             isJump = true;
         }
     }
@@ -179,7 +169,7 @@ public class LegendController : MonoBehaviour
     }
     private void FixedMaxFallSpeed()
     {
-        if (_rigidbody.velocity.y <= 0f)
+        if (IsFalling())
         {
             Vector3 currentVelocity = _rigidbody.velocity;
 
@@ -190,7 +180,12 @@ public class LegendController : MonoBehaviour
             }
         }
     }
-
+    public bool IsFalling() => _rigidbody.velocity.y <= -1f;
+    
+    public void OnJumping()
+    {
+        _rigidbody.AddForce(JUMP_DIRECTION * MAX_JUMP_POWER, ForceMode.Impulse);
+    }
 
     #region 각 공격별 HitZone 생성
     private void EnableAttackHitZone() => _attackHitZone.enabled = true;

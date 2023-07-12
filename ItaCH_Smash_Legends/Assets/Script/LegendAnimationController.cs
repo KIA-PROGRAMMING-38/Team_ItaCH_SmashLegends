@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class LegendAnimationController : MonoBehaviour
@@ -14,7 +13,6 @@ public class LegendAnimationController : MonoBehaviour
     private AnimatorOverrideController _animatorOverrideController;
 
     private int _animationClipIndex;
-    internal bool _isHitUp;
 
     private void Awake()
     {
@@ -73,7 +71,13 @@ public class LegendAnimationController : MonoBehaviour
                 break;
         }
     }
-    
+    public void PlayJumpAttackAnimation()
+    {
+        if (_legendController.IsTriggered(ActionType.DefaultAttack))
+        {
+            Animator.Play(AnimationHash.FirstJumpAttack);
+        }
+    }
     public void ResetComboAttackAnimationClip()
     {
         _animationClipIndex = 0;
@@ -90,5 +94,4 @@ public class LegendAnimationController : MonoBehaviour
             }
         }
     }
-    private void ConvertHitUpAnimationEvent() => _isHitUp = true;
 }
