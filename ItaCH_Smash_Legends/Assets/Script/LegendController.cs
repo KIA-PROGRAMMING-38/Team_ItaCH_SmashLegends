@@ -122,12 +122,12 @@ public class LegendController : MonoBehaviour
         if (other.CompareTag(StringLiteral.DefaultHit))
         {
             RollingForward = -1 * other.transform.forward;
-            _playerHit.GetKnockbackOnAttack(other, AnimationHash.Hit, KnockbackType.Default);
+            GetKnockbackOnAttack(other, AnimationHash.Hit, KnockbackType.Default);
         }
         if (other.CompareTag(StringLiteral.HeavyHit))
         {
             RollingForward = -1 * other.transform.forward;
-            _playerHit.GetKnockbackOnAttack(other, AnimationHash.HitUp, KnockbackType.Heavy);
+           GetKnockbackOnAttack(other, AnimationHash.HitUp, KnockbackType.Heavy);
         }
     }
 
@@ -203,7 +203,7 @@ public class LegendController : MonoBehaviour
 
     public bool IsTriggered(ActionType actionType) => _actions[(int)actionType].triggered;
     public bool IsFalling() => _rigidbody.velocity.y <= -1f;
-    public bool IsJumpOnHitUp() => _rigidbody.velocity.y <= -5f;
+    public bool IsFallingOnHitUp() => _rigidbody.velocity.y <= -5f;
 
     public void ResetVelocity()
     {
@@ -308,6 +308,37 @@ public class LegendController : MonoBehaviour
     }
     #endregion
 
+    #region Legend Hit 
+    public void GetKnockbackOnAttack(Collider other, int animationHash, KnockbackType type)
+    {
+        transform.forward = -1 * other.transform.forward;
+        Vector3 _knockbackDirection = other.transform.forward + transform.up;
+
+        _legendAnimationController.Animator.SetTrigger(animationHash);
+        _rigidbody.AddForce(_knockbackDirection * SetKnockbackPower(type, other), ForceMode.Impulse);
+    }
+    private float SetKnockbackPower(KnockbackType type, Collider other)
+    {
+        // 스탯 연동시 적용
+        //CharacterStatus otherStatus = other.GetComponent<CharacterStatus>();
+        float knockbackPower = 0;
+
+        switch (type)
+        {
+            case KnockbackType.Default:
+                //knockbackPower = otherStatus.Stat.DefaultKnockbackPower;
+                knockbackPower = 0.3f;
+                break;
+
+            case KnockbackType.Heavy:
+                //knockbackPower = otherStatus.Stat.HeavyKnockbackPower;
+                knockbackPower = 0.5f;
+                break;
+        }
+
+        return knockbackPower;
+    }
+    #endregion
     // PlayerHangController
     // Hang 상태에서 입력시 처리
 }

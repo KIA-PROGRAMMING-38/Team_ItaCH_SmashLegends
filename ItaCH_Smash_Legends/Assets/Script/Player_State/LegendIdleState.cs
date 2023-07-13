@@ -10,7 +10,6 @@ public class LegendIdleState : LegendBaseState
 
         legendAnimationController.ResetComboAttackAnimationClip();
         legendController.SetComboImpossibleOnAnimationEvent();
-        legendAnimationController._isHitUp = false;
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

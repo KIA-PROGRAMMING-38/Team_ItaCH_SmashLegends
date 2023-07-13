@@ -71,13 +71,8 @@ public class LegendAnimationController : MonoBehaviour
                 break;
         }
     }
-    public void PlayJumpAttackAnimation()
-    {
-        if (_legendController.IsTriggered(ActionType.DefaultAttack))
-        {
-            Animator.Play(AnimationHash.FirstJumpAttack);
-        }
-    }
+ 
+    
     public void ResetComboAttackAnimationClip()
     {
         _animationClipIndex = 0;
