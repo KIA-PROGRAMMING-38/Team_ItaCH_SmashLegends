@@ -9,7 +9,7 @@ public class LegendHangState : LegendBaseState
         base.OnStateEnter(animator, stateInfo, layerIndex);
         _effectController = animator.GetComponent<EffectController>();
 
-        legendController.OnFalling(animator).Forget();
+        legendController.FallAsync(animator).Forget();
         _effectController.StartInvincibleFlashEffet(_effectController.FLASH_COUNT).Forget();
     }
 
@@ -23,8 +23,7 @@ public class LegendHangState : LegendBaseState
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        legendController.OffConstraints();
+        legendController.EscapeInHang();
         _effectController.StartInvincibleFlashEffet(_effectController.HANG_JUMP_FLASH_COUNT).Forget();
-        legendController.TaskCancel.Cancel();
     }
 }
