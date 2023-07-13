@@ -37,7 +37,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     }
     private void Start()
     {
-        SetStatus();
+        //SetStatus();
     }
     private void SetStatus()
     {

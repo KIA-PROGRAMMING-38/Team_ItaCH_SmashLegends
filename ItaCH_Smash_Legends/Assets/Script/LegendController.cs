@@ -1,4 +1,6 @@
 using Cysharp.Threading.Tasks;
+using System;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Util.Enum;
@@ -35,7 +37,8 @@ public enum RollingDirection
 public class LegendController : MonoBehaviour
 {
     public const float MAX_JUMP_POWER = 1f;
-    
+    private CancellationTokenSource _taskCancel;
+
     [SerializeField] private SphereCollider _skillAttackHitZone;
     [SerializeField] private SphereCollider _attackHitZone;
     [SerializeField] private SphereCollider _heavyAttackHitZone;
@@ -47,17 +50,16 @@ public class LegendController : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private UnityEngine.InputSystem.PlayerInput _input;
-    private PlayerHit _playerHit;
     private LegendAnimationController _legendAnimationController;
     private EffectController _effectController;
+    private Collider _collider;
 
-    public Vector3 MoveDirection { get; private set; }
-    public Vector3 RollingForward { get; private set; }
-
+    private Vector3 _moveDirection;
+    private Vector3 _facingDirection;
+    private Vector3 _vectorZero = Vector3.zero;
     private const float ROLLING_DASH_POWER = 1.2f;
     private bool _canAttack;
 
-    private readonly Vector3 JUMP_DIRECTION = Vector3.up;
 
     private void Awake()
     {
@@ -72,8 +74,7 @@ public class LegendController : MonoBehaviour
         SetController(player);
         InitComponent();
         InitActions();
-
-        Physics.gravity = new Vector3(0f, Stat.GravitationalAcceleration, 0f);
+                
         _rigidbody.mass = MAX_JUMP_POWER / Stat.JumpAcceleration;
     }
 
@@ -104,7 +105,7 @@ public class LegendController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        FixedMaxFallSpeed();
+        LimitMaxFallingSpeedInJump();
     }
 
     #region Input Event
@@ -114,7 +115,7 @@ public class LegendController : MonoBehaviour
 
         if (input != null)
         {
-            MoveDirection = new Vector3(input.x, 0, input.y);
+            _moveDirection = new Vector3(input.x, 0, input.y);
         }
     }
     private void OnJump()
@@ -143,22 +144,27 @@ public class LegendController : MonoBehaviour
             _legendAnimationController.SetTrigger(AnimationHash.HitDown);
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(StringLiteral.HangZone))
         {
-            // TODO : 추후구현
-            // Animation.Play(Hang);
+            ResetVelocity();
+            transform.forward = GetHangForward(other.transform.position);
+            transform.position = GetHangPosition(other.transform.position);
+            _legendAnimationController.Play(AnimationHash.Hang);
         }
+
         if (other.CompareTag(StringLiteral.DefaultHit))
         {
-            RollingForward = -1 * other.transform.forward;
-            GetKnockbackOnAttack(other, AnimationHash.Hit, KnockbackType.Default);
+            _facingDirection = -1 * other.transform.forward;
+            SetKnockbackOnAttack(other, AnimationHash.Hit, KnockbackType.Default);
         }
+
         if (other.CompareTag(StringLiteral.HeavyHit))
         {
-            RollingForward = -1 * other.transform.forward;
-            GetKnockbackOnAttack(other, AnimationHash.HitUp, KnockbackType.Heavy);
+            _facingDirection = -1 * other.transform.forward;
+            SetKnockbackOnAttack(other, AnimationHash.HitUp, KnockbackType.Heavy);
         }
     }
 
@@ -167,8 +173,8 @@ public class LegendController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
         _legendAnimationController = GetComponent<LegendAnimationController>();
-        _playerHit = GetComponent<PlayerHit>();
         _effectController = GetComponent<EffectController>();
+        _collider = GetComponent<Collider>();
     }
     private void InitActions()
     {
@@ -179,16 +185,24 @@ public class LegendController : MonoBehaviour
             _actions[i] = _input.actions[StringLiteral.Actions[i]];
         }
     }
-    private void FixedMaxFallSpeed()
+
+    private void LimitMaxFallingSpeedInJump()
     {
-        if (IsFalling())
+        void SetMaxSpeed()
         {
+
             Vector3 currentVelocity = _rigidbody.velocity;
 
-            if (currentVelocity.magnitude > Stat.MaxFallingSpeed)
+            currentVelocity = currentVelocity * Stat.MaxFallingSpeed / currentVelocity.magnitude;
+            _rigidbody.velocity = currentVelocity;
+        }
+        bool IsExceededSpeed() => _rigidbody.velocity.magnitude > Stat.MaxFallingSpeed;
+
+        if (IsFalling())
+        {
+            if (IsExceededSpeed())
             {
-                currentVelocity = currentVelocity * Stat.MaxFallingSpeed / currentVelocity.magnitude;
-                _rigidbody.velocity = currentVelocity;
+                SetMaxSpeed();
             }
         }
     }
@@ -208,14 +222,19 @@ public class LegendController : MonoBehaviour
         _canAttack = true;
     }
     public void SetComboImpossibleOnAnimationEvent() => _canAttack = false;
+
+    public bool IsTriggered(ActionType actionType) => _actions[(int)actionType].triggered;
+    public bool IsFalling() => _rigidbody.velocity.y <= -1f;
+    public bool IsFallingOnHitUp() => _rigidbody.velocity.y <= -5f;
+
     public void MoveAndRotate()
     {
-        if (MoveDirection != Vector3.zero)
+        if (_moveDirection != _vectorZero)
         {
             _legendAnimationController.SetBool(AnimationHash.Run, true);
-            transform.rotation = Quaternion.LookRotation(MoveDirection);
+            transform.rotation = Quaternion.LookRotation(_moveDirection);
+            // TODO : 캐릭터 스탯 적용후 변경
             //transform.Translate(Vector3.forward * (_characterStatus.Stat.MoveSpeed * Time.deltaTime));
-            // 데이터 연동 전 임시 코드
             transform.Translate(Vector3.forward * (5.3f * Time.deltaTime));
         }
         else
@@ -225,23 +244,14 @@ public class LegendController : MonoBehaviour
     }
     private void LookForwardOnAttack()
     {
-        if (MoveDirection != Vector3.zero)
+        if (_moveDirection != _vectorZero)
         {
-            transform.forward = MoveDirection;
+            transform.forward = _moveDirection;
         }
     }
-
-    public bool IsTriggered(ActionType actionType) => _actions[(int)actionType].triggered;
-    public bool IsFalling() => _rigidbody.velocity.y <= -1f;
-    public bool IsFallingOnHitUp() => _rigidbody.velocity.y <= -5f;
-
     public void ResetVelocity()
     {
-        _rigidbody.velocity = Vector3.zero;
-    }
-    public void OnJumping()
-    {
-        _rigidbody.AddForce(JUMP_DIRECTION * MAX_JUMP_POWER, ForceMode.Impulse);
+        _rigidbody.velocity = _vectorZero;
     }
 
     #region 각 공격별 HitZone 생성
@@ -255,128 +265,169 @@ public class LegendController : MonoBehaviour
     private void DisableSkillAttackHitZone() => _skillAttackHitZone.enabled = false;
     #endregion
 
-    #region Legend DownIdle State
-    public async UniTaskVoid StartRollingTask()
+    public void SetRollingDirection()
     {
-        await UniTask.WaitUntil(() => MoveDirection != Vector3.zero);
-
-        SetRollingDirection();
-        _effectController.StartInvincibleFlashEffet(_effectController.FLASH_COUNT).Forget();
-    }
-    public void DashOnRollUp()
-    {
-        _rigidbody.AddForce(MoveDirection * ROLLING_DASH_POWER, ForceMode.Impulse);
-    }
-    private void SetRollingDirection()
-    {
-        if (MoveDirection != Vector3.zero)
+        if (_moveDirection == _vectorZero)
         {
-            if (MoveDirection.x != 0 && MoveDirection.z != 0)
-            {
-                SetDiagonalRollingDirection();
-                return;
-            }
-            else if (RollingForward == MoveDirection)
-            {
-                SetRollingType(RollingDirection.Back);
-                return;
-            }
-            else
-            {
-                SetRollingType(RollingDirection.Front);
-                return;
-            }
+            return;
         }
-    }
-    private void SetDiagonalRollingDirection()
-    {
-        var rollingDirection = GetDirection(RollingForward, MoveDirection);
-
-        SetRollingType(rollingDirection);
-    }
-    private void SetRollingType(RollingDirection rollingDirection)
-    {
-        switch (rollingDirection)
+        else if (_moveDirection.x != 0 && _moveDirection.z != 0)
         {
-            case RollingDirection.Front:
-                _legendAnimationController.SetTrigger(AnimationHash.RollUpFront);
-                transform.forward = MoveDirection;
-                break;
-            case RollingDirection.Back:
-                _legendAnimationController.SetTrigger(AnimationHash.RollUpBack);
-                transform.forward = -1 * MoveDirection;
-                break;
-            default:
-                Debug.LogError($"입력된 RollingDirection을 허용하지 않습니다. 입력값 : {rollingDirection}");
-                break;
+            SetDiagonalRollingDirection();
+            return;
         }
-    }
-    private RollingDirection GetDirection(Vector2 rollingForward, Vector2 moveDirection)
-    {
-        if (rollingForward.x > 0)
+        else if (_facingDirection == _moveDirection)
         {
-            if (moveDirection.x > 0)
-            {
-                return RollingDirection.Back;
-            }
-            else
-            {
-                return RollingDirection.Front;
-            }
+            SetRollingType(RollingDirection.Front);
+            return;
         }
         else
         {
-            if (moveDirection.x < 0)
+            SetRollingType(RollingDirection.Back);
+            return;
+        }
+        void SetRollingType(RollingDirection rollingDirection)
+        {
+            switch (rollingDirection)
             {
-                return RollingDirection.Back;
+                case RollingDirection.Front:
+                    _legendAnimationController.SetTrigger(AnimationHash.RollUpFront);
+                    transform.forward = _moveDirection;
+                    break;
+                case RollingDirection.Back:
+                    _legendAnimationController.SetTrigger(AnimationHash.RollUpBack);
+                    transform.forward = -1 * _moveDirection;
+                    break;
+                default:
+                    Debug.LogError("RollingDirection 미구현");
+                    break;
             }
-            else
+        }
+        void SetDiagonalRollingDirection()
+        {
+            RollingDirection rollingDirection = GetDirection(_facingDirection, _moveDirection);
+            SetRollingType(rollingDirection);
+
+            RollingDirection GetDirection(Vector2 rollingForward, Vector2 moveDirection)
             {
-                return RollingDirection.Front;
+                if (rollingForward.x > 0)
+                {
+                    if (moveDirection.x > 0)
+                    {
+                        return RollingDirection.Back;
+                    }
+                    else
+                    {
+                        return RollingDirection.Front;
+                    }
+                }
+                else
+                {
+                    if (moveDirection.x < 0)
+                    {
+                        return RollingDirection.Back;
+                    }
+                    else
+                    {
+                        return RollingDirection.Front;
+                    }
+                }
             }
         }
     }
-    #endregion
-
-    #region Legend Hit 
-    public void GetKnockbackOnAttack(Collider other, int animationHash, KnockbackType type)
+    public void DashOnRollUp()
     {
-        transform.forward = -1 * other.transform.forward;
-        Vector3 _knockbackDirection = other.transform.forward + transform.up;
+        _rigidbody.AddForce(_moveDirection * ROLLING_DASH_POWER, ForceMode.Impulse);
+    }
+
+    public void SetKnockbackOnAttack(Collider other, int animationHash, KnockbackType type)
+    {
+        transform.forward = _facingDirection;
+
+        Vector3 knockbackDirection = other.transform.forward + transform.up;
 
         _legendAnimationController.SetTrigger(animationHash);
-        _rigidbody.AddForce(_knockbackDirection * SetKnockbackPower(type, other), ForceMode.Impulse);
-    }
-    private float SetKnockbackPower(KnockbackType type, Collider other)
-    {
-        // 스탯 연동시 적용
-        //CharacterStatus otherStatus = other.GetComponent<CharacterStatus>();
-        float knockbackPower = 0;
+        _rigidbody.AddForce(knockbackDirection * GetKnockbackPower(type, other), ForceMode.Impulse);
 
-        switch (type)
+        float GetKnockbackPower(KnockbackType type, Collider other)
         {
-            case KnockbackType.Default:
-                //knockbackPower = otherStatus.Stat.DefaultKnockbackPower;
-                knockbackPower = 0.3f;
-                break;
+            // TODO : 스탯 연동 시 적용
+            //CharacterStatus otherStatus = other.GetComponent<CharacterStatus>();
+            float knockbackPower = 0;
 
-            case KnockbackType.Heavy:
-                //knockbackPower = otherStatus.Stat.HeavyKnockbackPower;
-                knockbackPower = 0.5f;
-                break;
+            switch (type)
+            {
+                case KnockbackType.Default:
+                    //knockbackPower = otherStatus.Stat.DefaultKnockbackPower;
+                    knockbackPower = 0.3f;
+                    break;
+
+                case KnockbackType.Heavy:
+                    //knockbackPower = otherStatus.Stat.HeavyKnockbackPower;
+                    knockbackPower = 0.5f;
+                    break;
+            }
+
+            return knockbackPower;
+        }
+    }
+
+    private Vector3 GetHangForward(Vector3 other)
+    {
+        Vector3 otherPosition = other.normalized;
+        otherPosition.x = Mathf.Round(other.x);
+        otherPosition.y = 0;
+        otherPosition.z = Mathf.Round(other.z);
+
+        return otherPosition * -1;
+    }
+    private Vector3 GetHangPosition(Vector3 hangPosition)
+    {
+        float hangPositionY = 2.5f;
+
+        if (hangPosition.x != 0)
+        {
+            hangPosition = new Vector3(GetHangCorrectionPosition(hangPosition.x), hangPositionY, transform.position.z);
         }
 
-        return knockbackPower;
-    }
-    #endregion
-    // PlayerHangController
-    // Hang 상태에서 입력시 처리
+        else if (hangPosition.z != 0)
+        {
+            hangPosition = new Vector3(transform.position.x, hangPositionY, GetHangCorrectionPosition(hangPosition.z));
+        }
 
-    public void Damage(int damage)
+        return hangPosition;
+
+        float GetHangCorrectionPosition(float value)
+        {
+            if (value > 0)
+            {
+                value -= 0.5f;
+            }
+
+            if (value < 0)
+            {
+                value += 0.5f;
+            }
+
+            return value;
+        }
+    }
+    public async UniTaskVoid FallAsync(Animator animator)
     {
+        float _fallingWaitTime = 3f;
+        _taskCancel = new();
 
+        await UniTask.Delay(TimeSpan.FromSeconds(_fallingWaitTime), cancellationToken: _taskCancel.Token);
+        _collider.enabled = false;
+        animator.Play(AnimationHash.HangFalling);
     }
-    //public void GetDamage(int damage) // TO DO : 피격 판정 시 호출
+    public void EscapeInHang()
+    {
+        _taskCancel.Cancel();
+    }
+
+    // TO DO : Damage 로직 추가 필요
+    //public void Damage(int damage) // 구버전
     //{
     //    int damagedHealthPoint = _currentHealthPoint - damage;
     //    _currentHealthPoint = Mathf.Max(damagedHealthPoint, DEAD_TRIGGER_HP);
@@ -387,5 +438,4 @@ public class LegendController : MonoBehaviour
 
     //    }
     //}
-
 }

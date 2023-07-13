@@ -88,7 +88,6 @@ public class LegendAnimationController : MonoBehaviour
             }
         }
     }
-
     public void SetBool(int animationHash, bool value)
     {
         _animator.SetBool(animationHash, value);
@@ -96,5 +95,9 @@ public class LegendAnimationController : MonoBehaviour
     public void SetTrigger(int animationHash)
     {
         _animator.SetTrigger(animationHash);
+    }
+    public void Play(int animationHash)
+    {
+        _animator.Play(animationHash);
     }
 }

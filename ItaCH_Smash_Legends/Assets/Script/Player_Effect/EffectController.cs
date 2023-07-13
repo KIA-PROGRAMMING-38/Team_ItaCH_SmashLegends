@@ -123,6 +123,7 @@ public abstract class EffectController : MonoBehaviour
 
     public async UniTaskVoid StartHitFlashEffet()
     {
+        Debug.Log("이펙트 들어옴?");
         int count = 3;
         SetHitEffectColor();
         while (count > 0)
