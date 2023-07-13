@@ -4,16 +4,16 @@ public class DeadZone : MonoBehaviour
 {
     private void OnTriggerExit(Collider other)
     {
-        CharacterStatus playerCharacter = other.gameObject.GetComponent<CharacterStatus>();
+        LegendController playerCharacter = other.gameObject.GetComponent<LegendController>();
         if (!playerCharacter)
         {
             return;
         }
         else
         {
-            playerCharacter._isDead = true;
+            //playerCharacter._isDead = true; // TO DO : 사망 판정 로직 리팩토링 이후 이식
             playerCharacter.gameObject.SetActive(false);
-            playerCharacter.GetDamage(int.MaxValue);
+            playerCharacter.Damage(int.MaxValue);
         }
     }
 }

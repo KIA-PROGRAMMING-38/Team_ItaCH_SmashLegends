@@ -1,34 +1,35 @@
+using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Util.Enum;
-using Util.Path;
 
 public class StageManager : MonoBehaviourPunCallbacks
 {
     private const GameModeType DEFAULT_GAME_MODE = GameModeType.Duel;
-    public GameMode CurrentGameMode { get => _currentGameMode; private set => _currentGameMode = value; }
-    private GameMode _currentGameMode;
-    private GameModeType _selectedGameMode;
-    private GameObject[] _playerCharacterInstances;
-    public GameObject[] Players { get => _playerCharacterInstances; }
-    private CharacterStatus[] _teamBlueCharacter;
-    private CharacterStatus[] _teamRedCharacter;
-    private const int INDEX_OFFSET_FOR_ZERO = 1;
-    private int _totalPlayer;
-    private int _teamSize;
-    private int _teamMemberIndex;
-    private int _teamBlueScore;
-    private int _teamRedScore;
-    private int _winningScore;
+    public GameMode CurrentGameMode
+    {
+        get
+        {
+            if (_currentGameMode == null)
+            {
+                SetGameMode(DEFAULT_GAME_MODE);
+            }
+            return _currentGameMode;
+        }
 
-    private float _modeDefaultRespawnTime;
-    private float _gameTime;
-    private int _gameTimeInt;
+        private set => _currentGameMode = value;
+    }
+    private GameMode _currentGameMode;
+
+    private List<Team> _teams;
+
+    private const int INDEX_OFFSET_FOR_ZERO = 1;
+
     public float GameTime
     {
         get => _gameTime;
@@ -43,6 +44,8 @@ public class StageManager : MonoBehaviourPunCallbacks
             }
         }
     }
+    private float _gameTime;
+    private int _gameTimeInt;
     public int RemainGameTime => Mathf.Max(_currentGameMode.MaxGameTime - _gameTimeInt, 0);
     private bool _isGameOver;
 
@@ -52,10 +55,9 @@ public class StageManager : MonoBehaviourPunCallbacks
     private List<GameObject> _legendUI;
     private GameObject _modeUI;
 
-    public event Action<int, TeamType> OnTeamScoreChanged;
     public event Action<int> OnTimeChange;
 
-    private void OnEnable()
+    public override void OnEnable()
     {
         Managers.LobbyManager.OnInGameSceneLoaded -= SetStage;
         Managers.LobbyManager.OnInGameSceneLoaded += SetStage;
@@ -63,60 +65,87 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     public void Init()
     {
-        GetGameMode(DEFAULT_GAME_MODE);
+        SetGameMode(DEFAULT_GAME_MODE);
     }
 
-    public void GetGameMode(GameModeType gameModeSelected)
+    public void SetGameMode(GameModeType selectedMode)
     {
         if (_currentGameMode == null)
         {
             _currentGameMode = new GameMode();
         }
-        _currentGameMode.InitGameMode(gameModeSelected);
-        _totalPlayer = _currentGameMode.TotalPlayer;
-        _teamSize = _currentGameMode.TeamSize;
-        _winningScore = _currentGameMode.WinningScore;
-        _modeDefaultRespawnTime = _currentGameMode.ModeDefaultRespawnTime;
+        _currentGameMode.Init(selectedMode);
+        _teams = new List<Team>();
         _isGameOver = false;
     }
+
+    public void ChangeGameMode(GameModeType selectedMode) // 게임 모드 선택 기능 구현 후 사용
+    {
+        if (_currentGameMode.GameModeType == selectedMode)
+        {
+            return;
+        }
+        else
+        {
+            SetGameMode(selectedMode);
+        }
+    }
+
     public void SetStage(GameMode currentGameMode)
     {
-        CreateMap(currentGameMode);
-        _playerCharacterInstances = new GameObject[_totalPlayer];
-        _teamBlueCharacter = new CharacterStatus[_teamSize];
-        _teamRedCharacter = new CharacterStatus[_teamSize];
-        for (int playerID = 0; playerID < _totalPlayer; playerID++)
+        InstantiateMap();
+        for (int userID = 0; userID < _currentGameMode.MaxPlayer; ++userID)
         {
-            UserData userData = Managers.UserManager.GetUserData(playerID);
+            UserData userData = Managers.UserManager.GetUserData(userID);
+            SetUserTeam(userData);
             CreateCharacter(userData, currentGameMode.SpawnPoints);
         }
         SetModeUI(currentGameMode.GameModeType);
-        StartCoroutine(UpdateGameTime());
+        StartGame();
     }
 
-    public void CreateMap(GameMode gameMode)
+    private void InstantiateMap() => Managers.ResourceManager.Instantiate(_currentGameMode.Map);
+
+    private void SetUserTeam(UserData user)
     {
-        GameObject mapInstance = Instantiate(gameMode.Map, null);
+        Team team = GetTeamAvailable();
+        team.AddMember(user);
+    }
+    private Team GetTeamAvailable()
+    {
+        int last = _teams.Count - INDEX_OFFSET_FOR_ZERO;
+
+        if (_teams.Count == 0 || _teams[last].MemberCount == CurrentGameMode.MaxTeamMember)
+        {
+            Team newTeam = new Team();
+            _teams.Add(newTeam);
+            newTeam.TeamColor = (_teams.Count == 0) ? TeamType.Blue : TeamType.Red;
+            return newTeam;
+        }
+        else
+        {
+            return _teams[last];
+        }
     }
 
-    public void CreateCharacter(UserData userData, Transform[] spawnPoints) // 캐릭터 선택 기능 구현 시 매개변수로 선택한 캐릭터 함께 전달
+    public void CreateCharacter(UserData user, Transform[] spawnPoints)
     {
-        int playerID = userData.Id;
-        CharacterType selectedCharacter = userData.SelectedCharacter;
-        GameObject characterPrefab = GetCharacterPrefab(selectedCharacter);
+        LegendController characterPrefab = GetCharacterPrefab(user.SelectedCharacter);
 
         if (characterPrefab != null)
         {
-            if (spawnPoints[playerID] != null)
+            if (spawnPoints[user.ID] != null)
             {
-                GameObject characterInstance = Instantiate(characterPrefab, spawnPoints[playerID + INDEX_OFFSET_FOR_ZERO].position, Quaternion.identity);
-                InitCharacterStatus(characterInstance, userData);
-                SetPlayerInputController(characterInstance, playerID);
-                _playerCharacterInstances[playerID] = characterInstance;
+                GameObject characterInstance = Managers.ResourceManager.Instantiate(characterPrefab.gameObject, spawnPoints[user.ID + INDEX_OFFSET_FOR_ZERO]); // spawnPoint[0] == root gameObject
+                LegendController legend = characterInstance.GetComponent<LegendController>();
+                legend.Init(user.SelectedCharacter, user.ID);
+                legend.gameObject.layer =
+                    (user.Team == TeamType.Blue) ?
+                    LayerMask.NameToLayer(StringLiteral.TEAM_BLUE) : LayerMask.NameToLayer(StringLiteral.TEAM_RED);
             }
             else
             {
-                Debug.LogError(playerID + "P character spawn position is Null");
+                Debug.LogError(user.ID + "P character spawn position is Null");
             }
         }
         else
@@ -125,84 +154,14 @@ public class StageManager : MonoBehaviourPunCallbacks
         }
     }
 
-    private GameObject GetCharacterPrefab(CharacterType character)
+    private LegendController GetCharacterPrefab(CharacterType character)
     {
-        string characterPrefabPath = FilePath.GetCharacterInGamePrefabPath(character);
-        return Resources.Load<GameObject>(characterPrefabPath);
-    }
-    private void InitCharacterStatus(GameObject character, UserData userData)
-    {
-        CharacterStatus characterStatus = character.GetComponent<CharacterStatus>();
-        int playerID = userData.Id;
-        characterStatus.Init(userData);                
-        characterStatus.RespawnTime = _modeDefaultRespawnTime;
-        SetTeam(characterStatus, playerID);        
-
-        characterStatus.OnRespawnSetting -= SetPlayerInputController;
-        characterStatus.OnRespawnSetting += SetPlayerInputController;
-
-        characterStatus.OnPlayerDie -= UpdateTeamScore;
-        characterStatus.OnPlayerDie += UpdateTeamScore;
-    }
-    private void SetTeam(CharacterStatus character, int playerID)
-    {
-        if (playerID >= _teamSize)
-        {
-            character.TeamType = TeamType.Red;
-            _teamMemberIndex = playerID - _teamSize;
-            _teamRedCharacter[_teamMemberIndex] = character;
-            character.gameObject.layer = LayerMask.NameToLayer("TeamRed");
-            character.SpawnPoint = character.transform.position;
-            character.gameObject.name = "red";
-        }
-
-        else
-        {
-            character.TeamType = TeamType.Blue;
-            _teamMemberIndex = playerID;
-            _teamBlueCharacter[_teamMemberIndex] = character;
-            character.gameObject.layer = LayerMask.NameToLayer("TeamBlue");
-            character.SpawnPoint = character.transform.position;
-            character.gameObject.name = "blue";
-        }
-    }
-    public void SetPlayerInputController(GameObject character, int id)
-    {
-        UnityEngine.InputSystem.PlayerInput playercontroller;
-
-        switch (id)
-        {
-            case 0:
-                playercontroller = character.GetComponent<UnityEngine.InputSystem.PlayerInput>();
-                playercontroller.SwitchCurrentActionMap("FirstPlayerActions");
-                break;
-
-            case 1:
-                playercontroller = character.GetComponent<UnityEngine.InputSystem.PlayerInput>();
-                playercontroller.actions.name = "PlayerInput";
-                playercontroller.SwitchCurrentActionMap("SecondPlayerActions");
-                Keyboard keyBoard = InputSystem.GetDevice<Keyboard>();
-                playercontroller.actions.devices = new InputDevice[] { keyBoard };
-                break;
-
-            default:
-                return;
-        }
+        string characterName = character.ToString();
+        string characterPrefabPath = Path.Combine(StringLiteral.PREFAB_FOLDER, characterName, $"{characterName}{StringLiteral.SUFFIX_INGAME}", $"{characterName}{StringLiteral.SUFFIX_INGAME}");
+        return Managers.ResourceManager.Load<LegendController>(characterPrefabPath);
     }
 
-    public void ChangeGameMode(GameModeType gameModeSelected)
-    {
-        if (_selectedGameMode == gameModeSelected)
-        {
-            return;
-        }
-        else
-        {
-            GetGameMode(gameModeSelected);
-        }
-    }
-
-    public void SetModeUI(GameModeType gameModeType)
+    public void SetModeUI(GameModeType gameModeType) // TODO : UI에서 하도록 수정 필요
     {
         _modeUIPrefab = new GameObject[Enum.GetValues(typeof(GameModeType)).Length];
         StringBuilder stringBuilder = new StringBuilder();
@@ -222,10 +181,9 @@ public class StageManager : MonoBehaviourPunCallbacks
                 break;
             case GameModeType.Duel:
                 _legendUI = new List<GameObject>();
-                for (int i = 0; i < _totalPlayer; ++i)
+                for (int i = 0; i < _currentGameMode.MaxPlayer; ++i)
                 {
-                    Debug.Log(_playerCharacterInstances[i].name);
-                    SetLegendUI(_playerCharacterInstances[i]);
+                    //SetLegendUI(_playerCharacterInstances[i]); // TO DO : 레전드 UI 리팩토링
                 }
                 _modeUI = Instantiate(_modeUIPrefab[(int)GameModeType.Duel]);
                 _modeUI.GetComponent<ModeUI>().InitModeUISettings(this);
@@ -237,77 +195,50 @@ public class StageManager : MonoBehaviourPunCallbacks
                 break;
         }
     }
-    public void SetLegendUI(GameObject player)
+    public void SetLegendUI(LegendController player) // TO DO : UI가 직접 하도록 수정 필요
     {
         _legendUIPrefab = Resources.Load<GameObject>("UI/LegendUI");
-        Debug.Log(_legendUIPrefab);
         GameObject legendUI = Instantiate(_legendUIPrefab);
-        legendUI.GetComponent<LegendUI>().InitLegendUISettings(player.transform);
+        //legendUI.GetComponent<LegendUI>().InitLegendUISettings(player.transform); // TO DO : CharacterStatus가 아닌 곳에서 Stat 가져오고 참조 연결
         _legendUI.Add(legendUI);
     }
-    private IEnumerator UpdateGameTime()
+
+    public void StartGame()
+    {
+        // TO DO : 게임모드 소개 패널 연출 >> Smash!! 패널 연출 >> 체력 차오르는 연출 >> 게임 돌입        
+        // 전부 캐릭터 생성 이후 대기 애니메이션 재생 동안 실행
+        UpdateGameTime();
+    }
+    private async UniTask UpdateGameTime() // StartGame에서 호출
     {
         while (false == _isGameOver && GameTime < _currentGameMode.MaxGameTime)
         {
             GameTime += Time.deltaTime;
-            yield return null;
+            await UniTask.DelayFrame(1);
         }
         _isGameOver = true;
-        EndGameMode();
+        EndGame();
     }
-    private void UpdateTeamScore(CharacterStatus character)
+    // TO DO : 승점 판정 로직 팀 로직 변경 이후 관리 필요
+    private void EndGame()
     {
-        if (character.TeamType == TeamType.Blue)
-        {
-            ++_teamRedScore;
-            OnTeamScoreChanged.Invoke(_teamRedScore, TeamType.Red);
-        }
-        else
-        {
-            ++_teamBlueScore;
-            OnTeamScoreChanged.Invoke(_teamBlueScore, TeamType.Blue);
-        }
-        if (_teamBlueScore == _winningScore || _teamRedScore == _winningScore)
-        {
-            _isGameOver = true;
-            EndGameMode();
-        }
-    }
-    private int GetTeamScore(TeamType team)
-    {
-        return (team == TeamType.Blue) ? _teamBlueScore : _teamRedScore;
-    }
-    private void EndGameMode()
-    {
-        int teamBlueEndScore = GetTeamScore(TeamType.Blue);
-        int teamRedEndScore = GetTeamScore(TeamType.Red);
-        TeamType winningTeam = TeamType.None;
+        //    int teamBlueEndScore = GetTeamScore(TeamType.Blue);
+        //    int teamRedEndScore = GetTeamScore(TeamType.Red);
+        //    TeamType winningTeam = TeamType.None;
 
-        if (teamBlueEndScore == teamRedEndScore)
-        {
-            winningTeam = CheckTeamHealthRatio();
-            if (winningTeam == TeamType.None)
-            {
-                Debug.Log("무승부"); // Result UI 스크립트와 연결 필요
-            }
-            Debug.Log($"{winningTeam}팀 승리"); // Result UI 스크립트와 연결 필요
-        }
-        else
-        {
-            winningTeam = (teamBlueEndScore > teamRedEndScore) ? TeamType.Blue : TeamType.Red;
-            Debug.Log($"게임 종료 {winningTeam}팀 승리"); // Result UI 스크립트와 연결 필요
-        }
-    }
-    private TeamType CheckTeamHealthRatio()
-    {
-        int teamBlueCharacterHealthRatio = _teamBlueCharacter[0].CurrentHPRatio;
-        int teamRedCharacterHelathRatio = _teamRedCharacter[0].CurrentHPRatio;
-
-        if (teamBlueCharacterHealthRatio == teamRedCharacterHelathRatio)
-            return TeamType.None;
-        else if (teamBlueCharacterHealthRatio > teamRedCharacterHelathRatio)
-            return TeamType.Blue;
-        else
-            return TeamType.Red;
+        //    if (teamBlueEndScore == teamRedEndScore)
+        //    {
+        //        winningTeam = CheckTeamHealthRatio();
+        //        if (winningTeam == TeamType.None)
+        //        {
+        //            Debug.Log("무승부"); // Result UI 스크립트와 연결 필요
+        //        }
+        //        Debug.Log($"{winningTeam}팀 승리"); // Result UI 스크립트와 연결 필요
+        //    }
+        //    else
+        //    {
+        //        winningTeam = (teamBlueEndScore > teamRedEndScore) ? TeamType.Blue : TeamType.Red;
+        //        Debug.Log($"게임 종료 {winningTeam}팀 승리"); // Result UI 스크립트와 연결 필요
+        //    }
     }
 }

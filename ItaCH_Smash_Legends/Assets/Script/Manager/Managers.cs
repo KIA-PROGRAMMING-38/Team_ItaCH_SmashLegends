@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class Managers : MonoBehaviour
 {
@@ -9,11 +9,13 @@ public class Managers : MonoBehaviour
     private static LobbyManager s_lobbyManager;
     private static UserManager s_userManager = new UserManager();
     private static DataManager s_dataManager = new DataManager();
+    private static ResourceManager s_resourceManager = new ResourceManager();
 
     public static StageManager StageManager { get { Init(); return s_stageManager; } }
     public static LobbyManager LobbyManager { get { Init(); return s_lobbyManager; } }
     public static UserManager UserManager { get { Init(); return s_userManager; } }
     public static DataManager DataManager { get { Init(); return s_dataManager; } }
+    public static ResourceManager ResourceManager { get { Init(); return s_resourceManager; } }
 
     private void Start()
     {
@@ -27,7 +29,7 @@ public class Managers : MonoBehaviour
             GameObject gameObject = GameObject.Find("@Managers");
             if (gameObject == null)
             {
-                gameObject = new GameObject { name = "@managers" };
+                gameObject = new GameObject { name = "@Managers" };
                 s_instance = gameObject.AddComponent<Managers>();
 
                 DontDestroyOnLoad(gameObject);
@@ -39,6 +41,7 @@ public class Managers : MonoBehaviour
                 s_lobbyManager.Init();
                 s_stageManager.Init();
                 s_dataManager.Init();
+                s_resourceManager.Init();
             }
         }
     }

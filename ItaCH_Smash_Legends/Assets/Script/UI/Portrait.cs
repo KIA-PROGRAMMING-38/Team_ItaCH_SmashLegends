@@ -11,7 +11,7 @@ public class Portrait : MonoBehaviour
     private RotatingImage _rotateCircle;
     private TextMeshProUGUI _timeLeft;
 
-    public void InitPortraitSetting(Sprite sprite)
+    public void InitPortraitSetting(Sprite sprite) // TO DO : UI 로직 수정 필요
     {
         _portrait = GetComponent<Image>();
         _respawnTimer = transform.GetChild(0).gameObject;
@@ -21,9 +21,8 @@ public class Portrait : MonoBehaviour
         _respawnTimer.SetActive(false);
     }
 
-    public async void StartRespawnTimer(CharacterStatus characterStatus)
-    {
-        float respawnTime = characterStatus.RespawnTime;
+    public async void StartRespawnTimer(float respawnTime)
+    {        
         _respawnTimer.SetActive(true);
         _portrait.color = Color.gray;
         _rotateCircle.StartRotation();

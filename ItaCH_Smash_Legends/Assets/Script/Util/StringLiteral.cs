@@ -18,6 +18,11 @@ public static class StringLiteral
     public const string LEGEND_STAT_DATA_PATH = "Assets/Resources/Data/LegendStatData.csv";
     #endregion
 
+    #region FOLDER PATH
+    public const string PREFAB_FOLDER = "Prefab";
+    public const string SUFFIX_INGAME = "_Ingame";
+    #endregion
+
     #region LegendController 
     public static readonly string[] Actions = new[] { "Move", "Jump", "DefaultAttack", "SmashAttack", "SkillAttack" };
     public static readonly string[] AnimationClip = new[] { "Peter_FirstAttack", "Peter_SecondAttack" };
@@ -30,5 +35,18 @@ public static class StringLiteral
     public const string Player = "Player";
     public const string DefaultHit = "DefaultHit";
     public const string HeavyHit = "HeavyHit";
+    #endregion
+
+    #region INPUT ACTION MAP
+    public const string PLAYER_INPUT = "PlayerInput";
+    public const string FIRST_PLAYER_ACTIONS = "FirstPlayerActions";
+    public const string SECOND_PLAYER_ACTIONS = "SecondPlayerActions";
+    #endregion
+
+    #region LAYER NAME
+    public const string TEAM_BLUE = "TeamBlue";
+    public const string TEAM_RED = "TeamRed";
+    public const string HANG_ZONE = "HangZone";
+    public const string HIT_ZONE = "HitZone";
     #endregion
 }

@@ -45,8 +45,8 @@ public class DamageTextPool : MonoBehaviour
         damageText.InitDamageTextSettings(this);
         if (_characterStatus != null)
         {
-            _characterStatus.OnPlayerGetDamage -= damageText.ChangeText;
-            _characterStatus.OnPlayerGetDamage += damageText.ChangeText;
+            //_characterStatus.OnPlayerGetDamage -= damageText.ChangeText;
+            //_characterStatus.OnPlayerGetDamage += damageText.ChangeText; // To Do : 피격 시 플로팅 데미지
         }
         return damageTextObject;
     }

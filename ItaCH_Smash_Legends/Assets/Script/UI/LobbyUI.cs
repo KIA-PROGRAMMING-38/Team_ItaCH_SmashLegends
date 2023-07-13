@@ -19,9 +19,7 @@ public class LobbyUI : MonoBehaviour
     private float _defaultVolume = 1f;
     public float DefaultVolume { get => _defaultVolume; }
 
-    private TextMeshProUGUI _userNameText;
-
-    public event Action<CharacterType> OnCharacterChanged;
+    private TextMeshProUGUI _userNameText;        
 
     private void Start()
     {        
@@ -34,9 +32,10 @@ public class LobbyUI : MonoBehaviour
     public void InitLobbyUISettings() // 패널 3개 생성 : 레전드 메뉴, 환경설정 메뉴, 매칭 UI
     {        
         SetUserName();
-        SetPanelAndButton(ResourcesManager.LegendMenuUIPath, ResourcesManager.LegendMenuButtonPath);
-        SetPanelAndButton(ResourcesManager.SettingUIPath, ResourcesManager.SettingButtonPath);
-        SetPanelAndButton(ResourcesManager.MatchingUIPath, ResourcesManager.MatchingButtonPath);
+        SetPanelAndButton(FilePath.LegendMenuUIPath, FilePath.LegendMenuButtonPath);
+        SetPanelAndButton(FilePath.SettingUIPath, FilePath.SettingButtonPath);
+        SetPanelAndButton(FilePath.MatchingUIPath, FilePath.MatchingButtonPath);
+        // TO DO : ResourceManager 및 UIManager에서 관리
         SetLobbyCharaterModel();
     }
     private void SetUserName()
@@ -68,10 +67,9 @@ public class LobbyUI : MonoBehaviour
     public void ChangeLobbyCharacterModel(int characterIndex)
     {
         _characterModels[_currentCharacterIndex].SetActive(false);
-        _characterModels[characterIndex].SetActive(true);
-        _characterType = (CharacterType)characterIndex;
+        _characterModels[characterIndex].SetActive(true);        
         _currentCharacterIndex = characterIndex;
-        Managers.UserManager.UserLocalData.SetSelectedCharacter(_characterType);
+        Managers.UserManager.UserLocalData.SelectedCharacter = (CharacterType)characterIndex;
     }
 
     private void SetPanelAndButton(string panelPath, string buttonPath)
@@ -85,7 +83,7 @@ public class LobbyUI : MonoBehaviour
         panel.InitPanelSettings(this);
         button.InitEnablePanelButtonSettings(panelGameObject);
         panelGameObject.SetActive(false);
-        if (buttonPath == ResourcesManager.MatchingButtonPath)
+        if (buttonPath == FilePath.MatchingButtonPath)
         {
             button.Button.onClick.AddListener(Managers.LobbyManager.Connect);
         }

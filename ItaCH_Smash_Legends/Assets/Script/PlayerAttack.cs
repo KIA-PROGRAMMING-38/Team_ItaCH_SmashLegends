@@ -14,7 +14,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     protected PlayerMove playerMove;
     protected Rigidbody rigidbodyAttack;
-    protected CharacterStatus characterStatus;
+    protected LegendController characterStatus;
     protected PlayerStatus playerStatus;
     protected Animator animator;
 
@@ -29,7 +29,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     {
         playerMove = GetComponent<PlayerMove>();
         rigidbodyAttack = GetComponent<Rigidbody>();
-        characterStatus = GetComponent<CharacterStatus>();
+        characterStatus = GetComponent<LegendController>();
         playerStatus = GetComponent<PlayerStatus>();
         animator = GetComponent<Animator>();
 

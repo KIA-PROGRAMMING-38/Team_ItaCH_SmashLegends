@@ -18,13 +18,13 @@ public class HookHit : MonoBehaviour
     private Vector3 _bulletHitPosition;
     private HookBullet _hookBullet;
     private EffectController _effectController;
-    private CharacterStatus _characterStatus;
+    private LegendController _legend;
     private PlayerHit _playerHit;
 
     private void Start()
     {
         _hookBullet = GetComponentInParent<HookBullet>();
-        _characterStatus = _hookBullet.constructor.GetComponent<CharacterStatus>();
+        _legend = _hookBullet.constructor.GetComponent<LegendController>();
         SetPowerAndDamage();
         knockbackPower = defaultKnockbackPower;
         CalculationPowerAndDamage();
@@ -35,11 +35,11 @@ public class HookHit : MonoBehaviour
     }
     private void SetPowerAndDamage()
     {
-        defaultKnockbackPower = _characterStatus.Stat.DefaultKnockbackPower;
-        heavyKnockbackPower = _characterStatus.Stat.HeavyKnockbackPower;
-        defaultdamage = _characterStatus.Stat.DefaultAttackDamage;
-        skillDamage = _characterStatus.Stat.SkillAttackDamage;
-        heavyDamage = _characterStatus.Stat.SkillAttackDamage;
+        defaultKnockbackPower = _legend.Stat.DefaultKnockbackPower;
+        heavyKnockbackPower = _legend.Stat.HeavyKnockbackPower;
+        defaultdamage = _legend.Stat.DefaultAttackDamage;
+        skillDamage = _legend.Stat.SkillAttackDamage;
+        heavyDamage = _legend.Stat.SkillAttackDamage;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -105,7 +105,7 @@ public class HookHit : MonoBehaviour
 
     private void GetHitDamage(Collider other)
     {
-        CharacterStatus opponentCharacter = other.GetComponent<CharacterStatus>();
-        opponentCharacter.GetDamage(defaultdamage);
+        LegendController opponentCharacter = other.GetComponent<LegendController>();
+        opponentCharacter.Damage(defaultdamage);
     }
 }

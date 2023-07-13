@@ -27,8 +27,8 @@ public class LegendUI : MonoBehaviour
     private void OnDestroy()
     {
         _characterStatus.OnPlayerHealthPointChange -= SetHealthPoint;
-        _characterStatus.OnPlayerDie -= DisableLegendUI;
-        _characterStatus.OnPlayerRespawn -= EnableLegendUI;
+        //_characterStatus.OnPlayerDie -= DisableLegendUI;
+        //_characterStatus.OnPlayerRespawn -= EnableLegendUI; // todo : 사망 및 피격 판정 시 UI 활성화 비활성화 
     }
     public void InitLegendUISettings(Transform characterTransform)
     {
@@ -43,12 +43,12 @@ public class LegendUI : MonoBehaviour
         _characterStatus = characterStatus;
         _characterStatus.OnPlayerHealthPointChange -= SetHealthPoint;
         _characterStatus.OnPlayerHealthPointChange += SetHealthPoint;
-        _characterStatus.OnPlayerDie -= DisableLegendUI;
-        _characterStatus.OnPlayerDie += DisableLegendUI;
-        _characterStatus.OnPlayerRespawn -= EnableLegendUI;
-        _characterStatus.OnPlayerRespawn += EnableLegendUI;
+        //_characterStatus.OnPlayerDie -= DisableLegendUI;
+        //_characterStatus.OnPlayerDie += DisableLegendUI; TODO : 죽었을 때 비활성화를 위한 구독
+        //_characterStatus.OnPlayerRespawn -= EnableLegendUI;
+        //_characterStatus.OnPlayerRespawn += EnableLegendUI; TODO : 리스폰 시 활성화를 위한 구독
 
-        SetHealthPointBar(_characterStatus.Stat.HP);
+        //SetHealthPointBar(_characterStatus.Stat.HP);
         SetHealthPoint(_characterStatus.CurrentHP, _characterStatus.CurrentHPRatio);
     }
 
