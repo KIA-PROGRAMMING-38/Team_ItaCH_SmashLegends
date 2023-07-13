@@ -9,7 +9,7 @@ public class LegendAnimationController : MonoBehaviour
     private AnimationClip[] _applyJumpAttackClip;
 
     private LegendController _legendController;
-    public Animator Animator { get; private set; }
+    private Animator _animator;
     private AnimatorOverrideController _animatorOverrideController;
 
     private int _animationClipIndex;
@@ -17,25 +17,25 @@ public class LegendAnimationController : MonoBehaviour
     private void Awake()
     {
         _legendController = GetComponent<LegendController>();
-        Animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
 
         SetAnimatorClip();
     }
     private void SetAnimatorClip()
     {
-        string[] _overrideAnimatorName = new string[Animator.runtimeAnimatorController.animationClips.Length];
-        AnimationClip[] _applyAnimationClip = new AnimationClip[Animator.runtimeAnimatorController.animationClips.Length];
+        string[] _overrideAnimatorName = new string[_animator.runtimeAnimatorController.animationClips.Length];
+        AnimationClip[] _applyAnimationClip = new AnimationClip[_animator.runtimeAnimatorController.animationClips.Length];
 
-        _animatorOverrideController = new AnimatorOverrideController(Animator.runtimeAnimatorController);
+        _animatorOverrideController = new AnimatorOverrideController(_animator.runtimeAnimatorController);
 
-        for (int i = 0; i < Animator.runtimeAnimatorController.animationClips.Length; ++i)
+        for (int i = 0; i < _animator.runtimeAnimatorController.animationClips.Length; ++i)
         {
             _overrideAnimatorName[i] = _animatorOverrideController.animationClips[i].name;
-            _applyAnimationClip[i] = Animator.runtimeAnimatorController.animationClips[i];
+            _applyAnimationClip[i] = _animator.runtimeAnimatorController.animationClips[i];
             _animatorOverrideController[_overrideAnimatorName[i]] = _applyAnimationClip[i];
         }
 
-        Animator.runtimeAnimatorController = _animatorOverrideController;
+        _animator.runtimeAnimatorController = _animatorOverrideController;
     }
     public void SetNextAnimationClip(ComboAttackType type)
     {
@@ -64,14 +64,13 @@ public class LegendAnimationController : MonoBehaviour
         switch (comboAttackType)
         {
             case ComboAttackType.First:
-                Animator.Play(AnimationHash.FirstAttack);
+                _animator.Play(AnimationHash.FirstAttack);
                 break;
             case ComboAttackType.Second:
-                Animator.Play(AnimationHash.SecondAttack);
+                _animator.Play(AnimationHash.SecondAttack);
                 break;
         }
     }
- 
     
     public void ResetComboAttackAnimationClip()
     {
@@ -88,5 +87,14 @@ public class LegendAnimationController : MonoBehaviour
                 animator.ResetTrigger(trigger.name);
             }
         }
+    }
+
+    public void SetBool(int animationHash, bool value)
+    {
+        _animator.SetBool(animationHash, value);
+    }
+    public void SetTrigger(int animationHash)
+    {
+        _animator.SetTrigger(animationHash);
     }
 }

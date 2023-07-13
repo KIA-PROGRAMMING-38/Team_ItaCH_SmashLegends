@@ -88,19 +88,19 @@ public class LegendController : MonoBehaviour
     }
     private void OnJump()
     {
-        _legendAnimationController.Animator.SetTrigger(AnimationHash.Jump);
+        _legendAnimationController.SetTrigger(AnimationHash.Jump);
     }
     private void OnDefaultAttack()
     {
-        _legendAnimationController.Animator.SetTrigger(AnimationHash.FirstAttack);
+        _legendAnimationController.SetTrigger(AnimationHash.FirstAttack);
     }
     private void OnSmashAttack()
     {
-        _legendAnimationController.Animator.SetTrigger(AnimationHash.HeavyAttack);
+        _legendAnimationController.SetTrigger(AnimationHash.HeavyAttack);
     }
     private void OnSkillAttack()
     {
-        _legendAnimationController.Animator.SetTrigger(AnimationHash.SkillAttack);
+        _legendAnimationController.SetTrigger(AnimationHash.SkillAttack);
     }
     #endregion
 
@@ -108,8 +108,8 @@ public class LegendController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(StringLiteral.Ground))
         {
-            _legendAnimationController.Animator.SetBool(AnimationHash.JumpDown, false);
-            _legendAnimationController.Animator.SetTrigger(AnimationHash.HitDown);
+            _legendAnimationController.SetBool(AnimationHash.JumpDown, false);
+            _legendAnimationController.SetTrigger(AnimationHash.HitDown);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -182,7 +182,7 @@ public class LegendController : MonoBehaviour
     {
         if (MoveDirection != Vector3.zero)
         {
-            _legendAnimationController.Animator.SetBool(AnimationHash.Run, true);
+            _legendAnimationController.SetBool(AnimationHash.Run, true);
             transform.rotation = Quaternion.LookRotation(MoveDirection);
             //transform.Translate(Vector3.forward * (_characterStatus.Stat.MoveSpeed * Time.deltaTime));
             // 데이터 연동 전 임시 코드
@@ -190,7 +190,7 @@ public class LegendController : MonoBehaviour
         }
         else
         {
-            _legendAnimationController.Animator.SetBool(AnimationHash.Run, false);
+            _legendAnimationController.SetBool(AnimationHash.Run, false);
         }
     }
     private void LookForwardOnAttack()
@@ -269,11 +269,11 @@ public class LegendController : MonoBehaviour
         switch (rollingDirection)
         {
             case RollingDirection.Front:
-                _legendAnimationController.Animator.SetTrigger(AnimationHash.RollUpFront);
+                _legendAnimationController.SetTrigger(AnimationHash.RollUpFront);
                 transform.forward = MoveDirection;
                 break;
             case RollingDirection.Back:
-                _legendAnimationController.Animator.SetTrigger(AnimationHash.RollUpBack);
+                _legendAnimationController.SetTrigger(AnimationHash.RollUpBack);
                 transform.forward = -1 * MoveDirection;
                 break;
             default:
@@ -314,7 +314,7 @@ public class LegendController : MonoBehaviour
         transform.forward = -1 * other.transform.forward;
         Vector3 _knockbackDirection = other.transform.forward + transform.up;
 
-        _legendAnimationController.Animator.SetTrigger(animationHash);
+        _legendAnimationController.SetTrigger(animationHash);
         _rigidbody.AddForce(_knockbackDirection * SetKnockbackPower(type, other), ForceMode.Impulse);
     }
     private float SetKnockbackPower(KnockbackType type, Collider other)

@@ -18,7 +18,7 @@ public class LegendJumpState : LegendBaseState
         }
         if (legendController.IsFalling())
         {
-            legendAnimationController.Animator.SetBool(AnimationHash.JumpDown, true);
+            legendAnimationController.SetBool(AnimationHash.JumpDown, true);
         }
     }
 }
