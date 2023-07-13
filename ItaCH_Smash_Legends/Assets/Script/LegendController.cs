@@ -21,7 +21,7 @@ public enum ActionType
 public class LegendController : MonoBehaviour
 {
     private InputAction[] _actions;
-        
+
     public LegendStatData Stat { get; set; }
 
     private Rigidbody _rigidbody;
@@ -40,7 +40,7 @@ public class LegendController : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();        
+        _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
         _legendAnimationController = GetComponent<LegendAnimationController>();
     }
 
