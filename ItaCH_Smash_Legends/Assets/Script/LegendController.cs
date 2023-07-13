@@ -9,6 +9,7 @@ public enum ComboAttackType
     FirstJump,
     SecondJump
 }
+
 public enum ActionType
 {
     Move,
@@ -17,11 +18,19 @@ public enum ActionType
     HeavyAttack,
     SkillAttack
 }
+
 public enum KnockbackType
 {
     Default,
     Heavy
 }
+
+public enum RollingDirection
+{
+    Front,
+    Back
+}
+
 public class LegendController : MonoBehaviour
 {
     // 추후 Character base 데이터 로 변환해야함.
@@ -110,13 +119,11 @@ public class LegendController : MonoBehaviour
             // TODO : 추후구현
             // Animation.Play(Hang);
         }
-
         if (other.CompareTag(StringLiteral.DefaultHit))
         {
             RollingForward = -1 * other.transform.forward;
             _playerHit.GetKnockbackOnAttack(other, AnimationHash.Hit, KnockbackType.Default);
         }
-
         if (other.CompareTag(StringLiteral.HeavyHit))
         {
             RollingForward = -1 * other.transform.forward;
@@ -219,66 +226,83 @@ public class LegendController : MonoBehaviour
     #endregion
 
     #region Legend DownIdle State
-    public async UniTaskVoid RollingInputWaitTask()
+    public async UniTaskVoid StartRollingTask()
     {
         await UniTask.WaitUntil(() => MoveDirection != Vector3.zero);
 
-        RollingDirection();
+        SetRollingDirection();
         _effectController.StartInvincibleFlashEffet(_effectController.FLASH_COUNT).Forget();
     }
-    public void RollingDash()
+    public void DashOnRollUp()
     {
         _rigidbody.AddForce(MoveDirection * _rollingDashPower, ForceMode.Impulse);
     }
-    private void RollingDirection()
+    private void SetRollingDirection()
     {
         if (MoveDirection != Vector3.zero)
         {
             if (MoveDirection.x != 0 && MoveDirection.z != 0)
             {
-                SetDiagonalRolling();
+                SetDiagonalRollingDirection();
                 return;
             }
             else if (RollingForward == MoveDirection)
             {
-                transform.forward = -1 * MoveDirection;
-                _legendAnimationController.Animator.SetTrigger(AnimationHash.RollUpBack);
+                SetRollingType(RollingDirection.Back);
                 return;
             }
             else
             {
-                _legendAnimationController.Animator.SetTrigger(AnimationHash.RollUpFront);
-                transform.forward = MoveDirection;
+                SetRollingType(RollingDirection.Front);
                 return;
             }
         }
     }
-    private void SetDiagonalRolling()
+    private void SetDiagonalRollingDirection()
     {
-        if (RollingForward.x > 0)
+        var rollingDirection = GetDirection(RollingForward, MoveDirection);
+
+        SetRollingType(rollingDirection);
+    }
+    private void SetRollingType(RollingDirection rollingDirection)
+    {
+        switch (rollingDirection)
         {
-            if (MoveDirection.x > 0)
-            {
-                transform.forward = -1 * MoveDirection;
+            case RollingDirection.Front:
+                _legendAnimationController.Animator.SetTrigger(AnimationHash.RollUpFront);
+                transform.forward = MoveDirection;
+                break;
+            case RollingDirection.Back:
                 _legendAnimationController.Animator.SetTrigger(AnimationHash.RollUpBack);
+                transform.forward = -1 * MoveDirection;
+                break;
+            default:
+                Debug.LogError("RollingDirection 미구현");
+                break;
+        }
+    }
+    private RollingDirection GetDirection(Vector2 rollingForward, Vector2 moveDirection)
+    {
+        if (rollingForward.x > 0)
+        {
+            if (moveDirection.x > 0)
+            {
+                return RollingDirection.Back;
             }
             else
             {
-                transform.forward = MoveDirection;
-                _legendAnimationController.Animator.SetTrigger(AnimationHash.RollUpFront);
+                return RollingDirection.Front;
             }
         }
         else
         {
-            if (MoveDirection.x < 0)
+            if (moveDirection.x < 0)
             {
-                transform.forward = -1 * MoveDirection;
-                _legendAnimationController.Animator.SetTrigger(AnimationHash.RollUpBack);
+                return RollingDirection.Back;
             }
             else
             {
-                transform.forward = MoveDirection;
-                _legendAnimationController.Animator.SetTrigger(AnimationHash.RollUpFront);
+                return RollingDirection.Front;
             }
         }
     }

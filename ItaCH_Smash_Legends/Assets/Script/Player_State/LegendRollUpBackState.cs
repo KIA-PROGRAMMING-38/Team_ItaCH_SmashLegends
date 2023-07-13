@@ -8,6 +8,6 @@ public class LegendRollUpBackState : LegendBaseState
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
 
-        legendController.RollingDash();
+        legendController.DashOnRollUp();
     }
 }
