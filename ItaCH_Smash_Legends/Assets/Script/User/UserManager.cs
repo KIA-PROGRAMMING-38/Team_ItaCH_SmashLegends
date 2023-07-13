@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using Util.Enum;
 
 public class UserManager
@@ -31,7 +31,7 @@ public class UserManager
         defaultUserData.Name = $"Bot{id}";
         defaultUserData.Id = id;
         defaultUserData.SelectedCharacter = CharacterType.None;
-        defaultUserData.TeamType = TeamType.None;
+        defaultUserData.Team = TeamType.None;
         return defaultUserData;
     }
 

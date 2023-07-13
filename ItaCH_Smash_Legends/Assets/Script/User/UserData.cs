@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 using Util.Enum;
 
 public class UserData
 {
     public string Name { get; set; }
     public int Id { get; set; }
-    public TeamType TeamType { get; set; }
+    public TeamType Team { get; set; } // 결과창 UI 로직 변경 이후 삭제 필요
     public GameModeType SelectGameMode { get; set; }
 
     private CharacterType _selectedCharacter;
@@ -21,13 +21,6 @@ public class UserData
             else
                 return _selectedCharacter;
         }
-        set
-        {
-            _selectedCharacter = value;
-        }
-    }
-    public void SetSelectedCharacter(CharacterType selectedCharacter)
-    {
-        _selectedCharacter = selectedCharacter;
-    }
+        set => _selectedCharacter = value;
+    }    
 }

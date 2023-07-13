@@ -6,7 +6,7 @@ using Util.Path;
 
 public class ResultUI : MonoBehaviour
 {
-    //ÃßÈÄ ¿ÜºÎ¿¡¼­ ¹Ş¾Æ¿Ã ¿¹Á¤. ÇöÀç´Â ¾Ù¸®½º·Î ÅëÀÏ
+    //ì¶”í›„ ì™¸ë¶€ì—ì„œ ë°›ì•„ì˜¬ ì˜ˆì •. í˜„ì¬ëŠ” ì•¨ë¦¬ìŠ¤ë¡œ í†µì¼
     private CharacterType[] _characterType;
     private Transform[] _spawnPoints;
     [SerializeField] private TextMeshProUGUI _resultText;
@@ -19,9 +19,9 @@ public class ResultUI : MonoBehaviour
     private LobbyUI _lobbyUI;
     private int _maxPlayer = 2;
 
-    private const string WinText = "½Â¸®";
-    private const string DrawText = "¹«½ÂºÎ";
-    private const string LoseText = "ÆĞ¹è";
+    private const string WinText = "ìŠ¹ë¦¬";
+    private const string DrawText = "ë¬´ìŠ¹ë¶€";
+    private const string LoseText = "íŒ¨ë°°";
     private int winHash = Animator.StringToHash("WinGame");
     private int loseHash = Animator.StringToHash("LoseGame");
 
@@ -55,23 +55,23 @@ public class ResultUI : MonoBehaviour
 
     //private void Start()
     //{
-    //    //ÀüÃ¼°¡ Å×½ºÆ® ÄÚµå.
+    //    //ì „ì²´ê°€ í…ŒìŠ¤íŠ¸ ì½”ë“œ.
     //    UserData[] test = new UserData[_maxPlayer];
     //    test[0] = new UserData();
     //    test[1] = new UserData();
-    //    test[0].Name = "ÆÄ¶û¼Í";
+    //    test[0].Name = "íŒŒë‘ì…©";
     //    test[0].TeamType = TeamType.Red;
-    //    test[1].Name = "±è°©¼ö";
+    //    test[1].Name = "ê¹€ê°‘ìˆ˜";
     //    test[1].TeamType = TeamType.Blue;
     //    ShowResultUI(TeamType.Red, test);
     //}
-    //ÃßÈÄ °ÔÀÓÀÌ ³¡³µÀ» ¶§ ½ÇÇàµÉ ÇÔ¼ö. ÀÌº¥Æ®¿¡ ±¸µ¶ÇØ¼­ »ç¿ëÇÏÀÚ.
-    //À¯Àú µ¥ÀÌÅÍ¸¦ ¹è¿­ Çü½ÄÀ¸·Î °ü¸®ÇÏ¿© 0¹ø¿¡ º»ÀÎÀ» »ğÀÔ..?
-    public void ShowResultUI(TeamType winningteam, UserData[] usersData)
+    //ì¶”í›„ ê²Œì„ì´ ëë‚¬ì„ ë•Œ ì‹¤í–‰ë  í•¨ìˆ˜. ì´ë²¤íŠ¸ì— êµ¬ë…í•´ì„œ ì‚¬ìš©í•˜ì.
+    //ìœ ì € ë°ì´í„°ë¥¼ ë°°ì—´ í˜•ì‹ìœ¼ë¡œ ê´€ë¦¬í•˜ì—¬ 0ë²ˆì— ë³¸ì¸ì„ ì‚½ì…..?
+    public void ShowResultUI(TeamType winningteam, UserData[] users)
     {
         _lobbyUI.gameObject.SetActive(false);
-        UserData userData = usersData[0];
-        if (userData.TeamType.Equals(winningteam))
+        UserData user = users[0];
+        if (user.Team.Equals(winningteam))
         {
             _resultText.text = WinText;
         }
@@ -87,8 +87,8 @@ public class ResultUI : MonoBehaviour
         _copiedModels = new List<GameObject>();
         for (int i = 0; i < _maxPlayer; ++i)
         {
-            //ÃßÈÄ UserData¿¡¼­ ¹Ş¾Æ¿Ã ¿¹Á¤
-            //Áï, if(_isCharacterAlreadyUsed((int)usersData[i].Character))ÀÇ Çü½Ä
+            //ì¶”í›„ UserDataì—ì„œ ë°›ì•„ì˜¬ ì˜ˆì •
+            //ì¦‰, if(_isCharacterAlreadyUsed((int)usersData[i].Character))ì˜ í˜•ì‹
             GameObject characterModel = new GameObject();
 
             if (_isCharacterAlreadyUsed[(int)CharacterType.Alice])
@@ -99,7 +99,7 @@ public class ResultUI : MonoBehaviour
             else
             {
                 characterModel = _lobbyUI.GetCharacterModel(CharacterType.Alice);
-                //Å×½ºÆ® ÄÚµå. ÃßÈÄ UserData¿¡¼­ ¹Ş¾Æ¿Ã ¿¹Á¤.
+                //í…ŒìŠ¤íŠ¸ ì½”ë“œ. ì¶”í›„ UserDataì—ì„œ ë°›ì•„ì˜¬ ì˜ˆì •.
                 _isCharacterAlreadyUsed[(int)CharacterType.Alice] = true;
             }
 
@@ -109,9 +109,9 @@ public class ResultUI : MonoBehaviour
             characterModel.transform.localScale = _fixedSize;
             characterModel.transform.rotation = _fixedRotation;
 
-            _playerIDText[i].text = usersData[i].Name;
+            _playerIDText[i].text = users[i].Name;
 
-            if (usersData[i].TeamType.Equals(winningteam))
+            if (users[i].Team.Equals(winningteam))
             {
                 characterModelAnimator.SetTrigger(winHash);
             }

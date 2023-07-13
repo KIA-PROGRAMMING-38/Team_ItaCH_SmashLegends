@@ -24,7 +24,6 @@ public class StageManager : MonoBehaviourPunCallbacks
     private int _teamMemberIndex;
     private int _teamBlueScore;
     private int _teamRedScore;
-    private int _winningScore;
 
     private float _modeDefaultRespawnTime;
     private float _gameTime;
@@ -75,7 +74,6 @@ public class StageManager : MonoBehaviourPunCallbacks
         _currentGameMode.InitGameMode(gameModeSelected);
         _totalPlayer = _currentGameMode.TotalPlayer;
         _teamSize = _currentGameMode.TeamSize;
-        _winningScore = _currentGameMode.WinningScore;
         _modeDefaultRespawnTime = _currentGameMode.ModeDefaultRespawnTime;
         _isGameOver = false;
     }
@@ -110,8 +108,8 @@ public class StageManager : MonoBehaviourPunCallbacks
             if (spawnPoints[playerID] != null)
             {
                 CharacterStatus characterInstance = Instantiate(characterPrefab, spawnPoints[playerID + INDEX_OFFSET_FOR_ZERO].position, Quaternion.identity);
-                InitCharacterStatus(characterInstance, userData);
-                SetPlayerInputController(characterInstance, playerID);
+                LegendController legend = characterInstance.GetComponent<LegendController>();
+                legend.Init(selectedCharacter, playerID);                
                 _playerCharacterInstances[playerID] = characterInstance;
             }
             else
@@ -135,11 +133,11 @@ public class StageManager : MonoBehaviourPunCallbacks
     {
         int playerID = userData.Id;
         characterStatus.Init(userData);
-        characterStatus.RespawnTime = _modeDefaultRespawnTime;
+        //characterStatus.RespawnTime = _modeDefaultRespawnTime; // TO DO : 리스폰 로직 Chracterstatus >> LegendController
         SetTeam(characterStatus, playerID);
 
-        characterStatus.OnRespawnSetting -= SetPlayerInputController;
-        characterStatus.OnRespawnSetting += SetPlayerInputController;
+        //characterStatus.OnRespawnSetting -= SetPlayerInputController;
+        //characterStatus.OnRespawnSetting += SetPlayerInputController;
 
         characterStatus.OnPlayerDie -= UpdateTeamScore;
         characterStatus.OnPlayerDie += UpdateTeamScore;
@@ -164,29 +162,6 @@ public class StageManager : MonoBehaviourPunCallbacks
             character.gameObject.layer = LayerMask.NameToLayer("TeamBlue");
             character.SpawnPoint = character.transform.position;
             character.gameObject.name = "blue";
-        }
-    }
-    public void SetPlayerInputController(CharacterStatus character, int id)
-    {
-        UnityEngine.InputSystem.PlayerInput playercontroller;
-
-        switch (id)
-        {
-            case 0:
-                playercontroller = character.GetComponent<UnityEngine.InputSystem.PlayerInput>();
-                playercontroller.SwitchCurrentActionMap("FirstPlayerActions");
-                break;
-
-            case 1:
-                playercontroller = character.GetComponent<UnityEngine.InputSystem.PlayerInput>();
-                playercontroller.actions.name = "PlayerInput";
-                playercontroller.SwitchCurrentActionMap("SecondPlayerActions");
-                Keyboard keyBoard = InputSystem.GetDevice<Keyboard>();
-                playercontroller.actions.devices = new InputDevice[] { keyBoard };
-                break;
-
-            default:
-                return;
         }
     }
 
@@ -240,7 +215,7 @@ public class StageManager : MonoBehaviourPunCallbacks
     {
         _legendUIPrefab = Resources.Load<GameObject>("UI/LegendUI");
         GameObject legendUI = Instantiate(_legendUIPrefab);
-        legendUI.GetComponent<LegendUI>().InitLegendUISettings(player.transform);
+        //legendUI.GetComponent<LegendUI>().InitLegendUISettings(player.transform); // TO DO : CharacterStatus가 아닌 곳에서 Stat 가져오고 참조 연결
         _legendUI.Add(legendUI);
     }
     private IEnumerator UpdateGameTime()
@@ -265,7 +240,7 @@ public class StageManager : MonoBehaviourPunCallbacks
             ++_teamBlueScore;
             OnTeamScoreChanged.Invoke(_teamBlueScore, TeamType.Blue);
         }
-        if (_teamBlueScore == _winningScore || _teamRedScore == _winningScore)
+        if (_teamBlueScore == _currentGameMode.WinningScore || _teamRedScore == _currentGameMode.WinningScore)
         {
             _isGameOver = true;
             EndGameMode();

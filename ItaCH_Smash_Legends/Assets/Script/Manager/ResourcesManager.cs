@@ -3,29 +3,38 @@ using UnityEngine;
 
 public class ResourceManager
 {
-    public Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
-    public Dictionary<string, CharacterStatus> _legends = new Dictionary<string, CharacterStatus>();
+    public Dictionary<string, Sprite> Sprites { get; private set; }
+    public Dictionary<string, CharacterStatus> Legends { get; private set; }
 
     public void Init()
     {
+        Sprites = new Dictionary<string, Sprite>();
+        Legends = new Dictionary<string, CharacterStatus>();
     }
 
     public T Load<T>(string path) where T : Object
     {
         if (typeof(T) == typeof(Sprite))
         {
-            if (_sprites.TryGetValue(path, out Sprite sprite))
+            if (Sprites.TryGetValue(path, out Sprite sprite))
+            {
                 return sprite as T;
+            }
 
             Sprite sp = Resources.Load<Sprite>(path);
-            _sprites.Add(path, sp);
+            Sprites.Add(path, sp);
             return sp as T;
         }
 
         else if (typeof(T) == typeof(CharacterStatus))
         {
-            if (_legends.TryGetValue(path, out CharacterStatus characterStatus))
+            if (Legends.TryGetValue(path, out CharacterStatus characterStatus))
+            {
                 return characterStatus as T;
+            }
+
+            CharacterStatus legend = Resources.Load<CharacterStatus>(path);
+            Legends.Add(path, legend);
         }
 
         return Resources.Load<T>(path);
@@ -36,7 +45,7 @@ public class ResourceManager
         GameObject prefab = Load<GameObject>($"Prefabs/{path}");
         if (prefab == null)
         {
-            Debug.Log($"Failed to load prefab : {path}");
+            Debug.LogError($"Failed to load prefab : {path}");
             return null;
         }
 
@@ -53,7 +62,9 @@ public class ResourceManager
     public void Destroy(GameObject go)
     {
         if (go == null)
+        {
             return;
+        }
 
         Object.Destroy(go);
     }

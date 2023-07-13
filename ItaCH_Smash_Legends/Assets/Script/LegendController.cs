@@ -1,7 +1,6 @@
-using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Util.Enum;
 
 public enum ComboAttackType
 {
@@ -22,8 +21,9 @@ public enum ActionType
 public class LegendController : MonoBehaviour
 {
     private InputAction[] _actions;
+        
+    public LegendStatData Stat { get; set; }
 
-    private CharacterStatus _characterStatus;
     private Rigidbody _rigidbody;
     private UnityEngine.InputSystem.PlayerInput _input;
 
@@ -40,11 +40,37 @@ public class LegendController : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
-        _characterStatus = GetComponent<CharacterStatus>();
+        _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();        
         _legendAnimationController = GetComponent<LegendAnimationController>();
+    }
 
+    public void Init(CharacterType currentLegend, int player)
+    {
+        GetLegendStat(currentLegend);
+        SetController(player);
         InitActions();
+    }
+
+    private void GetLegendStat(CharacterType legendIndex) => Stat = Managers.DataManager.LegendStats[(int)legendIndex].Clone();
+
+    private void SetController(int player) // TO DO : 피격 로직 수정 이후 죽었을 때 이벤트에서 다시 호출 필요
+    {
+        switch (player)
+        {
+            case 0:
+                _input.SwitchCurrentActionMap("FirstPlayerActions");
+                break;
+
+            case 1:
+                _input.actions.name = "PlayerInput";
+                _input.SwitchCurrentActionMap("SecondPlayerActions");
+                Keyboard keyBoard = InputSystem.GetDevice<Keyboard>();
+                _input.actions.devices = new InputDevice[] { keyBoard };
+                break;
+
+            default:
+                return;
+        }
     }
 
     private void OnMove(InputValue value)
@@ -117,7 +143,7 @@ public class LegendController : MonoBehaviour
         {
             _legendAnimationController.SetBoolAnimationTrue(AnimationHash.Run);
             transform.rotation = Quaternion.LookRotation(MoveDirection);
-            transform.Translate(Vector3.forward * (_characterStatus.Stat.MoveSpeed * Time.deltaTime));
+            transform.Translate(Vector3.forward * (Stat.MoveSpeed * Time.deltaTime));
         }
         else
         {
