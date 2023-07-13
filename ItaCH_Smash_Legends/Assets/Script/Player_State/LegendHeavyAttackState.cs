@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LegendHeavyAttackState : LegendBaseState
 {
-    // LegnedController ¿Ï·á½Ã ¸®ÆåÅä¸µ
+    // LegnedController ì™„ë£Œì‹œ ë¦¬í™í† ë§
    
     private PlayerAttack _playerAttack;
 
@@ -10,13 +10,13 @@ public class LegendHeavyAttackState : LegendBaseState
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
 
-        _playerAttack = animator.GetComponent<PlayerAttack>();
         animator.SetBool(AnimationHash.Run, false);
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _playerAttack.AttackRotate();
+        //TODO : ì¶”í›„ êµ¬í˜„
+        //_playerAttack.AttackRotate();
     }
 
 }

@@ -2,51 +2,49 @@ using UnityEngine;
 
 public class PeterHit : PlayerHit
 {
-    public override void Hit(Collider other)
-    {
-        _knockbackDirection = transform.forward + transform.up;
+    // Hit 정의시 삭제 스크립트 
 
-        switch (_playerStatus.CurrentState)
-        {
+    //public override void Hit(Collider other)
+    //{
+    //    _knockbackDirection = transform.forward + transform.up;
 
-            case PlayerStatus.State.SkillAttack:
-                GetHit(defaultKnockbackPower, AnimationHash.Hit, other, _characterStatus.Stat.SkillAttackDamage);
-                break;
-            case PlayerStatus.State.SkillEndAttack:
-                GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.Stat.HeavyAttackDamage);
-                break;
-            case PlayerStatus.State.HeavyAttack:
-                GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.Stat.HeavyAttackDamage);
-                break;
-            case PlayerStatus.State.ComboAttack:
-                GetHit(defaultKnockbackPower, AnimationHash.Hit, other, _characterStatus.Stat.DefaultAttackDamage);
-                break;
-            case PlayerStatus.State.FinishComboAttack:
-                GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.Stat.DefaultAttackDamage);
-                break;
-            case PlayerStatus.State.JumpAttack:
-                GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.Stat.DefaultAttackDamage);
-                break;
+    //    switch (_playerStatus.CurrentState)
+    //    {
 
-        }
-    }
-    private void GetHit(float power, int animationHash, Collider other, int damage)
-    {
-        Rigidbody rigidbody = other.GetComponent<Rigidbody>();
-        Animator animator = other.GetComponent<Animator>();
-        PlayerStatus playerStatus = other.GetComponent<PlayerStatus>();
-        CharacterStatus opponentCharacter = other.GetComponent<CharacterStatus>();
+    //        case PlayerStatus.State.SkillAttack:
+    //            GetHit(defaultKnockbackPower, AnimationHash.Hit, other, _characterStatus.Stat.SkillAttackDamage);
+    //            break;
+    //        case PlayerStatus.State.SkillEndAttack:
+    //            GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.Stat.HeavyAttackDamage);
+    //            break;
+    //        case PlayerStatus.State.HeavyAttack:
+    //            GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.Stat.HeavyAttackDamage);
+    //            break;
+    //        case PlayerStatus.State.ComboAttack:
+    //            GetHit(defaultKnockbackPower, AnimationHash.Hit, other, _characterStatus.Stat.DefaultAttackDamage);
+    //            break;
+    //        case PlayerStatus.State.FinishComboAttack:
+    //            GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.Stat.DefaultAttackDamage);
+    //            break;
+    //        case PlayerStatus.State.JumpAttack:
+    //            GetHit(heavyKnockbackPower, AnimationHash.HitUp, other, _characterStatus.Stat.DefaultAttackDamage);
+    //            break;
 
-        if (playerStatus.CurrentState == PlayerStatus.State.Jump && _playerStatus.CurrentState != PlayerStatus.State.JumpAttack)
-            return;
+    //    }
+    //}
+    //private void GetHit(float power, int animationHash, Collider other, int damage)
+    //{
+    //    Rigidbody rigidbody = other.GetComponent<Rigidbody>();
+    //    Animator animator = other.GetComponent<Animator>();
+    //    CharacterStatus opponentCharacter = other.GetComponent<CharacterStatus>();
 
-        if (rigidbody.velocity != Vector3.zero)
-        {
-            rigidbody.velocity = Vector3.zero;
-        }
+    //    if (rigidbody.velocity != Vector3.zero)
+    //    {
+    //        rigidbody.velocity = Vector3.zero;
+    //    }
 
-        rigidbody.AddForce(_knockbackDirection * power, ForceMode.Impulse);
-        animator.SetTrigger(animationHash);
-        opponentCharacter.GetDamage(damage);
-    }
+    //    rigidbody.AddForce(_knockbackDirection * power, ForceMode.Impulse);
+    //    animator.SetTrigger(animationHash);
+    //    opponentCharacter.GetDamage(damage);
+    //}
 }

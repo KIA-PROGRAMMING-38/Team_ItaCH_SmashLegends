@@ -84546,7 +84546,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.4333333
-    functionName: ChangeSkillEndAttackStatus
+    functionName: ConvertHitUp
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
