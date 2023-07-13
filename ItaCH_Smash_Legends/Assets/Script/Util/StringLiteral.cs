@@ -36,4 +36,17 @@ public static class StringLiteral
     public const string DefaultHit = "DefaultHit";
     public const string HeavyHit = "HeavyHit";
     #endregion
+
+    #region INPUT ACTION MAP
+    public const string PLAYER_INPUT = "PlayerInput";
+    public const string FIRST_PLAYER_ACTIONS = "FirstPlayerActions";
+    public const string SECOND_PLAYER_ACTIONS = "SecondPlayerActions";
+    #endregion
+
+    #region LAYER NAME
+    public const string TEAM_BLUE = "TeamBlue";
+    public const string TEAM_RED = "TeamRed";
+    public const string HANG_ZONE = "HangZone";
+    public const string HIT_ZONE = "HitZone";
+    #endregion
 }

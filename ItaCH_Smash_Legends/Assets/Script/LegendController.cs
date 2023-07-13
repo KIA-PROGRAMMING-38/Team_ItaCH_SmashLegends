@@ -34,13 +34,8 @@ public enum RollingDirection
 
 public class LegendController : MonoBehaviour
 {
-    // 추후 Character base 데이터 로 변환해야함.
-    private float _jumpAcceleration = 14.2f;
-    private float _gravitationalAcceleration = 36f;
-    private float _maxFallingSpeed = 23f;
-    public static readonly float MAX_JUMP_POWER = 1f;
-    //
-
+    public const float MAX_JUMP_POWER = 1f;
+    
     [SerializeField] private SphereCollider _skillAttackHitZone;
     [SerializeField] private SphereCollider _attackHitZone;
     [SerializeField] private SphereCollider _heavyAttackHitZone;
@@ -59,7 +54,7 @@ public class LegendController : MonoBehaviour
     public Vector3 MoveDirection { get; private set; }
     public Vector3 RollingForward { get; private set; }
 
-    private float _rollingDashPower = 1.2f;
+    private const float ROLLING_DASH_POWER = 1.2f;
     private bool _canAttack;
 
     private readonly Vector3 JUMP_DIRECTION = Vector3.up;
@@ -73,28 +68,31 @@ public class LegendController : MonoBehaviour
 
     public void Init(CharacterType currentLegend, int player)
     {
-        GetLegendStat(currentLegend);
+        SetLegendStat(currentLegend);
         SetController(player);
         InitComponent();
         InitActions();
 
-        Physics.gravity = new Vector3(0f, -_gravitationalAcceleration, 0f);
-        _rigidbody.mass = MAX_JUMP_POWER / _jumpAcceleration;
+        Physics.gravity = new Vector3(0f, Stat.GravitationalAcceleration, 0f);
+        _rigidbody.mass = MAX_JUMP_POWER / Stat.JumpAcceleration;
     }
 
-    private void GetLegendStat(CharacterType legendIndex) => Stat = Managers.DataManager.LegendStats[(int)legendIndex].Clone();
+    private void SetLegendStat(CharacterType legendIndex)
+    {
+        Stat = Managers.DataManager.LegendStats[(int)legendIndex].Clone();        
+    }
 
     private void SetController(int player) // TO DO : 피격 로직 수정 이후 죽었을 때 이벤트에서 다시 호출 필요
     {
         switch (player)
         {
             case 0:
-                _input.SwitchCurrentActionMap("FirstPlayerActions");
+                _input.SwitchCurrentActionMap(StringLiteral.FIRST_PLAYER_ACTIONS);
                 break;
 
             case 1:
-                _input.actions.name = "PlayerInput";
-                _input.SwitchCurrentActionMap("SecondPlayerActions");
+                _input.actions.name = StringLiteral.PLAYER_INPUT;
+                _input.SwitchCurrentActionMap(StringLiteral.SECOND_PLAYER_ACTIONS);
                 Keyboard keyBoard = InputSystem.GetDevice<Keyboard>();
                 _input.actions.devices = new InputDevice[] { keyBoard };
                 break;
@@ -160,7 +158,7 @@ public class LegendController : MonoBehaviour
         if (other.CompareTag(StringLiteral.HeavyHit))
         {
             RollingForward = -1 * other.transform.forward;
-           GetKnockbackOnAttack(other, AnimationHash.HitUp, KnockbackType.Heavy);
+            GetKnockbackOnAttack(other, AnimationHash.HitUp, KnockbackType.Heavy);
         }
     }
 
@@ -168,7 +166,6 @@ public class LegendController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
-        _characterStatus = GetComponent<CharacterStatus>();
         _legendAnimationController = GetComponent<LegendAnimationController>();
         _playerHit = GetComponent<PlayerHit>();
         _effectController = GetComponent<EffectController>();
@@ -188,9 +185,9 @@ public class LegendController : MonoBehaviour
         {
             Vector3 currentVelocity = _rigidbody.velocity;
 
-            if (currentVelocity.magnitude > _maxFallingSpeed)
+            if (currentVelocity.magnitude > Stat.MaxFallingSpeed)
             {
-                currentVelocity = currentVelocity * _maxFallingSpeed / currentVelocity.magnitude;
+                currentVelocity = currentVelocity * Stat.MaxFallingSpeed / currentVelocity.magnitude;
                 _rigidbody.velocity = currentVelocity;
             }
         }
@@ -268,7 +265,7 @@ public class LegendController : MonoBehaviour
     }
     public void DashOnRollUp()
     {
-        _rigidbody.AddForce(MoveDirection * _rollingDashPower, ForceMode.Impulse);
+        _rigidbody.AddForce(MoveDirection * ROLLING_DASH_POWER, ForceMode.Impulse);
     }
     private void SetRollingDirection()
     {
@@ -310,7 +307,7 @@ public class LegendController : MonoBehaviour
                 transform.forward = -1 * MoveDirection;
                 break;
             default:
-                Debug.LogError("RollingDirection 미구현");
+                Debug.LogError($"입력된 RollingDirection을 허용하지 않습니다. 입력값 : {rollingDirection}");
                 break;
         }
     }
@@ -374,4 +371,21 @@ public class LegendController : MonoBehaviour
     #endregion
     // PlayerHangController
     // Hang 상태에서 입력시 처리
+
+    public void Damage(int damage)
+    {
+
+    }
+    //public void GetDamage(int damage) // TO DO : 피격 판정 시 호출
+    //{
+    //    int damagedHealthPoint = _currentHealthPoint - damage;
+    //    _currentHealthPoint = Mathf.Max(damagedHealthPoint, DEAD_TRIGGER_HP);
+    //    OnPlayerHealthPointChange.Invoke(_currentHealthPoint, CurrentHPRatio);
+    //    OnPlayerGetDamage?.Invoke(damage);
+    //    if (_currentHealthPoint <= DEAD_TRIGGER_HP && !this._isDead)
+    //    {
+
+    //    }
+    //}
+
 }

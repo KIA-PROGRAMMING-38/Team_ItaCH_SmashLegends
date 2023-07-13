@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
-    private CharacterStatus _characterStatus;
+    private LegendController _characterStatus;
     private PlayerStatus _playerStatus;
     private PlayerMove _playerMove;
     private LegendController _legendController;
@@ -20,7 +20,7 @@ public class PlayerJump : MonoBehaviour
     private void Awake()
     {
         _legendController = GetComponent<LegendController>();
-        _characterStatus= GetComponent<CharacterStatus>();
+        _characterStatus= GetComponent<LegendController>();
         _rigidbody = GetComponent<Rigidbody>();
         _playerStatus = GetComponent<PlayerStatus>();
         _playerMove = GetComponent<PlayerMove>();

@@ -5,13 +5,12 @@ public class UserManager
 {
     private const int MAXIMUM_PLAYER = 4;
     public UserData[] AllUserDatas = new UserData[MAXIMUM_PLAYER];
-    public UserData UserLocalData { get => _userLocalData; set => _userLocalData = value; }
-    private UserData _userLocalData;
-
+    public UserData UserLocalData { get; set; }
+    
     public void Init()
     {
-        _userLocalData = new UserData();
-        _userLocalData.SelectedCharacter = CharacterType.None;
+        UserLocalData = new UserData();
+        UserLocalData.SelectedCharacter = CharacterType.None;
         Managers.LobbyManager.OnUpdateUserDatas -= ResiterUserData;
         Managers.LobbyManager.OnUpdateUserDatas += ResiterUserData;
     }
@@ -29,9 +28,8 @@ public class UserManager
     {
         UserData defaultUserData = new UserData();
         defaultUserData.Name = $"Bot{id}";
-        defaultUserData.Id = id;
-        defaultUserData.SelectedCharacter = CharacterType.None;
-        defaultUserData.Team = TeamType.None;
+        defaultUserData.ID = id;
+        defaultUserData.SelectedCharacter = CharacterType.None;        
         return defaultUserData;
     }
 

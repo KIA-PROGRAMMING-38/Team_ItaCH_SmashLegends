@@ -1,4 +1,4 @@
-﻿using Cysharp.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using Photon.Realtime;
 using System;
@@ -55,7 +55,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         OnCreatingRoom?.Invoke();
-        int totalPlayer = Managers.StageManager.CurrentGameMode.TotalPlayer;
+        int totalPlayer = Managers.StageManager.CurrentGameMode.MaxPlayer;
         PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = totalPlayer });
     }
 
@@ -101,7 +101,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         int enteringOrder = GetEnteringOrder();
         UserData userLocalData = GetUserLocalData();
-        userLocalData.Id = enteringOrder;
+        userLocalData.ID = enteringOrder;
         OnUpdateUserDatas?.Invoke(enteringOrder, userLocalData);
     }
 

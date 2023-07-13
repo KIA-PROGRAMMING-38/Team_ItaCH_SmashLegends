@@ -3,24 +3,26 @@ using UnityEngine;
 public class GameMode
 {
     public GameModeType GameModeType { get => _currentGameModeType; set => _currentGameModeType = value; }
-    public GameObject Map { get => _currentMap; private set => _currentMap = value; }
-    public int TotalPlayer { get => _totalPlayer; private set => _totalPlayer = value; }
-    public int TeamSize { get => _teamSize; private set => _teamSize = value; }
-    public int MaxGameTime { get => _maxGameTimeSec; private set => _maxGameTimeSec = value; }
-    public int WinningScore { get => _winningScore; private set => _winningScore = value; }
-    public Transform[] SpawnPoints { get => _spawnPoints; private set => _spawnPoints = value; }
-    public float ModeDefaultRespawnTime { get => _modeDefaultRespawnTime; private set => _modeDefaultRespawnTime = value; }
+    public GameObject Map { get => _currentMap; }
+    public int MaxPlayer { get => _totalPlayer; }
+    public int MaxTeamCount { get => _maxTeamCount; }
+    public int MaxTeamMember { get => _maxTeamMember; }    
+    public int MaxGameTime { get => _maxGameTimeSec; }
+    public int WinningScore { get => _winningScore; }
+    public Transform[] SpawnPoints { get => _spawnPoints; }
+    public float ModeDefaultRespawnTime { get => _modeDefaultRespawnTime; }
 
     private GameModeType _currentGameModeType;
     private GameObject _currentMap;
     private int _totalPlayer;
-    private int _teamSize;
+    private int _maxTeamCount;
+    private int _maxTeamMember;
     private int _winningScore;
     private int _maxGameTimeSec;
     private float _modeDefaultRespawnTime;
     private Transform[] _spawnPoints;
 
-    public void InitGameMode(GameModeType gameModeType)
+    public void Init(GameModeType gameModeType)
     {
         GetGameModeData(gameModeType);
         GetMapData();
@@ -30,7 +32,8 @@ public class GameMode
         // 추후 데이터 분리 필요
         _currentGameModeType = gameModeType;
         _totalPlayer = 2;
-        _teamSize = 1;
+        _maxTeamCount = 2;
+        _maxTeamMember = 1;
         _maxGameTimeSec = 120;
         _winningScore = 3;
         _modeDefaultRespawnTime = 5f;

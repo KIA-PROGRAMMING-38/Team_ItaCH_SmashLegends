@@ -7,7 +7,7 @@ public class AliceBomb : MonoBehaviour
 {
     public Transform[] point;
     public ParticleSystem[] effect;
-    private CharacterStatus _characterStatus;
+    private LegendController _characterStatus;
     private CancellationTokenSource _cancelToken;
     private AliceHit _aliceHit;
     private Transform currentTransform;
@@ -21,7 +21,7 @@ public class AliceBomb : MonoBehaviour
 
     private void Awake()
     {
-        _characterStatus = transform.root.GetComponent<CharacterStatus>();
+        _characterStatus = transform.root.GetComponent<LegendController>();
         _boxCollider = GetComponent<BoxCollider>();
         _aliceHit = transform.root.GetComponent<AliceHit>();
         currentTransform = transform.root;

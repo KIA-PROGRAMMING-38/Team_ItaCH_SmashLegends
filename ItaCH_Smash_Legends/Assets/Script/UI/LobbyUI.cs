@@ -19,9 +19,7 @@ public class LobbyUI : MonoBehaviour
     private float _defaultVolume = 1f;
     public float DefaultVolume { get => _defaultVolume; }
 
-    private TextMeshProUGUI _userNameText;
-
-    public event Action<CharacterType> OnCharacterChanged;
+    private TextMeshProUGUI _userNameText;        
 
     private void Start()
     {        
@@ -69,10 +67,9 @@ public class LobbyUI : MonoBehaviour
     public void ChangeLobbyCharacterModel(int characterIndex)
     {
         _characterModels[_currentCharacterIndex].SetActive(false);
-        _characterModels[characterIndex].SetActive(true);
-        _characterType = (CharacterType)characterIndex;
+        _characterModels[characterIndex].SetActive(true);        
         _currentCharacterIndex = characterIndex;
-        Managers.UserManager.UserLocalData.SetSelectedCharacter(_characterType);
+        Managers.UserManager.UserLocalData.SelectedCharacter = (CharacterType)characterIndex;
     }
 
     private void SetPanelAndButton(string panelPath, string buttonPath)

@@ -4,7 +4,7 @@ using Util.Enum;
 public class UserData
 {
     public string Name { get; set; }
-    public int Id { get; set; }
+    public int ID { get; set; }
     public TeamType Team { get; set; } // 결과창 UI 로직 변경 이후 삭제 필요
     public GameModeType SelectGameMode { get; set; }
 

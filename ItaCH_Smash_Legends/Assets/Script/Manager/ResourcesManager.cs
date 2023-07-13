@@ -4,12 +4,12 @@ using UnityEngine;
 public class ResourceManager
 {
     public Dictionary<string, Sprite> Sprites { get; private set; }
-    public Dictionary<string, CharacterStatus> Legends { get; private set; }
+    public Dictionary<string, LegendController> Legends { get; private set; }
 
     public void Init()
     {
         Sprites = new Dictionary<string, Sprite>();
-        Legends = new Dictionary<string, CharacterStatus>();
+        Legends = new Dictionary<string, LegendController>();
     }
 
     public T Load<T>(string path) where T : Object
@@ -26,14 +26,14 @@ public class ResourceManager
             return sp as T;
         }
 
-        else if (typeof(T) == typeof(CharacterStatus))
+        else if (typeof(T) == typeof(LegendController))
         {
-            if (Legends.TryGetValue(path, out CharacterStatus characterStatus))
+            if (Legends.TryGetValue(path, out LegendController characterStatus))
             {
                 return characterStatus as T;
             }
 
-            CharacterStatus legend = Resources.Load<CharacterStatus>(path);
+            LegendController legend = Resources.Load<LegendController>(path);
             Legends.Add(path, legend);
         }
 

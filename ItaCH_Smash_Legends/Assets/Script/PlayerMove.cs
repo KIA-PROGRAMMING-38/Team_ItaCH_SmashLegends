@@ -5,7 +5,7 @@ public class PlayerMove : MonoBehaviour
 {
     // LegnedController 완료시 리펙토링
 
-    private CharacterStatus _characterStatus;
+    private LegendController _characterStatus;
     private PlayerStatus _playerStatus;
     private Animator _animator;
 
@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Awake()
     {
-        _characterStatus= GetComponent<CharacterStatus>();
+        _characterStatus= GetComponent<LegendController>();
         _playerStatus = GetComponent<PlayerStatus>();
         _animator = GetComponent<Animator>();
     }
