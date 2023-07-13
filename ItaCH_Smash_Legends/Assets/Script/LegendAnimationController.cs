@@ -97,4 +97,8 @@ public class LegendAnimationController : MonoBehaviour
     {
         _animator.SetTrigger(animationHash);
     }
+    public void Play(int animationHash)
+    {
+        _animator.Play(animationHash);
+    }
 }

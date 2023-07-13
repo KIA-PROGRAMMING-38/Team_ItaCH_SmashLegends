@@ -1,100 +1,99 @@
-using Cysharp.Threading.Tasks;
-using System;
-using System.Threading;
-using UnityEngine;
 
-public class PlayerHangController : MonoBehaviour
-{
-    private PlayerStatus _playerStatus;
-    private EffectController _effectController;
-    private Rigidbody _rigidbody;
-    private Animator _animator;
-    private Collider _collider;
 
-    public CancellationTokenSource TaskCancel;
+// 폴더 및 스크립트 정리 시 삭제
 
-    private float _hangPositionY = 2.5f;
-    private float _fallingWaitTime = 3f;
+//public class PlayerHangController : MonoBehaviour
+//{
+//    private PlayerStatus _playerStatus;
+//    private EffectController _effectController;
+//    private Rigidbody _rigidbody;
+//    private Animator _animator;
+//    private Collider _collider;
 
-    private void Awake()
-    {
-        _effectController = GetComponent<EffectController>();
-        _collider = GetComponent<Collider>();
-        _playerStatus = GetComponent<PlayerStatus>();
-        _rigidbody = GetComponent<Rigidbody>();
-        _animator = GetComponent<Animator>();
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("HangZone") && _playerStatus.IsHang == false)
-        {
-            transform.forward = SetHangRotation(other.transform.position);
-            transform.position = SetHangPosition(other);
-            OnConstraints();
+//    public CancellationTokenSource TaskCancel;
 
-            _animator.Play(AnimationHash.Hang);
-            _playerStatus.IsHang = true;
-            _effectController.StartInvincibleFlashEffet(_effectController.FLASH_COUNT).Forget();
-        }
-    }
+//    private float _hangPositionY = 2.5f;
+//    private float _fallingWaitTime = 3f;
 
-    private Vector3 SetHangRotation(Vector3 other)
-    {
-        Vector3 otherPosition = other.normalized;
-        otherPosition.x = Mathf.Round(other.x);
-        otherPosition.y = 0;
-        otherPosition.z = Mathf.Round(other.z);
+//    private void Awake()
+//    {
+//        _effectController = GetComponent<EffectController>();
+//        _collider = GetComponent<Collider>();
+//        _playerStatus = GetComponent<PlayerStatus>();
+//        _rigidbody = GetComponent<Rigidbody>();
+//        _animator = GetComponent<Animator>();
+//    }
+//    private void OnTriggerEnter(Collider other)
+//    {
+//        if (other.CompareTag("HangZone") && _playerStatus.IsHang == false)
+//        {
+//            transform.forward = SetHangRotation(other.transform.position);
+//            transform.position = SetHangPosition(other);
+//            OnConstraints();
 
-        return otherPosition * -1;
-    }
-    private Vector3 SetHangPosition(Collider other)
-    {
-        float[] hangPosition = new float[2];
-        hangPosition[0] = other.transform.position.x;
-        hangPosition[1] = other.transform.position.z;
+//            _animator.Play(AnimationHash.Hang);
+//            _playerStatus.IsHang = true;
+//            _effectController.StartInvincibleFlashEffet(_effectController.FLASH_COUNT).Forget();
+//        }
+//    }
 
-        for (int i = 0; i < hangPosition.Length; ++i)
-        {
-            if (hangPosition[i] > 0)
-            {
-                hangPosition[i] -= 0.5f;
-            }
-            if (hangPosition[i] < 0)
-            {
-                hangPosition[i] += 0.5f;
-            }
-        }
-        Vector3 setPosition = Vector3.zero;
+//    private Vector3 SetHangRotation(Vector3 other)
+//    {
+//        Vector3 otherPosition = other.normalized;
+//        otherPosition.x = Mathf.Round(other.x);
+//        otherPosition.y = 0;
+//        otherPosition.z = Mathf.Round(other.z);
 
-        if (hangPosition[0] != 0)
-        {
-            setPosition = new Vector3(hangPosition[0], _hangPositionY, transform.position.z);
-        }
-        if (hangPosition[1] != 0)
-        {
-            setPosition = new Vector3(transform.position.x, _hangPositionY, hangPosition[1]);
-        }
+//        return otherPosition * -1;
+//    }
+//    private Vector3 SetHangPosition(Collider other)
+//    {
+//        float[] hangPosition = new float[2];
+//        hangPosition[0] = other.transform.position.x;
+//        hangPosition[1] = other.transform.position.z;
 
-        return setPosition;
+//        for (int i = 0; i < hangPosition.Length; ++i)
+//        {
+//            if (hangPosition[i] > 0)
+//            {
+//                hangPosition[i] -= 0.5f;
+//            }
+//            if (hangPosition[i] < 0)
+//            {
+//                hangPosition[i] += 0.5f;
+//            }
+//        }
+//        Vector3 setPosition = Vector3.zero;
 
-    }
+//        if (hangPosition[0] != 0)
+//        {
+//            setPosition = new Vector3(hangPosition[0], _hangPositionY, transform.position.z);
+//        }
+//        if (hangPosition[1] != 0)
+//        {
+//            setPosition = new Vector3(transform.position.x, _hangPositionY, hangPosition[1]);
+//        }
 
-    private void OnConstraints()
-    {
-        _rigidbody.constraints = RigidbodyConstraints.FreezeAll;
-    }
+//        return setPosition;
 
-    public void OffConstraints()
-    {
-        _rigidbody.constraints = RigidbodyConstraints.None;
-        _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
-    }
+//    }
 
-    public async UniTaskVoid OnFalling()
-    {
-        TaskCancel = new();
-        await UniTask.Delay(TimeSpan.FromSeconds(_fallingWaitTime), cancellationToken: TaskCancel.Token);
-        _collider.isTrigger = true;
-        _animator.Play(AnimationHash.HangFalling);
-    }
-}
+//    private void OnConstraints()
+//    {
+//        _rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+//    }
+
+//    public void OffConstraints()
+//    {
+//        _rigidbody.constraints = RigidbodyConstraints.None;
+//        _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+//    }
+
+//    public async UniTaskVoid OnFalling()
+//    {
+//        TaskCancel = new();
+//        await UniTask.Delay(TimeSpan.FromSeconds(_fallingWaitTime), cancellationToken: TaskCancel.Token);
+//        _collider.isTrigger = true;
+//        _animator.Play(AnimationHash.HangFalling);
+//    }
+//}

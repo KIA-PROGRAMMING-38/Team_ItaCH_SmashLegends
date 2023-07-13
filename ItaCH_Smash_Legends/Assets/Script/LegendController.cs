@@ -1,4 +1,6 @@
 using Cysharp.Threading.Tasks;
+using System;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -39,6 +41,7 @@ public class LegendController : MonoBehaviour
     private float _maxFallingSpeed = 23f;
     public static readonly float MAX_JUMP_POWER = 1f;
     //
+    public CancellationTokenSource TaskCancel;
 
     [SerializeField] private SphereCollider _skillAttackHitZone;
     [SerializeField] private SphereCollider _attackHitZone;
@@ -50,9 +53,9 @@ public class LegendController : MonoBehaviour
     private CharacterStatus _characterStatus;
     private Rigidbody _rigidbody;
     private UnityEngine.InputSystem.PlayerInput _input;
-    private PlayerHit _playerHit;
     private LegendAnimationController _legendAnimationController;
     private EffectController _effectController;
+    private Collider _collider;
 
     public Vector3 MoveDirection { get; private set; }
     public Vector3 RollingForward { get; private set; }
@@ -116,18 +119,23 @@ public class LegendController : MonoBehaviour
     {
         if (other.CompareTag(StringLiteral.HangZone))
         {
-            // TODO : 추후구현
-            // Animation.Play(Hang);
+            transform.forward = SetHangRotation(other.transform.position);
+            transform.position = SetHangPosition(other);
+            OnConstraints();
+
+            _legendAnimationController.Play(AnimationHash.Hang);
         }
+
         if (other.CompareTag(StringLiteral.DefaultHit))
         {
             RollingForward = -1 * other.transform.forward;
             GetKnockbackOnAttack(other, AnimationHash.Hit, KnockbackType.Default);
         }
+
         if (other.CompareTag(StringLiteral.HeavyHit))
         {
             RollingForward = -1 * other.transform.forward;
-           GetKnockbackOnAttack(other, AnimationHash.HitUp, KnockbackType.Heavy);
+            GetKnockbackOnAttack(other, AnimationHash.HitUp, KnockbackType.Heavy);
         }
     }
 
@@ -137,8 +145,8 @@ public class LegendController : MonoBehaviour
         _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
         _characterStatus = GetComponent<CharacterStatus>();
         _legendAnimationController = GetComponent<LegendAnimationController>();
-        _playerHit = GetComponent<PlayerHit>();
         _effectController = GetComponent<EffectController>();
+        _collider= GetComponent<Collider>();
     }
     private void InitActions()
     {
@@ -225,7 +233,7 @@ public class LegendController : MonoBehaviour
     private void DisableSkillAttackHitZone() => _skillAttackHitZone.enabled = false;
     #endregion
 
-    #region Legend DownIdle State
+    #region Legend DownIdle
     public async UniTaskVoid StartRollingTask()
     {
         await UniTask.WaitUntil(() => MoveDirection != Vector3.zero);
@@ -339,6 +347,65 @@ public class LegendController : MonoBehaviour
         return knockbackPower;
     }
     #endregion
-    // PlayerHangController
-    // Hang 상태에서 입력시 처리
+    
+    #region Legend Hang
+    private Vector3 SetHangRotation(Vector3 other)
+    {
+        Vector3 otherPosition = other.normalized;
+        otherPosition.x = Mathf.Round(other.x);
+        otherPosition.y = 0;
+        otherPosition.z = Mathf.Round(other.z);
+
+        return otherPosition * -1;
+    }
+    private Vector3 SetHangPosition(Collider other)
+    {
+
+        float _hangPositionY = 2.5f;
+        float[] hangPosition = new float[2];
+        hangPosition[0] = other.transform.position.x;
+        hangPosition[1] = other.transform.position.z;
+
+        for (int i = 0; i < hangPosition.Length; ++i)
+        {
+            if (hangPosition[i] > 0)
+            {
+                hangPosition[i] -= 0.5f;
+            }
+            if (hangPosition[i] < 0)
+            {
+                hangPosition[i] += 0.5f;
+            }
+        }
+        Vector3 setPosition = Vector3.zero;
+
+        if (hangPosition[0] != 0)
+        {
+            setPosition = new Vector3(hangPosition[0], _hangPositionY, transform.position.z);
+        }
+        if (hangPosition[1] != 0)
+        {
+            setPosition = new Vector3(transform.position.x, _hangPositionY, hangPosition[1]);
+        }
+
+        return setPosition;
+    }
+    private void OnConstraints()
+    {
+        _rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+    }
+    public void OffConstraints()
+    {
+        _rigidbody.constraints = RigidbodyConstraints.None;
+        _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+    }
+    public async UniTaskVoid OnFalling(Animator animator)
+    {
+        float _fallingWaitTime = 3f;
+        TaskCancel = new();
+        await UniTask.Delay(TimeSpan.FromSeconds(_fallingWaitTime), cancellationToken: TaskCancel.Token);
+        _collider.enabled = false;
+        animator.Play(AnimationHash.HangFalling);
+    }
+    #endregion
 }
