@@ -88,7 +88,6 @@ public class LegendAnimationController : MonoBehaviour
             }
         }
     }
-
     public void SetBool(int animationHash, bool value)
     {
         _animator.SetBool(animationHash, value);
