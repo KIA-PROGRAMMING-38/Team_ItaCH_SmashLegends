@@ -9,6 +9,7 @@ public class LegendJumpDownState : LegendBaseState
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+
         if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.3f)
         {
             legendController.MoveAndRotate();

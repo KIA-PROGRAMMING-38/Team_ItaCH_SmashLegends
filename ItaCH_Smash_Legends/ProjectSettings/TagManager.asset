@@ -9,6 +9,8 @@ TagManager:
   - SpawnPoints
   - DeadZone
   - Enemy
+  - DefaultHit
+  - HeavyHit
   layers:
   - Default
   - TransparentFX

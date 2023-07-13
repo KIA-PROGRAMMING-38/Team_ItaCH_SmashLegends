@@ -43,24 +43,26 @@ public class HookHit : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && other.gameObject.layer != _hookBullet.constructor.layer)
-        {
-            PlayerStatus playerStatus = other.GetComponent<PlayerStatus>();
-            _playerHit = other.GetComponent<PlayerHit>();
-            if (_playerHit.invincible == false)
-            {
-                _effectController = other.GetComponent<EffectController>();
-                SetDirection(other);
+        // Hit 리펙토링 후 수정 스크립트
 
-                if (PossibleAttack(playerStatus))
-                {
-                    GetBulletKnockBack(other);
-                    _effectController.StartHitFlashEffet().Forget();
-                }
-                GetHitDamage(other);
-                _hookBullet.BulletPostProcessing(BulletDeleteEffectPosition(other));
-            }
-        }
+        //if (other.CompareTag("Player") && other.gameObject.layer != _hookBullet.constructor.layer)
+        //{
+        //    PlayerStatus playerStatus = other.GetComponent<PlayerStatus>();
+        //    _playerHit = other.GetComponent<PlayerHit>();
+        //    if (_playerHit.invincible == false)
+        //    {
+        //        _effectController = other.GetComponent<EffectController>();
+        //        SetDirection(other);
+
+        //        if (PossibleAttack(playerStatus))
+        //        {
+        //            GetBulletKnockBack(other);
+        //            _effectController.StartHitFlashEffet().Forget();
+        //        }
+        //        GetHitDamage(other);
+        //        _hookBullet.BulletPostProcessing(BulletDeleteEffectPosition(other));
+        //    }
+        //}
     }
 
     private bool PossibleAttack(PlayerStatus playerStatus)

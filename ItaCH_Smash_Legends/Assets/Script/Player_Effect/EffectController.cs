@@ -30,7 +30,7 @@ public abstract class EffectController : MonoBehaviour
     private void Start()
     {
         _scaleOffset = 1 / transform.localScale.x;
-        // ÀÌÆåÆ®¸¦ ¸ð¾Æ¼­ °ü¸®ÇÏ±â À§ÇØ Áß°£ ´Ü°èÀÇ ¿ÀºêÁ§Æ® »ý¼º
+        // ì´íŽ™íŠ¸ë¥¼ ëª¨ì•„ì„œ ê´€ë¦¬í•˜ê¸° ìœ„í•´ ì¤‘ê°„ ë‹¨ê³„ì˜ ì˜¤ë¸Œì íŠ¸ ìƒì„±
         GameObject EffectController = Instantiate(new GameObject(), transform);
         EffectController.name = "Effect Controller";
         _effects = new GameObject[_effectPrefabs.Length];
@@ -123,6 +123,7 @@ public abstract class EffectController : MonoBehaviour
 
     public async UniTaskVoid StartHitFlashEffet()
     {
+        Debug.Log("ì´íŽ™íŠ¸ ë“¤ì–´ì˜´?");
         int count = 3;
         SetHitEffectColor();
         while (count > 0)
@@ -137,7 +138,8 @@ public abstract class EffectController : MonoBehaviour
     public async UniTaskVoid StartInvincibleFlashEffet(int count)
     {
         SetInvincibleEffectColor();
-        _playerHit.invincible = true;
+        // íž› ì •ì˜ í›„ ë¦¬íŽ™í† ë§
+        //_playerHit.invincible = true;
         while (count > 0)
         {
             OnFlashEffect();
@@ -146,6 +148,6 @@ public abstract class EffectController : MonoBehaviour
             await UniTask.Delay(50);
             --count;
         }
-        _playerHit.invincible = false;
+        //_playerHit.invincible = false;
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LegendAnimationController : MonoBehaviour
 {
-    //ÃßÈÄ ¸®¼Ò½º ÇÒ´ç
+    //ì¶”í›„ ë¦¬ì†ŒìŠ¤ í• ë‹¹
     [SerializeField]
     private AnimationClip[] _applyAttackClip;
     [SerializeField]
@@ -20,20 +20,6 @@ public class LegendAnimationController : MonoBehaviour
         _animator = GetComponent<Animator>();
 
         SetAnimatorClip();
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag(StringLiteral.Ground))
-        {
-            _animator.SetBool(AnimationHash.JumpDown, false);
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag(StringLiteral.HangZone))
-        {
-            // Animation.Play(Hang);
-        }
     }
     private void SetAnimatorClip()
     {
@@ -73,14 +59,7 @@ public class LegendAnimationController : MonoBehaviour
             _animatorOverrideController[StringLiteral.AnimationClip[value]] = _applyAttackClip[_animationClipIndex];
         }
     }
-    public void PlayJumpAttackAnimation()
-    {
-        if (_legendController.IsTriggered(ActionType.DefaultAttack))
-        {
-            _animator.Play(AnimationHash.FirstJumpAttack);
-        }
-    }
-    public void PlayAttackAnimation(ComboAttackType comboAttackType)
+    public void AttackAnimation(ComboAttackType comboAttackType)
     {
         switch (comboAttackType)
         {
@@ -90,30 +69,9 @@ public class LegendAnimationController : MonoBehaviour
             case ComboAttackType.Second:
                 _animator.Play(AnimationHash.SecondAttack);
                 break;
-            case ComboAttackType.FirstJump:
-                _animator.Play(AnimationHash.FirstJumpAttack);
-                break;
-            case ComboAttackType.SecondJump:
-                _animator.Play(AnimationHash.SecondJumpAttack);
-                break;
         }
     }
-    public void SetTriggerAnimation(int animationHash)
-    {
-        _animator.SetTrigger(animationHash);
-    }
-    public void SetBoolAnimationTrue(int animationHash)
-    {
-        _animator.SetBool(animationHash, true);
-    }
-    public void SetBoolAnimationFalse(int animationHash)
-    {
-        _animator.SetBool(animationHash, false);
-    }
-    public void SetPlayAnimation(int animationHash)
-    {
-        _animator.Play(animationHash);
-    }
+    
     public void ResetComboAttackAnimationClip()
     {
         _animationClipIndex = 0;
@@ -129,5 +87,17 @@ public class LegendAnimationController : MonoBehaviour
                 animator.ResetTrigger(trigger.name);
             }
         }
+    }
+    public void SetBool(int animationHash, bool value)
+    {
+        _animator.SetBool(animationHash, value);
+    }
+    public void SetTrigger(int animationHash)
+    {
+        _animator.SetTrigger(animationHash);
+    }
+    public void Play(int animationHash)
+    {
+        _animator.Play(animationHash);
     }
 }
