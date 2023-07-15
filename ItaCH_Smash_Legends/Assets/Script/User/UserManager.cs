@@ -1,6 +1,3 @@
-using UnityEngine;
-using Util.Enum;
-
 public class UserManager
 {
     private const int MAXIMUM_PLAYER = 4;
@@ -10,7 +7,7 @@ public class UserManager
     public void Init()
     {
         UserLocalData = new UserData();
-        UserLocalData.SelectedCharacter = CharacterType.None;
+        UserLocalData.SelectedLegend = LegendType.None;
         Managers.LobbyManager.OnUpdateUserDatas -= ResiterUserData;
         Managers.LobbyManager.OnUpdateUserDatas += ResiterUserData;
     }
@@ -29,7 +26,7 @@ public class UserManager
         UserData defaultUserData = new UserData();
         defaultUserData.Name = $"Bot{id}";
         defaultUserData.ID = id;
-        defaultUserData.SelectedCharacter = CharacterType.None;        
+        defaultUserData.SelectedLegend = LegendType.None;        
         return defaultUserData;
     }
 

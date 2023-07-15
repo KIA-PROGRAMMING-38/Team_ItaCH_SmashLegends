@@ -1,26 +1,44 @@
 using UnityEngine;
-using Util.Enum;
 
 public class UserData
 {
     public string Name { get; set; }
     public int ID { get; set; }
-    public TeamType Team { get; set; } // 결과창 UI 로직 변경 이후 삭제 필요
+    public Team Team { get; set; }
     public GameModeType SelectGameMode { get; set; }
 
-    private CharacterType _selectedCharacter;
-    public CharacterType SelectedCharacter
+    private LegendType _selectedLegend;
+    public LegendType SelectedLegend
     {
         get
         {
-            if (_selectedCharacter == CharacterType.None)
+            if (_selectedLegend == LegendType.None)
             {
-                _selectedCharacter = (CharacterType)Random.Range((int)CharacterType.Alice, (int)CharacterType.MaxCount);
-                return _selectedCharacter;
+                _selectedLegend = (LegendType)Random.Range((int)LegendType.Alice, (int)LegendType.MaxCount);
+                return _selectedLegend;
             }
             else
-                return _selectedCharacter;
+                return _selectedLegend;
         }
-        set => _selectedCharacter = value;
-    }    
+        set => _selectedLegend = value;
+    }
+
+    //public ResultType GameResult { get => _gameResult; }
+    //private ResultType _gameResult;
+
+    //public void SetGameResult(TeamType winningTeam)
+    //{
+    //    if (TeamType.None == winningTeam) 
+    //    {
+    //        this._gameResult = ResultType.Draw;
+    //    }
+    //    else if (this.Team.Type == winningTeam)
+    //    {
+    //        this._gameResult = ResultType.Win;
+    //    }
+    //    else
+    //    {
+    //        this._gameResult = ResultType.Lose;
+    //    }
+    //}
 }

@@ -1,21 +1,25 @@
+using System.Collections.Generic;
+
 public class Team
 {
-    public UserData[] Members { get; set; }
+    public List<UserData> Members { get; private set; } = new();
     public int Score { get; private set; }
-    public int MemberCount { get => _memberCount; }
-    private int _memberCount = 0;
-    public TeamType TeamColor { get; set; }
+    public TeamType Type { get; set; }
 
-    public void Init(int teamSize)
-    {
-        Members = new UserData[teamSize];
-    }
     public void AddMember(UserData user)
     {
-        UnityEngine.Debug.Log($"{user}");
-        Members[_memberCount] = user;
-        user.Team = TeamColor;
-        ++_memberCount;
+        Members.Add(user);
+        user.Team.Type = Type;
     }
-    public void GetScore() => ++Score; // 플레이어 사망 시 실행    
+
+    public void GetScore() // 이거를 Team에서 실행할 필요 없음
+    {
+        ++Score; // 플레이어 사망 시 실행
+        if (Score == Managers.StageManager.CurrentGameMode.WinningScore)
+        {
+            Managers.StageManager.EndGame(this.Type);
+        } // 이벤트 처리 게임 모드가 구독 
+        // 게임이 종료되었다는 것도 이벤트 
+        // StageManager가 Timer 멈추고 결과 넘어가고 이런거도 이벤트
+    }
 }

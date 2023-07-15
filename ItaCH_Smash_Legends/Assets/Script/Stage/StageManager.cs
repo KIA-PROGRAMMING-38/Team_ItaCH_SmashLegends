@@ -1,12 +1,9 @@
 using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
 using UnityEngine;
-using Util.Enum;
 
 public class StageManager : MonoBehaviourPunCallbacks
 {
@@ -28,8 +25,6 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     private List<Team> _teams;
 
-    private const int INDEX_OFFSET_FOR_ZERO = 1;
-
     public float GameTime
     {
         get => _gameTime;
@@ -45,8 +40,12 @@ public class StageManager : MonoBehaviourPunCallbacks
         }
     }
     private float _gameTime;
-    private int _gameTimeInt;
+    private int _gameTimeInt; // TO DO : 위와 중복 해당 부분 정리 필요
     public int RemainGameTime => Mathf.Max(_currentGameMode.MaxGameTime - _gameTimeInt, 0);
+    public bool IsTimeOver { get => _isTimeOver; }
+    private bool _isTimeOver;
+
+    public bool IsGameOver { get => _isGameOver; }
     private bool _isGameOver;
 
     private GameObject _legendUIPrefab;
@@ -76,7 +75,6 @@ public class StageManager : MonoBehaviourPunCallbacks
         }
         _currentGameMode.Init(selectedMode);
         _teams = new List<Team>();
-        _isGameOver = false;
     }
 
     public void ChangeGameMode(GameModeType selectedMode) // 게임 모드 선택 기능 구현 후 사용
@@ -93,12 +91,14 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     public void SetStage(GameMode currentGameMode)
     {
+        _isTimeOver = false;
+        _isGameOver = false;
         InstantiateMap();
-        for (int userID = 0; userID < _currentGameMode.MaxPlayer; ++userID)
+        for (int i = 0; i < _currentGameMode.MaxPlayer; ++i)
         {
-            UserData userData = Managers.UserManager.GetUserData(userID);
+            UserData userData = Managers.UserManager.GetUserData(i);
             SetUserTeam(userData);
-            CreateCharacter(userData, currentGameMode.SpawnPoints);
+            CreateLegend(userData, currentGameMode.SpawnPoints[i + 1]); // SpawnPoints[0] == root Object
         }
         SetModeUI(currentGameMode.GameModeType);
         StartGame();
@@ -110,55 +110,35 @@ public class StageManager : MonoBehaviourPunCallbacks
     {
         Team team = GetTeamAvailable();
         team.AddMember(user);
-    }
-    private Team GetTeamAvailable()
-    {
-        int last = _teams.Count - INDEX_OFFSET_FOR_ZERO;
 
-        if (_teams.Count == 0 || _teams[last].MemberCount == CurrentGameMode.MaxTeamMember)
+        Team GetTeamAvailable()
         {
-            Team newTeam = new Team();
-            _teams.Add(newTeam);
-            newTeam.TeamColor = (_teams.Count == 0) ? TeamType.Blue : TeamType.Red;
-            return newTeam;
-        }
-        else
-        {
-            return _teams[last];
-        }
-    }
-
-    public void CreateCharacter(UserData user, Transform[] spawnPoints)
-    {
-        LegendController characterPrefab = GetCharacterPrefab(user.SelectedCharacter);
-
-        if (characterPrefab != null)
-        {
-            if (spawnPoints[user.ID] != null)
+            if (IsNewTeamNeeded(_teams))
             {
-                GameObject characterInstance = Managers.ResourceManager.Instantiate(characterPrefab.gameObject, spawnPoints[user.ID + INDEX_OFFSET_FOR_ZERO]); // spawnPoint[0] == root gameObject
-                LegendController legend = characterInstance.GetComponent<LegendController>();
-                legend.Init(user.SelectedCharacter, user.ID);
-                legend.gameObject.layer =
-                    (user.Team == TeamType.Blue) ?
-                    LayerMask.NameToLayer(StringLiteral.TEAM_BLUE) : LayerMask.NameToLayer(StringLiteral.TEAM_RED);
+                Team newTeam = new Team();
+                _teams.Add(newTeam);
+                newTeam.Type = (_teams.Count == 1) ? TeamType.Blue : TeamType.Red;
+                return newTeam;
             }
             else
             {
-                Debug.LogError(user.ID + "P character spawn position is Null");
+                return _teams[^1];
             }
-        }
-        else
-        {
-            Debug.LogError("Failed to load the prefab at path");
+
+            bool IsNewTeamNeeded(List<Team> teams) => teams.Count == 0 || teams[^1].Members.Count == _currentGameMode.MaxTeamMember;
         }
     }
 
-    private LegendController GetCharacterPrefab(CharacterType character)
+    public void CreateLegend(UserData user, Transform spawnPoint)
     {
-        string characterName = character.ToString();
-        string characterPrefabPath = Path.Combine(StringLiteral.PREFAB_FOLDER, characterName, $"{characterName}{StringLiteral.SUFFIX_INGAME}", $"{characterName}{StringLiteral.SUFFIX_INGAME}");
-        return Managers.ResourceManager.Load<LegendController>(characterPrefabPath);
+        LegendController legend = Managers.ResourceManager.GetLegendPrefab(user.SelectedLegend);
+        GameObject legendObject = Managers.ResourceManager.Instantiate(legend.gameObject, spawnPoint);
+
+        legend.Init(user);
+
+        legendObject.layer =
+            (user.Team.Type == TeamType.Blue) ?
+            LayerMask.NameToLayer(StringLiteral.TEAM_BLUE) : LayerMask.NameToLayer(StringLiteral.TEAM_RED);
     }
 
     public void SetModeUI(GameModeType gameModeType) // TODO : UI에서 하도록 수정 필요
@@ -207,38 +187,28 @@ public class StageManager : MonoBehaviourPunCallbacks
     {
         // TO DO : 게임모드 소개 패널 연출 >> Smash!! 패널 연출 >> 체력 차오르는 연출 >> 게임 돌입        
         // 전부 캐릭터 생성 이후 대기 애니메이션 재생 동안 실행
-        UpdateGameTime();
+        UpdateGameTimeAsync();
     }
-    private async UniTask UpdateGameTime() // StartGame에서 호출
+
+    private async UniTask UpdateGameTimeAsync()
     {
         while (false == _isGameOver && GameTime < _currentGameMode.MaxGameTime)
         {
             GameTime += Time.deltaTime;
             await UniTask.DelayFrame(1);
         }
-        _isGameOver = true;
-        EndGame();
+        _isTimeOver = true;
+        EndGame(TeamType.None);
     }
-    // TO DO : 승점 판정 로직 팀 로직 변경 이후 관리 필요
-    private void EndGame()
-    {
-        //    int teamBlueEndScore = GetTeamScore(TeamType.Blue);
-        //    int teamRedEndScore = GetTeamScore(TeamType.Red);
-        //    TeamType winningTeam = TeamType.None;
 
-        //    if (teamBlueEndScore == teamRedEndScore)
-        //    {
-        //        winningTeam = CheckTeamHealthRatio();
-        //        if (winningTeam == TeamType.None)
-        //        {
-        //            Debug.Log("무승부"); // Result UI 스크립트와 연결 필요
-        //        }
-        //        Debug.Log($"{winningTeam}팀 승리"); // Result UI 스크립트와 연결 필요
-        //    }
-        //    else
-        //    {
-        //        winningTeam = (teamBlueEndScore > teamRedEndScore) ? TeamType.Blue : TeamType.Red;
-        //        Debug.Log($"게임 종료 {winningTeam}팀 승리"); // Result UI 스크립트와 연결 필요
-        //    }
+    public void EndGame(TeamType winningTeam)
+    {
+        _isGameOver = true;
+        if (TeamType.None == winningTeam)
+        {
+            winningTeam = _currentGameMode.GetWinningTeam(in _teams);
+        }
+
+        // 이벤트로 뿌리자
     }
 }

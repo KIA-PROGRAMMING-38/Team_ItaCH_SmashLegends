@@ -1,13 +1,11 @@
-using System;
 using TMPro;
 using UnityEngine;
-using Util.Enum;
 using Util.Path;
 
 public class LobbyUI : MonoBehaviour
 {
-    private CharacterType _characterType;
-    private GameObject[] _characterModels;
+    private LegendType _legendType;
+    private GameObject[] _legendModels;
 
     public Transform SpawnPoint { get => _spawnPoint; set => _spawnPoint = value; }
     [SerializeField]
@@ -50,26 +48,26 @@ public class LobbyUI : MonoBehaviour
 
     private void SetLobbyCharaterModel()
     {
-        _characterModels = new GameObject[(int)CharacterType.MaxCount];
-        _currentCharacterIndex = (int)Managers.UserManager.UserLocalData.SelectedCharacter;
+        _legendModels = new GameObject[(int)LegendType.MaxCount];
+        _currentCharacterIndex = (int)Managers.UserManager.UserLocalData.SelectedLegend;
 
-        for (int i = 1; i < (int)CharacterType.MaxCount; ++i)
+        for (int i = 1; i < (int)LegendType.MaxCount; ++i)
         {            
-            GameObject characterModelPrefab = Resources.Load<GameObject>(FilePath.GetLobbyCharacterPath((CharacterType)i));
+            GameObject characterModelPrefab = Resources.Load<GameObject>(FilePath.GetLobbyLegendModelPath((LegendType)i));
             GameObject characterModelInstance = Instantiate(characterModelPrefab, _spawnPoint).gameObject;
-            _characterModels[i] = characterModelInstance;
+            _legendModels[i] = characterModelInstance;
             characterModelInstance.transform.parent = _spawnPoint;
             characterModelInstance.SetActive(false);
         }
-        _characterModels[_currentCharacterIndex].SetActive(true);
+        _legendModels[_currentCharacterIndex].SetActive(true);
     }
 
     public void ChangeLobbyCharacterModel(int characterIndex)
     {
-        _characterModels[_currentCharacterIndex].SetActive(false);
-        _characterModels[characterIndex].SetActive(true);        
+        _legendModels[_currentCharacterIndex].SetActive(false);
+        _legendModels[characterIndex].SetActive(true);        
         _currentCharacterIndex = characterIndex;
-        Managers.UserManager.UserLocalData.SelectedCharacter = (CharacterType)characterIndex;
+        Managers.UserManager.UserLocalData.SelectedLegend = (LegendType)characterIndex;
     }
 
     private void SetPanelAndButton(string panelPath, string buttonPath)
@@ -91,9 +89,9 @@ public class LobbyUI : MonoBehaviour
 
     public void ResetModelTransform()
     {
-        foreach (GameObject characterModel in _characterModels)
+        foreach (GameObject legendModel in _legendModels)
         {
-            Transform modelTransform = characterModel.transform;
+            Transform modelTransform = legendModel.transform;
             modelTransform.SetParent(_spawnPoint);
             modelTransform.localPosition = Vector3.zero;
             modelTransform.localScale = new Vector3(1, 1, 1);
@@ -101,8 +99,8 @@ public class LobbyUI : MonoBehaviour
         }
     }
 
-    public GameObject GetCharacterModel(CharacterType characterType)
+    public GameObject GetLegendModel(LegendType characterType)
     {
-        return _characterModels[(int)characterType];
+        return _legendModels[(int)characterType];
     }
 }

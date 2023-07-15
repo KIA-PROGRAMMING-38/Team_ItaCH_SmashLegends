@@ -3,7 +3,6 @@ using System;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Util.Enum;
 
 public enum ComboAttackType
 {
@@ -59,48 +58,57 @@ public class LegendController : MonoBehaviour
     private Vector3 _vectorZero = Vector3.zero;
     private const float ROLLING_DASH_POWER = 1.2f;
     private bool _canAttack;
-
-
-    private void Awake()
+    
+    public void Init(UserData user)
     {
-        _rigidbody = GetComponent<Rigidbody>();
-        _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
-        _legendAnimationController = GetComponent<LegendAnimationController>();
-    }
-
-    public void Init(CharacterType currentLegend, int player)
-    {
-        SetLegendStat(currentLegend);
-        SetController(player);
-        InitComponent();
+        GetComponents();
+        SetLegendStat(user.SelectedLegend);
+        SetController(user.ID);
         InitActions();
-                
-        _rigidbody.mass = MAX_JUMP_POWER / Stat.JumpAcceleration;
-    }
+        SetMass();             
 
-    private void SetLegendStat(CharacterType legendIndex)
-    {
-        Stat = Managers.DataManager.LegendStats[(int)legendIndex].Clone();        
-    }
-
-    private void SetController(int player) // TO DO : 피격 로직 수정 이후 죽었을 때 이벤트에서 다시 호출 필요
-    {
-        switch (player)
+        void GetComponents()
         {
-            case 0:
-                _input.SwitchCurrentActionMap(StringLiteral.FIRST_PLAYER_ACTIONS);
-                break;
-
-            case 1:
-                _input.actions.name = StringLiteral.PLAYER_INPUT;
-                _input.SwitchCurrentActionMap(StringLiteral.SECOND_PLAYER_ACTIONS);
-                Keyboard keyBoard = InputSystem.GetDevice<Keyboard>();
-                _input.actions.devices = new InputDevice[] { keyBoard };
-                break;
-
-            default:
-                return;
+            _rigidbody = GetComponent<Rigidbody>();
+            _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
+            _legendAnimationController = GetComponent<LegendAnimationController>();
+            _effectController = GetComponent<EffectController>();
+            _collider = GetComponent<Collider>();
         }
+
+        void SetLegendStat(LegendType legendIndex) => Stat = Managers.DataManager.LegendStats[(int)legendIndex].Clone();
+
+        void SetController(int userID) // TO DO : 피격 로직 수정 이후 죽었을 때 이벤트에서 다시 호출 필요
+        {
+            switch (userID)
+            {
+                case 0: // 1P 유저 Input Map 세팅
+                    _input.SwitchCurrentActionMap(StringLiteral.FIRST_PLAYER_ACTIONS);
+                    break;
+
+                case 1: // 2P 유저 Input Map 세팅
+                    _input.actions.name = StringLiteral.PLAYER_INPUT;
+                    _input.SwitchCurrentActionMap(StringLiteral.SECOND_PLAYER_ACTIONS);
+                    Keyboard keyBoard = InputSystem.GetDevice<Keyboard>();
+                    _input.actions.devices = new InputDevice[] { keyBoard };
+                    break;
+
+                default:
+                    return;
+            }
+        }
+        
+        void InitActions()
+        {
+            _actions = new InputAction[StringLiteral.Actions.Length];
+
+            for (int i = 0; i < _actions.Length; ++i)
+            {
+                _actions[i] = _input.actions[StringLiteral.Actions[i]];
+            }
+        }
+
+        void SetMass() => _rigidbody.mass = MAX_JUMP_POWER / Stat.JumpAcceleration;
     }
 
     private void FixedUpdate()
@@ -168,24 +176,6 @@ public class LegendController : MonoBehaviour
         }
     }
 
-    private void InitComponent()
-    {
-        _rigidbody = GetComponent<Rigidbody>();
-        _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
-        _legendAnimationController = GetComponent<LegendAnimationController>();
-        _effectController = GetComponent<EffectController>();
-        _collider = GetComponent<Collider>();
-    }
-    private void InitActions()
-    {
-        _actions = new InputAction[StringLiteral.Actions.Length];
-
-        for (int i = 0; i < _actions.Length; ++i)
-        {
-            _actions[i] = _input.actions[StringLiteral.Actions[i]];
-        }
-    }
-
     private void LimitMaxFallingSpeedInJump()
     {
         void SetMaxSpeed()
@@ -233,9 +223,7 @@ public class LegendController : MonoBehaviour
         {
             _legendAnimationController.SetBool(AnimationHash.Run, true);
             transform.rotation = Quaternion.LookRotation(_moveDirection);
-            // TODO : 캐릭터 스탯 적용후 변경
-            //transform.Translate(Vector3.forward * (_characterStatus.Stat.MoveSpeed * Time.deltaTime));
-            transform.Translate(Vector3.forward * (5.3f * Time.deltaTime));
+            transform.Translate(Vector3.forward * (Stat.MoveSpeed * Time.deltaTime));
         }
         else
         {
@@ -349,22 +337,18 @@ public class LegendController : MonoBehaviour
         _legendAnimationController.SetTrigger(animationHash);
         _rigidbody.AddForce(knockbackDirection * GetKnockbackPower(type, other), ForceMode.Impulse);
 
-        float GetKnockbackPower(KnockbackType type, Collider other)
-        {
-            // TODO : 스탯 연동 시 적용
-            //CharacterStatus otherStatus = other.GetComponent<CharacterStatus>();
-            float knockbackPower = 0;
+        float GetKnockbackPower(KnockbackType type, Collider other) // TO DO : 매개변수로 넉백파워를 받음
+        {            
+            float knockbackPower = 0;            
 
             switch (type)
             {
-                case KnockbackType.Default:
-                    //knockbackPower = otherStatus.Stat.DefaultKnockbackPower;
-                    knockbackPower = 0.3f;
+                case KnockbackType.Default:                    
+                    knockbackPower = other.GetComponent<LegendController>().Stat.DefaultKnockbackPower;
                     break;
 
                 case KnockbackType.Heavy:
-                    //knockbackPower = otherStatus.Stat.HeavyKnockbackPower;
-                    knockbackPower = 0.5f;
+                    knockbackPower = other.GetComponent<LegendController>().Stat.HeavyKnockbackPower;                    
                     break;
             }
 
@@ -427,15 +411,14 @@ public class LegendController : MonoBehaviour
     }
 
     // TO DO : Damage 로직 추가 필요
-    //public void Damage(int damage) // 구버전
-    //{
-    //    int damagedHealthPoint = _currentHealthPoint - damage;
-    //    _currentHealthPoint = Mathf.Max(damagedHealthPoint, DEAD_TRIGGER_HP);
-    //    OnPlayerHealthPointChange.Invoke(_currentHealthPoint, CurrentHPRatio);
-    //    OnPlayerGetDamage?.Invoke(damage);
-    //    if (_currentHealthPoint <= DEAD_TRIGGER_HP && !this._isDead)
-    //    {
+    public void Damage(int damage) // 구버전
+    {
+        //    int damagedHealthPoint = _currentHealthPoint - damage;
+        //    _currentHealthPoint = Mathf.Max(damagedHealthPoint, DEAD_TRIGGER_HP);
+        //    OnPlayerHealthPointChange.Invoke(_currentHealthPoint, CurrentHPRatio);
+        //    OnPlayerGetDamage?.Invoke(damage);
+        //    if (_currentHealthPoint <= DEAD_TRIGGER_HP && !this._isDead)        
+    }
 
-    //    }
-    //}
+    // TO DO : Die() 구현
 }

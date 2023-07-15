@@ -1,7 +1,5 @@
-using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
-using Util.Enum;
 
 public class CharacterStatus : MonoBehaviour
 {
@@ -16,12 +14,12 @@ public class CharacterStatus : MonoBehaviour
     // TO DO : StageManager와 LegendController가 서로 관여
     private float _currentRespawnTime;
         
-    public string Name { get; set; } // TO DO : UI 로직 수정 이후 없어질 프로퍼티
+    //public string Name { get; set; } // TO DO : UI 로직 수정 이후 없어질 프로퍼티
     
     public event Action<int, int> OnPlayerHealthPointChange;
     public void Init(UserData userData) // TO DO : UI 로직 수정 이후 전부 삭제
     {
-        Name = userData.Name;
+        //Name = userData.Name;
         //Character = userData.SelectedCharacter; // TO DO : 체력 감소 로직 수정 필요
         //_maxHealthPoint = Stat.HP;
         SetDefaultHP();

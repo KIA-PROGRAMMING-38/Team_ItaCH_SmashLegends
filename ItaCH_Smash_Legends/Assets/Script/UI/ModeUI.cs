@@ -53,14 +53,14 @@ public class ModeUI : MonoBehaviour
             BindEventWithHealthBar(characterStatus, _healthPointBars[i]);
 
             //Sprite characterPortrait = Resources.Load<Sprite>(Util.Path.FilePath.GetCharacterSpritePath(characterStatus.Character)); TODO : 플레이어가 선택한 캐릭터 정보 연결
-            Sprite characterPortrait = Resources.Load<Sprite>(Util.Path.FilePath.GetCharacterSpritePath(Util.Enum.CharacterType.Peter)); // 임시 >> 수정 이후 삭제           
-            _portraits[i].InitPortraitSetting(characterPortrait);
+            Sprite legendPortrait = Resources.Load<Sprite>(Util.Path.FilePath.GetLegendSpritePath(LegendType.Peter)); // 임시 >> 수정 이후 삭제           
+            _portraits[i].InitPortraitSetting(legendPortrait);
             BindEventWithPortraits(characterStatus, _portraits[i]);
 
             _scoreSets[i].InitScoreSetSettings((TeamType)(i + 1));
             BindEventWithScoreSets(i);
 
-            SetUIForCurrentPlayer(i, characterStatus.Name, characterStatus);
+            SetUIForCurrentPlayer(i, "Peter", characterStatus); // 임시
         }
     }
 

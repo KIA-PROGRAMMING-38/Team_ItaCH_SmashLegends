@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class ResourceManager
@@ -67,5 +68,12 @@ public class ResourceManager
         }
 
         Object.Destroy(go);
+    }
+
+    public LegendController GetLegendPrefab(LegendType legend)
+    {
+        string legendName = legend.ToString();
+        string legendPrefabPath = Path.Combine(StringLiteral.PREFAB_FOLDER, legendName, $"{legendName}{StringLiteral.SUFFIX_INGAME}", $"{legendName}{StringLiteral.SUFFIX_INGAME}");
+        return Load<LegendController>(legendPrefabPath);
     }
 }

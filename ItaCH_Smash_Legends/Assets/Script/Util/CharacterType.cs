@@ -1,11 +1,8 @@
-namespace Util.Enum
+public enum LegendType
 {
-    public enum CharacterType
-    {
-        None = 0,
-        Alice = 1,
-        Hook = 2,
-        Peter = 3,
-        MaxCount = 4
-    }
+    None = 0,
+    Alice = 1,
+    Hook = 2,
+    Peter = 3,
+    MaxCount = 4
 }

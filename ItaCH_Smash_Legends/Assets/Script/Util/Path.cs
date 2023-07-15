@@ -1,5 +1,4 @@
 using System.Text;
-using Util.Enum;
 
 namespace Util.Path
 {
@@ -15,7 +14,7 @@ namespace Util.Path
         #endregion
 
         #region UI File Path
-        public const string CharacterJumpIcon = "UI/MobileUI/Sprite/Character_Jump_Icon";
+        public const string LegendJumpIcon = "UI/MobileUI/Sprite/Character_Jump_Icon";
         public const string AliceDefaultAttackIcon = "UI/MobileUI/Sprite/Alice/Alice_DefaultAttackIcon";
         public const string AliceHeavyAttackIcon = "UI/MobileUI/Sprite/Alice/Alice_HeavyAttackIcon";
         public const string AliceSkillAttackIcon = "UI/MobileUI/Sprite/Alice/Alice_SkillAttackIcon";
@@ -50,25 +49,24 @@ namespace Util.Path
         public const string HookAnimator = "Hook";
         #endregion
 
-        #region CSV File Path
-        public const string CharacterDataTable = "Data/Character_Data/CharacterDefaultStatusData";
+        #region CSV File Path        
         public const string MobileUIDataBase = "Data/UI_Data/Mobile_UI_DataBase";
         #endregion
-        public static string GetLobbyCharacterPath(CharacterType characterType)
+        public static string GetLobbyLegendModelPath(LegendType legendType)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            string characterName = characterType.ToString();
+            string legendName = legendType.ToString();
             stringBuilder.Append(MapPath);
-            stringBuilder.Append(characterName);
+            stringBuilder.Append(legendName);
             return stringBuilder.ToString();
         }
-        public static string GetCharacterSpritePath(CharacterType characterType)
+        public static string GetLegendSpritePath(LegendType legendType)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            string characterName = characterType.ToString();
+            string legendName = legendType.ToString();
             stringBuilder.Append(UISpritePath);
-            stringBuilder.Append(characterName);
-            stringBuilder.Append($"/{characterName}");
+            stringBuilder.Append(legendName);
+            stringBuilder.Append($"/{legendName}");
             return stringBuilder.ToString();
         }
     }
