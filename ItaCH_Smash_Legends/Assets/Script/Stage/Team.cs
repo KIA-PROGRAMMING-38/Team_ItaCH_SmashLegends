@@ -9,10 +9,10 @@ public class Team
     public void AddMember(UserData user)
     {
         Members.Add(user);
-        user.Team.Type = Type;
+        user.Team = this;
     }
 
-    public void GetScore() // 이거를 Team에서 실행할 필요 없음
+    public void GetScore()
     {
         ++Score; // 플레이어 사망 시 실행
         if (Score == Managers.StageManager.CurrentGameMode.WinningScore)

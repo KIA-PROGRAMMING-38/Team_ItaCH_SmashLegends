@@ -35,7 +35,7 @@ public class StageManager : MonoBehaviourPunCallbacks
             if (_gameTimeInt != currentGameTimeInt)
             {
                 _gameTimeInt = currentGameTimeInt;
-                OnTimeChange.Invoke(RemainGameTime);
+                OnTimeChange?.Invoke(RemainGameTime);
             }
         }
     }

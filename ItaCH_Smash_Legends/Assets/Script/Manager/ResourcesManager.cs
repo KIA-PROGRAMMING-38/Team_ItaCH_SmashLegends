@@ -29,9 +29,9 @@ public class ResourceManager
 
         else if (typeof(T) == typeof(LegendController))
         {
-            if (Legends.TryGetValue(path, out LegendController characterStatus))
+            if (Legends.TryGetValue(path, out LegendController legendController)) 
             {
-                return characterStatus as T;
+                return legendController as T;
             }
 
             LegendController legend = Resources.Load<LegendController>(path);

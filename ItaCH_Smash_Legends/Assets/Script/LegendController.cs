@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using System;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -31,6 +32,12 @@ public enum RollingDirection
 {
     Front,
     Back
+}
+
+public enum SinglePlayController
+{
+    Controller_1P,
+    Controller_2P
 }
 
 public class LegendController : MonoBehaviour
@@ -80,13 +87,13 @@ public class LegendController : MonoBehaviour
 
         void SetController(int userID) // TO DO : 피격 로직 수정 이후 죽었을 때 이벤트에서 다시 호출 필요
         {
-            switch (userID)
+            switch ((SinglePlayController)userID)
             {
-                case 0: // 1P 유저 Input Map 세팅
+                case SinglePlayController.Controller_1P:
                     _input.SwitchCurrentActionMap(StringLiteral.FIRST_PLAYER_ACTIONS);
                     break;
 
-                case 1: // 2P 유저 Input Map 세팅
+                case SinglePlayController.Controller_2P:
                     _input.actions.name = StringLiteral.PLAYER_INPUT;
                     _input.SwitchCurrentActionMap(StringLiteral.SECOND_PLAYER_ACTIONS);
                     Keyboard keyBoard = InputSystem.GetDevice<Keyboard>();
