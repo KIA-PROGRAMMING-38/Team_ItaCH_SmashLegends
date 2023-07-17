@@ -43,10 +43,11 @@ public class LegendController : MonoBehaviour
     //
     private CancellationTokenSource _taskCancel;
 
-    [SerializeField] private SphereCollider _skillAttackHitZone;
-    [SerializeField] private SphereCollider _attackHitZone;
-    [SerializeField] private SphereCollider _heavyAttackHitZone;
-    [SerializeField] private BoxCollider _jumpAttackHitZone;
+    // TODO : 각 레전드 Attack 에서 설정
+    //[SerializeField] private SphereCollider _skillAttackHitZone;
+    //[SerializeField] private SphereCollider _attackHitZone;
+    //[SerializeField] private SphereCollider _heavyAttackHitZone;
+    //[SerializeField] private BoxCollider _jumpAttackHitZone;
 
     private InputAction[] _actions;
 
@@ -107,7 +108,7 @@ public class LegendController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag(StringLiteral.Ground))
+        if (collision.gameObject.CompareTag(StringLiteral.GROUND))
         {
             _legendAnimationController.SetBool(AnimationHash.JumpDown, false);
             _legendAnimationController.SetTrigger(AnimationHash.HitDown);
@@ -116,7 +117,7 @@ public class LegendController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(StringLiteral.HangZone))
+        if (other.CompareTag(StringLiteral.HANGZONE))
         {
             ResetVelocity();
             transform.forward = GetHangForward(other.transform.position);
@@ -124,13 +125,13 @@ public class LegendController : MonoBehaviour
             _legendAnimationController.Play(AnimationHash.Hang);
         }
 
-        if (other.CompareTag(StringLiteral.DefaultHit))
+        if (other.CompareTag(StringLiteral.DEFAULT_HIT))
         {
             _facingDirection = -1 * other.transform.forward;
             SetKnockbackOnAttack(other, AnimationHash.Hit, KnockbackType.Default);
         }
 
-        if (other.CompareTag(StringLiteral.HeavyHit))
+        if (other.CompareTag(StringLiteral.HEAVY_HIT))
         {
             _facingDirection = -1 * other.transform.forward;
             SetKnockbackOnAttack(other, AnimationHash.HitUp, KnockbackType.Heavy);
@@ -148,11 +149,11 @@ public class LegendController : MonoBehaviour
     }
     private void InitActions()
     {
-        _actions = new InputAction[StringLiteral.Actions.Length];
+        _actions = new InputAction[StringLiteral.ACTIONS.Length];
 
         for (int i = 0; i < _actions.Length; ++i)
         {
-            _actions[i] = _input.actions[StringLiteral.Actions[i]];
+            _actions[i] = _input.actions[StringLiteral.ACTIONS[i]];
         }
     }
 
@@ -225,14 +226,17 @@ public class LegendController : MonoBehaviour
     }
 
     #region 각 공격별 HitZone 생성
-    private void EnableAttackHitZone() => _attackHitZone.enabled = true;
-    private void DisableAttackHitZone() => _attackHitZone.enabled = false;
-    private void EnableJumpAttackHitZone() => _jumpAttackHitZone.enabled = true;
-    private void DisableJumpAttackHitZone() => _jumpAttackHitZone.enabled = false;
-    private void EnableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = true;
-    private void DisableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = false;
-    private void EnableSkillAttackHitZone() => _skillAttackHitZone.enabled = true;
-    private void DisableSkillAttackHitZone() => _skillAttackHitZone.enabled = false;
+
+    // TODO : 각 레전드 Attack 스크립트에서 사용
+
+    //private void EnableAttackHitZone() => _attackHitZone.enabled = true;
+    //private void DisableAttackHitZone() => _attackHitZone.enabled = false;
+    //private void EnableJumpAttackHitZone() => _jumpAttackHitZone.enabled = true;
+    //private void DisableJumpAttackHitZone() => _jumpAttackHitZone.enabled = false;
+    //private void EnableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = true;
+    //private void DisableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = false;
+    //private void EnableSkillAttackHitZone() => _skillAttackHitZone.enabled = true;
+    //private void DisableSkillAttackHitZone() => _skillAttackHitZone.enabled = false;
     #endregion
 
     public void SetRollingDirection()

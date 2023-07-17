@@ -4,18 +4,15 @@ using ETouch = UnityEngine.InputSystem.EnhancedTouch;
 
 public class JoyStickController : MonoBehaviour
 {
+    // TODO : 작업 보류 
     [SerializeField] private Vector2 _joystickSize = new Vector2(300, 300);
     [SerializeField] private FloatingJoyStick _joystick;
-    private PlayerMove _playerMove;
-    private PlayerStatus _playerStatus;
     private Animator _animator;
     
     private Finger _movementFinger;
     private Vector2 _movementAmount;
     private void Awake()
     {
-        _playerMove = GetComponent<PlayerMove>();
-        _playerStatus = GetComponent<PlayerStatus>();
         _animator = GetComponent<Animator>();
     }
     private void OnEnable()
