@@ -38,14 +38,14 @@ public class AliceBomb : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         int resetTime = 0;
-        if (other.CompareTag("GROUND") && !_bezier)
+        if (other.CompareTag(StringLiteral.GROUND) && !_bezier)
         {
             _time = resetTime;
             _bezier = true;
             transform.rotation = Quaternion.Euler(-90, 0, 0);
             PlayBombEffect().Forget();
         }
-        if (other.CompareTag("PLAYER") && other.gameObject.layer != currentTransform.gameObject.layer)
+        if (other.CompareTag(StringLiteral.PLAYER) && other.gameObject.layer != currentTransform.gameObject.layer)
         {
             if (_isAttack)
             {

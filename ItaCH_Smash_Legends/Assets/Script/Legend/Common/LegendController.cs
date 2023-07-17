@@ -43,10 +43,11 @@ public class LegendController : MonoBehaviour
     //
     private CancellationTokenSource _taskCancel;
 
-    [SerializeField] private SphereCollider _skillAttackHitZone;
-    [SerializeField] private SphereCollider _attackHitZone;
-    [SerializeField] private SphereCollider _heavyAttackHitZone;
-    [SerializeField] private BoxCollider _jumpAttackHitZone;
+    // TODO : 각 레전드 Attack 에서 설정
+    //[SerializeField] private SphereCollider _skillAttackHitZone;
+    //[SerializeField] private SphereCollider _attackHitZone;
+    //[SerializeField] private SphereCollider _heavyAttackHitZone;
+    //[SerializeField] private BoxCollider _jumpAttackHitZone;
 
     private InputAction[] _actions;
 
@@ -225,14 +226,17 @@ public class LegendController : MonoBehaviour
     }
 
     #region 각 공격별 HitZone 생성
-    private void EnableAttackHitZone() => _attackHitZone.enabled = true;
-    private void DisableAttackHitZone() => _attackHitZone.enabled = false;
-    private void EnableJumpAttackHitZone() => _jumpAttackHitZone.enabled = true;
-    private void DisableJumpAttackHitZone() => _jumpAttackHitZone.enabled = false;
-    private void EnableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = true;
-    private void DisableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = false;
-    private void EnableSkillAttackHitZone() => _skillAttackHitZone.enabled = true;
-    private void DisableSkillAttackHitZone() => _skillAttackHitZone.enabled = false;
+
+    // TODO : 각 레전드 Attack 스크립트에서 사용
+
+    //private void EnableAttackHitZone() => _attackHitZone.enabled = true;
+    //private void DisableAttackHitZone() => _attackHitZone.enabled = false;
+    //private void EnableJumpAttackHitZone() => _jumpAttackHitZone.enabled = true;
+    //private void DisableJumpAttackHitZone() => _jumpAttackHitZone.enabled = false;
+    //private void EnableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = true;
+    //private void DisableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = false;
+    //private void EnableSkillAttackHitZone() => _skillAttackHitZone.enabled = true;
+    //private void DisableSkillAttackHitZone() => _skillAttackHitZone.enabled = false;
     #endregion
 
     public void SetRollingDirection()
