@@ -25,17 +25,17 @@ public static class StringLiteral
     #endregion
 
     #region LegendController 
-    public static readonly string[] Actions = new[] { "Move", "Jump", "DefaultAttack", "SmashAttack", "SkillAttack" };
-    public static readonly string[] AnimationClip = new[] { "Peter_FirstAttack", "Peter_SecondAttack" };
-    public const string JumpAnimationClip = "Peter_JumpAttack";
+    public static readonly string[] ACTIONS = new[] { "Move", "Jump", "DefaultAttack", "SmashAttack", "SkillAttack" };
+    public static readonly string[] ANIMATION_CLIP = new[] { "Peter_FirstAttack", "Peter_SecondAttack" };
+    public const string JUMP_ANIMATION_CLIP = "Peter_JumpAttack";
     #endregion
 
     #region Tag
-    public const string HangZone = "HangZone";
-    public const string Ground = "Ground";
-    public const string Player = "Player";
-    public const string DefaultHit = "DefaultHit";
-    public const string HeavyHit = "HeavyHit";
+    public const string HANGZONE = "HangZone";
+    public const string GROUND = "Ground";
+    public const string PLAYER = "Player";
+    public const string DEFAULT_HIT = "DefaultHit";
+    public const string HEAVY_HIT = "HeavyHit";
     #endregion
 
     #region INPUT ACTION MAP

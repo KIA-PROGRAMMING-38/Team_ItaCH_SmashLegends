@@ -19,7 +19,6 @@ public class HookHit : MonoBehaviour
     private HookBullet _hookBullet;
     private EffectController _effectController;
     private LegendController _legendController;
-    private PlayerHit _playerHit;
 
     private void Start()
     {
@@ -65,17 +64,17 @@ public class HookHit : MonoBehaviour
         //}
     }
 
-    private bool PossibleAttack(PlayerStatus playerStatus)
-    {
-        if (playerStatus.CurrentState != PlayerStatus.State.HitUp && playerStatus.CurrentState != PlayerStatus.State.SkillAttack)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+    //private bool PossibleAttack(PlayerStatus playerStatus)
+    //{
+    //    if (playerStatus.CurrentState != PlayerStatus.State.HitUp && playerStatus.CurrentState != PlayerStatus.State.SkillAttack)
+    //    {
+    //        return true;
+    //    }
+    //    else
+    //    {
+    //        return false;
+    //    }
+    //}
     private void SetDirection(Collider other)
     {
         _knockbackDirection = knockbackPower * _hookBullet.constructor.transform.forward;

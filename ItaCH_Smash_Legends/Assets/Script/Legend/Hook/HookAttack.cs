@@ -63,8 +63,6 @@ public class HookAttack : PlayerAttack
     };
     private void Start()
     {
-        nextTransitionMinValue = 0.6f;
-
         _bulletSpawnPositionLeft = transform.GetChild(_rootIndex).GetChild(_boneIndex).GetChild(_leftWeaponIndex).GetChild(_cylinderIndex).transform;
         _bulletSpawnPositionRight = transform.GetChild(_rootIndex).GetChild(_boneIndex).GetChild(_rightWeaponIndex).GetChild(_cylinderIndex).transform;
         for (int i = 0; i < _bulletContainers.Length; ++i)
@@ -78,9 +76,9 @@ public class HookAttack : PlayerAttack
 
         CreateObjectPool();
         _shotEffect = Parrot.transform.GetChild(0).GetComponent<ParticleSystem>();
-        
-        _defaultDashPower = defaultDashPower * -0.4f;
-        _heavyDashPower = defaultDashPower * -0.65f;
+
+        _defaultDashPower = characterStatus.Stat.DashPower * -0.4f;
+        _heavyDashPower = characterStatus.Stat.DashPower * -0.65f;
     }
     private void OnDisable()
     {
@@ -91,79 +89,40 @@ public class HookAttack : PlayerAttack
     }
     public override void DashOnAnimationEvent()
     {
-        if (CurrentPossibleComboCount == COMBO_FINISH_COUNT && playerStatus.CurrentState == PlayerStatus.State.ComboAttack)
-        {
-            rigidbodyAttack.AddForce(transform.forward * (_defaultDashPower), ForceMode.Impulse);
+        //if (CurrentPossibleComboCount == COMBO_FINISH_COUNT && playerStatus.CurrentState == PlayerStatus.State.ComboAttack)
+        //{
+        //    rigidbodyAttack.AddForce(transform.forward * (_defaultDashPower), ForceMode.Impulse);
 
-        }
-        if (CurrentPossibleComboCount == MAX_POSSIBLE_ATTACK_COUNT &&
-            playerStatus.CurrentState == PlayerStatus.State.HeavyAttack)
-        {
-            rigidbodyAttack.AddForce(transform.forward * (_heavyDashPower ), ForceMode.Impulse);
-        }
-
-        if (playerStatus.IsJump == false)
-        {
-            _jumpDashPower = transform.forward * -0.15f;
-            rigidbodyAttack.velocity = Vector3.zero;
-            rigidbodyAttack.AddForce(_jumpUpDashPower + _jumpDashPower, ForceMode.Impulse);
-        }
-
-    }
-    public override void DefaultAttack()
-    {
-        if (IsPossibleFirstAttack())
-        {
-            isFinishAttack = false;
-            playerStatus.CurrentState = PlayerStatus.State.ComboAttack;
-            animator.Play(AnimationHash.FirstAttack);
-        }
-
-        if (isFirstAttack && CurrentPossibleComboCount == COMBO_SECOND_COUNT)
-        {
-            isSecondAttack = true;
-        }
-    }
-    public override void HeavyAttack()
-    {
-        base.HeavyAttack();
-    }
-    public override void JumpAttack()
-    {
+        //}
+        //if (CurrentPossibleComboCount == MAX_POSSIBLE_ATTACK_COUNT &&
+        //    playerStatus.CurrentState == PlayerStatus.State.HeavyAttack)
+        //{
+        //    rigidbodyAttack.AddForce(transform.forward * (_heavyDashPower ), ForceMode.Impulse);
+        //}
 
         //if (playerStatus.IsJump == false)
         //{
-        //    if (CurrentPossibleComboCount == MAX_POSSIBLE_ATTACK_COUNT)
-        //    {
-        //        animator.SetTrigger(AnimationHash.JumpAttack);
-        //        return;
-        //    }
-        //    else if (CurrentPossibleComboCount == COMBO_SECOND_COUNT)
-        //    {
-        //        animator.SetBool(AnimationHash.JumpSecondAttack, true);
-        //        return;
-        //    }
-        //    else if (CurrentPossibleComboCount == COMBO_FINISH_COUNT)
-        //    {
-        //        animator.SetBool(AnimationHash.JumpFinishAttack, true);
-        //        return;
-        //    }
+        //    _jumpDashPower = transform.forward * -0.15f;
+        //    rigidbodyAttack.velocity = Vector3.zero;
+        //    rigidbodyAttack.AddForce(_jumpUpDashPower + _jumpDashPower, ForceMode.Impulse);
         //}
+
     }
-    public override void SkillAttack()
-    {
-        if (playerStatus.CurrentState == PlayerStatus.State.Run ||
-            playerStatus.CurrentState == PlayerStatus.State.Idle)
-        {
-            animator.Play(AnimationHash.SkillAttack);
-            if (Parrot.activeSelf == true)
-            {
-                Parrot.SetActive(false);
-            }
-            Parrot.SetActive(true);
-            playerStatus.CurrentState = PlayerStatus.State.SkillAttack;
-        }
-    }
+
+    //public override void SkillAttack()
+    //{
+    //    if (playerStatus.CurrentState == PlayerStatus.State.Run ||
+    //        playerStatus.CurrentState == PlayerStatus.State.Idle)
+    //    {
+    //        animator.Play(AnimationHash.SkillAttack);
+    //        if (Parrot.activeSelf == true)
+    //        {
+    //            Parrot.SetActive(false);
+    //        }
+    //        Parrot.SetActive(true);
+    //        playerStatus.CurrentState = PlayerStatus.State.SkillAttack;
+    //    }
+    //}
     public void DefaultAttackLeft()
     {
         CreateBullet(_bulletSpawnPositionLeft.position, _defaultIndex);
@@ -171,14 +130,9 @@ public class HookAttack : PlayerAttack
     }
     public void DefaultAttackRight()
     {
-        if (CurrentPossibleComboCount == 1)
-        {
-            CreateBullet(_bulletSpawnPositionRight.position, _finishComboIndex);
-        }
-        else
-        {
-            CreateBullet(_bulletSpawnPositionRight.position, _defaultIndex);
-        }
+        // TODO : 함수 분할
+        //CreateBullet(_bulletSpawnPositionRight.position, _finishComboIndex);
+        CreateBullet(_bulletSpawnPositionRight.position, _defaultIndex);
         CreateBulletEffect(_bulletSpawnPositionRight.position, _defaultFireEffect);
     }
     public void HeavyAttackLeft()
@@ -201,21 +155,15 @@ public class HookAttack : PlayerAttack
     }
     public void JumpAttackLeft()
     {
-        --CurrentPossibleComboCount;
         DefaultAttackLeft();
         DashOnAnimationEvent();
     }
     public void JumpAttackRight()
     {
-        --CurrentPossibleComboCount;
-        if (playerStatus.IsJump == false && CurrentPossibleComboCount == 0)
-        {
-            CreateBullet(_bulletSpawnPositionRight.position, _finishComboIndex);
-        }
-        else
-        {
-            CreateBullet(_bulletSpawnPositionRight.position, _defaultIndex);
-        }
+        //TODO : 함수 분할
+        CreateBullet(_bulletSpawnPositionRight.position, _finishComboIndex);
+
+        CreateBullet(_bulletSpawnPositionRight.position, _defaultIndex);
         CreateBulletEffect(_bulletSpawnPositionRight.position, _defaultFireEffect);
         DashOnAnimationEvent();
     }
@@ -229,62 +177,67 @@ public class HookAttack : PlayerAttack
     }
     private HookBullet CreateBullet(Vector3 spawnPosition, int bulletIndex)
     {
-        if (playerStatus.IsJump)
-        {
-            spawnPosition = spawnPosition + transform.forward;
-        }
+        // TODO : 점프상태 정의 필요
+        //if (playerStatus.IsJump)
+        //{
+        //    spawnPosition = spawnPosition + transform.forward;
+        //}
 
         HookBullet bullet = _bulletPool[bulletIndex].Get();
         bullet.transform.position = spawnPosition;
 
-        if (playerStatus.IsJump)
-        {
-            bullet.transform.forward = transform.forward;
-            bullet.transform.GetChild(0).transform.forward = bullet.transform.forward;
+        //if (playerStatus.IsJump)
+        //{
+        //    bullet.transform.forward = transform.forward;
+        //    bullet.transform.GetChild(0).transform.forward = bullet.transform.forward;
 
-        }
-        else
-        {
-            bullet.transform.forward = transform.forward;
-            bullet.transform.GetChild(0).transform.forward = bullet.transform.forward;
-            bullet.transform.Rotate(JumpBulletRotate(_jumpRotateValue));
-        }
+        //}
+        //else
+        //{
+        bullet.transform.forward = transform.forward;
+        bullet.transform.GetChild(0).transform.forward = bullet.transform.forward;
+        bullet.transform.Rotate(JumpBulletRotate(_jumpRotateValue));
+        //}
 
         bullet.gameObject.SetActive(true);
         return bullet;
     }
     private void CreateSkillBullet()
     {
-        if (playerStatus.CurrentState == PlayerStatus.State.HeavyAttack)
-        {
+        // TODO : 스킬공격 추가타 => 기본공격, 헤비공격 구분 필요
+        //if (playerStatus.CurrentState == PlayerStatus.State.HeavyAttack)
+        //{
             CreateBullet(Parrot.transform.position, _skillHeavyIndex).transform.Rotate(_defaultSkillBulletRatate);
-        }
-        else
-        {
-            CreateBullet(Parrot.transform.position, _skillIndex).transform.Rotate(_heavySkillBulletRatate);
-        }
+        //}
+        //else
+        //{
+        //    CreateBullet(Parrot.transform.position, _skillIndex).transform.Rotate(_heavySkillBulletRatate);
+        //}
     }
     private void CreateBulletEffect(Vector3 spawnPosition, int index)
     {
         FireEffect effect = _bulletCreateEffectPool[index].Get();
         effect.transform.position = spawnPosition;
 
-        if (playerStatus.CurrentState == PlayerStatus.State.HeavyAttack)
-        {
-            effect.transform.forward = transform.forward;
-        }
-        else
-        {
+        // TODO : 함수 분할 
+        //if (playerStatus.CurrentState == PlayerStatus.State.HeavyAttack)
+        //{
+        //    effect.transform.forward = transform.forward;
+        //}
+        //else
+        //{
             DefaultBulletEffectRotate(effect.gameObject, _jumpRotateValue);
-        }
+        //}
         effect.gameObject.SetActive(true);
     }
     private Vector3 JumpBulletRotate(float value)
     {
-        if (playerStatus.IsJump == false && CurrentPossibleComboCount == 0)
-        {
-            value = 30f;
-        }
+        // TODO : 함수 분할 
+
+        //if (playerStatus.IsJump == false && CurrentPossibleComboCount == 0)
+        //{
+        //    value = 30f;
+        //}
         if (transform.forward.x < 0)
         {
             return transform.forward * -value;
@@ -303,15 +256,16 @@ public class HookAttack : PlayerAttack
         if (IsDiagonalAttack())
         {
             int direction = (int)transform.rotation.eulerAngles.y / 45;
-            if (playerStatus.IsJump)
-            {
+            // TODO : 점프 상태 정의 필요
+            //if (playerStatus.IsJump)
+            //{
                 effect.transform.rotation = Quaternion.Euler(_effectEulerAnglesOnJump[direction]);
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 Vector3 eulerAngle = CalculateEffectEulerAngle(direction, value);
                 effect.transform.rotation = Quaternion.Euler(eulerAngle);
-            }
+            //}
         }
     }
     private Vector3 CalculateEffectEulerAngle(int direction, float value)
