@@ -107,7 +107,7 @@ public class LegendController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag(StringLiteral.Ground))
+        if (collision.gameObject.CompareTag(StringLiteral.GROUND))
         {
             _legendAnimationController.SetBool(AnimationHash.JumpDown, false);
             _legendAnimationController.SetTrigger(AnimationHash.HitDown);
@@ -116,7 +116,7 @@ public class LegendController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(StringLiteral.HangZone))
+        if (other.CompareTag(StringLiteral.HANGZONE))
         {
             ResetVelocity();
             transform.forward = GetHangForward(other.transform.position);
@@ -124,13 +124,13 @@ public class LegendController : MonoBehaviour
             _legendAnimationController.Play(AnimationHash.Hang);
         }
 
-        if (other.CompareTag(StringLiteral.DefaultHit))
+        if (other.CompareTag(StringLiteral.DEFAULT_HIT))
         {
             _facingDirection = -1 * other.transform.forward;
             SetKnockbackOnAttack(other, AnimationHash.Hit, KnockbackType.Default);
         }
 
-        if (other.CompareTag(StringLiteral.HeavyHit))
+        if (other.CompareTag(StringLiteral.HEAVY_HIT))
         {
             _facingDirection = -1 * other.transform.forward;
             SetKnockbackOnAttack(other, AnimationHash.HitUp, KnockbackType.Heavy);
@@ -148,11 +148,11 @@ public class LegendController : MonoBehaviour
     }
     private void InitActions()
     {
-        _actions = new InputAction[StringLiteral.Actions.Length];
+        _actions = new InputAction[StringLiteral.ACTIONS.Length];
 
         for (int i = 0; i < _actions.Length; ++i)
         {
-            _actions[i] = _input.actions[StringLiteral.Actions[i]];
+            _actions[i] = _input.actions[StringLiteral.ACTIONS[i]];
         }
     }
 

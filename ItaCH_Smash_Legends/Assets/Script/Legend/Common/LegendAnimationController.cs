@@ -46,7 +46,7 @@ public class LegendAnimationController : MonoBehaviour
                 ++_animationClipIndex;
             }
 
-            _animatorOverrideController[StringLiteral.JumpAnimationClip] = _applyJumpAttackClip[_animationClipIndex];
+            _animatorOverrideController[StringLiteral.JUMP_ANIMATION_CLIP] = _applyJumpAttackClip[_animationClipIndex];
         }
         else
         {
@@ -56,7 +56,7 @@ public class LegendAnimationController : MonoBehaviour
             }
 
             int value = _animationClipIndex % 2;
-            _animatorOverrideController[StringLiteral.AnimationClip[value]] = _applyAttackClip[_animationClipIndex];
+            _animatorOverrideController[StringLiteral.ANIMATION_CLIP[value]] = _applyAttackClip[_animationClipIndex];
         }
     }
     public void AttackAnimation(ComboAttackType comboAttackType)
@@ -75,8 +75,8 @@ public class LegendAnimationController : MonoBehaviour
     public void ResetComboAttackAnimationClip()
     {
         _animationClipIndex = 0;
-        _animatorOverrideController[StringLiteral.AnimationClip[0]] = _applyAttackClip[0];
-        _animatorOverrideController[StringLiteral.JumpAnimationClip] = _applyJumpAttackClip[0];
+        _animatorOverrideController[StringLiteral.ANIMATION_CLIP[0]] = _applyAttackClip[0];
+        _animatorOverrideController[StringLiteral.JUMP_ANIMATION_CLIP] = _applyJumpAttackClip[0];
     }
     public void ResetAllAnimatorTriggers(Animator animator)
     {

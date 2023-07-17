@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class AliceBomb : MonoBehaviour
 {
+    // TODO 기능 재정의
     public Transform[] point;
     public ParticleSystem[] effect;
     private CharacterStatus _characterStatus;
     private CancellationTokenSource _cancelToken;
-    private AliceHit _aliceHit;
     private Transform currentTransform;
     private BoxCollider _boxCollider;
 
@@ -23,7 +23,6 @@ public class AliceBomb : MonoBehaviour
     {
         _characterStatus = transform.root.GetComponent<CharacterStatus>();
         _boxCollider = GetComponent<BoxCollider>();
-        _aliceHit = transform.root.GetComponent<AliceHit>();
         currentTransform = transform.root;
         _cancelToken = new CancellationTokenSource();
     }
@@ -39,14 +38,14 @@ public class AliceBomb : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         int resetTime = 0;
-        if (other.CompareTag("Ground") && !_bezier)
+        if (other.CompareTag("GROUND") && !_bezier)
         {
             _time = resetTime;
             _bezier = true;
             transform.rotation = Quaternion.Euler(-90, 0, 0);
             PlayBombEffect().Forget();
         }
-        if (other.CompareTag("Player") && other.gameObject.layer != currentTransform.gameObject.layer)
+        if (other.CompareTag("PLAYER") && other.gameObject.layer != currentTransform.gameObject.layer)
         {
             if (_isAttack)
             {

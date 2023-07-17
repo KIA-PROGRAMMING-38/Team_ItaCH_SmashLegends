@@ -9,7 +9,6 @@ public abstract class EffectController : MonoBehaviour
     protected GameObject[] _effects;
     private CharacterStatus _characterStatus;
     private Rigidbody _rigidbody;
-    private PlayerHit _playerHit;
     private float _scaleOffset;
 
     public readonly int FLASH_COUNT = 5;
@@ -22,7 +21,6 @@ public abstract class EffectController : MonoBehaviour
 
     private void Awake()
     {
-        _playerHit = GetComponent<PlayerHit>();
         _rigidbody = GetComponent<Rigidbody>();
         _characterStatus = GetComponent<CharacterStatus>();
         SetEventSubscription();
@@ -123,7 +121,6 @@ public abstract class EffectController : MonoBehaviour
 
     public async UniTaskVoid StartHitFlashEffet()
     {
-        Debug.Log("이펙트 들어옴?");
         int count = 3;
         SetHitEffectColor();
         while (count > 0)
@@ -138,8 +135,6 @@ public abstract class EffectController : MonoBehaviour
     public async UniTaskVoid StartInvincibleFlashEffet(int count)
     {
         SetInvincibleEffectColor();
-        // 힛 정의 후 리펙토링
-        //_playerHit.invincible = true;
         while (count > 0)
         {
             OnFlashEffect();
@@ -148,6 +143,5 @@ public abstract class EffectController : MonoBehaviour
             await UniTask.Delay(50);
             --count;
         }
-        //_playerHit.invincible = false;
     }
 }
