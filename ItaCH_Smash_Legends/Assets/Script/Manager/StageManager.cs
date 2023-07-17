@@ -94,13 +94,13 @@ public class StageManager : MonoBehaviourPunCallbacks
         _isTimeOver = false;
         _isGameOver = false;
         InstantiateMap();
-        for (int i = 0; i < _currentGameMode.MaxPlayer; ++i)
+        for (int player = 0; player < _currentGameMode.MaxPlayer; ++player)
         {
-            UserData userData = Managers.UserManager.GetUserData(i);
+            UserData userData = Managers.UserManager.GetUserData(player);
             SetUserTeam(userData);
-            CreateLegend(userData, currentGameMode.SpawnPoints[i + 1]); // SpawnPoints[0] == root Object
+            CreateLegend(userData, currentGameMode.SpawnPoints[player + 1]); // SpawnPoints[0] == root Object
         }
-        SetModeUI(currentGameMode.GameModeType);
+        //SetModeUI(currentGameMode.GameModeType); // UI 개선 이후
         StartGame();
     }
 
@@ -111,22 +111,22 @@ public class StageManager : MonoBehaviourPunCallbacks
         Team team = GetTeamAvailable();
         team.AddMember(user);
 
-        Team GetTeamAvailable()
+    }
+    private Team GetTeamAvailable()
+    {
+        if (IsNewTeamNeeded(_teams, _currentGameMode.MaxTeamMember))
         {
-            if (IsNewTeamNeeded(_teams))
-            {
-                Team newTeam = new Team();
-                _teams.Add(newTeam);
-                newTeam.Type = (_teams.Count == 1) ? TeamType.Blue : TeamType.Red;
-                return newTeam;
-            }
-            else
-            {
-                return _teams[^1];
-            }
-
-            bool IsNewTeamNeeded(List<Team> teams) => teams.Count == 0 || teams[^1].Members.Count == _currentGameMode.MaxTeamMember;
+            Team newTeam = new Team();
+            _teams.Add(newTeam);
+            newTeam.Type = (_teams.Count == 1) ? TeamType.Blue : TeamType.Red; // 자신이 속한 팀을 제외한 모든 팀은 red team으로 두어 레이어 구분 및 피격 판정
+            return newTeam;
         }
+        else
+        {
+            return _teams[^1];
+        }
+
+        static bool IsNewTeamNeeded(List<Team> teams, int max) => teams.Count == 0 || teams[^1].Members.Count == max;
     }
 
     public void CreateLegend(UserData user, Transform spawnPoint)
@@ -141,7 +141,7 @@ public class StageManager : MonoBehaviourPunCallbacks
             LayerMask.NameToLayer(StringLiteral.TEAM_BLUE) : LayerMask.NameToLayer(StringLiteral.TEAM_RED);
     }
 
-    public void SetModeUI(GameModeType gameModeType) // TODO : UI에서 하도록 수정 필요
+    public void SetModeUI(GameModeType gameModeType) // TO DO : UI에서 하도록 수정 필요
     {
         _modeUIPrefab = new GameObject[Enum.GetValues(typeof(GameModeType)).Length];
         StringBuilder stringBuilder = new StringBuilder();

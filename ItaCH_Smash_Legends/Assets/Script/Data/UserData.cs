@@ -4,8 +4,8 @@ public class UserData
 {
     public string Name { get; set; }
     public int ID { get; set; }
-    public Team Team { get; set; }
-    public GameModeType SelectGameMode { get; set; }
+    //public Team Team { get; set; }
+    //public GameModeType SelectGameMode { get; set; } // 룸 자체가 관리하도록
 
     private LegendType _selectedLegend;
     public LegendType SelectedLegend
@@ -18,27 +18,11 @@ public class UserData
                 return _selectedLegend;
             }
             else
+            {
                 return _selectedLegend;
+            }
         }
         set => _selectedLegend = value;
     }
-
-    //public ResultType GameResult { get => _gameResult; }
-    //private ResultType _gameResult;
-
-    //public void SetGameResult(TeamType winningTeam)
-    //{
-    //    if (TeamType.None == winningTeam) 
-    //    {
-    //        this._gameResult = ResultType.Draw;
-    //    }
-    //    else if (this.Team.Type == winningTeam)
-    //    {
-    //        this._gameResult = ResultType.Win;
-    //    }
-    //    else
-    //    {
-    //        this._gameResult = ResultType.Lose;
-    //    }
-    //}
+    public LegendController OwnedLegend { get; set; }
 }

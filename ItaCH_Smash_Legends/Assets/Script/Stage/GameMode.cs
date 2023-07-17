@@ -41,11 +41,10 @@ public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 �
         _modeDefaultRespawnTime = 5f;
         // 현재 Duel Mode 값 직접 지정
     }
-    private void GetMapData() // TODO : 리소스 관련은 리소스 매니저에서
-    {
-        string mapPrefabPath = "Map/SingleLogBridge/Prefab/Map"; // 추후 데이터 분리 필요
-        _currentMap = Resources.Load<GameObject>(mapPrefabPath);
-        _spawnPoints = _currentMap.transform.GetChild(0).GetComponentsInChildren<Transform>();
+    private void GetMapData() 
+    {        
+        _currentMap = Resources.Load<GameObject>(StringLiteral.MAP_PREFAB_PATH);
+        _spawnPoints = _currentMap.transform.Find(StringLiteral.SPAWN_POINTS).GetComponentsInChildren<Transform>();
     }
 
     public TeamType GetWinningTeam(in List<Team> teams)

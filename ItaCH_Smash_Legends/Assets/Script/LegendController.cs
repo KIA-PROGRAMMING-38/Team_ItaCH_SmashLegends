@@ -65,58 +65,58 @@ public class LegendController : MonoBehaviour
     private Vector3 _vectorZero = Vector3.zero;
     private const float ROLLING_DASH_POWER = 1.2f;
     private bool _canAttack;
-    
+
     public void Init(UserData user)
     {
         GetComponents();
         SetLegendStat(user.SelectedLegend);
         SetController(user.ID);
         InitActions();
-        SetMass();             
-
-        void GetComponents()
-        {
-            _rigidbody = GetComponent<Rigidbody>();
-            _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
-            _legendAnimationController = GetComponent<LegendAnimationController>();
-            _effectController = GetComponent<EffectController>();
-            _collider = GetComponent<Collider>();
-        }
-
-        void SetLegendStat(LegendType legendIndex) => Stat = Managers.DataManager.LegendStats[(int)legendIndex].Clone();
-
-        void SetController(int userID) // TO DO : 피격 로직 수정 이후 죽었을 때 이벤트에서 다시 호출 필요
-        {
-            switch ((SinglePlayController)userID)
-            {
-                case SinglePlayController.Controller_1P:
-                    _input.SwitchCurrentActionMap(StringLiteral.FIRST_PLAYER_ACTIONS);
-                    break;
-
-                case SinglePlayController.Controller_2P:
-                    _input.actions.name = StringLiteral.PLAYER_INPUT;
-                    _input.SwitchCurrentActionMap(StringLiteral.SECOND_PLAYER_ACTIONS);
-                    Keyboard keyBoard = InputSystem.GetDevice<Keyboard>();
-                    _input.actions.devices = new InputDevice[] { keyBoard };
-                    break;
-
-                default:
-                    return;
-            }
-        }
-        
-        void InitActions()
-        {
-            _actions = new InputAction[StringLiteral.Actions.Length];
-
-            for (int i = 0; i < _actions.Length; ++i)
-            {
-                _actions[i] = _input.actions[StringLiteral.Actions[i]];
-            }
-        }
-
-        void SetMass() => _rigidbody.mass = MAX_JUMP_POWER / Stat.JumpAcceleration;
+        SetMass();
     }
+
+    private void GetComponents()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+        _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
+        _legendAnimationController = GetComponent<LegendAnimationController>();
+        _effectController = GetComponent<EffectController>();
+        _collider = GetComponent<Collider>();
+    }
+
+    private void SetLegendStat(LegendType legendIndex) => Stat = Managers.DataManager.LegendStats[(int)legendIndex].Clone();
+
+    private void SetController(int userID) // TO DO : 피격 로직 수정 이후 죽었을 때 이벤트에서 다시 호출 필요
+    {
+        switch ((SinglePlayController)userID)
+        {
+            case SinglePlayController.Controller_1P:
+                _input.SwitchCurrentActionMap(StringLiteral.FIRST_PLAYER_ACTIONS);
+                break;
+
+            case SinglePlayController.Controller_2P:
+                _input.actions.name = StringLiteral.PLAYER_INPUT;
+                _input.SwitchCurrentActionMap(StringLiteral.SECOND_PLAYER_ACTIONS);
+                Keyboard keyBoard = InputSystem.GetDevice<Keyboard>();
+                _input.actions.devices = new InputDevice[] { keyBoard };
+                break;
+
+            default:
+                return;
+        }
+    }
+
+    private void InitActions()
+    {
+        _actions = new InputAction[StringLiteral.Actions.Length];
+
+        for (int i = 0; i < _actions.Length; ++i)
+        {
+            _actions[i] = _input.actions[StringLiteral.Actions[i]];
+        }
+    }
+
+    private void SetMass() => _rigidbody.mass = MAX_JUMP_POWER / Stat.JumpAcceleration;
 
     private void FixedUpdate()
     {
@@ -345,17 +345,17 @@ public class LegendController : MonoBehaviour
         _rigidbody.AddForce(knockbackDirection * GetKnockbackPower(type, other), ForceMode.Impulse);
 
         float GetKnockbackPower(KnockbackType type, Collider other) // TO DO : 매개변수로 넉백파워를 받음
-        {            
-            float knockbackPower = 0;            
+        {
+            float knockbackPower = 0;
 
             switch (type)
             {
-                case KnockbackType.Default:                    
+                case KnockbackType.Default:
                     knockbackPower = other.GetComponent<LegendController>().Stat.DefaultKnockbackPower;
                     break;
 
                 case KnockbackType.Heavy:
-                    knockbackPower = other.GetComponent<LegendController>().Stat.HeavyKnockbackPower;                    
+                    knockbackPower = other.GetComponent<LegendController>().Stat.HeavyKnockbackPower;
                     break;
             }
 

@@ -21,6 +21,7 @@ public static class StringLiteral
     #region FOLDER PATH
     public const string PREFAB_FOLDER = "Prefab";
     public const string SUFFIX_INGAME = "_Ingame";
+    public const string MAP_PREFAB_PATH = "Map/SingleLogBridge/Prefab/Map"; // 폴더 정리 이후 Prefab을 최상위 폴더로 수정
     #endregion
 
     #region LegendController 
@@ -48,5 +49,9 @@ public static class StringLiteral
     public const string TEAM_RED = "TeamRed";
     public const string HANG_ZONE = "HangZone";
     public const string HIT_ZONE = "HitZone";
+    #endregion
+
+    #region MAP
+    public const string SPAWN_POINTS = "SpawnPoints";
     #endregion
 }
