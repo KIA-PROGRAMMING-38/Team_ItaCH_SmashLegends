@@ -225,20 +225,6 @@ public class LegendController : MonoBehaviour
         _rigidbody.velocity = _vectorZero;
     }
 
-    #region 각 공격별 HitZone 생성
-
-    // TODO : 각 레전드 Attack 스크립트에서 사용
-
-    //private void EnableAttackHitZone() => _attackHitZone.enabled = true;
-    //private void DisableAttackHitZone() => _attackHitZone.enabled = false;
-    //private void EnableJumpAttackHitZone() => _jumpAttackHitZone.enabled = true;
-    //private void DisableJumpAttackHitZone() => _jumpAttackHitZone.enabled = false;
-    //private void EnableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = true;
-    //private void DisableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = false;
-    //private void EnableSkillAttackHitZone() => _skillAttackHitZone.enabled = true;
-    //private void DisableSkillAttackHitZone() => _skillAttackHitZone.enabled = false;
-    #endregion
-
     public void SetRollingDirection()
     {
         if (_moveDirection == _vectorZero)

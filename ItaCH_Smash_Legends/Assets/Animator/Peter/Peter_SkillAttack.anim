@@ -84482,6 +84482,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.26666668
+    functionName: StartSkillAttackOnAnimationEvent
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.43333334
     functionName: EnableMiddleSkillAttackEffect
     data: 
@@ -84545,8 +84552,8 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.4333333
-    functionName: EnableEndSkillAttackEffect
+  - time: 1.3333334
+    functionName: StopSkillAttackOnAnimationEvent
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -84554,6 +84561,13 @@ AnimationClip:
     messageOptions: 0
   - time: 1.4333333
     functionName: EnableSkillAttackHitZone
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.4333333
+    functionName: EnableEndSkillAttackEffect
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

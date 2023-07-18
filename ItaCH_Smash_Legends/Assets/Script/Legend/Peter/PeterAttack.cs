@@ -1,37 +1,46 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
+using System.Threading;
 
 public class PeterAttack : PlayerAttack
 {
     // LegnedController 완료시 리펙토링
-    CharacterStatus _characterStatus;
     private float _skillAttackMoveSpeed = 7f;
-    [SerializeField] private SphereCollider _skillAttackHitZone;
-    [SerializeField] private SphereCollider _attackHitZone;
-    [SerializeField] private SphereCollider _heavyAttackHitZone;
-    [SerializeField] private BoxCollider _jumpAttackHitZone;
 
-    private void Awake()
-    {
-        _characterStatus = GetComponent<CharacterStatus>();
-    }
+    [SerializeField] private Collider _skillAttackHitZone;
+    [SerializeField] private Collider _attackHitZone;
+    [SerializeField] private Collider _heavyAttackHitZone;
+    [SerializeField] private Collider _jumpAttackHitZone;
+
+    private CancellationTokenSource _cancelSource;
+
     public override void DashOnAnimationEvent()
     {
-        attackRigidbody.AddForce(transform.forward * characterStatus.Stat.DashPower, ForceMode.Impulse);
+        //TODO : 캐릭터 스탯 변경 후 적용
+        //attackRigidbody.AddForce(transform.forward * characterStatus.Stat.DashPower, ForceMode.Impulse);
+        attackRigidbody.velocity = Vector3.zero;
+        attackRigidbody.AddForce(transform.forward * 0.8f, ForceMode.Impulse);
+
     }
-
-
-    private async UniTaskVoid MoveSkillAttack()
+    private void StopSkillAttackOnAnimationEvent()
     {
-        //if (playerStatus.CurrentState == PlayerStatus.State.SkillAttack)
-        //{
-        //    rigidbodyAttack.velocity = transform.forward * _skillAttackMoveSpeed;
-        //    await UniTask.Delay(3000);
-        //    if (playerStatus.CurrentState == PlayerStatus.State.SkillEndAttack)
-        //    {
-        //        rigidbodyAttack.velocity = Vector3.zero;
-        //    }
-        //}
+        _cancelSource.Cancel();
+    }
+    private void StartSkillAttackOnAnimationEvent()
+    {
+        MoveAtSkillAttack().Forget();
+    }
+    private async UniTaskVoid MoveAtSkillAttack()
+    {
+        _cancelSource = new CancellationTokenSource();
+
+        while (true)
+        {
+            attackRigidbody.velocity = transform.forward * _skillAttackMoveSpeed;
+            await UniTask.Delay(1, cancellationToken: _cancelSource.Token);
+
+            attackRigidbody.velocity = Vector3.zero;
+        }
     }
     private void EnableAttackHitZone() => _attackHitZone.enabled = true;
     private void DisableAttackHitZone() => _attackHitZone.enabled = false;
@@ -41,5 +50,4 @@ public class PeterAttack : PlayerAttack
     private void DisableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = false;
     private void EnableSkillAttackHitZone() => _skillAttackHitZone.enabled = true;
     private void DisableSkillAttackHitZone() => _skillAttackHitZone.enabled = false;
-    //private void ChangeSkillEndAttackStatus() => playerStatus.CurrentState = PlayerStatus.State.SkillEndAttack;
 }

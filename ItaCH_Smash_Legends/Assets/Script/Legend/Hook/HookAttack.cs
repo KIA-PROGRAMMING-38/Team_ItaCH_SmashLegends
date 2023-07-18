@@ -76,9 +76,9 @@ public class HookAttack : PlayerAttack
 
         CreateObjectPool();
         _shotEffect = Parrot.transform.GetChild(0).GetComponent<ParticleSystem>();
-
-        _defaultDashPower = characterStatus.Stat.DashPower * -0.4f;
-        _heavyDashPower = characterStatus.Stat.DashPower * -0.65f;
+        //TODO : 스탯 연동 후 설정
+        //_defaultDashPower = characterStatus.Stat.DashPower * -0.4f;
+        //_heavyDashPower = characterStatus.Stat.DashPower * -0.65f;
     }
     private void OnDisable()
     {
