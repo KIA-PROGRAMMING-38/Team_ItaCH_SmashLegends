@@ -5,12 +5,10 @@ using UnityEngine;
 public class ResourceManager
 {
     public Dictionary<string, Sprite> Sprites { get; private set; }
-    public Dictionary<string, LegendController> Legends { get; private set; }
 
     public void Init()
     {
         Sprites = new Dictionary<string, Sprite>();
-        Legends = new Dictionary<string, LegendController>();
     }
 
     public T Load<T>(string path) where T : Object
@@ -27,23 +25,12 @@ public class ResourceManager
             return sp as T;
         }
 
-        else if (typeof(T) == typeof(LegendController))
-        {
-            if (Legends.TryGetValue(path, out LegendController legendController)) 
-            {
-                return legendController as T;
-            }
-
-            LegendController legend = Resources.Load<LegendController>(path);
-            Legends.Add(path, legend);
-        }
-
         return Resources.Load<T>(path);
     }
 
     public GameObject Instantiate(string path, Transform parent = null)
     {
-        GameObject prefab = Load<GameObject>($"Prefabs/{path}");
+        GameObject prefab = Load<GameObject>($"Prefab/{path}");
         if (prefab == null)
         {
             Debug.LogError($"Failed to load prefab : {path}");
@@ -70,10 +57,10 @@ public class ResourceManager
         Object.Destroy(go);
     }
 
-    public LegendController GetLegendPrefab(LegendType legend)
+    public GameObject GetLegendPrefab(LegendType legend)
     {
         string legendName = legend.ToString();
         string legendPrefabPath = Path.Combine(StringLiteral.PREFAB_FOLDER, legendName, $"{legendName}{StringLiteral.SUFFIX_INGAME}", $"{legendName}{StringLiteral.SUFFIX_INGAME}");
-        return Load<LegendController>(legendPrefabPath);
+        return Load<GameObject>(legendPrefabPath);
     }
 }

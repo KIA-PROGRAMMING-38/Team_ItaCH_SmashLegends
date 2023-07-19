@@ -7,7 +7,7 @@ public abstract class EffectController : MonoBehaviour
     [SerializeField] private ParticleSystem _dieSmokeEffect;
     [SerializeField] private ParticleSystem _dieEffect;
     protected GameObject[] _effects;
-    private LegendController _characterStatus;
+    private LegendController _legendController;
     private Rigidbody _rigidbody;
     private float _scaleOffset;
 
@@ -22,7 +22,7 @@ public abstract class EffectController : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _characterStatus = GetComponent<LegendController>();
+        _legendController = GetComponent<LegendController>();
         SetEventSubscription();
     }
     private void Start()

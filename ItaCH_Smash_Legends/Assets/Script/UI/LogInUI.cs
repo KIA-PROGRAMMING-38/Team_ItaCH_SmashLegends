@@ -1,10 +1,9 @@
-﻿using Cysharp.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using System;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Util.Method;
 
 public class LogInUI : MonoBehaviour
 {
@@ -79,14 +78,14 @@ public class LogInUI : MonoBehaviour
         float popUpSpeed = 1 / popUpTime;
         float initialDifference = startSize.x - targetSize.x;
         // 시작 크기가 더 커서 작아져야 한다면 -1 곱하기
-        if (Method.IsPositive(initialDifference))
+        if (Utils.IsPositive(initialDifference))
         {
             popUpSpeed *= -1;
         }
         rectTransform.localScale = startSize;
 
         //부호가 달라질 때까지 실행
-        while (Method.IsPositive(initialDifference * (rectTransform.localScale.x - targetSize.x)))
+        while (Utils.IsPositive(initialDifference * (rectTransform.localScale.x - targetSize.x)))
         {
             float popUpAmount = Time.deltaTime * popUpSpeed;
             rectTransform.localScale = new Vector3(rectTransform.localScale.x + popUpAmount,
@@ -105,7 +104,7 @@ public class LogInUI : MonoBehaviour
         string userInput = _inputField.text;
         if (Regex.IsMatch(userInput, InputPattern))
         {
-            Managers.UserManager.UserLocalData.Name = userInput;
+            Managers.GameRoomManager.UserLocalData.Name = userInput;
 
             _inputBox.SetActive(false);
 

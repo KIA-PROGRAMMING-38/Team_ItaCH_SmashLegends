@@ -7,13 +7,13 @@ public class Managers : MonoBehaviour
 
     private static StageManager s_stageManager;
     private static LobbyManager s_lobbyManager;
-    private static UserManager s_userManager = new UserManager();
+    private static GameRoomManager s_gameRoomManager = new GameRoomManager();
     private static DataManager s_dataManager = new DataManager();
     private static ResourceManager s_resourceManager = new ResourceManager();
 
     public static StageManager StageManager { get { Init(); return s_stageManager; } }
     public static LobbyManager LobbyManager { get { Init(); return s_lobbyManager; } }
-    public static UserManager UserManager { get { Init(); return s_userManager; } }
+    public static GameRoomManager GameRoomManager { get { Init(); return s_gameRoomManager; } }
     public static DataManager DataManager { get { Init(); return s_dataManager; } }
     public static ResourceManager ResourceManager { get { Init(); return s_resourceManager; } }
 
@@ -37,7 +37,7 @@ public class Managers : MonoBehaviour
                 s_lobbyManager = CreateManager<LobbyManager>();
                 s_stageManager = CreateManager<StageManager>();
 
-                s_userManager.Init();
+                s_gameRoomManager.Init();
                 s_lobbyManager.Init();
                 s_stageManager.Init();
                 s_dataManager.Init();

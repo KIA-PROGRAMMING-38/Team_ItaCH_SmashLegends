@@ -67,8 +67,8 @@ public class GameModeBase
             return;
         }
 
-        var redTeamHpRatio = _teams[0].Members[0].OwnLegend.HpRatio;
-        var blueTeamHpRatio = _teams[1].Members[0].OwnLegend.HpRatio;
+        var redTeamHpRatio = _teams[0].Members[0].OwnedLegend.HPRatio;
+        var blueTeamHpRatio = _teams[1].Members[0].OwnedLegend.HPRatio;
 
         if (redTeamHpRatio == blueTeamHpRatio)
         {

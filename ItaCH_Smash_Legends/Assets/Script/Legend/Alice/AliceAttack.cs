@@ -10,7 +10,7 @@ public class AliceAttack : PlayerAttack
 
     public override void DashOnAnimationEvent()
     {
-        attackRigidbody.AddForce(transform.forward * characterStatus.Stat.DashPower, ForceMode.Impulse);
+        attackRigidbody.AddForce(transform.forward * legendController.Stat.DashPower, ForceMode.Impulse);
     }
     private void HeavyAttackBomb() => _aliceBomb.gameObject.SetActive(true);
     private void EnableAttackHitZone() => _attackHitZone.enabled = true;

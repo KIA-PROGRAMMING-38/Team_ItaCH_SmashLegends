@@ -2,12 +2,12 @@ public class GameRoomManager
 {
     private const int MAXIMUM_PLAYER = 4;
     public UserData[] AllUserDatas = new UserData[MAXIMUM_PLAYER];
-    //public UserData UserLocalData { get; set; }
-    
+    public UserData UserLocalData { get; set; }
+
     public void Init()
     {
-        //UserLocalData = new UserData();
-        //UserLocalData.SelectedLegend = LegendType.None;
+        UserLocalData = new UserData();
+        UserLocalData.SelectedLegend = LegendType.None;
         Managers.LobbyManager.OnUpdateUserDatas -= ResiterUserData;
         Managers.LobbyManager.OnUpdateUserDatas += ResiterUserData;
     }

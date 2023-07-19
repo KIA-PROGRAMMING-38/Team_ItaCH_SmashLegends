@@ -21,7 +21,7 @@ public static class StringLiteral
     #region FOLDER PATH
     public const string PREFAB_FOLDER = "Prefab";
     public const string SUFFIX_INGAME = "_Ingame";
-    public const string MAP_PREFAB_PATH = "Map/SingleLogBridge/Prefab/Map"; // 폴더 정리 이후 Prefab을 최상위 폴더로 수정
+    public const string MAP_PREFAB_PATH = "Map/SingleLogBridge";
     #endregion
 
     #region LegendController 

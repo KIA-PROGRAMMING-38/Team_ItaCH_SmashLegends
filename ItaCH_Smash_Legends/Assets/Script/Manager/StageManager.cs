@@ -22,7 +22,7 @@ public class StageManager : MonoBehaviourPunCallbacks
         private set => _currentGameMode = value;
     }
     private GameMode _currentGameMode;
-
+    private Transform[] SpawnPoints;
     private List<Team> _teams;
 
     public float GameTime
@@ -58,8 +58,8 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     public override void OnEnable()
     {
-        Managers.LobbyManager.OnInGameSceneLoaded -= SetStage;
-        Managers.LobbyManager.OnInGameSceneLoaded += SetStage;
+        Managers.LobbyManager.OnInGameSceneLoaded -= () => SetStage(_currentGameMode);
+        Managers.LobbyManager.OnInGameSceneLoaded += () => SetStage(_currentGameMode);
     }
 
     public void Init()
@@ -96,15 +96,19 @@ public class StageManager : MonoBehaviourPunCallbacks
         InstantiateMap();
         for (int player = 0; player < _currentGameMode.MaxPlayer; ++player)
         {
-            UserData userData = Managers.UserManager.GetUserData(player);
+            UserData userData = Managers.GameRoomManager.GetUserData(player);
             SetUserTeam(userData);
-            CreateLegend(userData, currentGameMode.SpawnPoints[player + 1]); // SpawnPoints[0] == root Object
+            CreateLegend(userData, SpawnPoints[player + 1]); // SpawnPoints[0] == root Object
         }
         //SetModeUI(currentGameMode.GameModeType); // UI 개선 이후
         StartGame();
     }
 
-    private void InstantiateMap() => Managers.ResourceManager.Instantiate(_currentGameMode.Map);
+    private void InstantiateMap()
+    {
+        GameObject mapObject = Managers.ResourceManager.Instantiate(_currentGameMode.Map);
+        SpawnPoints = mapObject.transform.Find(StringLiteral.SPAWN_POINTS).GetComponentsInChildren<Transform>();
+    }
 
     private void SetUserTeam(UserData user)
     {
@@ -131,11 +135,13 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     public void CreateLegend(UserData user, Transform spawnPoint)
     {
-        LegendController legend = Managers.ResourceManager.GetLegendPrefab(user.SelectedLegend);
-        GameObject legendObject = Managers.ResourceManager.Instantiate(legend.gameObject, spawnPoint);
+        GameObject legendObject = Managers.ResourceManager.Instantiate
+            (Managers.ResourceManager.GetLegendPrefab(user.SelectedLegend), null);
 
-        legend.Init(user);
+        LegendController legendController = legendObject.GetComponent<LegendController>();
+        legendController.Init(user);
 
+        legendObject.transform.position = spawnPoint.position;
         legendObject.layer =
             (user.Team.Type == TeamType.Blue) ?
             LayerMask.NameToLayer(StringLiteral.TEAM_BLUE) : LayerMask.NameToLayer(StringLiteral.TEAM_RED);

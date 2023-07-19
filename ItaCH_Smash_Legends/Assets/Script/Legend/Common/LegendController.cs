@@ -1,6 +1,5 @@
 using Cysharp.Threading.Tasks;
 using System;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -54,6 +53,7 @@ public class LegendController : MonoBehaviour
     private InputAction[] _actions;
 
     public LegendStatData Stat { get; set; }
+    public float HPRatio { get; set; } // TO DO : 체력 관리
 
     private Rigidbody _rigidbody;
     private UnityEngine.InputSystem.PlayerInput _input;
@@ -78,9 +78,9 @@ public class LegendController : MonoBehaviour
 
     private void GetComponents()
     {
-        _rigidbody = GetComponent<Rigidbody>();
-        _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
-        _legendAnimationController = GetComponent<LegendAnimationController>();
+        _rigidbody = Utils.GetOrAddComponent<Rigidbody>(this.gameObject);
+        _input = Utils.GetOrAddComponent<UnityEngine.InputSystem.PlayerInput>(this.gameObject);
+        _legendAnimationController = Utils.GetOrAddComponent<LegendAnimationController>(this.gameObject);
         _effectController = GetComponent<EffectController>();
         _collider = GetComponent<Collider>();
     }
@@ -109,11 +109,11 @@ public class LegendController : MonoBehaviour
 
     private void InitActions()
     {
-        _actions = new InputAction[StringLiteral.Actions.Length];
+        _actions = new InputAction[StringLiteral.ACTIONS.Length];
 
         for (int i = 0; i < _actions.Length; ++i)
         {
-            _actions[i] = _input.actions[StringLiteral.Actions[i]];
+            _actions[i] = _input.actions[StringLiteral.ACTIONS[i]];
         }
     }
 

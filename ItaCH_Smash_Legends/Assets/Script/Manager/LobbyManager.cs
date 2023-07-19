@@ -15,7 +15,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public event Action OnCreatingRoom;
     public event Action OnWaitingPlayer;
     public event Action OnMatchingSuccess;
-    public event Action<GameMode> OnInGameSceneLoaded;
+    public event Action OnInGameSceneLoaded;
 
     public event Action<int, UserData> OnUpdateUserDatas;
 
@@ -90,9 +90,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             case (int)Level.Lobby:
                 return;
 
-            case (int)Level.Ingame:
-                GameMode currentGameMode = Managers.StageManager.CurrentGameMode;
-                OnInGameSceneLoaded?.Invoke(currentGameMode);
+            case (int)Level.Ingame:                
+                OnInGameSceneLoaded?.Invoke();
                 return;
         }
     }
@@ -116,7 +115,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     private UserData GetUserLocalData()
     {
-        UserData userLocalData = Managers.UserManager.UserLocalData;
+        UserData userLocalData = Managers.GameRoomManager.UserLocalData;
         return userLocalData;
     }
 

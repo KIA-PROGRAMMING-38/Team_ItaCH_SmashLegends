@@ -2,22 +2,16 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 
 public class PeterAttack : PlayerAttack
-{
-    // LegnedController 완료시 리펙토링
-    CharacterStatus _characterStatus;
+{  
     private float _skillAttackMoveSpeed = 7f;
     [SerializeField] private SphereCollider _skillAttackHitZone;
     [SerializeField] private SphereCollider _attackHitZone;
     [SerializeField] private SphereCollider _heavyAttackHitZone;
     [SerializeField] private BoxCollider _jumpAttackHitZone;
 
-    private void Awake()
-    {
-        _characterStatus = GetComponent<CharacterStatus>();
-    }
     public override void DashOnAnimationEvent()
     {
-        attackRigidbody.AddForce(transform.forward * characterStatus.Stat.DashPower, ForceMode.Impulse);
+        attackRigidbody.AddForce(transform.forward * legendController.Stat.DashPower, ForceMode.Impulse);
     }
 
 

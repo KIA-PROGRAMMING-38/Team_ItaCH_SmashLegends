@@ -4,8 +4,6 @@ public class UserData
 {
     public string Name { get; set; }
     public int ID { get; set; }
-    //public Team Team { get; set; }
-    //public GameModeType SelectGameMode { get; set; } // 룸 자체가 관리하도록
 
     private LegendType _selectedLegend;
     public LegendType SelectedLegend
@@ -24,5 +22,6 @@ public class UserData
         }
         set => _selectedLegend = value;
     }
+    public Team Team { get; set; } // 
     public LegendController OwnedLegend { get; set; }
 }
