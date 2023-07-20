@@ -17,7 +17,7 @@ public class LegendSelectUI : MonoBehaviour
 
     public void InitLegendSelectUI(int currentIndex, Sprite portraitSprite, string legendName)
     {
-        _selectedLegend = (int)Managers.GameRoomManager.UserLocalData.SelectedLegend;
+        _selectedLegend = (int)Managers.LobbyManager.UserLocalData.SelectedLegend;
         _legendIndex = currentIndex;
         _portrait = transform.GetChild(0).GetComponent<Image>();
         _portrait.sprite = portraitSprite;

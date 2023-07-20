@@ -14,7 +14,7 @@ public class RespawnTimer : MonoBehaviour
     public void InitRespawnTimerSettings(CharacterStatus characterStatus)
     {
         gameObject.SetActive(false);
-        _localPlayerID = Managers.GameRoomManager.UserLocalData.ID;
+        _localPlayerID = Managers.LobbyManager.UserLocalData.ID;
     }
 
     public async void CheckPlayer(int deadPlayer) // 내가 죽었는 지 확인하는 로직

@@ -68,7 +68,7 @@ public class MatchIcon : MonoBehaviour
             if (_isTurned)
             {
                 _rectTransform.Rotate(_clockWiseRotateDirection * (_secondTurnSpeed * Time.fixedDeltaTime));
-                if (!_isSpriteChanged && Utils.CalculateAbsolute(180 - Utils.CalculateAbsolute(_rectTransform.rotation.eulerAngles.z)) < _secondTurnOffset)
+                if (!_isSpriteChanged && Utils.AbsFloat(180 - Utils.AbsFloat(_rectTransform.rotation.eulerAngles.z)) < _secondTurnOffset)
                 {
                     _rectTransform.rotation = Quaternion.Euler(0, 0, SpriteChangeAngle);
                     ++_currentSpriteIndex;

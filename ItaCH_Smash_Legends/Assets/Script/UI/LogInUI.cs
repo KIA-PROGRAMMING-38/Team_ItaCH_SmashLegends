@@ -104,7 +104,7 @@ public class LogInUI : MonoBehaviour
         string userInput = _inputField.text;
         if (Regex.IsMatch(userInput, InputPattern))
         {
-            Managers.GameRoomManager.UserLocalData.Name = userInput;
+            Managers.LobbyManager.UserLocalData.Name = userInput;
 
             _inputBox.SetActive(false);
 

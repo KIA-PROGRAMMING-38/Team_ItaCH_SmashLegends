@@ -5,6 +5,8 @@ using System;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
+    public UserData UserLocalData = new UserData();
+
     // 서버 접속 이벤트 >> LogIn UI 화면
     public event Action OnConnectingtoServer;
     public event Action OnDisconnectedfromServer;
@@ -14,6 +16,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public event Action OnJoiningRoom;
     public event Action OnCreatingRoom;
     public event Action OnWaitingPlayer;
+    public event Action<UserData> OnUpdatePlayerList;
     public event Action OnMatchingSuccess;
     public event Action OnInGameSceneLoaded;
 
@@ -62,13 +65,14 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         OnWaitingPlayer?.Invoke();
-        ResisterUserLocalData();
+        SetUserID();
+        OnUpdatePlayerList?.Invoke(UserLocalData);
         MatchWithBot();
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        // 상대 데이터 받아오는 부분        
+        // 상대 데이터 받아오는 부분
     }
 
     private void EnterInGameScene()
@@ -90,18 +94,16 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             case (int)Level.Lobby:
                 return;
 
-            case (int)Level.Ingame:                
+            case (int)Level.Ingame:
                 OnInGameSceneLoaded?.Invoke();
                 return;
         }
     }
 
-    private void ResisterUserLocalData()
+    private void SetUserID()
     {
         int enteringOrder = GetEnteringOrder();
-        UserData userLocalData = GetUserLocalData();
-        userLocalData.ID = enteringOrder;
-        OnUpdateUserDatas?.Invoke(enteringOrder, userLocalData);
+        UserLocalData.ID = enteringOrder;
     }
 
     private int GetEnteringOrder()
@@ -112,16 +114,18 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         }
         return 1; // 4인 모드 고려 시 수정 필요
     }
-
-    private UserData GetUserLocalData()
-    {
-        UserData userLocalData = Managers.GameRoomManager.UserLocalData;
-        return userLocalData;
-    }
-
     private async UniTask MatchWithBot()
     {
+        OnUpdatePlayerList(GetDefaultUserData(UserLocalData.ID + 1));
         await UniTask.Delay(2000); // 현재 2초 동안 매칭 안 잡히면 연습장 자동 입장
         EnterInGameScene();
+    }
+    private UserData GetDefaultUserData(int id)
+    {
+        UserData defaultUserData = new UserData();
+        defaultUserData.Name = $"Bot{id}";
+        defaultUserData.ID = id;
+        defaultUserData.SelectedLegend = LegendType.None;
+        return defaultUserData;
     }
 }

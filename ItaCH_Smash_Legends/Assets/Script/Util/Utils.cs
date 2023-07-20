@@ -12,8 +12,8 @@ public class Utils
             component = go.AddComponent<T>();
         return component;
     }
-
-    public static float CalculateAbsolute(float someFloat)
+    // To Do : UI 개선 이후 사라질 불분명한 이름의 불필요한 method들
+    public static float AbsFloat(float someFloat)
     {
         if (someFloat > 0)
         {
@@ -24,7 +24,7 @@ public class Utils
             return -someFloat;
         }
     }
-
+    
     public static bool IsPositive(float someFloat)
     {
         if (someFloat > 0)
