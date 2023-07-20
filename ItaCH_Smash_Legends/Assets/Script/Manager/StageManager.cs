@@ -27,21 +27,15 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     public float GameTime
     {
-        get => _gameTime;
+        get => Mathf.FloorToInt(_gameTime);
         set
         {
             _gameTime = value;
-            int currentGameTimeInt = Mathf.FloorToInt(_gameTime);
-            if (_gameTimeInt != currentGameTimeInt)
-            {
-                _gameTimeInt = currentGameTimeInt;
-                OnTimeChange?.Invoke(RemainGameTime);
-            }
+            //OnTimeChange?.Invoke(RemainGameTime); // TO DO : 타이머 리팩토링
         }
     }
-    private float _gameTime;
-    private int _gameTimeInt; // TO DO : 위와 중복 해당 부분 정리 필요
-    public int RemainGameTime => Mathf.Max(_currentGameMode.MaxGameTime - _gameTimeInt, 0);
+    private float _gameTime;    
+    public int RemainGameTime => Mathf.Max(_currentGameMode.MaxGameTime - (int)GameTime, 0);
     public bool IsTimeOver { get => _isTimeOver; }
     private bool _isTimeOver;
 

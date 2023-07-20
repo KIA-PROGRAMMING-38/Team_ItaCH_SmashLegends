@@ -52,7 +52,7 @@ public class LegendController : MonoBehaviour
 
     private InputAction[] _actions;
 
-    public int ownerUserID { get; private set; }
+    public int OwnerUserID { get; private set; }
     public LegendStatData Stat { get; set; }
     public float HPRatio { get; set; } // TO DO : 체력 관리
 
@@ -76,7 +76,7 @@ public class LegendController : MonoBehaviour
         InitActions();
         SetRigidbody();
         user.OwnedLegend = this;
-        ownerUserID = user.ID;
+        OwnerUserID = user.ID;
     }
 
     private void GetComponents()

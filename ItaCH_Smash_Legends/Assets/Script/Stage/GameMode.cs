@@ -86,7 +86,8 @@ public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 �
                 //JudgeWinnerOnTeamMatch(); // To Do : Match 모드 구현 시 추가
                 break;
 
-            default: // 미구현 오류
+            default:
+                Debug.LogError($"Error with current mode type : {_currentGameModeType} is not implemented.");
                 break;
         }
     }
