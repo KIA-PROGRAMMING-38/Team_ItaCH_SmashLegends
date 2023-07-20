@@ -70,6 +70,7 @@ public class ResultUI : MonoBehaviour
     {
         _lobbyUI.gameObject.SetActive(false);
         UserData user = users[0];
+
         if (user.TeamType.Equals(winningteam))
         {
             _resultText.text = WinText;

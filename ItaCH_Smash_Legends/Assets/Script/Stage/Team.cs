@@ -11,10 +11,12 @@ public class Team
         Members.Add(user);
         user.TeamType = this.Type;
     }
+  
     public void RemoveMember(UserData user)
     {
         Members.Remove(user);
     }
+
     public void GetScore()
     {
         ++Score; // 플레이어 사망 시 실행

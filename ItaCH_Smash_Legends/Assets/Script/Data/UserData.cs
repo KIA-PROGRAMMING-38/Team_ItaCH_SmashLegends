@@ -22,6 +22,7 @@ public class UserData
         }
         set => _selectedLegend = value;
     }
+  
     public TeamType TeamType { get; set; }
     public LegendController OwnedLegend { get; set; }
 }

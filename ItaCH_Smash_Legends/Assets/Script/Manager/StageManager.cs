@@ -23,6 +23,7 @@ public class StageManager : MonoBehaviourPunCallbacks
         private set => _currentGameMode = value;
     }
     private GameMode _currentGameMode;
+    
     private Transform[] _spawnPoints;
 
     public float GameTime
@@ -180,6 +181,7 @@ public class StageManager : MonoBehaviourPunCallbacks
         _isTimeOver = true;
         _currentGameMode.IsOver();
     }
+    
     public void EndGame(Team winnerTeam) // gameMode가 승점 계산 이후 Invoke
     {
         // 게임 종료 연출 실행

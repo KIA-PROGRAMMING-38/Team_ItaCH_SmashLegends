@@ -104,6 +104,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         int enteringOrder = GetEnteringOrder();
         UserLocalData.ID = enteringOrder;
+
     }
 
     private int GetEnteringOrder()
@@ -114,6 +115,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         }
         return 1; // 4인 모드 고려 시 수정 필요
     }
+    
     private async UniTask MatchWithBot()
     {
         OnUpdatePlayerList(GetDefaultUserData(UserLocalData.ID + 1));

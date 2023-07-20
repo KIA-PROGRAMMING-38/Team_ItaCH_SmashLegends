@@ -39,6 +39,7 @@ public class LobbyUI : MonoBehaviour
     private void SetUserName()
     {
         _userNameText = GetComponentInChildren<TextMeshProUGUI>();
+
         string userNameInput = Managers.LobbyManager.UserLocalData.Name;
 
         if (userNameInput == null) return;
@@ -49,6 +50,7 @@ public class LobbyUI : MonoBehaviour
     private void SetLobbyCharaterModel()
     {
         _legendModels = new GameObject[(int)LegendType.MaxCount];
+
         _currentCharacterIndex = (int)Managers.LobbyManager.UserLocalData.SelectedLegend;
 
         for (int i = 1; i < (int)LegendType.MaxCount; ++i)
