@@ -53,6 +53,7 @@ public class LegendController : MonoBehaviour
     private InputAction[] _actions;
 
     public int OwnerUserID { get; private set; }
+
     public LegendStatData Stat { get; set; }
     public float HPRatio { get; set; } // TO DO : 체력 관리
 
@@ -124,7 +125,6 @@ public class LegendController : MonoBehaviour
     {
         _rigidbody.mass = MAX_JUMP_POWER / Stat.JumpAcceleration;
         _rigidbody.drag = 0.5f;
-    }
 
     private void FixedUpdate()
     {

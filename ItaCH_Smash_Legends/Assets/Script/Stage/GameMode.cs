@@ -21,6 +21,7 @@ public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 �
     private int _maxTeamMember;
     private int _winningScore;
     private int _maxGameTimeSec;
+
     private float _modeDefaultRespawnTime;
     public List<Team> Teams { get; set; }
 
