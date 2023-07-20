@@ -14,7 +14,8 @@ public class StageManager : MonoBehaviourPunCallbacks
         {
             if (_currentGameMode == null)
             {
-                SetGameMode(DEFAULT_GAME_MODE);
+                _currentGameMode = new GameMode();
+                _currentGameMode.Init(DEFAULT_GAME_MODE);
             }
             return _currentGameMode;
         }
@@ -22,26 +23,20 @@ public class StageManager : MonoBehaviourPunCallbacks
         private set => _currentGameMode = value;
     }
     private GameMode _currentGameMode;
-    private Transform[] SpawnPoints;
-    private List<Team> _teams;
+    
+    private Transform[] _spawnPoints;
 
     public float GameTime
     {
-        get => _gameTime;
+        get => Mathf.FloorToInt(_gameTime);
         set
         {
             _gameTime = value;
-            int currentGameTimeInt = Mathf.FloorToInt(_gameTime);
-            if (_gameTimeInt != currentGameTimeInt)
-            {
-                _gameTimeInt = currentGameTimeInt;
-                OnTimeChange?.Invoke(RemainGameTime);
-            }
+            //OnTimeChange?.Invoke(RemainGameTime); // TO DO : 타이머 리팩토링
         }
     }
-    private float _gameTime;
-    private int _gameTimeInt; // TO DO : 위와 중복 해당 부분 정리 필요
-    public int RemainGameTime => Mathf.Max(_currentGameMode.MaxGameTime - _gameTimeInt, 0);
+    private float _gameTime;    
+    public int RemainGameTime => Mathf.Max(_currentGameMode.MaxGameTime - (int)GameTime, 0);
     public bool IsTimeOver { get => _isTimeOver; }
     private bool _isTimeOver;
 
@@ -58,23 +53,13 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     public override void OnEnable()
     {
-        Managers.LobbyManager.OnInGameSceneLoaded -= () => SetStage(_currentGameMode);
-        Managers.LobbyManager.OnInGameSceneLoaded += () => SetStage(_currentGameMode);
+        Managers.LobbyManager.OnInGameSceneLoaded -= () => SetUpStage(_currentGameMode);
+        Managers.LobbyManager.OnInGameSceneLoaded += () => SetUpStage(_currentGameMode);
     }
 
     public void Init()
     {
-        SetGameMode(DEFAULT_GAME_MODE);
-    }
 
-    public void SetGameMode(GameModeType selectedMode)
-    {
-        if (_currentGameMode == null)
-        {
-            _currentGameMode = new GameMode();
-        }
-        _currentGameMode.Init(selectedMode);
-        _teams = new List<Team>();
     }
 
     public void ChangeGameMode(GameModeType selectedMode) // 게임 모드 선택 기능 구현 후 사용
@@ -85,52 +70,30 @@ public class StageManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            SetGameMode(selectedMode);
+            _currentGameMode.Init(selectedMode);
         }
     }
 
-    public void SetStage(GameMode currentGameMode)
+    public void SetUpStage(GameMode currentGameMode)
     {
         _isTimeOver = false;
         _isGameOver = false;
-        InstantiateMap();
-        for (int player = 0; player < _currentGameMode.MaxPlayer; ++player)
+        InstantiateMap(currentGameMode.Map);
+        foreach (Team team in currentGameMode.Teams)
         {
-            UserData userData = Managers.GameRoomManager.GetUserData(player);
-            SetUserTeam(userData);
-            CreateLegend(userData, SpawnPoints[player + 1]); // SpawnPoints[0] == root Object
+            foreach (UserData member in team.Members)
+            {
+                CreateLegend(member, _spawnPoints[member.ID + 1]); // SpawnPoints[0] == root Object
+            }
         }
         //SetModeUI(currentGameMode.GameModeType); // UI 개선 이후
         StartGame();
     }
 
-    private void InstantiateMap()
+    private void InstantiateMap(string mapPath)
     {
-        GameObject mapObject = Managers.ResourceManager.Instantiate(_currentGameMode.Map);
-        SpawnPoints = mapObject.transform.Find(StringLiteral.SPAWN_POINTS).GetComponentsInChildren<Transform>();
-    }
-
-    private void SetUserTeam(UserData user)
-    {
-        Team team = GetTeamAvailable();
-        team.AddMember(user);
-
-    }
-    private Team GetTeamAvailable()
-    {
-        if (IsNewTeamNeeded(_teams, _currentGameMode.MaxTeamMember))
-        {
-            Team newTeam = new Team();
-            _teams.Add(newTeam);
-            newTeam.Type = (_teams.Count == 1) ? TeamType.Blue : TeamType.Red; // 자신이 속한 팀을 제외한 모든 팀은 red team으로 두어 레이어 구분 및 피격 판정
-            return newTeam;
-        }
-        else
-        {
-            return _teams[^1];
-        }
-
-        static bool IsNewTeamNeeded(List<Team> teams, int max) => teams.Count == 0 || teams[^1].Members.Count == max;
+        GameObject mapObject = Managers.ResourceManager.Instantiate(mapPath);
+        _spawnPoints = mapObject.transform.Find(StringLiteral.SPAWN_POINTS).GetComponentsInChildren<Transform>();
     }
 
     public void CreateLegend(UserData user, Transform spawnPoint)
@@ -143,7 +106,7 @@ public class StageManager : MonoBehaviourPunCallbacks
 
         legendObject.transform.position = spawnPoint.position;
         legendObject.layer =
-            (user.Team.Type == TeamType.Blue) ?
+            (user.TeamType == TeamType.Blue) ?
             LayerMask.NameToLayer(StringLiteral.TEAM_BLUE) : LayerMask.NameToLayer(StringLiteral.TEAM_RED);
     }
 
@@ -191,9 +154,15 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     public void StartGame()
     {
-        // TO DO : 게임모드 소개 패널 연출 >> Smash!! 패널 연출 >> 체력 차오르는 연출 >> 게임 돌입        
-        // 전부 캐릭터 생성 이후 대기 애니메이션 재생 동안 실행
+        // TO DO : 
+        // 1) 게임모드 : 모드 UI 연출 + 모드 소개 패널 연출 >> 차오르는 연출 1
+        // 2) 이때 부터 모드 0부터 남은 시간까지 타이머 역순으로 올라감
+        // 3) 레전드 전부 모델 생성 및 UI 함꼐 출현
+        // 4) 모드 UI 초상화 연출
+        // 5) 팔로우캠 타겟 맵 전체 >> 자신의 캐릭터
+        // 6) Smash!! 패널 연출 >> 체력 차오르는 연출 >> 게임 돌입        
         UpdateGameTimeAsync();
+        // 전부 캐릭터 생성 이후 대기 애니메이션 재생 동안 실행
     }
 
     private async UniTask UpdateGameTimeAsync()
@@ -204,17 +173,16 @@ public class StageManager : MonoBehaviourPunCallbacks
             await UniTask.DelayFrame(1);
         }
         _isTimeOver = true;
-        EndGame(TeamType.None);
+        _currentGameMode.IsOver();
     }
-
-    public void EndGame(TeamType winningTeam)
+    
+    public void EndGame(Team winnerTeam) // gameMode가 승점 계산 이후 Invoke
     {
-        _isGameOver = true;
-        if (TeamType.None == winningTeam)
-        {
-            winningTeam = _currentGameMode.GetWinningTeam(in _teams);
-        }
+        // 게임 종료 연출 실행
+        // >> 승리 팀 색의 Match Over 패널 Pop
 
-        // 이벤트로 뿌리자
+        // >> 결과 패널 Pop
+        // 로비 씬 전환
+        //  Result UI >> 로컬 유저 팀 멤버 로비 모델 가져와 애니메이션 재생 및 승패 여부
     }
 }

@@ -39,7 +39,8 @@ public class LobbyUI : MonoBehaviour
     private void SetUserName()
     {
         _userNameText = GetComponentInChildren<TextMeshProUGUI>();
-        string userNameInput = Managers.GameRoomManager.UserLocalData.Name;
+
+        string userNameInput = Managers.LobbyManager.UserLocalData.Name;
 
         if (userNameInput == null) return;
 
@@ -49,7 +50,8 @@ public class LobbyUI : MonoBehaviour
     private void SetLobbyCharaterModel()
     {
         _legendModels = new GameObject[(int)LegendType.MaxCount];
-        _currentCharacterIndex = (int)Managers.GameRoomManager.UserLocalData.SelectedLegend;
+
+        _currentCharacterIndex = (int)Managers.LobbyManager.UserLocalData.SelectedLegend;
 
         for (int i = 1; i < (int)LegendType.MaxCount; ++i)
         {            
@@ -67,7 +69,7 @@ public class LobbyUI : MonoBehaviour
         _legendModels[_currentCharacterIndex].SetActive(false);
         _legendModels[characterIndex].SetActive(true);        
         _currentCharacterIndex = characterIndex;
-        Managers.GameRoomManager.UserLocalData.SelectedLegend = (LegendType)characterIndex;
+        Managers.LobbyManager.UserLocalData.SelectedLegend = (LegendType)characterIndex;
     }
 
     private void SetPanelAndButton(string panelPath, string buttonPath)

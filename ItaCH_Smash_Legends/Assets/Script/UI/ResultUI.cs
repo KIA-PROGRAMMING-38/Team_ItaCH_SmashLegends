@@ -70,7 +70,8 @@ public class ResultUI : MonoBehaviour
     {
         _lobbyUI.gameObject.SetActive(false);
         UserData user = users[0];
-        if (user.Team.Type.Equals(winningteam))
+
+        if (user.TeamType.Equals(winningteam))
         {
             _resultText.text = WinText;
         }
@@ -109,7 +110,7 @@ public class ResultUI : MonoBehaviour
 
             _playerIDText[i].text = users[i].Name;
 
-            if (users[i].Team.Type.Equals(winningteam))
+            if (users[i].TeamType.Equals(winningteam))
             {
                 legendModelAnimator.SetTrigger(winHash);
             }
