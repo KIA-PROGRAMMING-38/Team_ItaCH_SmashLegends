@@ -8,7 +8,7 @@ public class AliceBomb : MonoBehaviour
     // TODO 기능 재정의
     public Transform[] point;
     public ParticleSystem[] effect;
-    private CharacterStatus _characterStatus;
+    private LegendController _legendController;
     private CancellationTokenSource _cancelToken;
     private Transform currentTransform;
     private BoxCollider _boxCollider;
@@ -21,7 +21,7 @@ public class AliceBomb : MonoBehaviour
 
     private void Awake()
     {
-        _characterStatus = transform.root.GetComponent<CharacterStatus>();
+        _legendController = transform.root.GetComponent<LegendController>();
         _boxCollider = GetComponent<BoxCollider>();
         currentTransform = transform.root;
         _cancelToken = new CancellationTokenSource();

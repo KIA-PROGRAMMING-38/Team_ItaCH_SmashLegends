@@ -1,7 +1,6 @@
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine;
-using Util.Method;
 
 public class RotatingImage : MonoBehaviour
 {
@@ -17,7 +16,7 @@ public class RotatingImage : MonoBehaviour
         _rectTransform = GetComponent<RectTransform>();
         _cancellationTokenSource = new CancellationTokenSource();
         _cancellationToken = _cancellationTokenSource.Token;
-        Method.Rotate(_cancellationToken, _rectTransform, _clockWiseDirection, _turnSpeed).Forget();
+        Utils.Rotate(_cancellationToken, _rectTransform, _clockWiseDirection, _turnSpeed).Forget();
     }
 
     private void OnDestroy()

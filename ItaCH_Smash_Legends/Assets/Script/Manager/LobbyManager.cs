@@ -1,4 +1,4 @@
-﻿using Cysharp.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using Photon.Realtime;
 using System;
@@ -15,7 +15,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public event Action OnCreatingRoom;
     public event Action OnWaitingPlayer;
     public event Action OnMatchingSuccess;
-    public event Action<GameMode> OnInGameSceneLoaded;
+    public event Action OnInGameSceneLoaded;
 
     public event Action<int, UserData> OnUpdateUserDatas;
 
@@ -55,7 +55,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         OnCreatingRoom?.Invoke();
-        int totalPlayer = Managers.StageManager.CurrentGameMode.TotalPlayer;
+        int totalPlayer = Managers.StageManager.CurrentGameMode.MaxPlayer;
         PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = totalPlayer });
     }
 
@@ -90,9 +90,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             case (int)Level.Lobby:
                 return;
 
-            case (int)Level.Ingame:
-                GameMode currentGameMode = Managers.StageManager.CurrentGameMode;
-                OnInGameSceneLoaded?.Invoke(currentGameMode);
+            case (int)Level.Ingame:                
+                OnInGameSceneLoaded?.Invoke();
                 return;
         }
     }
@@ -101,7 +100,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         int enteringOrder = GetEnteringOrder();
         UserData userLocalData = GetUserLocalData();
-        userLocalData.Id = enteringOrder;
+        userLocalData.ID = enteringOrder;
         OnUpdateUserDatas?.Invoke(enteringOrder, userLocalData);
     }
 
@@ -116,7 +115,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     private UserData GetUserLocalData()
     {
-        UserData userLocalData = Managers.UserManager.UserLocalData;
+        UserData userLocalData = Managers.GameRoomManager.UserLocalData;
         return userLocalData;
     }
 

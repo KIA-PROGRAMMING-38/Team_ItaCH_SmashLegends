@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Audio;
-using Util.Enum;
 
 public class SoundSource : MonoBehaviour
 {
     private Dictionary<string, AudioClip>[] _audioClips;
     private AudioSource[] _audioSources;
     private AudioMixer _audioMixer;
-    private CharacterType _characterType;
+    private LegendType _legendType;
     private StringBuilder _stringBuilder;
 
     private float time;
@@ -19,7 +18,7 @@ public class SoundSource : MonoBehaviour
     {
         _audioMixer = Resources.Load<AudioMixer>("Sound/AudioMixer");
         _stringBuilder = new StringBuilder();
-        InitSoundSourceSettings(CharacterType.Alice);
+        InitSoundSourceSettings(LegendType.Alice);
     }
     private void Update()
     {
@@ -30,11 +29,11 @@ public class SoundSource : MonoBehaviour
         }
         time += Time.deltaTime;
     }
-    public void InitSoundSourceSettings(CharacterType characterType)
+    public void InitSoundSourceSettings(LegendType legendType)
     {
         _audioClips = new Dictionary<string, AudioClip>[(int)SoundType.NumOfSoundType];
         _audioSources = new AudioSource[(int)SoundType.NumOfSoundType];
-        _characterType = characterType;
+        _legendType = legendType;
 
         for (int i = (int)SoundType.SFX; i < (int)SoundType.NumOfSoundType; ++i)
         {
@@ -51,7 +50,7 @@ public class SoundSource : MonoBehaviour
     public void Play(string name, SoundType soundType)
     {
         _stringBuilder.Clear();
-        _stringBuilder.Append(_characterType);
+        _stringBuilder.Append(_legendType);
         _stringBuilder.Append("/");
         _stringBuilder.Append(name);
         SoundManager._instance.Play(_stringBuilder.ToString(), _audioClips[(int)soundType], _audioSources[(int)soundType], soundType);
@@ -60,7 +59,7 @@ public class SoundSource : MonoBehaviour
     public void Play(string name, int randomInt, SoundType soundType = SoundType.Voice)
     {
         _stringBuilder.Clear();
-        _stringBuilder.Append(_characterType);
+        _stringBuilder.Append(_legendType);
         _stringBuilder.Append("/");
         _stringBuilder.Append(name);
         _stringBuilder.Append(String.Format($"{randomInt:00}"));

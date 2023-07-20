@@ -77,8 +77,8 @@ public class HookAttack : PlayerAttack
         CreateObjectPool();
         _shotEffect = Parrot.transform.GetChild(0).GetComponent<ParticleSystem>();
 
-        _defaultDashPower = characterStatus.Stat.DashPower * -0.4f;
-        _heavyDashPower = characterStatus.Stat.DashPower * -0.65f;
+        _defaultDashPower = legendController.Stat.DashPower * -0.4f;
+        _heavyDashPower = legendController.Stat.DashPower * -0.65f;
     }
     private void OnDisable()
     {
@@ -207,7 +207,7 @@ public class HookAttack : PlayerAttack
         // TODO : 스킬공격 추가타 => 기본공격, 헤비공격 구분 필요
         //if (playerStatus.CurrentState == PlayerStatus.State.HeavyAttack)
         //{
-            CreateBullet(Parrot.transform.position, _skillHeavyIndex).transform.Rotate(_defaultSkillBulletRatate);
+        CreateBullet(Parrot.transform.position, _skillHeavyIndex).transform.Rotate(_defaultSkillBulletRatate);
         //}
         //else
         //{
@@ -226,7 +226,7 @@ public class HookAttack : PlayerAttack
         //}
         //else
         //{
-            DefaultBulletEffectRotate(effect.gameObject, _jumpRotateValue);
+        DefaultBulletEffectRotate(effect.gameObject, _jumpRotateValue);
         //}
         effect.gameObject.SetActive(true);
     }
@@ -259,12 +259,12 @@ public class HookAttack : PlayerAttack
             // TODO : 점프 상태 정의 필요
             //if (playerStatus.IsJump)
             //{
-                effect.transform.rotation = Quaternion.Euler(_effectEulerAnglesOnJump[direction]);
+            effect.transform.rotation = Quaternion.Euler(_effectEulerAnglesOnJump[direction]);
             //}
             //else
             //{
-                Vector3 eulerAngle = CalculateEffectEulerAngle(direction, value);
-                effect.transform.rotation = Quaternion.Euler(eulerAngle);
+            Vector3 eulerAngle = CalculateEffectEulerAngle(direction, value);
+            effect.transform.rotation = Quaternion.Euler(eulerAngle);
             //}
         }
     }

@@ -7,7 +7,7 @@ public abstract class EffectController : MonoBehaviour
     [SerializeField] private ParticleSystem _dieSmokeEffect;
     [SerializeField] private ParticleSystem _dieEffect;
     protected GameObject[] _effects;
-    private CharacterStatus _characterStatus;
+    private LegendController _legendController;
     private Rigidbody _rigidbody;
     private float _scaleOffset;
 
@@ -22,7 +22,7 @@ public abstract class EffectController : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _characterStatus = GetComponent<CharacterStatus>();
+        _legendController = GetComponent<LegendController>();
         SetEventSubscription();
     }
     private void Start()
@@ -75,12 +75,12 @@ public abstract class EffectController : MonoBehaviour
         _dieEffect.transform.forward = _rigidbody.velocity;
         _dieEffect.Play();
     }
-    private void SetEventSubscription()
+    private void SetEventSubscription() // TO DO : CharacterStatus 이외의 곳에서 사망 판정 진행
     {
-        _characterStatus.OnPlayerDieEffect -= SetDieEffect;
-        _characterStatus.OnPlayerDieEffect += SetDieEffect;
-        _characterStatus.OnPlayerDieSmokeEffect -= SetDieSmokeEffect;
-        _characterStatus.OnPlayerDieSmokeEffect += SetDieSmokeEffect;
+        // _characterStatus.OnPlayerDieEffect -= SetDieEffect;
+        // _characterStatus.OnPlayerDieEffect += SetDieEffect;
+        // _characterStatus.OnPlayerDieSmokeEffect -= SetDieSmokeEffect;
+        // _characterStatus.OnPlayerDieSmokeEffect += SetDieSmokeEffect;
     }
     private void InitMaterial()
     {

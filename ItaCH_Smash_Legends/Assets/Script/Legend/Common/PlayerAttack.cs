@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    protected CharacterStatus characterStatus;
+    protected LegendController legendController;
     protected Rigidbody attackRigidbody;
     private void Awake()
     {
-        characterStatus= GetComponent<CharacterStatus>();
+        legendController = GetComponent<LegendController>();
         attackRigidbody= GetComponent<Rigidbody>();
     }
     public virtual void DashOnAnimationEvent()

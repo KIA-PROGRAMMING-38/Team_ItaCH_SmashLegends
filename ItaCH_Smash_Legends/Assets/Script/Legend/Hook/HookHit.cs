@@ -18,13 +18,12 @@ public class HookHit : MonoBehaviour
     private Vector3 _bulletHitPosition;
     private HookBullet _hookBullet;
     private EffectController _effectController;
-    private CharacterStatus _characterStatus;
-    //private PlayerHit _playerHit;
+    private LegendController _legendController;
 
     private void Start()
     {
         _hookBullet = GetComponentInParent<HookBullet>();
-        _characterStatus = _hookBullet.constructor.GetComponent<CharacterStatus>();
+        _legendController = _hookBullet.constructor.GetComponent<LegendController>();
         SetPowerAndDamage();
         knockbackPower = defaultKnockbackPower;
         CalculationPowerAndDamage();
@@ -35,11 +34,11 @@ public class HookHit : MonoBehaviour
     }
     private void SetPowerAndDamage()
     {
-        defaultKnockbackPower = _characterStatus.Stat.DefaultKnockbackPower;
-        heavyKnockbackPower = _characterStatus.Stat.HeavyKnockbackPower;
-        defaultdamage = _characterStatus.Stat.DefaultAttackDamage;
-        skillDamage = _characterStatus.Stat.SkillAttackDamage;
-        heavyDamage = _characterStatus.Stat.SkillAttackDamage;
+        defaultKnockbackPower = _legendController.Stat.DefaultKnockbackPower;
+        heavyKnockbackPower = _legendController.Stat.HeavyKnockbackPower;
+        defaultdamage = _legendController.Stat.DefaultAttackDamage;
+        skillDamage = _legendController.Stat.SkillAttackDamage;
+        heavyDamage = _legendController.Stat.SkillAttackDamage;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -103,9 +102,9 @@ public class HookHit : MonoBehaviour
         return _bulletHitPosition;
     }
 
-    private void GetHitDamage(Collider other)
+    private void GetHitDamage(Collider other) // To Do : @gitLeejw와 논의 필요
     {
-        CharacterStatus opponentCharacter = other.GetComponent<CharacterStatus>();
-        opponentCharacter.GetDamage(defaultdamage);
+        LegendController opponentCharacter = other.GetComponent<LegendController>();
+        opponentCharacter.Damage(defaultdamage);
     }
 }

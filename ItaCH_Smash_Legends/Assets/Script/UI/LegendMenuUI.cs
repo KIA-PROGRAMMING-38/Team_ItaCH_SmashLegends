@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using Util.Enum;
 
 public class LegendMenuUI : MonoBehaviour, IPanel
 {
@@ -24,7 +23,7 @@ public class LegendMenuUI : MonoBehaviour, IPanel
     public void InitPanelSettings(LobbyUI lobbyUI)
     {
         _lobbyUI = lobbyUI;
-        _numberOfLegends = (int)CharacterType.MaxCount;
+        _numberOfLegends = (int)LegendType.MaxCount;
         _contentTransform = GetComponentInChildren<ScrollRect>().transform.GetChild(0).GetChild(0);
         _legendSelectMenu = new LegendSelectUI[_numberOfLegends];
         for (int i = 1; i < _numberOfLegends; ++i)
