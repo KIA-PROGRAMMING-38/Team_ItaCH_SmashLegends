@@ -14,14 +14,6 @@ public class PeterAttack : PlayerAttack
 
     private CancellationTokenSource _cancelSource;
 
-    public override void DashOnAnimationEvent()
-    {
-        //TODO : 캐릭터 스탯 변경 후 적용
-        //attackRigidbody.AddForce(transform.forward * characterStatus.Stat.DashPower, ForceMode.Impulse);
-        attackRigidbody.velocity = Vector3.zero;
-        attackRigidbody.AddForce(transform.forward * 0.8f, ForceMode.Impulse);
-
-    }
     private void StopSkillAttackOnAnimationEvent()
     {
         _cancelSource.Cancel();

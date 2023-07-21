@@ -1,6 +1,8 @@
 using Cysharp.Threading.Tasks;
 using System;
+using System.Drawing;
 using System.Threading;
+using TMPro;
 using UnityEngine;
 
 public class AliceBomb : MonoBehaviour
@@ -15,10 +17,10 @@ public class AliceBomb : MonoBehaviour
 
     private Vector3 _knockBackDirection { get => Vector3.up; }
     private float _knockBackPower { get => 0.8f; }
-    private bool _bezier { get; set; }
-    private bool _isAttack { get; set; }
+    private bool _bezier;
+    private bool _isAttack;
     private float _time;
-
+    private Transform[] _targetPoint;
     private void Awake()
     {
         _characterStatus = transform.root.GetComponent<CharacterStatus>();
@@ -26,13 +28,28 @@ public class AliceBomb : MonoBehaviour
         currentTransform = transform.root;
         _cancelToken = new CancellationTokenSource();
     }
+    private void Start()
+    {
+        _targetPoint = new Transform[point.Length];
+
+        for (int i = 0; i < point.Length; ++i)
+        {
+            _targetPoint[i].position = point[i].position;
+            Debug.Log(_targetPoint[i]);
+        }
+    }
+    private void OnEnable()
+    {
+
+    }
+
     private void FixedUpdate()
     {
         float bezierSpeed = 1.5f;
         if (!_bezier)
         {
             _time += Time.deltaTime * bezierSpeed;
-            ThirdBezierCurve(point, _time);
+            ThirdBezierCurve(_targetPoint, _time);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -72,6 +89,8 @@ public class AliceBomb : MonoBehaviour
     }
     public async UniTaskVoid HitBombEffect(Collider other)
     {
+        _cancelToken = new CancellationTokenSource();
+
         _isAttack = false;
         SetParent();
         PlayAllEffect();
@@ -110,7 +129,6 @@ public class AliceBomb : MonoBehaviour
     private void CancelUniTask()
     {
         _cancelToken.Cancel();
-        _cancelToken = new CancellationTokenSource();
     }
     private void RootReCall()
     {

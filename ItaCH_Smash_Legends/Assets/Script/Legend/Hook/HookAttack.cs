@@ -87,7 +87,7 @@ public class HookAttack : PlayerAttack
             Parrot.SetActive(false);
         }
     }
-    public override void DashOnAnimationEvent()
+    public void DashOnAnimationEvent()
     {
         //if (CurrentPossibleComboCount == COMBO_FINISH_COUNT && playerStatus.CurrentState == PlayerStatus.State.ComboAttack)
         //{

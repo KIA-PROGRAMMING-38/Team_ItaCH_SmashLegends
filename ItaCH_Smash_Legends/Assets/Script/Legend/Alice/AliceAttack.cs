@@ -3,14 +3,17 @@ using UnityEngine;
 public class AliceAttack : PlayerAttack
 {
     [SerializeField] private GameObject _aliceBomb;
-    [SerializeField] private BoxCollider _attackHitZone;
-    [SerializeField] private SphereCollider _finishAttackHitZone;
-    [SerializeField] private SphereCollider _skillAttackHitZone;
-    [SerializeField] private BoxCollider _jumpAttackHitZone;
+    [SerializeField] private Collider _attackHitZone;
+    [SerializeField] private Collider _finishAttackHitZone;
+    [SerializeField] private Collider _skillAttackHitZone;
+    [SerializeField] private Collider _jumpAttackHitZone;
+    private Vector3 _skillAttackDirection;
 
-    public override void DashOnAnimationEvent()
+ 
+    private void DashAtSkillAttackOnAnimationEvent()
     {
-        attackRigidbody.AddForce(transform.forward * characterStatus.Stat.DashPower, ForceMode.Impulse);
+        _skillAttackDirection = transform.up + transform.forward;
+        attackRigidbody.AddForce(_skillAttackDirection * 1f, ForceMode.Impulse);
     }
     private void HeavyAttackBomb() => _aliceBomb.gameObject.SetActive(true);
     private void EnableAttackHitZone() => _attackHitZone.enabled = true;
