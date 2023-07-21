@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 해당 클래스 상속
 {
@@ -88,8 +87,8 @@ public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 �
                 break;
 
             default:
-                Debug.LogError($"Error with current mode type : {_currentGameModeType} is not implemented.");
-                break;
+
+                throw new NotImplementedException($"Error with current mode type : {_currentGameModeType} is not implemented.");
         }
     }
 
