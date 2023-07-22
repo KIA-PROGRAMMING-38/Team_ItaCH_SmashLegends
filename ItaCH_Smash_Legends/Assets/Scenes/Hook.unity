@@ -876,6 +876,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 1, z: 1}
   m_Center: {x: 0, y: -0.5, z: 0}
+--- !u!65 &84531347 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 210882376, guid: e3ee9b69ab5171641abfb8bf06a2db63,
+    type: 3}
+  m_PrefabInstance: {fileID: 1128644857}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &97107307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,6 +1200,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!65 &772036026 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1556342743, guid: e3ee9b69ab5171641abfb8bf06a2db63,
+    type: 3}
+  m_PrefabInstance: {fileID: 1128644857}
+  m_PrefabAsset: {fileID: 0}
 --- !u!65 &837221102 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 837221101, guid: 6b1442466a235874686d9585788f272f,
@@ -1318,6 +1330,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 21.257, y: 0, z: 0}
+--- !u!65 &853762909 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 356726425, guid: e3ee9b69ab5171641abfb8bf06a2db63,
+    type: 3}
+  m_PrefabInstance: {fileID: 1128644857}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &924559965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,9 +1537,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 156017277, guid: e3ee9b69ab5171641abfb8bf06a2db63, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 156017277, guid: e3ee9b69ab5171641abfb8bf06a2db63, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 156017277, guid: e3ee9b69ab5171641abfb8bf06a2db63, type: 3}
+      propertyPath: m_TagString
+      value: HeavyHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 156017282, guid: e3ee9b69ab5171641abfb8bf06a2db63, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 713464083, guid: e3ee9b69ab5171641abfb8bf06a2db63, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030473972, guid: e3ee9b69ab5171641abfb8bf06a2db63, type: 3}
+      propertyPath: m_TagString
+      value: HeavyHit
       objectReference: {fileID: 0}
     - target: {fileID: 1556342741, guid: e3ee9b69ab5171641abfb8bf06a2db63, type: 3}
       propertyPath: m_IsActive
@@ -2470,8 +2508,39 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9218375918672409371, guid: e3ee9b69ab5171641abfb8bf06a2db63,
+        type: 3}
+      propertyPath: _aliceBomb
+      value: 
+      objectReference: {fileID: 1377142369}
+    - target: {fileID: 9218375918672409371, guid: e3ee9b69ab5171641abfb8bf06a2db63,
+        type: 3}
+      propertyPath: _attackHitZone
+      value: 
+      objectReference: {fileID: 772036026}
+    - target: {fileID: 9218375918672409371, guid: e3ee9b69ab5171641abfb8bf06a2db63,
+        type: 3}
+      propertyPath: _jumpAttackHitZone
+      value: 
+      objectReference: {fileID: 2112893876}
+    - target: {fileID: 9218375918672409371, guid: e3ee9b69ab5171641abfb8bf06a2db63,
+        type: 3}
+      propertyPath: _skillAttackHitZone
+      value: 
+      objectReference: {fileID: 853762909}
+    - target: {fileID: 9218375918672409371, guid: e3ee9b69ab5171641abfb8bf06a2db63,
+        type: 3}
+      propertyPath: _finishAttackHitZone
+      value: 
+      objectReference: {fileID: 84531347}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3ee9b69ab5171641abfb8bf06a2db63, type: 3}
+--- !u!1 &1377142369 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 156017277, guid: e3ee9b69ab5171641abfb8bf06a2db63,
+    type: 3}
+  m_PrefabInstance: {fileID: 1128644857}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1444100688
 GameObject:
   m_ObjectHideFlags: 0
@@ -2562,3 +2631,9 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 1, z: 1}
   m_Center: {x: 0, y: -0.5, z: 0}
+--- !u!65 &2112893876 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1897225515, guid: e3ee9b69ab5171641abfb8bf06a2db63,
+    type: 3}
+  m_PrefabInstance: {fileID: 1128644857}
+  m_PrefabAsset: {fileID: 0}

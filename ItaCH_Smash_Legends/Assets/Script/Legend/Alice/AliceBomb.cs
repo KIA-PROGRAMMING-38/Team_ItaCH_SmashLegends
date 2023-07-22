@@ -1,67 +1,60 @@
 using Cysharp.Threading.Tasks;
 using System;
-using System.Drawing;
 using System.Threading;
-using TMPro;
 using UnityEngine;
 
 public class AliceBomb : MonoBehaviour
 {
-    // TODO 기능 재정의
     public Transform[] point;
     public ParticleSystem[] effect;
-    private CharacterStatus _characterStatus;
     private CancellationTokenSource _cancelToken;
     private Transform currentTransform;
     private BoxCollider _boxCollider;
 
-    private Vector3 _knockBackDirection { get => Vector3.up; }
-    private float _knockBackPower { get => 0.8f; }
     private bool _bezier;
     private bool _isAttack;
     private float _time;
-    private Transform[] _targetPoint;
+    private Vector3[] _targetPoint;
+
     private void Awake()
     {
-        _characterStatus = transform.root.GetComponent<CharacterStatus>();
         _boxCollider = GetComponent<BoxCollider>();
         currentTransform = transform.root;
         _cancelToken = new CancellationTokenSource();
-    }
-    private void Start()
-    {
-        _targetPoint = new Transform[point.Length];
-
-        for (int i = 0; i < point.Length; ++i)
-        {
-            _targetPoint[i].position = point[i].position;
-            Debug.Log(_targetPoint[i]);
-        }
+        _targetPoint = new Vector3[point.Length];
     }
     private void OnEnable()
     {
-
+        for (int i = 0; i < point.Length; ++i)
+        {
+            _targetPoint[i] = point[i].position;
+        }
     }
-
     private void FixedUpdate()
     {
-        float bezierSpeed = 1.5f;
         if (!_bezier)
         {
+            float bezierSpeed = 1.5f;
+
             _time += Time.deltaTime * bezierSpeed;
             ThirdBezierCurve(_targetPoint, _time);
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        int resetTime = 0;
+
         if (other.CompareTag(StringLiteral.GROUND) && !_bezier)
         {
+            int resetTime = 0;
+
             _time = resetTime;
             _bezier = true;
             transform.rotation = Quaternion.Euler(-90, 0, 0);
             PlayBombEffect().Forget();
+            SetParent();
         }
+
         if (other.CompareTag(StringLiteral.PLAYER) && other.gameObject.layer != currentTransform.gameObject.layer)
         {
             if (_isAttack)
@@ -74,38 +67,42 @@ public class AliceBomb : MonoBehaviour
     private async UniTaskVoid PlayBombEffect()
     {
         int startEffectIndex = 0;
-
-        SetParent();
-        _boxCollider.enabled = true;
-        PlayEffect(startEffectIndex);
-        _isAttack = true;
-        await UniTask.Delay(4000, cancellationToken: _cancelToken.Token);
-        PlayAllEffect();
-        await UniTask.Delay(400);
-        RootReCall();
-        _boxCollider.enabled = false;
-        _isAttack = false;
-        _bezier = false;
-    }
-    public async UniTaskVoid HitBombEffect(Collider other)
-    {
         _cancelToken = new CancellationTokenSource();
 
-        _isAttack = false;
-        SetParent();
+        _boxCollider.enabled = true;
+        _isAttack = true;
+
+        PlayEffect(startEffectIndex);
+
+        await UniTask.Delay(4000, cancellationToken: _cancelToken.Token);
+
         PlayAllEffect();
-        await UniTask.Delay(200);
-        //_aliceHit.GetHit(_knockBackDirection, _knockBackPower, AnimationHash.Hit, other, _characterStatus.Stat.HeavyAttackDamage);
+
         await UniTask.Delay(400);
+
+        RootReCall();
+        _boxCollider.enabled = false;
+        _isAttack = false;
+        _bezier = false;
+    }
+
+    private async UniTaskVoid HitBombEffect(Collider other)
+    {
+        _isAttack = false;
         CancelUniTask();
+        PlayAllEffect();
+
+        await UniTask.Delay(400);
+
         RootReCall();
         _boxCollider.enabled = false;
         _bezier = false;
     }
-    public void ThirdBezierCurve(Transform[] point, float time)
+
+    private void ThirdBezierCurve(Vector3[] point, float time)
     {
-        Vector3 transformPosition = Vector3.Lerp(Vector3.Lerp(point[0].position, point[1].position, time),
-                                    Vector3.Lerp(point[2].position, point[3].position, time), time);
+        Vector3 transformPosition = Vector3.Lerp(Vector3.Lerp(point[0], point[1], time),
+                                    Vector3.Lerp(point[2], point[3], time), time);
 
         transform.position = transformPosition;
 

@@ -7,9 +7,9 @@ public class AliceAttack : PlayerAttack
     [SerializeField] private Collider _finishAttackHitZone;
     [SerializeField] private Collider _skillAttackHitZone;
     [SerializeField] private Collider _jumpAttackHitZone;
-    private Vector3 _skillAttackDirection;
 
- 
+    private Vector3 _skillAttackDirection;
+    
     private void DashAtSkillAttackOnAnimationEvent()
     {
         _skillAttackDirection = transform.up + transform.forward;
