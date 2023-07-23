@@ -1,6 +1,4 @@
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
-using UnityEngine.EventSystems;
 
 public class LegendJumpState : LegendBaseState
 {
@@ -17,7 +15,7 @@ public class LegendJumpState : LegendBaseState
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Move(animator);
+        MoveAndRotate(animator, legendController.GetMoveDirection());
         if (legendController.IsTriggered(ActionType.DefaultAttack))
         {
             animator.Play(AnimationHash.FirstJumpAttack);
@@ -33,8 +31,14 @@ public class LegendJumpState : LegendBaseState
         _rigidbody.AddForce(animator.transform.up * LegendController.MAX_JUMP_POWER, ForceMode.Impulse);
     }
 
-    private void Move(Animator animator)
+    private void MoveAndRotate(Animator animator, Vector3 forward)
     {
+        if (forward == Vector3.zero)
+        {
+            return;
+        }
+
+        animator.transform.forward = forward;
         animator.transform.Translate(_moveDirection * (5.3f * Time.deltaTime));
     }
 }

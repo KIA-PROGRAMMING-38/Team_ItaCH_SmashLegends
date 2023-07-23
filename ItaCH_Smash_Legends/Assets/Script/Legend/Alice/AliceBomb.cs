@@ -3,26 +3,41 @@ using System;
 using System.Threading;
 using UnityEngine;
 
-public class AliceBomb : MonoBehaviour
+public class AliceBomb : HitZone
 {
     public Transform[] point;
     public ParticleSystem[] effect;
     private CancellationTokenSource _cancelToken;
-    private Transform currentTransform;
+    private Transform _currentTransform;
     private BoxCollider _boxCollider;
-
     private bool _bezier;
     private bool _isAttack;
     private float _time;
+    private float _groundEnterTime = 1f;
     private Vector3[] _targetPoint;
+    public Vector3 ConstructorForward { get; set; }
 
     private void Awake()
     {
         _boxCollider = GetComponent<BoxCollider>();
-        currentTransform = transform.root;
+        _currentTransform = transform.root;
         _cancelToken = new CancellationTokenSource();
         _targetPoint = new Vector3[point.Length];
+        legendController = _currentTransform.GetComponent<LegendController>();
+
+        gameObject.layer = LayerMask.NameToLayer(legendController.GetChildLayer());
+        gameObject.SetActive(false);
     }
+
+    private void Start()
+    {
+        // TODO : 스탯 연동후 재설정 
+        damageAmount = 100;
+        knockbackPower = 1f;
+        knockbackDirection = _currentTransform.up;
+        animationType = AnimationHash.Hit;
+    }
+
     private void OnEnable()
     {
         for (int i = 0; i < point.Length; ++i)
@@ -30,47 +45,54 @@ public class AliceBomb : MonoBehaviour
             _targetPoint[i] = point[i].position;
         }
     }
+
     private void FixedUpdate()
     {
-        if (!_bezier)
+        if (_bezier == false)
         {
             float bezierSpeed = 1.5f;
 
             _time += Time.deltaTime * bezierSpeed;
             ThirdBezierCurve(_targetPoint, _time);
+
+            if (_time >= _groundEnterTime)
+            {
+                _bezier = true;
+            }
         }
+
+        if (_bezier && _isAttack == false)
+        {
+            _time = 0;
+            transform.rotation = Quaternion.Euler(-90, 0, 0);
+            SetParent();
+            PlayBombEffect().Forget();
+        }
+    }
+
+    private void OnDisable()
+    {
+        transform.position = _currentTransform.position;
+        InitBombConditions();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-
-        if (other.CompareTag(StringLiteral.GROUND) && !_bezier)
+        if (_isAttack && other.CompareTag(StringLiteral.PLAYER))
         {
-            int resetTime = 0;
+            ConstructorForward = _currentTransform.forward;
 
-            _time = resetTime;
-            _bezier = true;
-            transform.rotation = Quaternion.Euler(-90, 0, 0);
-            PlayBombEffect().Forget();
-            SetParent();
-        }
-
-        if (other.CompareTag(StringLiteral.PLAYER) && other.gameObject.layer != currentTransform.gameObject.layer)
-        {
-            if (_isAttack)
-            {
-                HitBombEffect(other).Forget();
-            }
+            HitBombEffect().Forget();
         }
     }
 
     private async UniTaskVoid PlayBombEffect()
     {
         int startEffectIndex = 0;
+        _isAttack = true;
         _cancelToken = new CancellationTokenSource();
 
         _boxCollider.enabled = true;
-        _isAttack = true;
 
         PlayEffect(startEffectIndex);
 
@@ -81,24 +103,23 @@ public class AliceBomb : MonoBehaviour
         await UniTask.Delay(400);
 
         RootReCall();
-        _boxCollider.enabled = false;
-        _isAttack = false;
-        _bezier = false;
     }
 
-    private async UniTaskVoid HitBombEffect(Collider other)
+    private async UniTaskVoid HitBombEffect()
     {
-        _isAttack = false;
         CancelUniTask();
         PlayAllEffect();
 
         await UniTask.Delay(400);
 
         RootReCall();
+    }
+    private void InitBombConditions()
+    {
         _boxCollider.enabled = false;
         _bezier = false;
+        _isAttack = false;
     }
-
     private void ThirdBezierCurve(Vector3[] point, float time)
     {
         Vector3 transformPosition = Vector3.Lerp(Vector3.Lerp(point[0], point[1], time),
@@ -129,7 +150,7 @@ public class AliceBomb : MonoBehaviour
     }
     private void RootReCall()
     {
-        gameObject.transform.SetParent(currentTransform);
+        gameObject.transform.SetParent(_currentTransform);
         gameObject.SetActive(false);
     }
     private void SetParent() => gameObject.transform.SetParent(null);

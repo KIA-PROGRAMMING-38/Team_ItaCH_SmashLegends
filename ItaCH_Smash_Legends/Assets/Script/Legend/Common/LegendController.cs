@@ -43,12 +43,6 @@ public class LegendController : MonoBehaviour
     //
     private CancellationTokenSource _taskCancel;
 
-    // TODO : 각 레전드 Attack 에서 설정
-    //[SerializeField] private SphereCollider _skillAttackHitZone;
-    //[SerializeField] private SphereCollider _attackHitZone;
-    //[SerializeField] private SphereCollider _heavyAttackHitZone;
-    //[SerializeField] private BoxCollider _jumpAttackHitZone;
-
     private InputAction[] _actions;
 
     private CharacterStatus _characterStatus;
@@ -132,7 +126,16 @@ public class LegendController : MonoBehaviour
 
         if (other.CompareTag(StringLiteral.HEAVY_HIT))
         {
-            _facingDirection = -1 * other.transform.forward;
+            if (other.name == StringLiteral.ALICE_BOMB)
+            {
+                AliceBomb bomb = other.GetComponent<AliceBomb>();
+                _facingDirection = -1 * bomb.ConstructorForward;
+            }
+            else
+            {
+                _facingDirection = -1 * other.transform.forward.normalized;
+            }
+
             SetKnockbackOnAttack(other, AnimationHash.HitUp, KnockbackType.Heavy);
         }
     }
@@ -228,7 +231,10 @@ public class LegendController : MonoBehaviour
     {
         _rigidbody.velocity = _vectorZero;
     }
-
+    public Vector3 GetMoveDirection()
+    {
+        return _moveDirection;
+    }
     public void SetRollingDirection()
     {
         if (_moveDirection == _vectorZero)
@@ -307,33 +313,10 @@ public class LegendController : MonoBehaviour
     public void SetKnockbackOnAttack(Collider other, int animationHash, KnockbackType type)
     {
         transform.forward = _facingDirection;
+        HitZone otherHit = other.GetComponent<HitZone>();
 
-        Vector3 knockbackDirection = other.transform.forward + transform.up;
-
-        _legendAnimationController.SetTrigger(animationHash);
-        _rigidbody.AddForce(knockbackDirection * GetKnockbackPower(type, other), ForceMode.Impulse);
-
-        float GetKnockbackPower(KnockbackType type, Collider other)
-        {
-            // TODO : 스탯 연동 시 적용
-            //CharacterStatus otherStatus = other.GetComponent<CharacterStatus>();
-            float knockbackPower = 0;
-
-            switch (type)
-            {
-                case KnockbackType.Default:
-                    //knockbackPower = otherStatus.Stat.DefaultKnockbackPower;
-                    knockbackPower = 0.3f;
-                    break;
-
-                case KnockbackType.Heavy:
-                    //knockbackPower = otherStatus.Stat.HeavyKnockbackPower;
-                    knockbackPower = 0.5f;
-                    break;
-            }
-
-            return knockbackPower;
-        }
+        _legendAnimationController.SetTrigger(otherHit.GetAnimationKind());
+        otherHit.SetKnockback(_rigidbody);
     }
 
     private Vector3 GetHangForward(Vector3 other)
@@ -388,5 +371,17 @@ public class LegendController : MonoBehaviour
     public void EscapeInHang()
     {
         _taskCancel.Cancel();
+    }
+
+    public string GetChildLayer()
+    {
+        if (this.gameObject.layer == LayerMask.NameToLayer("TeamRed"))
+        {
+            return "TeamRedHitZone";
+        }
+        else
+        {
+            return "TeamBlueHitZone";
+        }
     }
 }
