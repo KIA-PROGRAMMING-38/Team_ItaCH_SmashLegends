@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035156, y: 74.99988}
+  m_AnchoredPosition: {x: -20, y: -20}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &580041239131606621
@@ -71,11 +71,11 @@ RectTransform:
   m_Father: {fileID: 4009383114771311891}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -100}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -20, y: -20}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &584130059620876226
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 7174864482153915620}
   - component: {fileID: 7387897964710652433}
   m_Layer: 5
-  m_Name: ScoreFill
+  m_Name: RedTeamScoreFill2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 5428248364449927360}
   - component: {fileID: 2227394578810577307}
   m_Layer: 5
-  m_Name: RespawnTimeSpinner
+  m_Name: BlueTeamRespawnTimeSpinner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 2492696630700803700}
   - component: {fileID: 9049232114768318786}
   m_Layer: 5
-  m_Name: ScoreFill
+  m_Name: BlueTeamScoreFill2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 3735342348758245560}
   - component: {fileID: 3418774964402302288}
   m_Layer: 5
-  m_Name: ScoreFill
+  m_Name: RedTeamScoreFill3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 6527054529779530013}
   - component: {fileID: 7578591353245129660}
   m_Layer: 5
-  m_Name: RespawnTimeText
+  m_Name: BlueTeamRespawnTimeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -710,12 +710,12 @@ GameObject:
   - component: {fileID: 4009383113671080879}
   - component: {fileID: 4009383113671080878}
   m_Layer: 5
-  m_Name: UserName
+  m_Name: BlueTeamUserName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4009383113671080877
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1000,12 +1000,12 @@ GameObject:
   - component: {fileID: 4009383113734029216}
   - component: {fileID: 3396536804136747701}
   m_Layer: 5
-  m_Name: LegendFaceImage
+  m_Name: RedTeamLegendFaceImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4009383113734029223
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1281,7 +1281,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4009383113923921177}
   m_Layer: 5
-  m_Name: Portrait_Red
+  m_Name: RedTeamPortrait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1323,12 +1323,12 @@ GameObject:
   - component: {fileID: 4009383113984026479}
   - component: {fileID: 7674904347926690253}
   m_Layer: 5
-  m_Name: LegendFaceImage
+  m_Name: BlueTeamLegendFaceImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4009383113984026478
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1488,7 +1488,7 @@ GameObject:
   - component: {fileID: 4009383114111118499}
   - component: {fileID: 4009383114111118498}
   m_Layer: 5
-  m_Name: ScoreFrame2
+  m_Name: RedTeamScoreFrame2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1565,12 +1565,12 @@ GameObject:
   - component: {fileID: 4009383114212241043}
   - component: {fileID: 4009383114212241042}
   m_Layer: 5
-  m_Name: UserName
+  m_Name: RedTeamUserName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4009383114212241041
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1757,7 +1757,7 @@ GameObject:
   - component: {fileID: 4009383114511809935}
   - component: {fileID: 4009383114511809934}
   m_Layer: 5
-  m_Name: ScoreFill
+  m_Name: RedTeamScoreFill1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1833,7 +1833,7 @@ GameObject:
   - component: {fileID: 4009383114584233522}
   - component: {fileID: 4009383114584233521}
   m_Layer: 5
-  m_Name: ScoreFrame1
+  m_Name: RedTeamScoreFrame1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1984,7 +1984,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4009383114771311891}
   m_Layer: 5
-  m_Name: Portrait_Blue
+  m_Name: BlueTeamPortrait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2466,7 +2466,7 @@ GameObject:
   - component: {fileID: 4009383114931671502}
   - component: {fileID: 4009383114931671501}
   m_Layer: 5
-  m_Name: ScoreFill
+  m_Name: BlueTeamScoreFill1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2541,7 +2541,7 @@ GameObject:
   - component: {fileID: 4009383115005853695}
   - component: {fileID: 1948783999208810618}
   m_Layer: 5
-  m_Name: ScoreSet_Red
+  m_Name: RedTeamScoreSet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2594,7 +2594,7 @@ GameObject:
   - component: {fileID: 4009383115041755996}
   - component: {fileID: 4009383115041755987}
   m_Layer: 5
-  m_Name: ScoreFrame3
+  m_Name: RedTeamScoreFrame3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2882,7 +2882,7 @@ GameObject:
   - component: {fileID: 4009383115219331058}
   - component: {fileID: 969691503906526617}
   m_Layer: 5
-  m_Name: ScoreSet_Blue
+  m_Name: BlueTeamScoreSet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2988,7 +2988,7 @@ GameObject:
   - component: {fileID: 4009383115344991905}
   - component: {fileID: 4009383115344991904}
   m_Layer: 5
-  m_Name: UserNameText
+  m_Name: RedTeamUserNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3124,7 +3124,7 @@ GameObject:
   - component: {fileID: 4009383115714843754}
   - component: {fileID: 4009383115714843753}
   m_Layer: 5
-  m_Name: PlayerRespawnTimeFill
+  m_Name: PlayerRespawnTimerFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3200,7 +3200,7 @@ GameObject:
   - component: {fileID: 8365300299844596219}
   - component: {fileID: 7574440631079169926}
   m_Layer: 5
-  m_Name: ScoreFill
+  m_Name: BlueTeamScoreFill3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3276,7 +3276,7 @@ GameObject:
   - component: {fileID: 6717358972912600440}
   - component: {fileID: 1008996732321813036}
   m_Layer: 5
-  m_Name: RespawnTimeText
+  m_Name: RedTeamRespawnTimeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3413,7 +3413,7 @@ GameObject:
   - component: {fileID: 8723733507449274685}
   - component: {fileID: 4150876777275810268}
   m_Layer: 5
-  m_Name: RespawnTimeSpinner
+  m_Name: RedTeamRespawnTimeSpinner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3499,7 +3499,7 @@ PrefabInstance:
     - target: {fileID: 2681256625640921411, guid: e68dce9fd962f494a87ce0e151f65344,
         type: 3}
       propertyPath: m_Name
-      value: HpBar_Blue
+      value: BlueTeamHpBar
       objectReference: {fileID: 0}
     - target: {fileID: 2681256625640921412, guid: e68dce9fd962f494a87ce0e151f65344,
         type: 3}
@@ -3629,7 +3629,7 @@ PrefabInstance:
     - target: {fileID: 2681256625706930498, guid: e68dce9fd962f494a87ce0e151f65344,
         type: 3}
       propertyPath: m_Name
-      value: HpBarFill
+      value: BlueTeamHpBarFill
       objectReference: {fileID: 0}
     - target: {fileID: 2681256625706930498, guid: e68dce9fd962f494a87ce0e151f65344,
         type: 3}
@@ -3744,7 +3744,7 @@ PrefabInstance:
     - target: {fileID: 7799910979514796178, guid: e68dce9fd962f494a87ce0e151f65344,
         type: 3}
       propertyPath: m_Name
-      value: DamageBuffer
+      value: BlueTeamDamageBuffer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e68dce9fd962f494a87ce0e151f65344, type: 3}
@@ -3804,7 +3804,7 @@ PrefabInstance:
     - target: {fileID: 7040898484253656568, guid: 9afbb88e11d62004da88c9b8d9681c95,
         type: 3}
       propertyPath: m_Name
-      value: DamageBuffer
+      value: RedTeamDamageBuffer
       objectReference: {fileID: 0}
     - target: {fileID: 8350195206641085060, guid: 9afbb88e11d62004da88c9b8d9681c95,
         type: 3}
@@ -3934,7 +3934,7 @@ PrefabInstance:
     - target: {fileID: 8350195206641085063, guid: 9afbb88e11d62004da88c9b8d9681c95,
         type: 3}
       propertyPath: m_Name
-      value: HpBar_Red
+      value: RedTeamHpBar
       objectReference: {fileID: 0}
     - target: {fileID: 8350195206780266192, guid: 9afbb88e11d62004da88c9b8d9681c95,
         type: 3}
@@ -3954,7 +3954,7 @@ PrefabInstance:
     - target: {fileID: 8350195206780266194, guid: 9afbb88e11d62004da88c9b8d9681c95,
         type: 3}
       propertyPath: m_Name
-      value: HpBarFill
+      value: RedTeamHpBarFill
       objectReference: {fileID: 0}
     - target: {fileID: 8350195206780266194, guid: 9afbb88e11d62004da88c9b8d9681c95,
         type: 3}
