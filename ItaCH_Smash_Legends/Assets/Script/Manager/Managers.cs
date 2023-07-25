@@ -6,12 +6,14 @@ public class Managers : MonoBehaviour
     public static Managers Instance { get { Init(); return s_instance; } }
 
     private static StageManager s_stageManager;
-    private static LobbyManager s_lobbyManager;    
+    private static LobbyManager s_lobbyManager;
     private static DataManager s_dataManager = new DataManager();
     private static ResourceManager s_resourceManager = new ResourceManager();
+    private static UIManager s_uiManager = new UIManager();
 
     public static StageManager StageManager { get { Init(); return s_stageManager; } }
     public static LobbyManager LobbyManager { get { Init(); return s_lobbyManager; } }
+    public static UIManager UIManager { get { Init(); return s_uiManager; } }
     public static DataManager DataManager { get { Init(); return s_dataManager; } }
     public static ResourceManager ResourceManager { get { Init(); return s_resourceManager; } }
 
@@ -39,13 +41,14 @@ public class Managers : MonoBehaviour
                 s_stageManager.Init();
                 s_dataManager.Init();
                 s_resourceManager.Init();
+                s_uiManager.Init();
             }
         }
     }
 
     private static T CreateManager<T>() where T : UnityEngine.Component
     {
-        var go = new GameObject($"@{typeof(T)}");
+        GameObject go = new GameObject($"@{typeof(T)}");
         T result = go.AddComponent<T>();
         go.transform.SetParent(s_instance.transform);
 

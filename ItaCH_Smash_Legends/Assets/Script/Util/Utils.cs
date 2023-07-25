@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using System;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,38 @@ public class Utils
         if (component == null)
             component = go.AddComponent<T>();
         return component;
+    }
+
+    public static T FindChild<T>(GameObject go, string name = null, bool recursive = false) where T : UnityEngine.Object
+    {
+        if (go == null)
+        {
+            throw new InvalidOperationException($"{go} is null.");
+        }
+
+        if (recursive == false)
+        {
+            Transform transform = go.transform.Find(name);
+
+            return transform.GetComponent<T>();
+        }
+        else
+        {
+            foreach (T component in go.GetComponentsInChildren<T>())
+            {
+                if (string.IsNullOrEmpty(name) || component.name == name)
+                {
+                    return component;
+                }
+            }
+        }
+
+        throw new InvalidOperationException($"{typeof(T).Name} not found.");
+    }
+
+    public static GameObject FindChild(GameObject go, string name = null, bool recursive = false)
+    {
+        return FindChild<Transform>(go, name, recursive).gameObject;
     }
 
     // To Do : UI 개선 이후 사라질 불분명한 이름의 불필요한 method들

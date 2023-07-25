@@ -125,6 +125,7 @@ public class LegendController : MonoBehaviour
     {
         _rigidbody.mass = MAX_JUMP_POWER / Stat.JumpAcceleration;
         _rigidbody.drag = 0.5f;
+    }
 
     private void FixedUpdate()
     {
