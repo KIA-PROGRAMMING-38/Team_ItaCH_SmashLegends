@@ -1,4 +1,4 @@
-public class AliceJumpHitZone : HitZone
+public class PeterHeavyHitZone : HitZone
 {
     void Start()
     {
@@ -8,9 +8,9 @@ public class AliceJumpHitZone : HitZone
         animationType = AnimationHash.HitUp;
         gameObject.SetActive(false);
     }
-
     private void OnEnable()
     {
         knockbackDirection = transform.forward + transform.up;
     }
+
 }

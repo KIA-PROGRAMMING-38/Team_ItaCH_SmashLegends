@@ -14,8 +14,8 @@ public class HitZone : MonoBehaviour
         Vector3 direction = knockbackDirection;
         rigidbody.AddForce(direction * knockbackPower , ForceMode.Impulse);
     }
-    // TODO : 스탯 연동 후 Damage() => legendController.Stat.HP -= damage;
-    public int Damage()
+    // TODO : 스탯 연동 후 GetDamage() => legendController.Stat.HP -= damageAmount;
+    public int GetDamage()
     {
         return damageAmount;
     }

@@ -1,16 +1,16 @@
-public class AliceJumpHitZone : HitZone
+public class PeterAttackHitZone : HitZone
 {
     void Start()
     {
         // TODO : 스탯 연동후 재설정 
         damageAmount = 100;
-        knockbackPower = 0.8f;
-        animationType = AnimationHash.HitUp;
+        knockbackPower = 0.6f;
+        animationType = AnimationHash.Hit;
         gameObject.SetActive(false);
     }
 
     private void OnEnable()
     {
-        knockbackDirection = transform.forward + transform.up;
+        knockbackDirection = transform.forward;
     }
 }

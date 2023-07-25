@@ -1,5 +1,6 @@
-public class AliceJumpHitZone : HitZone
+public class PeterJumpHitZone : HitZone
 {
+    // Start is called before the first frame update
     void Start()
     {
         // TODO : 스탯 연동후 재설정 

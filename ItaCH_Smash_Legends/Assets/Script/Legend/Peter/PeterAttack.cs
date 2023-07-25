@@ -7,10 +7,10 @@ public class PeterAttack : PlayerAttack
     // LegnedController 완료시 리펙토링
     private float _skillAttackMoveSpeed = 7f;
 
-    [SerializeField] private Collider _skillAttackHitZone;
-    [SerializeField] private Collider _attackHitZone;
-    [SerializeField] private Collider _heavyAttackHitZone;
-    [SerializeField] private Collider _jumpAttackHitZone;
+    [SerializeField] private GameObject _skillAttackHitZone;
+    [SerializeField] private GameObject _attackHitZone;
+    [SerializeField] private GameObject _heavyAttackHitZone;
+    [SerializeField] private GameObject _jumpAttackHitZone;
 
     private CancellationTokenSource _cancelSource;
 
@@ -34,12 +34,12 @@ public class PeterAttack : PlayerAttack
             attackRigidbody.velocity = Vector3.zero;
         }
     }
-    private void EnableAttackHitZone() => _attackHitZone.enabled = true;
-    private void DisableAttackHitZone() => _attackHitZone.enabled = false;
-    private void EnableJumpAttackHitZone() => _jumpAttackHitZone.enabled = true;
-    private void DisableJumpAttackHitZone() => _jumpAttackHitZone.enabled = false;
-    private void EnableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = true;
-    private void DisableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = false;
-    private void EnableSkillAttackHitZone() => _skillAttackHitZone.enabled = true;
-    private void DisableSkillAttackHitZone() => _skillAttackHitZone.enabled = false;
+    private void EnableAttackHitZone() => _attackHitZone.SetActive(true);
+    private void DisableAttackHitZone() => _attackHitZone.SetActive(false);
+    private void EnableJumpAttackHitZone() => _jumpAttackHitZone.SetActive(true);
+    private void DisableJumpAttackHitZone() => _jumpAttackHitZone.SetActive(false);
+    private void EnableHeavyAttackHitZone() => _heavyAttackHitZone.SetActive(true);
+    private void DisableHeavyAttackHitZone() => _heavyAttackHitZone.SetActive(false);
+    private void EnableSkillAttackHitZone() => _skillAttackHitZone.SetActive(true);
+    private void DisableSkillAttackHitZone() => _skillAttackHitZone.SetActive(false);
 }
