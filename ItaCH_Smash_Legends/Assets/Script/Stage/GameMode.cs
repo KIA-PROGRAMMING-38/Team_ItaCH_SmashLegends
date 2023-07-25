@@ -88,7 +88,8 @@ public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 �
 
             default:
 
-                throw new NotImplementedException($"Error with current mode type : {_currentGameModeType} is not implemented.");
+                Debug.LogError($"Error with current mode type : {_currentGameModeType} is not implemented.");
+                break;
         }
     }
 
