@@ -10,7 +10,7 @@ public class AliceBomb : HitZone
     private CancellationTokenSource _cancelToken;
     private Transform _currentTransform;
     private BoxCollider _boxCollider;
-    private bool _bezier;
+    private bool _isbezier;
     private bool _isAttack;
     private float _time;
     private float _groundEnterTime = 1f;
@@ -48,7 +48,7 @@ public class AliceBomb : HitZone
 
     private void FixedUpdate()
     {
-        if (_bezier == false)
+        if (_isbezier == false)
         {
             float bezierSpeed = 1.5f;
 
@@ -57,11 +57,11 @@ public class AliceBomb : HitZone
 
             if (_time >= _groundEnterTime)
             {
-                _bezier = true;
+                _isbezier = true;
             }
         }
 
-        if (_bezier && _isAttack == false)
+        if (_isbezier && _isAttack == false)
         {
             _time = 0;
             transform.rotation = Quaternion.Euler(-90, 0, 0);
@@ -117,7 +117,7 @@ public class AliceBomb : HitZone
     private void InitBombConditions()
     {
         _boxCollider.enabled = false;
-        _bezier = false;
+        _isbezier = false;
         _isAttack = false;
     }
     private void ThirdBezierCurve(Vector3[] point, float time)
