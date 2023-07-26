@@ -59,6 +59,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5773920508232575914}
     m_Modifications:
+    - target: {fileID: 1252367880027027035, guid: 62a98e80c0128e34a86392b6ac423724,
+        type: 3}
+      propertyPath: m_Name
+      value: ScoreFrame
+      objectReference: {fileID: 0}
     - target: {fileID: 1252367880828064692, guid: 62a98e80c0128e34a86392b6ac423724,
         type: 3}
       propertyPath: m_Name
