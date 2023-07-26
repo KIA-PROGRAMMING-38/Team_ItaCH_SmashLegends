@@ -15,6 +15,7 @@ public abstract class UIBase : MonoBehaviour
     }
 
     private void Start() => Init();
+
     protected void Bind<T>(Type type) where T : Object
     {
         string[] names = Enum.GetNames(type);
@@ -45,7 +46,7 @@ public abstract class UIBase : MonoBehaviour
     protected T Get<T>(int index) where T : Object
     {
 
-        if (_objects.TryGetValue(typeof(T), out Object[] objects))
+        if (_objects.TryGetValue(typeof(T), out Object[] objects) == false)
             return null;
 
         return objects[index] as T;
