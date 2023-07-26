@@ -25,7 +25,6 @@ public class HookHit : MonoBehaviour
     {
         _hookBullet = GetComponentInParent<HookBullet>();
         _characterStatus = _hookBullet.constructor.GetComponent<CharacterStatus>();
-        SetPowerAndDamage();
         knockbackPower = defaultKnockbackPower;
         CalculationPowerAndDamage();
     }
@@ -35,6 +34,7 @@ public class HookHit : MonoBehaviour
     }
     private void SetPowerAndDamage()
     {
+        // TODO : 스탯 연동후 재사용
         defaultKnockbackPower = _characterStatus.Stat.DefaultKnockbackPower;
         heavyKnockbackPower = _characterStatus.Stat.HeavyKnockbackPower;
         defaultdamage = _characterStatus.Stat.DefaultAttackDamage;

@@ -69,9 +69,15 @@ public class LegendAnimationController : MonoBehaviour
             case ComboAttackType.Second:
                 _animator.Play(AnimationHash.SecondAttack);
                 break;
+            case ComboAttackType.FirstJump:
+                _animator.Play(AnimationHash.FirstJumpAttack);
+                break;
+            case ComboAttackType.SecondJump:
+                _animator.Play(AnimationHash.SecondJumpAttack);
+                break;
         }
     }
-    
+
     public void ResetComboAttackAnimationClip()
     {
         _animationClipIndex = 0;
