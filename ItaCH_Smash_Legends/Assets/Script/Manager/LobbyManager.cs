@@ -104,7 +104,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         int enteringOrder = GetEnteringOrder();
         UserLocalData.ID = enteringOrder;
-
     }
 
     private int GetEnteringOrder()
@@ -122,6 +121,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         await UniTask.Delay(2000); // 현재 2초 동안 매칭 안 잡히면 연습장 자동 입장
         EnterInGameScene();
     }
+
     private UserData GetDefaultUserData(int id)
     {
         UserData defaultUserData = new UserData();

@@ -40,7 +40,7 @@ public class UIManager
             name = typeof(T).Name;
         }
 
-        GameObject prefab = Managers.ResourceManager.Load<GameObject>($"Prefabs/UI/SubItem/{name}");
+        GameObject prefab = Managers.ResourceManager.Load<GameObject>($"Prefab/UI/SubItem/{name}");
         GameObject go = Managers.ResourceManager.Instantiate(prefab);
 
         if (parent != null)
@@ -61,7 +61,7 @@ public class UIManager
             name = typeof(T).Name;
         }
 
-        GameObject prefab = Managers.ResourceManager.Load<GameObject>($"Prefabs/UI/Popup/{name}");
+        GameObject prefab = Managers.ResourceManager.Load<GameObject>($"Prefab/UI/Popup/{name}");
         GameObject go = Managers.ResourceManager.Instantiate($"UI/Popup/{name}");
 
         T popup = Utils.GetOrAddComponent<T>(go);

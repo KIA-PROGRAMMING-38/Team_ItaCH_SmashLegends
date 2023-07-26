@@ -7,9 +7,9 @@ public class Managers : MonoBehaviour
 
     private static StageManager s_stageManager;
     private static LobbyManager s_lobbyManager;
-    private static DataManager s_dataManager = new DataManager();
-    private static ResourceManager s_resourceManager = new ResourceManager();
-    private static UIManager s_uiManager = new UIManager();
+    private static DataManager s_dataManager;
+    private static ResourceManager s_resourceManager;
+    private static UIManager s_uiManager;
 
     public static StageManager StageManager { get { Init(); return s_stageManager; } }
     public static LobbyManager LobbyManager { get { Init(); return s_lobbyManager; } }
@@ -34,8 +34,12 @@ public class Managers : MonoBehaviour
 
                 DontDestroyOnLoad(gameObject);
 
+
                 s_lobbyManager = CreateManager<LobbyManager>();
                 s_stageManager = CreateManager<StageManager>();
+                s_dataManager = new DataManager();
+                s_resourceManager = new ResourceManager();
+                s_uiManager = new UIManager();
 
                 s_lobbyManager.Init();
                 s_stageManager.Init();
