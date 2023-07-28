@@ -1,7 +1,5 @@
-using System;
-using System.Collections;
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 public class UI_DuelModePopup : UIPopup
@@ -30,7 +28,7 @@ public class UI_DuelModePopup : UIPopup
     }
 
     private const float MAX_FILL_AMOUNT = 1f;
-    private const float DEFAULT_FILL_AMOUNT = 0f;
+    private const float DEFAULT_FILL_AMOUNT = 0.1f;
 
     private List<UI_Profile> _profiles = new List<UI_Profile>();
 
@@ -43,6 +41,7 @@ public class UI_DuelModePopup : UIPopup
 
         PopulateProfile();
 
+        GetObject((int)GameObjects.PlayerRespawnTimer).SetActive(false);
         RefreshPopupUI();
     }
 
@@ -76,18 +75,35 @@ public class UI_DuelModePopup : UIPopup
 
     public void RefreshGameTimer()
     {
-        GetText((int)Texts.GameTimerText).text = $"{Managers.StageManager.RemainGameTime / 60} : {Managers.StageManager.RemainGameTime % 60}";
+        GetText((int)Texts.GameTimerText).text = $"{Managers.StageManager.RemainGameTime / 60:D2}:{Managers.StageManager.RemainGameTime % 60:D2}";
     }
 
-    public void RefreshPlayerRespawnTimer()
+    public void RefreshPlayerRespawnTimer(float respawnTime)
     {
-        // To Do : When Player.OwnedLegend.OnDie.Invoke();
+        // To Do : When Player.OwnedLegend.OnDie.Invoke();        
+        GetObject((int)GameObjects.PlayerRespawnTimer).SetActive(true);
+
+        RefreshPlayerRespawnTimerFillTask(respawnTime).Forget();
+        RefreshPlayerRespawnTimerTextTask(respawnTime).Forget();
     }
 
-    private async void RefreshPlayerTimerFill(float respawnTime)
+    private async UniTask RefreshPlayerRespawnTimerFillTask(float respawnTime)
     {
         GetImage((int)Images.PlayerRespawnTimerFill).fillAmount = DEFAULT_FILL_AMOUNT;
         await Utils.ChangeFillAmountGradually(MAX_FILL_AMOUNT, respawnTime, GetImage((int)Images.PlayerRespawnTimerFill));
+    }
+
+    private const int ONE_SECOND = 1000;
+
+    private async UniTask RefreshPlayerRespawnTimerTextTask(float respawnTime)
+    {
+        float elapsedTime = 0;
+        while (elapsedTime < respawnTime)
+        {
+            GetText((int)Texts.PlayerRespawnTimerText).text = $"부활 ({respawnTime - elapsedTime})";
+            await UniTask.Delay(ONE_SECOND);
+            ++elapsedTime;
+        }
     }
 
     public void RefreshProfile()

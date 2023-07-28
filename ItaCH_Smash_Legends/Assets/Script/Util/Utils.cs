@@ -18,7 +18,7 @@ public class Utils
     {
         if (go == null)
         {
-            throw new InvalidOperationException($"{go} is null.");
+            return null;
         }
 
         if (recursive == false)
@@ -38,12 +38,22 @@ public class Utils
             }
         }
 
-        throw new InvalidOperationException($"{typeof(T).Name} not found.");
+        return null;
     }
 
     public static GameObject FindChild(GameObject go, string name = null, bool recursive = false)
     {
-        return FindChild<Transform>(go, name, recursive).gameObject;
+        Transform targetTransform = FindChild<Transform>(go, name, recursive);
+        if (targetTransform == null)
+        {
+            return null;
+        }
+        return targetTransform.gameObject;
+    }
+
+    private T StringToEnum<T>(string input)
+    {
+        return (T)Enum.Parse(typeof(T), input);
     }
 
     // To Do : UI 개선 이후 사라질 불분명한 이름의 불필요한 method들

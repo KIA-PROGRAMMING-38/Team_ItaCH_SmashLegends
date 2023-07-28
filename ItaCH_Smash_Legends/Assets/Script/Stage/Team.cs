@@ -2,7 +2,19 @@ using System.Collections.Generic;
 
 public class Team
 {
-    public List<UserData> Members { get; private set; } = new();
+    public List<UserData> Members 
+    {
+        get
+        {
+            if (Members.Count == 0)
+            {
+                Members = new List<UserData>();
+                Members.Add(new UserData());
+            }           
+            return Members;
+        }
+        private set => Members = value; 
+    }
     public TeamType Type { get; set; }
     public int Score { get; private set; }
 
