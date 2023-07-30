@@ -124,7 +124,7 @@ public class HookAttack : PlayerAttack
         Vector3 GetDashPower(DashType dashType)
         {
             attackRigidbody.velocity = Vector3.zero;
-
+            
             switch (dashType)
             {
                 case DashType.Default:
@@ -182,10 +182,14 @@ public class HookAttack : PlayerAttack
                 break;
         }
     }
+    private void DefaultAttackOnAnimationEvent()
+    {
+
+    }
     public void DefaultAttackLeft()
     {
         CreateBullet(_bulletSpawnPositionLeft.position, _defaultIndex);
-        CreateBulletEffect(_bulletSpawnPositionLeft.position, _defaultFireEffect);
+        CreateBulletEffect(_bulletSpawnPositionLeft.position, _defaultFireEffect, BulletType.Default);
     }
 
     public void DefaultAttackRight()
@@ -193,17 +197,17 @@ public class HookAttack : PlayerAttack
         // TODO : 함수 분할
         //CreateBullet(_bulletSpawnPositionRight.position, _finishComboIndex);
         CreateBullet(_bulletSpawnPositionRight.position, _defaultIndex);
-        CreateBulletEffect(_bulletSpawnPositionRight.position, _defaultFireEffect);
+        CreateBulletEffect(_bulletSpawnPositionRight.position, _defaultFireEffect, BulletType.Default);
     }
     public void HeavyAttackLeft()
     {
         CreateBullet(_bulletSpawnPositionLeft.position, _heavyIndex);
-        CreateBulletEffect(_bulletSpawnPositionLeft.position, _heavyFireEffect);
+        CreateBulletEffect(_bulletSpawnPositionLeft.position, _heavyFireEffect, BulletType.Heavy);
     }
     public void HeavyAttackRight()
     {
         CreateBullet(_bulletSpawnPositionRight.position, _heavyIndex);
-        CreateBulletEffect(_bulletSpawnPositionRight.position, _heavyFireEffect);
+        CreateBulletEffect(_bulletSpawnPositionRight.position, _heavyFireEffect, BulletType.Heavy);
     }
     public void LastHeavyAttack()
     {
@@ -211,7 +215,7 @@ public class HookAttack : PlayerAttack
         Vector3 spawnPosition = _bulletSpawnPositionRight.position + (lastBulletPosition / 2);
         CreateBullet(spawnPosition, _lastHeavyIndex);
         Vector3 startEffectPosition = spawnPosition + transform.forward;
-        CreateBulletEffect(startEffectPosition, _lastHeavyFireEffect);
+        CreateBulletEffect(startEffectPosition, _lastHeavyFireEffect,BulletType.Heavy);
     }
     public void JumpAttackLeft()
     {
@@ -223,7 +227,7 @@ public class HookAttack : PlayerAttack
         CreateBullet(_bulletSpawnPositionRight.position, _finishComboIndex);
 
         CreateBullet(_bulletSpawnPositionRight.position, _defaultIndex);
-        CreateBulletEffect(_bulletSpawnPositionRight.position, _defaultFireEffect);
+        CreateBulletEffect(_bulletSpawnPositionRight.position, _defaultFireEffect,BulletType.Default);
     }
     public void SkillAttackBullet()
     {
@@ -265,20 +269,20 @@ public class HookAttack : PlayerAttack
         CreateBullet(Parrot.transform.position, _skillHeavyIndex).transform.Rotate(_heavySkillBulletRatate);
         //}
     }
-    private void CreateBulletEffect(Vector3 spawnPosition, int index)
+    private void CreateBulletEffect(Vector3 spawnPosition, int index, BulletType type)
     {
         FireEffect effect = _bulletCreateEffectPool[index].Get();
         effect.transform.position = spawnPosition;
 
-        // TODO : 함수 분할 
-        //if (playerStatus.CurrentState == PlayerStatus.State.HeavyAttack)
-        //{
-        //    effect.transform.forward = transform.forward;
-        //}
-        //else
-        //{
-        DefaultBulletEffectRotate(effect.gameObject, _jumpRotateValue);
-        //}
+        if (type == BulletType.Heavy)
+        {
+            effect.transform.forward = transform.forward;
+        }
+        else
+        {
+            DefaultBulletEffectRotate(effect.gameObject, _jumpRotateValue);
+        }
+
         effect.gameObject.SetActive(true);
     }
     private Vector3 JumpBulletRotate(float value)
