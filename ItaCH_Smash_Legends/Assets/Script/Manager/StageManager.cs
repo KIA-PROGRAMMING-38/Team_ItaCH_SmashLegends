@@ -23,7 +23,7 @@ public class StageManager : MonoBehaviourPunCallbacks
         private set => _currentGameMode = value;
     }
     private GameMode _currentGameMode;
-    
+
     private Transform[] _spawnPoints;
 
     public float GameTime
@@ -32,10 +32,10 @@ public class StageManager : MonoBehaviourPunCallbacks
         set
         {
             _gameTime = value;
-            //OnTimeChange?.Invoke(RemainGameTime); // TO DO : 타이머 리팩토링
+            OnTimeChange?.Invoke(RemainGameTime);
         }
     }
-    private float _gameTime;    
+    private float _gameTime;
     public int RemainGameTime => Mathf.Max(_currentGameMode.MaxGameTime - (int)GameTime, 0);
     public bool IsTimeOver { get => _isTimeOver; }
     private bool _isTimeOver;
@@ -86,7 +86,7 @@ public class StageManager : MonoBehaviourPunCallbacks
                 CreateLegend(member, _spawnPoints[member.ID + 1]); // SpawnPoints[0] == root Object
             }
         }
-        //SetModeUI(currentGameMode.GameModeType); // UI 개선 이후
+        Managers.UIManager.ShowPopupUI<UI_DuelModePopup>();
         StartGame();
     }
 
@@ -175,7 +175,7 @@ public class StageManager : MonoBehaviourPunCallbacks
         _isTimeOver = true;
         _currentGameMode.IsOver();
     }
-    
+
     public void EndGame(Team winnerTeam) // gameMode가 승점 계산 이후 Invoke
     {
         // 게임 종료 연출 실행
