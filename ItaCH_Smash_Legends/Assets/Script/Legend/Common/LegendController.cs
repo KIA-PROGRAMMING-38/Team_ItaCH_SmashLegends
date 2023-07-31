@@ -33,19 +33,24 @@ public enum RollingDirection
     Back
 }
 
+public enum SinglePlayController
+{
+    Controller_1P,
+    Controller_2P
+}
+
 public class LegendController : MonoBehaviour
 {
-    // TODO : 캐릭터 스탯 적용시 변경
-    private float _jumpAcceleration = 14.2f;
-    private float _gravitationalAcceleration = 36f;
-    private float _maxFallingSpeed = 23f;
-    public static readonly float MAX_JUMP_POWER = 1f;
-    //
+    public const float MAX_JUMP_POWER = 1f;
     private CancellationTokenSource _taskCancel;
 
     private InputAction[] _actions;
 
-    private CharacterStatus _characterStatus;
+    public int OwnerUserID { get; private set; }
+
+    public LegendStatData Stat { get; set; }
+    public float HPRatio { get; set; } // TO DO : 체력 관리
+
     private Rigidbody _rigidbody;
     private UnityEngine.InputSystem.PlayerInput _input;
     private LegendAnimationController _legendAnimationController;
@@ -58,12 +63,62 @@ public class LegendController : MonoBehaviour
     private const float ROLLING_DASH_POWER = 1.2f;
     private bool _canAttack;
 
-
-    private void Awake()
+    public void Init(UserData user)
     {
-        InitComponent();
+        GetComponents();
+        SetLegendStat(user.SelectedLegend);
+        SetController(user.ID);
         InitActions();
         SetRigidbody();
+        user.OwnedLegend = this;
+        OwnerUserID = user.ID;
+    }
+
+    private void GetComponents()
+    {
+        _rigidbody = Utils.GetOrAddComponent<Rigidbody>(this.gameObject);
+        _input = Utils.GetOrAddComponent<UnityEngine.InputSystem.PlayerInput>(this.gameObject);
+        _legendAnimationController = Utils.GetOrAddComponent<LegendAnimationController>(this.gameObject);
+        _effectController = GetComponent<EffectController>();
+        _collider = GetComponent<Collider>();
+    }
+
+    private void SetLegendStat(LegendType legendIndex) => Stat = Managers.DataManager.LegendStats[(int)legendIndex].Clone();
+
+    private void SetController(int userID) // TO DO : 피격 로직 수정 이후 죽었을 때 이벤트에서 다시 호출 필요
+    {
+        switch ((SinglePlayController)userID)
+        {
+            case SinglePlayController.Controller_1P:
+                _input.SwitchCurrentActionMap(StringLiteral.FIRST_PLAYER_ACTIONS);
+                break;
+
+            case SinglePlayController.Controller_2P:
+                _input.actions.name = StringLiteral.PLAYER_INPUT;
+                _input.SwitchCurrentActionMap(StringLiteral.SECOND_PLAYER_ACTIONS);
+                Keyboard keyBoard = InputSystem.GetDevice<Keyboard>();
+                _input.actions.devices = new InputDevice[] { keyBoard };
+                break;
+
+            default:
+                return;
+        }
+    }
+
+    private void InitActions()
+    {
+        _actions = new InputAction[StringLiteral.ACTIONS.Length];
+
+        for (int i = 0; i < _actions.Length; ++i)
+        {
+            _actions[i] = _input.actions[StringLiteral.ACTIONS[i]];
+        }
+    }
+
+    private void SetRigidbody()
+    {
+        _rigidbody.mass = MAX_JUMP_POWER / Stat.JumpAcceleration;
+        _rigidbody.drag = 0.5f;
     }
 
     private void FixedUpdate()
@@ -140,25 +195,6 @@ public class LegendController : MonoBehaviour
         }
     }
 
-    private void InitComponent()
-    {
-        _rigidbody = GetComponent<Rigidbody>();
-        _input = GetComponent<UnityEngine.InputSystem.PlayerInput>();
-        _characterStatus = GetComponent<CharacterStatus>();
-        _legendAnimationController = GetComponent<LegendAnimationController>();
-        _effectController = GetComponent<EffectController>();
-        _collider = GetComponent<Collider>();
-    }
-    private void InitActions()
-    {
-        _actions = new InputAction[StringLiteral.ACTIONS.Length];
-
-        for (int i = 0; i < _actions.Length; ++i)
-        {
-            _actions[i] = _input.actions[StringLiteral.ACTIONS[i]];
-        }
-    }
-
     private void LimitMaxFallingSpeedInJump()
     {
         void SetMaxSpeed()
@@ -166,10 +202,10 @@ public class LegendController : MonoBehaviour
 
             Vector3 currentVelocity = _rigidbody.velocity;
 
-            currentVelocity = currentVelocity * _maxFallingSpeed / currentVelocity.magnitude;
+            currentVelocity = currentVelocity * Stat.MaxFallingSpeed / currentVelocity.magnitude;
             _rigidbody.velocity = currentVelocity;
         }
-        bool IsExceededSpeed() => _rigidbody.velocity.magnitude > _maxFallingSpeed;
+        bool IsExceededSpeed() => _rigidbody.velocity.magnitude > Stat.MaxFallingSpeed;
 
         if (IsFalling())
         {
@@ -206,9 +242,7 @@ public class LegendController : MonoBehaviour
         {
             _legendAnimationController.SetBool(AnimationHash.Run, true);
             transform.rotation = Quaternion.LookRotation(_moveDirection);
-            // TODO : 캐릭터 스탯 적용후 변경
-            //transform.Translate(Vector3.forward * (_characterStatus.Stat.MoveSpeed * Time.deltaTime));
-            transform.Translate(Vector3.forward * (5.3f * Time.deltaTime));
+            transform.Translate(Vector3.forward * (Stat.MoveSpeed * Time.deltaTime));
         }
         else
         {
@@ -384,4 +418,15 @@ public class LegendController : MonoBehaviour
             return "TeamBlueHitZone";
         }
     }
+    // TO DO : Damage 로직 추가 필요
+    public void Damage(int damage) // 구버전
+    {
+        //    int damagedHealthPoint = _currentHealthPoint - damage;
+        //    _currentHealthPoint = Mathf.Max(damagedHealthPoint, DEAD_TRIGGER_HP);
+        //    OnPlayerHealthPointChange.Invoke(_currentHealthPoint, CurrentHPRatio);
+        //    OnPlayerGetDamage?.Invoke(damage);
+        //    if (_currentHealthPoint <= DEAD_TRIGGER_HP && !this._isDead)        
+    }
+
+    // TO DO : Die() 구현
 }

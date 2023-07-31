@@ -15,14 +15,14 @@ public class ModeUI : MonoBehaviour
     public void InitModeUISettings(StageManager stageManager)
     {
         _stageManager = stageManager;
-        GameObject[] players = stageManager.Players;
+        //CharacterStatus[] players = stageManager.Players; // TODO 로직 변경
 
-        SetUIForEachPlayers(players);
+        //SetUIForEachPlayers(players);
     }
     public void BindEventWithScoreSets(int i)
     {
-        _stageManager.OnTeamScoreChanged -= _scoreSets[i].GetScore;
-        _stageManager.OnTeamScoreChanged += _scoreSets[i].GetScore;
+        //_stageManager.OnTeamScoreChanged -= _scoreSets[i].GetScore;
+        //_stageManager.OnTeamScoreChanged += _scoreSets[i].GetScore; // TODO : 팀스코어 판별 로직
     }
     public void BindEventWithTimer()
     {
@@ -31,20 +31,20 @@ public class ModeUI : MonoBehaviour
     }
     public void BindEventWithRespawnUI(CharacterStatus characterStatus)
     {
-        characterStatus.OnPlayerDie -= _respawnTimer.CheckPlayer;
-        characterStatus.OnPlayerDie += _respawnTimer.CheckPlayer;
+        //characterStatus.OnPlayerDie -= _respawnTimer.CheckPlayer;
+        //characterStatus.OnPlayerDie += _respawnTimer.CheckPlayer; // TO DO : 레전드 컨트롤러에서 리스폰 정의
     }
     public void BindEventWithPortraits(CharacterStatus characterStatus, Portrait portrait)
     {
-        characterStatus.OnPlayerDie -= portrait.StartRespawnTimer;
-        characterStatus.OnPlayerDie += portrait.StartRespawnTimer;
+        //characterStatus.OnPlayerDie -= portrait.StartRespawnTimer;
+        //characterStatus.OnPlayerDie += portrait.StartRespawnTimer;
     }
     public void BindEventWithHealthBar(CharacterStatus characterStatus, HealthBar healthBar)
     {
         characterStatus.OnPlayerHealthPointChange -= healthBar.SetHealthPoint;
         characterStatus.OnPlayerHealthPointChange += healthBar.SetHealthPoint;
     }
-    private void SetUIForEachPlayers(GameObject[] players)
+    private void SetUIForEachPlayers(LegendController[] players)
     {
         for (int i = 0; i < players.Length; ++i)
         {
@@ -52,36 +52,37 @@ public class ModeUI : MonoBehaviour
             _healthPointBars[i].InitHealthBarSettings();
             BindEventWithHealthBar(characterStatus, _healthPointBars[i]);
 
-            Sprite characterPortrait = Resources.Load<Sprite>(Util.Path.FilePath.GetCharacterSpritePath(characterStatus.Character));
-            _portraits[i].InitPortraitSetting(characterPortrait);
+            //Sprite characterPortrait = Resources.Load<Sprite>(Util.Path.FilePath.GetCharacterSpritePath(characterStatus.Character)); TODO : 플레이어가 선택한 캐릭터 정보 연결
+            Sprite legendPortrait = Resources.Load<Sprite>(Util.Path.FilePath.GetLegendSpritePath(LegendType.Peter)); // 임시 >> 수정 이후 삭제           
+            _portraits[i].InitPortraitSetting(legendPortrait);
             BindEventWithPortraits(characterStatus, _portraits[i]);
 
             _scoreSets[i].InitScoreSetSettings((TeamType)(i + 1));
             BindEventWithScoreSets(i);
 
-            SetUIForCurrentPlayer(characterStatus);
+            SetUIForCurrentPlayer(i, "Peter", characterStatus); // 임시
         }
     }
 
-    private void SetUIForCurrentPlayer(CharacterStatus characterStatus)
+    private void SetUIForCurrentPlayer(int userID, string userName, CharacterStatus characterStatus)
     {
         _timer.InitTimerSettings();
         _respawnTimer.InitRespawnTimerSettings(characterStatus);
-        SetPlayerName(characterStatus);
+        SetPlayerName(userID, userName);
         BindEventWithRespawnUI(characterStatus);
         BindEventWithTimer();
     }
 
-    private void SetPlayerName(CharacterStatus playerData)
+    private void SetPlayerName(int userID, string userName)
     {
-        _userName[playerData.PlayerID].text = playerData.Name;
+        _userName[userID].text = userName;
     }
 
     public void OnDestroy()
     {
         for (int i = 0; i < _scoreSets.Length; ++i)
         {
-            _stageManager.OnTeamScoreChanged -= _scoreSets[i].GetScore;
+            //_stageManager.OnTeamScoreChanged -= _scoreSets[i].GetScore; // TODO : 팀스코어 판별 로직
         }
     }
 }

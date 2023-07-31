@@ -2,7 +2,6 @@ using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
-using Util.Method;
 
 public class HealthBar : MonoBehaviour
 {
@@ -25,10 +24,10 @@ public class HealthBar : MonoBehaviour
             _cancellationTokenSource?.Cancel();
         }
 
-        // ´Ü¼øÈ÷ ÇÇ¸¦ È¸º¹ÇÏ¿© Ç®ÇÇ°¡ µÇ´Â »óÈ²À» Á¦¿ÜÇÏ±â À§ÇØ 500À¸·Î ¼³Á¤.
+        // TO DO : legacy ìˆ˜ì •
         if (healthPointPercent >= 500f)
         {
-            await Method.ChangeFillAmountGradually(1, 0.5f, _filling);
+            await Utils.ChangeFillAmountGradually(1, 0.5f, _filling);
             healthPointPercent = 100;
             _fillingBackground.fillAmount = 1;
         }
@@ -46,6 +45,6 @@ public class HealthBar : MonoBehaviour
     {
         await UniTask.Delay(1000);
         cancellationToken.ThrowIfCancellationRequested();
-        await Method.ChangeFillAmountGradually(healthPointRatio, 0.5f, _fillingBackground);
+        await Utils.ChangeFillAmountGradually(healthPointRatio, 0.5f, _fillingBackground);
     }
 }

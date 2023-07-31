@@ -1,17 +1,16 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using Util.Enum;
 using Util.Path;
 
 public class ResultUI : MonoBehaviour
 {
-    //ÃßÈÄ ¿ÜºÎ¿¡¼­ ¹Ş¾Æ¿Ã ¿¹Á¤. ÇöÀç´Â ¾Ù¸®½º·Î ÅëÀÏ
-    private CharacterType[] _characterType;
+    //ì¶”í›„ ì™¸ë¶€ì—ì„œ ë°›ì•„ì˜¬ ì˜ˆì •. í˜„ì¬ëŠ” ì•¨ë¦¬ìŠ¤ë¡œ í†µì¼
+    private LegendType[] _legendType;
     private Transform[] _spawnPoints;
     [SerializeField] private TextMeshProUGUI _resultText;
     [SerializeField] private TextMeshProUGUI[] _playerIDText;
-    private bool[] _isCharacterAlreadyUsed;
+    private bool[] _isLegendUsedInLobby;
     private List<GameObject> _copiedModels;
 
     private Vector3 _fixedSize;
@@ -19,34 +18,34 @@ public class ResultUI : MonoBehaviour
     private LobbyUI _lobbyUI;
     private int _maxPlayer = 2;
 
-    private const string WinText = "½Â¸®";
-    private const string DrawText = "¹«½ÂºÎ";
-    private const string LoseText = "ÆĞ¹è";
+    private const string WinText = "ìŠ¹ë¦¬";
+    private const string DrawText = "ë¬´ìŠ¹ë¶€";
+    private const string LoseText = "íŒ¨ë°°";
     private int winHash = Animator.StringToHash("WinGame");
     private int loseHash = Animator.StringToHash("LoseGame");
 
     private Canvas _canvas;
-    [SerializeField] private GameObject _characterSpawnPrefab;
-    private GameObject _resultCharacter;
+    [SerializeField] private GameObject _legendSpawnPrefab;
+    private GameObject _resultPanelLegendModel;
     public void InitSettings(LobbyUI lobbyUI)
     {
         _lobbyUI = lobbyUI;
         _canvas = GetComponent<Canvas>();
-        if (_resultCharacter == null)
+        if (_resultPanelLegendModel == null)
         {
-            _resultCharacter = Instantiate(_characterSpawnPrefab);
-            int numberOfSpawnPoints = _resultCharacter.transform.childCount - 1;
+            _resultPanelLegendModel = Instantiate(_legendSpawnPrefab);
+            int numberOfSpawnPoints = _resultPanelLegendModel.transform.childCount - 1;
             _spawnPoints = new Transform[numberOfSpawnPoints];
             for (int i = 0; i < numberOfSpawnPoints; ++i)
             {
-                _spawnPoints[i] = _resultCharacter.transform.GetChild(i);
+                _spawnPoints[i] = _resultPanelLegendModel.transform.GetChild(i);
             }
             _canvas.renderMode = RenderMode.ScreenSpaceCamera;
-            _canvas.worldCamera = _resultCharacter.transform.GetChild(numberOfSpawnPoints).GetComponent<Camera>();
+            _canvas.worldCamera = _resultPanelLegendModel.transform.GetChild(numberOfSpawnPoints).GetComponent<Camera>();
         }
         else
         {
-            _resultCharacter.SetActive(true);
+            _resultPanelLegendModel.SetActive(true);
         }
         _fixedRotation = Quaternion.Euler(0, 180, 0);
         _fixedSize = new Vector3(100, 100, 100);
@@ -55,23 +54,24 @@ public class ResultUI : MonoBehaviour
 
     //private void Start()
     //{
-    //    //ÀüÃ¼°¡ Å×½ºÆ® ÄÚµå.
+    //    //ì „ì²´ê°€ í…ŒìŠ¤íŠ¸ ì½”ë“œ.
     //    UserData[] test = new UserData[_maxPlayer];
     //    test[0] = new UserData();
     //    test[1] = new UserData();
-    //    test[0].Name = "ÆÄ¶û¼Í";
+    //    test[0].Name = "íŒŒë‘ì…©";
     //    test[0].TeamType = TeamType.Red;
-    //    test[1].Name = "±è°©¼ö";
+    //    test[1].Name = "ê¹€ê°‘ìˆ˜";
     //    test[1].TeamType = TeamType.Blue;
     //    ShowResultUI(TeamType.Red, test);
     //}
-    //ÃßÈÄ °ÔÀÓÀÌ ³¡³µÀ» ¶§ ½ÇÇàµÉ ÇÔ¼ö. ÀÌº¥Æ®¿¡ ±¸µ¶ÇØ¼­ »ç¿ëÇÏÀÚ.
-    //À¯Àú µ¥ÀÌÅÍ¸¦ ¹è¿­ Çü½ÄÀ¸·Î °ü¸®ÇÏ¿© 0¹ø¿¡ º»ÀÎÀ» »ğÀÔ..?
-    public void ShowResultUI(TeamType winningteam, UserData[] usersData)
+    //ì¶”í›„ ê²Œì„ì´ ëë‚¬ì„ ë•Œ ì‹¤í–‰ë  í•¨ìˆ˜. ì´ë²¤íŠ¸ì— êµ¬ë…í•´ì„œ ì‚¬ìš©í•˜ì.
+    //ìœ ì € ë°ì´í„°ë¥¼ ë°°ì—´ í˜•ì‹ìœ¼ë¡œ ê´€ë¦¬í•˜ì—¬ 0ë²ˆì— ë³¸ì¸ì„ ì‚½ì…..?
+    public void ShowResultUI(TeamType winningteam, UserData[] users)
     {
         _lobbyUI.gameObject.SetActive(false);
-        UserData userData = usersData[0];
-        if (userData.TeamType.Equals(winningteam))
+        UserData user = users[0];
+
+        if (user.TeamType.Equals(winningteam))
         {
             _resultText.text = WinText;
         }
@@ -83,52 +83,51 @@ public class ResultUI : MonoBehaviour
         {
             _resultText.text = LoseText;
         }
-        _isCharacterAlreadyUsed = new bool[(int)CharacterType.MaxCount];
         _copiedModels = new List<GameObject>();
         for (int i = 0; i < _maxPlayer; ++i)
         {
-            //ÃßÈÄ UserData¿¡¼­ ¹Ş¾Æ¿Ã ¿¹Á¤
-            //Áï, if(_isCharacterAlreadyUsed((int)usersData[i].Character))ÀÇ Çü½Ä
-            GameObject characterModel = new GameObject();
+            //ì¶”í›„ UserDataì—ì„œ ë°›ì•„ì˜¬ ì˜ˆì •
+            //ì¦‰, if(_isCharacterAlreadyUsed((int)usersData[i].Character))ì˜ í˜•ì‹
+            GameObject legendModel = new GameObject();
 
-            if (_isCharacterAlreadyUsed[(int)CharacterType.Alice])
+            if (_isLegendUsedInLobby[(int)LegendType.Alice])
             {
-                characterModel = Instantiate(Resources.Load<GameObject>(FilePath.GetLobbyCharacterPath(CharacterType.Alice)));
-                _copiedModels.Add(characterModel);
+                legendModel = Instantiate(Resources.Load<GameObject>(FilePath.GetLobbyLegendModelPath(LegendType.Alice)));
+                _copiedModels.Add(legendModel);
             }
             else
             {
-                characterModel = _lobbyUI.GetCharacterModel(CharacterType.Alice);
-                //Å×½ºÆ® ÄÚµå. ÃßÈÄ UserData¿¡¼­ ¹Ş¾Æ¿Ã ¿¹Á¤.
-                _isCharacterAlreadyUsed[(int)CharacterType.Alice] = true;
+                legendModel = _lobbyUI.GetLegendModel(LegendType.Alice);
+                //í…ŒìŠ¤íŠ¸ ì½”ë“œ. ì¶”í›„ UserDataì—ì„œ ë°›ì•„ì˜¬ ì˜ˆì •.
+                _isLegendUsedInLobby[(int)LegendType.Alice] = true;
             }
 
-            Animator characterModelAnimator = characterModel.GetComponent<Animator>();
-            characterModel.transform.SetParent(_spawnPoints[i]);
-            characterModel.transform.localPosition = Vector3.zero;
-            characterModel.transform.localScale = _fixedSize;
-            characterModel.transform.rotation = _fixedRotation;
+            Animator legendModelAnimator = legendModel.GetComponent<Animator>();
+            legendModel.transform.SetParent(_spawnPoints[i]);
+            legendModel.transform.localPosition = Vector3.zero;
+            legendModel.transform.localScale = _fixedSize;
+            legendModel.transform.rotation = _fixedRotation;
 
-            _playerIDText[i].text = usersData[i].Name;
+            _playerIDText[i].text = users[i].Name;
 
-            if (usersData[i].TeamType.Equals(winningteam))
+            if (users[i].TeamType.Equals(winningteam))
             {
-                characterModelAnimator.SetTrigger(winHash);
+                legendModelAnimator.SetTrigger(winHash);
             }
             else
             {
-                characterModelAnimator.SetTrigger(loseHash);
+                legendModelAnimator.SetTrigger(loseHash);
             }
         }
     }
     private void OnDisable()
     {
-        DisableCharacterTransform();
+        DisableLegendTransform();
         ResetModelTransform();
         _lobbyUI.gameObject.SetActive(true);
     }
 
-    private void DisableCharacterTransform() => _resultCharacter?.SetActive(false);
+    private void DisableLegendTransform() => _resultPanelLegendModel?.SetActive(false);
 
     private void ResetModelTransform()
     {

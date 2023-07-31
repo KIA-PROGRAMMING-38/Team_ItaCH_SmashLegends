@@ -13,7 +13,7 @@ public class AliceAttack : PlayerAttack
     private void DashAtSkillAttackOnAnimationEvent()
     {
         _skillAttackDirection = transform.up + transform.forward;
-        attackRigidbody.AddForce(_skillAttackDirection * 1f, ForceMode.Impulse);
+        attackRigidbody.AddForce(_skillAttackDirection * legendController.Stat.DashPower, ForceMode.Impulse);
     }
     private void HeavyAttackBomb() => _aliceBomb.SetActive(true);
     private void EnableAttackHitZone() => _attackHitZone.SetActive(true);

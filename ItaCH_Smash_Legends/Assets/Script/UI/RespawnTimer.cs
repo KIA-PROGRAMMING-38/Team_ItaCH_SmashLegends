@@ -1,4 +1,4 @@
-﻿using Cysharp.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -9,23 +9,23 @@ public class RespawnTimer : MonoBehaviour
     [SerializeField] private Slider _slider;
     [SerializeField] private TextMeshProUGUI _text;
     private StringBuilder stringBuilder = new StringBuilder();
-    private int _playerId;
+    private int _localPlayerID;
 
     public void InitRespawnTimerSettings(CharacterStatus characterStatus)
     {
         gameObject.SetActive(false);
-        _playerId = Managers.UserManager.UserLocalData.Id;
+        _localPlayerID = Managers.LobbyManager.UserLocalData.ID;
     }
 
-    public async void CheckPlayer(CharacterStatus characterStatus)
+    public async void CheckPlayer(int deadPlayer) // 내가 죽었는 지 확인하는 로직
     {
-        if (characterStatus.PlayerID.Equals(_playerId))
+        if (deadPlayer.Equals(_localPlayerID))
         {
             gameObject.SetActive(true);
 
             UniTask[] uniTasks = new UniTask[]{
-            ChangeSliderValue(characterStatus.RespawnTime),
-            ChangeTextValue(characterStatus.RespawnTime)
+            //ChangeSliderValue(characterStatus.RespawnTime),
+            //ChangeTextValue(characterStatus.RespawnTime) // TODO : 리스폰 수정 이후 반영
             };
 
             await UniTask.WhenAll(uniTasks);

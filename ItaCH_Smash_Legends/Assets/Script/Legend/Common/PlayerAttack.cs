@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    protected CharacterStatus characterStatus;
+    protected LegendController legendController;
     protected Rigidbody attackRigidbody;
     protected float dashPower = 1f;
 
@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
         //dashPower = characterStatus.Stat.DashPower;
         characterStatus = GetComponent<CharacterStatus>();
         attackRigidbody = GetComponent<Rigidbody>();
+        legendController = GetComponent<LegendController>();
     }
     private void DashOnAnimationEvent()
     {

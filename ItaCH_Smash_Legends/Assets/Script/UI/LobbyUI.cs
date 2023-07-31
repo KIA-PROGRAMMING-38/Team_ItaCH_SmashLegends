@@ -1,13 +1,11 @@
-using System;
 using TMPro;
 using UnityEngine;
-using Util.Enum;
 using Util.Path;
 
 public class LobbyUI : MonoBehaviour
 {
-    private CharacterType _characterType;
-    private GameObject[] _characterModels;
+    private LegendType _legendType;
+    private GameObject[] _legendModels;
 
     public Transform SpawnPoint { get => _spawnPoint; set => _spawnPoint = value; }
     [SerializeField]
@@ -19,9 +17,7 @@ public class LobbyUI : MonoBehaviour
     private float _defaultVolume = 1f;
     public float DefaultVolume { get => _defaultVolume; }
 
-    private TextMeshProUGUI _userNameText;
-
-    public event Action<CharacterType> OnCharacterChanged;
+    private TextMeshProUGUI _userNameText;        
 
     private void Start()
     {        
@@ -34,15 +30,17 @@ public class LobbyUI : MonoBehaviour
     public void InitLobbyUISettings() // 패널 3개 생성 : 레전드 메뉴, 환경설정 메뉴, 매칭 UI
     {        
         SetUserName();
-        SetPanelAndButton(ResourcesManager.LegendMenuUIPath, ResourcesManager.LegendMenuButtonPath);
-        SetPanelAndButton(ResourcesManager.SettingUIPath, ResourcesManager.SettingButtonPath);
-        SetPanelAndButton(ResourcesManager.MatchingUIPath, ResourcesManager.MatchingButtonPath);
+        SetPanelAndButton(FilePath.LegendMenuUIPath, FilePath.LegendMenuButtonPath);
+        SetPanelAndButton(FilePath.SettingUIPath, FilePath.SettingButtonPath);
+        SetPanelAndButton(FilePath.MatchingUIPath, FilePath.MatchingButtonPath);
+        // TO DO : ResourceManager 및 UIManager에서 관리
         SetLobbyCharaterModel();
     }
     private void SetUserName()
     {
         _userNameText = GetComponentInChildren<TextMeshProUGUI>();
-        string userNameInput = Managers.UserManager.UserLocalData.Name;
+
+        string userNameInput = Managers.LobbyManager.UserLocalData.Name;
 
         if (userNameInput == null) return;
 
@@ -51,27 +49,27 @@ public class LobbyUI : MonoBehaviour
 
     private void SetLobbyCharaterModel()
     {
-        _characterModels = new GameObject[(int)CharacterType.MaxCount];
-        _currentCharacterIndex = (int)Managers.UserManager.UserLocalData.SelectedCharacter;
+        _legendModels = new GameObject[(int)LegendType.MaxCount];
 
-        for (int i = 1; i < (int)CharacterType.MaxCount; ++i)
+        _currentCharacterIndex = (int)Managers.LobbyManager.UserLocalData.SelectedLegend;
+
+        for (int i = 1; i < (int)LegendType.MaxCount; ++i)
         {            
-            GameObject characterModelPrefab = Resources.Load<GameObject>(FilePath.GetLobbyCharacterPath((CharacterType)i));
+            GameObject characterModelPrefab = Resources.Load<GameObject>(FilePath.GetLobbyLegendModelPath((LegendType)i));
             GameObject characterModelInstance = Instantiate(characterModelPrefab, _spawnPoint).gameObject;
-            _characterModels[i] = characterModelInstance;
+            _legendModels[i] = characterModelInstance;
             characterModelInstance.transform.parent = _spawnPoint;
             characterModelInstance.SetActive(false);
         }
-        _characterModels[_currentCharacterIndex].SetActive(true);
+        _legendModels[_currentCharacterIndex].SetActive(true);
     }
 
     public void ChangeLobbyCharacterModel(int characterIndex)
     {
-        _characterModels[_currentCharacterIndex].SetActive(false);
-        _characterModels[characterIndex].SetActive(true);
-        _characterType = (CharacterType)characterIndex;
+        _legendModels[_currentCharacterIndex].SetActive(false);
+        _legendModels[characterIndex].SetActive(true);        
         _currentCharacterIndex = characterIndex;
-        Managers.UserManager.UserLocalData.SetSelectedCharacter(_characterType);
+        Managers.LobbyManager.UserLocalData.SelectedLegend = (LegendType)characterIndex;
     }
 
     private void SetPanelAndButton(string panelPath, string buttonPath)
@@ -85,7 +83,7 @@ public class LobbyUI : MonoBehaviour
         panel.InitPanelSettings(this);
         button.InitEnablePanelButtonSettings(panelGameObject);
         panelGameObject.SetActive(false);
-        if (buttonPath == ResourcesManager.MatchingButtonPath)
+        if (buttonPath == FilePath.MatchingButtonPath)
         {
             button.Button.onClick.AddListener(Managers.LobbyManager.Connect);
         }
@@ -93,9 +91,9 @@ public class LobbyUI : MonoBehaviour
 
     public void ResetModelTransform()
     {
-        foreach (GameObject characterModel in _characterModels)
+        foreach (GameObject legendModel in _legendModels)
         {
-            Transform modelTransform = characterModel.transform;
+            Transform modelTransform = legendModel.transform;
             modelTransform.SetParent(_spawnPoint);
             modelTransform.localPosition = Vector3.zero;
             modelTransform.localScale = new Vector3(1, 1, 1);
@@ -103,8 +101,8 @@ public class LobbyUI : MonoBehaviour
         }
     }
 
-    public GameObject GetCharacterModel(CharacterType characterType)
+    public GameObject GetLegendModel(LegendType characterType)
     {
-        return _characterModels[(int)characterType];
+        return _legendModels[(int)characterType];
     }
 }
