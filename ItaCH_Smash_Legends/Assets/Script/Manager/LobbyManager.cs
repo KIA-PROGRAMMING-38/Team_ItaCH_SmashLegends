@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using Photon.Realtime;
 using System;
+using UnityEngine;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
@@ -67,6 +68,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         OnWaitingPlayer?.Invoke();
         SetUserID();
         OnUpdatePlayerList?.Invoke(UserLocalData);
+
         MatchWithBot();
     }
 
@@ -114,7 +116,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         }
         return 1; // 4인 모드 고려 시 수정 필요
     }
-    
+
     private async UniTask MatchWithBot()
     {
         OnUpdatePlayerList(GetDefaultUserData(UserLocalData.ID + 1));

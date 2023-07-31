@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 해당 클래스 상속
 {
@@ -61,6 +62,7 @@ public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 �
         if (IsNewTeamNeeded(Teams, MaxTeamMember))
         {
             Team newTeam = new Team();
+            newTeam.Init();
             Teams.Add(newTeam);
             newTeam.Type = (Teams.Count == 1) ? TeamType.Blue : TeamType.Red; // 자신이 속한 팀을 제외한 모든 팀은 red team으로 두어 레이어 구분 및 피격 판정
             return newTeam;

@@ -86,7 +86,7 @@ public class StageManager : MonoBehaviourPunCallbacks
                 CreateLegend(member, _spawnPoints[member.ID + 1]); // SpawnPoints[0] == root Object
             }
         }
-        //SetModeUI(currentGameMode.GameModeType); // UI 개선 이후
+        Managers.UIManager.ShowPopupUI<UI_DuelModePopup>();
         StartGame();
     }
 
