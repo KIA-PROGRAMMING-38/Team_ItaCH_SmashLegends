@@ -44,12 +44,6 @@ public class LegendController : MonoBehaviour
     public const float MAX_JUMP_POWER = 1f;
     private CancellationTokenSource _taskCancel;
 
-    // TODO : 각 레전드 Attack 에서 설정
-    //[SerializeField] private SphereCollider _skillAttackHitZone;
-    //[SerializeField] private SphereCollider _attackHitZone;
-    //[SerializeField] private SphereCollider _heavyAttackHitZone;
-    //[SerializeField] private BoxCollider _jumpAttackHitZone;
-
     private InputAction[] _actions;
 
     public int OwnerUserID { get; private set; }
@@ -187,7 +181,16 @@ public class LegendController : MonoBehaviour
 
         if (other.CompareTag(StringLiteral.HEAVY_HIT))
         {
-            _facingDirection = -1 * other.transform.forward;
+            if (other.name == StringLiteral.ALICE_BOMB)
+            {
+                AliceBomb bomb = other.GetComponent<AliceBomb>();
+                _facingDirection = -1 * bomb.ConstructorForward;
+            }
+            else
+            {
+                _facingDirection = -1 * other.transform.forward.normalized;
+            }
+
             SetKnockbackOnAttack(other, AnimationHash.HitUp, KnockbackType.Heavy);
         }
     }
@@ -246,6 +249,11 @@ public class LegendController : MonoBehaviour
             _legendAnimationController.SetBool(AnimationHash.Run, false);
         }
     }
+    private void SetRigidbody()
+    {
+        _rigidbody.mass = MAX_JUMP_POWER / _jumpAcceleration;
+        _rigidbody.drag = 0.5f;
+    }
     private void LookForwardOnAttack()
     {
         if (_moveDirection != _vectorZero)
@@ -257,21 +265,10 @@ public class LegendController : MonoBehaviour
     {
         _rigidbody.velocity = _vectorZero;
     }
-
-    #region 각 공격별 HitZone 생성
-
-    // TODO : 각 레전드 Attack 스크립트에서 사용
-
-    //private void EnableAttackHitZone() => _attackHitZone.enabled = true;
-    //private void DisableAttackHitZone() => _attackHitZone.enabled = false;
-    //private void EnableJumpAttackHitZone() => _jumpAttackHitZone.enabled = true;
-    //private void DisableJumpAttackHitZone() => _jumpAttackHitZone.enabled = false;
-    //private void EnableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = true;
-    //private void DisableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = false;
-    //private void EnableSkillAttackHitZone() => _skillAttackHitZone.enabled = true;
-    //private void DisableSkillAttackHitZone() => _skillAttackHitZone.enabled = false;
-    #endregion
-
+    public Vector3 GetMoveDirection()
+    {
+        return _moveDirection;
+    }
     public void SetRollingDirection()
     {
         if (_moveDirection == _vectorZero)
@@ -350,29 +347,10 @@ public class LegendController : MonoBehaviour
     public void SetKnockbackOnAttack(Collider other, int animationHash, KnockbackType type)
     {
         transform.forward = _facingDirection;
+        HitZone otherHit = other.GetComponent<HitZone>();
 
-        Vector3 knockbackDirection = other.transform.forward + transform.up;
-
-        _legendAnimationController.SetTrigger(animationHash);
-        _rigidbody.AddForce(knockbackDirection * GetKnockbackPower(type, other), ForceMode.Impulse);
-
-        float GetKnockbackPower(KnockbackType type, Collider other) // TO DO : 매개변수로 넉백파워를 받음
-        {
-            float knockbackPower = 0;
-
-            switch (type)
-            {
-                case KnockbackType.Default:
-                    knockbackPower = other.GetComponent<LegendController>().Stat.DefaultKnockbackPower;
-                    break;
-
-                case KnockbackType.Heavy:
-                    knockbackPower = other.GetComponent<LegendController>().Stat.HeavyKnockbackPower;
-                    break;
-            }
-
-            return knockbackPower;
-        }
+        _legendAnimationController.SetTrigger(otherHit.GetAnimationKind());
+        otherHit.SetKnockback(_rigidbody);
     }
 
     private Vector3 GetHangForward(Vector3 other)
@@ -429,6 +407,17 @@ public class LegendController : MonoBehaviour
         _taskCancel.Cancel();
     }
 
+    public string GetChildLayer()
+    {
+        if (this.gameObject.layer == LayerMask.NameToLayer("TeamRed"))
+        {
+            return "TeamRedHitZone";
+        }
+        else
+        {
+            return "TeamBlueHitZone";
+        }
+    }
     // TO DO : Damage 로직 추가 필요
     public void Damage(int damage) // 구버전
     {

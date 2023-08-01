@@ -34,6 +34,7 @@ public class HookHit : MonoBehaviour
     }
     private void SetPowerAndDamage()
     {
+
         defaultKnockbackPower = _legendController.Stat.DefaultKnockbackPower;
         heavyKnockbackPower = _legendController.Stat.HeavyKnockbackPower;
         defaultdamage = _legendController.Stat.DefaultAttackDamage;
