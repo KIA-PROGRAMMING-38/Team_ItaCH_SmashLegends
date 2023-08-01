@@ -249,11 +249,6 @@ public class LegendController : MonoBehaviour
             _legendAnimationController.SetBool(AnimationHash.Run, false);
         }
     }
-    private void SetRigidbody()
-    {
-        _rigidbody.mass = MAX_JUMP_POWER / _jumpAcceleration;
-        _rigidbody.drag = 0.5f;
-    }
     private void LookForwardOnAttack()
     {
         if (_moveDirection != _vectorZero)
