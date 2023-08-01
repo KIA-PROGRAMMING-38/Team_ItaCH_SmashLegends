@@ -30,14 +30,14 @@ public class UI_DuelModePopup : UIPopup
     private const float MAX_FILL_AMOUNT = 1f;
     private const float DEFAULT_FILL_AMOUNT = 0.1f;
 
-    private List<UI_Profile> _profiles = new List<UI_Profile>();
+    private List<UI_ProfileItem> _profiles = new List<UI_ProfileItem>();
 
     public override void Init()
     {
         BindText(typeof(Texts));
         BindImage(typeof(Images));
         BindObject(typeof(GameObjects));
-        Bind<UI_Profile>(typeof(UIProfiles));
+        Bind<UI_ProfileItem>(typeof(UIProfiles));
 
         PopulateProfile();
 
@@ -58,19 +58,27 @@ public class UI_DuelModePopup : UIPopup
 
         int maxTeamCount = Managers.StageManager.CurrentGameMode.MaxTeamCount;
 
-        for (int teamIndex = 0; teamIndex < maxTeamCount; ++teamIndex)
+        for (int teamIndex = GetIndexWithTeamType(TeamType.Blue); teamIndex < maxTeamCount; ++teamIndex)
         {
-            UI_Profile profileItem = Managers.UIManager.MakeSubItem<UI_Profile>(parentObject.transform);
-            profileItem.SetInfo(teamIndex);
+            UI_ProfileItem profileItem = Managers.UIManager.MakeSubItem<UI_ProfileItem>(parentObject.transform);
 
+            if (teamIndex == GetIndexWithTeamType(TeamType.Red))
+            {
+                RectTransform redTeamProfileItem = profileItem.gameObject.GetComponent<RectTransform>();
+                Utils.ReverseAxisY(redTeamProfileItem);
+            }
+
+            profileItem.SetInfo(teamIndex);
             _profiles.Add(profileItem);
         }
+
+        static int GetIndexWithTeamType(TeamType teamType) => (int)teamType - 1; // TeamType.None = 0 제외        
     }
 
     private void RefreshPopupUI()
     {
         RefreshGameTimer();
-        RefreshProfile();
+        RefreshProfileItem();
     }
 
     public void RefreshGameTimer()
@@ -106,11 +114,11 @@ public class UI_DuelModePopup : UIPopup
         }
     }
 
-    public void RefreshProfile()
+    public void RefreshProfileItem()
     {
-        foreach (UI_Profile profileItem in _profiles)
+        foreach (UI_ProfileItem profileItem in _profiles)
         {
-            profileItem.RefreshUpdatedInGameItems();
+            profileItem.RefreshUI();
         }
     }
 }
