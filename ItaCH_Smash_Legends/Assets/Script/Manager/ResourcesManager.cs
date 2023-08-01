@@ -63,4 +63,11 @@ public class ResourceManager
         string legendPrefabPath = Path.Combine(StringLiteral.PREFAB_FOLDER, legendName, $"{legendName}{StringLiteral.SUFFIX_INGAME}", $"{legendName}{StringLiteral.SUFFIX_INGAME}");
         return Load<GameObject>(legendPrefabPath);
     }
+
+    public Sprite GetLegendFaceImage(LegendType legend)
+    {
+        string legendName = legend.ToString();
+        string legendFaceImagePath = Path.Combine(StringLiteral.UI_SPRITE_FOLDER, legendName, legendName);
+        return Load<Sprite>(legendFaceImagePath);
+    }
 }
