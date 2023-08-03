@@ -57,8 +57,7 @@ public class UI_Portrait : UIBase
 
     private void RefreshLegendFaceImage()
     {
-        // To Do : Image Load
-        // GetImage((int)Images.LegendFaceImage).sprite = Managers.ResourceManager.Load
+        GetImage((int)Images.LegendFaceImage).sprite = Managers.ResourceManager.GetLegendFaceImage(_userData.SelectedLegend);
     }
 
     private void RefreshRespawnTimer()
