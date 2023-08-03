@@ -35,14 +35,17 @@ public class UI_Portrait : UIBase
     public void SetInfo(UserData userData)
     {
         _userData = userData;
-        SetUserName();
         SetLegendFaceImage();
+        SetUserName();
+        if (userData.TeamType == TeamType.Red)
+        {
+            GetText((int)Texts.UserNameText).GetComponent<RectTransform>().FlipY();
+        }
     }
 
     private void SetUserName()
     {
-        GetText((int)Texts.UserNameText).text = _userData.Name;
-        GetText((int)Texts.UserNameText).GetComponent<RectTransform>().FlipY(_userData.TeamType.IsRedTeam());
+        GetText((int)Texts.UserNameText).text = _userData.Name;        
     }
 
     private void SetLegendFaceImage()

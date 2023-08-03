@@ -56,23 +56,20 @@ public class UI_DuelModePopup : UIPopup
             Managers.ResourceManager.Destroy(child.gameObject);
         }
 
-        CreateBlueTeamProfile(parentObject);
-        CreateRedTeamProfile(parentObject);
-    }
-    private void CreateBlueTeamProfile(GameObject parentObject)
-    {
-        UI_ProfileItem blueTeamProfileItem = Managers.UIManager.MakeSubItem<UI_ProfileItem>(parentObject.transform);
+        int maxTeamCount = Managers.StageManager.CurrentGameMode.MaxTeamCount;
 
-        blueTeamProfileItem.SetInfo(TeamType.Blue);
-        _profiles.Add(blueTeamProfileItem);
+        for (int team = 0; team < maxTeamCount; ++team)
+        {
+            CreateProfileItem(team, parentObject);
+        }
     }
 
-    private void CreateRedTeamProfile(GameObject parentObject)
+    public void CreateProfileItem(int team, GameObject parentObject)
     {
-        UI_ProfileItem redTeamProfileItem = Managers.UIManager.MakeSubItem<UI_ProfileItem>(parentObject.transform);
-        redTeamProfileItem.gameObject.GetComponent<RectTransform>().FlipY();
-        redTeamProfileItem.SetInfo(TeamType.Red);
-        _profiles.Add(redTeamProfileItem);
+        UI_ProfileItem profileItem = Managers.UIManager.MakeSubItem<UI_ProfileItem>(parentObject.transform);
+
+        profileItem.SetInfo(team);
+        _profiles.Add(profileItem);
     }
 
     private void RefreshPopupUI()

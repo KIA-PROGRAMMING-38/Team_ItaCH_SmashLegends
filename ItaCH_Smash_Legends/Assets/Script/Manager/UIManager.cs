@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIManager
@@ -13,8 +14,11 @@ public class UIManager
 
     public void Init()
     {
-        _root = new GameObject { name = "@UI_Root" };
-        Object.DontDestroyOnLoad(_root);
+        if (_root == null)
+        {
+            _root = new GameObject { name = "@UI_Root" };
+            Object.DontDestroyOnLoad(_root);
+        }
     }
 
     public void SetCanvas(GameObject go, bool sort = true)

@@ -17,14 +17,17 @@ public class UI_ProfileItem : UIBase
         BindObject(typeof(ProfileSubItemObjects));
     }
 
-    public void SetInfo(TeamType teamType)
+    public void SetInfo(int teamIndex)
     {
-        int teamTypeIndex = (int)teamType - 1; // 0 = TeamType.None 제외
-        _userData = Managers.StageManager.CurrentGameMode.Teams[teamTypeIndex].Members[0];
-
+        _userData = Managers.StageManager.CurrentGameMode.Teams[teamIndex].Members[0];
 
         _portrait = Utils.GetOrAddComponent<UI_Portrait>(GetObject((int)ProfileSubItemObjects.Portrait));
         _portrait.SetInfo(_userData);
+
+        if (_userData.TeamType == TeamType.Red)
+        {
+            this.GetComponent<RectTransform>().FlipY();
+        }
 
         RefreshUI();
     }
