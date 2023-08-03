@@ -32,30 +32,20 @@ public class UI_Portrait : UIBase
         GetObject((int)GameObjects.RespawnTime).gameObject.SetActive(false);
     }
 
-    public void SetInfo(UserData userData, bool isInitialSet = false)
+    public void SetInfo(UserData userData)
     {
         _userData = userData;
-
-        if (isInitialSet)
-        {
-            Init();
-            RefreshUserName();
-            RefreshLegendFaceImage();
-        }
-
-        RefreshRespawnTimer();
+        SetUserName();
+        SetLegendFaceImage();
     }
 
-    private void RefreshUserName()
+    private void SetUserName()
     {
         GetText((int)Texts.UserNameText).text = _userData.Name;
-        if (_userData.TeamType == TeamType.Red)
-        {
-            Utils.ReverseAxisY(GetText((int)Texts.UserNameText).GetComponent<RectTransform>());
-        }
+        GetText((int)Texts.UserNameText).GetComponent<RectTransform>().FlipY(_userData.TeamType.IsRedTeam());
     }
 
-    private void RefreshLegendFaceImage()
+    private void SetLegendFaceImage()
     {
         GetImage((int)Images.LegendFaceImage).sprite = Managers.ResourceManager.GetLegendFaceImage(_userData.SelectedLegend);
     }

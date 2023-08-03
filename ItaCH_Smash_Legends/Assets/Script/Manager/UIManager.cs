@@ -1,4 +1,3 @@
-using Photon.Realtime;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,21 +9,12 @@ public class UIManager
 
     private Stack<UIPopup> _popupStack = new Stack<UIPopup>();
 
-    public GameObject Root
-    {
-        get
-        {
-            GameObject root = GameObject.Find("@UI_Root");
-            if (root == null)
-                root = new GameObject { name = "@UI_Root" };
-
-            return root;
-        }
-    }
+    private GameObject _root;
 
     public void Init()
     {
-
+        _root = new GameObject { name = "@UI_Root" };
+        Object.DontDestroyOnLoad(_root);
     }
 
     public void SetCanvas(GameObject go, bool sort = true)
@@ -84,7 +74,7 @@ public class UIManager
         }
         else
         {
-            go.transform.SetParent(Root.transform);
+            go.transform.SetParent(_root.transform);
         }
 
         go.transform.localScale = Vector3.one;

@@ -56,23 +56,23 @@ public class UI_DuelModePopup : UIPopup
             Managers.ResourceManager.Destroy(child.gameObject);
         }
 
-        int maxTeamCount = Managers.StageManager.CurrentGameMode.MaxTeamCount;
+        CreateBlueTeamProfile(parentObject);
+        CreateRedTeamProfile(parentObject);
+    }
+    private void CreateBlueTeamProfile(GameObject parentObject)
+    {
+        UI_ProfileItem blueTeamProfileItem = Managers.UIManager.MakeSubItem<UI_ProfileItem>(parentObject.transform);
 
-        for (int teamIndex = GetIndexWithTeamType(TeamType.Blue); teamIndex < maxTeamCount; ++teamIndex)
-        {
-            UI_ProfileItem profileItem = Managers.UIManager.MakeSubItem<UI_ProfileItem>(parentObject.transform);
+        blueTeamProfileItem.SetInfo(TeamType.Blue);
+        _profiles.Add(blueTeamProfileItem);
+    }
 
-            if (teamIndex == GetIndexWithTeamType(TeamType.Red))
-            {
-                RectTransform redTeamProfileItem = profileItem.gameObject.GetComponent<RectTransform>();
-                Utils.ReverseAxisY(redTeamProfileItem);
-            }
-
-            profileItem.SetInfo(teamIndex);
-            _profiles.Add(profileItem);
-        }
-
-        static int GetIndexWithTeamType(TeamType teamType) => (int)teamType - 1; // TeamType.None = 0 제외        
+    private void CreateRedTeamProfile(GameObject parentObject)
+    {
+        UI_ProfileItem redTeamProfileItem = Managers.UIManager.MakeSubItem<UI_ProfileItem>(parentObject.transform);
+        redTeamProfileItem.gameObject.GetComponent<RectTransform>().FlipY();
+        redTeamProfileItem.SetInfo(TeamType.Red);
+        _profiles.Add(redTeamProfileItem);
     }
 
     private void RefreshPopupUI()

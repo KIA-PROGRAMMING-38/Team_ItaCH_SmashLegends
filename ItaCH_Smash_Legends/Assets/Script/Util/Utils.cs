@@ -51,13 +51,6 @@ public class Utils
         return targetTransform.gameObject;
     }
 
-    public static void ReverseAxisY(RectTransform rectTransform) => rectTransform.Rotate(0, 180, 0);
-
-    private T StringToEnum<T>(string input)
-    {
-        return (T)Enum.Parse(typeof(T), input);
-    }
-
     // To Do : UI 개선 이후 사라질 불분명한 이름의 불필요한 method들
     public static float AbsFloat(float someFloat)
     {
