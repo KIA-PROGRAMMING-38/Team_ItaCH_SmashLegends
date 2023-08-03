@@ -43,6 +43,9 @@ public class UI_DuelModePopup : UIPopup
 
         GetObject((int)GameObjects.PlayerRespawnTimer).SetActive(false);
         RefreshPopupUI();
+
+        Managers.StageManager.OnTimeChange -= RefreshGameTimer;
+        Managers.StageManager.OnTimeChange += RefreshGameTimer;
     }
 
     private void PopulateProfile()
@@ -74,13 +77,13 @@ public class UI_DuelModePopup : UIPopup
 
     private void RefreshPopupUI()
     {
-        RefreshGameTimer();
+        RefreshGameTimer(Managers.StageManager.RemainGameTime);
         RefreshProfileItem();
     }
 
-    public void RefreshGameTimer()
+    private void RefreshGameTimer(int remainTime)
     {
-        GetText((int)Texts.GameTimerText).text = $"{Managers.StageManager.RemainGameTime / 60:D2}:{Managers.StageManager.RemainGameTime % 60:D2}";
+        GetText((int)Texts.GameTimerText).text = $"{remainTime / 60:D2}:{remainTime % 60:D2}";
     }
 
     public void RefreshPlayerRespawnTimer(float respawnTime)
