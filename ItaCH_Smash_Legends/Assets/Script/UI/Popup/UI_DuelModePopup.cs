@@ -30,14 +30,14 @@ public class UI_DuelModePopup : UIPopup
     private const float MAX_FILL_AMOUNT = 1f;
     private const float DEFAULT_FILL_AMOUNT = 0.1f;
 
-    private List<UI_Profile> _profiles = new List<UI_Profile>();
+    private List<UI_ProfileItem> _profiles = new List<UI_ProfileItem>();
 
     public override void Init()
     {
         BindText(typeof(Texts));
         BindImage(typeof(Images));
         BindObject(typeof(GameObjects));
-        Bind<UI_Profile>(typeof(UIProfiles));
+        Bind<UI_ProfileItem>(typeof(UIProfiles));
 
         PopulateProfile();
 
@@ -58,19 +58,24 @@ public class UI_DuelModePopup : UIPopup
 
         int maxTeamCount = Managers.StageManager.CurrentGameMode.MaxTeamCount;
 
-        for (int teamIndex = 0; teamIndex < maxTeamCount; ++teamIndex)
+        for (int team = 0; team < maxTeamCount; ++team)
         {
-            UI_Profile profileItem = Managers.UIManager.MakeSubItem<UI_Profile>(parentObject.transform);
-            profileItem.SetInfo(teamIndex);
-
-            _profiles.Add(profileItem);
+            CreateProfileItem(team, parentObject);
         }
+    }
+
+    public void CreateProfileItem(int team, GameObject parentObject)
+    {
+        UI_ProfileItem profileItem = Managers.UIManager.MakeSubItem<UI_ProfileItem>(parentObject.transform);
+
+        profileItem.SetInfo(team);
+        _profiles.Add(profileItem);
     }
 
     private void RefreshPopupUI()
     {
         RefreshGameTimer();
-        RefreshProfile();
+        RefreshProfileItem();
     }
 
     public void RefreshGameTimer()
@@ -106,11 +111,11 @@ public class UI_DuelModePopup : UIPopup
         }
     }
 
-    public void RefreshProfile()
+    public void RefreshProfileItem()
     {
-        foreach (UI_Profile profileItem in _profiles)
+        foreach (UI_ProfileItem profileItem in _profiles)
         {
-            profileItem.RefreshUpdatedInGameItems();
+            profileItem.RefreshUI();
         }
     }
 }

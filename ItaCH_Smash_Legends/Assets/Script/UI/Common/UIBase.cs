@@ -14,7 +14,7 @@ public abstract class UIBase : MonoBehaviour
 
     }
 
-    private void Start() => Init();
+    private void Awake() => Init();
 
     protected void Bind<T>(Type type) where T : Object
     {

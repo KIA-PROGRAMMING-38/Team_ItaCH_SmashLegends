@@ -75,6 +75,11 @@ public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 �
         static bool IsNewTeamNeeded(List<Team> teams, int max) => teams.Count == 0 || teams[^1].Members.Count == max;
     }
 
+    public void SetModeUI() // TO DO : 추상클래스에서는 가상함수로 정의하고 각 모드가 재정의하는 구조
+    {
+        Managers.UIManager.ShowPopupUI<UI_DuelModePopup>().Init();
+    }
+
     public void IsOver()
     {
         switch (_currentGameModeType)

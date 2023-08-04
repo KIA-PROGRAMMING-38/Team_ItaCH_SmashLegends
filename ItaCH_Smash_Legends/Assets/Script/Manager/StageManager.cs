@@ -78,7 +78,11 @@ public class StageManager : MonoBehaviourPunCallbacks
     {
         _isTimeOver = false;
         _isGameOver = false;
+
         InstantiateMap(currentGameMode.Map);
+
+        Managers.UIManager.ShowPopupUI<UI_DuelModePopup>();
+
         foreach (Team team in currentGameMode.Teams)
         {
             foreach (UserData member in team.Members)
@@ -86,7 +90,7 @@ public class StageManager : MonoBehaviourPunCallbacks
                 CreateLegend(member, _spawnPoints[member.ID + 1]); // SpawnPoints[0] == root Object
             }
         }
-        Managers.UIManager.ShowPopupUI<UI_DuelModePopup>();
+
         StartGame();
     }
 
@@ -108,41 +112,6 @@ public class StageManager : MonoBehaviourPunCallbacks
         legendObject.layer =
             (user.TeamType == TeamType.Blue) ?
             LayerMask.NameToLayer(StringLiteral.TEAM_BLUE) : LayerMask.NameToLayer(StringLiteral.TEAM_RED);
-    }
-
-    public void SetModeUI(GameModeType gameModeType) // TO DO : UI에서 하도록 수정 필요
-    {
-        _modeUIPrefab = new GameObject[Enum.GetValues(typeof(GameModeType)).Length];
-        StringBuilder stringBuilder = new StringBuilder();
-        string ModeUIFolderPath = "UI/ModeUI/ModeUI_";
-        for (int i = 0; i < _modeUIPrefab.Length; ++i)
-        {
-            stringBuilder.Clear();
-            stringBuilder.Append(ModeUIFolderPath);
-            stringBuilder.Append($"{i:00}");
-            _modeUIPrefab[i] = Resources.Load<GameObject>(stringBuilder.ToString());
-        }
-
-        switch (gameModeType)
-        {
-            case GameModeType.None:
-                Debug.Log("Failed to Find ModeUI" + $"{gameModeType}");
-                break;
-            case GameModeType.Duel:
-                _legendUI = new List<GameObject>();
-                for (int i = 0; i < _currentGameMode.MaxPlayer; ++i)
-                {
-                    //SetLegendUI(_playerCharacterInstances[i]); // TO DO : 레전드 UI 리팩토링
-                }
-                _modeUI = Instantiate(_modeUIPrefab[(int)GameModeType.Duel]);
-                _modeUI.GetComponent<ModeUI>().InitModeUISettings(this);
-                //추후 스테이지에 존재하는 레전드를 하나로 관리하는 배열 생성하여 foreach로 생성.
-                break;
-            case GameModeType.TeamMatch:
-                // 듀얼과 유사한 로직으로 구현
-                Debug.Log("Failed to Find ModeUI" + $"{gameModeType}");
-                break;
-        }
     }
     public void SetLegendUI(LegendController player) // TO DO : UI가 직접 하도록 수정 필요
     {
