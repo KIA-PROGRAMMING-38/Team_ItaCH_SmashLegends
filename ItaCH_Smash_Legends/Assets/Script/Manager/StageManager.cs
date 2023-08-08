@@ -28,13 +28,13 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     public int RemainGameTime
     {
-        get => Mathf.Max(_remainGameTime, 0);
+        get => (int)Mathf.Max(_remainGameTime, 0);
         set
         {
-            _remainGameTime = value;            
+            _remainGameTime = value;
         }
     }
-    private int _remainGameTime;
+    private float _remainGameTime;
     public bool IsTimeOver { get => _isTimeOver; }
     private bool _isTimeOver;
 
@@ -57,7 +57,7 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     public void Init()
     {
-        
+
     }
 
     public void ChangeGameMode(GameModeType selectedMode) // 게임 모드 선택 기능 구현 후 사용
@@ -137,10 +137,10 @@ public class StageManager : MonoBehaviourPunCallbacks
     {
         while (false == _isGameOver && RemainGameTime > 0)
         {
-            _remainGameTime -= 1;            
-            OnTimeChange?.Invoke(_remainGameTime);
-            
-            await UniTask.Delay(1000);
+            _remainGameTime -= Time.deltaTime;
+            OnTimeChange?.Invoke(RemainGameTime);
+
+            await UniTask.Yield();
         }
         _isTimeOver = true;
         _currentGameMode.IsOver();
