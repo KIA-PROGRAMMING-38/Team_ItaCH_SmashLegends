@@ -10,7 +10,6 @@ public class PlayerAttack : MonoBehaviour
     {
         //TODO : 스탯 연동 후 설정
         //dashPower = characterStatus.Stat.DashPower;
-        characterStatus = GetComponent<CharacterStatus>();
         attackRigidbody = GetComponent<Rigidbody>();
         legendController = GetComponent<LegendController>();
     }

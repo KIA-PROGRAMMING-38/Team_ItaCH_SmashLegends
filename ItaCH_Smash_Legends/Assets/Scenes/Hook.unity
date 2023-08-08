@@ -343,6 +343,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 960357708, guid: 0a820f92e71e03e42a7435b844051544, type: 3}
+      propertyPath: _parrot
+      value: 
+      objectReference: {fileID: 1900710347}
     - target: {fileID: 1881243157, guid: 0a820f92e71e03e42a7435b844051544, type: 3}
       propertyPath: _applyJumpAttackClip.Array.size
       value: 3
@@ -381,6 +385,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -64.05352
+      objectReference: {fileID: 0}
+    - target: {fileID: 377366707107301673, guid: 0a820f92e71e03e42a7435b844051544,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 768500941681423577, guid: 0a820f92e71e03e42a7435b844051544,
         type: 3}
@@ -1810,6 +1819,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 10}
   m_Center: {x: 0, y: -0.5, z: 0}
+--- !u!1 &1900710347 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 377366707107301673, guid: 0a820f92e71e03e42a7435b844051544,
+    type: 3}
+  m_PrefabInstance: {fileID: 298002233}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1957369250
 GameObject:
   m_ObjectHideFlags: 0
