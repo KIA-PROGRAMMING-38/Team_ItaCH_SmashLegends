@@ -22,6 +22,8 @@ public static class StringLiteral
     public const string PREFAB_FOLDER = "Prefab";
     public const string SUFFIX_INGAME = "_Ingame";
     public const string MAP_PREFAB_PATH = "Map/SingleLogBridge";
+    public const string UI_FOLDER = "UI";
+    public const string UI_SPRITE_FOLDER = "UI/Sprite";
     #endregion
 
     #region LegendController 

@@ -26,17 +26,15 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     private Transform[] _spawnPoints;
 
-    public float GameTime
+    public int RemainGameTime
     {
-        get => Mathf.FloorToInt(_gameTime);
+        get => (int)Mathf.Max(_remainGameTime, 0);
         set
         {
-            _gameTime = value;
-            OnTimeChange?.Invoke(RemainGameTime);
+            _remainGameTime = value;
         }
     }
-    private float _gameTime;
-    public int RemainGameTime => Mathf.Max(_currentGameMode.MaxGameTime - (int)GameTime, 0);
+    private float _remainGameTime;
     public bool IsTimeOver { get => _isTimeOver; }
     private bool _isTimeOver;
 
@@ -78,7 +76,11 @@ public class StageManager : MonoBehaviourPunCallbacks
     {
         _isTimeOver = false;
         _isGameOver = false;
+
         InstantiateMap(currentGameMode.Map);
+
+        Managers.UIManager.ShowPopupUI<UI_DuelModePopup>();
+
         foreach (Team team in currentGameMode.Teams)
         {
             foreach (UserData member in team.Members)
@@ -86,7 +88,7 @@ public class StageManager : MonoBehaviourPunCallbacks
                 CreateLegend(member, _spawnPoints[member.ID + 1]); // SpawnPoints[0] == root Object
             }
         }
-        Managers.UIManager.ShowPopupUI<UI_DuelModePopup>();
+
         StartGame();
     }
 
@@ -109,41 +111,6 @@ public class StageManager : MonoBehaviourPunCallbacks
             (user.TeamType == TeamType.Blue) ?
             LayerMask.NameToLayer(StringLiteral.TEAM_BLUE) : LayerMask.NameToLayer(StringLiteral.TEAM_RED);
     }
-
-    public void SetModeUI(GameModeType gameModeType) // TO DO : UI에서 하도록 수정 필요
-    {
-        _modeUIPrefab = new GameObject[Enum.GetValues(typeof(GameModeType)).Length];
-        StringBuilder stringBuilder = new StringBuilder();
-        string ModeUIFolderPath = "UI/ModeUI/ModeUI_";
-        for (int i = 0; i < _modeUIPrefab.Length; ++i)
-        {
-            stringBuilder.Clear();
-            stringBuilder.Append(ModeUIFolderPath);
-            stringBuilder.Append($"{i:00}");
-            _modeUIPrefab[i] = Resources.Load<GameObject>(stringBuilder.ToString());
-        }
-
-        switch (gameModeType)
-        {
-            case GameModeType.None:
-                Debug.Log("Failed to Find ModeUI" + $"{gameModeType}");
-                break;
-            case GameModeType.Duel:
-                _legendUI = new List<GameObject>();
-                for (int i = 0; i < _currentGameMode.MaxPlayer; ++i)
-                {
-                    //SetLegendUI(_playerCharacterInstances[i]); // TO DO : 레전드 UI 리팩토링
-                }
-                _modeUI = Instantiate(_modeUIPrefab[(int)GameModeType.Duel]);
-                _modeUI.GetComponent<ModeUI>().InitModeUISettings(this);
-                //추후 스테이지에 존재하는 레전드를 하나로 관리하는 배열 생성하여 foreach로 생성.
-                break;
-            case GameModeType.TeamMatch:
-                // 듀얼과 유사한 로직으로 구현
-                Debug.Log("Failed to Find ModeUI" + $"{gameModeType}");
-                break;
-        }
-    }
     public void SetLegendUI(LegendController player) // TO DO : UI가 직접 하도록 수정 필요
     {
         _legendUIPrefab = Resources.Load<GameObject>("UI/LegendUI");
@@ -154,6 +121,7 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     public void StartGame()
     {
+        _remainGameTime = _currentGameMode.MaxGameTime;
         // TO DO : 
         // 1) 게임모드 : 모드 UI 연출 + 모드 소개 패널 연출 >> 차오르는 연출 1
         // 2) 이때 부터 모드 0부터 남은 시간까지 타이머 역순으로 올라감
@@ -161,16 +129,18 @@ public class StageManager : MonoBehaviourPunCallbacks
         // 4) 모드 UI 초상화 연출
         // 5) 팔로우캠 타겟 맵 전체 >> 자신의 캐릭터
         // 6) Smash!! 패널 연출 >> 체력 차오르는 연출 >> 게임 돌입        
-        UpdateGameTimeAsync();
+        UpdateRemainGameTimeAsync().Forget();
         // 전부 캐릭터 생성 이후 대기 애니메이션 재생 동안 실행
     }
 
-    private async UniTask UpdateGameTimeAsync()
+    private async UniTask UpdateRemainGameTimeAsync()
     {
-        while (false == _isGameOver && GameTime < _currentGameMode.MaxGameTime)
+        while (false == _isGameOver && RemainGameTime > 0)
         {
-            GameTime += Time.deltaTime;
-            await UniTask.DelayFrame(1);
+            _remainGameTime -= Time.deltaTime;
+            OnTimeChange?.Invoke(RemainGameTime);
+
+            await UniTask.Yield();
         }
         _isTimeOver = true;
         _currentGameMode.IsOver();

@@ -21,31 +21,36 @@ public class UI_Portrait : UIBase
         RespawnTime
     }
 
+    UserData _userData;
+
     public override void Init()
     {
         BindText(typeof(Texts));
         BindImage(typeof(Images));
         BindObject(typeof(GameObjects));
 
-        RefreshUI();
-
         GetObject((int)GameObjects.RespawnTime).gameObject.SetActive(false);
     }
 
-    private void RefreshUI()
+    public void SetInfo(UserData userData)
     {
-        RefreshUserName();
-        RefreshLegendFaceImage();
+        _userData = userData;
+        SetLegendFaceImage();
+        SetUserName();
+        if (userData.TeamType == TeamType.Red)
+        {
+            GetText((int)Texts.UserNameText).GetComponent<RectTransform>().FlipY();
+        }
     }
 
-    private void RefreshUserName()
+    private void SetUserName()
     {
-        // To Do : Bind With UserData
+        GetText((int)Texts.UserNameText).text = _userData.Name;        
     }
 
-    private void RefreshLegendFaceImage()
+    private void SetLegendFaceImage()
     {
-        // To Do : Bind With UserData
+        GetImage((int)Images.LegendFaceImage).sprite = Managers.ResourceManager.GetLegendFaceImage(_userData.SelectedLegend);
     }
 
     private void RefreshRespawnTimer()

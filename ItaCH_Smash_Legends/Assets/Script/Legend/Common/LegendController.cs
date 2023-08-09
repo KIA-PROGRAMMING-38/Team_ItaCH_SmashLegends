@@ -249,7 +249,6 @@ public class LegendController : MonoBehaviour
             _legendAnimationController.SetBool(AnimationHash.Run, false);
         }
     }
-  
     private void LookForwardOnAttack()
     {
         if (_moveDirection != _vectorZero)

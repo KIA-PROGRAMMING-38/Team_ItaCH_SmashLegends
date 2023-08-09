@@ -9,9 +9,9 @@ public class PlayerAttack : MonoBehaviour
     private void Awake()
     {
         //TODO : 스탯 연동 후 설정
-        //dashPower = characterStatus.Stat.DashPower;
         attackRigidbody = GetComponent<Rigidbody>();
         legendController = GetComponent<LegendController>();
+        //dashPower = characterStatus.Stat.DashPower;
     }
     private void DashOnAnimationEvent()
     {
