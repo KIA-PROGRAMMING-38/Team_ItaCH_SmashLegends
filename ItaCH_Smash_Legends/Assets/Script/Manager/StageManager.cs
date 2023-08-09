@@ -26,17 +26,15 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     private Transform[] _spawnPoints;
 
-    public float GameTime
+    public int RemainGameTime
     {
-        get => Mathf.FloorToInt(_gameTime);
+        get => (int)Mathf.Max(_remainGameTime, 0);
         set
         {
-            _gameTime = value;
-            OnTimeChange?.Invoke(RemainGameTime);
+            _remainGameTime = value;
         }
     }
-    private float _gameTime;
-    public int RemainGameTime => Mathf.Max(_currentGameMode.MaxGameTime - (int)GameTime, 0);
+    private float _remainGameTime;
     public bool IsTimeOver { get => _isTimeOver; }
     private bool _isTimeOver;
 
@@ -123,6 +121,7 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     public void StartGame()
     {
+        _remainGameTime = _currentGameMode.MaxGameTime;
         // TO DO : 
         // 1) 게임모드 : 모드 UI 연출 + 모드 소개 패널 연출 >> 차오르는 연출 1
         // 2) 이때 부터 모드 0부터 남은 시간까지 타이머 역순으로 올라감
@@ -130,16 +129,18 @@ public class StageManager : MonoBehaviourPunCallbacks
         // 4) 모드 UI 초상화 연출
         // 5) 팔로우캠 타겟 맵 전체 >> 자신의 캐릭터
         // 6) Smash!! 패널 연출 >> 체력 차오르는 연출 >> 게임 돌입        
-        UpdateGameTimeAsync();
+        UpdateRemainGameTimeAsync().Forget();
         // 전부 캐릭터 생성 이후 대기 애니메이션 재생 동안 실행
     }
 
-    private async UniTask UpdateGameTimeAsync()
+    private async UniTask UpdateRemainGameTimeAsync()
     {
-        while (false == _isGameOver && GameTime < _currentGameMode.MaxGameTime)
+        while (false == _isGameOver && RemainGameTime > 0)
         {
-            GameTime += Time.deltaTime;
-            await UniTask.DelayFrame(1);
+            _remainGameTime -= Time.deltaTime;
+            OnTimeChange?.Invoke(RemainGameTime);
+
+            await UniTask.Yield();
         }
         _isTimeOver = true;
         _currentGameMode.IsOver();
