@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 497190101}
   m_Layer: 0
   m_Name: Hook_Heavy_Bullet
-  m_TagString: Untagged
+  m_TagString: DefaultHit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,9 +44,10 @@ GameObject:
   - component: {fileID: 842686692}
   - component: {fileID: 842686695}
   - component: {fileID: 674400356564095307}
+  - component: {fileID: 1709027921}
   m_Layer: 0
-  m_Name: Collider
-  m_TagString: Untagged
+  m_Name: HitZone
+  m_TagString: HeavyHit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,6 +93,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4df2fa626d562b4f9087705abfec748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1709027921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842686693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7479d926b27110c46802fd63e2a050b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &859178661
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,10 +148,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1996506989}
   - component: {fileID: 1996506990}
-  - component: {fileID: 449649340}
+  - component: {fileID: 503506915}
   m_Layer: 0
-  m_Name: Collider
-  m_TagString: Untagged
+  m_Name: HitZone
+  m_TagString: DefaultHit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,7 +185,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: -0.3}
---- !u!114 &449649340
+--- !u!114 &503506915
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,7 +194,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1996506988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 503b15bb9e7dd8548962aebacf198113, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a8371a199bfc6645a3018d3f80ee640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2055637759
@@ -195,7 +208,7 @@ GameObject:
   - component: {fileID: 2055637760}
   m_Layer: 0
   m_Name: Hook_Heavy_Last_Bullet
-  m_TagString: Untagged
+  m_TagString: HeavyHit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -229,8 +242,8 @@ GameObject:
   - component: {fileID: 2114916606}
   - component: {fileID: 5280928663385635344}
   m_Layer: 0
-  m_Name: Collider
-  m_TagString: Untagged
+  m_Name: HitZone
+  m_TagString: HeavyHit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12808,7 +12821,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1815235159950321246
 Transform:
   m_ObjectHideFlags: 0
@@ -22999,7 +23012,7 @@ GameObject:
   - component: {fileID: 9202483799150081553}
   - component: {fileID: 1052080083}
   m_Layer: 0
-  m_Name: Collider
+  m_Name: HitZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25530,10 +25543,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4709690392218661335}
   - component: {fileID: 202814921337664619}
-  - component: {fileID: 969760700002819463}
+  - component: {fileID: 1605380711}
   m_Layer: 0
-  m_Name: Collider
-  m_TagString: Untagged
+  m_Name: HitZone
+  m_TagString: DefaultHit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25567,7 +25580,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &969760700002819463
+--- !u!114 &1605380711
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -25576,7 +25589,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3745852015013786307}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 503b15bb9e7dd8548962aebacf198113, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a8371a199bfc6645a3018d3f80ee640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3879478927233714694
@@ -28151,7 +28164,7 @@ GameObject:
   - component: {fileID: 5519850115519438530}
   m_Layer: 0
   m_Name: Hook_Dafault_Bullet
-  m_TagString: Untagged
+  m_TagString: DefaultHit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43310,6 +43323,7 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 86c22de3eec98bf45b581c44a04991e8, type: 2}
   _applyJumpAttackClip:
   - {fileID: 7400000, guid: 91c2d0ffe22f22a47a5ccac28b1dcaf7, type: 2}
+  - {fileID: 7400000, guid: 55b0bc69bf5ab0648aff71fac164a20b, type: 2}
   - {fileID: 7400000, guid: 746a9c70c98659c449c8775a2bd51986, type: 2}
 --- !u!114 &6081881771450060190
 MonoBehaviour:
@@ -43360,7 +43374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cda78d748613fc4dbc2a2d66603488a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Parrot: {fileID: 377366707107301673}
+  _parrot: {fileID: 377366707107301673}
 --- !u!1 &6469862050080975118
 GameObject:
   m_ObjectHideFlags: 0
@@ -43467,7 +43481,7 @@ GameObject:
   - component: {fileID: 5452333923199898458}
   - component: {fileID: 24649989}
   m_Layer: 0
-  m_Name: Collider
+  m_Name: HitZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82242,7 +82256,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9085211708436526378
 Transform:
   m_ObjectHideFlags: 0
@@ -89305,7 +89319,7 @@ GameObject:
   - component: {fileID: 1629445725069444990}
   m_Layer: 0
   m_Name: Hook_Attack_Bullet
-  m_TagString: Untagged
+  m_TagString: DefaultHit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

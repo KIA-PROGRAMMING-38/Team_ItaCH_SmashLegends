@@ -4,13 +4,14 @@ public class HitZone : MonoBehaviour
 {
     protected LegendController legendController;
 
-    protected int damageAmount;
     protected float knockbackPower;
     protected Vector3 knockbackDirection;
-    protected int animationType;
+    public int damageAmount { get; protected set; }
+    public int animationType { get; protected set; }
 
     public void SetKnockback(Rigidbody rigidbody)
     {
+        rigidbody.velocity = Vector3.zero;
         Vector3 direction = knockbackDirection;
         rigidbody.AddForce(direction * knockbackPower , ForceMode.Impulse);
     }
