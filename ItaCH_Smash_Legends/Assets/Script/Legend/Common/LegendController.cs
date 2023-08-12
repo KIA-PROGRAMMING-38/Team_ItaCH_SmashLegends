@@ -420,7 +420,13 @@ public class LegendController : MonoBehaviour
         //    _currentHealthPoint = Mathf.Max(damagedHealthPoint, DEAD_TRIGGER_HP);
         //    OnPlayerHealthPointChange.Invoke(_currentHealthPoint, CurrentHPRatio);
         //    OnPlayerGetDamage?.Invoke(damage);
-        //    if (_currentHealthPoint <= DEAD_TRIGGER_HP && !this._isDead)        
+        //    if (_currentHealthPoint <= DEAD_TRIGGER_HP && !this._isDead)
+        //
+        //    TODO : 다음과 같은 형태로 진행
+        //    Stat.HP - damage;
+        //    if _currentHP == 0 
+        //    Set false; 
+        //
     }
 
     // TO DO : Die() 구현
