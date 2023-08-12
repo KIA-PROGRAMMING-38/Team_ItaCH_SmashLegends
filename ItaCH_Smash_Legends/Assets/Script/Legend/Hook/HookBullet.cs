@@ -49,7 +49,10 @@ public class HookBullet : MonoBehaviour
     }
     public void BulletPostProcessing(Vector3 position)
     {
-        Pool.Release(this);
+        if (gameObject.activeSelf == true)
+        {
+            Pool.Release(this);
+        }
         BulletDeleteEffect effect = _bulletDeleteEffectPool.Get();
         effect.transform.position = position;
         _elapsedTime = 0;
