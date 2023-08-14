@@ -43,7 +43,6 @@ GameObject:
   m_Component:
   - component: {fileID: 842686692}
   - component: {fileID: 842686695}
-  - component: {fileID: 674400356564095307}
   - component: {fileID: 1709027921}
   m_Layer: 0
   m_Name: HitZone
@@ -81,18 +80,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &674400356564095307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 842686693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4df2fa626d562b4f9087705abfec748, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1709027921
 MonoBehaviour:
   m_ObjectHideFlags: 0

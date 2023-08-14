@@ -1,16 +1,12 @@
-using UnityEngine;
-
 public class PeterSkillHitZone : HitZone
 {
-    void Start()
+    private void Start()
     {
-        // TODO : 스탯 연동후 재설정 
-        damageAmount = 100;
-        knockbackPower = 0.5f;
+        damageAmount = (int)(legendController.Stat.SkillAttackDamage * 0.1f);
+        knockbackPower = legendController.Stat.DefaultKnockbackPower;
         animationType = AnimationHash.Hit;
         gameObject.SetActive(false);
     }
-
     private void OnEnable()
     {
         knockbackDirection = transform.forward;

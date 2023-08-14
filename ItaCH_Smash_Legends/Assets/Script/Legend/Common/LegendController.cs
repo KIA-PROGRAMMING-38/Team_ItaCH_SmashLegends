@@ -341,6 +341,11 @@ public class LegendController : MonoBehaviour
 
     public void SetKnockbackOnAttack(Collider other, int animationHash, KnockbackType type)
     {
+        if(_facingDirection.y != 0)
+        {
+            _facingDirection.y = 0;
+        }
+
         transform.forward = _facingDirection;
         HitZone otherHit = other.GetComponent<HitZone>();
 

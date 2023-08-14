@@ -1,10 +1,9 @@
 public class AliceSkillHitZone : HitZone
 {
-    void Start()
+    private void Start()
     {
-        // TODO : 스탯 연동후 재설정 
-        damageAmount = 1000;
-        knockbackPower = 1.5f;
+        damageAmount = legendController.Stat.SkillAttackDamage;
+        knockbackPower = legendController.Stat.HeavyKnockbackPower * 2;
         knockbackDirection = transform.up;
         animationType = AnimationHash.HitUp;
         gameObject.SetActive(false);

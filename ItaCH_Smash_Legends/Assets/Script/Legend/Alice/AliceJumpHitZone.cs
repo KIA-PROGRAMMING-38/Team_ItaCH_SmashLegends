@@ -1,10 +1,9 @@
 public class AliceJumpHitZone : HitZone
 {
-    void Start()
+    private void Start()
     {
-        // TODO : 스탯 연동후 재설정 
-        damageAmount = 100;
-        knockbackPower = 0.8f;
+        damageAmount = legendController.Stat.JumpAttackDamage;
+        knockbackPower = legendController.Stat.HeavyKnockbackPower;
         animationType = AnimationHash.HitUp;
         gameObject.SetActive(false);
     }

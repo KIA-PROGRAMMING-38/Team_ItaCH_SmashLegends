@@ -21,7 +21,7 @@ public class HookHitZone : HitZone
     {
         if (other.CompareTag("Player") && other.gameObject.layer != _hookBullet.constructor.layer)
         {
-            knockbackDirection = knockbackUpDirection + _hookBullet.transform.forward;
+            knockbackDirection = knockbackUpDirection + _hookBullet.constructor.transform.forward;
             _hookBullet.BulletPostProcessing(GetBulletDeleteEffectPosition(other));
         }
     }

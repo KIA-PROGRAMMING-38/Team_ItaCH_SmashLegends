@@ -60231,7 +60231,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.26666668
-    functionName: EnableHeavyAttackHitZone
+    functionName: EnableFinishAttackHitZone
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -60252,7 +60252,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.33333334
-    functionName: DisableHeavyAttackHitZone
+    functionName: DisableFinishAttackHitZone
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

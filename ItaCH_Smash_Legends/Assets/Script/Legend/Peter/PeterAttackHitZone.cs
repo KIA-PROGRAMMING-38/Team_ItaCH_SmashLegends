@@ -1,10 +1,10 @@
 public class PeterAttackHitZone : HitZone
 {
-    void Start()
+    private void Start()
     {
         // TODO : 스탯 연동후 재설정 
-        damageAmount = 100;
-        knockbackPower = 0.6f;
+        damageAmount = (int)(legendController.Stat.DefaultAttackDamage * 0.3f);
+        knockbackPower = legendController.Stat.DefaultKnockbackPower;
         animationType = AnimationHash.Hit;
         gameObject.SetActive(false);
     }

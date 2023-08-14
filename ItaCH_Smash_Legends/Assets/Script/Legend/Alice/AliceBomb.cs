@@ -31,9 +31,8 @@ public class AliceBomb : HitZone
 
     private void Start()
     {
-        // TODO : 스탯 연동후 재설정 
-        damageAmount = 100;
-        knockbackPower = 1f;
+        damageAmount = legendController.Stat.HeavyAttackDamage;
+        knockbackPower = legendController.Stat.HeavyKnockbackPower;
         knockbackDirection = _currentTransform.up;
         animationType = AnimationHash.Hit;
     }

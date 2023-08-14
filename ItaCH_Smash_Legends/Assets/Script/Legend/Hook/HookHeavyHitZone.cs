@@ -3,9 +3,8 @@ public class HookHeavyHitZone : HookHitZone
     private void Start()
     {
         base.Start();
-        // TODO : 스탯 연동후 재설정 
-        damageAmount = 200;
-        knockbackPower = 0.7f;
+        damageAmount = (int)(legendController.Stat.HeavyAttackDamage * 0.6f);
+        knockbackPower = legendController.Stat.HeavyKnockbackPower;
         animationType = AnimationHash.HitUp;
         knockbackUpDirection = heavyKnockbackUpDirection;
     }
