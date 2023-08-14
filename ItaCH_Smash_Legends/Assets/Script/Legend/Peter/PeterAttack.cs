@@ -10,9 +10,15 @@ public class PeterAttack : PlayerAttack
     [SerializeField] private GameObject _attackHitZone;
     [SerializeField] private GameObject _heavyAttackHitZone;
     [SerializeField] private GameObject _jumpAttackHitZone;
+    [SerializeField] private GameObject _finishDefaultAttackHitZone;
 
     private CancellationTokenSource _cancelSource;
+    private float _correctionPower = 0.8f;
 
+    private void Start()
+    {
+        dashPower = legendController.Stat.DashPower * _correctionPower;
+    }
     private void StopSkillAttackOnAnimationEvent()
     {
         _cancelSource.Cancel();
@@ -35,6 +41,8 @@ public class PeterAttack : PlayerAttack
     }
     private void EnableAttackHitZone() => _attackHitZone.SetActive(true);
     private void DisableAttackHitZone() => _attackHitZone.SetActive(false);
+    private void EnableFinishAttackHitZone() => _finishDefaultAttackHitZone.SetActive(true);
+    private void DisableFinishAttackHitZone() => _finishDefaultAttackHitZone.SetActive(false);
     private void EnableJumpAttackHitZone() => _jumpAttackHitZone.SetActive(true);
     private void DisableJumpAttackHitZone() => _jumpAttackHitZone.SetActive(false);
     private void EnableHeavyAttackHitZone() => _heavyAttackHitZone.SetActive(true);
