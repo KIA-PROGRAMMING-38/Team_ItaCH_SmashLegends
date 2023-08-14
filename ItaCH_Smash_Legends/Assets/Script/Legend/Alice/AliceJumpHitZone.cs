@@ -2,9 +2,9 @@ public class AliceJumpHitZone : HitZone
 {
     private void Start()
     {
-        damageAmount = legendController.Stat.JumpAttackDamage;
+        DamageAmount = legendController.Stat.JumpAttackDamage;
         knockbackPower = legendController.Stat.HeavyKnockbackPower;
-        animationType = AnimationHash.HitUp;
+        AnimationType = AnimationHash.HitUp;
         gameObject.SetActive(false);
     }
 

@@ -6,8 +6,8 @@ public class HitZone : MonoBehaviour
 
     protected float knockbackPower;
     protected Vector3 knockbackDirection;
-    public int damageAmount { get; protected set; }
-    public int animationType { get; protected set; }
+    public int DamageAmount { get; protected set; }
+    public int AnimationType { get; protected set; }
 
     public void SetKnockback(Rigidbody rigidbody)
     {
@@ -22,11 +22,11 @@ public class HitZone : MonoBehaviour
     // TODO : 스탯 연동 후 GetDamage() => legendController.Stat.HP -= damageAmount;
     public int GetDamage()
     {
-        return damageAmount;
+        return DamageAmount;
     }
 
     public int GetAnimationKind()
     {
-        return animationType;
+        return AnimationType;
     }
 }

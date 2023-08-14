@@ -3,9 +3,9 @@ public class HookHeavyHitZone : HookHitZone
     private void Start()
     {
         base.Start();
-        damageAmount = (int)(legendController.Stat.HeavyAttackDamage * 0.6f);
+        DamageAmount = (int)(legendController.Stat.HeavyAttackDamage * 0.6f);
         knockbackPower = legendController.Stat.HeavyKnockbackPower;
-        animationType = AnimationHash.HitUp;
+        AnimationType = AnimationHash.HitUp;
         knockbackUpDirection = heavyKnockbackUpDirection;
     }
 }

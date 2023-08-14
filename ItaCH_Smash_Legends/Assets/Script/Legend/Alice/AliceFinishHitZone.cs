@@ -2,9 +2,9 @@ public class AliceFinishHitZone : HitZone
 {
     private void Start()
     {
-        damageAmount = (int)(legendController.Stat.DefaultAttackDamage * 0.6f);
+        DamageAmount = (int)(legendController.Stat.DefaultAttackDamage * 0.6f);
         knockbackPower = legendController.Stat.HeavyKnockbackPower;
-        animationType = AnimationHash.HitUp;
+        AnimationType = AnimationHash.HitUp;
         gameObject.SetActive(false);
     }
 

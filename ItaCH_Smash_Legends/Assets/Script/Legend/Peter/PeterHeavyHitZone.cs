@@ -2,9 +2,9 @@ public class PeterHeavyHitZone : HitZone
 {
     private void Start()
     {
-        damageAmount = legendController.Stat.HeavyAttackDamage;
+        DamageAmount = legendController.Stat.HeavyAttackDamage;
         knockbackPower = legendController.Stat.HeavyKnockbackPower;
-        animationType = AnimationHash.HitUp;
+        AnimationType = AnimationHash.HitUp;
         gameObject.SetActive(false);
     }
     private void OnEnable()

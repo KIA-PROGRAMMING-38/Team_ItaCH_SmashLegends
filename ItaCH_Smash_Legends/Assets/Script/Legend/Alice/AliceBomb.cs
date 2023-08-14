@@ -31,10 +31,10 @@ public class AliceBomb : HitZone
 
     private void Start()
     {
-        damageAmount = legendController.Stat.HeavyAttackDamage;
+        DamageAmount = legendController.Stat.HeavyAttackDamage;
         knockbackPower = legendController.Stat.HeavyKnockbackPower;
         knockbackDirection = _currentTransform.up;
-        animationType = AnimationHash.Hit;
+        AnimationType = AnimationHash.Hit;
     }
 
     private void OnEnable()
