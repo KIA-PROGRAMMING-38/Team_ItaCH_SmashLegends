@@ -11,6 +11,8 @@ public class UI_ProfileItem : UIBase
 
     private UserData _userData;
     private UI_Portrait _portrait;
+    private UI_HpBar _hpBar;
+    private UI_ScoreSet _scoreSet;
 
     public override void Init()
     {
@@ -23,6 +25,12 @@ public class UI_ProfileItem : UIBase
 
         _portrait = Utils.GetOrAddComponent<UI_Portrait>(GetObject((int)ProfileSubItemObjects.Portrait));
         _portrait.SetInfo(_userData);
+
+        _hpBar = Utils.GetOrAddComponent<UI_HpBar>(GetObject((int)ProfileSubItemObjects.HpBar));
+        _hpBar.SetInfo(_userData.TeamType);
+
+        _scoreSet = Utils.GetOrAddComponent<UI_ScoreSet>(GetObject((int)ProfileSubItemObjects.ScoreSet));
+        _scoreSet.SetInfo(_userData.TeamType, 0);
 
         if (_userData.TeamType == TeamType.Red)
         {

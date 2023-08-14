@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using System.Threading;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class UI_HpBar : UIBase
@@ -14,26 +15,28 @@ public class UI_HpBar : UIBase
     private const int DAMAGE_BUFFER_DELAY_TIME = 1000;
     private const float BUFFER_TIME = 0.5f;
 
-    private Image _damageBufferImage;
-    private Image _hpBarFillImage;
-
     private bool _isOnRefreshing;
     private CancellationTokenSource _cancellationTokenSource;
 
-    public void Init()
+    public override void Init()
     {
-        _damageBufferImage = GetImage((int)Images.DamageBuffer);
-        _hpBarFillImage = GetImage((int)Images.HpBarFill);
+        BindImage(typeof(Images));             
+            
         _isOnRefreshing = false;
-        
-        BindImage(typeof(Images));
+
         RefreshUI(MAX_FILL_AMOUNT);
+    }
+
+    public void SetInfo(TeamType teamType)
+    {        
+        GetImage((int)Images.DamageBuffer).color = Define.DAMAGE_BUFFER_COLORS[(int)teamType];
+        GetImage((int)Images.HpBarFill).color = Define.UI_PORTRAIT_COLORS[(int)teamType];
     }
 
     private void RefreshUI(float hpRatio)
     {
-        if (_isOnRefreshing) 
-        { 
+        if (_isOnRefreshing)
+        {
             _cancellationTokenSource?.Cancel();
         }
 
@@ -48,15 +51,16 @@ public class UI_HpBar : UIBase
     {
         if (hpRatio == MAX_FILL_AMOUNT)
         {
-            await Utils.ChangeFillAmountGradually(MAX_FILL_AMOUNT, BUFFER_TIME, _hpBarFillImage);
+            await GetImage((int)Images.HpBarFill).ChangeFillAmountGradually(MAX_FILL_AMOUNT, BUFFER_TIME);
         }
-        _hpBarFillImage.fillAmount = hpRatio;
+        GetImage((int)Images.HpBarFill).fillAmount = hpRatio;
     }
 
     private async UniTask RefreshDamageBufferTask(float hpRatio, CancellationToken cancellationToken)
-    {        
+    {
         await UniTask.Delay(DAMAGE_BUFFER_DELAY_TIME);
         cancellationToken.ThrowIfCancellationRequested();
-        await Utils.ChangeFillAmountGradually(hpRatio, BUFFER_TIME, _damageBufferImage);
+        await GetImage((int)Images.DamageBuffer).ChangeFillAmountGradually(hpRatio, BUFFER_TIME);
+        _isOnRefreshing = false;
     }
 }
