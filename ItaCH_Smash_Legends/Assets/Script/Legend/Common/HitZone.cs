@@ -13,7 +13,11 @@ public class HitZone : MonoBehaviour
     {
         rigidbody.velocity = Vector3.zero;
         Vector3 direction = knockbackDirection;
-        rigidbody.AddForce(direction * knockbackPower , ForceMode.Impulse);
+        rigidbody.AddForce(direction * knockbackPower, ForceMode.Impulse);
+    }
+    protected void Awake()
+    {
+        legendController = transform.GetComponentInParent<LegendController>();
     }
     // TODO : 스탯 연동 후 GetDamage() => legendController.Stat.HP -= damageAmount;
     public int GetDamage()

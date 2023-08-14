@@ -1,12 +1,9 @@
-using UnityEngine;
-
 public class AliceAttackHitZone : HitZone
 {
-    void Start()
+    private void Start()
     {
-        // TODO : 스탯 연동후 재설정 
-        damageAmount = 100;
-        knockbackPower = 0.3f;
+        damageAmount = (int)(legendController.Stat.DefaultAttackDamage * 0.4);
+        knockbackPower = legendController.Stat.DefaultKnockbackPower;
         animationType = AnimationHash.Hit;
         gameObject.SetActive(false);
     }

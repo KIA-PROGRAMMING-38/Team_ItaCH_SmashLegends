@@ -9,11 +9,15 @@ public class AliceAttack : PlayerAttack
     [SerializeField] private GameObject _jumpAttackHitZone;
 
     private Vector3 _skillAttackDirection;
-
+    private float _correctionPower = 0.8f;
+    private void Start()
+    {
+        dashPower = legendController.Stat.DashPower * _correctionPower;
+    }
     private void DashAtSkillAttackOnAnimationEvent()
     {
         _skillAttackDirection = transform.up + transform.forward;
-        attackRigidbody.AddForce(_skillAttackDirection * legendController.Stat.DashPower, ForceMode.Impulse);
+        attackRigidbody.AddForce(_skillAttackDirection * dashPower, ForceMode.Impulse);
     }
     private void HeavyAttackBomb() => _aliceBomb.SetActive(true);
     private void EnableAttackHitZone() => _attackHitZone.SetActive(true);
