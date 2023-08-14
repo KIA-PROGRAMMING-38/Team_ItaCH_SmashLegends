@@ -79,6 +79,11 @@ public class HookAttack : PlayerAttack
         new Vector3(0, 0, -1),
         new Vector3(0, 45, -1)
     };
+
+    private float _correctionDefaultPower = -0.4f;
+    private float _correctionHeavyPower = -0.65f;
+    private float _correctionJumpPower = -0.15f;
+
     private void Start()
     {
         _bulletSpawnPositionLeft = transform.GetChild(_rootIndex).GetChild(_boneIndex).GetChild(_leftWeaponIndex).GetChild(_cylinderIndex).transform;
@@ -96,11 +101,10 @@ public class HookAttack : PlayerAttack
 
         Vector3 calibratePosition = new Vector3(0, 0.05f, 0);
         _groundPosition = transform.position + calibratePosition;
-        
-        //TODO : 1f => 스탯 연동 후 설정 _defaultDashPower = legendController.Stat.DashPower * -0.4f;
-        _defaultDashPower = 1f * -0.4f;
-        _heavyDashPower = 1f * -0.65f;
-        _jumpDashPower = 1f * -0.15f;
+
+        _defaultDashPower = legendController.Stat.DashPower * _correctionDefaultPower;
+        _heavyDashPower = legendController.Stat.DashPower * _correctionHeavyPower;
+        _jumpDashPower = legendController.Stat.DashPower * _correctionJumpPower;
     }
 
     private void OnDisable()
