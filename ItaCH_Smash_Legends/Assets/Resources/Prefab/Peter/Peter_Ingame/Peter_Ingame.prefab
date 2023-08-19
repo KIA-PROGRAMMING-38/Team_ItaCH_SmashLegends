@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1744503169}
   m_Layer: 9
   m_Name: SkillAttackHitZone
-  m_TagString: DefaultHit
+  m_TagString: HitZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 1848451427}
   m_Layer: 9
   m_Name: HeavyAttackHitZone
-  m_TagString: HeavyHit
+  m_TagString: HitZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 274849690}
   m_Layer: 9
   m_Name: JumpAttackHitZone
-  m_TagString: HeavyHit
+  m_TagString: HitZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 1602973665}
   m_Layer: 9
   m_Name: AttackHitZone
-  m_TagString: DefaultHit
+  m_TagString: HitZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1144,7 +1144,7 @@ MonoBehaviour:
   _attackHitZone: {fileID: 1621425745}
   _heavyAttackHitZone: {fileID: 216591152}
   _jumpAttackHitZone: {fileID: 403150195}
-  _finishDefaultAttackHitZone: {fileID: 0}
+  _finishDefaultAttackHitZone: {fileID: 6803691737536111693}
 --- !u!1 &1839266365119039902
 GameObject:
   m_ObjectHideFlags: 0
@@ -2077,7 +2077,7 @@ GameObject:
   - component: {fileID: 703458183431578524}
   m_Layer: 9
   m_Name: FinishAttackHitZone
-  m_TagString: DefaultHit
+  m_TagString: HitZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
