@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 1709027921}
   m_Layer: 0
   m_Name: HitZone
-  m_TagString: HeavyHit
+  m_TagString: HitZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 503506915}
   m_Layer: 0
   m_Name: HitZone
-  m_TagString: DefaultHit
+  m_TagString: HitZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 5280928663385635344}
   m_Layer: 0
   m_Name: HitZone
-  m_TagString: HeavyHit
+  m_TagString: HitZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23000,7 +23000,7 @@ GameObject:
   - component: {fileID: 1052080083}
   m_Layer: 0
   m_Name: HitZone
-  m_TagString: Untagged
+  m_TagString: HitZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25533,7 +25533,7 @@ GameObject:
   - component: {fileID: 1605380711}
   m_Layer: 0
   m_Name: HitZone
-  m_TagString: DefaultHit
+  m_TagString: HitZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43469,7 +43469,7 @@ GameObject:
   - component: {fileID: 24649989}
   m_Layer: 0
   m_Name: HitZone
-  m_TagString: Untagged
+  m_TagString: HitZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1519340378}
   m_Layer: 9
   m_Name: AliceBomb
-  m_TagString: HeavyHit
+  m_TagString: HitZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 858983404}
   m_Layer: 9
   m_Name: SkillAttackHitZone
-  m_TagString: HeavyHit
+  m_TagString: HitZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 2081538039}
   m_Layer: 9
   m_Name: AttackHitZone
-  m_TagString: DefaultHit
+  m_TagString: HitZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 31957456}
   m_Layer: 9
   m_Name: FinsishAttackHitZone
-  m_TagString: HeavyHit
+  m_TagString: HitZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 205818240}
   m_Layer: 9
   m_Name: JumpAttackHitZone
-  m_TagString: HeavyHit
+  m_TagString: HitZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3002,7 +3002,7 @@ GameObject:
   - component: {fileID: 3799706915513188698}
   - component: {fileID: 9218375918672409372}
   - component: {fileID: 9218375918672409371}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Alice_Ingame
   m_TagString: Player
   m_Icon: {fileID: 0}

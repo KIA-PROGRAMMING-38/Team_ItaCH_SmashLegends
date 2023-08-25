@@ -195,19 +195,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Peter_Ingame (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 8332868175603886031, guid: 6b1442466a235874686d9585788f272f,
-        type: 3}
-      propertyPath: _finishDefaultAttackHitZone
-      value: 
-      objectReference: {fileID: 24755063}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b1442466a235874686d9585788f272f, type: 3}
---- !u!1 &24755063 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6803691737536111693, guid: 6b1442466a235874686d9585788f272f,
-    type: 3}
-  m_PrefabInstance: {fileID: 24755062}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &82508909
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,11 +397,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6081881771450060189, guid: 0a820f92e71e03e42a7435b844051544,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6387871113122111847, guid: 0a820f92e71e03e42a7435b844051544,
         type: 3}
@@ -894,16 +878,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Alice_Ingame
-      objectReference: {fileID: 0}
-    - target: {fileID: 8280973247567168790, guid: e3ee9b69ab5171641abfb8bf06a2db63,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8280973247567168790, guid: e3ee9b69ab5171641abfb8bf06a2db63,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8764072940790701996, guid: e3ee9b69ab5171641abfb8bf06a2db63,
         type: 3}

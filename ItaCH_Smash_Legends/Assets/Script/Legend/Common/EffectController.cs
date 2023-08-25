@@ -23,7 +23,6 @@ public abstract class EffectController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _legendController = GetComponent<LegendController>();
-        SetEventSubscription();
     }
     private void Start()
     {
@@ -57,6 +56,13 @@ public abstract class EffectController : MonoBehaviour
         _dieSmokeEffect.transform.position = transform.position;
         _dieSmokeEffect.Play();
     }
+    public void DisableDieSmokeEffect()
+    {
+        if(_dieSmokeEffect.gameObject.activeSelf)
+        {
+            _dieSmokeEffect.gameObject.SetActive(false);
+        }
+    }
     private void CreateDieSmokeEffect()
     {
         _dieSmokeEffect = Instantiate(_dieSmokeEffect, transform);
@@ -68,19 +74,12 @@ public abstract class EffectController : MonoBehaviour
         _dieEffect = Instantiate(_dieEffect, transform.position, Quaternion.identity);
         _dieEffect.gameObject.SetActive(false);
     }
-    private void SetDieEffect()
+    public void SetDieEffect()
     {
         _dieEffect.gameObject.SetActive(true);
         _dieEffect.transform.position = transform.position;
         _dieEffect.transform.forward = _rigidbody.velocity;
         _dieEffect.Play();
-    }
-    private void SetEventSubscription() // TO DO : CharacterStatus 이외의 곳에서 사망 판정 진행
-    {
-        // _characterStatus.OnPlayerDieEffect -= SetDieEffect;
-        // _characterStatus.OnPlayerDieEffect += SetDieEffect;
-        // _characterStatus.OnPlayerDieSmokeEffect -= SetDieSmokeEffect;
-        // _characterStatus.OnPlayerDieSmokeEffect += SetDieSmokeEffect;
     }
     private void InitMaterial()
     {

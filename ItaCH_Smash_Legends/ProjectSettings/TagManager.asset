@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - DefaultHit
   - HeavyHit
+  - HitZone
   layers:
   - Default
   - TransparentFX

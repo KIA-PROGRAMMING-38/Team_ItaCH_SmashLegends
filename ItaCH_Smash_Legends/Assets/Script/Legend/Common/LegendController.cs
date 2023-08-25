@@ -60,9 +60,19 @@ public class LegendController : MonoBehaviour
     private Vector3 _moveDirection;
     private Vector3 _facingDirection;
     private Vector3 _vectorZero = Vector3.zero;
+    private Vector3 _vectorUp = Vector3.up;
+
     private const float ROLLING_DASH_POWER = 1.2f;
     private bool _canAttack;
 
+    private void OnEnable()
+    {
+        _effectController.DisableDieSmokeEffect();
+    }
+    private void OnDisable()
+    {
+        _effectController.SetDieEffect();
+    }
     public void Init(UserData user)
     {
         GetComponents();
@@ -172,14 +182,7 @@ public class LegendController : MonoBehaviour
             transform.position = GetHangPosition(other.transform.position);
             _legendAnimationController.Play(AnimationHash.Hang);
         }
-
-        if (other.CompareTag(StringLiteral.DEFAULT_HIT))
-        {
-            _facingDirection = -1 * other.transform.forward;
-            SetKnockbackOnAttack(other, AnimationHash.Hit, KnockbackType.Default);
-        }
-
-        if (other.CompareTag(StringLiteral.HEAVY_HIT))
+        if (other.CompareTag(StringLiteral.HIT_ZONE))
         {
             if (other.name == StringLiteral.ALICE_BOMB)
             {
@@ -188,23 +191,18 @@ public class LegendController : MonoBehaviour
             }
             else
             {
-                _facingDirection = -1 * other.transform.forward.normalized;
+                _facingDirection = -1 * other.transform.forward;
             }
 
-            SetKnockbackOnAttack(other, AnimationHash.HitUp, KnockbackType.Heavy);
+            if (Stat.HP > 0)
+            {
+                SetKnockbackOnAttack(other);
+            }
         }
     }
 
     private void LimitMaxFallingSpeedInJump()
     {
-        void SetMaxSpeed()
-        {
-
-            Vector3 currentVelocity = _rigidbody.velocity;
-
-            currentVelocity = currentVelocity * Stat.MaxFallingSpeed / currentVelocity.magnitude;
-            _rigidbody.velocity = currentVelocity;
-        }
         bool IsExceededSpeed() => _rigidbody.velocity.magnitude > Stat.MaxFallingSpeed;
 
         if (IsFalling())
@@ -213,6 +211,14 @@ public class LegendController : MonoBehaviour
             {
                 SetMaxSpeed();
             }
+        }
+
+        void SetMaxSpeed()
+        {
+            Vector3 currentVelocity = _rigidbody.velocity;
+
+            currentVelocity = currentVelocity * Stat.MaxFallingSpeed / currentVelocity.magnitude;
+            _rigidbody.velocity = currentVelocity;
         }
     }
 
@@ -339,7 +345,7 @@ public class LegendController : MonoBehaviour
         _rigidbody.AddForce(_moveDirection * ROLLING_DASH_POWER, ForceMode.Impulse);
     }
 
-    public void SetKnockbackOnAttack(Collider other, int animationHash, KnockbackType type)
+    private void SetKnockbackOnAttack(Collider other)
     {
         if(_facingDirection.y != 0)
         {
@@ -349,10 +355,10 @@ public class LegendController : MonoBehaviour
         transform.forward = _facingDirection;
         HitZone otherHit = other.GetComponent<HitZone>();
 
-        _legendAnimationController.SetTrigger(otherHit.GetAnimationKind());
+        _legendAnimationController.SetTrigger(otherHit.AnimationType);
+        Damage(otherHit.DamageAmount);
         otherHit.SetKnockback(_rigidbody);
     }
-
     private Vector3 GetHangForward(Vector3 other)
     {
         Vector3 otherPosition = other.normalized;
@@ -418,21 +424,25 @@ public class LegendController : MonoBehaviour
             return "TeamBlueHitZone";
         }
     }
-    // TO DO : Damage 로직 추가 필요
-    public void Damage(int damage) // 구버전
-    {
-        //    int damagedHealthPoint = _currentHealthPoint - damage;
-        //    _currentHealthPoint = Mathf.Max(damagedHealthPoint, DEAD_TRIGGER_HP);
-        //    OnPlayerHealthPointChange.Invoke(_currentHealthPoint, CurrentHPRatio);
-        //    OnPlayerGetDamage?.Invoke(damage);
-        //    if (_currentHealthPoint <= DEAD_TRIGGER_HP && !this._isDead)
-        //
-        //    TODO : 다음과 같은 형태로 진행
-        //    Stat.HP - damage;
-        //    if _currentHP == 0 
-        //    Set false; 
-        //
-    }
 
-    // TO DO : Die() 구현
+    private void Damage(int damage)
+    {
+        Stat.HP -= damage;
+
+        if (IsDead())
+        {
+            Smash();
+        }
+
+        bool IsDead() => Stat.HP <= 0;
+    }
+    private void Smash()
+    {
+        float dieKnockbackPower = 120;
+        Vector3 knockbackDirection = (-1 * _facingDirection) + _vectorUp;
+
+        _rigidbody.AddForce(knockbackDirection * dieKnockbackPower);
+        _legendAnimationController.SetTrigger(AnimationHash.HitUp);
+        _effectController.SetDieSmokeEffect();
+    }
 }
