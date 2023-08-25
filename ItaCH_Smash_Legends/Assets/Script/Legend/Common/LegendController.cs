@@ -429,14 +429,14 @@ public class LegendController : MonoBehaviour
     {
         Stat.HP -= damage;
 
-        if (IsSmash())
+        if (IsDead())
         {
-            SetSmash();
+            Smash();
         }
 
-        bool IsSmash() => Stat.HP <= 0;
+        bool IsDead() => Stat.HP <= 0;
     }
-    private void SetSmash()
+    private void Smash()
     {
         float dieKnockbackPower = 120;
         Vector3 knockbackDirection = (-1 * _facingDirection) + _vectorUp;
