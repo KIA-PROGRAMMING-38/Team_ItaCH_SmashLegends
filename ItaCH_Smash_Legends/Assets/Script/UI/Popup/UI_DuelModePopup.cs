@@ -98,7 +98,7 @@ public class UI_DuelModePopup : UIPopup
     private async UniTask RefreshPlayerRespawnTimerFillTask(float respawnTime)
     {
         GetImage((int)Images.PlayerRespawnTimerFill).fillAmount = DEFAULT_FILL_AMOUNT;
-        await Utils.ChangeFillAmountGradually(MAX_FILL_AMOUNT, respawnTime, GetImage((int)Images.PlayerRespawnTimerFill));
+        await GetImage((int)Images.PlayerRespawnTimerFill).ChangeFillAmountGradually(MAX_FILL_AMOUNT, respawnTime);
     }
 
     private const int ONE_SECOND = 1000;

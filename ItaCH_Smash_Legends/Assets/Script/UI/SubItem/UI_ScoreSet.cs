@@ -44,19 +44,19 @@ public class UI_ScoreSet : UIBase
         _scores.Add(scoreSubItem);
     }
 
-    public void SetInfo(int currentScore) // TO DO : 점수 획득 시 UI_ProfileItem Refresh 하면서 호출
+    public void SetInfo(TeamType teamType, int currentScore) // TO DO : 점수 획득 시 UI_ProfileItem Refresh 하면서 호출
     {
         if (_currentScore == currentScore)
         {
             return;
         }
         _currentScore = currentScore;
-        RefreshScoreSet();        
+        RefreshScoreSet(teamType);
     }
 
-    public void RefreshScoreSet()
+    public void RefreshScoreSet(TeamType teamType)
     {
         int index = _currentScore - 1;
-        _scores[index].ActivateScoreSetSubItem();
+        _scores[index].ActivateScoreSetSubItem(teamType);
     }
 }

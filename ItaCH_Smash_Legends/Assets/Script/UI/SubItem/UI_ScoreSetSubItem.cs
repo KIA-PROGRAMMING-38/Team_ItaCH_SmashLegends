@@ -5,6 +5,11 @@ public class UI_ScoreSetSubItem : UIBase
     private const int POSITION_X_INTERVAL = -66;
     private const int POSITION_Y_INTERVAL = 10;
 
+    enum Images
+    {
+        ScoreFill
+    }
+
     enum GameObjects
     {
         ScoreFill
@@ -12,6 +17,7 @@ public class UI_ScoreSetSubItem : UIBase
 
     public override void Init()
     {
+        BindImage(typeof(Images));
         BindObject(typeof(GameObjects));
     }
 
@@ -22,8 +28,9 @@ public class UI_ScoreSetSubItem : UIBase
         GetObject((int)GameObjects.ScoreFill).gameObject.SetActive(false);
     }
 
-    public void ActivateScoreSetSubItem()
+    public void ActivateScoreSetSubItem(TeamType teamType)
     {
-        GetObject((int)GameObjects.ScoreFill).gameObject.SetActive(true);
+        GetObject((int)GameObjects.ScoreFill).SetActive(true);
+        GetImage((int)Images.ScoreFill).color = Define.UI_PORTRAIT_COLORS[(int)teamType];
     }
 }

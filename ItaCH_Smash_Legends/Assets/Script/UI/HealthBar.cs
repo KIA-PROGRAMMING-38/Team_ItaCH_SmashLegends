@@ -27,7 +27,7 @@ public class HealthBar : MonoBehaviour
         // TO DO : legacy 수정
         if (healthPointPercent >= 500f)
         {
-            await Utils.ChangeFillAmountGradually(1, 0.5f, _filling);
+            await _filling.ChangeFillAmountGradually(1, 0.5f);
             healthPointPercent = 100;
             _fillingBackground.fillAmount = 1;
         }
@@ -45,6 +45,6 @@ public class HealthBar : MonoBehaviour
     {
         await UniTask.Delay(1000);
         cancellationToken.ThrowIfCancellationRequested();
-        await Utils.ChangeFillAmountGradually(healthPointRatio, 0.5f, _fillingBackground);
+        await _fillingBackground.ChangeFillAmountGradually(healthPointRatio, 0.5f);
     }
 }
