@@ -67,7 +67,10 @@ public class LegendController : MonoBehaviour
 
     private void OnEnable()
     {
-        _effectController.DisableDieSmokeEffect();
+        if (_effectController != null)
+        {
+            _effectController.DisableDieSmokeEffect();
+        }
     }
     private void OnDisable()
     {
@@ -89,7 +92,7 @@ public class LegendController : MonoBehaviour
         _rigidbody = Utils.GetOrAddComponent<Rigidbody>(this.gameObject);
         _input = Utils.GetOrAddComponent<UnityEngine.InputSystem.PlayerInput>(this.gameObject);
         _legendAnimationController = Utils.GetOrAddComponent<LegendAnimationController>(this.gameObject);
-        _effectController = GetComponent<EffectController>();
+        _effectController = Utils.GetOrAddComponent<EffectController>(this.gameObject);
         _collider = GetComponent<Collider>();
     }
 
@@ -347,7 +350,7 @@ public class LegendController : MonoBehaviour
 
     private void SetKnockbackOnAttack(Collider other)
     {
-        if(_facingDirection.y != 0)
+        if (_facingDirection.y != 0)
         {
             _facingDirection.y = 0;
         }
