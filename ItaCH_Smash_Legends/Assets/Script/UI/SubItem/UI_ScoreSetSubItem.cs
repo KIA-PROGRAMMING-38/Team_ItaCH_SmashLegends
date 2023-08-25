@@ -30,7 +30,7 @@ public class UI_ScoreSetSubItem : UIBase
 
     public void ActivateScoreSetSubItem(TeamType teamType)
     {
-        GetObject((int)GameObjects.ScoreFill).gameObject.SetActive(true);
+        GetObject((int)GameObjects.ScoreFill).SetActive(true);
         GetImage((int)Images.ScoreFill).color = Define.UI_PORTRAIT_COLORS[(int)teamType];
     }
 }

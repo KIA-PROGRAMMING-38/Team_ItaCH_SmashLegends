@@ -20,15 +20,15 @@ public class UI_HpBar : UIBase
 
     public override void Init()
     {
-        BindImage(typeof(Images));             
-            
+        BindImage(typeof(Images));
+
         _isOnRefreshing = false;
 
         RefreshUI(MAX_FILL_AMOUNT);
     }
 
     public void SetInfo(TeamType teamType)
-    {        
+    {
         GetImage((int)Images.DamageBuffer).color = Define.DAMAGE_BUFFER_COLORS[(int)teamType];
         GetImage((int)Images.HpBarFill).color = Define.UI_PORTRAIT_COLORS[(int)teamType];
     }

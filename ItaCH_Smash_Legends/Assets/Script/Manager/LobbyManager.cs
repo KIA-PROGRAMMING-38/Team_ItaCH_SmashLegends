@@ -34,7 +34,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         OnConnectingtoServer?.Invoke();
     }
 
-    public override void OnConnectedToMaster() => OnLogInSuccessed.Invoke();
+    public override void OnConnectedToMaster() => OnLogInSuccessed?.Invoke();
 
     public override void OnDisconnected(DisconnectCause cause)
     {
