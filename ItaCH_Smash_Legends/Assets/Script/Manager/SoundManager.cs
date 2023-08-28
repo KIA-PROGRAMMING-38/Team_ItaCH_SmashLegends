@@ -1,120 +1,98 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager _instance;
-    private AudioSource[] _audioSources = new AudioSource[(int)SoundType.NumOfSoundType - 1];
-    private Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
-    private StringBuilder _stringBuilder;
+    private AudioSource[] _audioSources = new AudioSource[(int)SoundType.NumOfSoundType];
     private AudioMixer _audioMixer;
 
-    #region 폴더 경로
-    private const string _None3DSoundRootFolderPath = "Sound/";
-    private const string _3DSoundRootFolderPath = "Sound/CHAR/";
-    #endregion
+    private string[] _defaultAttacks = { "DefaultAttack00", "DefaultAttack01", "DefaultAttack02" };
+    private string[] _dies = { "Die00", "Die01", "Die02", "Die03" };
+    private string[] _heavyAttacks = { "HeavyAttack00", "HeavyAttack01", "HeavyAttack02", "HeavyAttack03" };
+    private string[] _hits = { "Hit00", "Hit01", "Hit02", "Hit03", "Hit04" };
+    private string[] _hitUps = { "HitUp00", "HitUp01", "HitUp02", "HitUp03", "HitUp04" };
+    private string[] _jumps = { "Jump00", "Jump01" };
+    private string[] _jumpAttacks = { "JumpAttack00", "JumpAttack01", "JumpAttack02" };
+    private string[] _lastAttacks = { "LastAttack00", "LastAttack01", "LastAttack02", };
+    private string[] _lobbys = { "Lobby00", "Lobby01", "Lobby02" };
+    private string[] _revives = { "Revive00", "Revive01" };
+    private string[] _selecteds = { "Selected00", "Selected01", "Selected02", "Selected03" };
+    private string[] _skiiAttacks = { "SkillAttack00", "SkillAttack01", "SkillAttack02", "SkillAttack03" };
 
-    //테스트 코드. 추후 위치 변경 예정
-    private void Awake()
+    private Dictionary<VoiceType, string[]> _legendVoices = new Dictionary<VoiceType, string[]>();
+
+    public void Init()
     {
-        InitSoundManagerSettings();
-    }
-    public void InitSoundManagerSettings()
-    {
-        #region 싱글톤
-        if (_instance == null)
-        {
-            _instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-        #endregion
-        _audioMixer = Resources.Load<AudioMixer>("Sound/AudioMixer");
-        _stringBuilder = new StringBuilder();
+        SetLegendVoice();
 
-        for (int i = 0; i < (int)SoundType.NumOfSoundType - 1; i++)
+        for (int index = 0; index < _audioSources.Length; ++index)
         {
-            GameObject audioSource = new GameObject { };
-            string soundType = Enum.GetName(typeof(SoundType), i);
-            audioSource.name = soundType;
-            _audioSources[i] = audioSource.AddComponent<AudioSource>();
-            audioSource.transform.parent = transform;
-            _audioSources[i].outputAudioMixerGroup = _audioMixer.FindMatchingGroups(soundType)[0];
+            GameObject gameObject = new GameObject();
+            gameObject.name = Enum.GetName(typeof(SoundType), index);
+            gameObject.transform.parent = transform;
+            _audioSources[index] = gameObject.AddComponent<AudioSource>();
         }
-
         _audioSources[(int)SoundType.BGM].loop = true;
     }
-    public void Clear(AudioSource[] audioSources, Dictionary<string, AudioClip> audioClips)
+
+    public void Clear(AudioSource[] audioSources)
     {
         foreach (AudioSource audioSource in audioSources)
         {
             audioSource.clip = null;
             audioSource.Stop();
         }
-
-        audioClips.Clear();
     }
 
-    //3D음향이 필요없는 소리 재생 (오디오클립으로 재생)
-    public void Play(AudioClip audioClip, SoundType soundType = SoundType.SFX)
+    public void Play(SoundType sound, string fileName = null, LegendType legend = LegendType.None,
+        VoiceType voice = VoiceType.MaxCount)
     {
-        AudioSource audioSource = _audioSources[(int)soundType];
-        audioSource.clip = audioClip;
-
-        if (soundType == SoundType.BGM)
+        if (sound == SoundType.Voice)
         {
-            audioSource.Stop();
-            audioSource.Play();
-        }
-        else
-        {
-            audioSource.PlayOneShot(audioClip);
-        }
-    }
-
-    //3D음향이 필요없는 소리 재생 (이름으로 재생)
-    public void Play(string name, SoundType soundType = SoundType.SFX)
-    {
-        if (soundType.Equals(SoundType.SFX) && _audioClips.ContainsKey(name))
-        {
-            Play(_audioClips[name], soundType);
+            AudioClip audioClip = GetVoiceAudioClip(legend, voice);
+            _audioSources[(int)sound].PlayOneShot(audioClip);
             return;
         }
-        SetSoundPath(_None3DSoundRootFolderPath, name, soundType);
-        AudioClip audioClip = Resources.Load<AudioClip>(_stringBuilder.ToString());
-        if (soundType.Equals(SoundType.SFX))
+        else
         {
-            _audioClips.Add(name, audioClip);
+            AudioClip audioClip = Managers.ResourceManager.GetAudioClip(fileName, sound, legend);
+
+            if (sound == SoundType.BGM)
+            {
+                _audioSources[(int)sound].Stop();
+                _audioSources[(int)sound].clip = audioClip;
+                _audioSources[(int)sound].Play();
+
+                return;
+            }
+
+            else
+            {
+                _audioSources[(int)sound].PlayOneShot(audioClip);
+                return;
+            }
         }
-        Play(audioClip, soundType);
     }
 
-    //3D음향 재생이 필요한 소리재생. 캐릭터가 자체적으로 가지고 있는 소리 Dictionary를 검사한 후 Play 실행.
-    //name은
-    //Peter/Die00 이런식으로 캐릭터이름/상황으로 설정.
-    public void Play(string name, Dictionary<string, AudioClip> dictionary, AudioSource audioSource, SoundType soundType)
+    private AudioClip GetVoiceAudioClip(LegendType legend, VoiceType voice)
     {
-        if (dictionary.ContainsKey(name))
+        AudioClip audioClip;
+
+        if (voice == VoiceType.Win)
         {
-            audioSource.PlayOneShot(dictionary[name]);
+            audioClip = Managers.ResourceManager.GetAudioClip(StringLiteral.VOICE_WIN, SoundType.Voice, legend);
         }
         else
         {
-            SetSoundPath(_3DSoundRootFolderPath, name, soundType);
-            AudioClip audioClip = Resources.Load<AudioClip>(_stringBuilder.ToString());
-            if(audioClip.Equals(null))
-            {
-                return;
-            }
-            dictionary[name] = audioClip;
-            audioSource.PlayOneShot(audioClip);
+            int index = UnityEngine.Random.Range(0, _legendVoices[voice].Length);
+            string result = _legendVoices[voice][index];
+
+            audioClip = Managers.ResourceManager.GetAudioClip(result, SoundType.Voice, legend);
         }
+
+        return audioClip;
     }
 
     public void SetVolume(SoundType soundType, float value)
@@ -123,23 +101,19 @@ public class SoundManager : MonoBehaviour
         _audioMixer.SetFloat(soundType.ToString(), Mathf.Log10(value) * 50);
     }
 
-    private void SetSoundPath(string rootFolderPath, string name, SoundType soundType)
+    private void SetLegendVoice()
     {
-        _stringBuilder.Clear();
-        _stringBuilder.Append(rootFolderPath);
-        _stringBuilder.Append(soundType);
-        _stringBuilder.Append("/");
-        _stringBuilder.Append(name);
-    }
-
-    private AudioClip GetAudioClip(string path)
-    {
-        AudioClip audioClip = null;
-        if (_audioClips.TryGetValue(path, out audioClip))
-            return audioClip;
-
-        audioClip = Resources.Load<AudioClip>(path);
-        _audioClips.Add(path, audioClip);
-        return audioClip;
+        _legendVoices[VoiceType.DefaultAttack] = _defaultAttacks;
+        _legendVoices[VoiceType.Die] = _dies;
+        _legendVoices[VoiceType.HeavyAttack] = _heavyAttacks;
+        _legendVoices[VoiceType.Hit] = _hits;
+        _legendVoices[VoiceType.HitUp] = _hitUps;
+        _legendVoices[VoiceType.Jump] = _jumps;
+        _legendVoices[VoiceType.JumpAttack] = _jumpAttacks;
+        _legendVoices[VoiceType.LastAttack] = _lastAttacks;
+        _legendVoices[VoiceType.Lobby] = _lobbys;
+        _legendVoices[VoiceType.Revive] = _revives;
+        _legendVoices[VoiceType.Selected] = _selecteds;
+        _legendVoices[VoiceType.SkillAttack] = _skiiAttacks;
     }
 }
