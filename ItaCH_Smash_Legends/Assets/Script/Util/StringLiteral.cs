@@ -24,6 +24,8 @@ public static class StringLiteral
     public const string MAP_PREFAB_PATH = "Map/SingleLogBridge";
     public const string UI_FOLDER = "UI";
     public const string UI_SPRITE_FOLDER = "UI/Sprite";
+    public const string UI_GAME_RESULT_POPUP = "UI_GameResultPopup";
+    public const string TOP_DECO_SPRITE = "_TopDeco_";
     #endregion
 
     #region LegendController 

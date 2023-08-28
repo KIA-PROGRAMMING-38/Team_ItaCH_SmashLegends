@@ -20,15 +20,15 @@ public class UI_HpBar : UIBase
 
     public override void Init()
     {
-        BindImage(typeof(Images));             
-            
+        BindImage(typeof(Images));
+
         _isOnRefreshing = false;
 
         RefreshUI(MAX_FILL_AMOUNT);
     }
 
     public void SetInfo(TeamType teamType)
-    {        
+    {
         GetImage((int)Images.DamageBuffer).color = Define.DAMAGE_BUFFER_COLORS[(int)teamType];
         GetImage((int)Images.HpBarFill).color = Define.UI_PORTRAIT_COLORS[(int)teamType];
     }
@@ -51,7 +51,8 @@ public class UI_HpBar : UIBase
     {
         if (hpRatio == MAX_FILL_AMOUNT)
         {
-            await GetImage((int)Images.HpBarFill).ChangeFillAmountGradually(MAX_FILL_AMOUNT, BUFFER_TIME);
+            //await GetImage((int)Images.HpBarFill).ChangeFillAmountGradually(MAX_FILL_AMOUNT, BUFFER_TIME);
+            // TO DO : 피격 판정 로직 적용과 함께 오류 수정
         }
         GetImage((int)Images.HpBarFill).fillAmount = hpRatio;
     }
@@ -60,7 +61,7 @@ public class UI_HpBar : UIBase
     {
         await UniTask.Delay(DAMAGE_BUFFER_DELAY_TIME);
         cancellationToken.ThrowIfCancellationRequested();
-        await GetImage((int)Images.DamageBuffer).ChangeFillAmountGradually(hpRatio, BUFFER_TIME);
+        //await GetImage((int)Images.DamageBuffer).ChangeFillAmountGradually(hpRatio, BUFFER_TIME);
         _isOnRefreshing = false;
     }
 }

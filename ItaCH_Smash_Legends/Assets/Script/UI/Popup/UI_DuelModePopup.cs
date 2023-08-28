@@ -61,7 +61,7 @@ public class UI_DuelModePopup : UIPopup
 
         int maxTeamCount = Managers.StageManager.CurrentGameMode.MaxTeamCount;
 
-        for (int team = 0; team < maxTeamCount; ++team)
+        for (int team = (int)TeamType.Blue; team <= maxTeamCount; ++team)
         {
             CreateProfileItem(team, parentObject);
         }

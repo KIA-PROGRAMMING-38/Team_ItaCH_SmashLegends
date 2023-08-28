@@ -24,4 +24,13 @@ public class Define
         BLUE_TEAM_DAMAGE_BUFFER_COLOR,
         RED_TEAM_DAMAGE_BUFFER_COLOR
     };
+
+    public static readonly Vector3 BLUE_TEAM_GAME_RESULT_USER_PROFILE_POSITION = new Vector3(-360, 0, 0);
+    public static readonly Vector3 RED_TEAM_GAME_RESULT_USER_PROFILE_POSITION = new Vector3(360, 0, 0);
+
+    public static readonly Vector3[] GAME_RESULT_USER_PROFILE_POSITIONS =
+    {
+        BLUE_TEAM_GAME_RESULT_USER_PROFILE_POSITION,
+        RED_TEAM_GAME_RESULT_USER_PROFILE_POSITION
+    };
 }
