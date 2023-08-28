@@ -12,19 +12,19 @@ public class SoundManager : MonoBehaviour
     private StringBuilder _stringBuilder;
     private AudioMixer _audioMixer;
 
-    #region Æú´õ °æ·Î
+    #region í´ë” ê²½ë¡œ
     private const string _None3DSoundRootFolderPath = "Sound/";
     private const string _3DSoundRootFolderPath = "Sound/CHAR/";
     #endregion
 
-    //Å×½ºÆ® ÄÚµå. ÃßÈÄ À§Ä¡ º¯°æ ¿¹Á¤
+    //í…ŒìŠ¤íŠ¸ ì½”ë“œ. ì¶”í›„ ìœ„ì¹˜ ë³€ê²½ ì˜ˆì •
     private void Awake()
     {
         InitSoundManagerSettings();
     }
     public void InitSoundManagerSettings()
     {
-        #region ½Ì±ÛÅæ
+        #region ì‹±ê¸€í†¤
         if (_instance == null)
         {
             _instance = this;
@@ -61,7 +61,7 @@ public class SoundManager : MonoBehaviour
         audioClips.Clear();
     }
 
-    //3DÀ½ÇâÀÌ ÇÊ¿ä¾ø´Â ¼Ò¸® Àç»ı (¿Àµğ¿ÀÅ¬¸³À¸·Î Àç»ı)
+    //3DìŒí–¥ì´ í•„ìš”ì—†ëŠ” ì†Œë¦¬ ì¬ìƒ (ì˜¤ë””ì˜¤í´ë¦½ìœ¼ë¡œ ì¬ìƒ)
     public void Play(AudioClip audioClip, SoundType soundType = SoundType.SFX)
     {
         AudioSource audioSource = _audioSources[(int)soundType];
@@ -78,7 +78,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    //3DÀ½ÇâÀÌ ÇÊ¿ä¾ø´Â ¼Ò¸® Àç»ı (ÀÌ¸§À¸·Î Àç»ı)
+    //3DìŒí–¥ì´ í•„ìš”ì—†ëŠ” ì†Œë¦¬ ì¬ìƒ (ì´ë¦„ìœ¼ë¡œ ì¬ìƒ)
     public void Play(string name, SoundType soundType = SoundType.SFX)
     {
         if (soundType.Equals(SoundType.SFX) && _audioClips.ContainsKey(name))
@@ -95,8 +95,9 @@ public class SoundManager : MonoBehaviour
         Play(audioClip, soundType);
     }
 
-    //3DÀ½Çâ Àç»ıÀÌ ÇÊ¿äÇÑ ¼Ò¸®Àç»ı. Ä³¸¯ÅÍ°¡ ÀÚÃ¼ÀûÀ¸·Î °¡Áö°í ÀÖ´Â ¼Ò¸® Dictionary¸¦ °Ë»çÇÑ ÈÄ Play ½ÇÇà.
-    //nameÀº Peter/Die00 ÀÌ·±½ÄÀ¸·Î Ä³¸¯ÅÍÀÌ¸§/»óÈ²À¸·Î ¼³Á¤.
+    //3DìŒí–¥ ì¬ìƒì´ í•„ìš”í•œ ì†Œë¦¬ì¬ìƒ. ìºë¦­í„°ê°€ ìì²´ì ìœ¼ë¡œ ê°€ì§€ê³  ìˆëŠ” ì†Œë¦¬ Dictionaryë¥¼ ê²€ì‚¬í•œ í›„ Play ì‹¤í–‰.
+    //nameì€
+    //Peter/Die00 ì´ëŸ°ì‹ìœ¼ë¡œ ìºë¦­í„°ì´ë¦„/ìƒí™©ìœ¼ë¡œ ì„¤ì •.
     public void Play(string name, Dictionary<string, AudioClip> dictionary, AudioSource audioSource, SoundType soundType)
     {
         if (dictionary.ContainsKey(name))
@@ -118,7 +119,7 @@ public class SoundManager : MonoBehaviour
 
     public void SetVolume(SoundType soundType, float value)
     {
-        //°¡Àå ¸¹ÀÌ »ç¿ëÇÏ´Â º¼·ı º¯°æ ½Ä. ¿ø·¡´Â ±â¿ï±â·Î 50ÀÌ ¾Æ´Ñ 20À» »ç¿ëÇÏ³ª, º¯È­°¡ ¶Ñ·ÇÇÏÁö ¾Ê¾Æ 50À» »ç¿ëÇÔ.
+        //ê°€ì¥ ë§ì´ ì‚¬ìš©í•˜ëŠ” ë³¼ë¥¨ ë³€ê²½ ì‹. ì›ë˜ëŠ” ê¸°ìš¸ê¸°ë¡œ 50ì´ ì•„ë‹Œ 20ì„ ì‚¬ìš©í•˜ë‚˜, ë³€í™”ê°€ ëšœë ·í•˜ì§€ ì•Šì•„ 50ì„ ì‚¬ìš©í•¨.
         _audioMixer.SetFloat(soundType.ToString(), Mathf.Log10(value) * 50);
     }
 
@@ -129,5 +130,16 @@ public class SoundManager : MonoBehaviour
         _stringBuilder.Append(soundType);
         _stringBuilder.Append("/");
         _stringBuilder.Append(name);
+    }
+
+    private AudioClip GetAudioClip(string path)
+    {
+        AudioClip audioClip = null;
+        if (_audioClips.TryGetValue(path, out audioClip))
+            return audioClip;
+
+        audioClip = Resources.Load<AudioClip>(path);
+        _audioClips.Add(path, audioClip);
+        return audioClip;
     }
 }

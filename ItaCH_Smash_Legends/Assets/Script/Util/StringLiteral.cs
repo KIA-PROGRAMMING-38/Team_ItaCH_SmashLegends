@@ -1,3 +1,5 @@
+using System.Threading;
+
 public static class StringLiteral
 {
     #region SCENE NAME
@@ -56,5 +58,41 @@ public static class StringLiteral
 
     #region MAP
     public const string SPAWN_POINTS = "SpawnPoints";
+    #endregion
+
+    #region Legend SFX
+    // Legend Common SFX
+    public const string DEAFULTATTACK_ZERO = "DefaultAttack00";
+    public const string DEFAULTATTACK_ONE = "DefaultAttack01";
+    public const string DEFAULTATTACK_TWO = "DefaultAttack02";
+    public const string DEFAULTATTACK_THREE = "DefaultAttack03";
+    public const string DEFAULTATTACK_HIT = "DefaultAttack_Hit";
+    public const string DOWN = "Down";
+    public const string HANG = "Hang";
+    public const string HEAVYATTACK = "HeavyAttack";
+    public const string HEAVYATTACK_HIY = "HeavyAttack_Hit";
+    public const string JUMP = "Jump";
+    public const string JUMPATTACK = "JumpAttack";
+    public const string JUMPLANDING = "JumpLanding";
+    public const string ROLLBACK = "RollBack";
+    public const string ROLLFRONT = "RollFront";
+    public const string SKILLATTACK = "SkillAttack";
+    public const string SKILLATTACK_HIT = "SkillAttack_Hit";
+    public const string STEP_ZERO = "Step00";
+    public const string STEP_ONE = "Step01";
+    public const string STEP_TWO = "Step02";
+
+
+    // Legend Individual SFX
+    public const string SKILLATTACK_SHOT = "SkillAttack_Shot";
+    public const string SKILLATTACK_START = "SkillAttack_Start";
+    public const string SKILLATTACK_END = "SkillAttack_End";
+
+    public const string MINE_ACTIVATE = "Mine_Activate";
+    public const string MINE_EXPLODE = "Mine_Explode";
+    public const string MINE_SET = "Mine_Set";
+    #endregion
+
+    #region Legend Voice
     #endregion
 }
