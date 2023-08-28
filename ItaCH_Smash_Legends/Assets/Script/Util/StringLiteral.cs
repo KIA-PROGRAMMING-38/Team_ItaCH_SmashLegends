@@ -32,6 +32,7 @@ public static class StringLiteral
     public static readonly string[] ACTIONS = new[] { "Move", "Jump", "DefaultAttack", "SmashAttack", "SkillAttack" };
     public static readonly string[] ANIMATION_CLIP = new[] { "Peter_FirstAttack", "Peter_SecondAttack" };
     public const string JUMP_ANIMATION_CLIP = "Peter_JumpAttack";
+    public const string ALICE_BOMB = "AliceBomb";
     #endregion
 
     #region Tag

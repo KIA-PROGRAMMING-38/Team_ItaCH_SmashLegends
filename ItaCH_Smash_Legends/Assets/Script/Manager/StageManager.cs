@@ -28,13 +28,13 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     public int RemainGameTime
     {
-        get => Mathf.Max(_remainGameTime, 0);
+        get => (int)Mathf.Max(_remainGameTime, 0);
         set
         {
             _remainGameTime = value;
         }
     }
-    private int _remainGameTime;
+    private float _remainGameTime;
     public bool IsTimeOver { get => _isTimeOver; }
     private bool _isTimeOver;
 
@@ -131,10 +131,10 @@ public class StageManager : MonoBehaviourPunCallbacks
     {
         while (false == _isGameOver && RemainGameTime > 0)
         {
-            _remainGameTime -= 1;
-            OnTimeChange?.Invoke(_remainGameTime);
+            _remainGameTime -= Time.deltaTime;
+            OnTimeChange?.Invoke(RemainGameTime);
 
-            await UniTask.Delay(1000);
+            await UniTask.Yield();
         }
         _isTimeOver = true;
         _currentGameMode.IsOver();

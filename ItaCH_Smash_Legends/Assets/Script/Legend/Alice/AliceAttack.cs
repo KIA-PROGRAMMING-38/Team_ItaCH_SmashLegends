@@ -3,22 +3,29 @@ using UnityEngine;
 public class AliceAttack : PlayerAttack
 {
     [SerializeField] private GameObject _aliceBomb;
-    [SerializeField] private BoxCollider _attackHitZone;
-    [SerializeField] private SphereCollider _finishAttackHitZone;
-    [SerializeField] private SphereCollider _skillAttackHitZone;
-    [SerializeField] private BoxCollider _jumpAttackHitZone;
+    [SerializeField] private GameObject _attackHitZone;
+    [SerializeField] private GameObject _finishAttackHitZone;
+    [SerializeField] private GameObject _skillAttackHitZone;
+    [SerializeField] private GameObject _jumpAttackHitZone;
 
-    public override void DashOnAnimationEvent()
+    private Vector3 _skillAttackDirection;
+    private float _correctionPower = 0.8f;
+    private void Start()
     {
-        attackRigidbody.AddForce(transform.forward * legendController.Stat.DashPower, ForceMode.Impulse);
+        dashPower = legendController.Stat.DashPower * _correctionPower;
     }
-    private void HeavyAttackBomb() => _aliceBomb.gameObject.SetActive(true);
-    private void EnableAttackHitZone() => _attackHitZone.enabled = true;
-    private void DisableAttackHitZone() => _attackHitZone.enabled = false;
-    private void EnableFinishAttackHitZone() => _finishAttackHitZone.enabled = true;
-    private void DisableFinishAttackHitZone() => _finishAttackHitZone.enabled = false;
-    private void EnableJumpAttackHitZone() => _jumpAttackHitZone.enabled = true;
-    private void DisableJumpAttackHitZone() => _jumpAttackHitZone.enabled = false;
-    private void EnableSkillAttackHitZone() => _skillAttackHitZone.enabled = true;
-    private void DisableSkillAttackHitZone() => _skillAttackHitZone.enabled = false;
+    private void DashAtSkillAttackOnAnimationEvent()
+    {
+        _skillAttackDirection = transform.up + transform.forward;
+        attackRigidbody.AddForce(_skillAttackDirection * dashPower, ForceMode.Impulse);
+    }
+    private void HeavyAttackBomb() => _aliceBomb.SetActive(true);
+    private void EnableAttackHitZone() => _attackHitZone.SetActive(true);
+    private void DisableAttackHitZone() => _attackHitZone.SetActive(false);
+    private void EnableFinishAttackHitZone() => _finishAttackHitZone.SetActive(true);
+    private void DisableFinishAttackHitZone() => _finishAttackHitZone.SetActive(false);
+    private void EnableJumpAttackHitZone() => _jumpAttackHitZone.SetActive(true);
+    private void DisableJumpAttackHitZone() => _jumpAttackHitZone.SetActive(false);
+    private void EnableSkillAttackHitZone() => _skillAttackHitZone.SetActive(true);
+    private void DisableSkillAttackHitZone() => _skillAttackHitZone.SetActive(false);
 }

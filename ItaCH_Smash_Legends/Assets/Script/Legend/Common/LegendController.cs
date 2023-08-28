@@ -44,12 +44,6 @@ public class LegendController : MonoBehaviour
     public const float MAX_JUMP_POWER = 1f;
     private CancellationTokenSource _taskCancel;
 
-    // TODO : 각 레전드 Attack 에서 설정
-    //[SerializeField] private SphereCollider _skillAttackHitZone;
-    //[SerializeField] private SphereCollider _attackHitZone;
-    //[SerializeField] private SphereCollider _heavyAttackHitZone;
-    //[SerializeField] private BoxCollider _jumpAttackHitZone;
-
     private InputAction[] _actions;
 
     public int OwnerUserID { get; private set; }
@@ -66,9 +60,22 @@ public class LegendController : MonoBehaviour
     private Vector3 _moveDirection;
     private Vector3 _facingDirection;
     private Vector3 _vectorZero = Vector3.zero;
+    private Vector3 _vectorUp = Vector3.up;
+
     private const float ROLLING_DASH_POWER = 1.2f;
     private bool _canAttack;
 
+    private void OnEnable()
+    {
+        if (_effectController != null)
+        {
+            _effectController.DisableDieSmokeEffect();
+        }
+    }
+    private void OnDisable()
+    {
+        _effectController.SetDieEffect();
+    }
     public void Init(UserData user)
     {
         GetComponents();
@@ -85,7 +92,7 @@ public class LegendController : MonoBehaviour
         _rigidbody = Utils.GetOrAddComponent<Rigidbody>(this.gameObject);
         _input = Utils.GetOrAddComponent<UnityEngine.InputSystem.PlayerInput>(this.gameObject);
         _legendAnimationController = Utils.GetOrAddComponent<LegendAnimationController>(this.gameObject);
-        _effectController = GetComponent<EffectController>();
+        _effectController = Utils.GetOrAddComponent<EffectController>(this.gameObject);
         _collider = GetComponent<Collider>();
     }
 
@@ -178,30 +185,27 @@ public class LegendController : MonoBehaviour
             transform.position = GetHangPosition(other.transform.position);
             _legendAnimationController.Play(AnimationHash.Hang);
         }
-
-        if (other.CompareTag(StringLiteral.DEFAULT_HIT))
+        if (other.CompareTag(StringLiteral.HIT_ZONE))
         {
-            _facingDirection = -1 * other.transform.forward;
-            SetKnockbackOnAttack(other, AnimationHash.Hit, KnockbackType.Default);
-        }
+            if (other.name == StringLiteral.ALICE_BOMB)
+            {
+                AliceBomb bomb = other.GetComponent<AliceBomb>();
+                _facingDirection = -1 * bomb.ConstructorForward;
+            }
+            else
+            {
+                _facingDirection = -1 * other.transform.forward;
+            }
 
-        if (other.CompareTag(StringLiteral.HEAVY_HIT))
-        {
-            _facingDirection = -1 * other.transform.forward;
-            SetKnockbackOnAttack(other, AnimationHash.HitUp, KnockbackType.Heavy);
+            if (Stat.HP > 0)
+            {
+                SetKnockbackOnAttack(other);
+            }
         }
     }
 
     private void LimitMaxFallingSpeedInJump()
     {
-        void SetMaxSpeed()
-        {
-
-            Vector3 currentVelocity = _rigidbody.velocity;
-
-            currentVelocity = currentVelocity * Stat.MaxFallingSpeed / currentVelocity.magnitude;
-            _rigidbody.velocity = currentVelocity;
-        }
         bool IsExceededSpeed() => _rigidbody.velocity.magnitude > Stat.MaxFallingSpeed;
 
         if (IsFalling())
@@ -210,6 +214,14 @@ public class LegendController : MonoBehaviour
             {
                 SetMaxSpeed();
             }
+        }
+
+        void SetMaxSpeed()
+        {
+            Vector3 currentVelocity = _rigidbody.velocity;
+
+            currentVelocity = currentVelocity * Stat.MaxFallingSpeed / currentVelocity.magnitude;
+            _rigidbody.velocity = currentVelocity;
         }
     }
 
@@ -257,21 +269,10 @@ public class LegendController : MonoBehaviour
     {
         _rigidbody.velocity = _vectorZero;
     }
-
-    #region 각 공격별 HitZone 생성
-
-    // TODO : 각 레전드 Attack 스크립트에서 사용
-
-    //private void EnableAttackHitZone() => _attackHitZone.enabled = true;
-    //private void DisableAttackHitZone() => _attackHitZone.enabled = false;
-    //private void EnableJumpAttackHitZone() => _jumpAttackHitZone.enabled = true;
-    //private void DisableJumpAttackHitZone() => _jumpAttackHitZone.enabled = false;
-    //private void EnableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = true;
-    //private void DisableHeavyAttackHitZone() => _heavyAttackHitZone.enabled = false;
-    //private void EnableSkillAttackHitZone() => _skillAttackHitZone.enabled = true;
-    //private void DisableSkillAttackHitZone() => _skillAttackHitZone.enabled = false;
-    #endregion
-
+    public Vector3 GetMoveDirection()
+    {
+        return _moveDirection;
+    }
     public void SetRollingDirection()
     {
         if (_moveDirection == _vectorZero)
@@ -347,34 +348,20 @@ public class LegendController : MonoBehaviour
         _rigidbody.AddForce(_moveDirection * ROLLING_DASH_POWER, ForceMode.Impulse);
     }
 
-    public void SetKnockbackOnAttack(Collider other, int animationHash, KnockbackType type)
+    private void SetKnockbackOnAttack(Collider other)
     {
-        transform.forward = _facingDirection;
-
-        Vector3 knockbackDirection = other.transform.forward + transform.up;
-
-        _legendAnimationController.SetTrigger(animationHash);
-        _rigidbody.AddForce(knockbackDirection * GetKnockbackPower(type, other), ForceMode.Impulse);
-
-        float GetKnockbackPower(KnockbackType type, Collider other) // TO DO : 매개변수로 넉백파워를 받음
+        if (_facingDirection.y != 0)
         {
-            float knockbackPower = 0;
-
-            switch (type)
-            {
-                case KnockbackType.Default:
-                    knockbackPower = other.GetComponent<LegendController>().Stat.DefaultKnockbackPower;
-                    break;
-
-                case KnockbackType.Heavy:
-                    knockbackPower = other.GetComponent<LegendController>().Stat.HeavyKnockbackPower;
-                    break;
-            }
-
-            return knockbackPower;
+            _facingDirection.y = 0;
         }
-    }
 
+        transform.forward = _facingDirection;
+        HitZone otherHit = other.GetComponent<HitZone>();
+
+        _legendAnimationController.SetTrigger(otherHit.AnimationType);
+        Damage(otherHit.DamageAmount);
+        otherHit.SetKnockback(_rigidbody);
+    }
     private Vector3 GetHangForward(Vector3 other)
     {
         Vector3 otherPosition = other.normalized;
@@ -429,15 +416,36 @@ public class LegendController : MonoBehaviour
         _taskCancel.Cancel();
     }
 
-    // TO DO : Damage 로직 추가 필요
-    public void Damage(int damage) // 구버전
+    public string GetChildLayer()
     {
-        //    int damagedHealthPoint = _currentHealthPoint - damage;
-        //    _currentHealthPoint = Mathf.Max(damagedHealthPoint, DEAD_TRIGGER_HP);
-        //    OnPlayerHealthPointChange.Invoke(_currentHealthPoint, CurrentHPRatio);
-        //    OnPlayerGetDamage?.Invoke(damage);
-        //    if (_currentHealthPoint <= DEAD_TRIGGER_HP && !this._isDead)        
+        if (this.gameObject.layer == LayerMask.NameToLayer("TeamRed"))
+        {
+            return "TeamRedHitZone";
+        }
+        else
+        {
+            return "TeamBlueHitZone";
+        }
     }
 
-    // TO DO : Die() 구현
+    private void Damage(int damage)
+    {
+        Stat.HP -= damage;
+
+        if (IsDead())
+        {
+            Smash();
+        }
+
+        bool IsDead() => Stat.HP <= 0;
+    }
+    private void Smash()
+    {
+        float dieKnockbackPower = 120;
+        Vector3 knockbackDirection = (-1 * _facingDirection) + _vectorUp;
+
+        _rigidbody.AddForce(knockbackDirection * dieKnockbackPower);
+        _legendAnimationController.SetTrigger(AnimationHash.HitUp);
+        _effectController.SetDieSmokeEffect();
+    }
 }

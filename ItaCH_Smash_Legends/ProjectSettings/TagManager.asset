@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - DefaultHit
   - HeavyHit
+  - HitZone
   layers:
   - Default
   - TransparentFX
@@ -22,8 +23,8 @@ TagManager:
   - TeamRed
   - HangZone
   - HitZone
-  - 
-  - 
+  - TeamBlueHitZone
+  - TeamRedHitZone
   - 
   - 
   - 
