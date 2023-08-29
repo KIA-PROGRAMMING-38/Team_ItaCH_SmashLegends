@@ -15,7 +15,7 @@ public class SoundManager : MonoBehaviour
     private string[] _hitUps = { "HitUp00", "HitUp01", "HitUp02", "HitUp03", "HitUp04" };
     private string[] _jumps = { "Jump00", "Jump01" };
     private string[] _jumpAttacks = { "JumpAttack00", "JumpAttack01", "JumpAttack02" };
-    private string[] _lastAttacks = { "LastAttack00", "LastAttack01", "LastAttack02", };
+    private string[] _lastAttacks = { "LastAttack00", "LastAttack01" };
     private string[] _lobbys = { "Lobby00", "Lobby01", "Lobby02" };
     private string[] _revives = { "Revive00", "Revive01" };
     private string[] _selecteds = { "Selected00", "Selected01", "Selected02", "Selected03" };
@@ -25,7 +25,7 @@ public class SoundManager : MonoBehaviour
 
     public void Init()
     {
-        SetLegendVoice();
+        SetLegendVoiceDictionary();
 
         for (int index = 0; index < _audioSources.Length; ++index)
         {
@@ -51,9 +51,16 @@ public class SoundManager : MonoBehaviour
     {
         if (sound == SoundType.Voice)
         {
-            AudioClip audioClip = GetVoiceAudioClip(legend, voice);
-            _audioSources[(int)sound].PlayOneShot(audioClip);
-            return;
+            if (voice == VoiceType.Hit && IsHit(sound))
+            {
+                return;
+            }
+            else
+            {
+                AudioClip audioClip = GetVoiceAudioClip(legend, voice);
+                _audioSources[(int)sound].PlayOneShot(audioClip);
+                return;
+            }
         }
         else
         {
@@ -74,6 +81,18 @@ public class SoundManager : MonoBehaviour
                 return;
             }
         }
+        bool IsHit(SoundType sound)
+        {
+            foreach (string clipName in _hits)
+            {
+                if (_audioSources[(int)sound].clip.name == clipName)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 
     private AudioClip GetVoiceAudioClip(LegendType legend, VoiceType voice)
@@ -91,7 +110,7 @@ public class SoundManager : MonoBehaviour
 
             audioClip = Managers.ResourceManager.GetAudioClip(result, SoundType.Voice, legend);
         }
-
+        _audioSources[(int)SoundType.Voice].clip = audioClip;
         return audioClip;
     }
 
@@ -101,7 +120,7 @@ public class SoundManager : MonoBehaviour
         _audioMixer.SetFloat(soundType.ToString(), Mathf.Log10(value) * 50);
     }
 
-    private void SetLegendVoice()
+    private void SetLegendVoiceDictionary()
     {
         _legendVoices[VoiceType.DefaultAttack] = _defaultAttacks;
         _legendVoices[VoiceType.Die] = _dies;
@@ -116,4 +135,5 @@ public class SoundManager : MonoBehaviour
         _legendVoices[VoiceType.Selected] = _selecteds;
         _legendVoices[VoiceType.SkillAttack] = _skiiAttacks;
     }
+
 }

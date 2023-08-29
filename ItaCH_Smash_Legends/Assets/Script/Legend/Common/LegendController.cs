@@ -64,6 +64,7 @@ public class LegendController : MonoBehaviour
 
     private const float ROLLING_DASH_POWER = 1.2f;
     private bool _canAttack;
+    public LegendType LegendType { get; private set; }
 
     private void OnEnable()
     {
@@ -72,10 +73,7 @@ public class LegendController : MonoBehaviour
             _effectController.DisableDieSmokeEffect();
         }
     }
-    private void OnDisable()
-    {
-        _effectController.SetDieEffect();
-    }
+
     public void Init(UserData user)
     {
         GetComponents();
@@ -84,6 +82,7 @@ public class LegendController : MonoBehaviour
         InitActions();
         SetRigidbody();
         user.OwnedLegend = this;
+        LegendType = user.SelectedLegend;
         OwnerUserID = user.ID;
     }
 
@@ -435,6 +434,7 @@ public class LegendController : MonoBehaviour
         if (IsDead())
         {
             Smash();
+            Managers.SoundManager.Play(SoundType.Voice, legend: LegendType, voice: VoiceType.Die);
         }
 
         bool IsDead() => Stat.HP <= 0;
@@ -447,5 +447,9 @@ public class LegendController : MonoBehaviour
         _rigidbody.AddForce(knockbackDirection * dieKnockbackPower);
         _legendAnimationController.SetTrigger(AnimationHash.HitUp);
         _effectController.SetDieSmokeEffect();
+    }
+    public void SetDieEffect()
+    {
+        _effectController.SetDieEffect();
     }
 }
