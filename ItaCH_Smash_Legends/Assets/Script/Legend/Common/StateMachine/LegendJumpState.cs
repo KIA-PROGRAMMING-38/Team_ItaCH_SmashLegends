@@ -7,10 +7,11 @@ public class LegendJumpState : LegendBaseState
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
         base.OnStateEnter(animator, stateInfo, layerIndex);
         _rigidbody = animator.GetComponent<Rigidbody>();
         Jump(animator);
+        Managers.SoundManager.Play(SoundType.Voice, legend: legendController.LegendType, voice: VoiceType.Jump);
+
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
