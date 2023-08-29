@@ -70,4 +70,18 @@ public class ResourceManager
         string legendFaceImagePath = Path.Combine(StringLiteral.UI_SPRITE_FOLDER, legendName, legendName);
         return Load<Sprite>(legendFaceImagePath);
     }
+    public AudioClip GetAudioClip(string fileName, SoundType sound, LegendType legend = LegendType.None)
+    {
+        string audioClipPath;
+
+        if (legend != LegendType.None)
+        {
+            audioClipPath = Path.Combine(StringLiteral.SOUND, sound.ToString(), legend.ToString(), fileName);
+        }
+        else
+        {
+            audioClipPath = Path.Combine(StringLiteral.SOUND, sound.ToString(), fileName);
+        }
+        return Load<AudioClip>(audioClipPath);
+    }
 }
