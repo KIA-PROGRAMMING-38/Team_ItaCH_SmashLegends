@@ -87209,8 +87209,15 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.26666668
+  - time: 0.33333334
     functionName: EnableAttackHitZone
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.36666667
+    functionName: DisableAttackHitZone
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -87218,13 +87225,6 @@ AnimationClip:
     messageOptions: 0
   - time: 0.4
     functionName: EnableFirstAttackEndEffect
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.43333334
-    functionName: DisableAttackHitZone
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
