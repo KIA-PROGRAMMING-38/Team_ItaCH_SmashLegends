@@ -65,6 +65,7 @@ public class AliceBomb : HitZone
             _time = 0;
             transform.rotation = Quaternion.Euler(-90, 0, 0);
             SetParent();
+            Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_MINE_SET, legend: LegendType.Alice);
             PlayBombEffect().Forget();
         }
     }
@@ -95,9 +96,13 @@ public class AliceBomb : HitZone
 
         PlayEffect(startEffectIndex);
 
-        await UniTask.Delay(4000, cancellationToken: _cancelToken.Token);
+        await UniTask.Delay(1400);
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_MINE_ACTIVATE, legend: LegendType.Alice);
+
+        await UniTask.Delay(2600, cancellationToken: _cancelToken.Token);
 
         PlayAllEffect();
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_MINE_EXPLODE, legend: LegendType.Alice);
 
         await UniTask.Delay(400);
 
@@ -108,6 +113,7 @@ public class AliceBomb : HitZone
     {
         CancelUniTask();
         PlayAllEffect();
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_MINE_EXPLODE, legend: LegendType.Alice);
 
         await UniTask.Delay(400);
 

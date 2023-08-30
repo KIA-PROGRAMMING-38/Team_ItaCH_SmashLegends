@@ -63,9 +63,15 @@ public class LegendController : MonoBehaviour
     private Vector3 _vectorUp = Vector3.up;
 
     private const float ROLLING_DASH_POWER = 1.2f;
+    private int _stepIndex = 0;
     private bool _canAttack;
     public LegendType LegendType { get; private set; }
-
+    private void Awake()
+    {
+        UserData d = new UserData() { SelectedLegend = LegendType.Alice, ID = 0 };
+        Init(d);
+        Debug.Log($"{StringLiteral.SFX_STEP_ONE}1");
+    }
     private void OnEnable()
     {
         if (_effectController != null)
@@ -360,6 +366,10 @@ public class LegendController : MonoBehaviour
         _legendAnimationController.SetTrigger(otherHit.AnimationType);
         Damage(otherHit.DamageAmount);
         otherHit.SetKnockback(_rigidbody);
+        if (otherHit.AttackSound != null)
+        {
+            otherHit.PlaySFXAttackSound();
+        }
     }
     private Vector3 GetHangForward(Vector3 other)
     {
@@ -451,5 +461,15 @@ public class LegendController : MonoBehaviour
     public void SetDieEffect()
     {
         _effectController.SetDieEffect();
+    }
+    private void PlayRunSFXSoundOnAnimationEvent()
+    {
+        if (_stepIndex == 3)
+        {
+            _stepIndex = 0;
+        }
+        string step = $"{StringLiteral.SFX_STEP}{_stepIndex}";
+        Managers.SoundManager.Play(SoundType.SFX, step, LegendType);
+        ++_stepIndex;
     }
 }

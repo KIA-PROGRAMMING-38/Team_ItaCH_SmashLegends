@@ -5,6 +5,7 @@ public class AliceFinishHitZone : HitZone
         DamageAmount = (int)(legendController.Stat.DefaultAttackDamage * 0.6f);
         knockbackPower = legendController.Stat.HeavyKnockbackPower;
         AnimationType = AnimationHash.HitUp;
+        AttackSound = StringLiteral.SFX_DEFAULTATTACK_HIT;
         gameObject.SetActive(false);
     }
 

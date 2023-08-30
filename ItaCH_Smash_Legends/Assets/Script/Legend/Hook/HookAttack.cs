@@ -170,7 +170,17 @@ public class HookAttack : PlayerAttack
         GetCreateBullet(GetFirePosition(FirePosition.Right), (int)bulletType);
         CreateBulletEffect(GetFirePosition(FirePosition.Right), (int)bulletType);
     }
-
+    private void PlayFireSoundOnAnimationEvent(BulletType bulletType)
+    {
+        if (bulletType == BulletType.Default)
+        {
+            Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_DEFAULTATTACK_ZERO, legend: LegendType.Hook);
+        }
+        else
+        {
+            Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_DEFAULTATTACK_ONE, legend: LegendType.Hook);
+        }
+    }
     private void FinishHeavyAttackOnAnimationEvent()
     {
         Vector3 finishBulletPosition = _bulletSpawnPositionLeft.position - _bulletSpawnPositionRight.position;
@@ -185,6 +195,7 @@ public class HookAttack : PlayerAttack
         if (_parrot.activeSelf)
         {
             CreateSkillBullet(bulletType);
+            Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_SKILLATTACK_SHOT, legendController.LegendType);
             _shotEffect.Play();
         }
     }

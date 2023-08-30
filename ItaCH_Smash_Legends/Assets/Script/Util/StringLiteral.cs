@@ -77,7 +77,7 @@ public static class StringLiteral
     public const string SFX_DOWN = "Down";
     public const string SFX_HANG = "Hang";
     public const string SFX_HEAVYATTACK = "HeavyAttack";
-    public const string SFX_HEAVYATTACK_HIY = "HeavyAttack_Hit";
+    public const string SFX_HEAVYATTACK_HIT = "HeavyAttack_Hit";
     public const string SFX_JUMP = "Jump";
     public const string SFX_JUMPATTACK = "JumpAttack";
     public const string SFX_JUMPLANDING = "JumpLanding";
@@ -85,19 +85,15 @@ public static class StringLiteral
     public const string SFX_ROLLFRONT = "RollFront";
     public const string SFX_SKILLATTACK = "SkillAttack";
     public const string SFX_SKILLATTACK_HIT = "SkillAttack_Hit";
-    public const string SFX_STEP_ZERO = "Step00";
-    public const string SFX_STEP_ONE = "Step01";
-    public const string SFX_STEP_TWO = "Step02";
-
+    public const string SFX_STEP = "Step0";
 
     // Legend Individual SFX
     public const string SFX_SKILLATTACK_SHOT = "SkillAttack_Shot";
-    public const string SFX_SKILLATTACK_START = "SkillAttack_Start";
     public const string SFX_SKILLATTACK_END = "SkillAttack_End";
 
-    public const string SFX_MINE_ACTIVATE = "Mine_Activate";
-    public const string SFX_MINE_EXPLODE = "Mine_Explode";
-    public const string SFX_MINE_SET = "Mine_Set";
+    public const string SFX_MINE_ACTIVATE = "MineActivate";
+    public const string SFX_MINE_EXPLODE = "MineExplode";
+    public const string SFX_MINE_SET = "MineSet";
     #endregion
 
     #region Legend Voice

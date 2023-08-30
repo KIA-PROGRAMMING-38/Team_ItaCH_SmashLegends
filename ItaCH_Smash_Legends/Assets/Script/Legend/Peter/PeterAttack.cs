@@ -3,7 +3,15 @@ using Cysharp.Threading.Tasks;
 using System.Threading;
 
 public class PeterAttack : PlayerAttack
-{  
+{
+    enum DefaultAttackType
+    {
+        First,
+        SecondOne,
+        SecondTwo,
+        Finish
+    }
+
     private float _skillAttackMoveSpeed = 7f;
 
     [SerializeField] private GameObject _skillAttackHitZone;
@@ -15,9 +23,13 @@ public class PeterAttack : PlayerAttack
     private CancellationTokenSource _cancelSource;
     private float _correctionPower = 0.8f;
 
+    private string[] _attacks;
+
     private void Start()
     {
         dashPower = legendController.Stat.DashPower * _correctionPower;
+        _attacks = new string[] { StringLiteral.SFX_DEFAULTATTACK_ZERO, StringLiteral.SFX_DEFAULTATTACK_ONE,
+            StringLiteral.SFX_DEFAULTATTACK_TWO, StringLiteral.SFX_DEFAULTATTACK_THREE, };
     }
     private void StopSkillAttackOnAnimationEvent()
     {
@@ -26,6 +38,10 @@ public class PeterAttack : PlayerAttack
     private void StartSkillAttackOnAnimationEvent()
     {
         MoveAtSkillAttack().Forget();
+    }
+    private void PlaySFXAttackSound(DefaultAttackType attackType)
+    {
+        Managers.SoundManager.Play(SoundType.SFX, _attacks[(int)attackType], legend: LegendType.Peter);
     }
     private async UniTaskVoid MoveAtSkillAttack()
     {

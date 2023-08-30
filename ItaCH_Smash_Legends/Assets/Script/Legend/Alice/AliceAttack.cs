@@ -10,9 +10,22 @@ public class AliceAttack : PlayerAttack
 
     private Vector3 _skillAttackDirection;
     private float _correctionPower = 0.8f;
+    private int _firstAttack = 0;
+    private int _finishAttack = 1;
     private void Start()
     {
         dashPower = legendController.Stat.DashPower * _correctionPower;
+    }
+    private void PlaySFXAttackSound(int attackIndex)
+    {
+        if(attackIndex == _firstAttack)
+        {
+            Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_DEFAULTATTACK_ZERO, legend: LegendType.Alice);
+        }
+        else
+        {
+            Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_DEFAULTATTACK_ONE, legend: LegendType.Alice);
+        }
     }
     private void DashAtSkillAttackOnAnimationEvent()
     {
