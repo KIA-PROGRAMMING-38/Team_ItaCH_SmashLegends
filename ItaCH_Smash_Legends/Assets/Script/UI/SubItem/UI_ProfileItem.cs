@@ -27,7 +27,7 @@ public class UI_ProfileItem : UIBase
         _portrait.SetInfo(_userData);
 
         _hpBar = Utils.GetOrAddComponent<UI_HpBar>(GetObject((int)ProfileSubItemObjects.HpBar));
-        _hpBar.SetInfo(_userData.TeamType);
+        _hpBar.SetInfo(_userData);
 
         _scoreSet = Utils.GetOrAddComponent<UI_ScoreSet>(GetObject((int)ProfileSubItemObjects.ScoreSet));
         _scoreSet.SetInfo(_userData.TeamType, 0);

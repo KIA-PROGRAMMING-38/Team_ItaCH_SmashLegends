@@ -74,8 +74,6 @@ public class StageManager : MonoBehaviourPunCallbacks
 
         InstantiateMap(currentGameMode.Map);
 
-        Managers.UIManager.ShowPopupUI<UI_DuelModePopup>();
-
         foreach (Team team in currentGameMode.Teams)
         {
             if (team.Type == TeamType.None)
@@ -88,6 +86,8 @@ public class StageManager : MonoBehaviourPunCallbacks
                 CreateLegend(member, _spawnPoints[(int)member.TeamType]);
             }
         }
+
+        Managers.UIManager.ShowPopupUI<UI_DuelModePopup>();
 
         StartGame();
     }

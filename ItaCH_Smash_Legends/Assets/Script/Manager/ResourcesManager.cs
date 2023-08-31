@@ -77,6 +77,7 @@ public class ResourceManager
         string legendName = legendType.ToString();
         string legendPrefabPath = Path.Combine(StringLiteral.PREFAB_FOLDER, legendName, $"{legendName}_Lobby", legendName);
         return Load<GameObject>(legendPrefabPath);
+    }
 
     public AudioClip GetAudioClip(string fileName, SoundType sound, LegendType legend = LegendType.None)
     {
