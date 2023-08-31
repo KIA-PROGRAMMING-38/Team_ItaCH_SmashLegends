@@ -85,7 +85,7 @@ public class StageManager : MonoBehaviourPunCallbacks
 
             foreach (UserData member in team.Members)
             {
-                CreateLegend(member, _spawnPoints[(int)member.TeamType]); // SpawnPoints[0] == root Object
+                CreateLegend(member, _spawnPoints[(int)member.TeamType]);
             }
         }
 
