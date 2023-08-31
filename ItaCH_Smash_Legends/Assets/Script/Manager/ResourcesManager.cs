@@ -72,8 +72,8 @@ public class ResourceManager
         return Load<Sprite>(legendFaceImagePath);
     }
 
-    public  GameObject GetLobbyLegendPrefab(LegendType legendType)
-    {      
+    public GameObject GetLobbyLegendPrefab(LegendType legendType)
+    {
         string legendName = legendType.ToString();
         string legendPrefabPath = Path.Combine(StringLiteral.PREFAB_FOLDER, legendName, $"{legendName}_Lobby", legendName);
         return Load<GameObject>(legendPrefabPath);

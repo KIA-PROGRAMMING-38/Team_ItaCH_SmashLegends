@@ -49,7 +49,6 @@ public class UI_GameResultPopup : UIPopup
 
     public void SetInfo(TeamType winnerTeam)
     {
-        winnerTeam = TeamType.Red;
         SetGameResultModelSpace();
         SetTopDeco(winnerTeam);
 
@@ -82,10 +81,10 @@ public class UI_GameResultPopup : UIPopup
     }
 
     public void SetGameResultModelSpace()
-    {        
+    {
         _gameResultLegendModelSpace = Managers.ResourceManager.Instantiate("UI/SubItem/UI_GameResultLegendModelSpace", gameObject.transform.parent);
         this.GetOrAddComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
-        this.GetOrAddComponent<Canvas>().worldCamera = Utils.FindChild<Camera>(_gameResultLegendModelSpace, "ResultCamera");        
+        this.GetOrAddComponent<Canvas>().worldCamera = Utils.FindChild<Camera>(_gameResultLegendModelSpace, "ResultCamera");
         _legendModelSpawnPoints = _gameResultLegendModelSpace.GetComponentsInChildren<Transform>();
     }
 
@@ -110,7 +109,7 @@ public class UI_GameResultPopup : UIPopup
     }
 
     public void CreateProfileItem(UserData user, GameObject parentObject)
-    {        
+    {
         UI_GameResultSubItem profileItem = Managers.UIManager.MakeSubItem<UI_GameResultSubItem>(parentObject.transform);
         profileItem.SetInfo(user, _legendModelSpawnPoints[(int)user.TeamType]);
         _profiles.Add(profileItem);

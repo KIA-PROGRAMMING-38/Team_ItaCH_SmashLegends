@@ -143,7 +143,7 @@ public class StageManager : MonoBehaviourPunCallbacks
     {
         // 게임 종료 연출 실행
         // >> 승리 팀 색의 Match Over 패널 Pop        
-        SceneManager.LoadScene(StringLiteral.RESULT);        
+        SceneManager.LoadScene(StringLiteral.RESULT);
         Managers.UIManager.ClosePopupUI();
         UI_GameResultPopup popup = Managers.UIManager.ShowPopupUI<UI_GameResultPopup>();
         popup.SetInfo(winnerTeam);

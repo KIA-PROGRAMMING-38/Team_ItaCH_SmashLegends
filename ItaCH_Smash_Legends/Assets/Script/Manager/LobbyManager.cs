@@ -22,7 +22,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public event Action OnInGameSceneLoaded;
 
     public event Action<int, UserData> OnUpdateUserDatas;
-    
+
     public void Init()
     {
 
