@@ -50,7 +50,7 @@ public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 �
         _totalPlayer = 2;
         _maxTeamCount = 2;
         _maxTeamMember = 1;
-        _maxGameTimeSec = 120;
+        _maxGameTimeSec = 5; // 원래 120 현재 테스트;
         _winningScore = 3;
         _modeDefaultRespawnTime = 5f;
         Map = StringLiteral.MAP_PREFAB_PATH;

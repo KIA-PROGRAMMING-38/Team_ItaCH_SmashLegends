@@ -30,6 +30,7 @@ public class Define
 
     public static readonly Vector3[] GAME_RESULT_USER_PROFILE_POSITIONS =
     {
+        default,
         BLUE_TEAM_GAME_RESULT_USER_PROFILE_POSITION,
         RED_TEAM_GAME_RESULT_USER_PROFILE_POSITION
     };

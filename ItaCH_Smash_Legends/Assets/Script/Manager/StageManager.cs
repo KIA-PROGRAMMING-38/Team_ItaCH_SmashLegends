@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviourPunCallbacks
 {
@@ -40,8 +41,6 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     public bool IsGameOver { get => _isGameOver; }
     private bool _isGameOver;
-
-    private List<GameObject> _legendUI;
 
     public event Action<int> OnTimeChange;
 
@@ -86,7 +85,7 @@ public class StageManager : MonoBehaviourPunCallbacks
 
             foreach (UserData member in team.Members)
             {
-                CreateLegend(member, _spawnPoints[member.ID + 1]); // SpawnPoints[0] == root Object
+                CreateLegend(member, _spawnPoints[(int)member.TeamType]); // SpawnPoints[0] == root Object
             }
         }
 
@@ -143,11 +142,12 @@ public class StageManager : MonoBehaviourPunCallbacks
     public void EndGame(TeamType winnerTeam)
     {
         // 게임 종료 연출 실행
-        // >> 승리 팀 색의 Match Over 패널 Pop
+        // >> 승리 팀 색의 Match Over 패널 Pop        
+        SceneManager.LoadScene(StringLiteral.RESULT);        
         Managers.UIManager.ClosePopupUI();
-        Managers.UIManager.ShowPopupUI<UI_GameResultPopup>().SetInfo(winnerTeam);
-        // >> 결과 패널 Pop
-        // 로비 씬 전환
+        UI_GameResultPopup popup = Managers.UIManager.ShowPopupUI<UI_GameResultPopup>();
+        popup.SetInfo(winnerTeam);
+
         //  Result UI >> 로컬 유저 팀 멤버 로비 모델 가져와 애니메이션 재생 및 승패 여부
     }
 }

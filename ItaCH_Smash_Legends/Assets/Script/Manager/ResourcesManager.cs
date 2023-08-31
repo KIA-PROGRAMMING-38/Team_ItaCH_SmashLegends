@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using UnityEngine;
 
 public class ResourceManager
@@ -69,5 +70,12 @@ public class ResourceManager
         string legendName = legend.ToString();
         string legendFaceImagePath = Path.Combine(StringLiteral.UI_SPRITE_FOLDER, legendName, legendName);
         return Load<Sprite>(legendFaceImagePath);
+    }
+
+    public  GameObject GetLobbyLegendPrefab(LegendType legendType)
+    {      
+        string legendName = legendType.ToString();
+        string legendPrefabPath = Path.Combine(StringLiteral.PREFAB_FOLDER, legendName, $"{legendName}_Lobby", legendName);
+        return Load<GameObject>(legendPrefabPath);
     }
 }

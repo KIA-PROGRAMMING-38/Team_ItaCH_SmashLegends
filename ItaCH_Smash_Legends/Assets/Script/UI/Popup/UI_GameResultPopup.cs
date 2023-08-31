@@ -1,7 +1,9 @@
 using Photon.Pun;
 using System.Collections.Generic;
 using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UI_GameResultPopup : UIPopup
 {
@@ -30,13 +32,15 @@ public class UI_GameResultPopup : UIPopup
         RedTeamUserProfile
     }
 
+    private GameObject _gameResultLegendModelSpace;
+    private Transform[] _legendModelSpawnPoints;
     public override void Init()
     {
         BindText(typeof(Texts));
         BindImage(typeof(Images));
         BindButton(typeof(Buttons));
         BindObject(typeof(GameObjects));
-        //Bind<UI_GameResultSubItem>(typeof(GameResultUserProfiles));
+        Bind<UI_GameResultSubItem>(typeof(GameResultUserProfiles));
 
         GetButton((int)Buttons.ExitButton).gameObject.BindEvent(OnCloseButton);
     }
@@ -44,10 +48,13 @@ public class UI_GameResultPopup : UIPopup
     private List<UI_GameResultSubItem> _profiles = new List<UI_GameResultSubItem>();
 
     public void SetInfo(TeamType winnerTeam)
-    {        
-        SetTopDeco(winnerTeam);        
-        // PopulateProfile();
-        // RefreshSubItems();
+    {
+        winnerTeam = TeamType.Red;
+        SetGameResultModelSpace();
+        SetTopDeco(winnerTeam);
+
+        PopulateProfile();
+        RefreshProfileItems(winnerTeam);
     }
 
     public void SetTopDeco(TeamType winnerTeam)
@@ -74,6 +81,14 @@ public class UI_GameResultPopup : UIPopup
         GetText((int)Texts.TopDecoText).text = topDecoText;
     }
 
+    public void SetGameResultModelSpace()
+    {        
+        _gameResultLegendModelSpace = Managers.ResourceManager.Instantiate("UI/SubItem/UI_GameResultLegendModelSpace", gameObject.transform.parent);
+        this.GetOrAddComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
+        this.GetOrAddComponent<Canvas>().worldCamera = Utils.FindChild<Camera>(_gameResultLegendModelSpace, "ResultCamera");        
+        _legendModelSpawnPoints = _gameResultLegendModelSpace.GetComponentsInChildren<Transform>();
+    }
+
     private void PopulateProfile()
     {
         _profiles.Clear();
@@ -89,30 +104,33 @@ public class UI_GameResultPopup : UIPopup
 
         for (int team = (int)TeamType.Blue; team <= maxTeamCount; ++team)
         {
-            //CreateProfileItem(team, parentObject);
+            UserData userData = Managers.StageManager.CurrentGameMode.Teams[team].Members[0];
+            CreateProfileItem(userData, parentObject);
         }
     }
 
-    public void CreateProfileItem(int team, GameObject parentObject)
-    {
+    public void CreateProfileItem(UserData user, GameObject parentObject)
+    {        
         UI_GameResultSubItem profileItem = Managers.UIManager.MakeSubItem<UI_GameResultSubItem>(parentObject.transform);
-
-        profileItem.SetInfo(team);
+        profileItem.SetInfo(user, _legendModelSpawnPoints[(int)user.TeamType]);
         _profiles.Add(profileItem);
     }
 
-    private void RefreshSubItems()
+    private void RefreshProfileItems(TeamType winnerTeam)
     {
         foreach (UI_GameResultSubItem profile in _profiles)
         {
-            profile.RefreshSubItem();
+            profile.RefreshSubItem(winnerTeam);
         }
     }
 
     private void OnCloseButton()
-    {        
-        PhotonNetwork.LoadLevel(StringLiteral.LOBBY);
-        Managers.UIManager.ClosePopupUI(this);
-        // Managers.UIManager.ShowPopupUI<UI_LoobyPopup>(); // To Do : UI_LobbyPopuup 구성시 또는 기존 LobbyUI 활성화
+    {
+        AsyncOperation loadLobbySceneAsync = SceneManager.LoadSceneAsync(StringLiteral.LOBBY);
+
+        if (loadLobbySceneAsync.isDone)
+        {
+            Managers.UIManager.ClosePopupUI();
+        }
     }
 }

@@ -22,7 +22,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public event Action OnInGameSceneLoaded;
 
     public event Action<int, UserData> OnUpdateUserDatas;
-
+    
     public void Init()
     {
 
@@ -94,6 +94,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         switch (level)
         {
             case (int)Level.Lobby:
+                OnLogInSuccessed?.Invoke();
                 return;
 
             case (int)Level.Ingame:

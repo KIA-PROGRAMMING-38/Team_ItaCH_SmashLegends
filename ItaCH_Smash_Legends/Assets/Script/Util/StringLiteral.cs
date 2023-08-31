@@ -3,6 +3,7 @@ public static class StringLiteral
     #region SCENE NAME
     public const string LOBBY = "Lobby";
     public const string INGAME = "InGame";
+    public const string RESULT = "GameResult";
     #endregion
 
     #region CONNECTION INFO TEXT

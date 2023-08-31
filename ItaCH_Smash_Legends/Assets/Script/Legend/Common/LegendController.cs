@@ -74,7 +74,9 @@ public class LegendController : MonoBehaviour
     }
     private void OnDisable()
     {
-        _effectController.SetDieEffect();
+
+        //_effectController.SetDieEffect();
+
     }
     public void Init(UserData user)
     {
