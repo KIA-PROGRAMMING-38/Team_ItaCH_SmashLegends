@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviourPunCallbacks
 {
@@ -41,12 +42,6 @@ public class StageManager : MonoBehaviourPunCallbacks
     public bool IsGameOver { get => _isGameOver; }
     private bool _isGameOver;
 
-    private GameObject _legendUIPrefab;
-    private GameObject[] _modeUIPrefab;
-
-    private List<GameObject> _legendUI;
-    private GameObject _modeUI;
-
     public event Action<int> OnTimeChange;
 
     public override void OnEnable()
@@ -83,9 +78,14 @@ public class StageManager : MonoBehaviourPunCallbacks
 
         foreach (Team team in currentGameMode.Teams)
         {
+            if (team.Type == TeamType.None)
+            {
+                continue;
+            }
+
             foreach (UserData member in team.Members)
             {
-                CreateLegend(member, _spawnPoints[member.ID + 1]); // SpawnPoints[0] == root Object
+                CreateLegend(member, _spawnPoints[(int)member.TeamType]);
             }
         }
 
@@ -110,13 +110,6 @@ public class StageManager : MonoBehaviourPunCallbacks
         legendObject.layer =
             (user.TeamType == TeamType.Blue) ?
             LayerMask.NameToLayer(StringLiteral.TEAM_BLUE) : LayerMask.NameToLayer(StringLiteral.TEAM_RED);
-    }
-    public void SetLegendUI(LegendController player) // TO DO : UI가 직접 하도록 수정 필요
-    {
-        _legendUIPrefab = Resources.Load<GameObject>("UI/LegendUI");
-        GameObject legendUI = Instantiate(_legendUIPrefab);
-        //legendUI.GetComponent<LegendUI>().InitLegendUISettings(player.transform); // TO DO : CharacterStatus가 아닌 곳에서 Stat 가져오고 참조 연결
-        _legendUI.Add(legendUI);
     }
 
     public void StartGame()
@@ -146,13 +139,15 @@ public class StageManager : MonoBehaviourPunCallbacks
         _currentGameMode.IsOver();
     }
 
-    public void EndGame(Team winnerTeam) // gameMode가 승점 계산 이후 Invoke
+    public void EndGame(TeamType winnerTeam)
     {
         // 게임 종료 연출 실행
-        // >> 승리 팀 색의 Match Over 패널 Pop
+        // >> 승리 팀 색의 Match Over 패널 Pop        
+        SceneManager.LoadScene(StringLiteral.RESULT);
+        Managers.UIManager.ClosePopupUI();
+        UI_GameResultPopup popup = Managers.UIManager.ShowPopupUI<UI_GameResultPopup>();
+        popup.SetInfo(winnerTeam);
 
-        // >> 결과 패널 Pop
-        // 로비 씬 전환
         //  Result UI >> 로컬 유저 팀 멤버 로비 모델 가져와 애니메이션 재생 및 승패 여부
     }
 }

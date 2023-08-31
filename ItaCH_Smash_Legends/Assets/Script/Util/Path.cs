@@ -55,14 +55,7 @@ namespace Util.Path
 
 
         // TO DO : UI 리팩토링 시 완전히 ResourceManager로 넘길 부분, StringBuilder 생성부 삭제
-        public static string GetLobbyLegendModelPath(LegendType legendType)
-        {
-            StringBuilder stringBuilder = new StringBuilder();
-            string legendName = legendType.ToString();
-            stringBuilder.Append(MapPath);
-            stringBuilder.Append(legendName);
-            return stringBuilder.ToString();
-        }
+
         public static string GetLegendSpritePath(LegendType legendType)
         {
             StringBuilder stringBuilder = new StringBuilder();

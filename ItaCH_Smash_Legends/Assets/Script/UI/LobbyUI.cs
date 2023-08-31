@@ -55,8 +55,8 @@ public class LobbyUI : MonoBehaviour
 
         for (int i = 1; i < (int)LegendType.MaxCount; ++i)
         {            
-            GameObject characterModelPrefab = Resources.Load<GameObject>(FilePath.GetLobbyLegendModelPath((LegendType)i));
-            GameObject characterModelInstance = Instantiate(characterModelPrefab, _spawnPoint).gameObject;
+            GameObject characterModelPrefab = Managers.ResourceManager.GetLobbyLegendPrefab((LegendType)i);
+            GameObject characterModelInstance = Managers.ResourceManager.Instantiate(characterModelPrefab, _spawnPoint);
             _legendModels[i] = characterModelInstance;
             characterModelInstance.transform.parent = _spawnPoint;
             characterModelInstance.SetActive(false);
@@ -97,7 +97,7 @@ public class LobbyUI : MonoBehaviour
             modelTransform.SetParent(_spawnPoint);
             modelTransform.localPosition = Vector3.zero;
             modelTransform.localScale = new Vector3(1, 1, 1);
-            modelTransform.rotation = Quaternion.Euler(0, 180, 0);
+            modelTransform.localRotation = Quaternion.Euler(0, 180, 0);
         }
     }
 

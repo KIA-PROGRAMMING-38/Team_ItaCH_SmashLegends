@@ -5,6 +5,7 @@ public static class StringLiteral
     #region SCENE NAME
     public const string LOBBY = "Lobby";
     public const string INGAME = "InGame";
+    public const string RESULT = "GameResult";
     #endregion
 
     #region CONNECTION INFO TEXT
@@ -26,6 +27,8 @@ public static class StringLiteral
     public const string MAP_PREFAB_PATH = "Map/SingleLogBridge";
     public const string UI_FOLDER = "UI";
     public const string UI_SPRITE_FOLDER = "UI/Sprite";
+    public const string UI_GAME_RESULT_POPUP = "UI_GameResultPopup";
+    public const string TOP_DECO_SPRITE = "_TopDeco_";
     public const string SOUND = "Sound";
     public const string VOICE = "Voice";
     public const string SFX = "SFX";

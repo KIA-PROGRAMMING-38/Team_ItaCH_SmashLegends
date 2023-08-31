@@ -32,9 +32,15 @@ public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 �
     {
         GetGameModeData(gameModeType);
         Teams = new List<Team>();
+        Team defaultTeam = new Team();
+        defaultTeam.InitDefaultTeam();
+        Teams.Add(defaultTeam);
 
         Managers.LobbyManager.OnUpdatePlayerList -= SetUserTeam;
         Managers.LobbyManager.OnUpdatePlayerList += SetUserTeam;
+
+        OnNotifyWinnerTeam -= Managers.StageManager.EndGame;
+        OnNotifyWinnerTeam += Managers.StageManager.EndGame;
     }
 
     private void GetGameModeData(GameModeType gameModeType)
@@ -64,7 +70,6 @@ public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 �
             Team newTeam = new Team();
             newTeam.Init();
             Teams.Add(newTeam);
-            newTeam.Type = (Teams.Count == 1) ? TeamType.Blue : TeamType.Red; // 자신이 속한 팀을 제외한 모든 팀은 red team으로 두어 레이어 구분 및 피격 판정
             return newTeam;
         }
         else
@@ -90,7 +95,8 @@ public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 �
                 break;
 
             case GameModeType.TeamMatch:
-                //JudgeWinnerOnTeamMatch(); // To Do : Match 모드 구현 시 추가
+                Team winnerTeam = GetWinnerTeam(Teams);
+                OnNotifyWinnerTeam?.Invoke(winnerTeam.Type);
                 break;
 
             default:
@@ -102,10 +108,9 @@ public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 �
 
     private Team? GetWinnerTeam(List<Team> teams)
     {
-
         if (teams[(int)TeamType.Blue].Score == teams[(int)TeamType.Red].Score)
         {
-            return null;
+            return DRAW;
         }
 
         if (teams[(int)TeamType.Blue].Score > teams[(int)TeamType.Red].Score)
@@ -122,7 +127,7 @@ public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 �
     {
         Team? winnerTeam = GetWinnerTeam(Teams);
 
-        if (winnerTeam is not null)
+        if (winnerTeam is not DRAW)
         {
             OnNotifyWinnerTeam?.Invoke(winnerTeam.Type);
 

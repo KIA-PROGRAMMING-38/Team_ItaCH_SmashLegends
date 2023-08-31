@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Photon.Pun;
 using System;
 using System.Text.RegularExpressions;
 using TMPro;
@@ -22,6 +23,10 @@ public class LogInUI : MonoBehaviour
 
     private void Start()
     {
+        if (PhotonNetwork.IsConnected)
+        {
+            gameObject.SetActive(false);
+        }
         Init();
         ShowOpening();
     }
