@@ -65,8 +65,20 @@ public static class StringLiteral
     #endregion
 
     #region BGM
+    public const string TITLE = "Title";
     public const string MATCH = "Match";
+    public const string STAGE = "Stage";
+    public const string GAMERESULT = "GameResult";
     #endregion
+
+    #region UI SFX
+    public const string SFX_BUTTON = "Button";
+    public const string SFX_GAMESTART = "GameStart";
+    public const string SFX_MATCH_START = "MatchStart";
+    public const string SFX_MATCH_OVER = "MatchOver";
+    public const string SFX_REMOVEPANEL = "RemovePanel";
+    #endregion
+
     #region Legend SFX
     // Legend Common SFX
     public const string SFX_DEFAULTATTACK_ZERO = "DefaultAttack00";
@@ -86,7 +98,9 @@ public static class StringLiteral
     public const string SFX_SKILLATTACK = "SkillAttack";
     public const string SFX_SKILLATTACK_HIT = "SkillAttack_Hit";
     public const string SFX_STEP = "Step0";
-
+    public const string SFX_LEGEND_DEAD = "Legend_Dead";
+    public const string SFX_LEGEND_SMASH = "Legend_Smash";
+    public const string SFX_LEGEND_REVIVE = "Legend_Revive";
     // Legend Individual SFX
     public const string SFX_SKILLATTACK_SHOT = "SkillAttack_Shot";
     public const string SFX_SKILLATTACK_END = "SkillAttack_End";

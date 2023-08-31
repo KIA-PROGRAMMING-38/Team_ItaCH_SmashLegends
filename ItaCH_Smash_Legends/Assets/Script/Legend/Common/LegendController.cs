@@ -66,12 +66,7 @@ public class LegendController : MonoBehaviour
     private int _stepIndex = 0;
     private bool _canAttack;
     public LegendType LegendType { get; private set; }
-    private void Awake()
-    {
-        UserData d = new UserData() { SelectedLegend = LegendType.Alice, ID = 0 };
-        Init(d);
-        Debug.Log($"{StringLiteral.SFX_STEP_ONE}1");
-    }
+    
     private void OnEnable()
     {
         if (_effectController != null)
