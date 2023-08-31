@@ -11,6 +11,8 @@ public class LegendHeavyAttackState : LegendBaseState
         base.OnStateEnter(animator, stateInfo, layerIndex);
 
         animator.SetBool(AnimationHash.Run, false);
+        Managers.SoundManager.Play(SoundType.Voice, legend: legendController.LegendType, voice: VoiceType.HeavyAttack);
+
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

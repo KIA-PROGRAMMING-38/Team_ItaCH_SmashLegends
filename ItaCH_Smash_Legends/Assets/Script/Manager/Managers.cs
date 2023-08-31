@@ -9,6 +9,7 @@ public class Managers : MonoBehaviour
     private static LobbyManager s_lobbyManager;
     private static DataManager s_dataManager;
     private static ResourceManager s_resourceManager;
+    private static SoundManager s_soundManager;
     private static UIManager s_uiManager;
 
     public static StageManager StageManager { get { Init(); return s_stageManager; } }
@@ -16,6 +17,7 @@ public class Managers : MonoBehaviour
     public static UIManager UIManager { get { Init(); return s_uiManager; } }
     public static DataManager DataManager { get { Init(); return s_dataManager; } }
     public static ResourceManager ResourceManager { get { Init(); return s_resourceManager; } }
+    public static SoundManager SoundManager { get { Init(); return s_soundManager; } } 
 
     private void Start()
     {
@@ -37,12 +39,14 @@ public class Managers : MonoBehaviour
 
                 s_lobbyManager = CreateManager<LobbyManager>();
                 s_stageManager = CreateManager<StageManager>();
+                s_soundManager = CreateManager<SoundManager>();
                 s_dataManager = new DataManager();
                 s_resourceManager = new ResourceManager();
                 s_uiManager = new UIManager();
 
                 s_lobbyManager.Init();
                 s_stageManager.Init();
+                s_soundManager.Init();
                 s_dataManager.Init();
                 s_resourceManager.Init();
                 s_uiManager.Init();

@@ -46421,14 +46421,21 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0
-    functionName: EnableAttackHitZone
+    functionName: EnableAttackSmokeEffect
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0
-    functionName: EnableAttackSmokeEffect
+    functionName: PlayAttackVoiceOnAnimationEvent
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.13333334
+    functionName: EnableAttackHitZone
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

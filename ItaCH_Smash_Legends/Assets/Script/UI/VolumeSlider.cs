@@ -27,6 +27,6 @@ public class VolumeSlider : MonoBehaviour
 
     public void ChangeVolume(float value)
     {
-        SoundManager._instance.SetVolume(_soundType, value);
+        Managers.SoundManager.SetVolume(_soundType, value);
     }
 }

@@ -1,133 +1,139 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager _instance;
-    private AudioSource[] _audioSources = new AudioSource[(int)SoundType.NumOfSoundType - 1];
-    private Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
-    private StringBuilder _stringBuilder;
+    private AudioSource[] _audioSources = new AudioSource[(int)SoundType.NumOfSoundType];
     private AudioMixer _audioMixer;
 
-    #region ∆˙¥ı ∞Ê∑Œ
-    private const string _None3DSoundRootFolderPath = "Sound/";
-    private const string _3DSoundRootFolderPath = "Sound/CHAR/";
-    #endregion
+    private string[] _defaultAttacks = { "DefaultAttack00", "DefaultAttack01", "DefaultAttack02" };
+    private string[] _dies = { "Die00", "Die01", "Die02", "Die03" };
+    private string[] _heavyAttacks = { "HeavyAttack00", "HeavyAttack01", "HeavyAttack02", "HeavyAttack03" };
+    private string[] _hits = { "Hit00", "Hit01", "Hit02", "Hit03", "Hit04" };
+    private string[] _hitUps = { "HitUp00", "HitUp01", "HitUp02", "HitUp03", "HitUp04" };
+    private string[] _jumps = { "Jump00", "Jump01" };
+    private string[] _jumpAttacks = { "JumpAttack00", "JumpAttack01", "JumpAttack02" };
+    private string[] _lastAttacks = { "LastAttack00", "LastAttack01" };
+    private string[] _lobbys = { "Lobby00", "Lobby01", "Lobby02" };
+    private string[] _revives = { "Revive00", "Revive01" };
+    private string[] _selecteds = { "Selected00", "Selected01", "Selected02", "Selected03" };
+    private string[] _skiiAttacks = { "SkillAttack00", "SkillAttack01", "SkillAttack02", "SkillAttack03" };
 
-    //≈◊Ω∫∆Æ ƒ⁄µÂ. √ﬂ»ƒ ¿ßƒ° ∫Ø∞Ê øπ¡§
-    private void Awake()
+    private Dictionary<VoiceType, string[]> _legendVoices = new Dictionary<VoiceType, string[]>();
+
+    public void Init()
     {
-        InitSoundManagerSettings();
-    }
-    public void InitSoundManagerSettings()
-    {
-        #region ΩÃ±€≈Ê
-        if (_instance == null)
-        {
-            _instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-        #endregion
-        _audioMixer = Resources.Load<AudioMixer>("Sound/AudioMixer");
-        _stringBuilder = new StringBuilder();
+        SetLegendVoiceDictionary();
 
-        for (int i = 0; i < (int)SoundType.NumOfSoundType - 1; i++)
+        for (int index = 0; index < _audioSources.Length; ++index)
         {
-            GameObject audioSource = new GameObject { };
-            string soundType = Enum.GetName(typeof(SoundType), i);
-            audioSource.name = soundType;
-            _audioSources[i] = audioSource.AddComponent<AudioSource>();
-            audioSource.transform.parent = transform;
-            _audioSources[i].outputAudioMixerGroup = _audioMixer.FindMatchingGroups(soundType)[0];
+            GameObject gameObject = new GameObject();
+            gameObject.name = Enum.GetName(typeof(SoundType), index);
+            gameObject.transform.parent = transform;
+            _audioSources[index] = gameObject.AddComponent<AudioSource>();
         }
-
         _audioSources[(int)SoundType.BGM].loop = true;
     }
-    public void Clear(AudioSource[] audioSources, Dictionary<string, AudioClip> audioClips)
+
+    public void Clear(AudioSource[] audioSources)
     {
         foreach (AudioSource audioSource in audioSources)
         {
             audioSource.clip = null;
             audioSource.Stop();
         }
-
-        audioClips.Clear();
     }
 
-    //3D¿Ω«‚¿Ã « ø‰æ¯¥¬ º“∏Æ ¿Áª˝ (ø¿µø¿≈¨∏≥¿∏∑Œ ¿Áª˝)
-    public void Play(AudioClip audioClip, SoundType soundType = SoundType.SFX)
+    public void Play(SoundType sound, string fileName = null, LegendType legend = LegendType.None,
+        VoiceType voice = VoiceType.MaxCount)
     {
-        AudioSource audioSource = _audioSources[(int)soundType];
-        audioSource.clip = audioClip;
-
-        if (soundType == SoundType.BGM)
+        if (sound == SoundType.Voice)
         {
-            audioSource.Stop();
-            audioSource.Play();
-        }
-        else
-        {
-            audioSource.PlayOneShot(audioClip);
-        }
-    }
-
-    //3D¿Ω«‚¿Ã « ø‰æ¯¥¬ º“∏Æ ¿Áª˝ (¿Ã∏ß¿∏∑Œ ¿Áª˝)
-    public void Play(string name, SoundType soundType = SoundType.SFX)
-    {
-        if (soundType.Equals(SoundType.SFX) && _audioClips.ContainsKey(name))
-        {
-            Play(_audioClips[name], soundType);
-            return;
-        }
-        SetSoundPath(_None3DSoundRootFolderPath, name, soundType);
-        AudioClip audioClip = Resources.Load<AudioClip>(_stringBuilder.ToString());
-        if (soundType.Equals(SoundType.SFX))
-        {
-            _audioClips.Add(name, audioClip);
-        }
-        Play(audioClip, soundType);
-    }
-
-    //3D¿Ω«‚ ¿Áª˝¿Ã « ø‰«— º“∏Æ¿Áª˝. ƒ≥∏Ø≈Õ∞° ¿⁄√º¿˚¿∏∑Œ ∞°¡ˆ∞Ì ¿÷¥¬ º“∏Æ Dictionary∏¶ ∞ÀªÁ«— »ƒ Play Ω««‡.
-    //name¿∫ Peter/Die00 ¿Ã∑±Ωƒ¿∏∑Œ ƒ≥∏Ø≈Õ¿Ã∏ß/ªÛ»≤¿∏∑Œ º≥¡§.
-    public void Play(string name, Dictionary<string, AudioClip> dictionary, AudioSource audioSource, SoundType soundType)
-    {
-        if (dictionary.ContainsKey(name))
-        {
-            audioSource.PlayOneShot(dictionary[name]);
-        }
-        else
-        {
-            SetSoundPath(_3DSoundRootFolderPath, name, soundType);
-            AudioClip audioClip = Resources.Load<AudioClip>(_stringBuilder.ToString());
-            if(audioClip.Equals(null))
+            if (voice == VoiceType.Hit && IsHit(sound))
             {
                 return;
             }
-            dictionary[name] = audioClip;
-            audioSource.PlayOneShot(audioClip);
+            else
+            {
+                AudioClip audioClip = GetVoiceAudioClip(legend, voice);
+                _audioSources[(int)sound].PlayOneShot(audioClip);
+                return;
+            }
         }
+        else
+        {
+            AudioClip audioClip = Managers.ResourceManager.GetAudioClip(fileName, sound, legend);
+
+            if (sound == SoundType.BGM)
+            {
+                _audioSources[(int)sound].Stop();
+                _audioSources[(int)sound].clip = audioClip;
+                _audioSources[(int)sound].Play();
+
+                return;
+            }
+
+            else
+            {
+                _audioSources[(int)sound].PlayOneShot(audioClip);
+                return;
+            }
+        }
+        bool IsHit(SoundType sound)
+        {
+            foreach (string clipName in _hits)
+            {
+                if (_audioSources[(int)sound].clip.name == clipName)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    }
+
+    private AudioClip GetVoiceAudioClip(LegendType legend, VoiceType voice)
+    {
+        AudioClip audioClip;
+
+        if (voice == VoiceType.Win)
+        {
+            audioClip = Managers.ResourceManager.GetAudioClip(StringLiteral.VOICE_WIN, SoundType.Voice, legend);
+        }
+        else
+        {
+            int index = UnityEngine.Random.Range(0, _legendVoices[voice].Length);
+            string result = _legendVoices[voice][index];
+
+            audioClip = Managers.ResourceManager.GetAudioClip(result, SoundType.Voice, legend);
+        }
+        _audioSources[(int)SoundType.Voice].clip = audioClip;
+        return audioClip;
     }
 
     public void SetVolume(SoundType soundType, float value)
     {
-        //∞°¿Â ∏π¿Ã ªÁøÎ«œ¥¬ ∫º∑˝ ∫Ø∞Ê Ωƒ. ø¯∑°¥¬ ±‚øÔ±‚∑Œ 50¿Ã æ∆¥— 20¿ª ªÁøÎ«œ≥™, ∫Ø»≠∞° ∂—∑««œ¡ˆ æ æ∆ 50¿ª ªÁøÎ«‘.
+        //Í∞ÄÏû• ÎßéÏù¥ ÏÇ¨Ïö©ÌïòÎäî Î≥ºÎ•® Î≥ÄÍ≤Ω Ïãù. ÏõêÎûòÎäî Í∏∞Ïö∏Í∏∞Î°ú 50Ïù¥ ÏïÑÎãå 20ÏùÑ ÏÇ¨Ïö©ÌïòÎÇò, Î≥ÄÌôîÍ∞Ä ÎöúÎ†∑ÌïòÏßÄ ÏïäÏïÑ 50ÏùÑ ÏÇ¨Ïö©Ìï®.
         _audioMixer.SetFloat(soundType.ToString(), Mathf.Log10(value) * 50);
     }
 
-    private void SetSoundPath(string rootFolderPath, string name, SoundType soundType)
+    private void SetLegendVoiceDictionary()
     {
-        _stringBuilder.Clear();
-        _stringBuilder.Append(rootFolderPath);
-        _stringBuilder.Append(soundType);
-        _stringBuilder.Append("/");
-        _stringBuilder.Append(name);
+        _legendVoices[VoiceType.DefaultAttack] = _defaultAttacks;
+        _legendVoices[VoiceType.Die] = _dies;
+        _legendVoices[VoiceType.HeavyAttack] = _heavyAttacks;
+        _legendVoices[VoiceType.Hit] = _hits;
+        _legendVoices[VoiceType.HitUp] = _hitUps;
+        _legendVoices[VoiceType.Jump] = _jumps;
+        _legendVoices[VoiceType.JumpAttack] = _jumpAttacks;
+        _legendVoices[VoiceType.LastAttack] = _lastAttacks;
+        _legendVoices[VoiceType.Lobby] = _lobbys;
+        _legendVoices[VoiceType.Revive] = _revives;
+        _legendVoices[VoiceType.Selected] = _selecteds;
+        _legendVoices[VoiceType.SkillAttack] = _skiiAttacks;
     }
+
 }
