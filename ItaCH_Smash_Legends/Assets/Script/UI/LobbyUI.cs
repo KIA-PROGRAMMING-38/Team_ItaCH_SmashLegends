@@ -79,7 +79,6 @@ public class LobbyUI : MonoBehaviour
 
         IPanel panel = panelGameObject.GetComponent<IPanel>();
         EnablePanelButton button = buttonGameObject.GetComponent<EnablePanelButton>();
-
         panel.InitPanelSettings(this);
         button.InitEnablePanelButtonSettings(panelGameObject);
         panelGameObject.SetActive(false);
@@ -87,6 +86,7 @@ public class LobbyUI : MonoBehaviour
         {
             button.Button.onClick.AddListener(Managers.LobbyManager.Connect);
         }
+        Managers.SoundManager.Play(SoundType.BGM, StringLiteral.LOBBY);
     }
 
     public void ResetModelTransform()

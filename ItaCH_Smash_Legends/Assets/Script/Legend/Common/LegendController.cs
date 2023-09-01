@@ -451,6 +451,7 @@ public class LegendController : MonoBehaviour
 
         _rigidbody.AddForce(knockbackDirection * dieKnockbackPower);
         _legendAnimationController.SetTrigger(AnimationHash.HitUp);
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_LEGEND_SMASH);
         _effectController.SetDieSmokeEffect();
     }
     public void SetDieEffect()

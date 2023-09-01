@@ -24,8 +24,6 @@ public class AliceBomb : HitZone
         _cancelToken = new CancellationTokenSource();
         _targetPoint = new Vector3[point.Length];
         legendController = _currentTransform.GetComponent<LegendController>();
-
-        gameObject.layer = LayerMask.NameToLayer(legendController.GetChildLayer());
         gameObject.SetActive(false);
     }
 
@@ -35,6 +33,7 @@ public class AliceBomb : HitZone
         knockbackPower = legendController.Stat.HeavyKnockbackPower;
         knockbackDirection = _currentTransform.up;
         AnimationType = AnimationHash.Hit;
+        gameObject.layer = LayerMask.NameToLayer(legendController.GetChildLayer());
     }
 
     private void OnEnable()

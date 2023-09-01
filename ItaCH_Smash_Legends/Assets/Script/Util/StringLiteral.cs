@@ -65,17 +65,18 @@ public static class StringLiteral
     #endregion
 
     #region BGM
-    public const string TITLE = "Title";
-    public const string MATCH = "Match";
-    public const string STAGE = "Stage";
-    public const string GAMERESULT = "GameResult";
+    public const string BGM_TITLE = "Title";
+    public const string BGM_LOBBY = "Lobby";
+    public const string BGM_MATCH = "Match";
+    public const string BGM_STAGE = "Stage";
+    public const string BGM_GAMERESULT = "GameResult";
     #endregion
 
     #region UI SFX
     public const string SFX_BUTTON = "Button";
-    public const string SFX_GAMESTART = "GameStart";
-    public const string SFX_MATCH_START = "MatchStart";
-    public const string SFX_MATCH_OVER = "MatchOver";
+    public const string SFX_GAMEMODESTART = "GameModeStart";
+    public const string SFX_MATCH_START = "Match_Start";
+    public const string SFX_MATCH_OVER = "Match_Over";
     public const string SFX_REMOVEPANEL = "RemovePanel";
     #endregion
 
@@ -100,7 +101,7 @@ public static class StringLiteral
     public const string SFX_STEP = "Step0";
     public const string SFX_LEGEND_DEAD = "Legend_Dead";
     public const string SFX_LEGEND_SMASH = "Legend_Smash";
-    public const string SFX_LEGEND_REVIVE = "Legend_Revive";
+    public const string SFX_LEGEND_REVIVE = "Legend_Revive"; // TODO : 부활작업 완료시 재생
     // Legend Individual SFX
     public const string SFX_SKILLATTACK_SHOT = "SkillAttack_Shot";
     public const string SFX_SKILLATTACK_END = "SkillAttack_End";
