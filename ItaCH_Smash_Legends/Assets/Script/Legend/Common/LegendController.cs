@@ -66,7 +66,7 @@ public class LegendController : MonoBehaviour
     private int _stepIndex = 0;
     private bool _canAttack;
     public LegendType LegendType { get; private set; }
-    
+
     private void OnEnable()
     {
         if (_effectController != null)
@@ -432,7 +432,7 @@ public class LegendController : MonoBehaviour
         }
     }
 
-    private void Damage(int damage)
+    public void Damage(int damage)
     {
         Stat.HP -= damage;
 
