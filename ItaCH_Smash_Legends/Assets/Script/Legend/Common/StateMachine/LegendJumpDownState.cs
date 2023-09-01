@@ -15,4 +15,8 @@ public class LegendJumpDownState : LegendBaseState
             legendController.MoveAndRotate();
         }
     }
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        Managers.SoundManager.Play(SoundType.SFX,StringLiteral.SFX_JUMPLANDING,legendController.LegendType);
+    }
 }

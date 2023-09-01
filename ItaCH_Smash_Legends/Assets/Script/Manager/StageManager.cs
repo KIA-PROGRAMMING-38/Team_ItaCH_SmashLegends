@@ -148,6 +148,7 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     public void EndGame(Team winnerTeam) // gameMode가 승점 계산 이후 Invoke
     {
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_MATCH_OVER);
         // 게임 종료 연출 실행
         // >> 승리 팀 색의 Match Over 패널 Pop
 

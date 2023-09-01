@@ -4,6 +4,8 @@ using Util.Path;
 
 public class LobbyUI : MonoBehaviour
 {
+    // TODO : 레전드 선택후 로비로 돌아왔을떄 Play.(SoundType.Voice,legend: LegendType, voice: VoiceType.Lobby );
+
     private LegendType _legendType;
     private GameObject[] _legendModels;
 

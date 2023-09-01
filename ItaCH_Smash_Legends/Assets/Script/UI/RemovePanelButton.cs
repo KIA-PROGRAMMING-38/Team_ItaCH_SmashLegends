@@ -5,7 +5,7 @@ public class RemovePanelButton : MonoBehaviour
 {
     private GameObject _panel;
     private Button _button;
-    //Å×½ºÆ® ÄÚµå. ÃßÈÄ ÇÊ¿äÇÑ ºÎºĞ¿¡¼­ È£ÃâÇÒ ¿¹Á¤
+    //í…ŒìŠ¤íŠ¸ ì½”ë“œ. ì¶”í›„ í•„ìš”í•œ ë¶€ë¶„ì—ì„œ í˜¸ì¶œí•  ì˜ˆì •
     private void Start()
     {
         InitRemovePanelButtonSettings();
@@ -16,7 +16,7 @@ public class RemovePanelButton : MonoBehaviour
         _button = GetComponent<Button>();
         _button.onClick.RemoveAllListeners();
         _button.onClick.AddListener(RemovePanel);
-        //_button.onClick.AddListener(() => SoundManager._instance.Play("RemovePanel"));
+        _button.onClick.AddListener(() => Managers.SoundManager.Play(SoundType.SFX,StringLiteral.SFX_REMOVEPANEL));
     }
     public void RemovePanel()
     {

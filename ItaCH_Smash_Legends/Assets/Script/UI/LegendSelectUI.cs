@@ -28,6 +28,7 @@ public class LegendSelectUI : MonoBehaviour
         _button = GetComponent<Button>();
         _button.onClick.RemoveAllListeners();
         _button.onClick.AddListener(OnPressButton);
+        _button.onClick.AddListener(() => Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_BUTTON));
         _legendName = transform.GetChild(3).GetComponent<TextMeshProUGUI>();
         _legendName.text = legendName;
         if (currentIndex.Equals(_selectedLegend))

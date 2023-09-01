@@ -11,7 +11,7 @@ public class PeterFinishAttackHitZone : HitZone
 
     private void OnEnable()
     {
-        knockbackDirection = transform.forward;
+        knockbackDirection = transform.forward + transform.up;
     }
 }
 

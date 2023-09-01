@@ -6,6 +6,7 @@ public class DeadZone : MonoBehaviour
     {
         var legend = other.GetComponent<LegendController>();
         legend.SetDieEffect();
+        Managers.SoundManager.Play(SoundType.Voice, legend: legend.LegendType, voice: VoiceType.Die);
         Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_LEGEND_DEAD);
         legend.gameObject.SetActive(false);
     }

@@ -439,7 +439,6 @@ public class LegendController : MonoBehaviour
         if (IsDead())
         {
             Smash();
-            Managers.SoundManager.Play(SoundType.Voice, legend: LegendType, voice: VoiceType.Die);
         }
 
         bool IsDead() => Stat.HP <= 0;
