@@ -5,6 +5,7 @@ public class AliceJumpHitZone : HitZone
         DamageAmount = legendController.Stat.JumpAttackDamage;
         knockbackPower = legendController.Stat.HeavyKnockbackPower;
         AnimationType = AnimationHash.HitUp;
+        AttackSound = StringLiteral.SFX_DEFAULTATTACK_HIT;
         gameObject.SetActive(false);
     }
 

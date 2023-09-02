@@ -25,4 +25,9 @@ public class LegendHitUpState : LegendBaseState
             }
         }
     }
+
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_DOWN, legendController.LegendType);
+    }
 }

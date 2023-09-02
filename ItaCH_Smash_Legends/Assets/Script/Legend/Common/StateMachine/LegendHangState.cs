@@ -11,6 +11,7 @@ public class LegendHangState : LegendBaseState
 
         legendController.FallAsync(animator).Forget();
         _effectController.StartInvincibleFlashEffet(_effectController.FLASH_COUNT).Forget();
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_HANG, legendController.LegendType);
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

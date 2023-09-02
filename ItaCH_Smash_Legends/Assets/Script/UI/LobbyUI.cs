@@ -4,6 +4,8 @@ using Util.Path;
 
 public class LobbyUI : MonoBehaviour
 {
+    // TODO : 레전드 선택후 로비로 돌아왔을떄 Play.(SoundType.Voice,legend: LegendType, voice: VoiceType.Lobby );
+
     private LegendType _legendType;
     private GameObject[] _legendModels;
 
@@ -79,7 +81,6 @@ public class LobbyUI : MonoBehaviour
 
         IPanel panel = panelGameObject.GetComponent<IPanel>();
         EnablePanelButton button = buttonGameObject.GetComponent<EnablePanelButton>();
-
         panel.InitPanelSettings(this);
         button.InitEnablePanelButtonSettings(panelGameObject);
         panelGameObject.SetActive(false);
@@ -87,6 +88,7 @@ public class LobbyUI : MonoBehaviour
         {
             button.Button.onClick.AddListener(Managers.LobbyManager.Connect);
         }
+        Managers.SoundManager.Play(SoundType.BGM, StringLiteral.LOBBY);
     }
 
     public void ResetModelTransform()

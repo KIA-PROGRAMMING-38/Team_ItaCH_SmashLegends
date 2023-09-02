@@ -6,6 +6,7 @@ public class HookSkillHitZone : HookHitZone
         DamageAmount = legendController.Stat.SkillAttackDamage;
         knockbackPower = legendController.Stat.DefaultKnockbackPower;
         AnimationType = AnimationHash.Hit;
+        AttackSound = StringLiteral.SFX_SKILLATTACK_HIT;
         knockbackUpDirection = skillKnockbackUpDirection;
     }
 }

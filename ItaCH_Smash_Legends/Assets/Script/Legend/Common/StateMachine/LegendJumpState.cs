@@ -11,7 +11,7 @@ public class LegendJumpState : LegendBaseState
         _rigidbody = animator.GetComponent<Rigidbody>();
         Jump(animator);
         Managers.SoundManager.Play(SoundType.Voice, legend: legendController.LegendType, voice: VoiceType.Jump);
-
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_JUMP, legendController.LegendType);
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

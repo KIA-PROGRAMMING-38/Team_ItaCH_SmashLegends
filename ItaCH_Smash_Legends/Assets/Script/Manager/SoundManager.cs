@@ -6,7 +6,6 @@ using UnityEngine.Audio;
 public class SoundManager : MonoBehaviour
 {
     private AudioSource[] _audioSources = new AudioSource[(int)SoundType.NumOfSoundType];
-    private AudioMixer _audioMixer;
 
     private string[] _defaultAttacks = { "DefaultAttack00", "DefaultAttack01", "DefaultAttack02" };
     private string[] _dies = { "Die00", "Die01", "Die02", "Die03" };
@@ -26,7 +25,6 @@ public class SoundManager : MonoBehaviour
     public void Init()
     {
         SetLegendVoiceDictionary();
-
         for (int index = 0; index < _audioSources.Length; ++index)
         {
             GameObject gameObject = new GameObject();
@@ -117,7 +115,7 @@ public class SoundManager : MonoBehaviour
     public void SetVolume(SoundType soundType, float value)
     {
         //가장 많이 사용하는 볼륨 변경 식. 원래는 기울기로 50이 아닌 20을 사용하나, 변화가 뚜렷하지 않아 50을 사용함.
-        _audioMixer.SetFloat(soundType.ToString(), Mathf.Log10(value) * 50);
+        _audioSources[(int)soundType].volume = value;
     }
 
     private void SetLegendVoiceDictionary()

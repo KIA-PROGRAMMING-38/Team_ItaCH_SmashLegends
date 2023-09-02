@@ -107,10 +107,10 @@ public class LogInUI : MonoBehaviour
     public void SetName()
     {
         string userInput = _inputField.text;
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_BUTTON);
         if (Regex.IsMatch(userInput, InputPattern))
         {
             Managers.LobbyManager.UserLocalData.Name = userInput;
-
             _inputBox.SetActive(false);
 
             GameObject connectionInfoObject = _spinnerImage.transform.parent.gameObject;

@@ -11,7 +11,7 @@ public class LegendRollUpBackState : LegendBaseState
         _effectController = animator.GetComponent<EffectController>();
 
         legendController.DashOnRollUp();
-
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_ROLLBACK, legendController.LegendType);
         _effectController.StartInvincibleFlashEffet(_effectController.FLASH_COUNT).Forget();
     }
 }

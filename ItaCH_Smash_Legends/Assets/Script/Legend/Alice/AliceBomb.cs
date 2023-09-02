@@ -24,8 +24,6 @@ public class AliceBomb : HitZone
         _cancelToken = new CancellationTokenSource();
         _targetPoint = new Vector3[point.Length];
         legendController = _currentTransform.GetComponent<LegendController>();
-
-        gameObject.layer = LayerMask.NameToLayer(legendController.GetChildLayer());
         gameObject.SetActive(false);
     }
 
@@ -35,6 +33,7 @@ public class AliceBomb : HitZone
         knockbackPower = legendController.Stat.HeavyKnockbackPower;
         knockbackDirection = _currentTransform.up;
         AnimationType = AnimationHash.Hit;
+        gameObject.layer = LayerMask.NameToLayer(legendController.GetChildLayer());
     }
 
     private void OnEnable()
@@ -65,6 +64,7 @@ public class AliceBomb : HitZone
             _time = 0;
             transform.rotation = Quaternion.Euler(-90, 0, 0);
             SetParent();
+            Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_MINE_SET, legend: LegendType.Alice);
             PlayBombEffect().Forget();
         }
     }
@@ -95,9 +95,13 @@ public class AliceBomb : HitZone
 
         PlayEffect(startEffectIndex);
 
-        await UniTask.Delay(4000, cancellationToken: _cancelToken.Token);
+        await UniTask.Delay(1400);
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_MINE_ACTIVATE, legend: LegendType.Alice);
+
+        await UniTask.Delay(2600, cancellationToken: _cancelToken.Token);
 
         PlayAllEffect();
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_MINE_EXPLODE, legend: LegendType.Alice);
 
         await UniTask.Delay(400);
 
@@ -108,6 +112,7 @@ public class AliceBomb : HitZone
     {
         CancelUniTask();
         PlayAllEffect();
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_MINE_EXPLODE, legend: LegendType.Alice);
 
         await UniTask.Delay(400);
 

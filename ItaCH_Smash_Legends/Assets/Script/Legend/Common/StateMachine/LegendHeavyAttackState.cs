@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class LegendHeavyAttackState : LegendBaseState
 {
-    // LegnedController 완료시 리펙토링
-   
     private PlayerAttack _playerAttack;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -12,13 +10,6 @@ public class LegendHeavyAttackState : LegendBaseState
 
         animator.SetBool(AnimationHash.Run, false);
         Managers.SoundManager.Play(SoundType.Voice, legend: legendController.LegendType, voice: VoiceType.HeavyAttack);
-
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_HEAVYATTACK, legendController.LegendType);
     }
-
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        //TODO : 추후 구현
-        //_playerAttack.AttackRotate();
-    }
-
 }

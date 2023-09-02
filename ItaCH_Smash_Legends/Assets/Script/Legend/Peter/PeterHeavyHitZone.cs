@@ -4,6 +4,7 @@ public class PeterHeavyHitZone : HitZone
     {
         DamageAmount = legendController.Stat.HeavyAttackDamage;
         knockbackPower = legendController.Stat.HeavyKnockbackPower;
+        AttackSound = StringLiteral.SFX_HEAVYATTACK_HIT;
         AnimationType = AnimationHash.HitUp;
         gameObject.SetActive(false);
     }

@@ -15,6 +15,7 @@ public class HookSkillAttack : MonoBehaviour
     }
     private void OnDisable()
     {
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_SKILLATTACK_END, legend: LegendType.Hook);
         SetShowEffect(endEffect);
     }
     private void SetShowEffect(ParticleSystem effect)

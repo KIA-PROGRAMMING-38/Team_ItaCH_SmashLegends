@@ -6,5 +6,7 @@ public class LegendSkillAttackState : LegendBaseState
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
         Managers.SoundManager.Play(SoundType.Voice, legend: legendController.LegendType, voice: VoiceType.SkillAttack);
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_SKILLATTACK, legendController.LegendType);
+
     }
 }

@@ -65,6 +65,7 @@ public class LegendController : MonoBehaviour
     private Vector3 _vectorUp = Vector3.up;
 
     private const float ROLLING_DASH_POWER = 1.2f;
+    private int _stepIndex = 0;
     private bool _canAttack;
     public LegendType LegendType { get; private set; }
 
@@ -368,6 +369,10 @@ public class LegendController : MonoBehaviour
         _legendAnimationController.SetTrigger(otherHit.AnimationType);
         Damage(otherHit.DamageAmount);
         otherHit.SetKnockback(_rigidbody);
+        if (otherHit.AttackSound != null)
+        {
+            otherHit.PlaySFXAttackSound();
+        }
     }
     private Vector3 GetHangForward(Vector3 other)
     {
@@ -443,7 +448,6 @@ public class LegendController : MonoBehaviour
         if (IsDead())
         {
             Smash();
-            Managers.SoundManager.Play(SoundType.Voice, legend: LegendType, voice: VoiceType.Die);
         }
 
         bool IsDead() => Stat.HP <= 0;
@@ -455,10 +459,21 @@ public class LegendController : MonoBehaviour
 
         _rigidbody.AddForce(knockbackDirection * dieKnockbackPower);
         _legendAnimationController.SetTrigger(AnimationHash.HitUp);
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_LEGEND_SMASH);
         _effectController.SetDieSmokeEffect();
     }
     public void SetDieEffect()
     {
         _effectController.SetDieEffect();
+    }
+    private void PlayRunSFXSoundOnAnimationEvent()
+    {
+        if (_stepIndex == 3)
+        {
+            _stepIndex = 0;
+        }
+        string step = $"{StringLiteral.SFX_STEP}{_stepIndex}";
+        Managers.SoundManager.Play(SoundType.SFX, step, LegendType);
+        ++_stepIndex;
     }
 }

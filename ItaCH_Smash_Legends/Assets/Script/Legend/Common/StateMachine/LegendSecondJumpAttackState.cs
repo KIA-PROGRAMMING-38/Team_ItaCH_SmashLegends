@@ -7,6 +7,7 @@ public class LegendSecondJumpAttackState : LegendBaseState
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_JUMPATTACK, legendController.LegendType);
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
