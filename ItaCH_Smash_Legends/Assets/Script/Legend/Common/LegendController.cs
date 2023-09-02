@@ -49,7 +49,9 @@ public class LegendController : MonoBehaviour
     public int OwnerUserID { get; private set; }
 
     public LegendStatData Stat { get; set; }
-    public float HPRatio { get; set; } // TO DO : 체력 관리
+
+    public int MaxHP { get; private set; }
+    public float HPRatio { get { return (float)Stat.HP / MaxHP; } }
 
     private Rigidbody _rigidbody;
     private UnityEngine.InputSystem.PlayerInput _input;
@@ -66,6 +68,8 @@ public class LegendController : MonoBehaviour
     private int _stepIndex = 0;
     private bool _canAttack;
     public LegendType LegendType { get; private set; }
+
+    public event Action<float> OnHpChanged;
 
     private void OnEnable()
     {
@@ -96,7 +100,11 @@ public class LegendController : MonoBehaviour
         _collider = GetComponent<Collider>();
     }
 
-    private void SetLegendStat(LegendType legendIndex) => Stat = Managers.DataManager.LegendStats[(int)legendIndex].Clone();
+    private void SetLegendStat(LegendType legendIndex)
+    {
+        Stat = Managers.DataManager.LegendStats[(int)legendIndex].Clone();
+        MaxHP = Stat.HP;
+    }
 
     private void SetController(int userID) // TO DO : 피격 로직 수정 이후 죽었을 때 이벤트에서 다시 호출 필요
     {
@@ -435,6 +443,7 @@ public class LegendController : MonoBehaviour
     public void Damage(int damage)
     {
         Stat.HP -= damage;
+        OnHpChanged?.Invoke(HPRatio);
 
         if (IsDead())
         {

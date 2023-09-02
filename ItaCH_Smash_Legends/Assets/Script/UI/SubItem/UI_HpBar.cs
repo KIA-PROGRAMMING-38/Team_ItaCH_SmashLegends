@@ -27,10 +27,13 @@ public class UI_HpBar : UIBase
         RefreshUI(MAX_FILL_AMOUNT);
     }
 
-    public void SetInfo(TeamType teamType)
+    public void SetInfo(UserData user)
     {
-        GetImage((int)Images.DamageBuffer).color = Define.DAMAGE_BUFFER_COLORS[(int)teamType];
-        GetImage((int)Images.HpBarFill).color = Define.UI_PORTRAIT_COLORS[(int)teamType];
+        GetImage((int)Images.DamageBuffer).color = Define.DAMAGE_BUFFER_COLORS[(int)user.TeamType];
+        GetImage((int)Images.HpBarFill).color = Define.UI_PORTRAIT_COLORS[(int)user.TeamType];
+
+        user.OwnedLegend.OnHpChanged -= RefreshUI;
+        user.OwnedLegend.OnHpChanged += RefreshUI;
     }
 
     private void RefreshUI(float hpRatio)
@@ -52,6 +55,7 @@ public class UI_HpBar : UIBase
         if (hpRatio == MAX_FILL_AMOUNT)
         {
             await GetImage((int)Images.HpBarFill).ChangeFillAmountGradually(MAX_FILL_AMOUNT, BUFFER_TIME);
+            // TO DO : 피격 판정 로직 적용과 함께 오류 수정
         }
         GetImage((int)Images.HpBarFill).fillAmount = hpRatio;
     }

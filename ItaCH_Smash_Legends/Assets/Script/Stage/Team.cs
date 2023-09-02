@@ -9,7 +9,8 @@ public class Team
 
     public void Init()
     {
-        Members= new List<UserData>();
+        Members = new List<UserData>();
+        Type = (TeamType)Managers.StageManager.CurrentGameMode.Teams.Count;
     }
 
     public void AddMember(UserData user)
@@ -30,5 +31,16 @@ public class Team
         {
             Managers.StageManager.CurrentGameMode.IsOver();
         }        
+    }
+
+    public void InitDefaultTeam()
+    {
+        Init();
+        for (int id = 0; id < Managers.StageManager.CurrentGameMode.MaxTeamMember; ++id)
+        {
+            UserData dummyUserData = new UserData();
+            dummyUserData.GetDefaultUserData(id);            
+            AddMember(dummyUserData);
+        }
     }
 }

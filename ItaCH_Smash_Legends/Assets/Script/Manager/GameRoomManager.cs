@@ -26,7 +26,7 @@ public class GameRoomManager
         UserData defaultUserData = new UserData();
         defaultUserData.Name = $"Bot{id}";
         defaultUserData.ID = id;
-        defaultUserData.SelectedLegend = LegendType.None;        
+        defaultUserData.SelectedLegend = LegendType.None;
         return defaultUserData;
     }
 

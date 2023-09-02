@@ -104,6 +104,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         switch (level)
         {
             case (int)Level.Lobby:
+                OnLogInSuccessed?.Invoke();
                 return;
 
             case (int)Level.Ingame:
