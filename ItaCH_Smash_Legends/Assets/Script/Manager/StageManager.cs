@@ -104,35 +104,11 @@ public class StageManager : MonoBehaviourPunCallbacks
             (Managers.ResourceManager.GetLegendPrefab(user.SelectedLegend), null);
 
         LegendController legendController = legendObject.GetComponent<LegendController>();
-        legendController.Init(user);
+        legendController.Init(user, spawnPoint);
 
-        int opponentTeam = (int)TeamType.Max - (int)user.TeamType;
-        legendController.OnDie -= CurrentGameMode.Teams[opponentTeam].GetScore;
-        legendController.OnDie += CurrentGameMode.Teams[opponentTeam].GetScore;
-
-        legendController.OnDie -= () => ReviveLegend(user).Forget();
-        legendController.OnDie += () => ReviveLegend(user).Forget();
-
-        legendObject.transform.position = spawnPoint.position;
         legendObject.layer =
             (user.TeamType == TeamType.Blue) ?
             LayerMask.NameToLayer(StringLiteral.TEAM_BLUE) : LayerMask.NameToLayer(StringLiteral.TEAM_RED);
-    }
-
-    public async UniTask ReviveLegend(UserData user)
-    {
-        if(_isGameOver)
-        {
-            return;
-        }
-        await UniTask.Delay(TimeSpan.FromSeconds(CurrentGameMode.ModeDefaultRespawnTime));
-
-        user.OwnedLegend.ResetVelocity();
-        user.OwnedLegend.gameObject.transform.position = _spawnPoints[(int)user.TeamType].position;
-        user.OwnedLegend.gameObject.SetActive(true);
-        user.OwnedLegend.SetController(user.ID);
-        user.OwnedLegend.Stat.HP = user.OwnedLegend.MaxHP;
-        Managers.UIManager.FindPopup<UI_DuelModePopup>().RefreshPopupUI();
     }
 
     public void StartGame()

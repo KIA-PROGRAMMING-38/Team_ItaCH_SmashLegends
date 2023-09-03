@@ -80,13 +80,15 @@ public class LegendController : MonoBehaviour
         }
     }
 
-    public void Init(UserData user)
+    public void Init(UserData user, Transform spawnPoint)
     {
         GetComponents();
         SetLegendStat(user.SelectedLegend);
         SetController(user.ID);
+        SubscribeOnDieEvents(user, spawnPoint);
         InitActions();
         SetRigidbody();
+        this.gameObject.transform.position = spawnPoint.position;
         user.OwnedLegend = this;
         LegendType = user.SelectedLegend;
         OwnerUserID = user.ID;
@@ -125,6 +127,16 @@ public class LegendController : MonoBehaviour
             default:
                 return;
         }
+    }
+
+    private void SubscribeOnDieEvents(UserData user, Transform spawnPoint)
+    {
+        int opponentTeam = (int)TeamType.Max - (int)user.TeamType;
+        OnDie -= Managers.StageManager.CurrentGameMode.Teams[opponentTeam].GetScore;
+        OnDie += Managers.StageManager.CurrentGameMode.Teams[opponentTeam].GetScore;
+
+        OnDie -= () => ReviveLegend(user, spawnPoint).Forget();
+        OnDie += () => ReviveLegend(user, spawnPoint).Forget();
     }
 
     private void InitActions()
@@ -471,6 +483,19 @@ public class LegendController : MonoBehaviour
     {
         _effectController.SetDieEffect();
     }
+
+    public async UniTask ReviveLegend(UserData user, Transform spawnPoint)
+    {
+        await UniTask.Delay(TimeSpan.FromSeconds(Managers.StageManager.CurrentGameMode.ModeDefaultRespawnTime));
+
+        ResetVelocity();
+        this.gameObject.transform.position = spawnPoint.position;
+        this.gameObject.SetActive(true);
+        SetController(user.ID);
+        Stat.HP = user.OwnedLegend.MaxHP;
+        Managers.UIManager.FindPopup<UI_DuelModePopup>().RefreshPopupUI();
+    }
+
     private void PlayRunSFXSoundOnAnimationEvent()
     {
         if (_stepIndex == 3)
