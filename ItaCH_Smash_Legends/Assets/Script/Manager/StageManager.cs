@@ -104,9 +104,8 @@ public class StageManager : MonoBehaviourPunCallbacks
             (Managers.ResourceManager.GetLegendPrefab(user.SelectedLegend), null);
 
         LegendController legendController = legendObject.GetComponent<LegendController>();
-        legendController.Init(user);
+        legendController.Init(user, spawnPoint);
 
-        legendObject.transform.position = spawnPoint.position;
         legendObject.layer =
             (user.TeamType == TeamType.Blue) ?
             LayerMask.NameToLayer(StringLiteral.TEAM_BLUE) : LayerMask.NameToLayer(StringLiteral.TEAM_RED);
@@ -141,14 +140,13 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     public void EndGame(TeamType winnerTeam)
     {
-        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_MATCH_OVER);
-        // 게임 종료 연출 실행
+        _isGameOver = true;
+        // To Do : 게임 종료 연출 실행, 현재 부자연스럽고 급작스럽게 씬 전환 발생
         // >> 승리 팀 색의 Match Over 패널 Pop        
+        
         SceneManager.LoadScene(StringLiteral.RESULT);
         Managers.UIManager.ClosePopupUI();
         UI_GameResultPopup popup = Managers.UIManager.ShowPopupUI<UI_GameResultPopup>();
         popup.SetInfo(winnerTeam);
-
-        //  Result UI >> 로컬 유저 팀 멤버 로비 모델 가져와 애니메이션 재생 및 승패 여부
     }
 }

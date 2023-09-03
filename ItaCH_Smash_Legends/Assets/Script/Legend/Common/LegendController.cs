@@ -70,6 +70,7 @@ public class LegendController : MonoBehaviour
     public LegendType LegendType { get; private set; }
 
     public event Action<float> OnHpChanged;
+    public event Action OnDie;
 
     private void OnEnable()
     {
@@ -79,13 +80,15 @@ public class LegendController : MonoBehaviour
         }
     }
 
-    public void Init(UserData user)
+    public void Init(UserData user, Transform spawnPoint)
     {
         GetComponents();
         SetLegendStat(user.SelectedLegend);
         SetController(user.ID);
+        SubscribeOnDieEvents(user, spawnPoint);
         InitActions();
         SetRigidbody();
+        this.gameObject.transform.position = spawnPoint.position;
         user.OwnedLegend = this;
         LegendType = user.SelectedLegend;
         OwnerUserID = user.ID;
@@ -106,7 +109,7 @@ public class LegendController : MonoBehaviour
         MaxHP = Stat.HP;
     }
 
-    private void SetController(int userID) // TO DO : 피격 로직 수정 이후 죽었을 때 이벤트에서 다시 호출 필요
+    public void SetController(int userID)
     {
         switch ((SinglePlayController)userID)
         {
@@ -124,6 +127,16 @@ public class LegendController : MonoBehaviour
             default:
                 return;
         }
+    }
+
+    private void SubscribeOnDieEvents(UserData user, Transform spawnPoint)
+    {
+        int opponentTeam = (int)TeamType.Max - (int)user.TeamType;
+        OnDie -= Managers.StageManager.CurrentGameMode.Teams[opponentTeam].GetScore;
+        OnDie += Managers.StageManager.CurrentGameMode.Teams[opponentTeam].GetScore;
+
+        OnDie -= () => ReviveLegend(user, spawnPoint).Forget();
+        OnDie += () => ReviveLegend(user, spawnPoint).Forget();
     }
 
     private void InitActions()
@@ -193,6 +206,7 @@ public class LegendController : MonoBehaviour
             transform.position = GetHangPosition(other.transform.position);
             _legendAnimationController.Play(AnimationHash.Hang);
         }
+
         if (other.CompareTag(StringLiteral.HIT_ZONE))
         {
             if (other.name == StringLiteral.ALICE_BOMB)
@@ -448,10 +462,12 @@ public class LegendController : MonoBehaviour
         if (IsDead())
         {
             Smash();
+            OnDie?.Invoke();
         }
 
         bool IsDead() => Stat.HP <= 0;
     }
+
     private void Smash()
     {
         float dieKnockbackPower = 120;
@@ -462,10 +478,24 @@ public class LegendController : MonoBehaviour
         Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_LEGEND_SMASH);
         _effectController.SetDieSmokeEffect();
     }
+
     public void SetDieEffect()
     {
         _effectController.SetDieEffect();
     }
+
+    public async UniTask ReviveLegend(UserData user, Transform spawnPoint)
+    {
+        await UniTask.Delay(TimeSpan.FromSeconds(Managers.StageManager.CurrentGameMode.ModeDefaultRespawnTime));
+
+        ResetVelocity();
+        this.gameObject.transform.position = spawnPoint.position;
+        this.gameObject.SetActive(true);
+        SetController(user.ID);
+        Stat.HP = user.OwnedLegend.MaxHP;
+        Managers.UIManager.FindPopup<UI_DuelModePopup>().RefreshPopupUI();
+    }
+
     private void PlayRunSFXSoundOnAnimationEvent()
     {
         if (_stepIndex == 3)

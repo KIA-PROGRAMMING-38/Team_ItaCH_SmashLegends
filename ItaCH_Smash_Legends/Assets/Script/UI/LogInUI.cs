@@ -10,7 +10,7 @@ public class LogInUI : MonoBehaviour
 {
     [SerializeField] private TMP_InputField _inputField;
     [SerializeField] private GameObject _inputBox;
-    [SerializeField] private RotatingImage _spinnerImage;
+    [SerializeField] private RectTransform _spinnerImage;
     [SerializeField] private TextMeshProUGUI _errorMessage;
     [SerializeField] private TextMeshProUGUI _connectionInfoText;
     [SerializeField] private Image _background;
@@ -113,9 +113,9 @@ public class LogInUI : MonoBehaviour
             Managers.LobbyManager.UserLocalData.Name = userInput;
             _inputBox.SetActive(false);
 
-            GameObject connectionInfoObject = _spinnerImage.transform.parent.gameObject;
-            connectionInfoObject.SetActive(true);
-            _spinnerImage.StartRotation();
+            //GameObject connectionInfoObject = _spinnerImage.transform.parent.gameObject;
+            //connectionInfoObject.SetActive(true);
+            //_spinnerImage.rectTransform.RotateRectTransform; TO DO : extension으로 수정
 
             Managers.LobbyManager.ConnectToServer();
         }
