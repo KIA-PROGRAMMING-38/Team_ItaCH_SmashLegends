@@ -30,7 +30,7 @@ public class Team
         Managers.UIManager.FindPopup<UI_DuelModePopup>().RefreshPopupUI();
 
         if (Score == Managers.StageManager.CurrentGameMode.WinningScore)
-        {
+        {            
             Managers.StageManager.CurrentGameMode.IsOver();
         }        
     }

@@ -143,7 +143,7 @@ public class StageManager : MonoBehaviourPunCallbacks
         _isGameOver = true;
         // To Do : 게임 종료 연출 실행, 현재 부자연스럽고 급작스럽게 씬 전환 발생
         // >> 승리 팀 색의 Match Over 패널 Pop        
-        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_MATCH_OVER);
+        
         SceneManager.LoadScene(StringLiteral.RESULT);
         Managers.UIManager.ClosePopupUI();
         UI_GameResultPopup popup = Managers.UIManager.ShowPopupUI<UI_GameResultPopup>();
