@@ -116,6 +116,7 @@ public class StageManager : MonoBehaviourPunCallbacks
         _remainGameTime = _currentGameMode.MaxGameTime;
         // TO DO : 
         // 1) 게임모드 : 모드 UI 연출 + 모드 소개 패널 연출 >> 차오르는 연출 1
+        Managers.UIManager.FindPopup<UI_DuelModePopup>().RefreshPopupUI();
         // 2) 이때 부터 모드 0부터 남은 시간까지 타이머 역순으로 올라감
         // 3) 레전드 전부 모델 생성 및 UI 함꼐 출현
         // 4) 모드 UI 초상화 연출
@@ -143,7 +144,7 @@ public class StageManager : MonoBehaviourPunCallbacks
         _isGameOver = true;
         // To Do : 게임 종료 연출 실행, 현재 부자연스럽고 급작스럽게 씬 전환 발생
         // >> 승리 팀 색의 Match Over 패널 Pop        
-        
+
         SceneManager.LoadScene(StringLiteral.RESULT);
         Managers.UIManager.ClosePopupUI();
         UI_GameResultPopup popup = Managers.UIManager.ShowPopupUI<UI_GameResultPopup>();

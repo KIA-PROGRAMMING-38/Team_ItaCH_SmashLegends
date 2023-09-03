@@ -87,6 +87,8 @@ public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 �
 
     public void IsOver()
     {
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_MATCH_OVER);
+
         switch (_currentGameModeType)
         {
             case GameModeType.Duel:
