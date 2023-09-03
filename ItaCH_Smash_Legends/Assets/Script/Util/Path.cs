@@ -6,7 +6,6 @@ namespace Util.Path
     {
         // TO DO : 개별 기능 리팩토링 시 해당 부분에서 관리
         #region Folder Path
-        public const string UIResources = "UI/";
         public const string UISpritePath = "UI/Sprite/";
         public const string AliceIcon = "UI/MobileUI/Sprite/Alice/Alice";
         public const string HookIcon = "UI/MobileUI/Sprite/Hook/Hook";
@@ -52,18 +51,5 @@ namespace Util.Path
         #region CSV File Path        
         public const string MobileUIDataBase = "Data/UI_Data/Mobile_UI_DataBase";
         #endregion
-
-
-        // TO DO : UI 리팩토링 시 완전히 ResourceManager로 넘길 부분, StringBuilder 생성부 삭제
-
-        public static string GetLegendSpritePath(LegendType legendType)
-        {
-            StringBuilder stringBuilder = new StringBuilder();
-            string legendName = legendType.ToString();
-            stringBuilder.Append(UISpritePath);
-            stringBuilder.Append(legendName);
-            stringBuilder.Append($"/{legendName}");
-            return stringBuilder.ToString();
-        }
     }
 }

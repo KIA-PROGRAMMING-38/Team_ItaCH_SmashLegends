@@ -11,7 +11,7 @@ public class LegendUI : MonoBehaviour
     [SerializeField] private Transform _healthPointSeperator;
 
     private Transform _characterTransform;
-    private CharacterStatus _characterStatus;
+    //private CharacterStatus _characterStatus; TO DO : floating UI 리팩토링
     private RectTransform[] _healthPointBlocks;
     private Image _healthPointSeperatorMask;
 
@@ -26,7 +26,7 @@ public class LegendUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        _characterStatus.OnPlayerHealthPointChange -= SetHealthPoint;
+        //_characterStatus.OnPlayerHealthPointChange -= SetHealthPoint;
         //_characterStatus.OnPlayerDie -= DisableLegendUI;
         //_characterStatus.OnPlayerRespawn -= EnableLegendUI; // todo : 사망 및 피격 판정 시 UI 활성화 비활성화 
     }
@@ -34,22 +34,22 @@ public class LegendUI : MonoBehaviour
     {
         _characterTransform = characterTransform;
 
-        CharacterStatus characterStatus = characterTransform.GetComponent<CharacterStatus>();
-        if (characterStatus == null)
-        {
-            characterStatus = characterTransform.AddComponent<CharacterStatus>();
-        }
+        //CharacterStatus characterStatus = characterTransform.GetComponent<CharacterStatus>();
+        //if (characterStatus == null)
+        //{
+        //    //characterStatus = characterTransform.AddComponent<CharacterStatus>();
+        //}
 
-        _characterStatus = characterStatus;
-        _characterStatus.OnPlayerHealthPointChange -= SetHealthPoint;
-        _characterStatus.OnPlayerHealthPointChange += SetHealthPoint;
+        //_characterStatus = characterStatus;
+        //_characterStatus.OnPlayerHealthPointChange -= SetHealthPoint;
+        //_characterStatus.OnPlayerHealthPointChange += SetHealthPoint;
         //_characterStatus.OnPlayerDie -= DisableLegendUI;
         //_characterStatus.OnPlayerDie += DisableLegendUI; TODO : 죽었을 때 비활성화를 위한 구독
         //_characterStatus.OnPlayerRespawn -= EnableLegendUI;
         //_characterStatus.OnPlayerRespawn += EnableLegendUI; TODO : 리스폰 시 활성화를 위한 구독
 
         //SetHealthPointBar(_characterStatus.Stat.HP);
-        SetHealthPoint(_characterStatus.CurrentHP, _characterStatus.CurrentHPRatio);
+        //SetHealthPoint(_characterStatus.CurrentHP, _characterStatus.CurrentHPRatio);
     }
 
     public void SetHealthPointBar(int maxHealthPoint)
@@ -83,6 +83,6 @@ public class LegendUI : MonoBehaviour
         _healthPointSeperatorMask.fillAmount = healthPointRatio;
     }
 
-    public void DisableLegendUI(CharacterStatus character) => gameObject.SetActive(false);
-    public void EnableLegendUI(CharacterStatus character) => gameObject.SetActive(true);
+    //public void DisableLegendUI(CharacterStatus character) => gameObject.SetActive(false);
+    //public void EnableLegendUI(CharacterStatus character) => gameObject.SetActive(true);
 }

@@ -6,7 +6,7 @@ public class DamageTextPool : MonoBehaviour
     private IObjectPool<GameObject> _pool;
     public IObjectPool<GameObject> Pool { get => _pool; }
     private GameObject _damageTextPrefab;
-    private CharacterStatus _characterStatus;
+    //private CharacterStatus _characterStatus; // TO DO : floating UI 리팩토링
     private Transform _characterTransform;
     private int _damage;
 
@@ -43,11 +43,11 @@ public class DamageTextPool : MonoBehaviour
 
         DamageText damageText = damageTextObject.GetComponent<DamageText>();
         damageText.InitDamageTextSettings(this);
-        if (_characterStatus != null)
-        {
-            //_characterStatus.OnPlayerGetDamage -= damageText.ChangeText;
-            //_characterStatus.OnPlayerGetDamage += damageText.ChangeText; // To Do : 피격 시 플로팅 데미지
-        }
+        ////if (_characterStatus != null)
+        //{
+        //    //_characterStatus.OnPlayerGetDamage -= damageText.ChangeText;
+        //    //_characterStatus.OnPlayerGetDamage += damageText.ChangeText; // To Do : 피격 시 플로팅 데미지
+        //}
         return damageTextObject;
     }
 
