@@ -106,10 +106,33 @@ public class StageManager : MonoBehaviourPunCallbacks
         LegendController legendController = legendObject.GetComponent<LegendController>();
         legendController.Init(user);
 
+        int opponentTeam = (int)TeamType.Max - (int)user.TeamType;
+        legendController.OnDie -= CurrentGameMode.Teams[opponentTeam].GetScore;
+        legendController.OnDie += CurrentGameMode.Teams[opponentTeam].GetScore;
+
+        legendController.OnDie -= () => ReviveLegend(user).Forget();
+        legendController.OnDie += () => ReviveLegend(user).Forget();
+
         legendObject.transform.position = spawnPoint.position;
         legendObject.layer =
             (user.TeamType == TeamType.Blue) ?
             LayerMask.NameToLayer(StringLiteral.TEAM_BLUE) : LayerMask.NameToLayer(StringLiteral.TEAM_RED);
+    }
+
+    public async UniTask ReviveLegend(UserData user)
+    {
+        if(_isGameOver)
+        {
+            return;
+        }
+        await UniTask.Delay(TimeSpan.FromSeconds(CurrentGameMode.ModeDefaultRespawnTime));
+
+        user.OwnedLegend.ResetVelocity();
+        user.OwnedLegend.gameObject.transform.position = _spawnPoints[(int)user.TeamType].position;
+        user.OwnedLegend.gameObject.SetActive(true);
+        user.OwnedLegend.SetController(user.ID);
+        user.OwnedLegend.Stat.HP = user.OwnedLegend.MaxHP;
+        Managers.UIManager.FindPopup<UI_DuelModePopup>().RefreshPopupUI();
     }
 
     public void StartGame()
@@ -141,14 +164,13 @@ public class StageManager : MonoBehaviourPunCallbacks
 
     public void EndGame(TeamType winnerTeam)
     {
-        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_MATCH_OVER);
-        // 게임 종료 연출 실행
+        _isGameOver = true;
+        // To Do : 게임 종료 연출 실행, 현재 부자연스럽고 급작스럽게 씬 전환 발생
         // >> 승리 팀 색의 Match Over 패널 Pop        
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_MATCH_OVER);
         SceneManager.LoadScene(StringLiteral.RESULT);
         Managers.UIManager.ClosePopupUI();
         UI_GameResultPopup popup = Managers.UIManager.ShowPopupUI<UI_GameResultPopup>();
         popup.SetInfo(winnerTeam);
-
-        //  Result UI >> 로컬 유저 팀 멤버 로비 모델 가져와 애니메이션 재생 및 승패 여부
     }
 }

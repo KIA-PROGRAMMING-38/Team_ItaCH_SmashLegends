@@ -10,7 +10,7 @@ public class UI_ScoreSet : UIBase
     }
 
     List<UI_ScoreSetSubItem> _scores = new List<UI_ScoreSetSubItem>();
-    private int _currentScore;
+    private Team _team;
 
     public override void Init()
     {
@@ -44,19 +44,19 @@ public class UI_ScoreSet : UIBase
         _scores.Add(scoreSubItem);
     }
 
-    public void SetInfo(TeamType teamType, int currentScore) // TO DO : 점수 획득 시 UI_ProfileItem Refresh 하면서 호출
+    public void SetInfo(Team team)
     {
-        if (_currentScore == currentScore)
-        {
-            return;
-        }
-        _currentScore = currentScore;
-        RefreshScoreSet(teamType);
+        _team = team;
+        RefreshScoreSet(_team.Type);
     }
 
     public void RefreshScoreSet(TeamType teamType)
     {
-        int index = _currentScore - 1;
+        if (_team.Score == 0)
+        {
+            return;
+        }
+        int index = _team.Score - 1;
         _scores[index].ActivateScoreSetSubItem(teamType);
     }
 }

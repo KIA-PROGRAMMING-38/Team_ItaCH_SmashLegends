@@ -26,7 +26,9 @@ public class Team
 
     public void GetScore()
     {
-        ++Score; // 플레이어 사망 시 실행
+        ++Score;
+        Managers.UIManager.FindPopup<UI_DuelModePopup>().RefreshPopupUI();
+
         if (Score == Managers.StageManager.CurrentGameMode.WinningScore)
         {
             Managers.StageManager.CurrentGameMode.IsOver();

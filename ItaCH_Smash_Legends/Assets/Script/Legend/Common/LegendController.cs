@@ -70,6 +70,7 @@ public class LegendController : MonoBehaviour
     public LegendType LegendType { get; private set; }
 
     public event Action<float> OnHpChanged;
+    public event Action OnDie;
 
     private void OnEnable()
     {
@@ -106,7 +107,7 @@ public class LegendController : MonoBehaviour
         MaxHP = Stat.HP;
     }
 
-    private void SetController(int userID) // TO DO : 피격 로직 수정 이후 죽었을 때 이벤트에서 다시 호출 필요
+    public void SetController(int userID)
     {
         switch ((SinglePlayController)userID)
         {
@@ -193,6 +194,7 @@ public class LegendController : MonoBehaviour
             transform.position = GetHangPosition(other.transform.position);
             _legendAnimationController.Play(AnimationHash.Hang);
         }
+
         if (other.CompareTag(StringLiteral.HIT_ZONE))
         {
             if (other.name == StringLiteral.ALICE_BOMB)
@@ -448,10 +450,12 @@ public class LegendController : MonoBehaviour
         if (IsDead())
         {
             Smash();
+            OnDie?.Invoke();
         }
 
         bool IsDead() => Stat.HP <= 0;
     }
+
     private void Smash()
     {
         float dieKnockbackPower = 120;
@@ -462,6 +466,7 @@ public class LegendController : MonoBehaviour
         Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_LEGEND_SMASH);
         _effectController.SetDieSmokeEffect();
     }
+
     public void SetDieEffect()
     {
         _effectController.SetDieEffect();

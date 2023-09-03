@@ -46,6 +46,10 @@ public class UI_DuelModePopup : UIPopup
 
         Managers.StageManager.OnTimeChange -= RefreshGameTimer;
         Managers.StageManager.OnTimeChange += RefreshGameTimer;
+
+        Managers.LobbyManager.UserLocalData.OwnedLegend.OnDie -= RefreshPlayerRespawnTimer;
+        Managers.LobbyManager.UserLocalData.OwnedLegend.OnDie += RefreshPlayerRespawnTimer;
+
     }
 
     private void PopulateProfile()
@@ -75,7 +79,7 @@ public class UI_DuelModePopup : UIPopup
         _profiles.Add(profileItem);
     }
 
-    private void RefreshPopupUI()
+    public void RefreshPopupUI()
     {
         RefreshGameTimer(Managers.StageManager.RemainGameTime);
         RefreshProfileItem();
@@ -86,9 +90,10 @@ public class UI_DuelModePopup : UIPopup
         GetText((int)Texts.GameTimerText).text = $"{remainTime / 60:D2}:{remainTime % 60:D2}";
     }
 
-    public void RefreshPlayerRespawnTimer(float respawnTime)
+    public void RefreshPlayerRespawnTimer()
     {
-        // To Do : When Player.OwnedLegend.OnDie.Invoke();        
+        float respawnTime = Managers.StageManager.CurrentGameMode.ModeDefaultRespawnTime;
+
         GetObject((int)GameObjects.PlayerRespawnTimer).SetActive(true);
 
         RefreshPlayerRespawnTimerFillTask(respawnTime).Forget();
@@ -112,6 +117,8 @@ public class UI_DuelModePopup : UIPopup
             await UniTask.Delay(ONE_SECOND);
             ++elapsedTime;
         }
+
+        GetObject((int)GameObjects.PlayerRespawnTimer).SetActive(false);
     }
 
     public void RefreshProfileItem()
