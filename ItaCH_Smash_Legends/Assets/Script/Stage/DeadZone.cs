@@ -4,14 +4,14 @@ public class DeadZone : MonoBehaviour
 {
     private void OnTriggerExit(Collider other)
     {
-        CharacterStatus playerCharacter = other.gameObject.GetComponent<CharacterStatus>();
-        if (!playerCharacter)
+        var legend = other.GetComponent<LegendController>();
+        if(legend.Stat.HP > 0)
         {
-            return;
+            legend.Damage(int.MaxValue);
         }
-        else
-        {
-            playerCharacter.GetDamage(int.MaxValue);
-        }
+        Managers.SoundManager.Play(SoundType.Voice, legend: legend.LegendType, voice: VoiceType.Die);
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_LEGEND_DEAD);
+        legend.SetDieEffect();
+        legend.gameObject.SetActive(false);
     }
 }

@@ -11,46 +11,45 @@ public class LegendUI : MonoBehaviour
     [SerializeField] private Transform _healthPointSeperator;
 
     private Transform _characterTransform;
-    private CharacterStatus _characterStatus;
+    //private CharacterStatus _characterStatus; TO DO : floating UI ë¦¬íŒ©í† ë§
     private RectTransform[] _healthPointBlocks;
     private Image _healthPointSeperatorMask;
 
-    // ºñÀ² °è»êÀ» À§ÇØ floatÀ¸·Î ¼³Á¤
+    // ë¹„ìœ¨ ê³„ì‚°ì„ ìœ„í•´ floatìœ¼ë¡œ ì„¤ì •
     private const float StandardHealthPoint = 3000;
     void Update()
     {
         transform.position = new Vector3(_characterTransform.position.x,
             _characterTransform.position.y + _heightOffset,
-            _characterTransform.position.z);
-        // Å×½ºÆ® ÄÚµå. ÀÌÈÄ¿¡´Â ÀÌµ¿, °ø°İ, ÇÇ°İ ´Ù¿î, Á¡ÇÁ µî ÀÌµ¿ÀÌ ÀÖÀ» ¶§¿¡¸¸ ¿¬»ê ¿¹Á¤.
+            _characterTransform.position.z);        
     }
 
     private void OnDestroy()
     {
-        _characterStatus.OnPlayerHealthPointChange -= SetHealthPoint;
-        _characterStatus.OnPlayerDie -= DisableLegendUI;
-        _characterStatus.OnPlayerRespawn -= EnableLegendUI;
+        //_characterStatus.OnPlayerHealthPointChange -= SetHealthPoint;
+        //_characterStatus.OnPlayerDie -= DisableLegendUI;
+        //_characterStatus.OnPlayerRespawn -= EnableLegendUI; // todo : ì‚¬ë§ ë° í”¼ê²© íŒì • ì‹œ UI í™œì„±í™” ë¹„í™œì„±í™” 
     }
     public void InitLegendUISettings(Transform characterTransform)
     {
         _characterTransform = characterTransform;
 
-        CharacterStatus characterStatus = characterTransform.GetComponent<CharacterStatus>();
-        if (characterStatus == null)
-        {
-            characterStatus = characterTransform.AddComponent<CharacterStatus>();
-        }
+        //CharacterStatus characterStatus = characterTransform.GetComponent<CharacterStatus>();
+        //if (characterStatus == null)
+        //{
+        //    //characterStatus = characterTransform.AddComponent<CharacterStatus>();
+        //}
 
-        _characterStatus = characterStatus;
-        _characterStatus.OnPlayerHealthPointChange -= SetHealthPoint;
-        _characterStatus.OnPlayerHealthPointChange += SetHealthPoint;
-        _characterStatus.OnPlayerDie -= DisableLegendUI;
-        _characterStatus.OnPlayerDie += DisableLegendUI;
-        _characterStatus.OnPlayerRespawn -= EnableLegendUI;
-        _characterStatus.OnPlayerRespawn += EnableLegendUI;
+        //_characterStatus = characterStatus;
+        //_characterStatus.OnPlayerHealthPointChange -= SetHealthPoint;
+        //_characterStatus.OnPlayerHealthPointChange += SetHealthPoint;
+        //_characterStatus.OnPlayerDie -= DisableLegendUI;
+        //_characterStatus.OnPlayerDie += DisableLegendUI; TODO : ì£½ì—ˆì„ ë•Œ ë¹„í™œì„±í™”ë¥¼ ìœ„í•œ êµ¬ë…
+        //_characterStatus.OnPlayerRespawn -= EnableLegendUI;
+        //_characterStatus.OnPlayerRespawn += EnableLegendUI; TODO : ë¦¬ìŠ¤í° ì‹œ í™œì„±í™”ë¥¼ ìœ„í•œ êµ¬ë…
 
-        SetHealthPointBar(_characterStatus.MaxHealthPoint);
-        SetHealthPoint(_characterStatus.HealthPoint, _characterStatus.HealthPointRatio);
+        //SetHealthPointBar(_characterStatus.Stat.HP);
+        //SetHealthPoint(_characterStatus.CurrentHP, _characterStatus.CurrentHPRatio);
     }
 
     public void SetHealthPointBar(int maxHealthPoint)
@@ -84,6 +83,6 @@ public class LegendUI : MonoBehaviour
         _healthPointSeperatorMask.fillAmount = healthPointRatio;
     }
 
-    public void DisableLegendUI(CharacterStatus character) => gameObject.SetActive(false);
-    public void EnableLegendUI(CharacterStatus character) => gameObject.SetActive(true);
+    //public void DisableLegendUI(CharacterStatus character) => gameObject.SetActive(false);
+    //public void EnableLegendUI(CharacterStatus character) => gameObject.SetActive(true);
 }

@@ -2,7 +2,6 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Util.Enum;
 
 public class LegendSelectUI : MonoBehaviour
 {
@@ -12,11 +11,14 @@ public class LegendSelectUI : MonoBehaviour
     private Image _selectedFrame;
     private Button _button;
     private TextMeshProUGUI _legendName;
+    private int _selectedLegend;
 
     public event Action<int> OnSelectLegend;
 
     public void InitLegendSelectUI(int currentIndex, Sprite portraitSprite, string legendName)
     {
+        _selectedLegend = (int)Managers.LobbyManager.UserLocalData.SelectedLegend;
+
         _legendIndex = currentIndex;
         _portrait = transform.GetChild(0).GetComponent<Image>();
         _portrait.sprite = portraitSprite;
@@ -26,9 +28,10 @@ public class LegendSelectUI : MonoBehaviour
         _button = GetComponent<Button>();
         _button.onClick.RemoveAllListeners();
         _button.onClick.AddListener(OnPressButton);
+        _button.onClick.AddListener(() => Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_BUTTON));
         _legendName = transform.GetChild(3).GetComponent<TextMeshProUGUI>();
         _legendName.text = legendName;
-        if (currentIndex.Equals((int)CharacterType.Alice))
+        if (currentIndex.Equals(_selectedLegend))
         {
             EnableSelectFrame();
         }

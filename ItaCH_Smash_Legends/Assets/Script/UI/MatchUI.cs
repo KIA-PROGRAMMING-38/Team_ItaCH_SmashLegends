@@ -1,4 +1,4 @@
-using Photon.Pun;
+ï»¿using Photon.Pun;
 using System;
 using TMPro;
 using UnityEngine;
@@ -11,29 +11,40 @@ public class MatchUI : MonoBehaviourPunCallbacks, IPanel
     private int _currentMatchedPlayer;
     [SerializeField] private MatchBox[] _matchBoxes;
     [SerializeField] private MatchIcon _matchIcon;
-    [SerializeField] private TextMeshProUGUI _matchText;
+    [SerializeField] private TextMeshProUGUI _matchingInfoText;
     [SerializeField] private Button _removePanelButton;
 
     public event Action _OnStageStart;
 
-    private float _time;
     public bool IsGameStarted { get => _isGameStarted; set => _isGameStarted = value; }
     private bool _isGameStarted;
 
-    private void OnEnable()
+    public override void OnEnable()
     {
-        GameManager.Instance.LobbyManager.ConnectionInfoText = _matchText;
-
+        Init();
         if (_isGameStarted)
         {
-            Debug.Log("connect ½ÇÇà");
-            GameManager.Instance.LobbyManager.Connect();
+            Managers.LobbyManager.Connect();
         }
     }
 
+    private void Init()
+    {
+        Managers.LobbyManager.OnJoiningRoom -= () => SetMatchingInfo(StringLiteral.ENTER_ROOM);
+        Managers.LobbyManager.OnJoiningRoom += () => SetMatchingInfo(StringLiteral.ENTER_ROOM);
+
+        Managers.LobbyManager.OnCreatingRoom -= () => SetMatchingInfo(StringLiteral.CREATE_ROOM);
+        Managers.LobbyManager.OnCreatingRoom += () => SetMatchingInfo(StringLiteral.CREATE_ROOM);
+
+        Managers.LobbyManager.OnWaitingPlayer -= () => SetMatchingInfo(StringLiteral.WAIT_PLAYER);
+        Managers.LobbyManager.OnWaitingPlayer += () => SetMatchingInfo(StringLiteral.WAIT_PLAYER);
+    }
+
+    private void SetMatchingInfo(string text) => _matchingInfoText.text = text;
+
     public void InitPanelSettings(LobbyUI lobbyUI)
     {
-        //ÃßÈÄ ¸ğµå¿¡¼­ ÃÖ´ë ÀÎ¿ø¼ö¸¦ °¡Á®¿Ã ¿¹Á¤.
+        //ì¶”í›„ ëª¨ë“œì—ì„œ ìµœëŒ€ ì¸ì›ìˆ˜ë¥¼ ê°€ì ¸ì˜¬ ì˜ˆì •.
         _maxPlayer = 2;
         _isPlayerMatched = new bool[_maxPlayer];
         _currentMatchedPlayer = 0;
@@ -41,14 +52,17 @@ public class MatchUI : MonoBehaviourPunCallbacks, IPanel
         {
             _matchBoxes[i].InitMatchBoxSettings();
         }
+
         _matchIcon.InitMatchIconSettings();
+
         _OnStageStart -= _matchIcon.SetMatchCompleteImage;
         _OnStageStart += _matchIcon.SetMatchCompleteImage;
+
         _OnStageStart -= () => _removePanelButton.enabled = false;
         _OnStageStart += () => _removePanelButton.enabled = false;
     }
 
-    //ÃßÈÄ Æ÷Åæ ·ÎÁ÷À¸·Î º¯°æ ¿¹Á¤
+    //ì¶”í›„ í¬í†¤ ë¡œì§ìœ¼ë¡œ ë³€ê²½ ì˜ˆì •
     //public void Update()
     //{
     //    if (_time >= 3)
@@ -109,7 +123,7 @@ public class MatchUI : MonoBehaviourPunCallbacks, IPanel
 
     public void StartStage()
     {
-        _matchText.text = "°ÔÀÓÀÌ ½ÃÀÛµË´Ï´Ù! ÁØºñÇÏ¼¼¿ä!";
+        _matchingInfoText.text = "ê²Œì„ì´ ì‹œì‘ë©ë‹ˆë‹¤! ì¤€ë¹„í•˜ì„¸ìš”!";
         _OnStageStart.Invoke();
     }
 }

@@ -13,7 +13,7 @@ public class EnablePanelButton : MonoBehaviour
         _button = GetComponent<Button>();
         _button.onClick.RemoveAllListeners();
         _button.onClick.AddListener(EnablePanel);
-        //_button.onClick.AddListener(() => SoundManager._instance.Play("EnablePanel"));
+        _button.onClick.AddListener(() => Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_BUTTON));
     }
     public void EnablePanel()
     {
@@ -24,4 +24,4 @@ public class EnablePanelButton : MonoBehaviour
     {
         _button?.onClick.RemoveAllListeners();
     }
-}
+ }

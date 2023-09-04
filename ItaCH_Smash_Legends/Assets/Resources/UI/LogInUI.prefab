@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8867678597390762937}
   - component: {fileID: 8867678597390762936}
   m_Layer: 5
-  m_Name: LogIn
+  m_Name: InputBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -410,9 +410,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputField: {fileID: 8867678598626691846}
-  _logInField: {fileID: 8867678597390762942}
-  _loadingObject: {fileID: 8867678598430742185}
+  _inputBox: {fileID: 8867678597390762942}
+  _spinnerImage: {fileID: 8867678598402717704}
   _errorMessage: {fileID: 8867678598710665791}
+  _connectionInfoText: {fileID: 8867678598530461073}
+  _background: {fileID: 8867678597699730074}
+  _logoShadow: {fileID: 8867678597951142763}
 --- !u!1 &8867678597951142761
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,7 +558,7 @@ GameObject:
   - component: {fileID: 8867678598243512869}
   - component: {fileID: 8867678598243512868}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: StartText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -693,7 +696,7 @@ GameObject:
   - component: {fileID: 8867678598355030998}
   - component: {fileID: 8867678598355030993}
   m_Layer: 5
-  m_Name: Button
+  m_Name: StartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -848,7 +851,7 @@ GameObject:
   - component: {fileID: 8867678598402717710}
   - component: {fileID: 8867678598402717704}
   m_Layer: 5
-  m_Name: Image
+  m_Name: SpinnerImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -974,7 +977,7 @@ GameObject:
   - component: {fileID: 8867678598530461074}
   - component: {fileID: 8867678598530461073}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ConnectionInfoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1110,7 +1113,7 @@ GameObject:
   - component: {fileID: 8867678598581416881}
   - component: {fileID: 8867678598581416880}
   m_Layer: 5
-  m_Name: SideDeco
+  m_Name: Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1511,7 +1514,7 @@ GameObject:
   - component: {fileID: 8867678599181348522}
   - component: {fileID: 8867678599181348521}
   m_Layer: 5
-  m_Name: Image
+  m_Name: LogoImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
