@@ -31,6 +31,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         Managers.SoundManager.Play(SoundType.BGM, StringLiteral.BGM_TITLE);
+        Managers.UIManager.ShowPopupUI<UI_LogInPopup>();
     }
 
     public void ConnectToServer()
@@ -39,7 +40,16 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         OnConnectingtoServer?.Invoke();
     }
 
-    public override void OnConnectedToMaster() => OnLogInSuccessed?.Invoke();
+    public override void OnConnectedToMaster()
+    {
+        OnLogInSuccessed?.Invoke();
+        UIPopup loginPopup = Managers.UIManager.FindPopup<UI_LogInPopup>();
+
+        if (loginPopup != null)
+        {
+            Managers.UIManager.ClosePopupUI(loginPopup);
+        }
+    }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
@@ -64,8 +74,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         OnCreatingRoom?.Invoke();
-        Managers.SoundManager.Play(SoundType.SFX,StringLiteral.SFX_GAMEMODESTART);
-        Managers.SoundManager.Play(SoundType.BGM,StringLiteral.BGM_MATCH);
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_GAMEMODESTART);
+        Managers.SoundManager.Play(SoundType.BGM, StringLiteral.BGM_MATCH);
 
         int totalPlayer = Managers.StageManager.CurrentGameMode.MaxPlayer;
         PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = totalPlayer });
@@ -88,8 +98,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private void EnterInGameScene()
     {
         PhotonNetwork.LoadLevel(StringLiteral.INGAME);
-        Managers.SoundManager.Play(SoundType.BGM, StringLiteral.BGM_STAGE); 
-        Managers.SoundManager.Play(SoundType.SFX,StringLiteral.SFX_MATCH_START);
+        Managers.SoundManager.Play(SoundType.BGM, StringLiteral.BGM_STAGE);
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_MATCH_START);
         OnMatchingSuccess?.Invoke();
     }
 
