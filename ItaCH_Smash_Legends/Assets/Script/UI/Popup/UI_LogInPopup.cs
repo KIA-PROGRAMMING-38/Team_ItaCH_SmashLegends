@@ -33,14 +33,6 @@ public class UI_LogInPopup : UIPopup
         ConnectionInfo
     }
 
-    private void Start()
-    {
-        if (PhotonNetwork.IsConnected)
-        {
-            gameObject.SetActive(false);
-        }
-    }
-
     public override void Init()
     {
         BindText(typeof(Texts));
@@ -78,7 +70,8 @@ public class UI_LogInPopup : UIPopup
         titleLogo.DOScale(firstTargetScale, getLargerDuration)
             .OnComplete(() => titleLogo.DOScale(endScale, getSmallerDuration));
 
-        await UniTask.Delay(2000);
+        int delayTime = 2000; // millisecond
+        await UniTask.Delay(delayTime);
 
         GetObject((int)GameObjects.InputBox).SetActive(true);
     }
