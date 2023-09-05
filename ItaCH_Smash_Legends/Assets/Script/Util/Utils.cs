@@ -86,5 +86,5 @@ public class Utils
             rectTransform.Rotate(direction * (turnSpeed * Time.fixedDeltaTime));
             await UniTask.DelayFrame(1);
         }
-    }
+    }    
 }

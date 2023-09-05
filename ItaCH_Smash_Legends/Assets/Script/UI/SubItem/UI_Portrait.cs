@@ -68,7 +68,7 @@ public class UI_Portrait : UIBase
         float respawnTime = Managers.StageManager.CurrentGameMode.ModeDefaultRespawnTime;
         CancellationTokenSource rotateImage = new CancellationTokenSource();
 
-        GetImage((int)Images.RespawnTimeSpinner).rectTransform.RotateRectTransformAsync(Vector3.back, 360, rotateImage.Token);
+        GetImage((int)Images.RespawnTimeSpinner).rectTransform.RotateRectTransformAsync(Vector3.back, 360, rotateImage.Token).Forget();
 
         await RefreshPlayerRespawnTimerTextTask(respawnTime, rotateImage);
 
