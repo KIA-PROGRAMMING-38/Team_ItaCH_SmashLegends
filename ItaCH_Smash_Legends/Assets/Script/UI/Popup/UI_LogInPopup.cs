@@ -58,20 +58,20 @@ public class UI_LogInPopup : UIPopup
 
     public async UniTask ShowOpeningAsync()
     {
-        float fadeInDuration = 3f;
-        GetImage((int)Images.BackGround).DOColor(Color.white, fadeInDuration);
+        const float FADE_IN_DURATION = 3f;
+        GetImage((int)Images.BackGround).DOColor(Color.white, FADE_IN_DURATION);
 
-        float firstTargetScale = 1.5f;
-        float endScale = 1f;
-        float getLargerDuration = 0.8f;
-        float getSmallerDuration = 0.7f;
+        const float START_TARGET_SCALE = 1.5f;
+        const float FINAL_TARGET_SCALE = 1f;
+        const float DURATION_FOR_INCREASING_SIZE = 0.8f;
+        const float DURATION_FOR_DECREASING_SIZE = 0.7f;
 
         RectTransform titleLogo = GetObject((int)GameObjects.TitleLogo).GetComponent<RectTransform>();
-        titleLogo.DOScale(firstTargetScale, getLargerDuration)
-            .OnComplete(() => titleLogo.DOScale(endScale, getSmallerDuration));
+        titleLogo.DOScale(START_TARGET_SCALE, DURATION_FOR_INCREASING_SIZE)
+            .OnComplete(() => titleLogo.DOScale(FINAL_TARGET_SCALE, DURATION_FOR_DECREASING_SIZE));
 
-        int delayTime = 2000; // millisecond
-        await UniTask.Delay(delayTime);
+        const int DELAY_TIME_MILLISECOND = 2000;
+        await UniTask.Delay(DELAY_TIME_MILLISECOND);
 
         GetObject((int)GameObjects.InputBox).SetActive(true);
     }
@@ -90,9 +90,12 @@ public class UI_LogInPopup : UIPopup
 
             GetObject((int)GameObjects.InputBox).SetActive(false);
             GetObject((int)GameObjects.ConnectionInfo).SetActive(true);
-            
+
+
+            const int ROTATION_ANGLE = 360;
+            const float DURATION_FOR_ROTATING = 0.3f;
             GetImage((int)Images.SpinnerImage).GetComponent<RectTransform>()
-                .DORotate(Vector3.back * 360, 0.3f, RotateMode.FastBeyond360).SetLoops(-1);
+                .DORotate(Vector3.back * ROTATION_ANGLE, DURATION_FOR_ROTATING, RotateMode.FastBeyond360).SetLoops(-1);
 
             Managers.LobbyManager.ConnectToServer();
         }
