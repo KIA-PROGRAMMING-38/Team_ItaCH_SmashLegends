@@ -39,10 +39,9 @@ public class UI_LogInPopup : UIPopup
         {
             gameObject.SetActive(false);
         }
-        Init();
     }
 
-    private void Init()
+    public override void Init()
     {
         BindText(typeof(Texts));
         BindImage(typeof(Images));
