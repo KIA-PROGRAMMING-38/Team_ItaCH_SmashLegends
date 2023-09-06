@@ -1,5 +1,3 @@
-using System.Threading;
-
 public static class StringLiteral
 {
     #region SCENE NAME
@@ -24,7 +22,8 @@ public static class StringLiteral
     #region FOLDER PATH
     public const string PREFAB_FOLDER = "Prefab";
     public const string SUFFIX_INGAME = "_Ingame";
-    public const string MAP_PREFAB_PATH = "Map/SingleLogBridge";
+    public const string DUEL_MODE_MAP_PREFAB_PATH = "Map/Duel/SingleLogBridge";
+    public const string LOBBY_WORLD_MAP_PREFAB_PATH = "Map/Lobby/LobbySceneWorld";
     public const string UI_FOLDER = "UI";
     public const string UI_SPRITE_FOLDER = "UI/Sprite";
     public const string UI_GAME_RESULT_POPUP = "UI_GameResultPopup";
