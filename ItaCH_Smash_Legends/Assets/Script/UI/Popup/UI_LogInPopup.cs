@@ -33,6 +33,8 @@ public class UI_LogInPopup : UIPopup
         ConnectionInfo
     }
 
+    private static Tween _rotatingImage;
+
     public override void Init()
     {
         BindText(typeof(Texts));
@@ -53,7 +55,7 @@ public class UI_LogInPopup : UIPopup
         Managers.LobbyManager.OnConnectingtoServer += () => SetConnectionInfo(StringLiteral.CONNECT_SERVER);
 
         Managers.LobbyManager.OnDisconnectedfromServer -= () => SetConnectionInfo(StringLiteral.CONNECTION_FAILURE);
-        Managers.LobbyManager.OnDisconnectedfromServer += () => SetConnectionInfo(StringLiteral.CONNECTION_FAILURE);     
+        Managers.LobbyManager.OnDisconnectedfromServer += () => SetConnectionInfo(StringLiteral.CONNECTION_FAILURE);
     }
 
     public async UniTask ShowOpeningAsync()
@@ -94,7 +96,7 @@ public class UI_LogInPopup : UIPopup
 
             const int ROTATION_ANGLE = 360;
             const float DURATION_FOR_ROTATING = 0.3f;
-            GetImage((int)Images.SpinnerImage).GetComponent<RectTransform>()
+            _rotatingImage = GetImage((int)Images.SpinnerImage).GetComponent<RectTransform>()
                 .DORotate(Vector3.back * ROTATION_ANGLE, DURATION_FOR_ROTATING, RotateMode.FastBeyond360).SetLoops(-1);
 
             Managers.LobbyManager.ConnectToServer();
@@ -106,4 +108,9 @@ public class UI_LogInPopup : UIPopup
     }
 
     private void SetConnectionInfo(string text) => GetText((int)Texts.ConnectionInfoText).text = text;
+
+    private void OnDestroy()
+    {
+        _rotatingImage.Kill();
+    }
 }

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LegendMenuUI : MonoBehaviour, IPanel
+public class LegendMenuUI : MonoBehaviour
 {
     private enum LegendName
     {
@@ -15,14 +15,13 @@ public class LegendMenuUI : MonoBehaviour, IPanel
 
     [SerializeField] private Sprite[] _portraitSprites; // TO DO: 리소스 매니저 수정 이후 바뀔 부분
     [SerializeField] private GameObject _legendSelectMenuPrefab;
-    private LobbyUI _lobbyUI;
+    //private LobbyUI _lobbyUI;
     private LegendSelectUI[] _legendSelectMenu;
     private Transform _contentTransform;
     private int _numberOfLegends;
 
-    public void InitPanelSettings(LobbyUI lobbyUI)
+    public void InitPanelSettings()
     {
-        _lobbyUI = lobbyUI;
         _numberOfLegends = (int)LegendType.MaxCount;
         _contentTransform = GetComponentInChildren<ScrollRect>().transform.GetChild(0).GetChild(0);
         _legendSelectMenu = new LegendSelectUI[_numberOfLegends];
@@ -34,8 +33,8 @@ public class LegendMenuUI : MonoBehaviour, IPanel
             _legendSelectMenu[i].OnSelectLegend -= RefreshFrame;
             _legendSelectMenu[i].OnSelectLegend += RefreshFrame;
 
-            _legendSelectMenu[i].OnSelectLegend -= _lobbyUI.ChangeLobbyCharacterModel;
-            _legendSelectMenu[i].OnSelectLegend += _lobbyUI.ChangeLobbyCharacterModel;
+            //_legendSelectMenu[i].OnSelectLegend -= _lobbyUI.ChangeLobbyCharacterModel;
+            //_legendSelectMenu[i].OnSelectLegend += _lobbyUI.ChangeLobbyCharacterModel;
         }
 
     }
@@ -57,7 +56,7 @@ public class LegendMenuUI : MonoBehaviour, IPanel
         for (int i = 1; i < _numberOfLegends; ++i)
         {
             _legendSelectMenu[i].OnSelectLegend -= RefreshFrame;
-            _legendSelectMenu[i].OnSelectLegend -= _lobbyUI.ChangeLobbyCharacterModel;
+            //_legendSelectMenu[i].OnSelectLegend -= _lobbyUI.ChangeLobbyCharacterModel;
         }
     }
 }

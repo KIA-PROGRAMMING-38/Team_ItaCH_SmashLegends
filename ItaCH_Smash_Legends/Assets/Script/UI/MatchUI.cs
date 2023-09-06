@@ -1,10 +1,10 @@
-﻿using Photon.Pun;
+using Photon.Pun;
 using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MatchUI : MonoBehaviourPunCallbacks, IPanel
+public class MatchUI : MonoBehaviourPunCallbacks
 {
     private bool[] _isPlayerMatched;
     private int _maxPlayer;
@@ -42,7 +42,7 @@ public class MatchUI : MonoBehaviourPunCallbacks, IPanel
 
     private void SetMatchingInfo(string text) => _matchingInfoText.text = text;
 
-    public void InitPanelSettings(LobbyUI lobbyUI)
+    public void InitPanelSettings()
     {
         //추후 모드에서 최대 인원수를 가져올 예정.
         _maxPlayer = 2;

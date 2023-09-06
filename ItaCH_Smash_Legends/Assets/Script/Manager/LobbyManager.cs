@@ -49,6 +49,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         {
             Managers.UIManager.ClosePopupUI(loginPopup);
         }
+        Managers.UIManager.ShowPopupUI<UI_LobbyPopup>();
     }
 
     public override void OnDisconnected(DisconnectCause cause)
