@@ -62,7 +62,8 @@ public class UI_LobbyPopup : UIPopup
         SetLobbyLegendModel();
     }
 
-    /* 기존 성재 로직에서 결과창 이후 모델 변경 사항 초기화 해주는 코드
+    /* TO DO : 결과창 이후 로비씬 돌아오는 과정에서 초기화 필요한지 체크
+     * 기존 로직에서 결과창 이후 모델 변경 사항 초기화 해주는 코드     * 
      * public void ResetModelTransform()
     {
         foreach (GameObject legendModel in _legendModels)
