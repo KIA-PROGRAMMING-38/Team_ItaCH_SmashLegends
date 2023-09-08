@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using UnityEditor.Rendering.Universal.ShaderGraph;
 using UnityEngine;
 
 public class ResourceManager
@@ -92,6 +93,21 @@ public class ResourceManager
             audioClipPath = Path.Combine(StringLiteral.SOUND, sound.ToString(), fileName);
         }
         return Load<AudioClip>(audioClipPath);
+    }
 
+    public Material GetMaterial(MaterialType materialType)
+    {
+        string materialPath;
+
+        if(materialType == MaterialType.Hit)
+        {
+            materialPath = Path.Combine(StringLiteral.MATERIAL,StringLiteral.HIT_MATERIAL);
+        }
+        else
+        {
+            materialPath = Path.Combine(StringLiteral.MATERIAL, StringLiteral.INVINCIBLE_MATERIAL);
+        }
+
+        return Load<Material>(materialPath);
     }
 }

@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using System;
 using System.Threading;
 using UnityEngine;
@@ -82,7 +83,7 @@ public class LegendController : MonoBehaviour
 
     public void Init(UserData user, Transform spawnPoint)
     {
-        GetComponents();       
+        GetComponents();
         SetLegendStat(user.SelectedLegend);
         SetController(user.ID);
         SubscribeOnDieEvents(user, spawnPoint);
