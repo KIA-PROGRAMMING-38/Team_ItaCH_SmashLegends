@@ -33,6 +33,7 @@ public static class StringLiteral
     public const string VOICE = "Voice";
     public const string SFX = "SFX";
     public const string BGM = "BGM";
+    public const string MATERIAL = "Material";
     #endregion
 
     #region LegendController 
@@ -117,4 +118,7 @@ public static class StringLiteral
     #region Legend Voice
     public const string VOICE_WIN = "Win";
     #endregion
+
+    public const string HIT_MATERIAL = "HitMaterial";
+    public const string INVINCIBLE_MATERIAL = "InvincibleMaterial";
 }
