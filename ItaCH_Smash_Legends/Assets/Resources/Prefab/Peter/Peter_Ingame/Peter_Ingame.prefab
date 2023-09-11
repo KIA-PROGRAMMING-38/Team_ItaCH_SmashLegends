@@ -888,7 +888,6 @@ GameObject:
   - component: {fileID: -3319399887971439385}
   - component: {fileID: 1232941431}
   - component: {fileID: 1232941446}
-  - component: {fileID: 6193904240655421861}
   - component: {fileID: 1207978725}
   - component: {fileID: 8332868175603886031}
   m_Layer: 7
@@ -1087,18 +1086,6 @@ MonoBehaviour:
   _applyJumpAttackClip:
   - {fileID: 7400000, guid: 02f3cef37a213bb439d6f7adc545533b, type: 2}
   - {fileID: 7400000, guid: 02f3cef37a213bb439d6f7adc545533b, type: 2}
---- !u!114 &6193904240655421861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1801810034622763246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d265c83dd40b374d84e7fde11677fe0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1207978725
 MonoBehaviour:
   m_ObjectHideFlags: 0

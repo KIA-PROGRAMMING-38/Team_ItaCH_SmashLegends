@@ -82,7 +82,7 @@ public class LegendController : MonoBehaviour
 
     public void Init(UserData user, Transform spawnPoint)
     {
-        GetComponents();       
+        GetComponents();
         SetLegendStat(user.SelectedLegend);
         SetController(user.ID);
         SubscribeOnDieEvents(user, spawnPoint);

@@ -37,6 +37,8 @@ public class UI_LogInPopup : UIPopup
 
     public override void Init()
     {
+        base.Init();
+
         BindText(typeof(Texts));
         BindImage(typeof(Images));
         BindButton(typeof(Buttons));

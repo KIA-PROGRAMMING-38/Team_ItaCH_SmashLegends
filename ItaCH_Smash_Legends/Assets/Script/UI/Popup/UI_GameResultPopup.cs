@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using System.Collections.Generic;
 using System.IO;
@@ -36,13 +37,15 @@ public class UI_GameResultPopup : UIPopup
     private Transform[] _legendModelSpawnPoints;
     public override void Init()
     {
+        base.Init();
+
         BindText(typeof(Texts));
         BindImage(typeof(Images));
         BindButton(typeof(Buttons));
         BindObject(typeof(GameObjects));
         Bind<UI_GameResultSubItem>(typeof(GameResultUserProfiles));
 
-        GetButton((int)Buttons.ExitButton).gameObject.BindEvent(OnCloseButton);
+        GetButton((int)Buttons.ExitButton).gameObject.BindEvent(() => OnCloseButton().Forget());
     }
 
     private List<UI_GameResultSubItem> _profiles = new List<UI_GameResultSubItem>();
@@ -123,13 +126,15 @@ public class UI_GameResultPopup : UIPopup
         }
     }
 
-    private void OnCloseButton()
+    private async UniTask OnCloseButton()
     {
-        AsyncOperation loadLobbySceneAsync = SceneManager.LoadSceneAsync(StringLiteral.LOBBY);
+        PhotonNetwork.LoadLevel(StringLiteral.LOBBY);
 
-        if (loadLobbySceneAsync.isDone)
-        {
-            Managers.UIManager.ClosePopupUI();
-        }
+        await UniTask.WaitUntil(() => PhotonNetwork.LevelLoadingProgress == 1);
+
+        Managers.UIManager.ClosePopupUI();
+        Destroy(_gameResultLegendModelSpace);
+        Managers.UIManager.ShowPopupUI<UI_LobbyPopup>();
+        PhotonNetwork.LeaveRoom();
     }
 }

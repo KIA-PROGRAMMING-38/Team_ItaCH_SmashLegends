@@ -34,4 +34,7 @@ public class Define
         BLUE_TEAM_GAME_RESULT_USER_PROFILE_POSITION,
         RED_TEAM_GAME_RESULT_USER_PROFILE_POSITION
     };
+
+    public static readonly Color32 DEFAULT_ENTERED_USER_BOX_COLOR = new Color32(40, 36, 93, 255);
+    public static readonly Color32 USER_ENTERED_COLOR = new Color32(203, 201, 255, 255);
 }
