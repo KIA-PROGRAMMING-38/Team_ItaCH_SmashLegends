@@ -34,6 +34,8 @@ public class UI_DuelModePopup : UIPopup
 
     public override void Init()
     {
+        base.Init();
+
         BindText(typeof(Texts));
         BindImage(typeof(Images));
         BindObject(typeof(GameObjects));

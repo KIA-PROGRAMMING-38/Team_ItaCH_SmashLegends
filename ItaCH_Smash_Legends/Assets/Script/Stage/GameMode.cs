@@ -61,6 +61,7 @@ public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 �
     {
         Team team = GetTeamAvailable();
         team.AddMember(user);
+        Managers.UIManager.FindPopup<UI_MatchingPopup>().RefreshUI();
     }
 
     private Team GetTeamAvailable()
@@ -93,7 +94,6 @@ public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 �
         {
             case GameModeType.Duel:
                 JudgeWinnerOnDuel();
-
                 break;
 
             case GameModeType.TeamMatch:
