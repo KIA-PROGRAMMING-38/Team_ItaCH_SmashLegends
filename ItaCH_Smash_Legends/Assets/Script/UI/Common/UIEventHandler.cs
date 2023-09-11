@@ -17,6 +17,6 @@ public class UIEventHandler : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        OnClickHandler?.Invoke();        
+        OnClickHandler?.Invoke();
     }
 }
