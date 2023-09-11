@@ -1,5 +1,6 @@
 public class LegendStatData
 {
+    public string LegendNameKOR { get; set; }
     public int LegendID { get; set; }
     public int SkillGauge { get; set; }
     public int SkillGaugeRecovery { get; set; }

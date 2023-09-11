@@ -17,6 +17,7 @@ public class UI_LobbyPopup : UIPopup
         SettingsButton
     }
 
+    private GameObject[] _legendModels = new GameObject[(int)LegendType.MaxCount];
     private static LegendType _currentLobbyLegend;
     private static Transform _legendSpawnPoint;
 
@@ -41,16 +42,35 @@ public class UI_LobbyPopup : UIPopup
         GameObject lobbyWorld = Managers.ResourceManager.Instantiate(StringLiteral.LOBBY_WORLD_MAP_PREFAB_PATH);
         _legendSpawnPoint = lobbyWorld.transform.GetChild(0).GetChild(0);
 
+        _currentLobbyLegend = Managers.LobbyManager.UserLocalData.SelectedLegend;
+
+        for (int id = (int)LegendType.Alice; id < (int)LegendType.MaxCount; ++id)
+        {
+            GameObject lobbyLegendModel = Managers.ResourceManager.GetLobbyLegendPrefab((LegendType)id);
+            lobbyLegendModel.SetActive(false);
+            _legendModels[id] = Managers.ResourceManager.Instantiate(lobbyLegendModel, _legendSpawnPoint);
+
+            if (id == (int)_currentLobbyLegend)
+            {
+                _legendModels[id].SetActive(true);
+            }
+        }
+
         SetLobbyLegendModel();
     }
 
     private void SetLobbyLegendModel()
     {
         LegendType userSelectedLegend = Managers.LobbyManager.UserLocalData.SelectedLegend;
+        Managers.SoundManager.Play(SoundType.Voice, legend: userSelectedLegend, voice: VoiceType.Lobby);
 
-        GameObject lobbyLegendModel = Managers.ResourceManager.GetLobbyLegendPrefab(userSelectedLegend);
-        Managers.ResourceManager.Instantiate(lobbyLegendModel, _legendSpawnPoint);
+        if (_currentLobbyLegend == userSelectedLegend)
+        {
+            return;
+        }
 
+        _legendModels[(int)_currentLobbyLegend].SetActive(false);
+        _legendModels[(int)userSelectedLegend].SetActive(true);
         _currentLobbyLegend = userSelectedLegend;
     }
 

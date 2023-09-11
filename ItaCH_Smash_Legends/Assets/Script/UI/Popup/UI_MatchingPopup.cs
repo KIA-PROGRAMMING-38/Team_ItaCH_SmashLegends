@@ -43,7 +43,7 @@ public class UI_MatchingPopup : UIPopup
         BindButton(typeof(Buttons));
         BindObject(typeof(GameObjects));
 
-        GetButton((int)Buttons.CloseButton).gameObject.BindEvent(OnCloseButton);
+        GetButton((int)Buttons.CloseButton).gameObject.BindEvent(() => OnCloseButton());
 
         Managers.LobbyManager.OnJoiningRoom -= () => SetMatchingInfo(StringLiteral.ENTER_ROOM);
         Managers.LobbyManager.OnJoiningRoom += () => SetMatchingInfo(StringLiteral.ENTER_ROOM);

@@ -58,7 +58,7 @@ public class UI_Portrait : UIBase
 
     private void SetLegendFaceImage()
     {
-        GetImage((int)Images.LegendFaceImage).sprite = Managers.ResourceManager.GetLegendFaceImage(_userData.SelectedLegend);
+        GetImage((int)Images.LegendFaceImage).sprite = Managers.ResourceManager.GetLegendSprite(StringLiteral.UI_DUEL_MODE_POPUP, _userData.SelectedLegend);
     }
 
     private async void RefreshRespawnTimer()
