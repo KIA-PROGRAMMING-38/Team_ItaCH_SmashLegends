@@ -66,10 +66,10 @@ public class ResourceManager
         return Load<GameObject>(legendPrefabPath);
     }
 
-    public Sprite GetLegendFaceImage(LegendType legend)
+    public Sprite GetLegendSprite(string popupName, LegendType legend)
     {
         string legendName = legend.ToString();
-        string legendFaceImagePath = Path.Combine(StringLiteral.UI_SPRITE_FOLDER, legendName, legendName);
+        string legendFaceImagePath = Path.Combine(StringLiteral.UI_SPRITE_FOLDER, legendName, $"{popupName}_{legendName}");
         return Load<Sprite>(legendFaceImagePath);
     }
 

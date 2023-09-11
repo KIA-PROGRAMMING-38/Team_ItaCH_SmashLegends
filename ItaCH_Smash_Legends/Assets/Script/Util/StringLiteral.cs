@@ -1,5 +1,3 @@
-using System.Threading;
-
 public static class StringLiteral
 {
     #region SCENE NAME
@@ -24,9 +22,12 @@ public static class StringLiteral
     #region FOLDER PATH
     public const string PREFAB_FOLDER = "Prefab";
     public const string SUFFIX_INGAME = "_Ingame";
-    public const string MAP_PREFAB_PATH = "Map/SingleLogBridge";
+    public const string DUEL_MODE_MAP_PREFAB_PATH = "Map/Duel/SingleLogBridge";
+    public const string LOBBY_WORLD_MAP_PREFAB_PATH = "Map/Lobby/LobbySceneWorld";
     public const string UI_FOLDER = "UI";
     public const string UI_SPRITE_FOLDER = "UI/Sprite";
+    public const string UI_SELECT_LEGEND_POPUP = "UI_SelectLegendPopup";
+    public const string UI_DUEL_MODE_POPUP = "UI_DuelModePopup";
     public const string UI_GAME_RESULT_POPUP = "UI_GameResultPopup";
     public const string TOP_DECO_SPRITE = "_TopDeco_";
     public const string SOUND = "Sound";
@@ -41,6 +42,10 @@ public static class StringLiteral
     public static readonly string[] ANIMATION_CLIP = new[] { "Peter_FirstAttack", "Peter_SecondAttack" };
     public const string JUMP_ANIMATION_CLIP = "Peter_JumpAttack";
     public const string ALICE_BOMB = "AliceBomb";
+    public const string HeavyBulletDeleteEffect = "Prefab/Hook/Hook_Ingame/Hook_Heavy_Bullet_Delete_Effect";
+    public const string LastHeavyBulletDeleteEffect = "Prefab/Hook/Hook_Ingame/Hook_Last_Heavy_Bullet_Delete_Effect";
+    public const string SkillBulletDeleteEffect = "Prefab/Hook/Hook_Ingame/Hook_SKill_Bullet_Delete_Effect";
+    public const string BulletDeleteEffect = "Prefab/Hook/Hook_Ingame/Hook_Default_Bullet_Delete_Effect";
     #endregion
 
     #region Tag

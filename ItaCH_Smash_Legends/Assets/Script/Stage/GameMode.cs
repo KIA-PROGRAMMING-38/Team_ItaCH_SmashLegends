@@ -53,7 +53,7 @@ public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 �
         _maxGameTimeSec = 120;
         _winningScore = 3;
         _modeDefaultRespawnTime = 5f;
-        Map = StringLiteral.MAP_PREFAB_PATH;
+        Map = StringLiteral.DUEL_MODE_MAP_PREFAB_PATH;
         // 현재 Duel Mode 값 직접 지정
     }
 
@@ -61,6 +61,7 @@ public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 �
     {
         Team team = GetTeamAvailable();
         team.AddMember(user);
+        Managers.UIManager.FindPopup<UI_MatchingPopup>().RefreshUI();
     }
 
     private Team GetTeamAvailable()
@@ -93,7 +94,6 @@ public class GameMode // TO DO : 모드 추가 시 추상 클래스 정의 및 �
         {
             case GameModeType.Duel:
                 JudgeWinnerOnDuel();
-
                 break;
 
             case GameModeType.TeamMatch:
