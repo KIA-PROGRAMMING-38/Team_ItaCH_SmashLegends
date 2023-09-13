@@ -112,16 +112,18 @@ public class LegendController : MonoBehaviour
 
     public void SetController(int userID)
     {
+        Keyboard keyBoard = InputSystem.GetDevice<Keyboard>();
         switch ((SinglePlayController)userID)
         {
             case SinglePlayController.Controller_1P:
+                _input.actions.name = StringLiteral.PLAYER_INPUT;
                 _input.SwitchCurrentActionMap(StringLiteral.FIRST_PLAYER_ACTIONS);
+                _input.actions.devices = new InputDevice[] { keyBoard };
                 break;
 
             case SinglePlayController.Controller_2P:
                 _input.actions.name = StringLiteral.PLAYER_INPUT;
-                _input.SwitchCurrentActionMap(StringLiteral.SECOND_PLAYER_ACTIONS);
-                Keyboard keyBoard = InputSystem.GetDevice<Keyboard>();
+                _input.SwitchCurrentActionMap(StringLiteral.SECOND_PLAYER_ACTIONS);                
                 _input.actions.devices = new InputDevice[] { keyBoard };
                 break;
 
