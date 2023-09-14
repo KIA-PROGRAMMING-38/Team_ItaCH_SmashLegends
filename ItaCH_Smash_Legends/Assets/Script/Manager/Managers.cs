@@ -17,7 +17,7 @@ public class Managers : MonoBehaviour
     public static UIManager UIManager { get { Init(); return s_uiManager; } }
     public static DataManager DataManager { get { Init(); return s_dataManager; } }
     public static ResourceManager ResourceManager { get { Init(); return s_resourceManager; } }
-    public static SoundManager SoundManager { get { Init(); return s_soundManager; } } 
+    public static SoundManager SoundManager { get { Init(); return s_soundManager; } }
 
     private void Start()
     {
@@ -29,28 +29,29 @@ public class Managers : MonoBehaviour
         if (s_instance == null)
         {
             GameObject gameObject = GameObject.Find("@Managers");
+
             if (gameObject == null)
             {
                 gameObject = new GameObject { name = "@Managers" };
-                s_instance = gameObject.AddComponent<Managers>();
-
-                DontDestroyOnLoad(gameObject);
-
-
-                s_lobbyManager = CreateManager<LobbyManager>();
-                s_stageManager = CreateManager<StageManager>();
-                s_soundManager = CreateManager<SoundManager>();
-                s_dataManager = new DataManager();
-                s_resourceManager = new ResourceManager();
-                s_uiManager = new UIManager();
-
-                s_lobbyManager.Init();
-                s_stageManager.Init();
-                s_soundManager.Init();
-                s_dataManager.Init();
-                s_resourceManager.Init();
-                s_uiManager.Init();
             }
+
+            s_instance = Utils.GetOrAddComponent<Managers>(gameObject);
+            DontDestroyOnLoad(gameObject);
+
+
+            s_lobbyManager = CreateManager<LobbyManager>();
+            s_stageManager = CreateManager<StageManager>();
+            s_soundManager = CreateManager<SoundManager>();
+            s_uiManager = CreateManager<UIManager>();
+            s_dataManager = new DataManager();
+            s_resourceManager = new ResourceManager();
+
+            s_lobbyManager.Init();
+            s_stageManager.Init();
+            s_soundManager.Init();
+            s_uiManager.Init();
+            s_dataManager.Init();
+            s_resourceManager.Init();
         }
     }
 
