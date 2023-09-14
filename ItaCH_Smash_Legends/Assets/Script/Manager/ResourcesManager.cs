@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using UnityEditor.Rendering.Universal.ShaderGraph;
 using UnityEngine;
 
 public class ResourceManager

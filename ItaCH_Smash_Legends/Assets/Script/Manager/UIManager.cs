@@ -3,7 +3,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class UIManager
+public class UIManager : MonoBehaviour
 {
     private static readonly Vector3 DEFAULT_SCALE = Vector3.one;
     private int _canvasOrder = -20;
@@ -17,8 +17,8 @@ public class UIManager
         if (_root == null)
         {
             _root = new GameObject { name = "@UI_Root" };
-            Object.DontDestroyOnLoad(_root);
         }
+        DontDestroyOnLoad(_root);
     }
 
     public void SetCanvas(GameObject go, bool sort = true)
