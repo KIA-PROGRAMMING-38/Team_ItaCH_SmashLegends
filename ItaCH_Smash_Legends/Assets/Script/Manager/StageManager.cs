@@ -144,7 +144,7 @@ public class StageManager : MonoBehaviourPunCallbacks
             await UniTask.Yield();
         }
 
-        if (RemainGameTime < 0)
+        if (RemainGameTime <= 0)
         {
             _isTimeOver = true;
             _currentGameMode.IsOver();
