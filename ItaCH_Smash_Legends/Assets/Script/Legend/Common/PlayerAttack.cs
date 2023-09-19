@@ -12,6 +12,9 @@ public class PlayerAttack : MonoBehaviour
     protected Rigidbody attackRigidbody;
     protected float dashPower;
 
+    public bool CanHeavyAttack;
+    public bool CanSkillAttack;
+
     private void Awake()
     {
         attackRigidbody = GetComponent<Rigidbody>();

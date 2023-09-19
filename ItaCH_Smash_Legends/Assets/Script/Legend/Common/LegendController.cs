@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using DG.Tweening;
 using System;
 using System.Threading;
 using UnityEngine;
@@ -59,6 +58,7 @@ public class LegendController : MonoBehaviour
     private LegendAnimationController _legendAnimationController;
     private EffectController _effectController;
     private Collider _collider;
+    private PlayerAttack _playerAttack;
 
     private Vector3 _moveDirection;
     private Vector3 _facingDirection;
@@ -69,7 +69,6 @@ public class LegendController : MonoBehaviour
     private int _stepIndex = 0;
     private bool _canAttack;
     public LegendType LegendType { get; private set; }
-    public bool CanHeavyAttack = true;
     public event Action<float> OnHpChanged;
     public event Action OnDie;
 
@@ -93,7 +92,8 @@ public class LegendController : MonoBehaviour
         user.OwnedLegend = this;
         LegendType = user.SelectedLegend;
         OwnerUserID = user.ID;
-        CanHeavyAttack = true;
+        _playerAttack.CanHeavyAttack = true;
+        _playerAttack.CanSkillAttack = true;
     }
 
     private void GetComponents()
@@ -103,6 +103,7 @@ public class LegendController : MonoBehaviour
         _legendAnimationController = Utils.GetOrAddComponent<LegendAnimationController>(this.gameObject);
         _effectController = Utils.GetOrAddComponent<EffectController>(this.gameObject);
         _collider = GetComponent<Collider>();
+        _playerAttack = GetComponent<PlayerAttack>();
     }
 
     private void SetLegendStat(LegendType legendIndex)
@@ -184,14 +185,17 @@ public class LegendController : MonoBehaviour
     }
     private void OnSmashAttack()
     {
-        if (CanHeavyAttack)
+        if (_playerAttack.CanHeavyAttack)
         {
             _legendAnimationController.SetTrigger(AnimationHash.HeavyAttack);
         }
     }
     private void OnSkillAttack()
     {
-        _legendAnimationController.SetTrigger(AnimationHash.SkillAttack);
+        if (_playerAttack.CanSkillAttack)
+        {
+            _legendAnimationController.SetTrigger(AnimationHash.SkillAttack);
+        }
     }
     #endregion
 
