@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class LegendSkillAttackState : LegendBaseState
 {
-    PlayerAttack _playerAttack;
-
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
 
-        _playerAttack = animator.GetComponent<PlayerAttack>();
-        _playerAttack.CanSkillAttack = false;
+        legendController.CanSkillAttack = false;
 
         Managers.SoundManager.Play(SoundType.Voice, legend: legendController.LegendType, voice: VoiceType.SkillAttack);
         Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_SKILLATTACK, legendController.LegendType);
@@ -23,6 +20,6 @@ public class LegendSkillAttackState : LegendBaseState
     {
         float skillCooltime = legendController.Stat.HeavyCooltime * 3f;
         await UniTask.Delay(TimeSpan.FromSeconds(skillCooltime));
-        _playerAttack.CanSkillAttack = true;
+        legendController.CanSkillAttack = true;
     }
 }

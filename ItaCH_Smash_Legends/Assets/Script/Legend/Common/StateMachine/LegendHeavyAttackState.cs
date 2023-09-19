@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class LegendHeavyAttackState : LegendBaseState
 {
-    private PlayerAttack _playerAttack;
-
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
 
-        _playerAttack = animator.GetComponent<PlayerAttack>();
-        _playerAttack.CanHeavyAttack = false;
+        legendController.CanHeavyAttack = false;
         animator.SetBool(AnimationHash.Run, false);
         Managers.SoundManager.Play(SoundType.Voice, legend: legendController.LegendType, voice: VoiceType.HeavyAttack);
         Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_HEAVYATTACK, legendController.LegendType);
@@ -22,6 +19,6 @@ public class LegendHeavyAttackState : LegendBaseState
     public async UniTaskVoid StartCooltime()
     {
         await UniTask.Delay(TimeSpan.FromSeconds(legendController.Stat.HeavyCooltime));
-        _playerAttack.CanHeavyAttack = true;
+        legendController.CanHeavyAttack = true;
     }
 }

@@ -68,6 +68,12 @@ public class LegendController : MonoBehaviour
     private const float ROLLING_DASH_POWER = 1.2f;
     private int _stepIndex = 0;
     private bool _canAttack;
+    private bool _canHeavyAttack;
+    private bool _canSkillAttack;
+
+    public bool CanHeavyAttack { get => _canHeavyAttack; set => _canHeavyAttack = value; }
+    public bool CanSkillAttack { get => _canSkillAttack; set => _canSkillAttack = value; }
+
     public LegendType LegendType { get; private set; }
     public event Action<float> OnHpChanged;
     public event Action OnDie;
@@ -92,8 +98,8 @@ public class LegendController : MonoBehaviour
         user.OwnedLegend = this;
         LegendType = user.SelectedLegend;
         OwnerUserID = user.ID;
-        _playerAttack.CanHeavyAttack = true;
-        _playerAttack.CanSkillAttack = true;
+        CanHeavyAttack = true;
+        CanSkillAttack = true;
     }
 
     private void GetComponents()
@@ -103,7 +109,6 @@ public class LegendController : MonoBehaviour
         _legendAnimationController = Utils.GetOrAddComponent<LegendAnimationController>(this.gameObject);
         _effectController = Utils.GetOrAddComponent<EffectController>(this.gameObject);
         _collider = GetComponent<Collider>();
-        _playerAttack = GetComponent<PlayerAttack>();
     }
 
     private void SetLegendStat(LegendType legendIndex)
@@ -185,14 +190,14 @@ public class LegendController : MonoBehaviour
     }
     private void OnSmashAttack()
     {
-        if (_playerAttack.CanHeavyAttack)
+        if (_canHeavyAttack)
         {
             _legendAnimationController.SetTrigger(AnimationHash.HeavyAttack);
         }
     }
     private void OnSkillAttack()
     {
-        if (_playerAttack.CanSkillAttack)
+        if (_canSkillAttack)
         {
             _legendAnimationController.SetTrigger(AnimationHash.SkillAttack);
         }
