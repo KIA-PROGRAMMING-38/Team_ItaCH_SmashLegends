@@ -69,7 +69,7 @@ public class LegendController : MonoBehaviour
     private int _stepIndex = 0;
     private bool _canAttack;
     public LegendType LegendType { get; private set; }
-
+    public bool CanHeavyAttack = true;
     public event Action<float> OnHpChanged;
     public event Action OnDie;
 
@@ -93,6 +93,7 @@ public class LegendController : MonoBehaviour
         user.OwnedLegend = this;
         LegendType = user.SelectedLegend;
         OwnerUserID = user.ID;
+        CanHeavyAttack = true;
     }
 
     private void GetComponents()
@@ -123,7 +124,7 @@ public class LegendController : MonoBehaviour
 
             case SinglePlayController.Controller_2P:
                 _input.actions.name = StringLiteral.PLAYER_INPUT;
-                _input.SwitchCurrentActionMap(StringLiteral.SECOND_PLAYER_ACTIONS);                
+                _input.SwitchCurrentActionMap(StringLiteral.SECOND_PLAYER_ACTIONS);
                 _input.actions.devices = new InputDevice[] { keyBoard };
                 break;
 
@@ -183,7 +184,10 @@ public class LegendController : MonoBehaviour
     }
     private void OnSmashAttack()
     {
-        _legendAnimationController.SetTrigger(AnimationHash.HeavyAttack);
+        if (CanHeavyAttack)
+        {
+            _legendAnimationController.SetTrigger(AnimationHash.HeavyAttack);
+        }
     }
     private void OnSkillAttack()
     {
