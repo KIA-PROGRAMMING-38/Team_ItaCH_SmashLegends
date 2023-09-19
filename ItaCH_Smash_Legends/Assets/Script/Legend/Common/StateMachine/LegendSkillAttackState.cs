@@ -21,7 +21,8 @@ public class LegendSkillAttackState : LegendBaseState
 
     public async UniTaskVoid StartCooltime()
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(legendController.Stat.HeavyCooltime));
+        float skillCooltime = legendController.Stat.HeavyCooltime * 3f;
+        await UniTask.Delay(TimeSpan.FromSeconds(skillCooltime));
         _playerAttack.CanSkillAttack = true;
     }
 }
