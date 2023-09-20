@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using DG.Tweening;
 using System;
 using System.Threading;
 using UnityEngine;
@@ -59,6 +58,7 @@ public class LegendController : MonoBehaviour
     private LegendAnimationController _legendAnimationController;
     private EffectController _effectController;
     private Collider _collider;
+    private PlayerAttack _playerAttack;
 
     private Vector3 _moveDirection;
     private Vector3 _facingDirection;
@@ -68,8 +68,13 @@ public class LegendController : MonoBehaviour
     private const float ROLLING_DASH_POWER = 1.2f;
     private int _stepIndex = 0;
     private bool _canAttack;
-    public LegendType LegendType { get; private set; }
+    private bool _canHeavyAttack;
+    private bool _canSkillAttack;
 
+    public bool CanHeavyAttack { get => _canHeavyAttack; set => _canHeavyAttack = value; }
+    public bool CanSkillAttack { get => _canSkillAttack; set => _canSkillAttack = value; }
+
+    public LegendType LegendType { get; private set; }
     public event Action<float> OnHpChanged;
     public event Action OnDie;
 
@@ -93,6 +98,8 @@ public class LegendController : MonoBehaviour
         user.OwnedLegend = this;
         LegendType = user.SelectedLegend;
         OwnerUserID = user.ID;
+        CanHeavyAttack = true;
+        CanSkillAttack = true;
     }
 
     private void GetComponents()
@@ -123,7 +130,7 @@ public class LegendController : MonoBehaviour
 
             case SinglePlayController.Controller_2P:
                 _input.actions.name = StringLiteral.PLAYER_INPUT;
-                _input.SwitchCurrentActionMap(StringLiteral.SECOND_PLAYER_ACTIONS);                
+                _input.SwitchCurrentActionMap(StringLiteral.SECOND_PLAYER_ACTIONS);
                 _input.actions.devices = new InputDevice[] { keyBoard };
                 break;
 
@@ -183,11 +190,17 @@ public class LegendController : MonoBehaviour
     }
     private void OnSmashAttack()
     {
-        _legendAnimationController.SetTrigger(AnimationHash.HeavyAttack);
+        if (_canHeavyAttack)
+        {
+            _legendAnimationController.SetTrigger(AnimationHash.HeavyAttack);
+        }
     }
     private void OnSkillAttack()
     {
-        _legendAnimationController.SetTrigger(AnimationHash.SkillAttack);
+        if (_canSkillAttack)
+        {
+            _legendAnimationController.SetTrigger(AnimationHash.SkillAttack);
+        }
     }
     #endregion
 
