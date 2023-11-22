@@ -3,6 +3,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
@@ -31,6 +32,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         Managers.SoundManager.Play(SoundType.BGM, StringLiteral.BGM_TITLE);
+        Managers.UIManager.ShowPopupUI<UI_LogInPopup>();
     }
 
     public void ConnectToServer()
@@ -39,7 +41,23 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         OnConnectingtoServer?.Invoke();
     }
 
-    public override void OnConnectedToMaster() => OnLogInSuccessed?.Invoke();
+    public override void OnConnectedToMaster()
+    {
+        OnLogInSuccessed?.Invoke();
+        UIPopup loginPopup = Managers.UIManager.FindPopup<UI_LogInPopup>();
+
+        if (loginPopup != null)
+        {
+            Managers.UIManager.ClosePopupUI(loginPopup);
+        }
+
+        UIPopup lobbyPopup = Managers.UIManager.FindPopup<UI_LobbyPopup>();
+
+        if (lobbyPopup == null)
+        {
+            Managers.UIManager.ShowPopupUI<UI_LobbyPopup>();
+        }
+    }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
@@ -64,8 +82,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         OnCreatingRoom?.Invoke();
-        Managers.SoundManager.Play(SoundType.SFX,StringLiteral.SFX_GAMEMODESTART);
-        Managers.SoundManager.Play(SoundType.BGM,StringLiteral.BGM_MATCH);
+        Managers.SoundManager.Play(SoundType.SFX, StringLiteral.SFX_GAMEMODESTART);
+        Managers.SoundManager.Play(SoundType.BGM, StringLiteral.BGM_MATCH);
 
         int totalPlayer = Managers.StageManager.CurrentGameMode.MaxPlayer;
         PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = totalPlayer });
@@ -85,32 +103,17 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         // 상대 데이터 받아오는 부분
     }
 
-    private void EnterInGameScene()
+    private async UniTask EnterInGameScene()
     {
         PhotonNetwork.LoadLevel(StringLiteral.INGAME);
-        Managers.SoundManager.Play(SoundType.BGM, StringLiteral.BGM_STAGE); 
-        Managers.SoundManager.Play(SoundType.SFX,StringLiteral.SFX_MATCH_START);
+
+        await UniTask.WaitUntil(() => PhotonNetwork.LevelLoadingProgress == 1);
+
         OnMatchingSuccess?.Invoke();
-    }
+        await UniTask.Delay(500);
 
-    private enum Level
-    {
-        Lobby,
-        Ingame
-    }
-
-    public void OnLevelWasLoaded(int level)
-    {
-        switch (level)
-        {
-            case (int)Level.Lobby:
-                OnLogInSuccessed?.Invoke();
-                return;
-
-            case (int)Level.Ingame:
-                OnInGameSceneLoaded?.Invoke();
-                return;
-        }
+        Managers.UIManager.FindPopup<UI_MatchingPopup>().ClosePopupUI();
+        OnInGameSceneLoaded?.Invoke();
     }
 
     private void SetUserID()
@@ -132,7 +135,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         OnUpdatePlayerList(GetDefaultUserData(UserLocalData.ID + 1));
         await UniTask.Delay(2000); // 현재 2초 동안 매칭 안 잡히면 연습장 자동 입장
-        EnterInGameScene();
+        EnterInGameScene().Forget();
     }
 
     private UserData GetDefaultUserData(int id)

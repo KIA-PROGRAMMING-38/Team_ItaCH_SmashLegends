@@ -11,7 +11,7 @@ public class PlayerAttack : MonoBehaviour
     protected LegendController legendController;
     protected Rigidbody attackRigidbody;
     protected float dashPower;
-
+    
     private void Awake()
     {
         attackRigidbody = GetComponent<Rigidbody>();

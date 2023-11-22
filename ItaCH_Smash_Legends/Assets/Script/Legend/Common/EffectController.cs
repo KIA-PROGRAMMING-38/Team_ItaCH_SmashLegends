@@ -1,28 +1,31 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
+public enum MaterialType
+{
+    Hit,
+    Invincible
+}
+
 public abstract class EffectController : MonoBehaviour
 {
     [SerializeField] private GameObject[] _effectPrefabs;
     [SerializeField] private ParticleSystem _dieSmokeEffect;
     [SerializeField] private ParticleSystem _dieEffect;
     protected GameObject[] _effects;
-    private LegendController _legendController;
     private Rigidbody _rigidbody;
     private float _scaleOffset;
 
     public readonly int FLASH_COUNT = 5;
     public readonly int HANG_JUMP_FLASH_COUNT = 3;
 
-    private Color _hitColor = new Color(0.302f, 0.192f, 0.075f);
-    private Color _invincibleColor = new Color(0.425f, 0.425f, 0.425f);
-
     [SerializeField] private Renderer[] _renderer;
+
+    private Material[] _defaultMaterial;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _legendController = GetComponent<LegendController>();
     }
     private void Start()
     {
@@ -48,6 +51,7 @@ public abstract class EffectController : MonoBehaviour
         InitMaterial();
         CreateDieSmokeEffect();
         CreateDieEffect();
+
     }
 
     public void SetDieSmokeEffect()
@@ -58,7 +62,7 @@ public abstract class EffectController : MonoBehaviour
     }
     public void DisableDieSmokeEffect()
     {
-        if(_dieSmokeEffect.gameObject.activeSelf)
+        if (_dieSmokeEffect.gameObject.activeSelf)
         {
             _dieSmokeEffect.gameObject.SetActive(false);
         }
@@ -81,50 +85,41 @@ public abstract class EffectController : MonoBehaviour
         _dieEffect.transform.forward = _rigidbody.velocity;
         _dieEffect.Play();
     }
+
     private void InitMaterial()
     {
+        _defaultMaterial = new Material[_renderer.Length];
+
         for (int i = 0; i < _renderer.Length; ++i)
         {
             Material material = Instantiate(_renderer[i].material);
             _renderer[i].material = material;
+            _defaultMaterial[i] = _renderer[i].material;
         }
     }
-    private void SetHitEffectColor()
+
+    private void OnFlashEffect(MaterialType materialType)
     {
         for (int i = 0; i < _renderer.Length; ++i)
         {
-            _renderer[i].material.SetColor("_EmissionColor", _hitColor);
-        }
-    }
-    private void SetInvincibleEffectColor()
-    {
-        for (int i = 0; i < _renderer.Length; ++i)
-        {
-            _renderer[i].material.SetColor("_EmissionColor", _invincibleColor);
-        }
-    }
-    private void OnFlashEffect()
-    {
-        for (int i = 0; i < _renderer.Length; ++i)
-        {
-            _renderer[i].material.EnableKeyword("_EMISSION");
+            _renderer[i].material = Managers.ResourceManager.GetMaterial(materialType);
+            _renderer[i].material.mainTexture = _defaultMaterial[i].mainTexture;
         }
     }
     private void OffFlashEffect()
     {
         for (int i = 0; i < _renderer.Length; ++i)
         {
-            _renderer[i].material.DisableKeyword("_EMISSION");
+            _renderer[i].material = _defaultMaterial[i];
         }
     }
 
     public async UniTaskVoid StartHitFlashEffet()
     {
         int count = 3;
-        SetHitEffectColor();
         while (count > 0)
         {
-            OnFlashEffect();
+            OnFlashEffect(MaterialType.Hit);
             await UniTask.Delay(80);
             OffFlashEffect();
             await UniTask.Delay(80);
@@ -133,10 +128,9 @@ public abstract class EffectController : MonoBehaviour
     }
     public async UniTaskVoid StartInvincibleFlashEffet(int count)
     {
-        SetInvincibleEffectColor();
         while (count > 0)
         {
-            OnFlashEffect();
+            OnFlashEffect(MaterialType.Invincible);
             await UniTask.Delay(50);
             OffFlashEffect();
             await UniTask.Delay(50);

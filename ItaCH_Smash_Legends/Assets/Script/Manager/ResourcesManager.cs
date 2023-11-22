@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using UnityEngine;
 
 public class ResourceManager
@@ -65,10 +64,10 @@ public class ResourceManager
         return Load<GameObject>(legendPrefabPath);
     }
 
-    public Sprite GetLegendFaceImage(LegendType legend)
+    public Sprite GetLegendSprite(string popupName, LegendType legend)
     {
         string legendName = legend.ToString();
-        string legendFaceImagePath = Path.Combine(StringLiteral.UI_SPRITE_FOLDER, legendName, legendName);
+        string legendFaceImagePath = Path.Combine(StringLiteral.UI_SPRITE_FOLDER, legendName, $"{popupName}_{legendName}");
         return Load<Sprite>(legendFaceImagePath);
     }
 
@@ -92,6 +91,21 @@ public class ResourceManager
             audioClipPath = Path.Combine(StringLiteral.SOUND, sound.ToString(), fileName);
         }
         return Load<AudioClip>(audioClipPath);
+    }
 
+    public Material GetMaterial(MaterialType materialType)
+    {
+        string materialPath;
+
+        if(materialType == MaterialType.Hit)
+        {
+            materialPath = Path.Combine(StringLiteral.MATERIAL,StringLiteral.HIT_MATERIAL);
+        }
+        else
+        {
+            materialPath = Path.Combine(StringLiteral.MATERIAL, StringLiteral.INVINCIBLE_MATERIAL);
+        }
+
+        return Load<Material>(materialPath);
     }
 }

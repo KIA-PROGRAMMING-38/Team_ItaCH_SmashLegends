@@ -1,4 +1,4 @@
-using System.Threading;
+using System.IO;
 
 public static class StringLiteral
 {
@@ -17,22 +17,22 @@ public static class StringLiteral
     public const string WAIT_PLAYER = "아레나가 열리고 있습니다. 상대를 기다리고 있습니다.";
     #endregion
 
-    #region DATA PATH
-    public const string LEGEND_STAT_DATA_PATH = "Assets/Resources/Data/LegendStatData.csv";
-    #endregion
-
     #region FOLDER PATH
     public const string PREFAB_FOLDER = "Prefab";
     public const string SUFFIX_INGAME = "_Ingame";
-    public const string MAP_PREFAB_PATH = "Map/SingleLogBridge";
+    public const string DUEL_MODE_MAP_PREFAB_PATH = "Map/Duel/SingleLogBridge";
+    public const string LOBBY_WORLD_MAP_PREFAB_PATH = "Map/Lobby/LobbySceneWorld";
     public const string UI_FOLDER = "UI";
     public const string UI_SPRITE_FOLDER = "UI/Sprite";
+    public const string UI_SELECT_LEGEND_POPUP = "UI_SelectLegendPopup";
+    public const string UI_DUEL_MODE_POPUP = "UI_DuelModePopup";
     public const string UI_GAME_RESULT_POPUP = "UI_GameResultPopup";
     public const string TOP_DECO_SPRITE = "_TopDeco_";
     public const string SOUND = "Sound";
     public const string VOICE = "Voice";
     public const string SFX = "SFX";
     public const string BGM = "BGM";
+    public const string MATERIAL = "Material";
     #endregion
 
     #region LegendController 
@@ -40,6 +40,10 @@ public static class StringLiteral
     public static readonly string[] ANIMATION_CLIP = new[] { "Peter_FirstAttack", "Peter_SecondAttack" };
     public const string JUMP_ANIMATION_CLIP = "Peter_JumpAttack";
     public const string ALICE_BOMB = "AliceBomb";
+    public const string HeavyBulletDeleteEffect = "Prefab/Hook/Hook_Ingame/Hook_Heavy_Bullet_Delete_Effect";
+    public const string LastHeavyBulletDeleteEffect = "Prefab/Hook/Hook_Ingame/Hook_Last_Heavy_Bullet_Delete_Effect";
+    public const string SkillBulletDeleteEffect = "Prefab/Hook/Hook_Ingame/Hook_SKill_Bullet_Delete_Effect";
+    public const string BulletDeleteEffect = "Prefab/Hook/Hook_Ingame/Hook_Default_Bullet_Delete_Effect";
     #endregion
 
     #region Tag
@@ -117,4 +121,7 @@ public static class StringLiteral
     #region Legend Voice
     public const string VOICE_WIN = "Win";
     #endregion
+
+    public const string HIT_MATERIAL = "HitMaterial";
+    public const string INVINCIBLE_MATERIAL = "InvincibleMaterial";
 }

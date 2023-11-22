@@ -893,7 +893,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4009383115343805171}
-  - component: {fileID: 129356780460176573}
   m_Layer: 5
   m_Name: PlayerRespawnTimer
   m_TagString: Untagged
@@ -923,20 +922,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 2280, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &129356780460176573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4009383115343805170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7207a2bcba75f5d4eabb273be134485f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _slider: {fileID: 0}
-  _text: {fileID: 4009383115209388814}
 --- !u!1 &4009383115714843759
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,6 +1098,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 823915912906553026, guid: 13e9afe97b3ecd944b5a016ce14002a7,
         type: 3}
+      propertyPath: m_fontSize
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 823915912906553026, guid: 13e9afe97b3ecd944b5a016ce14002a7,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 823915912906553026, guid: 13e9afe97b3ecd944b5a016ce14002a7,
+        type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
       objectReference: {fileID: 0}
@@ -1221,7 +1216,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6217693503028825287, guid: 13e9afe97b3ecd944b5a016ce14002a7, type: 3}
+    - {fileID: 2459625148109444241, guid: 13e9afe97b3ecd944b5a016ce14002a7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 13e9afe97b3ecd944b5a016ce14002a7, type: 3}
 --- !u!224 &5289537066606163807 stripped
 RectTransform:
@@ -1507,7 +1504,9 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.94509804
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6217693503028825287, guid: 13e9afe97b3ecd944b5a016ce14002a7, type: 3}
+    - {fileID: 2459625148109444241, guid: 13e9afe97b3ecd944b5a016ce14002a7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 13e9afe97b3ecd944b5a016ce14002a7, type: 3}
 --- !u!224 &672799201725241955 stripped
 RectTransform:
