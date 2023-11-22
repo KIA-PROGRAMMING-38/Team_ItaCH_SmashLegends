@@ -7,14 +7,14 @@
 
 5MinLab에서 개발한 PVP 멀티 대전 게임인 '스매시 레전드'의 모작 프로젝트 입니다.
 
-<!--(이미지 클릭 시 유튜브로 이동합니다.)-->
+(이미지 클릭 시 유튜브로 이동합니다.)
 
 <!-- [<img width=100% height=100% alt="프로젝트 이름" src="https://img.youtube.com/vi/{유튜브 비디오 ID}/0.jpg">](https://www.youtube.com/watch?v={유튜브 비디오 ID}) -->
 <!-- https://www.youtube.com/watch?v=6eLQ-EPrnqM -->
 <!--                               v={유튜브 비디오 ID} -->
 <!-- 비디오의 경우 데모 시연의 느낌으로 스토리보드를 기획하세요. *구현한 콘텐츠가 어떻게 동작하는지를 보여주는 것*에 초점을 맞추며, 어떤 기술을 사용했네~ 어떻게 구현했네 이런 얘기는 일절 적지 않습니다. -->
 <!-- 기술에 관련된 얘기는 서류에서 얘기하는 겁니다. -->
-[<img width=100% height=100% alt="프로젝트 이름" src="https://i.ytimg.com/vi/_H0GGP53oV0/hqdefault.jpg?sqp=-oaymwEXCOADEI4CSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLD7wb88VpWJpO_o37xIc6Ao4_fnvA">](https://www.youtube.com/watch?v=abC3m99_mRs&list=PLez4eDi4WWMHAoTLBD0i7iuT6OxTp7-SS&index=2)
+[<img width=100% height=100% alt="프로젝트 이름" src="https://i.ytimg.com/vi/_H0GGP53oV0/hqdefault.jpg?sqp=-oaymwEXCOADEI4CSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLD7wb88VpWJpO_o37xIc6Ao4_fnvA">](https://youtu.be/2RwbGK11Z2A)
 
 ---
 
